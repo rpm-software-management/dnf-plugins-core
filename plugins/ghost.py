@@ -1,4 +1,4 @@
-# __init__.py
+# ghost.py, it's a show about nothing.
 #
 # Copyright (C) 2013  Red Hat, Inc.
 #
