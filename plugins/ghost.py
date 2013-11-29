@@ -16,3 +16,22 @@
 # License and may only be used or replicated with the express permission of
 # Red Hat, Inc.
 #
+
+import dnf.plugin
+
+class Ghost(dnf.plugin.Plugin):
+
+    def __init__(self, base, cli):
+        self.base = base
+        self.cli = cli
+        if cli is None:
+            self._out('loaded.')
+        else:
+            self._out('loaded (with CLI)')
+
+    def _out(self, msg):
+        print('Ghost plugin: %s' % msg)
+
+    def config(self):
+        self._out('config')
+
