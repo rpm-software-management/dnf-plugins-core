@@ -17,9 +17,14 @@
 # Red Hat, Inc.
 #
 
-import dnf.plugin
+import dnf
+import logging
 
-class Ghost(dnf.plugin.Plugin):
+logger = logging.getLogger('dnf')
+
+class Ghost(dnf.Plugin):
+
+    name = 'ghost'
 
     def __init__(self, base, cli):
         self.base = base
@@ -30,7 +35,7 @@ class Ghost(dnf.plugin.Plugin):
             self._out('loaded (with CLI)')
 
     def _out(self, msg):
-        print('Ghost plugin: %s' % msg)
+        logger.debug('Ghost plugin: %s', msg)
 
     def config(self):
         self._out('config')

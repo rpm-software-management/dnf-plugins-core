@@ -17,19 +17,22 @@
 # Red Hat, Inc.
 #
 
-
-import dnf.plugin
+import dnf
 import dnf.exceptions
+import logging
 import os
 
-MSG = "This command has to be run under the root user."
+MSG = 'This command has to be run under the root user.'
+logger = logging.getLogger('dnf.plugin')
 
-class Noroot(dnf.plugin.Plugin):
+class Noroot(dnf.Plugin):
+
+    name = 'noroot'
 
     def __init__(self, base, cli):
         self.base = base
         self.cli = cli
-        print('initialized Noroot')
+        logger.debug('initialized Noroot plugin')
 
     def config(self):
         if not self.cli.command.writes_rpmdb:
