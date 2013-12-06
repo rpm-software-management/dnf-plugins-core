@@ -50,15 +50,15 @@ class DownloadCommand(dnf.cli.Command):
         q = q.latest()
         return q
 
-    def move_package(self, target, pkg):
+    def _move_package(self, target, pkg):
         location = pkg.localPkg()
         shutil.move(location, target)
         return target
 
-    def run(self, command_name, args):
+    def run(self, args):
         queries = map(self._latest_available, args)
         pkgs = list(itertools.chain(*queries))
         self.base.download_packages(pkgs)
-        move = functools.partial(self.move_package, os.getcwd())
+        move = functools.partial(self._move_package, os.getcwd())
         list(map(move, pkgs))
         return 0, ''
