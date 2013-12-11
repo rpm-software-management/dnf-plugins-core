@@ -23,6 +23,39 @@ import kickstart
 import pykickstart
 import unittest
 
+class MaskableKickstartParserTest(unittest.TestCase):
+    """Unit tests of kickstart.MaskableKickstartParser."""
+
+    EXCLUDED_SECTION_OPENS = {pykickstart.sections.PackageSection.sectionOpen}
+
+    ALL_SECTION_OPENS = ({pykickstart.sections.TracebackScriptSection.sectionOpen,
+                          pykickstart.sections.PostScriptSection.sectionOpen,
+                          pykickstart.sections.PreScriptSection.sectionOpen} |
+                         EXCLUDED_SECTION_OPENS)
+
+    def setUp(self):
+        """Prepare the test fixture."""
+        super(MaskableKickstartParserTest, self).setUp()
+        handler = pykickstart.version.makeVersion()
+        self._parser = kickstart.MaskableKickstartParser(handler)
+
+    def test_mask_all(self):
+        """Test mask_all."""
+        original_sections = {
+            section_open: self._parser.getSection(section_open)
+            for section_open in self.ALL_SECTION_OPENS}
+        assert all(not isinstance(section, pykickstart.sections.NullSection)
+                   for section in original_sections.values())
+
+        self._parser.mask_all(self.EXCLUDED_SECTION_OPENS)
+
+        for section_open in self.ALL_SECTION_OPENS:
+            section = self._parser.getSection(section_open)
+            if section_open in self.EXCLUDED_SECTION_OPENS:
+                self.assertIs(section, original_sections[section_open])
+            else:
+                self.assertIsInstance(section, pykickstart.sections.NullSection)
+
 class ParseKickstartPackagesTest(unittest.TestCase):
     """Unit tests of kickstart.parse_kickstart_packages."""
 
