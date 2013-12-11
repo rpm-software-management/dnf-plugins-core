@@ -22,8 +22,23 @@ import pykickstart.parser
 def parse_kickstart_packages(path):
     """Return content of packages sections in the kickstart file."""
     handler = pykickstart.version.makeVersion()
-    parser = pykickstart.parser.KickstartParser(handler)
+    parser = MaskableKickstartParser(handler)
+
+    # Ignore all commands and sections except the packages.
+    handler.maskAllExcept({})
+    parser.mask_all({pykickstart.sections.PackageSection.sectionOpen})
 
     parser.readKickstart(path)
 
     return handler.packages
+
+class MaskableKickstartParser(pykickstart.parser.KickstartParser):
+    """Kickstart files parser able to ignore given sections."""
+
+    def mask_all(self, section_exceptions=()):
+        """Ignore all sections except the given sections."""
+        null_class = pykickstart.sections.NullSection
+        for section_open, _section in self._sections.items():
+            if section_open not in section_exceptions:
+                self.registerSection(
+                    null_class(self.handler, sectionOpen=section_open))
