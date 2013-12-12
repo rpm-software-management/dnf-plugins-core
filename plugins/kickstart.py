@@ -34,6 +34,17 @@ def parse_kickstart_packages(path):
 
     return handler.packages
 
+class Kickstart(dnf.Plugin):
+    """DNF plugin supplying the kickstart command."""
+
+    name = 'kickstart'
+
+    def __init__(self, base, cli):
+        """Initialize the plugin instance."""
+        super(Kickstart, self).__init__(base, cli)
+        if cli is not None:
+            cli.register_command(KickstartCommand)
+
 class KickstartCommand(dnf.cli.Command):
     """A command installing groups/packages defined in kickstart files."""
 
