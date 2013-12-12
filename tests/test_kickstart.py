@@ -19,9 +19,69 @@ try:
     from unittest import mock
 except ImportError:
     import mock
+import dnf.cli
 import kickstart
 import pykickstart
 import unittest
+
+class KickstartCommandTest(unittest.TestCase):
+    """Unit tests of kickstart.KickstartCommand."""
+
+    def setUp(self):
+        """Prepare the test fixture."""
+        super(KickstartCommandTest, self).setUp()
+
+        self._base = dnf.cli.cli.BaseCli()
+        self._cli = dnf.cli.Cli(self._base)
+        self._command = kickstart.KickstartCommand(self._cli)
+
+        self._base.install_grouplist = mock.create_autospec(self._base.install_grouplist)
+        self._base.installPkgs = mock.create_autospec(self._base.installPkgs)
+        self._base.read_comps = mock.create_autospec(self._base.read_comps)
+        self._cli.logger = mock.create_autospec(self._cli.logger)
+
+    def test_doCheck_moreextcmds(self):
+        """Test doCheck with greater number of extcmds."""
+        self._cli.register_command(kickstart.KickstartCommand)
+
+        with mock.patch('dnf.cli.commands.checkGPGKey', autospec=True):
+            self.assertRaises(dnf.cli.CliError, self._command.doCheck, 'kickstart', ('path1.ks', 'path2.ks'))
+
+        self.assertEqual(
+            self._cli.logger.mock_calls,
+            [mock.call.critical('Error: Requires exactly one path to a kickstart file'),
+             mock.call.critical(' Mini usage:\n'),
+             mock.call.critical('kickstart FILE\n\nInstall packages defined in a kickstart file on your system')])
+
+    def test_run_morepaths(self):
+        """Test run with greater number of paths."""
+        self.assertRaises(ValueError, self._command.run, ('path1.ks', 'path2.ks'))
+
+    def test_run_notfound(self):
+        """Test run with a non-existent path."""
+        with patch_read_kickstart(pykickstart.errors.KickstartError) as read_mock:
+            self.assertRaises(dnf.exceptions.Error, self._command.run, ('path.ks',))
+
+        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
+
+    def test_run_nogroupavailable(self):
+        """Test run without any group available."""
+        self._base.read_comps.side_effect = dnf.exceptions.CompsError
+
+        with patch_read_kickstart(('package', '@group')) as read_mock:
+            self.assertRaises(dnf.exceptions.Error, self._command.run, ('path.ks',))
+
+        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
+
+    def test_run_nothinginstalled(self):
+        """Test run without any installable group and package."""
+        self._base.install_grouplist.side_effect = dnf.exceptions.Error
+        self._base.installPkgs.side_effect = dnf.exceptions.Error
+
+        with patch_read_kickstart(('package', '@group')) as read_mock:
+            self.assertRaises(dnf.exceptions.Error, self._command.run, ('path.ks',))
+
+        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
 
 class MaskableKickstartParserTest(unittest.TestCase):
     """Unit tests of kickstart.MaskableKickstartParser."""

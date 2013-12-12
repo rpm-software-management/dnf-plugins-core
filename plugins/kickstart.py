@@ -17,6 +17,8 @@
 # Red Hat, Inc.
 #
 
+from dnf.yum.i18n import _
+import dnf.cli
 import pykickstart.parser
 
 def parse_kickstart_packages(path):
@@ -31,6 +33,66 @@ def parse_kickstart_packages(path):
     parser.readKickstart(path)
 
     return handler.packages
+
+class KickstartCommand(dnf.cli.Command):
+    """A command installing groups/packages defined in kickstart files."""
+
+    aliases = ('kickstart',)
+    activate_sack = True
+    resolve = True
+    writes_rpmdb = True
+
+    def doCheck(self, basecmd, extcmds):
+        """Verify that conditions are met so that this command can run."""
+        dnf.cli.commands.checkGPGKey(self.base, self.cli)
+        if len(extcmds) != 1:
+            self.cli.logger.critical(
+                _('Error: Requires exactly one path to a kickstart file'))
+            dnf.cli.commands._err_mini_usage(self.cli, basecmd)
+            raise dnf.cli.CliError('exactly one path to a kickstart file required')
+        dnf.cli.commands.checkEnabledRepo(self.base, extcmds)
+
+    @staticmethod
+    def get_summary():
+        """Return a one line summary of what the command does."""
+        return _("Install packages defined in a kickstart file on your system")
+
+    @staticmethod
+    def get_usage():
+        """Return a usage string for the command, including arguments."""
+        return _("FILE")
+
+    def run(self, extcmds):
+        """Execute the command."""
+        try:
+            path, = extcmds
+        except ValueError:
+            raise ValueError('exactly one path to a kickstart file required')
+
+        try:
+            packages = parse_kickstart_packages(path)
+        except pykickstart.errors.KickstartError as err:
+            raise dnf.exceptions.Error(
+                'the file cannot be parsed: {}'.format(err))
+        group_names = [group.name for group in packages.groupList]
+
+        if group_names:
+            self.base.read_comps()
+        try:
+            self.base.install_grouplist(group_names)
+        except dnf.exceptions.Error:
+            are_groups_installed = False
+        else:
+            are_groups_installed = True
+        try:
+            self.base.installPkgs(packages.packageList)
+        except dnf.exceptions.Error:
+            are_packages_installed = False
+        else:
+            are_packages_installed = True
+
+        if not are_groups_installed and not are_packages_installed:
+            raise dnf.exceptions.Error(_('Nothing to do.'))
 
 class MaskableKickstartParser(pykickstart.parser.KickstartParser):
     """Kickstart files parser able to ignore given sections."""
