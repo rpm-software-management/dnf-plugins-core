@@ -40,3 +40,8 @@ class Ghost(dnf.Plugin):
     def config(self):
         self._out('config')
 
+    def sack(self):
+        self._out('sack')
+
+    def transaction(self):
+        self._out('transaction')
