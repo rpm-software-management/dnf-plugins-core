@@ -27,6 +27,7 @@ Core Plugins for DNF.
 
 mkdir -p $RPM_BUILD_ROOT/%{py2dir}
 cp plugins/noroot.py $RPM_BUILD_ROOT%{py2dir}
+cp plugins/generate_completion_cache.py $RPM_BUILD_ROOT%{py2dir}
 
 %check
 
