@@ -20,10 +20,16 @@ try:
 except ImportError:
     import mock
 import dnf.cli
-import kickstart
-import pykickstart
+import support
 import unittest
 
+if not support.PY3:
+    import kickstart
+    import pykickstart
+else:
+    pykickstart = unittest.mock.Mock()
+
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 class KickstartCommandTest(unittest.TestCase):
     """Unit tests of kickstart.KickstartCommand."""
 
@@ -83,6 +89,7 @@ class KickstartCommandTest(unittest.TestCase):
 
         self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
 
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 class MaskableKickstartParserTest(unittest.TestCase):
     """Unit tests of kickstart.MaskableKickstartParser."""
 
@@ -116,6 +123,7 @@ class MaskableKickstartParserTest(unittest.TestCase):
             else:
                 self.assertIsInstance(section, pykickstart.sections.NullSection)
 
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 class ParseKickstartPackagesTest(unittest.TestCase):
     """Unit tests of kickstart.parse_kickstart_packages."""
 
@@ -136,6 +144,7 @@ class ParseKickstartPackagesTest(unittest.TestCase):
 
         self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
 
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 def patch_read_kickstart(lines_or_err):
     """Let KickstartParser.readKickstart return the packages or raise the error."""
     is_exception = (isinstance(lines_or_err, Exception)
