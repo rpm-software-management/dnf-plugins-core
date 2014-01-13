@@ -11,9 +11,10 @@ License:	GPLv2+
 URL:		https://github.com/akozumpl/dnf-plugins-core
 Source0:	http://akozumpl.fedorapeople.org/dnf-plugins-core-%{gitrev}.tar.xz
 BuildArch:	noarch
-BuildRequires:	python2-devel
 BuildRequires:	dnf >= %{dnf_version}
+BuildRequires:	pykickstart
 BuildRequires:	python-nose
+BuildRequires:	python2-devel
 Requires:	dnf >= %{dnf_version}
 Requires:	pykickstart
 
