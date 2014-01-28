@@ -42,12 +42,12 @@ Core Plugins for DNF, Python 3 version.
 %global py3dir %{python3_sitelib}/dnf-plugins
 
 mkdir -p %{buildroot}/%{py2dir}
-cp -a plugins/generate_completion_cache.py ${buildroot}/%{py2dir}
+cp -a plugins/generate_completion_cache.py %{buildroot}/%{py2dir}
 cp -a plugins/kickstart.py %{buildroot}/%{py2dir}
 cp -a plugins/noroot.py %{buildroot}/%{py2dir}
 
 mkdir -p %{buildroot}/%{py3dir}
-cp -a plugins/generate_completion_cache.py ${buildroot}/%{py3dir}
+cp -a plugins/generate_completion_cache.py %{buildroot}/%{py3dir}
 cp -a plugins/noroot.py %{buildroot}/%{py3dir}
 
 %check
