@@ -16,7 +16,14 @@
 #
 
 import sys
+import unittest
 
 PY3 = False
 if sys.version_info.major >= 3:
     PY3 = True
+
+if PY3:
+    from unittest import mock
+else:
+    import mock
+

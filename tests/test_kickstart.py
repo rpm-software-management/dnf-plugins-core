@@ -15,10 +15,9 @@
 # Red Hat, Inc.
 #
 
-try:
-    from unittest import mock
-except ImportError:
-    import mock
+
+from support import mock
+
 import dnf.cli
 import support
 import unittest
