@@ -1,9 +1,9 @@
-%global gitrev eb97d01
+%global gitrev 42c6794
 %global dnf_version 0.4.10-2
 %global pluginspath /usr/share/dnf/plugins
 
 Name:		dnf-plugins-core
-Version:	0.0.2
+Version:	0.0.3
 Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
@@ -64,6 +64,13 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{py3dir}/*
 
 %changelog
+* Thu Feb 6 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.3-1
+- tests: import mock through support so its simpler for the test cases. (Ales Kozumplik)
+- packaging: fix typos in the spec. (Ales Kozumplik)
+- [completion_cache] Cache installed packages, update the cache less frequently (Elad Alfassa)
+- Add bash completion to dnf (Elad Alfassa)
+- packaging: missing buildrequire (Ales Kozumplik)
+
 * Mon Jan 13 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.2-1
 - First release.
 
