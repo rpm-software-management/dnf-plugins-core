@@ -42,11 +42,9 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     sack_activate = True
     aliases = ("debuginfo-install",)
     resolve = True
+    writes_rpmdb = True
 
     def run(self, args):
-        # FIXME this should do dnf itself (BZ#1062889)
-        if os.geteuid() != 0:
-            raise dnf.exceptions.Error(_('This command has to be run under the root user.'))
         self._enable_debug_repos()
         self.base.fill_sack()
         self.done = []
