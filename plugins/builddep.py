@@ -40,6 +40,7 @@ class BuildDepCommand(dnf.cli.Command):
     activate_sack = True
     aliases = ('builddep',)
     resolve = True
+    writes_rpmdb = True
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
