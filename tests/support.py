@@ -15,8 +15,9 @@
 # Red Hat, Inc.
 #
 
+import dnf
+import logging
 import sys
-import unittest
 
 PY3 = False
 if sys.version_info.major >= 3:
@@ -27,3 +28,47 @@ if PY3:
 else:
     import mock
 
+class BaseCliStub(object):
+    """A class mocking `dnf.cli.cli.BaseCli`."""
+
+    def __init__(self, available_pkgs=(), available_groups=()):
+        """Initialize the base."""
+        self._available_pkgs = set(available_pkgs)
+        self._available_groups = set(available_groups)
+        self.installed_groups = set()
+        self.installed_pkgs = set()
+
+    def install_grouplist(self, names):
+        """Install given groups."""
+        to_install = (set(names) & self._available_groups) - self.installed_groups
+        if not to_install:
+            raise dnf.exceptions.Error('nothing to do')
+        self.installed_groups.update(to_install)
+
+    def installPkgs(self, patterns):
+        """Install given packages."""
+        to_install = (set(patterns) & self._available_pkgs) - self.installed_pkgs
+        if not to_install:
+            raise dnf.exceptions.Error('nothing to do')
+        self.installed_pkgs.update(to_install)
+
+    def read_comps(self):
+        """Read groups information."""
+        if not self._available_groups:
+            raise dnf.exceptions.CompsError('no group available')
+
+class CliStub(object):
+    """A class mocking `dnf.cli.Cli`."""
+
+    nogpgcheck = True
+
+    def __init__(self, base):
+        """Initialize the CLI."""
+        self.base = base
+        self.cli_commands = {}
+        self.logger = logging.getLogger()
+        self.register_command(dnf.cli.commands.HelpCommand)
+
+    def register_command(self, command):
+        """Register given *command*."""
+        self.cli_commands.update({alias: command for alias in command.aliases})

@@ -1,4 +1,4 @@
-# Copyright (C) 2013  Red Hat, Inc.
+# Copyright (C) 2013-2014  Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
@@ -16,10 +16,11 @@
 #
 
 
-from support import mock
-
-import dnf.cli
+import dnf
+import logging
+import os
 import support
+import tempfile
 import unittest
 
 if not support.PY3:
@@ -28,65 +29,137 @@ if not support.PY3:
 else:
     pykickstart = unittest.mock.Mock()
 
+class _KickstartFileFixture(object):
+    """Test fixture containing a kickstart file."""
+
+    KICKSTART_GROUP = 'group'
+
+    KICKSTART_PACKAGE = 'package'
+
+    @classmethod
+    def _create_kickstart(cls):
+        """Create a kickstart file and return its path."""
+        with tempfile.NamedTemporaryFile('wt', delete=False) as file_:
+            file_.write('%packages\n')
+            if cls.KICKSTART_PACKAGE:
+                file_.write('%s\n' % cls.KICKSTART_PACKAGE)
+            if cls.KICKSTART_GROUP:
+                file_.write('@%s\n' % cls.KICKSTART_GROUP)
+            file_.write('%end\n')
+        return file_.name
+
+    @classmethod
+    def setUpClass(cls):
+        """Prepare the test fixture."""
+        super(_KickstartFileFixture, cls).setUpClass()
+        cls._path = cls._create_kickstart()
+
+    @classmethod
+    def tearDownClass(cls):
+        """Tear down the test fixture."""
+        super(_KickstartFileFixture, cls).tearDownClass()
+        os.remove(cls._path)
+
+class _KickstartCommandFixture(_KickstartFileFixture):
+    """Test fixture containing a `kickstart.KickstartCommand` instance."""
+
+    KICKSTART_GROUP = _KickstartFileFixture.KICKSTART_GROUP
+
+    KICKSTART_PACKAGE = _KickstartFileFixture.KICKSTART_PACKAGE
+
+    AVAILABLE_GROUPS = frozenset({KICKSTART_GROUP} if KICKSTART_GROUP else {})
+
+    AVAILABLE_PACKAGES = frozenset({KICKSTART_PACKAGE} if KICKSTART_PACKAGE else {})
+
+    def setUp(self):
+        """Prepare the test fixture."""
+        super(_KickstartCommandFixture, self).setUp()
+        base = support.BaseCliStub(self.AVAILABLE_PACKAGES, self.AVAILABLE_GROUPS)
+        cli = support.CliStub(base)
+        self._command = kickstart.KickstartCommand(cli)
+        cli.register_command(self._command)
+
 @unittest.skipIf(support.PY3, "pykickstart not available in Py3")
-class KickstartCommandTest(unittest.TestCase):
+class KickstartCommandTest(_KickstartCommandFixture, unittest.TestCase):
     """Unit tests of kickstart.KickstartCommand."""
 
     def setUp(self):
         """Prepare the test fixture."""
         super(KickstartCommandTest, self).setUp()
+        self._log_handler = logging.StreamHandler(dnf.pycomp.StringIO())
+        self._command.cli.logger.addHandler(self._log_handler)
 
-        self._base = dnf.cli.cli.BaseCli()
-        self._cli = dnf.cli.Cli(self._base)
-        self._command = kickstart.KickstartCommand(self._cli)
-
-        self._base.install_grouplist = mock.create_autospec(self._base.install_grouplist)
-        self._base.installPkgs = mock.create_autospec(self._base.installPkgs)
-        self._base.read_comps = mock.create_autospec(self._base.read_comps)
-        self._cli.logger = mock.create_autospec(self._cli.logger)
+    def tearDown(self):
+        """Tear down the test fixture."""
+        super(KickstartCommandTest, self).tearDown()
+        self._command.cli.logger.removeHandler(self._log_handler)
 
     def test_doCheck_moreextcmds(self):
-        """Test doCheck with greater number of extcmds."""
-        self._cli.register_command(kickstart.KickstartCommand)
-
-        with mock.patch('dnf.cli.commands.checkGPGKey', autospec=True):
-            self.assertRaises(dnf.cli.CliError, self._command.doCheck, 'kickstart', ('path1.ks', 'path2.ks'))
+        """Test whether it fails if multiple arguments are given."""
+        self.assertRaises(
+                dnf.cli.CliError,
+                self._command.doCheck, 'kickstart', ('path1.ks', 'path2.ks'))
 
         self.assertEqual(
-            self._cli.logger.mock_calls,
-            [mock.call.critical('Error: Requires exactly one path to a kickstart file'),
-             mock.call.critical(' Mini usage:\n'),
-             mock.call.critical('kickstart FILE\n\nInstall packages defined in a kickstart file on your system')])
+            self._log_handler.stream.getvalue(),
+            u'Error: Requires exactly one path to a kickstart file\n '
+            u'Mini usage:\n\nkickstart FILE\n\n'
+            u'Install packages defined in a kickstart file on your system\n')
+
+    def test_run_group(self):
+        """Test whether the group is installed."""
+        self._command.run([self._path])
+        self.assertEqual(self._command.cli.base.installed_groups, {self.KICKSTART_GROUP})
 
     def test_run_morepaths(self):
-        """Test run with greater number of paths."""
-        self.assertRaises(ValueError, self._command.run, ('path1.ks', 'path2.ks'))
+        """Test whether it fails if multiple paths are given."""
+        self.assertRaises(ValueError, self._command.run, ['path1.ks', 'path2.ks'])
 
     def test_run_notfound(self):
-        """Test run with a non-existent path."""
-        with patch_read_kickstart(pykickstart.errors.KickstartError) as read_mock:
-            self.assertRaises(dnf.exceptions.Error, self._command.run, ('path.ks',))
+        """Test whether it fails if the path does not exist."""
+        self.assertRaises(dnf.exceptions.Error, self._command.run, ['non-existent.ks'])
 
-        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
+    def test_run_package(self):
+        """Test whether the package is installed."""
+        self._command.run([self._path])
+        self.assertEqual(self._command.cli.base.installed_pkgs, {self.KICKSTART_PACKAGE})
 
-    def test_run_nogroupavailable(self):
-        """Test run without any group available."""
-        self._base.read_comps.side_effect = dnf.exceptions.CompsError
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
+class KickstartCommandNoCompAGroupTest(_KickstartCommandFixture, unittest.TestCase):
+    """Unit tests of kickstart.KickstartCommand with no available group and a group in the file."""
 
-        with patch_read_kickstart(('package', '@group')) as read_mock:
-            self.assertRaises(dnf.exceptions.Error, self._command.run, ('path.ks',))
+    AVAILABLE_GROUPS = frozenset()
 
-        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
+    def test_run(self):
+        """Test whether it fails."""
+        self.assertRaises(dnf.exceptions.Error, self._command.run, [self._path])
 
-    def test_run_nothinginstalled(self):
-        """Test run without any installable group and package."""
-        self._base.install_grouplist.side_effect = dnf.exceptions.Error
-        self._base.installPkgs.side_effect = dnf.exceptions.Error
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
+class KickstartCommandNoCompNoGroupTest(_KickstartCommandFixture, unittest.TestCase):
+    """Unit tests of kickstart.KickstartCommand with no available group and no group in the file."""
 
-        with patch_read_kickstart(('package', '@group')) as read_mock:
-            self.assertRaises(dnf.exceptions.Error, self._command.run, ('path.ks',))
+    KICKSTART_GROUP = None
 
-        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
+    AVAILABLE_GROUPS = frozenset()
+
+    def test_run(self):
+        """Test whether it does not fail."""
+        try:
+            self._command.run([self._path])
+        except dnf.exceptions.Error:
+            self.fail()
+
+@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
+class KickstartCommandNotAvailableTest(_KickstartCommandFixture, unittest.TestCase):
+    """Unit tests of kickstart.KickstartCommand with no kickstart item installable."""
+
+    KICKSTART_GROUP = 'non-existent'
+
+    KICKSTART_PACKAGE = 'non-existent'
+
+    def test_run(self):
+        """Test whether it fails."""
+        self.assertRaises(dnf.exceptions.Error, self._command.run, [self._path])
 
 @unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 class MaskableKickstartParserTest(unittest.TestCase):
@@ -123,34 +196,20 @@ class MaskableKickstartParserTest(unittest.TestCase):
                 self.assertIsInstance(section, pykickstart.sections.NullSection)
 
 @unittest.skipIf(support.PY3, "pykickstart not available in Py3")
-class ParseKickstartPackagesTest(unittest.TestCase):
+class ParseKickstartPackagesTest(_KickstartFileFixture, unittest.TestCase):
     """Unit tests of kickstart.parse_kickstart_packages."""
 
-    def test(self):
-        """Test parse_kickstart_packages with a file."""
-        with patch_read_kickstart(('package', '@group')) as read_mock:
-            packages = kickstart.parse_kickstart_packages('path.ks')
-
-        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
-        self.assertEqual(packages.packageList, ['package'])
-        self.assertEqual(packages.groupList, [pykickstart.parser.Group('group')])
+    def test_group(self):
+        """Test whether it parses groups."""
+        packages = kickstart.parse_kickstart_packages(self._path)
+        self.assertEqual(packages.groupList, [pykickstart.parser.Group(self.KICKSTART_GROUP)])
 
     def test_fail(self):
-        """Test parse_kickstart_packages with a missing file."""
-        with patch_read_kickstart(pykickstart.errors.KickstartError) as read_mock:
-            with self.assertRaises(pykickstart.errors.KickstartError):
-                kickstart.parse_kickstart_packages('path.ks')
+        """Test whether it fails if the path does not exist."""
+        self.assertRaises(pykickstart.errors.KickstartError,
+                          kickstart.parse_kickstart_packages, 'non-existent.ks')
 
-        self.assertEqual(read_mock.mock_calls, [mock.call(mock.ANY, 'path.ks')])
-
-@unittest.skipIf(support.PY3, "pykickstart not available in Py3")
-def patch_read_kickstart(lines_or_err):
-    """Let KickstartParser.readKickstart return the packages or raise the error."""
-    is_exception = (isinstance(lines_or_err, Exception)
-                    if not isinstance(lines_or_err, type) else
-                    issubclass(lines_or_err, Exception))
-    side_effect = (lines_or_err if is_exception else
-                   lambda self, _path: self.handler.packages.add(lines_or_err))
-    return mock.patch.object(
-        pykickstart.parser.KickstartParser, 'readKickstart', autospec=True,
-        side_effect=side_effect)
+    def test_package(self):
+        """Test whether it parses packages."""
+        packages = kickstart.parse_kickstart_packages(self._path)
+        self.assertEqual(packages.packageList, [self.KICKSTART_PACKAGE])
