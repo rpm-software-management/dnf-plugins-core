@@ -19,6 +19,7 @@
 
 from dnf.yum.i18n import _
 import dnf.cli
+import logging
 import pykickstart.parser
 
 def parse_kickstart_packages(path):
@@ -50,13 +51,16 @@ class KickstartCommand(dnf.cli.Command):
 
     aliases = ('kickstart',)
     activate_sack = True
+    logger = logging.getLogger('dnf.plugin')
     resolve = True
     writes_rpmdb = True
 
     def doCheck(self, basecmd, extcmds):
         """Verify that conditions are met so that this command can run."""
         dnf.cli.commands.checkGPGKey(self.base, self.cli)
-        if len(extcmds) != 1:
+        try:
+            _path = self.parse_extcmds(extcmds)
+        except ValueError:
             self.cli.logger.critical(
                 _('Error: Requires exactly one path to a kickstart file'))
             dnf.cli.commands._err_mini_usage(self.cli, basecmd)
@@ -73,12 +77,17 @@ class KickstartCommand(dnf.cli.Command):
         """Return a usage string for the command, including arguments."""
         return _("FILE")
 
+    @classmethod
+    def parse_extcmds(cls, extcmds):
+        """Parse command arguments *extcmds*."""
+        path, = extcmds
+        return path
+
     def run(self, extcmds):
         """Execute the command."""
-        try:
-            path, = extcmds
-        except ValueError:
-            raise ValueError('exactly one path to a kickstart file required')
+        self.doCheck(self.base.basecmd, extcmds)
+
+        path = self.parse_extcmds(extcmds)
 
         try:
             packages = parse_kickstart_packages(path)
@@ -95,12 +104,15 @@ class KickstartCommand(dnf.cli.Command):
             are_groups_installed = False
         else:
             are_groups_installed = True
-        try:
-            self.base.installPkgs(packages.packageList)
-        except dnf.exceptions.Error:
-            are_packages_installed = False
-        else:
-            are_packages_installed = True
+
+        are_packages_installed = False
+        for pattern in packages.packageList:
+            try:
+                self.base.install(pattern)
+            except dnf.exceptions.MarkingError:
+                self.logger.info(_('No package %s available.'), pattern)
+            else:
+                are_packages_installed = True
 
         if not are_groups_installed and not are_packages_installed:
             raise dnf.exceptions.Error(_('Nothing to do.'))
