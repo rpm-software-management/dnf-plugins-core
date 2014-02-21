@@ -37,6 +37,7 @@ class BaseCliStub(object):
         self._available_groups = set(available_groups)
         self.installed_groups = set()
         self.installed_pkgs = set()
+        self.repos = dnf.repodict.RepoDict()
 
     def install_grouplist(self, names):
         """Install given groups."""
@@ -51,6 +52,10 @@ class BaseCliStub(object):
         if not to_install:
             raise dnf.exceptions.Error('nothing to do')
         self.installed_pkgs.update(to_install)
+
+    def read_all_repos(self):
+        """Read repositories information."""
+        self.repos.add(RepoStub('main'))
 
     def read_comps(self):
         """Read groups information."""
@@ -72,3 +77,15 @@ class CliStub(object):
     def register_command(self, command):
         """Register given *command*."""
         self.cli_commands.update({alias: command for alias in command.aliases})
+
+class RepoStub(object):
+    """A class mocking `dnf.repo.Repo`"""
+
+    enabled = True
+
+    def __init__(self, id_):
+        """Initialize the repository."""
+        self.id = id_
+
+    def valid(self):
+        """Return a message if the repository is not valid."""

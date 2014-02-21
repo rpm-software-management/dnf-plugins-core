@@ -56,7 +56,9 @@ class KickstartCommand(dnf.cli.Command):
     def doCheck(self, basecmd, extcmds):
         """Verify that conditions are met so that this command can run."""
         dnf.cli.commands.checkGPGKey(self.base, self.cli)
-        if len(extcmds) != 1:
+        try:
+            _path = self.parse_extcmds(extcmds)
+        except ValueError:
             self.cli.logger.critical(
                 _('Error: Requires exactly one path to a kickstart file'))
             dnf.cli.commands._err_mini_usage(self.cli, basecmd)
@@ -73,12 +75,17 @@ class KickstartCommand(dnf.cli.Command):
         """Return a usage string for the command, including arguments."""
         return _("FILE")
 
+    @classmethod
+    def parse_extcmds(cls, extcmds):
+        """Parse command arguments *extcmds*."""
+        path, = extcmds
+        return path
+
     def run(self, extcmds):
         """Execute the command."""
-        try:
-            path, = extcmds
-        except ValueError:
-            raise ValueError('exactly one path to a kickstart file required')
+        self.doCheck(self.base.basecmd, extcmds)
+
+        path = self.parse_extcmds(extcmds)
 
         try:
             packages = parse_kickstart_packages(path)

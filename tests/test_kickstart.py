@@ -78,6 +78,8 @@ class _KickstartCommandFixture(_KickstartFileFixture):
         cli = support.CliStub(base)
         self._command = kickstart.KickstartCommand(cli)
         cli.register_command(self._command)
+        base.read_all_repos()
+        base.basecmd = self._command.aliases[0]
 
 @unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 class KickstartCommandTest(_KickstartCommandFixture, unittest.TestCase):
@@ -113,7 +115,7 @@ class KickstartCommandTest(_KickstartCommandFixture, unittest.TestCase):
 
     def test_run_morepaths(self):
         """Test whether it fails if multiple paths are given."""
-        self.assertRaises(ValueError, self._command.run, ['path1.ks', 'path2.ks'])
+        self.assertRaises(dnf.cli.CliError, self._command.run, ['path1.ks', 'path2.ks'])
 
     def test_run_notfound(self):
         """Test whether it fails if the path does not exist."""
