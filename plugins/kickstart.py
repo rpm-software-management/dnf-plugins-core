@@ -19,6 +19,7 @@
 
 from dnf.yum.i18n import _
 import dnf.cli
+import logging
 import pykickstart.parser
 
 def parse_kickstart_packages(path):
@@ -50,6 +51,7 @@ class KickstartCommand(dnf.cli.Command):
 
     aliases = ('kickstart',)
     activate_sack = True
+    logger = logging.getLogger('dnf.plugin')
     resolve = True
     writes_rpmdb = True
 
@@ -102,12 +104,15 @@ class KickstartCommand(dnf.cli.Command):
             are_groups_installed = False
         else:
             are_groups_installed = True
-        try:
-            self.base.installPkgs(packages.packageList)
-        except dnf.exceptions.Error:
-            are_packages_installed = False
-        else:
-            are_packages_installed = True
+
+        are_packages_installed = False
+        for pattern in packages.packageList:
+            try:
+                self.base.install(pattern)
+            except dnf.exceptions.MarkingError:
+                self.logger.info(_('No package %s available.'), pattern)
+            else:
+                are_packages_installed = True
 
         if not are_groups_installed and not are_packages_installed:
             raise dnf.exceptions.Error(_('Nothing to do.'))

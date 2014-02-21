@@ -159,9 +159,25 @@ class KickstartCommandNotAvailableTest(_KickstartCommandFixture, unittest.TestCa
 
     KICKSTART_PACKAGE = 'non-existent'
 
+    def setUp(self):
+        """Prepare the test fixture."""
+        super(KickstartCommandNotAvailableTest, self).setUp()
+        self._log_handler = logging.StreamHandler(dnf.pycomp.StringIO())
+        self._command.logger.setLevel(logging.INFO)
+        self._command.logger.addHandler(self._log_handler)
+
+    def tearDown(self):
+        """Tear down the test fixture."""
+        super(KickstartCommandNotAvailableTest, self).tearDown()
+        self._command.logger.removeHandler(self._log_handler)
+
     def test_run(self):
         """Test whether it fails."""
         self.assertRaises(dnf.exceptions.Error, self._command.run, [self._path])
+
+        self.assertEqual(
+            self._log_handler.stream.getvalue(),
+            u'No package non-existent available.\n')
 
 @unittest.skipIf(support.PY3, "pykickstart not available in Py3")
 class MaskableKickstartParserTest(unittest.TestCase):

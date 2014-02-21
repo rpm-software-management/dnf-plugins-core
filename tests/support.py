@@ -46,12 +46,11 @@ class BaseCliStub(object):
             raise dnf.exceptions.Error('nothing to do')
         self.installed_groups.update(to_install)
 
-    def installPkgs(self, patterns):
-        """Install given packages."""
-        to_install = (set(patterns) & self._available_pkgs) - self.installed_pkgs
-        if not to_install:
-            raise dnf.exceptions.Error('nothing to do')
-        self.installed_pkgs.update(to_install)
+    def install(self, pattern):
+        """Install given package."""
+        if pattern not in self._available_pkgs or pattern in self.installed_pkgs:
+            raise dnf.exceptions.MarkingError('no package matched')
+        self.installed_pkgs.add(pattern)
 
     def read_all_repos(self):
         """Read repositories information."""
