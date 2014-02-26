@@ -1,10 +1,10 @@
-%global gitrev 20f1035
+%global gitrev bca8630
 %global dnf_version 0.4.10-2
 %global pluginspath /usr/share/dnf/plugins
 
 Name:		dnf-plugins-core
 Version:	0.0.5
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -68,6 +68,9 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{py3dir}/*
 
 %changelog
+* Tue Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-2
+- packaging: add debuginfo-install.py (Ales Kozumplik)
+
 * Tue Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-1
 - packaging: add builddep.py to the RPM. (Ales Kozumplik)
 
