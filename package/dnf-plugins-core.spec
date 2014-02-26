@@ -68,10 +68,10 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{py3dir}/*
 
 %changelog
-* Tue Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-2
+* Wed Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-2
 - packaging: add debuginfo-install.py (Ales Kozumplik)
 
-* Tue Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-1
+* Wed Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-1
 - packaging: add builddep.py to the RPM. (Ales Kozumplik)
 
 * Tue Feb 25 2014 Radek Holý <rholy@redhat.com> - 0.0.4-1
