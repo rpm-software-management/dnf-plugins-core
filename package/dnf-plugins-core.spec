@@ -1,9 +1,9 @@
-%global gitrev 641e5e1
+%global gitrev 20f1035
 %global dnf_version 0.4.10-2
 %global pluginspath /usr/share/dnf/plugins
 
 Name:		dnf-plugins-core
-Version:	0.0.4
+Version:	0.0.5
 Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
@@ -66,6 +66,9 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{py3dir}/*
 
 %changelog
+* Tue Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-1
+- packaging: add builddep.py to the RPM. (Ales Kozumplik)
+
 * Tue Feb 25 2014 Radek Holý <rholy@redhat.com> - 0.0.4-1
 - refactor: use Base.install instead of installPkgs in kickstart plugin. (Radek Holy)
 - refactor: move kickstart arguments parsing to standalone method. (Radek Holy)
