@@ -43,12 +43,14 @@ Core Plugins for DNF, Python 3 version.
 
 mkdir -p %{buildroot}/%{py2dir}
 cp -a plugins/builddep.py %{buildroot}/%{py2dir}
+cp -a plugins/debuginfo-install.py %{buildroot}/%{py2dir}
 cp -a plugins/generate_completion_cache.py %{buildroot}/%{py2dir}
 cp -a plugins/kickstart.py %{buildroot}/%{py2dir}
 cp -a plugins/noroot.py %{buildroot}/%{py2dir}
 
 mkdir -p %{buildroot}/%{py3dir}
 cp -a plugins/builddep.py %{buildroot}/%{py3dir}
+cp -a plugins/debuginfo-install.py %{buildroot}/%{py3dir}
 cp -a plugins/generate_completion_cache.py %{buildroot}/%{py3dir}
 cp -a plugins/noroot.py %{buildroot}/%{py3dir}
 
