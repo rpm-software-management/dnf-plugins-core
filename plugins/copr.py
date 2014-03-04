@@ -23,6 +23,7 @@ import sys
 import platform
 
 from dnf.yum.i18n import _
+from dnf.i18n import ucd
 from urlgrabber import grabber
 import urllib
 import json
@@ -117,12 +118,23 @@ list name""")
                 json_parse = json.loads(res.read())
             except ValueError:
                 raise dnf.exceptions.Error(_("Can't parse repositories for username '{}'.").format(project_name)), None, sys.exc_info()[2]
+            section_text = _("List of {} coprs").format(project_name)
+            self._print_match_section(section_text)
             i = 0
             while i < len(json_parse["repos"]):
-                print "{0}/{1}".format(project_name, json_parse["repos"][i]["name"])
+                msg = "{0}/{1} : ".format(project_name, json_parse["repos"][i]["name"])
+                desc = json_parse["repos"][i]["description"]
+                if not desc:
+                    desc = _("No description given")
+                msg = self.base.output.fmtKeyValFill(msg, desc)
+                print(msg)
                 i += 1
         else:
             raise dnf.exceptions.Error(_('Unknown subcommand {}.').format(subcommand))
+
+    def _print_match_section(self, text):
+        formatted = self.base.output.fmtSection(text)
+        print(ucd(formatted))
 
     @classmethod
     def _ask_user(cls):
