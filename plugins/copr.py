@@ -72,7 +72,7 @@ list name""")
         try:
             subcommand = extcmds[0]
             project_name = extcmds[1]
-        except ValueError:
+        except (ValueError, IndexError):
             self.cli.logger.critical(
                 _('Error: ') + _('exactly two additional parameters to copr command are required'))
             dnf.cli.commands._err_mini_usage(self.cli, self.cli.base.basecmd)
