@@ -20,6 +20,7 @@
 
 import dnf
 import dnf.cli
+import dnf.exceptions
 import logging
 import os
 import rpm
@@ -57,8 +58,12 @@ class BuildDepCommand(dnf.cli.Command):
                 continue
             self.base.install(reldep_str)
 
-    def _spec_deps(self, rpm_ts, spec_fn):
-        spec = rpm.spec(spec_fn)
+    def _spec_deps(self, spec_fn):
+        try:
+            spec = rpm.spec(spec_fn)
+        except ValueError as e:
+            msg = "Failed to open: '%s', not a valid spec file." % spec_fn
+            raise dnf.exceptions.Error(msg)
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)
             self.base.install(reldep_str)
@@ -69,4 +74,4 @@ class BuildDepCommand(dnf.cli.Command):
             if fn.endswith('.src.rpm'):
                 self._src_deps(rpm_ts, fn)
             else:
-                self._spec_deps(rpm_ts, fn)
+                self._spec_deps(fn)
