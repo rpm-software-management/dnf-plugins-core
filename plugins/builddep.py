@@ -69,6 +69,8 @@ class BuildDepCommand(dnf.cli.Command):
             self.base.install(reldep_str)
 
     def run(self, args):
+        sink = open('/dev/null', 'w')
+        rpm.setLogFile(sink)
         rpm_ts = rpm.TransactionSet()
         for fn in args:
             if fn.endswith('.src.rpm'):
