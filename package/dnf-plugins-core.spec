@@ -54,8 +54,6 @@ cp -a plugins/builddep.py %{buildroot}/%{py3dir}
 cp -a plugins/debuginfo-install.py %{buildroot}/%{py3dir}
 cp -a plugins/generate_completion_cache.py %{buildroot}/%{py3dir}
 cp -a plugins/noroot.py %{buildroot}/%{py3dir}
-# copr plugin suppport only python2
-#cp -a plugins/copr.py %{buildroot}/%{py3dir}
 
 %check
 
