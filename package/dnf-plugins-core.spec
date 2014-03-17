@@ -1,10 +1,10 @@
-%global gitrev bca8630
+%global gitrev 68a05e0
 %global dnf_version 0.4.10-2
 %global pluginspath /usr/share/dnf/plugins
 
 Name:		dnf-plugins-core
-Version:	0.0.5
-Release:	2%{?dist}
+Version:	0.0.6
+Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -69,6 +69,17 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{py3dir}/*
 
 %changelog
+* Mon Mar 17 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.6-1
+- clenaup: remove commented out code (Miroslav Suchý)
+- copr: list: print description (Igor Gnatenko)
+- builddep: rpm error messages sink. (Ales Kozumplik)
+- builddep: improve error handling on an command argument (RhBug:1074436) (Ales Kozumplik)
+- copr: handling case when no argument is passed on cli (Miroslav Suchý)
+- copr: delete excess argument (Igor Gnatenko)
+- add copr plugin (Miroslav Suchý)
+- debuginfo-install: check for root with dnf api (Igor Gnatenko)
+- packaging: fix bogus dates. (Ales Kozumplik)
+
 * Wed Feb 26 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.5-2
 - packaging: add debuginfo-install.py (Ales Kozumplik)
 
