@@ -84,7 +84,11 @@ list name""")
             # FIXME Copr should generate non-specific arch repo
             dist = platform.linux_distribution()
             if "Fedora" in dist:
-                chroot = ("fedora-%s-x86_64" % dist[2].lower() if "Rawhide" in dist else dist[1])
+                # x86_64 because repo-file is same for all arch ($basearch is used)
+                if "Rawhide" in dist:
+                    chroot = ("fedora-rawhide-x86_64")
+                else:
+                    chroot = ("fedora-{}-x86_64".format(dist[1]))
             else:
                 chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         repo_filename = "/etc/yum.repos.d/_copr_{}.repo".format(project_name.replace("/", "-"))
