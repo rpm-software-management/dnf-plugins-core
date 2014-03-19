@@ -96,6 +96,7 @@ class KickstartCommandTest(_KickstartCommandFixture, unittest.TestCase):
         super(KickstartCommandTest, self).tearDown()
         self._command.cli.logger.removeHandler(self._log_handler)
 
+    @support.mock.patch('dnf.cli.commands._', dnf.pycomp.NullTranslations().ugettext)
     def test_doCheck_moreextcmds(self):
         """Test whether it fails if multiple arguments are given."""
         self.assertRaises(
