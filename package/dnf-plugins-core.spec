@@ -1,5 +1,5 @@
 %global gitrev 68a05e0
-%global dnf_version 0.4.10-2
+%global dnf_version 0.5.0
 %global pluginspath /usr/share/dnf/plugins
 
 Name:		dnf-plugins-core

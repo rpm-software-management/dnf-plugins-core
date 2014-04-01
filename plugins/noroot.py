@@ -35,7 +35,7 @@ class Noroot(dnf.Plugin):
         logger.debug('initialized Noroot plugin')
 
     def config(self):
-        if not self.cli.command.writes_rpmdb:
+        if not self.cli.demands.root_user:
             return
         if os.geteuid() == 0:
             return
