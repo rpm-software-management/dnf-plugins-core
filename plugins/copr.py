@@ -51,20 +51,23 @@ class CoprCommand(dnf.cli.Command):
     @staticmethod
     def get_summary():
         """Return a one line summary of what the command does."""
-        return _("""Interact with Copr repositories. Example:
+        return _('Interact with Copr repositories.')
+
+    @staticmethod
+    def get_usage():
+        """Return a usage string for the command, including arguments."""
+        return _("""[enable|disable|list]
+
+enable name/project [chroot]
+disable name/project
+list name
+
+Examples:
   copr enable rhscl/perl516 epel-6-x86_64
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr list ignatenkobrain
 """)
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("""
-enable name/project [chroot]
-disable name/project
-list name""")
 
     def run(self, extcmds):
         # FIXME this should do dnf itself (BZ#1062889)
