@@ -19,8 +19,7 @@
 #
 
 import dnf
-import os
-import rpm
+import dnf.cli
 
 from dnf.yum.i18n import _
 
@@ -40,6 +39,16 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
 
     aliases = ("debuginfo-install",)
+
+    @staticmethod
+    def get_usage():
+        """Return a usage string for the command, including arguments."""
+        return "[PACKAGE...]"
+
+    @staticmethod
+    def get_summary():
+        """Return a one line summary of what the command does."""
+        return _('install debuginfo packages')
 
     def configure(self, args):
         demands = self.cli.demands
