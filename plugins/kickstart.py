@@ -50,10 +50,7 @@ class KickstartCommand(dnf.cli.Command):
     """A command installing groups/packages defined in kickstart files."""
 
     aliases = ('kickstart',)
-    activate_sack = True
     logger = logging.getLogger('dnf.plugin')
-    resolve = True
-    writes_rpmdb = True
 
     def doCheck(self, basecmd, extcmds):
         """Verify that conditions are met so that this command can run."""
@@ -82,6 +79,13 @@ class KickstartCommand(dnf.cli.Command):
         """Parse command arguments *extcmds*."""
         path, = extcmds
         return path
+
+
+    def configure(self, args):
+        demands = self.cli.demands
+        demands.resolving = True
+        demands.root_user = True
+        demands.sack_activation = True
 
     def run(self, extcmds):
         """Execute the command."""

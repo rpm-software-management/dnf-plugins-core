@@ -39,10 +39,13 @@ class DebuginfoInstall(dnf.Plugin):
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
 
-    sack_activate = True
     aliases = ("debuginfo-install",)
-    resolve = True
-    writes_rpmdb = True
+
+    def configure(self, args):
+        demands = self.cli.demands
+        demands.resolving = True
+        demands.root_user = True
+        demands.sack_activation = True
 
     def run(self, args):
         self._enable_debug_repos()

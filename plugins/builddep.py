@@ -38,10 +38,7 @@ class BuildDep(dnf.Plugin):
 
 class BuildDepCommand(dnf.cli.Command):
 
-    activate_sack = True
     aliases = ('builddep',)
-    resolve = True
-    writes_rpmdb = True
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
@@ -67,6 +64,12 @@ class BuildDepCommand(dnf.cli.Command):
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)
             self.base.install(reldep_str)
+
+    def configure(self, args):
+        demands = self.cli.demands
+        demands.resolving = True
+        demands.root_user = True
+        demands.sack_activation = True
 
     def run(self, args):
         sink = open('/dev/null', 'w')

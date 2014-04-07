@@ -41,7 +41,6 @@ class Download(dnf.Plugin):
 class DownloadCommand(dnf.cli.Command):
 
     aliases = ['download']
-    activate_sack = True
 
     def _latest_available(self, pkg_spec):
         subj = dnf.subject.Subject(pkg_spec)
@@ -54,6 +53,10 @@ class DownloadCommand(dnf.cli.Command):
         location = pkg.localPkg()
         shutil.move(location, target)
         return target
+
+    def configure(self, args):
+        demands = self.cli.demands
+        demands.sack_activation = True
 
     def run(self, args):
         queries = map(self._latest_available, args)
