@@ -21,6 +21,7 @@
 import dnf
 import dnf.cli
 import dnf.exceptions
+import functools
 import logging
 import os
 import rpm
@@ -35,6 +36,21 @@ class BuildDep(dnf.Plugin):
         if cli:
             cli.register_command(BuildDepCommand)
         logger.debug('initialized BuildDep plugin')
+
+class sink_rpm_logging(object):
+    def __call__(self, func):
+        @functools.wraps(func)
+        def inner(*args, **kwds):
+            with self:
+                return func(*args, **kwds)
+        return inner
+
+    def __enter__(self):
+        self.sink = open('/dev/null', 'w')
+        rpm.setLogFile(self.sink)
+
+    def __exit__(self, exc_type, exc, exc_tb):
+        self.sink.close()
 
 class BuildDepCommand(dnf.cli.Command):
 
@@ -71,9 +87,8 @@ class BuildDepCommand(dnf.cli.Command):
         demands.root_user = True
         demands.sack_activation = True
 
+    @sink_rpm_logging()
     def run(self, args):
-        sink = open('/dev/null', 'w')
-        rpm.setLogFile(sink)
         rpm_ts = rpm.TransactionSet()
         for fn in args:
             if fn.endswith('.src.rpm'):
