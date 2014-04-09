@@ -47,16 +47,8 @@ class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
 
     aliases = ("copr",)
-
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return _('Interact with Copr repositories.')
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("""[enable|disable|list]
+    summary = _('Interact with Copr repositories.')
+    usage = _("""[enable|disable|list]
 
 enable name/project [chroot]
 disable name/project
