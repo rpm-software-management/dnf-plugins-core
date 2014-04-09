@@ -28,6 +28,7 @@ import rpm
 
 logger = logging.getLogger('dnf.plugin')
 
+
 class BuildDep(dnf.Plugin):
 
     name = 'builddep'
@@ -36,6 +37,7 @@ class BuildDep(dnf.Plugin):
         if cli:
             cli.register_command(BuildDepCommand)
         logger.debug('initialized BuildDep plugin')
+
 
 class sink_rpm_logging(object):
     def __call__(self, func):
@@ -52,9 +54,12 @@ class sink_rpm_logging(object):
     def __exit__(self, exc_type, exc, exc_tb):
         self.sink.close()
 
+
 class BuildDepCommand(dnf.cli.Command):
 
     aliases = ('builddep',)
+    summary = "Install build dependencies for .src.rpm or .spec file"
+    usage = "[PACKAGE.src.rpm|PACKAGE.spec]"
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
