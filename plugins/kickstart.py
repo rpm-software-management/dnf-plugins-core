@@ -51,6 +51,8 @@ class KickstartCommand(dnf.cli.Command):
 
     aliases = ('kickstart',)
     logger = logging.getLogger('dnf.plugin')
+    summary = _("Install packages defined in a kickstart file on your system")
+    usage = _("FILE")
 
     def doCheck(self, basecmd, extcmds):
         """Verify that conditions are met so that this command can run."""
@@ -63,16 +65,6 @@ class KickstartCommand(dnf.cli.Command):
             dnf.cli.commands._err_mini_usage(self.cli, basecmd)
             raise dnf.cli.CliError('exactly one path to a kickstart file required')
         dnf.cli.commands.checkEnabledRepo(self.base, extcmds)
-
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return _("Install packages defined in a kickstart file on your system")
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("FILE")
 
     @classmethod
     def parse_extcmds(cls, extcmds):
