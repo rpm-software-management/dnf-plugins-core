@@ -31,6 +31,7 @@ import json
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
 
+
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
 
@@ -42,6 +43,7 @@ class Copr(dnf.Plugin):
         if cli is not None:
             cli.register_command(CoprCommand)
         cli.logger.debug("initialized Copr plugin")
+
 
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
@@ -96,7 +98,7 @@ Examples:
             ug = grabber.URLGrabber()
             # FIXME when we are full on python2 urllib.parse
             try:
-                ug.urlgrab(base_url+api_path, filename=repo_filename)
+                ug.urlgrab(base_url + api_path, filename=repo_filename)
             except grabber.URLGrabError as e:
                 raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
             self.cli.logger.info(_("Repository successfully enabled."))
@@ -112,11 +114,12 @@ Examples:
             api_path = "/api/coprs/{}/".format(project_name)
 
             opener = urllib.FancyURLopener({})
-            res = opener.open(base_url+api_path)
+            res = opener.open(base_url + api_path)
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
-                raise dnf.exceptions.Error(_("Can't parse repositories for username '{}'.").format(project_name)), None, sys.exc_info()[2]
+                raise dnf.exceptions.Error(_("Can't parse repositories for username '{}'.").format(project_name)), \
+                                           None, sys.exc_info()[2]
             section_text = _("List of {} coprs").format(project_name)
             self._print_match_section(section_text)
             i = 0

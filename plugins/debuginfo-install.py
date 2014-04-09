@@ -23,6 +23,7 @@ import dnf.cli
 
 from dnf.yum.i18n import _
 
+
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""
 
@@ -34,6 +35,7 @@ class DebuginfoInstall(dnf.Plugin):
         if cli is not None:
             cli.register_command(DebuginfoInstallCommand)
         cli.logger.debug("initialized DebuginfoInstall plugin")
+
 
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """

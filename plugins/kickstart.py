@@ -22,6 +22,7 @@ import dnf.cli
 import logging
 import pykickstart.parser
 
+
 def parse_kickstart_packages(path):
     """Return content of packages sections in the kickstart file."""
     handler = pykickstart.version.makeVersion()
@@ -35,6 +36,7 @@ def parse_kickstart_packages(path):
 
     return handler.packages
 
+
 class Kickstart(dnf.Plugin):
     """DNF plugin supplying the kickstart command."""
 
@@ -45,6 +47,7 @@ class Kickstart(dnf.Plugin):
         super(Kickstart, self).__init__(base, cli)
         if cli is not None:
             cli.register_command(KickstartCommand)
+
 
 class KickstartCommand(dnf.cli.Command):
     """A command installing groups/packages defined in kickstart files."""
@@ -71,7 +74,6 @@ class KickstartCommand(dnf.cli.Command):
         """Parse command arguments *extcmds*."""
         path, = extcmds
         return path
-
 
     def configure(self, args):
         demands = self.cli.demands
@@ -112,6 +114,7 @@ class KickstartCommand(dnf.cli.Command):
 
         if not are_groups_installed and not are_packages_installed:
             raise dnf.exceptions.Error(_('Nothing to do.'))
+
 
 class MaskableKickstartParser(pykickstart.parser.KickstartParser):
     """Kickstart files parser able to ignore given sections."""
