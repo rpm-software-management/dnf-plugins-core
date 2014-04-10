@@ -13,14 +13,15 @@
 # Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 
+from dnfplugins import logger
+
 import dnf
-import logging
 import os.path
 
-logger = logging.getLogger('dnf') 
 
 class BashCompletionCache(dnf.Plugin):
     name = 'generate_completion_cache'
+
     def __init__(self, base, cli):
         self.base = base
         self.available_cache_file = '/var/cache/dnf/available.cache'
