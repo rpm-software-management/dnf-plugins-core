@@ -22,11 +22,18 @@ import dnf
 import dnf.cli
 import dnf.exceptions
 import functools
+import gettext
 import logging
 import os
 import rpm
 
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
+
+
 logger = logging.getLogger('dnf.plugin')
+
 
 class BuildDep(dnf.Plugin):
 
@@ -36,6 +43,7 @@ class BuildDep(dnf.Plugin):
         if cli:
             cli.register_command(BuildDepCommand)
         logger.debug('initialized BuildDep plugin')
+
 
 class sink_rpm_logging(object):
     def __call__(self, func):
@@ -52,9 +60,12 @@ class sink_rpm_logging(object):
     def __exit__(self, exc_type, exc, exc_tb):
         self.sink.close()
 
+
 class BuildDepCommand(dnf.cli.Command):
 
     aliases = ('builddep',)
+    summary = _("Install build dependencies for .src.rpm or .spec file")
+    usage = _("[PACKAGE.src.rpm|PACKAGE.spec]")
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
@@ -75,7 +86,7 @@ class BuildDepCommand(dnf.cli.Command):
         try:
             spec = rpm.spec(spec_fn)
         except ValueError as e:
-            msg = "Failed to open: '%s', not a valid spec file." % spec_fn
+            msg = _("Failed to open: '%s', not a valid spec file.") % spec_fn
             raise dnf.exceptions.Error(msg)
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)
