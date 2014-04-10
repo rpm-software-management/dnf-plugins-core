@@ -20,8 +20,12 @@
 
 import dnf
 import dnf.cli
+import gettext
 
-from dnf.yum.i18n import _
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
+
 
 
 class DebuginfoInstall(dnf.Plugin):

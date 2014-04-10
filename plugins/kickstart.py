@@ -17,11 +17,14 @@
 # Red Hat, Inc.
 #
 
-from dnf.yum.i18n import _
 import dnf.cli
+import gettext
 import logging
 import pykickstart.parser
 
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
 
 def parse_kickstart_packages(path):
     """Return content of packages sections in the kickstart file."""

@@ -18,15 +18,20 @@
 #
 
 import dnf
+import gettext
 import os
 import sys
 import platform
 
-from dnf.yum.i18n import _
 from dnf.i18n import ucd
 from urlgrabber import grabber
 import urllib
 import json
+
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
+
 
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
