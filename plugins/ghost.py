@@ -17,10 +17,10 @@
 # Red Hat, Inc.
 #
 
-import dnf
-import logging
+from dnfplugins import logger
 
-logger = logging.getLogger('dnf')
+import dnf
+
 
 class Ghost(dnf.Plugin):
 
