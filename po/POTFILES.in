@@ -1,0 +1,8 @@
+plugins/builddep.py
+plugins/ghost.py
+plugins/debuginfo-install.py
+plugins/noroot.py
+plugins/generate_completion_cache.py
+plugins/copr.py
+plugins/download.py
+plugins/kickstart.py
