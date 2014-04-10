@@ -19,10 +19,14 @@
 #
 
 import dnf
-import os
-import rpm
+import dnf.cli
+import gettext
 
-from dnf.yum.i18n import _
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
+
+
 
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""
@@ -36,10 +40,13 @@ class DebuginfoInstall(dnf.Plugin):
             cli.register_command(DebuginfoInstallCommand)
         cli.logger.debug("initialized DebuginfoInstall plugin")
 
+
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
 
     aliases = ("debuginfo-install",)
+    summary = _('install debuginfo packages')
+    usage = "[PACKAGE...]"
 
     def configure(self, args):
         demands = self.cli.demands

@@ -17,10 +17,14 @@
 # Red Hat, Inc.
 #
 
-from dnf.yum.i18n import _
 import dnf.cli
+import gettext
 import logging
 import pykickstart.parser
+
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
 
 def parse_kickstart_packages(path):
     """Return content of packages sections in the kickstart file."""
@@ -35,6 +39,7 @@ def parse_kickstart_packages(path):
 
     return handler.packages
 
+
 class Kickstart(dnf.Plugin):
     """DNF plugin supplying the kickstart command."""
 
@@ -46,11 +51,14 @@ class Kickstart(dnf.Plugin):
         if cli is not None:
             cli.register_command(KickstartCommand)
 
+
 class KickstartCommand(dnf.cli.Command):
     """A command installing groups/packages defined in kickstart files."""
 
     aliases = ('kickstart',)
     logger = logging.getLogger('dnf.plugin')
+    summary = _("Install packages defined in a kickstart file on your system")
+    usage = _("FILE")
 
     def doCheck(self, basecmd, extcmds):
         """Verify that conditions are met so that this command can run."""
@@ -64,22 +72,11 @@ class KickstartCommand(dnf.cli.Command):
             raise dnf.cli.CliError('exactly one path to a kickstart file required')
         dnf.cli.commands.checkEnabledRepo(self.base, extcmds)
 
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return _("Install packages defined in a kickstart file on your system")
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("FILE")
-
     @classmethod
     def parse_extcmds(cls, extcmds):
         """Parse command arguments *extcmds*."""
         path, = extcmds
         return path
-
 
     def configure(self, args):
         demands = self.cli.demands
@@ -120,6 +117,7 @@ class KickstartCommand(dnf.cli.Command):
 
         if not are_groups_installed and not are_packages_installed:
             raise dnf.exceptions.Error(_('Nothing to do.'))
+
 
 class MaskableKickstartParser(pykickstart.parser.KickstartParser):
     """Kickstart files parser able to ignore given sections."""

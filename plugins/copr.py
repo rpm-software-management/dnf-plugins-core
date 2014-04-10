@@ -18,18 +18,24 @@
 #
 
 import dnf
+import gettext
 import os
 import sys
 import platform
 
-from dnf.yum.i18n import _
 from dnf.i18n import ucd
 from urlgrabber import grabber
 import urllib
 import json
 
+# setup translation for plugin
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
+
+
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
+
 
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
@@ -43,28 +49,24 @@ class Copr(dnf.Plugin):
             cli.register_command(CoprCommand)
         cli.logger.debug("initialized Copr plugin")
 
+
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
 
     aliases = ("copr",)
+    summary = _('Interact with Copr repositories.')
+    usage = _("""[enable|disable|list]
 
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return _("""Interact with Copr repositories. Example:
+enable name/project [chroot]
+disable name/project
+list name
+
+Examples:
   copr enable rhscl/perl516 epel-6-x86_64
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr list ignatenkobrain
 """)
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("""
-enable name/project [chroot]
-disable name/project
-list name""")
 
     def run(self, extcmds):
         # FIXME this should do dnf itself (BZ#1062889)
@@ -101,7 +103,7 @@ list name""")
             ug = grabber.URLGrabber()
             # FIXME when we are full on python2 urllib.parse
             try:
-                ug.urlgrab(base_url+api_path, filename=repo_filename)
+                ug.urlgrab(base_url + api_path, filename=repo_filename)
             except grabber.URLGrabError as e:
                 raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
             self.cli.logger.info(_("Repository successfully enabled."))
@@ -117,11 +119,12 @@ list name""")
             api_path = "/api/coprs/{}/".format(project_name)
 
             opener = urllib.FancyURLopener({})
-            res = opener.open(base_url+api_path)
+            res = opener.open(base_url + api_path)
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
-                raise dnf.exceptions.Error(_("Can't parse repositories for username '{}'.").format(project_name)), None, sys.exc_info()[2]
+                raise dnf.exceptions.Error(_("Can't parse repositories for username '{}'.").format(project_name)), \
+                                           None, sys.exc_info()[2]
             section_text = _("List of {} coprs").format(project_name)
             self._print_match_section(section_text)
             i = 0
