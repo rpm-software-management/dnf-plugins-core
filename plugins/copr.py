@@ -109,11 +109,7 @@ Do you want to continue? [y/N]: """)
             self.cli.logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
             self._need_root()
-            # FIXME is it Copr repo ?
-            try:
-                os.remove(repo_filename)
-            except OSError, e:
-                raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
+            self._remove_repo(repo_filename)
             self.cli.logger.info(_("Repository successfully disabled."))
         elif subcommand == "list":
             #http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
@@ -196,4 +192,12 @@ Do you want to continue? [y/N]: """)
         try:
             ug.urlgrab(self.copr_url + api_path, filename=repo_filename)
         except grabber.URLGrabError as e:
+            raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
+
+    @classmethod
+    def _remove_repo(cls, repo_filename):
+        # FIXME is it Copr repo ?
+        try:
+            os.remove(repo_filename)
+        except OSError, e:
             raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
