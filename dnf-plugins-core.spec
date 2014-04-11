@@ -1,4 +1,3 @@
-%global gitrev 68a05e0
 %global dnf_version 0.5.0
 %global pluginspath /usr/share/dnf/plugins
 
@@ -9,7 +8,11 @@ Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
 URL:		https://github.com/akozumpl/dnf-plugins-core
-Source0:	http://akozumpl.fedorapeople.org/dnf-plugins-core-%{gitrev}.tar.xz
+# source can be obtained by:
+# git clone git@github.com:akozumpl/dnf-plugins-core.git
+# cd dnf-plugins-core
+# tito build --tgz
+Source0:	%{name}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	dnf >= %{dnf_version}
 BuildRequires:	pykickstart
