@@ -97,7 +97,16 @@ list name""")
             #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
             api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
 
-            self._ask_user()
+            self._ask_user("""
+You are going to enable Copr repository. Please note that this repository
+is not part of Fedora distribution and may have various quality.
+Fedora distribution have no power over this repository and can not enforce
+some quality or securitylevel.
+Please do not file bug reports about this packages in Fedora Bugzilla.
+In case of problems you should contact owner of this repository.
+
+Do you want to continue? [y/N]: 
+""")
             ug = grabber.URLGrabber()
             # FIXME when we are full on python2 urllib.parse
             try:
@@ -146,16 +155,7 @@ list name""")
         print(ucd(formatted))
 
     @classmethod
-    def _ask_user(cls):
-        question = _("""
-You are going to enable Copr repository. Please note that this repository
-is not part of Fedora distribution and may have various quality.
-Fedora distribution have no power over this repository and can not enforce
-some quality or securitylevel.
-Please do not file bug reports about this packages in Fedora Bugzilla.
-In case of problems you should contact owner of this repository.
-
-Do you want to continue? [y/N]: """)
+    def _ask_user(cls, question):
         answer = raw_input(question).lower()
         answer = _(answer)
         while not ((answer in yes) or (answer in no)):
