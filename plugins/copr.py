@@ -22,9 +22,11 @@ from dnf.i18n import ucd
 from urlgrabber import grabber
 
 import dnf
+import glob
 import json
 import os
 import platform
+import requests
 import sys
 import urllib
 
@@ -164,7 +166,7 @@ Do you want to continue? [y/N]: """)
                 _('This command has to be run under the root user.'))
 
     @classmethod
-    def _guess_chroot(cls)
+    def _guess_chroot(cls):
         """ Guess which choot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
         dist = platform.linux_distribution()
@@ -185,12 +187,10 @@ Do you want to continue? [y/N]: """)
             chroot = cls._guess_chroot()
         #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
-        repo_filename = "/etc/yum.repos.d/{}.repo" \
-                        .format(project_name.replace("/", "-"))
         ug = grabber.URLGrabber()
         # FIXME when we are full on python2 urllib.parse
         try:
-            ug.urlgrab(self.copr_url + api_path, filename=repo_filename)
+            ug.urlgrab(cls.copr_url + api_path, filename=repo_filename)
         except grabber.URLGrabError as e:
             raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
 
@@ -201,3 +201,111 @@ Do you want to continue? [y/N]: """)
             os.remove(repo_filename)
         except OSError, e:
             raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
+
+    @classmethod
+    def _get_data(cls, req):
+        """ Wrapper around response from server
+
+        check data and print nice error in case of some error (and return None)
+        otherwise return json object.
+        """
+        try:
+            output = json.loads(req.text)
+        except ValueError:
+            dnf.cli.CliError(_("Unknown response from server."))
+            return
+        if req.status_code != 200:
+            dnf.cli.CliError(_(
+                "Something went wrong:\n {0}\n".format(output["error"])))
+            return
+        return output
+
+class Playground(dnf.Plugin):
+    """DNF plugin supplying the 'playground' command."""
+
+    name = 'playground'
+
+    def __init__(self, base, cli):
+        """Initialize the plugin instance."""
+        super(Playground, self).__init__(base, cli)
+        if cli is not None:
+            cli.register_command(PlaygroundCommand)
+        cli.logger.debug("initialized Playground plugin")
+
+
+class PlaygroundCommand(CoprCommand):
+    """ Playground plugin for DNF """
+
+    aliases = ("playground",)
+
+    @staticmethod
+    def get_usage():
+        """Return a usage string for the command, including arguments."""
+        return " [enable|disable|upgrade]"
+
+    @staticmethod
+    def get_summary():
+        """Return a one line summary of what the command does."""
+        return ""
+
+    def _cmd_enable(self, chroot):
+        self._need_root()
+        self._ask_user("""
+You are about to enable a Playground repository.
+
+Do you want to continue? [y/N]: """)
+        api_url = "{0}/api/playground/list/".format(
+            self.copr_url)
+        req = requests.get(api_url)
+        output = self._get_data(req)
+        if output["output"] != "ok":
+            raise dnf.cli.CliError(_("Unknown response from server."))
+        for repo in output["repos"]:
+            project_name = "{0}/{1}".format(repo["username"],
+                repo["coprname"])
+            repo_filename = "/etc/yum.repos.d/_playground_{}.repo" \
+                    .format(project_name.replace("/", "-"))
+            try:
+                # check if that repo exist? but that will result in twice
+                # up calls
+                api_url = "{0}/api/coprs/{1}/detail/{2}/".format(
+                    self.copr_url, project_name, chroot)
+                req = requests.get(api_url)
+                output2 = self._get_data(req)
+                if output2 and ("output" in output2) and (output2["output"] == "ok"):
+                    self._download_repo(project_name, repo_filename, chroot)
+            except dnf.exceptions.Error:
+                # likely 404 and that repo does not exist
+                pass
+
+    def _cmd_disable(self):
+        self._need_root()
+        for repo_filename in glob.glob('/etc/yum.repos.d/_playground_*.repo'):
+            self._remove_repo(repo_filename)
+
+    def run(self, extcmds):
+        try:
+            subcommand = extcmds[0]
+        except (ValueError, IndexError):
+            self.cli.logger.critical(
+                _('Error: ') +
+                _('exactly one parameter to '
+                  'playground command are required'))
+            dnf.cli.commands._err_mini_usage(self.cli, self.cli.base.basecmd)
+            raise dnf.cli.CliError(
+                _('exactly one parameter to '
+                  'playground command are required'))
+        chroot = self._guess_chroot()
+        if subcommand == "enable":
+            self._cmd_enable(chroot)
+            self.cli.logger.info(_("Playground repositories successfully enabled."))
+        elif subcommand == "disable":
+            self._cmd_disable()
+            self.cli.logger.info(_("Playground repositories successfully disabled."))
+        elif subcommand == "upgrade":
+            self._cmd_enable(chroot)
+            self._cmd_disable()
+            self.cli.logger.info(_("Playground repositories successfully updated."))
+        else:
+            raise dnf.exceptions.Error(
+                _('Unknown subcommand {}.').format(subcommand))
