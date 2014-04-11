@@ -3,6 +3,8 @@ SUBDIRS = po plugins plugins/dnfplugins
 VERSION=$(shell awk '/Version:/ { print $$2 }' package/${PKGNAME}.spec)
 TX_PRJ = dnf-plugins-core
 TX_RESOURCE = dnf-plugins-core.master
+TEST_LIBPATH= ${DNF_LIBPATH}:./plugins
+
 
 all: subdirs
 	
@@ -27,6 +29,11 @@ release:
 	@git push
 	@git tag -f -m "Added ${PKGNAME}-${VERSION} release tag" ${PKGNAME}-${VERSION}
 	@git push --tags origin
+	
+# use make DNF_LIBPATH=<path to dnf checkout build> run-tests 
+run-tests:
+	@PYTHONPATH=${TEST_LIBPATH} nosetests-2.7 tests/	
+	@PYTHONPATH=${TEST_LIBPATH} nosetests-3.3 tests/	
 	
 rpms:
 	@$(MAKE) archive
