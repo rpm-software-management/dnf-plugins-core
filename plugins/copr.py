@@ -71,10 +71,6 @@ disable name/project
 list name""")
 
     def run(self, extcmds):
-        # FIXME this should do dnf itself (BZ#1062889)
-        if os.geteuid() != 0:
-            raise dnf.exceptions.Error(
-                _('This command has to be run under the root user.'))
         try:
             subcommand = extcmds[0]
             project_name = extcmds[1]
@@ -94,6 +90,7 @@ list name""")
         repo_filename = "/etc/yum.repos.d/_copr_{}.repo" \
                         .format(project_name.replace("/", "-"))
         if subcommand == "enable":
+            self._need_root()
             self._ask_user("""
 You are about to enable a Copr repository. Please note that this
 repository is not part of the main Fedora distribution, and quality
@@ -111,6 +108,7 @@ Do you want to continue? [y/N]: """)
             self._download_repo(project_name, repo_filename, chroot)
             self.cli.logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
+            self._need_root()
             # FIXME is it Copr repo ?
             try:
                 os.remove(repo_filename)
@@ -161,6 +159,13 @@ Do you want to continue? [y/N]: """)
             return
         else:
             raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
+
+    @classmethod
+    def _need_root(cls):
+        # FIXME this should do dnf itself (BZ#1062889)
+        if os.geteuid() != 0:
+            raise dnf.exceptions.Error(
+                _('This command has to be run under the root user.'))
 
     @classmethod
     def _guess_chroot(cls)
