@@ -56,7 +56,7 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{python3_sitelib}/dnf-plugins/*
 
 %changelog
-* Thu Apl 10 2014 Tim Lauridsen <timlau@fedoraproject.org> - 0.0.6-2
+* Thu Apr 10 2014 Tim Lauridsen <timlau@fedoraproject.org> - 0.0.6-2
 - cleanup .spec, moved installation out to a Makefile
 - included translations
 
