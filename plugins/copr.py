@@ -98,15 +98,19 @@ list name""")
             api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
 
             self._ask_user("""
-You are going to enable Copr repository. Please note that this repository
-is not part of Fedora distribution and may have various quality.
-Fedora distribution have no power over this repository and can not enforce
-some quality or securitylevel.
-Please do not file bug reports about this packages in Fedora Bugzilla.
-In case of problems you should contact owner of this repository.
+You are about to enable a Copr repository. Please note that this
+repository is not part of the main Fedora distribution, and quality
+may vary.
 
-Do you want to continue? [y/N]: 
-""")
+The Fedora Project does not exercise any power over the contents of
+this repository beyond the rules outlined in the Copr FAQ at
+<https://fedorahosted.org/copr/wiki/UserDocs#WhatIcanbuildinCopr>, and
+packages are not held to any quality or securty level.
+
+Please do not file bug reports about these packages in Fedora
+Bugzilla. In case of problems, contact the owner of this repository.
+
+Do you want to continue? [y/N]: """)
             ug = grabber.URLGrabber()
             # FIXME when we are full on python2 urllib.parse
             try:
