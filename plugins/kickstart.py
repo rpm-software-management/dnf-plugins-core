@@ -17,10 +17,11 @@
 # Red Hat, Inc.
 #
 
-from dnf.yum.i18n import _
+from dnfplugins import _, logger
+
 import dnf.cli
-import logging
 import pykickstart.parser
+
 
 def parse_kickstart_packages(path):
     """Return content of packages sections in the kickstart file."""
@@ -35,6 +36,7 @@ def parse_kickstart_packages(path):
 
     return handler.packages
 
+
 class Kickstart(dnf.Plugin):
     """DNF plugin supplying the kickstart command."""
 
@@ -46,11 +48,11 @@ class Kickstart(dnf.Plugin):
         if cli is not None:
             cli.register_command(KickstartCommand)
 
+
 class KickstartCommand(dnf.cli.Command):
     """A command installing groups/packages defined in kickstart files."""
 
     aliases = ('kickstart',)
-    logger = logging.getLogger('dnf.plugin')
     summary = _("Install packages defined in a kickstart file on your system")
     usage = _("FILE")
 
@@ -58,12 +60,13 @@ class KickstartCommand(dnf.cli.Command):
         """Verify that conditions are met so that this command can run."""
         dnf.cli.commands.checkGPGKey(self.base, self.cli)
         try:
-            _path = self.parse_extcmds(extcmds)
+            self.parse_extcmds(extcmds)
         except ValueError:
-            self.cli.logger.critical(
+            logger.critical(
                 _('Error: Requires exactly one path to a kickstart file'))
             dnf.cli.commands._err_mini_usage(self.cli, basecmd)
-            raise dnf.cli.CliError('exactly one path to a kickstart file required')
+            raise dnf.cli.CliError(
+                _('exactly one path to a kickstart file required'))
         dnf.cli.commands.checkEnabledRepo(self.base, extcmds)
 
     @classmethod
@@ -71,7 +74,6 @@ class KickstartCommand(dnf.cli.Command):
         """Parse command arguments *extcmds*."""
         path, = extcmds
         return path
-
 
     def configure(self, args):
         demands = self.cli.demands
@@ -89,7 +91,7 @@ class KickstartCommand(dnf.cli.Command):
             packages = parse_kickstart_packages(path)
         except pykickstart.errors.KickstartError as err:
             raise dnf.exceptions.Error(
-                'the file cannot be parsed: {}'.format(err))
+                _('the file cannot be parsed: {}').format(err))
         group_names = [group.name for group in packages.groupList]
 
         if group_names:
@@ -106,12 +108,13 @@ class KickstartCommand(dnf.cli.Command):
             try:
                 self.base.install(pattern)
             except dnf.exceptions.MarkingError:
-                self.logger.info(_('No package %s available.'), pattern)
+                logger.info(_('No package %s available.'), pattern)
             else:
                 are_packages_installed = True
 
         if not are_groups_installed and not are_packages_installed:
             raise dnf.exceptions.Error(_('Nothing to do.'))
+
 
 class MaskableKickstartParser(pykickstart.parser.KickstartParser):
     """Kickstart files parser able to ignore given sections."""

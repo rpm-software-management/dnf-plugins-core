@@ -17,19 +17,21 @@
 # Red Hat, Inc.
 #
 
-import dnf
-import os
-import sys
-import platform
-
-from dnf.yum.i18n import _
+from dnfplugins import _
 from dnf.i18n import ucd
 from urlgrabber import grabber
-import urllib
+
+import dnf
 import json
+import os
+import platform
+import sys
+import urllib
+
 
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
+
 
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
@@ -43,55 +45,58 @@ class Copr(dnf.Plugin):
             cli.register_command(CoprCommand)
         cli.logger.debug("initialized Copr plugin")
 
+
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
 
     aliases = ("copr",)
+    summary = _('Interact with Copr repositories.')
+    usage = _("""[enable|disable|list]
 
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return _("""Interact with Copr repositories. Example:
+enable name/project [chroot]
+disable name/project
+list name
+
+Examples:
   copr enable rhscl/perl516 epel-6-x86_64
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr list ignatenkobrain
 """)
 
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("""
-enable name/project [chroot]
-disable name/project
-list name""")
-
     def run(self, extcmds):
         # FIXME this should do dnf itself (BZ#1062889)
         if os.geteuid() != 0:
-            raise dnf.exceptions.Error(_('This command has to be run under the root user.'))
+            raise dnf.exceptions.Error(
+                _('This command has to be run under the root user.'))
         try:
             subcommand = extcmds[0]
             project_name = extcmds[1]
         except (ValueError, IndexError):
             self.cli.logger.critical(
-                _('Error: ') + _('exactly two additional parameters to copr command are required'))
+                _('Error: ') +
+                _('exactly two additional parameters to '
+                  'copr command are required'))
             dnf.cli.commands._err_mini_usage(self.cli, self.cli.base.basecmd)
-            raise dnf.cli.CliError(_('exactly two additional parameters to copr command are required'))
+            raise dnf.cli.CliError(
+                _('exactly two additional parameters to '
+                  'copr command are required'))
         try:
             chroot = extcmds[2]
         except IndexError:
             # FIXME Copr should generate non-specific arch repo
             dist = platform.linux_distribution()
             if "Fedora" in dist:
-                # x86_64 because repo-file is same for all arch ($basearch is used)
+                # x86_64 because repo-file is same for all arch
+                # ($basearch is used)
                 if "Rawhide" in dist:
                     chroot = ("fedora-rawhide-x86_64")
                 else:
                     chroot = ("fedora-{}-x86_64".format(dist[1]))
             else:
                 chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
-        repo_filename = "/etc/yum.repos.d/_copr_{}.repo".format(project_name.replace("/", "-"))
+        repo_filename = "/etc/yum.repos.d/_copr_{}.repo" \
+                        .format(project_name.replace("/", "-"))
         base_url = "http://copr.fedoraproject.org"
         if subcommand == "enable":
             #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
@@ -101,7 +106,7 @@ list name""")
             ug = grabber.URLGrabber()
             # FIXME when we are full on python2 urllib.parse
             try:
-                ug.urlgrab(base_url+api_path, filename=repo_filename)
+                ug.urlgrab(base_url + api_path, filename=repo_filename)
             except grabber.URLGrabError as e:
                 raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
             self.cli.logger.info(_("Repository successfully enabled."))
@@ -117,16 +122,20 @@ list name""")
             api_path = "/api/coprs/{}/".format(project_name)
 
             opener = urllib.FancyURLopener({})
-            res = opener.open(base_url+api_path)
+            res = opener.open(base_url + api_path)
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
-                raise dnf.exceptions.Error(_("Can't parse repositories for username '{}'.").format(project_name)), None, sys.exc_info()[2]
+                raise dnf.exceptions.Error(
+                    _("Can't parse repositories for username '{}'.")
+                    .format(project_name)), \
+                    None, sys.exc_info()[2]
             section_text = _("List of {} coprs").format(project_name)
             self._print_match_section(section_text)
             i = 0
             while i < len(json_parse["repos"]):
-                msg = "{0}/{1} : ".format(project_name, json_parse["repos"][i]["name"])
+                msg = "{0}/{1} : ".format(project_name,
+                      json_parse["repos"][i]["name"])
                 desc = json_parse["repos"][i]["description"]
                 if not desc:
                     desc = _("No description given")
@@ -134,7 +143,8 @@ list name""")
                 print(msg)
                 i += 1
         else:
-            raise dnf.exceptions.Error(_('Unknown subcommand {}.').format(subcommand))
+            raise dnf.exceptions.Error(
+                _('Unknown subcommand {}.').format(subcommand))
 
     def _print_match_section(self, text):
         formatted = self.base.output.fmtSection(text)
@@ -143,10 +153,10 @@ list name""")
     @classmethod
     def _ask_user(cls):
         question = _("""
-You are going to enable Copr repository. Please note that this repository is not
-part of Fedora distribution and may have various quality. Fedora distribution
-have no power over this repository and can not enforce some quality or security
-level.
+You are going to enable Copr repository. Please note that this repository
+is not part of Fedora distribution and may have various quality.
+Fedora distribution have no power over this repository and can not enforce
+some quality or securitylevel.
 Please do not file bug reports about this packages in Fedora Bugzilla.
 In case of problems you should contact owner of this repository.
 

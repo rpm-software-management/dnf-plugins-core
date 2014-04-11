@@ -17,13 +17,14 @@
 # Red Hat, Inc.
 #
 
+from dnfplugins import logger, _
+
 import dnf
 import dnf.exceptions
-import logging
 import os
 
-MSG = 'This command has to be run under the root user.'
-logger = logging.getLogger('dnf.plugin')
+MSG = _('This command has to be run under the root user.')
+
 
 class Noroot(dnf.Plugin):
 

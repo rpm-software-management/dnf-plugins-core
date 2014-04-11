@@ -102,7 +102,6 @@ class KickstartCommandTest(_KickstartCommandFixture, unittest.TestCase):
         self.assertRaises(
                 dnf.cli.CliError,
                 self._command.doCheck, 'kickstart', ('path1.ks', 'path2.ks'))
-
         self.assertEqual(
             self._log_handler.stream.getvalue(),
             u'Error: Requires exactly one path to a kickstart file\n '
@@ -164,13 +163,13 @@ class KickstartCommandNotAvailableTest(_KickstartCommandFixture, unittest.TestCa
         """Prepare the test fixture."""
         super(KickstartCommandNotAvailableTest, self).setUp()
         self._log_handler = logging.StreamHandler(dnf.pycomp.StringIO())
-        self._command.logger.setLevel(logging.INFO)
-        self._command.logger.addHandler(self._log_handler)
+        self._command.cli.logger.setLevel(logging.INFO)
+        self._command.cli.logger.addHandler(self._log_handler)
 
     def tearDown(self):
         """Tear down the test fixture."""
         super(KickstartCommandNotAvailableTest, self).tearDown()
-        self._command.logger.removeHandler(self._log_handler)
+        self._command.cli.logger.removeHandler(self._log_handler)
 
     def test_run(self):
         """Test whether it fails."""
