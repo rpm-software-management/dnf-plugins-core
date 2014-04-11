@@ -94,9 +94,6 @@ list name""")
         repo_filename = "/etc/yum.repos.d/_copr_{}.repo" \
                         .format(project_name.replace("/", "-"))
         if subcommand == "enable":
-            #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
-            api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
-
             self._ask_user("""
 You are about to enable a Copr repository. Please note that this
 repository is not part of the main Fedora distribution, and quality
@@ -111,12 +108,7 @@ Please do not file bug reports about these packages in Fedora
 Bugzilla. In case of problems, contact the owner of this repository.
 
 Do you want to continue? [y/N]: """)
-            ug = grabber.URLGrabber()
-            # FIXME when we are full on python2 urllib.parse
-            try:
-                ug.urlgrab(self.copr_url + api_path, filename=repo_filename)
-            except grabber.URLGrabError as e:
-                raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
+            self._download_repo(project_name, repo_filename, chroot)
             self.cli.logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
             # FIXME is it Copr repo ?
@@ -186,3 +178,17 @@ Do you want to continue? [y/N]: """)
             chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         return chroot
 
+    @classmethod
+    def _download_repo(cls, project_name, repo_filename, chroot=None):
+        if chroot is None:
+            chroot = cls._guess_chroot()
+        #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
+        api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
+        repo_filename = "/etc/yum.repos.d/{}.repo" \
+                        .format(project_name.replace("/", "-"))
+        ug = grabber.URLGrabber()
+        # FIXME when we are full on python2 urllib.parse
+        try:
+            ug.urlgrab(self.copr_url + api_path, filename=repo_filename)
+        except grabber.URLGrabError as e:
+            raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
