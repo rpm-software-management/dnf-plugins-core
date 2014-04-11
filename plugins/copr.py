@@ -49,6 +49,7 @@ class Copr(dnf.Plugin):
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
 
+    copr_url = "https://copr.fedoraproject.org"
     aliases = ("copr",)
 
     @staticmethod
@@ -92,7 +93,6 @@ list name""")
             chroot = self._guess_chroot()
         repo_filename = "/etc/yum.repos.d/_copr_{}.repo" \
                         .format(project_name.replace("/", "-"))
-        base_url = "http://copr.fedoraproject.org"
         if subcommand == "enable":
             #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
             api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
@@ -114,7 +114,7 @@ Do you want to continue? [y/N]: """)
             ug = grabber.URLGrabber()
             # FIXME when we are full on python2 urllib.parse
             try:
-                ug.urlgrab(base_url + api_path, filename=repo_filename)
+                ug.urlgrab(self.copr_url + api_path, filename=repo_filename)
             except grabber.URLGrabError as e:
                 raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
             self.cli.logger.info(_("Repository successfully enabled."))
@@ -130,7 +130,7 @@ Do you want to continue? [y/N]: """)
             api_path = "/api/coprs/{}/".format(project_name)
 
             opener = urllib.FancyURLopener({})
-            res = opener.open(base_url + api_path)
+            res = opener.open(self.copr_url + api_path)
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
