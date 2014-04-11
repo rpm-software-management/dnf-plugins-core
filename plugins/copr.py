@@ -89,17 +89,7 @@ list name""")
         try:
             chroot = extcmds[2]
         except IndexError:
-            # FIXME Copr should generate non-specific arch repo
-            dist = platform.linux_distribution()
-            if "Fedora" in dist:
-                # x86_64 because repo-file is same for all arch
-                # ($basearch is used)
-                if "Rawhide" in dist:
-                    chroot = ("fedora-rawhide-x86_64")
-                else:
-                    chroot = ("fedora-{}-x86_64".format(dist[1]))
-            else:
-                chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
+            chroot = self._guess_chroot()
         repo_filename = "/etc/yum.repos.d/_copr_{}.repo" \
                         .format(project_name.replace("/", "-"))
         base_url = "http://copr.fedoraproject.org"
@@ -175,3 +165,20 @@ Do you want to continue? [y/N]: """)
             return
         else:
             raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
+
+    @classmethod
+    def _guess_chroot(cls)
+        """ Guess which choot is equivalent to this machine """
+        # FIXME Copr should generate non-specific arch repo
+        dist = platform.linux_distribution()
+        if "Fedora" in dist:
+            # x86_64 because repo-file is same for all arch
+            # ($basearch is used)
+            if "Rawhide" in dist:
+                chroot = ("fedora-rawhide-x86_64")
+            else:
+                chroot = ("fedora-{}-x86_64".format(dist[1]))
+        else:
+            chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
+        return chroot
+
