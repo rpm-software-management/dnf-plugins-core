@@ -56,6 +56,7 @@ class CoprCommand(dnf.cli.Command):
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr list ignatenkobrain
+  copr search tests
 """)
 
     @staticmethod
@@ -64,7 +65,8 @@ class CoprCommand(dnf.cli.Command):
         return _("""
 enable name/project [chroot]
 disable name/project
-list name""")
+list name
+search project""")
 
     def run(self, extcmds):
         # FIXME this should do dnf itself (BZ#1062889)
@@ -127,6 +129,27 @@ list name""")
             i = 0
             while i < len(json_parse["repos"]):
                 msg = "{0}/{1} : ".format(project_name, json_parse["repos"][i]["name"])
+                desc = json_parse["repos"][i]["description"]
+                if not desc:
+                    desc = _("No description given")
+                msg = self.base.output.fmtKeyValFill(msg, desc)
+                print(msg)
+                i += 1
+        elif subcommand == "search":
+            #http://copr.fedoraproject.org/api/coprs/search/tests/
+            api_path = "/api/coprs/search/{}/".format(project_name)
+
+            opener = urllib.FancyURLopener({})
+            res = opener.open(base_url+api_path)
+            try:
+                json_parse = json.loads(res.read())
+            except ValueError:
+                raise dnf.exceptions.Error(_("Can't parse search for '{}'.").format(project_name)), None, sys.exc_info()[2]
+            section_text = _("Matched: {}").format(project_name)
+            self._print_match_section(section_text)
+            i = 0
+            while i < len(json_parse["repos"]):
+                msg = "{0}/{1} : ".format(json_parse["repos"][i]["username"], json_parse["repos"][i]["coprname"])
                 desc = json_parse["repos"][i]["description"]
                 if not desc:
                     desc = _("No description given")
