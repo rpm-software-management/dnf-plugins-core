@@ -68,9 +68,9 @@ class CoprCommand(dnf.cli.Command):
     def get_usage():
         """Return a usage string for the command, including arguments."""
         return _("""
-enable name/project [chroot]
-disable name/project
-list name""")
+    enable name/project [chroot]
+    disable name/project
+    list name""")
 
     def run(self, extcmds):
         try:
