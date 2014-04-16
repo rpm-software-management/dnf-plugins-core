@@ -29,7 +29,7 @@ import requests
 import urllib
 
 
-_ = lambda x : x
+_ = lambda x: x
 
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
