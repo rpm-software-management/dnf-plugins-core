@@ -18,11 +18,11 @@
 # Red Hat, Inc.
 #
 
-import dnf
-import os
-import rpm
+from dnfpluginscore import _
 
-_ = lambda x : x
+import dnf
+import dnf.cli
+
 
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""
@@ -36,10 +36,13 @@ class DebuginfoInstall(dnf.Plugin):
             cli.register_command(DebuginfoInstallCommand)
         cli.logger.debug("initialized DebuginfoInstall plugin")
 
+
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
 
     aliases = ("debuginfo-install",)
+    summary = _('install debuginfo packages')
+    usage = "[PACKAGE...]"
 
     def configure(self, args):
         demands = self.cli.demands
@@ -65,9 +68,11 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         if po.name in self.done:
             return
         if "-debuginfo" in po.name:
-            di = "{0}-{1}:{2}-{3}.{4}".format(po.name, po.epoch, po.version, po.release, po.arch)
+            di = "{0}-{1}:{2}-{3}.{4}"\
+            .format(po.name, po.epoch, po.version, po.release, po.arch)
         else:
-            di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(po.name, po.epoch, po.version, po.release, po.arch)
+            di = "{0}-debuginfo-{1}:{2}-{3}.{4}"\
+            .format(po.name, po.epoch, po.version, po.release, po.arch)
         self.done.append(po.name)
         try:
             self.base.install(di)

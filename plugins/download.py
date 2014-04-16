@@ -17,16 +17,16 @@
 # Red Hat, Inc.
 #
 
+from dnfpluginscore import _
+
 import dnf
 import dnf.cli
 import dnf.subject
 import functools
 import itertools
-import logging
 import os
 import shutil
 
-logger = logging.getLogger('dnf')
 
 class Download(dnf.Plugin):
 
@@ -38,9 +38,12 @@ class Download(dnf.Plugin):
         if self.cli is not None:
             self.cli.register_command(DownloadCommand)
 
+
 class DownloadCommand(dnf.cli.Command):
 
     aliases = ['download']
+    summary = _('Download package to current directory')
+    usage = _('PACKAGE...')
 
     def _latest_available(self, pkg_spec):
         subj = dnf.subject.Subject(pkg_spec)
