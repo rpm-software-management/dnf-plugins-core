@@ -326,8 +326,8 @@ Do you want to continue? [y/N]: """)
             self._cmd_disable()
             self.cli.logger.info(_("Playground repositories successfully disabled."))
         elif subcommand == "upgrade":
-            self._cmd_enable(chroot)
             self._cmd_disable()
+            self._cmd_enable(chroot)
             self.cli.logger.info(_("Playground repositories successfully updated."))
         else:
             raise dnf.exceptions.Error(
