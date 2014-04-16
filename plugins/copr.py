@@ -20,7 +20,6 @@
 from urlgrabber import grabber
 
 import dnf
-import gettext
 import glob
 import json
 import os
