@@ -22,7 +22,7 @@ import dnf
 import os
 import rpm
 
-from dnf.yum.i18n import _
+_ = lambda x : x
 
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""

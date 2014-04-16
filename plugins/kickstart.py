@@ -17,10 +17,11 @@
 # Red Hat, Inc.
 #
 
-from dnf.yum.i18n import _
 import dnf.cli
 import logging
 import pykickstart.parser
+
+_ = lambda x : x
 
 def parse_kickstart_packages(path):
     """Return content of packages sections in the kickstart file."""
