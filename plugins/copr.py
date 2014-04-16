@@ -17,6 +17,7 @@
 # Red Hat, Inc.
 #
 
+from __future__ import print_function
 from urlgrabber import grabber
 
 import dnf
