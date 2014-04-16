@@ -26,7 +26,6 @@ import json
 import os
 import platform
 import requests
-import sys
 import urllib
 
 
@@ -127,8 +126,7 @@ Do you want to continue? [y/N]: """)
             except ValueError:
                 raise dnf.exceptions.Error(
                     _("Can't parse repositories for username '{}'.")
-                    .format(project_name)), \
-                    None, sys.exc_info()[2]
+                    .format(project_name))
             section_text = _("List of {} coprs").format(project_name)
             self._print_match_section(section_text)
             i = 0
@@ -150,7 +148,7 @@ Do you want to continue? [y/N]: """)
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
-                raise dnf.exceptions.Error(_("Can't parse search for '{}'.").format(project_name)), None, sys.exc_info()[2]
+                raise dnf.exceptions.Error(_("Can't parse search for '{}'.").format(project_name))
             section_text = _("Matched: {}").format(project_name)
             self._print_match_section(section_text)
             i = 0
@@ -216,15 +214,15 @@ Do you want to continue? [y/N]: """)
         try:
             ug.urlgrab(cls.copr_url + api_path, filename=repo_filename)
         except grabber.URLGrabError as e:
-            raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
+            raise dnf.exceptions.Error(str(e))
 
     @classmethod
     def _remove_repo(cls, repo_filename):
         # FIXME is it Copr repo ?
         try:
             os.remove(repo_filename)
-        except OSError, e:
-            raise dnf.exceptions.Error(str(e)), None, sys.exc_info()[2]
+        except OSError as e:
+            raise dnf.exceptions.Error(str(e))
 
     @classmethod
     def _get_data(cls, req):
