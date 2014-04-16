@@ -17,11 +17,10 @@
 # Red Hat, Inc.
 #
 
-from dnf.yum.i18n import _
-from dnf.i18n import ucd
 from urlgrabber import grabber
 
 import dnf
+import gettext
 import glob
 import json
 import os
@@ -30,6 +29,8 @@ import requests
 import sys
 import urllib
 
+
+_ = lambda x : x
 
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
@@ -167,7 +168,7 @@ Do you want to continue? [y/N]: """)
 
     def _print_match_section(self, text):
         formatted = self.base.output.fmtSection(text)
-        print(ucd(formatted))
+        print(formatted)
 
     @classmethod
     def _ask_user(cls, question):
