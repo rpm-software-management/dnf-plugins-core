@@ -1,6 +1,4 @@
-# noroot.py
-#
-# Copyright (C) 2013  Red Hat, Inc.
+# Copyright (C) 2014  Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
@@ -17,27 +15,23 @@
 # Red Hat, Inc.
 #
 
-from dnfpluginscore import logger, _
+""" Common code for dnf-plugins-core"""
 
-import dnf
-import dnf.exceptions
-import os
+from gettext import NullTranslations
+from sys import version_info
 
-MSG = _('This command has to be run under the root user.')
+import gettext
+import logging
 
+# python 3 compabillity settings
+if version_info.major >= 3:
+    PY3 = True
+    # u?gettext dont exists in python3 NullTranslations
+    NullTranslations.ugettext = NullTranslations.gettext
+    NullTranslations.ungettext = NullTranslations.ngettext
 
-class Noroot(dnf.Plugin):
+t = gettext.translation('dnf-plugins-core', fallback=True)
+_ = t.ugettext
+P_ = t.ungettext
 
-    name = 'noroot'
-
-    def __init__(self, base, cli):
-        self.base = base
-        self.cli = cli
-        logger.debug('initialized Noroot plugin')
-
-    def config(self):
-        if not self.cli.demands.root_user:
-            return
-        if os.geteuid() == 0:
-            return
-        raise dnf.exceptions.Error(MSG)
+logger = logging.getLogger('dnf.plugin')

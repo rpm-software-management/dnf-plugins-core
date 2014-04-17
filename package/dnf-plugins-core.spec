@@ -1,6 +1,5 @@
 %global gitrev 68a05e0
 %global dnf_version 0.5.0
-%global pluginspath /usr/share/dnf/plugins
 
 Name:		dnf-plugins-core
 Version:	0.0.6
@@ -9,7 +8,13 @@ Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
 URL:		https://github.com/akozumpl/dnf-plugins-core
-Source0:	http://akozumpl.fedorapeople.org/dnf-plugins-core-%{gitrev}.tar.xz
+Source0:	dnf-plugins-core-%{version}.tar.xz
+
+# source archive is created using: (edit the version)
+#
+# @git archive --format=tar --prefix=dnf-plugins-core-0.0.6/ HEAD | xz -z --stdout >dnf-plugins-core-0.0.6.tar.xz 
+#
+
 BuildArch:	noarch
 BuildRequires:	dnf >= %{dnf_version}
 BuildRequires:	pykickstart
@@ -32,41 +37,42 @@ Requires:	python3-dnf >= %{dnf_version}
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 version.
 
-%build
 
 %prep
-%setup -q -n dnf-plugins-core
+%setup -q 
+rm -rf py3
+mkdir ../py3
+cp -a . ../py3/
+mv ../py3 ./
+
+%build
+%cmake .
+make %{?_smp_mflags}
+pushd py3
+%cmake -DPYTHON_DESIRED:str=3 .
+make %{?_smp_mflags}
+popd
 
 %install
-%global py2dir %{python_sitelib}/dnf-plugins
-%global py3dir %{python3_sitelib}/dnf-plugins
-
-mkdir -p %{buildroot}/%{py2dir}
-cp -a plugins/builddep.py %{buildroot}/%{py2dir}
-cp -a plugins/debuginfo-install.py %{buildroot}/%{py2dir}
-cp -a plugins/generate_completion_cache.py %{buildroot}/%{py2dir}
-cp -a plugins/kickstart.py %{buildroot}/%{py2dir}
-cp -a plugins/noroot.py %{buildroot}/%{py2dir}
-cp -a plugins/copr.py %{buildroot}/%{py2dir}
-
-mkdir -p %{buildroot}/%{py3dir}
-cp -a plugins/builddep.py %{buildroot}/%{py3dir}
-cp -a plugins/debuginfo-install.py %{buildroot}/%{py3dir}
-cp -a plugins/generate_completion_cache.py %{buildroot}/%{py3dir}
-cp -a plugins/noroot.py %{buildroot}/%{py3dir}
+make install DESTDIR=$RPM_BUILD_ROOT
+%find_lang %{name}
+pushd py3
+make install DESTDIR=$RPM_BUILD_ROOT
+popd
 
 %check
-
 PYTHONPATH=./plugins nosetests-2.7 -s tests/
 PYTHONPATH=./plugins nosetests-3.3 -s tests/
 
-%files
+%files -f %{name}.lang
 %doc AUTHORS COPYING README.rst
-%{py2dir}/*
+%{python_sitelib}/dnf-plugins/*
+%{python_sitelib}/dnfpluginscore/
 
-%files -n python3-dnf-plugins-core
+%files -n python3-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
-%{py3dir}/*
+%{python3_sitelib}/dnf-plugins/*
+%{python3_sitelib}/dnfpluginscore/
 
 %changelog
 * Mon Mar 17 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.6-1

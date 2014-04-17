@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[dnf-plugins-core.master]
+file_filter = po/<lang>.po
+source_file = po/dnf-plugins-core.pot
+source_lang = en
+type = PO
+
