@@ -8,12 +8,9 @@ Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
 URL:		https://github.com/akozumpl/dnf-plugins-core
-Source0:	dnf-plugins-core-%{version}.tar.xz
 
-# source archive is created using: (edit the version)
-#
-# @git archive --format=tar --prefix=dnf-plugins-core-0.0.6/ HEAD | xz -z --stdout >dnf-plugins-core-0.0.6.tar.xz 
-#
+# source archive is created by running package/archive from a git checkout
+Source0:	dnf-plugins-core-%{gitrev}.tar.xz
 
 BuildArch:	noarch
 BuildRequires:	dnf >= %{dnf_version}
@@ -39,7 +36,7 @@ Core Plugins for DNF, Python 3 version.
 
 
 %prep
-%setup -q 
+%setup -q -n dnf-plugins-core
 rm -rf py3
 mkdir ../py3
 cp -a . ../py3/
