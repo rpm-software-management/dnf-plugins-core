@@ -18,6 +18,7 @@
 #
 
 from __future__ import print_function
+from dnfpluginscore import _
 from urlgrabber import grabber
 
 import dnf
@@ -28,8 +29,6 @@ import platform
 import requests
 import urllib
 
-
-_ = lambda x: x
 
 yes = set([_('yes'), _('y')])
 no = set([_('no'), _('n'), ''])
@@ -53,26 +52,20 @@ class CoprCommand(dnf.cli.Command):
 
     copr_url = "https://copr.fedoraproject.org"
     aliases = ("copr",)
+    summary = _("Interact with Copr repositories.")
+    usage = _("""
+  enable name/project [chroot]
+  disable name/project
+  list name
+  search project
 
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return _("""Interact with Copr repositories. Example:
+  Examples:
   copr enable rhscl/perl516 epel-6-x86_64
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr list ignatenkobrain
   copr search tests
-""")
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return _("""
-    enable name/project [chroot]
-    disable name/project
-    list name
-    search project""")
+    """)
 
     def run(self, extcmds):
         try:
@@ -242,6 +235,7 @@ Do you want to continue? [y/N]: """)
             return
         return output
 
+
 class Playground(dnf.Plugin):
     """DNF plugin supplying the 'playground' command."""
 
@@ -259,16 +253,8 @@ class PlaygroundCommand(CoprCommand):
     """ Playground plugin for DNF """
 
     aliases = ("playground",)
-
-    @staticmethod
-    def get_usage():
-        """Return a usage string for the command, including arguments."""
-        return " [enable|disable|upgrade]"
-
-    @staticmethod
-    def get_summary():
-        """Return a one line summary of what the command does."""
-        return ""
+    summary = _("Interact with Playground repository.")
+    usage = " [enable|disable|upgrade]"
 
     def _cmd_enable(self, chroot):
         self._need_root()
