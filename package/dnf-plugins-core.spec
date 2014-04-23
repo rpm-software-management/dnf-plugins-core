@@ -13,6 +13,7 @@ URL:		https://github.com/akozumpl/dnf-plugins-core
 Source0:	dnf-plugins-core-%{gitrev}.tar.xz
 
 BuildArch:	noarch
+BuildRequires:	cmake
 BuildRequires:	dnf >= %{dnf_version}
 BuildRequires:	pykickstart
 BuildRequires:	python-nose
