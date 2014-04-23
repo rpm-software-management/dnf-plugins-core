@@ -15,6 +15,7 @@ Source0:	dnf-plugins-core-%{gitrev}.tar.xz
 BuildArch:	noarch
 BuildRequires:	cmake
 BuildRequires:	dnf >= %{dnf_version}
+BuildRequires:	gettext
 BuildRequires:	pykickstart
 BuildRequires:	python-nose
 BuildRequires:	python2-devel
