@@ -1,8 +1,8 @@
-%global gitrev 68a05e0
+%global gitrev 3bb4574
 %global dnf_version 0.5.0
 
 Name:		dnf-plugins-core
-Version:	0.0.6
+Version:	0.0.7
 Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
@@ -74,6 +74,45 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+
+* Wed Apr 23 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.7-1
+- build: gettext is also needed as a buildreq (Tim Lauridsen)
+- copr: use usage & summary class attributes, to work with dnf 0.5.0 use shared lib dnfpluginscore for translation wrapp
+- build: add cmake as buildreq (Tim Lauridsen)
+- generate-completion-cache: fix shared lib name (Tim Lauridsen)
+- make .spec use gitrev in the source file add helper script for building source archive (Tim Lauridsen)
+- Added transifex config (Tim Lauridsen)
+- tests: use cli logger in kickstart test (Tim Lauridsen)
+- Added translation .pot file Added da translation files so we have something to build & install (Tim Lauridsen)
+- Added CMake files Added CMake build to .spec & and added translation files handling (Tim Lauridsen)
+- make plugins use shared lib added translation wrappers added missing usage & summary PEP8 fixes (Tim Lauridsen)
+- added shared dnfpluginscore lib (Tim Lauridsen)
+- copr: C:139, 0: Unnecessary parens after 'print' keyword (superfluous-parens) (Miroslav Suchý)
+- copr: W: 23, 0: Unused import gettext (unused-import) (Miroslav Suchý)
+- copr: C: 33, 0: No space allowed before : (Miroslav Suchý)
+- copr: some python3 migration (Miroslav Suchý)
+- copr: get rid of dnf i18n imports (Miroslav Suchý)
+- remove dnf.yum.i18n imports. (Ales Kozumplik)
+- copr: Fix the playground upgrade command. (Tadej Janež)
+- copr: implement search function (Igor Gnatenko)
+- better format output (Miroslav Suchý)
+- implement playground plugin (Miroslav Suchý)
+- move removing of repo into method (Miroslav Suchý)
+- check root only for actions which really need root (Miroslav Suchý)
+- move repo downloading into separate method (Miroslav Suchý)
+- define copr url as class attribute (Miroslav Suchý)
+- better wording of warning (Miroslav Suchý)
+- move question to function argument (Miroslav Suchý)
+- move guessing chroot into function (Miroslav Suchý)
+- copr: use common lib use Command.usage & summary cleanup imports & PEP8 fixes (Tim Lauridsen)
+- builddep: added usage & summary & fix some PEP8 issues (Tim Lauridsen)
+- kickstart: use new public Command.usage & Command.summary api (Tim Lauridsen)
+- fix resource leak in builddep.py. (Ales Kozumplik)
+- refactor: command plugins use demands mechanism. (Ales Kozumplik)
+- noroot: move to the new 'demands' mechanism to check the need of root. (Ales Kozumplik)
+- tests: fix locale independence. (Radek Holy)
+- [copr] correctly specify chroot when it should be guessed (Miroslav Suchý)
+
 * Mon Mar 17 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.6-1
 - clenaup: remove commented out code (Miroslav Suchý)
 - copr: list: print description (Igor Gnatenko)
