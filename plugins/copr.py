@@ -161,8 +161,12 @@ Do you want to continue? [y/N]: """)
         formatted = self.base.output.fmtSection(text)
         print(formatted)
 
-    @classmethod
-    def _ask_user(cls, question):
+    def _ask_user(self, question):
+        if self.base.conf.assumeyes and not self.base.conf.assumeno:
+            return
+        elif self.base.conf.assumeno and not self.base.conf.assumeyes:
+            raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
+
         answer = raw_input(question).lower()
         answer = _(answer)
         while not ((answer in yes) or (answer in no)):
