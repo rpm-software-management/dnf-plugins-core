@@ -89,9 +89,8 @@ class KickstartCommand(dnf.cli.Command):
 
         try:
             packages = parse_kickstart_packages(path)
-        except pykickstart.errors.KickstartError as err:
-            raise dnf.exceptions.Error(
-                _('the file cannot be parsed: {}').format(err))
+        except pykickstart.errors.KickstartError:
+            raise dnf.exceptions.Error(_('file cannot be parsed: %s') % path)
         group_names = [group.name for group in packages.groupList]
 
         if group_names:
