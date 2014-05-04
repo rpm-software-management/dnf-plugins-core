@@ -76,7 +76,7 @@ class CoprCommand(dnf.cli.Command):
                 _('Error: ') +
                 _('exactly two additional parameters to '
                   'copr command are required'))
-            dnf.cli.commands._err_mini_usage(self.cli, self.cli.base.basecmd)
+            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
             raise dnf.cli.CliError(
                 _('exactly two additional parameters to '
                   'copr command are required'))
@@ -299,7 +299,7 @@ Do you want to continue? [y/N]: """)
                 _('Error: ') +
                 _('exactly one parameter to '
                   'playground command are required'))
-            dnf.cli.commands._err_mini_usage(self.cli, self.cli.base.basecmd)
+            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
             raise dnf.cli.CliError(
                 _('exactly one parameter to '
                   'playground command are required'))

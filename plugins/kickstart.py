@@ -64,7 +64,7 @@ class KickstartCommand(dnf.cli.Command):
         except ValueError:
             logger.critical(
                 _('Error: Requires exactly one path to a kickstart file'))
-            dnf.cli.commands._err_mini_usage(self.cli, basecmd)
+            dnf.cli.commands.err_mini_usage(self.cli, basecmd)
             raise dnf.cli.CliError(
                 _('exactly one path to a kickstart file required'))
         dnf.cli.commands.checkEnabledRepo(self.base, extcmds)
