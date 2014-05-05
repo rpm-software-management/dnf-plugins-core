@@ -15,11 +15,11 @@
 # Red Hat, Inc.
 #
 
-from support import mock
+from tests.support import mock
 
 import builddep
 import os
-import support
+import tests.support as support
 import unittest
 
 SOURCE = os.path.join(os.path.dirname(__file__), 'resources/tour-4-6.src.rpm')

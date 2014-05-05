@@ -19,7 +19,7 @@
 import dnf
 import logging
 import os
-import support
+import tests.support as support
 import tempfile
 import unittest
 

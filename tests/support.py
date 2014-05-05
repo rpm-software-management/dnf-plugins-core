@@ -28,6 +28,7 @@ if PY3:
 else:
     import mock
 
+
 class BaseCliStub(object):
     """A class mocking `dnf.cli.cli.BaseCli`."""
 
@@ -41,14 +42,16 @@ class BaseCliStub(object):
 
     def install_grouplist(self, names):
         """Install given groups."""
-        to_install = (set(names) & self._available_groups) - self.installed_groups
+        to_install = (set(names) & self._available_groups)\
+                     - self.installed_groups
         if not to_install:
             raise dnf.exceptions.Error('nothing to do')
         self.installed_groups.update(to_install)
 
     def install(self, pattern):
         """Install given package."""
-        if pattern not in self._available_pkgs or pattern in self.installed_pkgs:
+        if pattern not in self._available_pkgs or \
+           pattern in self.installed_pkgs:
             raise dnf.exceptions.MarkingError('no package matched')
         self.installed_pkgs.add(pattern)
 
@@ -60,6 +63,7 @@ class BaseCliStub(object):
         """Read groups information."""
         if not self._available_groups:
             raise dnf.exceptions.CompsError('no group available')
+
 
 class CliStub(object):
     """A class mocking `dnf.cli.Cli`."""
@@ -77,6 +81,7 @@ class CliStub(object):
         """Register given *command*."""
         self.cli_commands.update({alias: command for alias in command.aliases})
 
+
 class RepoStub(object):
     """A class mocking `dnf.repo.Repo`"""
 
@@ -88,3 +93,11 @@ class RepoStub(object):
 
     def valid(self):
         """Return a message if the repository is not valid."""
+
+    def enable(self):
+        """Enable the repo"""
+        self.enabled = True
+
+    def disable(self):
+        """Disable the repo"""
+        self.enabled = False
