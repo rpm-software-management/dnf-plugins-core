@@ -1,5 +1,5 @@
 # debuginfo-install.py
-# Install all the deps needed to build this package.
+# Install the debuginfo version of packages and their dependencies to debug this package.
 #
 # Copyright (C) 2014 Igor Gnatenko
 #
