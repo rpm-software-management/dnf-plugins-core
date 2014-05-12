@@ -112,5 +112,5 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             repo = repos[repoid]
             for r in self.base.repos:
                 if r == di:
-                    self.cli.logger.debug(_("enabling {}").format(id))
+                    self.cli.logger.debug(_("enabling {}").format(di))
                     self.base.repos[r].enable()
