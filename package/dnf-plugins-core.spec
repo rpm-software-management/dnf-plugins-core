@@ -47,9 +47,11 @@ mv ../py3 ./
 %build
 %cmake .
 make %{?_smp_mflags}
+make doc-man
 pushd py3
 %cmake -DPYTHON_DESIRED:str=3 .
 make %{?_smp_mflags}
+make doc-man
 popd
 
 %install
@@ -67,11 +69,13 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %doc AUTHORS COPYING README.rst
 %{python_sitelib}/dnf-plugins/*
 %{python_sitelib}/dnfpluginscore/
+%{_mandir}/man8/dnf.plugin.*
 
 %files -n python3-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
 %{python3_sitelib}/dnf-plugins/*
 %{python3_sitelib}/dnfpluginscore/
+%{_mandir}/man8/dnf.plugin.*
 
 %changelog
 

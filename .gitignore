@@ -2,3 +2,6 @@
 *.pyo
 TAGS
 .emacs.desktop*
+*~
+doc/_*
+build/
