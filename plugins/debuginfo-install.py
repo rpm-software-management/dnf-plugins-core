@@ -94,9 +94,9 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 for p in provides:
                     pkgs = self.packages_installed.filter(name=p.name)
                     if not pkgs:
-                        pkgs = self.packages_installed.filter(name=p.name)
+                        pkgs = self.packages_available.filter(name=p.name)
                     for pkg in pkgs:
-                        self._di_install(p)
+                        self._di_install(pkg)
 
     def _enable_debug_repos(self):
         repos = {}
