@@ -16,7 +16,9 @@
 #
 
 """ Common code for dnf-plugins-core"""
+from __future__ import absolute_import
 from __future__ import print_function
+from __future__ import unicode_literals
 
 from gettext import NullTranslations
 from sys import version_info

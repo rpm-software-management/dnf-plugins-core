@@ -15,6 +15,9 @@
 # Red Hat, Inc.
 #
 
+from __future__ import absolute_import
+from __future__ import unicode_literals
+
 import dnf
 import logging
 import sys
@@ -26,7 +29,7 @@ if sys.version_info.major >= 3:
 if PY3:
     from unittest import mock
 else:
-    import mock
+    from . import mock
 
 
 class BaseCliStub(object):
