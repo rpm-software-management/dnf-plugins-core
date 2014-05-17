@@ -211,6 +211,7 @@ Do you want to continue? [y/N]: """)
         try:
             ug.urlgrab(cls.copr_url + api_path, filename=repo_filename)
         except grabber.URLGrabError as e:
+            cls._remove_repo(repo_filename)
             raise dnf.exceptions.Error(str(e))
 
     @classmethod
