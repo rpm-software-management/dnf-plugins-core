@@ -166,7 +166,6 @@ class DownloadlCommandTest(unittest.TestCase):
         self.assertFalse(repos['foo'].enabled)
         self.assertFalse(repos['bar'].enabled)
         self.assertFalse(repos['foobar-source'].enabled)
-        print(self.cmd.base.fill_sack.called)
 
     def test_get_source_packages(self):
         pkg = PkgStub('foo', '0', '1.0', '1', 'noarch', 'test-repo')
