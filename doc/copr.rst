@@ -12,6 +12,7 @@ Synopsis
 --------
 
 ``dnf copr [enable|disable|list|search] <parameters>``
+
 ``dnf playground [enable|disable|upgrade]``
 
 ----------------
