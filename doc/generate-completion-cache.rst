@@ -1,7 +1,5 @@
-==================================
-Generate-completion-cache Plugin
-==================================
+====================================
+DNF generate-completion-cache Plugin
+====================================
 
-The generate-completion-cache plugin, makes an cache file containing a list of available packages, to use with bash completion.
-
-
+Generates data to speed up shell completion for DNF. The user is not supposed to interact with the plugin in any way.

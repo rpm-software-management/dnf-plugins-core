@@ -1,22 +1,25 @@
-=========================
-Debuginfo-install Plugin
-=========================
+============================
+DNF debuginfo-install Plugin
+============================
 
 Install the associated debuginfo packages for a given package specification.
 
+--------
 Synopsis
 --------
 
-``dnf debuginfo-install <pkg-spec> ..``
+``dnf debuginfo-install <pkg-spec>...``
 
+---------
 Arguments
-----------
+---------
 
 ``<pkg-spec>``
-    The package specification for the packages to install, the associated debuginfo packages
+    The package to install the associated debuginfo package for.
 
+--------
 Examples
 --------
+
 ``dnf debuginfo-install foobar``
     Install the debuginfo packages for the foobar package.
-

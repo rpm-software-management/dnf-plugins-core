@@ -1,22 +1,31 @@
-=================
-Kickstart Plugin
-=================
+====================
+DNF kickstart Plugin
+====================
 
-Install packages defined in an annaconda kickstart file.
+Install packages according to Anaconda kickstart file.
 
+--------
 Synopsis
 --------
 
-``dnf kickstart <file>``
+``dnf kickstart <ks-file>``
 
+---------
 Arguments
-----------
+---------
 
-``<file>``
-    Path to an kickstart file.
+``<ks-file>``
+    Path to the kickstart file.
 
+--------
 Examples
 --------
-``dnf kickstart mykickstart``
-    Install the packages defined in the **mykickstart** file.
 
+``dnf kickstart mykickstart.ks``
+    Install the packages defined in ``mykickstart.ks``.
+
+--------
+See Also
+--------
+
+* `Anaconda Kickstart file documentation <https://fedoraproject.org/wiki/Anaconda/Kickstart>`_

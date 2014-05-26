@@ -62,7 +62,7 @@ def version_readout():
     for line in lines:
         if line.startswith('Version:'):
             return line.split(':')[1].strip()
-            
+
 version = '%s' % version_readout()
 # The full version, including alpha/beta/rc tags.
 release = '%s-1' % version
@@ -235,19 +235,22 @@ latex_documents = [
 
 # -- Options for manual page output ---------------------------------------
 
+AUTHORS=[u'See AUTHORS in the DNF Core Plugins distribution']
+
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('builddep', 'dnf.plugin.builddep', u'Builddep Plugin',
-     [u'Tim Lauridsen'], 8),
-    ('copr', 'dnf.plugin.copr', u'Copr Plugin',
-     [u'Tim Lauridsen'], 8),
-    ('debuginfo-install', 'dnf.plugin.debuginfo-install', u'Debuginfo-install Plugin',
-     [u'Tim Lauridsen'], 8),
-    ('download', 'dnf.plugin.download', u'Download Plugin',
-     [u'Tim Lauridsen'], 8),
-    ('kickstart', 'dnf.plugin.kickstart', u'Kickstart Plugin',
-     [u'Tim Lauridsen'], 8)
+    ('builddep', 'dnf.plugin.builddep', u'DNF builddep Plugin',
+     AUTHORS, 8),
+    ('copr', 'dnf.plugin.copr', u'DNF copr Plugin',
+     AUTHORS, 8),
+    ('debuginfo-install', 'dnf.plugin.debuginfo-install',
+     u'DNF debuginfo-install Plugin',
+     AUTHORS, 8),
+    ('download', 'dnf.plugin.download', u'DNF download Plugin',
+     AUTHORS, 8),
+    ('kickstart', 'dnf.plugin.kickstart', u'DNF kickstart Plugin',
+     AUTHORS, 8)
 ]
 
 # If true, show URL addresses after external links.
@@ -261,7 +264,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'dnf-plugins-core', u'dnf-plugins-core Documentation',
-   u'Tim Lauridsen', 'dnf-plugins-core', 'One line description of project.',
+   AUTHORS[0], 'dnf-plugins-core', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -279,7 +282,4 @@ texinfo_documents = [
 
 rst_prolog = """
 .. default-domain:: py
-.. _DNF: https://github.com/akozumpl/dnf/
-.. _dnf-plugins-core: https://github.com/akozumpl/dnf-plugins-core/
-
 """

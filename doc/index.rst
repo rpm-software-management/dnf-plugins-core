@@ -1,49 +1,32 @@
-.. dnf-plugins-core documentation master file, created by
-   sphinx-quickstart on Mon May  5 18:07:07 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+##############################
+Core DNF Plugins Documentation
+##############################
 
-Welcome to dnf-plugins-core's documentation!
-============================================
-
-`dnf-plugins-core`_ is a collection of plugins adding extra functionality to `DNF`_
-
-
-Available plugins are:
-
-* builddep
-* copr
-* debuginfo-install
-* download
-* generate-completion-cache
-* kickstart
-* noroot
-
-See the reference for each plugins below.
+This documents core plugins of DNF:
 
 .. toctree::
-   :maxdepth: 2
-    
+   :maxdepth: 1
+
    builddep
    copr
    debuginfo-install
    download
    generate-completion-cache
    kickstart
-   noroot    
-   
+   noroot
+
 
 ========
 See Also
 ========
 
-* `DNF`_ project homepage (https://github.com/akozumpl/dnf/)
-* `dnf-plugins-core`_ project homepage (https://github.com/akozumpl/dnf-plugins-core/)
-   
+* `DNF project homepage <https://github.com/akozumpl/dnf/>`_
+* `Core DNF Plugins project homepage <https://github.com/akozumpl/dnf-plugins-core/>`_
+
+==================
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

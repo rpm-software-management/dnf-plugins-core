@@ -1,22 +1,25 @@
-================
-Download Plugin
-================
+=====================
+ DNF download Plugin
+=====================
 
 Download binary or source packages.
 
+--------
 Synopsis
 --------
 
-``dnf download [options] <pkg-spec> ..``
+``dnf download [options] <pkg-spec>...``
 
+---------
 Arguments
-----------
+---------
 
 ``<pkg-spec>``
-    Package specification for the package to download (Same package specification as for other dnf commands).
+    Package specification for the package to download.
 
+-------
 Options
----------
+-------
 
 ``--help-cmd``
     Show this help.
@@ -43,5 +46,3 @@ Examples
 
 ``dnf download btanks --resolve``
     Download the latest btanks package and the uninstalled dependencies to the current directory.
-
-
