@@ -235,7 +235,7 @@ latex_documents = [
 
 # -- Options for manual page output ---------------------------------------
 
-AUTHORS=[u'See AUTHORS in the DNF Core Plugins distribution']
+AUTHORS=[u'See AUTHORS in your Core DNF Plugins distribution']
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
