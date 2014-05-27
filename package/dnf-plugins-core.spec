@@ -18,6 +18,7 @@ BuildRequires:	dnf >= %{dnf_version}
 BuildRequires:	gettext
 BuildRequires:	pykickstart
 BuildRequires:	python-nose
+BuildRequires:	python-sphinx
 BuildRequires:	python2-devel
 Requires:	dnf >= %{dnf_version}
 Requires:	pykickstart
@@ -31,6 +32,7 @@ Group:		System Environment/Base
 BuildRequires:	python3-devel
 BuildRequires:	python3-dnf >= %{dnf_version}
 BuildRequires:	python3-nose
+BuildRequires:	python3-sphinx
 Requires:	python3-dnf >= %{dnf_version}
 
 %description -n python3-dnf-plugins-core
