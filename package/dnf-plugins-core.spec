@@ -64,8 +64,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 popd
 
 %check
-PYTHONPATH=./plugins nosetests-2.7 -s tests/
-PYTHONPATH=./plugins nosetests-3.3 -s tests/
+PYTHONPATH=./plugins /usr/bin/nosetests-2.* -s tests/
+PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING README.rst
