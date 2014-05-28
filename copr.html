@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DNF copr Plugin &mdash; dnf-plugins-core 0.0.8-1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.8-1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="dnf-plugins-core 0.0.8-1 documentation" href="index.html" />
+    <link rel="next" title="DNF debuginfo-install Plugin" href="debuginfo-install.html" />
+    <link rel="prev" title="DNF builddep Plugin" href="builddep.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="debuginfo-install.html" title="DNF debuginfo-install Plugin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="builddep.html" title="DNF builddep Plugin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">dnf-plugins-core 0.0.8-1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dnf-copr-plugin">
+<h1>DNF copr Plugin<a class="headerlink" href="#dnf-copr-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Work with Copr &amp; Playground repositories on the local system.</p>
+<ul class="simple">
+<li>The <tt class="docutils literal"><span class="pre">copr</span></tt> command is used to add or remove Copr repositories to the local system</li>
+<li>The <tt class="docutils literal"><span class="pre">playground</span></tt> is used to enable or disable the Playground repository</li>
+</ul>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">copr</span> <span class="pre">[enable|disable|list|search]</span> <span class="pre">&lt;parameters&gt;</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">playground</span> <span class="pre">[enable|disable|upgrade]</span></tt></p>
+</div>
+<div class="section" id="arguments-copr">
+<h2>Arguments (copr)<a class="headerlink" href="#arguments-copr" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">enable</span> <span class="pre">name/project</span> <span class="pre">[chroot]</span></tt></dt>
+<dd>Enable the <tt class="docutils literal"><span class="pre">name/project</span></tt> Copr repository with the optional <tt class="docutils literal"><span class="pre">chroot</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">disable</span> <span class="pre">name/project</span></tt></dt>
+<dd>Disable the <tt class="docutils literal"><span class="pre">name/project</span></tt> Copr repository.</dd>
+<dt><tt class="docutils literal"><span class="pre">list</span> <span class="pre">name</span></tt></dt>
+<dd>List available Copr repositories for a given <tt class="docutils literal"><span class="pre">name</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">search</span> <span class="pre">project</span></tt></dt>
+<dd>Search for a given <tt class="docutils literal"><span class="pre">project</span></tt>.</dd>
+</dl>
+</div>
+<div class="section" id="arguments-playground">
+<h2>Arguments (playground)<a class="headerlink" href="#arguments-playground" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">enable</span></tt></dt>
+<dd>Enable the Playground repository.</dd>
+<dt><tt class="docutils literal"><span class="pre">disable</span></tt></dt>
+<dd>Disable the Playground repository.</dd>
+<dt><tt class="docutils literal"><span class="pre">upgrade</span></tt></dt>
+<dd>Upgrade the Playground repository settings (same as <tt class="docutils literal"><span class="pre">disable</span></tt> and then <tt class="docutils literal"><span class="pre">enable</span></tt>).</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">copr</span> <span class="pre">enable</span> <span class="pre">rhscl/perl516</span> <span class="pre">epel-6-x86_64</span></tt></dt>
+<dd>Enable the <tt class="docutils literal"><span class="pre">rhscl/perl516</span></tt> Copr repository, using the <tt class="docutils literal"><span class="pre">epel-6-x86_64</span></tt> chroot.</dd>
+<dt><tt class="docutils literal"><span class="pre">copr</span> <span class="pre">disable</span> <span class="pre">rhscl/perl516</span></tt></dt>
+<dd>Disable the <tt class="docutils literal"><span class="pre">rhscl/perl516</span></tt> Copr repository</dd>
+<dt><tt class="docutils literal"><span class="pre">copr</span> <span class="pre">list</span> <span class="pre">rita</span></tt></dt>
+<dd>List available Copr projects for user <tt class="docutils literal"><span class="pre">rita</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">copr</span> <span class="pre">search</span> <span class="pre">tests</span></tt></dt>
+<dd>Search for Copr projects named <tt class="docutils literal"><span class="pre">tests</span></tt>.</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">DNF copr Plugin</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#arguments-copr">Arguments (copr)</a></li>
+<li><a class="reference internal" href="#arguments-playground">Arguments (playground)</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="builddep.html"
+                        title="previous chapter">DNF builddep Plugin</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="debuginfo-install.html"
+                        title="next chapter">DNF debuginfo-install Plugin</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/copr.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="debuginfo-install.html" title="DNF debuginfo-install Plugin"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="builddep.html" title="DNF builddep Plugin"
+             >previous</a> |</li>
+        <li><a href="index.html">dnf-plugins-core 0.0.8-1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Red Hat, Licensed under GPLv2+.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

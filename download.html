@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DNF download Plugin &mdash; dnf-plugins-core 0.0.8-1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.8-1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="dnf-plugins-core 0.0.8-1 documentation" href="index.html" />
+    <link rel="next" title="DNF generate-completion-cache Plugin" href="generate-completion-cache.html" />
+    <link rel="prev" title="DNF debuginfo-install Plugin" href="debuginfo-install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="generate-completion-cache.html" title="DNF generate-completion-cache Plugin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="debuginfo-install.html" title="DNF debuginfo-install Plugin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">dnf-plugins-core 0.0.8-1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dnf-download-plugin">
+<h1>DNF download Plugin<a class="headerlink" href="#dnf-download-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Download binary or source packages.</p>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">download</span> <span class="pre">[options]</span> <span class="pre">&lt;pkg-spec&gt;...</span></tt></p>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">&lt;pkg-spec&gt;</span></tt></dt>
+<dd>Package specification for the package to download.</dd>
+</dl>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">--help-cmd</span></tt></dt>
+<dd>Show this help.</dd>
+<dt><tt class="docutils literal"><span class="pre">--source</span></tt></dt>
+<dd>Download the source rpm.</dd>
+<dt><tt class="docutils literal"><span class="pre">--destdir</span></tt></dt>
+<dd>Download directory, default is the current directory (the directory must exist).</dd>
+<dt><tt class="docutils literal"><span class="pre">--resolve</span></tt></dt>
+<dd>Resolve and download dependencies, not installed on the local system.</dd>
+</dl>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">download</span> <span class="pre">dnf</span></tt></dt>
+<dd>Download the latest dnf package to the current directory.</dd>
+<dt><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">download</span> <span class="pre">dnf</span> <span class="pre">--destdir</span> <span class="pre">/tmp/dnl</span></tt></dt>
+<dd>Download the latest dnf package to the /tmp/dnl directory (the directory must exist).</dd>
+<dt><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">download</span> <span class="pre">dnf</span> <span class="pre">--source</span></tt></dt>
+<dd>Download the latest dnf source package to the current directory.</dd>
+<dt><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">download</span> <span class="pre">btanks</span> <span class="pre">--resolve</span></tt></dt>
+<dd>Download the latest btanks package and the uninstalled dependencies to the current directory.</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">DNF download Plugin</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+<li><a class="reference internal" href="#options">Options</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="debuginfo-install.html"
+                        title="previous chapter">DNF debuginfo-install Plugin</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generate-completion-cache.html"
+                        title="next chapter">DNF generate-completion-cache Plugin</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/download.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="generate-completion-cache.html" title="DNF generate-completion-cache Plugin"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="debuginfo-install.html" title="DNF debuginfo-install Plugin"
+             >previous</a> |</li>
+        <li><a href="index.html">dnf-plugins-core 0.0.8-1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Red Hat, Licensed under GPLv2+.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
