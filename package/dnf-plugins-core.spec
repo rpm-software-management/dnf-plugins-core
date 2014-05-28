@@ -1,8 +1,8 @@
-%global gitrev 3bb4574
-%global dnf_version 0.5.0
+%global gitrev b0157d1
+%global dnf_version 0.5.2
 
 Name:		dnf-plugins-core
-Version:	0.0.7
+Version:	0.0.8
 Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
@@ -80,6 +80,28 @@ PYTHONPATH=./plugins nosetests-3.3 -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Wed May 28 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.8-1
+- build: add sphinx to build requires. (Ales Kozumplik)
+- doc: packaging: add license block to each .rst. (Ales Kozumplik)
+- tests: stray print() in test_download.py. (Ales Kozumplik)
+- doc: put each synopsis on new line (Miroslav Suchý)
+- doc: cosmetic: project name in the documentation. (Ales Kozumplik)
+- doc: cleanups, form, style. (Ales Kozumplik)
+- doc: add documentation and man pages (Tim Lauridsen)
+- copr: remove repofile if failed to enable repo (Igor Gnatenko)
+- copr: honor -y and --assumeno (Miroslav Suchý)
+- py3: absolute imports and unicode literals everywhere. (Ales Kozumplik)
+- debuginfo-install: doesn't install latest pkgs (RhBug: 1096507) (Igor Gnatenko)
+- debuginfo-install: fix description (Igor Gnatenko)
+- debuginfo-install: fix logger debug messages (Igor Gnatenko)
+- build: install the download plugin (Tim Lauridsen)
+- download: update the download plugin with --source, --destdir & --resolve options (Tim Lauridsen)
+- Add a special ArgumentParser to parsing plugin cmd arguments and options (Tim Lauridsen)
+- tests: add __init__.py to make tests a module and use abs imports (Tim Lauridsen)
+- build: simplify plugins/CMakeLists.txt. (Ales Kozumplik)
+- dnf.cli.commands.err_mini_usage() changed name. (Ales Kozumplik)
+- kickstart: do not include kickstart errors into own messages. (Radek Holy)
 
 * Wed Apr 23 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.7-1
 - build: gettext is also needed as a buildreq (Tim Lauridsen)
