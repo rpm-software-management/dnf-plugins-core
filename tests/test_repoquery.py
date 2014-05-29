@@ -21,11 +21,10 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import repoquery
-import tests.support as support
 import unittest
 
 
-class Pkg:
+class PkgStub(object):
     def __init__(self):
         self.name = "foobar"
         self.version = '1.0.1'
@@ -34,36 +33,29 @@ class Pkg:
         self.reponame = "@System"
 
 
-class RepoQueryCommandTest(unittest.TestCase):
-
+class GetFormatTest(unittest.TestCase):
     def test_get_format(self):
-        cli = support.mock.Mock()
-        cmd = repoquery.QueryCommand(cli)
-        fmt = cmd.get_format('%{name}')
+        fmt = repoquery.get_format('%{name}')
         self.assertEqual(fmt, '{0.name}')
-        fmt = cmd.get_format('%40{name}')
+        fmt = repoquery.get_format('%40{name}')
         self.assertEqual(fmt, '{0.name:<40}')
-        fmt = cmd.get_format('%-40{name}')
+        fmt = repoquery.get_format('%-40{name}')
         self.assertEqual(fmt, '{0.name:>40}')
-        fmt = cmd.get_format('%{name}-%{repoid} :: %-40{arch}')
+        fmt = repoquery.get_format('%{name}-%{repoid} :: %-40{arch}')
         self.assertEqual(fmt, '{0.name}-{0.repoid} :: {0.arch:>40}')
 
+
+class OutputTest(unittest.TestCase):
     def test_output(self):
-        cli = support.mock.Mock()
-        cmd = repoquery.QueryCommand(cli)
-        pkg = Pkg()
-        fmt = cmd.get_format('%{name}')
-        self.assertEqual(fmt.format(pkg), 'foobar')
-        fmt = cmd.get_format(
+        pkg = PkgStub()
+        fmt = repoquery.get_format(
             '%{name}-%{version}-%{release}.%{arch} (%{reponame})')
         self.assertEqual(fmt.format(pkg),
             'foobar-1.0.1-1.f20.x86_64 (@System)')
 
     def test_illegal_attr(self):
-        cli = support.mock.Mock()
-        cmd = repoquery.QueryCommand(cli)
-        pkg = Pkg()
-        with self.assertRaises(AttributeError) as e:
-            cmd.get_format('%{notfound}').format(pkg)
-            self.assertEqual(str(e),
-                "Pkg instance has no attribute 'notfound'")
+        pkg = PkgStub()
+        with self.assertRaises(AttributeError) as ctx:
+            repoquery.get_format('%{notfound}').format(pkg)
+        self.assertEqual(str(ctx.exception),
+                         "'PkgStub' object has no attribute 'notfound'")

@@ -16,6 +16,8 @@
 # Red Hat, Inc.
 #
 
+from __future__ import absolute_import
+from __future__ import unicode_literals
 from datetime import datetime
 from dnfpluginscore import logger, _
 
@@ -27,8 +29,9 @@ import functools
 import hawkey
 import re
 
-# march a %[-][dd]{attr}
-QF_MATCH = re.compile(r'%([-\d]*?){([:\.\w]*?)}')
+QFORMAT_DEFAULT = '%{name}-%{epoch}:%{version}-%{release}.%{arch}'
+# matches %[-][dd]{attr}
+QFORMAT_MATCH = re.compile(r'%([-\d]*?){([:\.\w]*?)}')
 
 QUERY_TAGS = """
 name, arch, epoch, version, release, reponame (repoid), evr
@@ -38,54 +41,62 @@ description, summary, license, url
 """
 
 
-class Query(dnf.Plugin):
+def get_format(qformat):
+    """Convert a rpm like QUERYFMT to an python .format() string."""
+    def fmt_repl(matchobj):
+        fill = matchobj.groups()[0]
+        key = matchobj.groups()[1]
+        if fill:
+            if fill[0] == '-':
+                fill = '>' + fill[1:]
+            else:
+                fill = '<' + fill
+            fill = ':' + fill
+        return '{0.' + key.lower() + fill + "}"
+
+    qformat = qformat.replace("\\n", "\n")
+    qformat = qformat.replace("\\t", "\t")
+    fmt = re.sub(QFORMAT_MATCH, fmt_repl, qformat)
+    return fmt
+
+
+class RepoQuery(dnf.Plugin):
 
     name = 'Query'
 
     def __init__(self, base, cli):
+        super(RepoQuery, self).__init__(base, cli)
         self.base = base
         self.cli = cli
         logger.debug('Initialized %s plugin', self.name)
         if self.cli is not None:
-            self.cli.register_command(QueryCommand)
+            self.cli.register_command(RepoQueryCommand)
 
 
-class QueryCommand(dnf.cli.Command):
+class RepoQueryCommand(dnf.cli.Command):
     """The util command there is extending the dnf command line."""
     aliases = ('repoquery',)
     summary = _('search for packages matching keyword')
     usage = _('[OPTIONS] [KEYWORDS]')
 
-    def get_format(self, qf):
-        """Convert a rpm like QUERYFMT to an python .format() string."""
-        def fmt_repl(matchobj):
-            fill = matchobj.groups()[0]
-            key = matchobj.groups()[1]
-            if fill:
-                if fill[0] == '-':
-                    fill = '>' + fill[1:]
-                else:
-                    fill = '<' + fill
-                fill = ':' + fill
-            return '{0.' + key.lower() + fill + "}"
+    @staticmethod
+    def by_provides(sack, pattern, query):
+        """Get a query for matching given provides."""
+        try:
+            reldeps = list(map(functools.partial(hawkey.Reldep, sack),
+                               pattern))
+        except hawkey.ValueException:
+            return query.filter(empty=True)
+        return query.filter(provides=reldeps)
 
-        if not qf:
-            qf = '%{name}-%{epoch}:%{version}-%{release}.%{arch} : %{reponame}'
-        qf = qf.replace("\\n", "\n")
-        qf = qf.replace("\\t", "\t")
-        fmt = re.sub(QF_MATCH, fmt_repl, qf)
-        return fmt
-
-    def show_packages(self, query, fmt):
-        """Print packages in a query, in a given format."""
-        for po in query.run():
-            try:
-                pkg = PackageWrapper(po)
-                print(fmt.format(pkg))
-            except AttributeError as e:
-                # catch that the user has specified attributes
-                # there don't exist on the dnf Package object.
-                raise dnf.exceptions.Error(str(e))
+    @staticmethod
+    def by_requires(sack, pattern, query):
+        """Get a query for matching given requirements."""
+        try:
+            reldep = hawkey.Reldep(sack, pattern)
+        except hawkey.ValueException:
+            return query.filter(empty=True)
+        return query.filter(requires=reldep)
 
     def configure(self, args):
         demands = self.cli.demands
@@ -105,6 +116,7 @@ class QueryCommand(dnf.cli.Command):
         parser.add_argument('--latest', action='store_true',
                             help=_('show only latest packages'))
         parser.add_argument('--qf', "--queryformat", dest='queryformat',
+                            default=QFORMAT_DEFAULT,
                             help=_('format for displaying found packages'))
         parser.add_argument('--repoid', metavar='REPO',
                             help=_('show only results from this REPO'))
@@ -149,25 +161,20 @@ class QueryCommand(dnf.cli.Command):
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
         if opts.whatrequires:
             q = self.by_requires(self.base.sack, opts.whatrequires, q)
-        fmt = self.get_format(opts.queryformat)
+        fmt = get_format(opts.queryformat)
         self.show_packages(q, fmt)
 
-    def by_provides(self, sack, pattern, query):
-        """Get a query for matching given provides."""
-        try:
-            reldeps = list(map(functools.partial(hawkey.Reldep, sack),
-                               pattern))
-        except hawkey.ValueException:
-            return query.filter(empty=True)
-        return query.filter(provides=reldeps)
-
-    def by_requires(self, sack, pattern, query):
-        """Get a query for matching given requirements."""
-        try:
-            reldep = hawkey.Reldep(sack, pattern)
-        except hawkey.ValueException:
-            return query.filter(empty=True)
-        return query.filter(requires=reldep)
+    @staticmethod
+    def show_packages(query, fmt):
+        """Print packages in a query, in a given format."""
+        for po in query.run():
+            try:
+                pkg = PackageWrapper(po)
+                print(fmt.format(pkg))
+            except AttributeError as e:
+                # catch that the user has specified attributes
+                # there don't exist on the dnf Package object.
+                raise dnf.exceptions.Error(str(e))
 
 
 class PackageWrapper(object):
@@ -177,49 +184,40 @@ class PackageWrapper(object):
         self._pkg = pkg
 
     def __getattr__(self, attr):
-        if hasattr(self._pkg, attr):
-            return getattr(self._pkg, attr)
-        else:
-            raise AttributeError
+        return getattr(self._pkg, attr)
 
-###############################################################################
-# Overloaded attributes there need output formatting
-###############################################################################
-
-    @property
-    def obsoletes(self):
-        return self._reldep_to_list(self._pkg.obsoletes)
-
-    @property
-    def conflicts(self):
-        return self._reldep_to_list(self._pkg.obsoletes)
-
-    @property
-    def requires(self):
-        return self._reldep_to_list(self._pkg.requires)
-
-    @property
-    def provides(self):
-        return self._reldep_to_list(self._pkg.provides)
-
-    @property
-    def installtime(self):
-        return self._get_timestamp(self._pkg.installtime)
-
-    @property
-    def buildtime(self):
-        return self._get_timestamp(self._pkg.buildtime)
-
-###############################################################################
-# Helpers
-###############################################################################
-
-    def _get_timestamp(self, timestamp):
+    @staticmethod
+    def _get_timestamp(timestamp):
         if timestamp > 0:
             dt = datetime.fromtimestamp(timestamp)
             return dt.strftime("%Y-%m-%d %H:%M")
         else:
             return ''
 
-    def _reldep_to_list(self, obj):
+    @staticmethod
+    def _reldep_to_list(obj):
         return ', '.join([str(reldep) for reldep in obj])
+
+    @property
+    def buildtime(self):
+        return self._get_timestamp(self._pkg.buildtime)
+
+    @property
+    def conflicts(self):
+        return self._reldep_to_list(self._pkg.obsoletes)
+
+    @property
+    def installtime(self):
+        return self._get_timestamp(self._pkg.installtime)
+
+    @property
+    def obsoletes(self):
+        return self._reldep_to_list(self._pkg.obsoletes)
+
+    @property
+    def provides(self):
+        return self._reldep_to_list(self._pkg.provides)
+
+    @property
+    def requires(self):
+        return self._reldep_to_list(self._pkg.requires)
