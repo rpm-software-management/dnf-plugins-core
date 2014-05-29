@@ -250,7 +250,9 @@ man_pages = [
     ('download', 'dnf.plugin.download', u'DNF download Plugin',
      AUTHORS, 8),
     ('kickstart', 'dnf.plugin.kickstart', u'DNF kickstart Plugin',
-     AUTHORS, 8)
+     AUTHORS, 8),
+    ('repoquery', 'dnf.plugin.repoquery', u'DNF repoquery Plugin',
+     AUTHORS, 8),
 ]
 
 # If true, show URL addresses after external links.

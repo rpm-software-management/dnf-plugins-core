@@ -11,10 +11,5 @@ ADD_CUSTOM_TARGET (doc-man
 ADD_CUSTOM_TARGET (doc)
 ADD_DEPENDENCIES (doc doc-html doc-man)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.debuginfo-install.8
-	      ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.download.8
-	      ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.copr.8
-	      ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.builddep.8
-	      ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.kickstart.8
-	      DESTINATION share/man/man8)
-
+INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/ DESTINATION share/man/man8
+	FILES_MATCHING PATTERN dnf.plugin.*.8)
