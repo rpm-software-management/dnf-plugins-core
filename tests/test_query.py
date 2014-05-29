@@ -17,10 +17,12 @@
 #
 
 
-from support import mock
+from __future__ import absolute_import
+from __future__ import unicode_literals
 
-import unittest
 import query
+import tests.support as support
+import unittest
 
 
 class Pkg:
@@ -35,7 +37,7 @@ class Pkg:
 class QueryCommandTest(unittest.TestCase):
 
     def test_get_format(self):
-        cli = mock.Mock()
+        cli = support.mock.Mock()
         cmd = query.QueryCommand(cli)
         fmt = cmd.get_format('%{name}')
         self.assertEqual(fmt, '{0.name}')
@@ -47,7 +49,7 @@ class QueryCommandTest(unittest.TestCase):
         self.assertEqual(fmt, '{0.name}-{0.repoid} :: {0.arch:>40}')
 
     def test_output(self):
-        cli = mock.Mock()
+        cli = support.mock.Mock()
         cmd = query.QueryCommand(cli)
         pkg = Pkg()
         fmt = cmd.get_format('%{name}')
@@ -58,7 +60,7 @@ class QueryCommandTest(unittest.TestCase):
             'foobar-1.0.1-1.f20.x86_64 (@System)')
 
     def test_illegal_attr(self):
-        cli = mock.Mock()
+        cli = support.mock.Mock()
         cmd = query.QueryCommand(cli)
         pkg = Pkg()
         with self.assertRaises(AttributeError) as e:
