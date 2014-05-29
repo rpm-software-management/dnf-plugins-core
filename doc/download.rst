@@ -50,6 +50,7 @@ Options
 ``--resolve``
     Resolve and download dependencies, not installed on the local system.
 
+--------
 Examples
 --------
 ``dnf download dnf``

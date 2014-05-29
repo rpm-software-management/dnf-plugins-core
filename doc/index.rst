@@ -31,6 +31,7 @@ This documents core plugins of DNF:
    generate-completion-cache
    kickstart
    noroot
+   repoquery
 
 
 ========
