@@ -60,6 +60,39 @@ def get_format(qformat):
     return fmt
 
 
+def parse_arguments(args):
+    # Setup ArgumentParser to handle util
+    parser = dnfpluginscore.ArgumentParser(RepoQueryCommand.aliases[0])
+    parser.add_argument('key', nargs='?',
+                        help=_('the key to search for'))
+    parser.add_argument('--repoid', metavar='REPO',
+                        help=_('show only results from this REPO'))
+    parser.add_argument('--arch', metavar='ARCH',
+                        help=_('show only results from this ARCH'))
+    parser.add_argument('--whatprovides', metavar='REQ',
+                        help=_('show only results there provides REQ'))
+    parser.add_argument('--whatrequires', metavar='REQ',
+                        help=_('show only results there requires REQ'))
+    parser.add_argument('--querytags', action='store_true',
+                        help=_('show available tags to use with '
+                               '--queryformat'))
+
+    outform = parser.add_mutually_exclusive_group()
+    outform.add_argument('--qf', "--queryformat", dest='queryformat',
+                         default=QFORMAT_DEFAULT,
+                         help=_('format for displaying found packages'))
+    outform.add_argument('--conflicts', dest='queryformat', action='store_const',
+                         const='%{conflicts}')
+    outform.add_argument('--obsoletes', dest='queryformat', action='store_const',
+                         const='%{obsoletes}')
+    outform.add_argument('--provides', dest='queryformat', action='store_const',
+                         const='%{provides}')
+    outform.add_argument('--requires', dest='queryformat', action='store_const',
+                         const='%{requires}')
+
+    return parser.parse_args(args), parser
+
+
 class RepoQuery(dnf.Plugin):
 
     name = 'Query'
@@ -104,26 +137,7 @@ class RepoQueryCommand(dnf.cli.Command):
         demands.available_repos = True
 
     def run(self, args):
-        """Execute the util action here."""
-        # Setup ArgumentParser to handle util
-        parser = dnfpluginscore.ArgumentParser(self.aliases[0])
-        parser.add_argument('key', nargs='?',
-                            help=_('the key to search for'))
-        parser.add_argument('--qf', "--queryformat", dest='queryformat',
-                            default=QFORMAT_DEFAULT,
-                            help=_('format for displaying found packages'))
-        parser.add_argument('--repoid', metavar='REPO',
-                            help=_('show only results from this REPO'))
-        parser.add_argument('--arch', metavar='ARCH',
-                            help=_('show only results from this ARCH'))
-        parser.add_argument('--whatprovides', metavar='REQ',
-                            help=_('show only results there provides REQ'))
-        parser.add_argument('--whatrequires', metavar='REQ',
-                            help=_('show only results there requires REQ'))
-        parser.add_argument('--querytags', action='store_true',
-                            help=_('show available tags to use with '
-                                   '--queryformat'))
-        opts = parser.parse_args(args)
+        (opts, parser) = parse_arguments(args)
 
         if opts.help_cmd:
             print(parser.format_help())
@@ -184,7 +198,7 @@ class PackageWrapper(object):
 
     @staticmethod
     def _reldep_to_list(obj):
-        return ', '.join([str(reldep) for reldep in obj])
+        return '\n'.join([str(reldep) for reldep in obj])
 
     @property
     def buildtime(self):

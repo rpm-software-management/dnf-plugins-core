@@ -20,6 +20,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import dnf.exceptions
 import repoquery
 import unittest
 
@@ -32,6 +33,21 @@ class PkgStub(object):
         self.arch = 'x86_64'
         self.reponame = "@System"
 
+
+class ArgParseTest(unittest.TestCase):
+    def test_parse(self):
+        opts, _ = repoquery.parse_arguments(['--whatrequires', 'prudence'])
+        self.assertIsNone(opts.whatprovides)
+        self.assertEqual(opts.whatrequires, 'prudence')
+        self.assertEqual(opts.queryformat, repoquery.QFORMAT_DEFAULT)
+
+    def test_conflict(self):
+        with self.assertRaises(dnf.exceptions.Error):
+            repoquery.parse_arguments(['--queryformat', '%{name}', '--provides'])
+
+    def test_provides(self):
+        opts, _ = repoquery.parse_arguments(['--provides'])
+        self.assertEqual(opts.queryformat, '%{provides}')
 
 class GetFormatTest(unittest.TestCase):
     def test_get_format(self):
