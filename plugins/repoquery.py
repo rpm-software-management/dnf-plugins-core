@@ -109,12 +109,6 @@ class RepoQueryCommand(dnf.cli.Command):
         parser = dnfpluginscore.ArgumentParser(self.aliases[0])
         parser.add_argument('key', nargs='?',
                             help=_('the key to search for'))
-        parser.add_argument('--all', action='store_true',
-                            help=_('query in all packages (Default)'))
-        parser.add_argument('--installed', action='store_true',
-                            help=_('query in installed packages'))
-        parser.add_argument('--latest', action='store_true',
-                            help=_('show only latest packages'))
         parser.add_argument('--qf', "--queryformat", dest='queryformat',
                             default=QFORMAT_DEFAULT,
                             help=_('format for displaying found packages'))
@@ -126,7 +120,7 @@ class RepoQueryCommand(dnf.cli.Command):
                             help=_('show only results there provides REQ'))
         parser.add_argument('--whatrequires', metavar='REQ',
                             help=_('show only results there requires REQ'))
-        parser.add_argument('--showtags', action='store_true',
+        parser.add_argument('--querytags', action='store_true',
                             help=_('show available tags to use with '
                                    '--queryformat'))
         opts = parser.parse_args(args)
@@ -135,23 +129,17 @@ class RepoQueryCommand(dnf.cli.Command):
             print(parser.format_help())
             return
 
-        if opts.showtags:
+        if opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
             print(QUERY_TAGS)
             return
 
-        q = self.base.sack.query()
-        if opts.all:
-            q = q.available()
-        elif opts.installed:
-            q = q.installed()
-        if opts.latest:
-            q = q.latest()
+        q = self.base.sack.query().available()
         if opts.key:
             if set(opts.key) & set('*[?'):  # is pattern ?
                 fdict = {'name__glob': opts.key}
             else:  # substring
-                fdict = {'name__substr': opts.key}
+                fdict = {'name': opts.key}
             q = q.filter(hawkey.ICASE, **fdict)
         if opts.repoid:
             q = q.filter(reponame=opts.repoid)
