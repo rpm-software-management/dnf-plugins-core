@@ -20,7 +20,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-import query
+import repoquery
 import tests.support as support
 import unittest
 
@@ -34,11 +34,11 @@ class Pkg:
         self.reponame = "@System"
 
 
-class QueryCommandTest(unittest.TestCase):
+class RepoQueryCommandTest(unittest.TestCase):
 
     def test_get_format(self):
         cli = support.mock.Mock()
-        cmd = query.QueryCommand(cli)
+        cmd = repoquery.QueryCommand(cli)
         fmt = cmd.get_format('%{name}')
         self.assertEqual(fmt, '{0.name}')
         fmt = cmd.get_format('%40{name}')
@@ -50,7 +50,7 @@ class QueryCommandTest(unittest.TestCase):
 
     def test_output(self):
         cli = support.mock.Mock()
-        cmd = query.QueryCommand(cli)
+        cmd = repoquery.QueryCommand(cli)
         pkg = Pkg()
         fmt = cmd.get_format('%{name}')
         self.assertEqual(fmt.format(pkg), 'foobar')
@@ -61,7 +61,7 @@ class QueryCommandTest(unittest.TestCase):
 
     def test_illegal_attr(self):
         cli = support.mock.Mock()
-        cmd = query.QueryCommand(cli)
+        cmd = repoquery.QueryCommand(cli)
         pkg = Pkg()
         with self.assertRaises(AttributeError) as e:
             cmd.get_format('%{notfound}').format(pkg)

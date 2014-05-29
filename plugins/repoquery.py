@@ -52,7 +52,7 @@ class Query(dnf.Plugin):
 
 class QueryCommand(dnf.cli.Command):
     """The util command there is extending the dnf command line."""
-    aliases = ['query']
+    aliases = ('repoquery',)
     summary = _('search for packages matching keyword')
     usage = _('[OPTIONS] [KEYWORDS]')
 
