@@ -69,6 +69,6 @@ class ArgumentParser(argparse.ArgumentParser):
         try:
             opts = argparse.ArgumentParser.parse_args(self, args)
         except AttributeError as e:
-            print(self.format_help())
+            self.print_help()
             raise dnf.exceptions.Error(str(e))
         return opts

@@ -18,6 +18,7 @@
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
+from tests.support import mock
 
 import dnfpluginscore
 import dnf.exceptions
@@ -35,7 +36,9 @@ class DnfPluginCoreLibTest(unittest.TestCase):
         # test --help-cmd is added
         self.assertIn('--help-cmd', parser._option_string_actions)
         # test unknown option
-        self.assertRaises(dnf.exceptions.Error, parser.parse_args, ['--dummy'])
+        with mock.patch('argparse.ArgumentParser.print_help', lambda x: x):
+            self.assertRaises(dnf.exceptions.Error, parser.parse_args,
+                              ['--dummy'])
         # test --help-cmd is working
         opts = parser.parse_args(['subcmd', '--help-cmd'])
         self.assertTrue(opts.help_cmd)

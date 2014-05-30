@@ -18,7 +18,9 @@
 
 
 from __future__ import absolute_import
+from __future__ import print_function
 from __future__ import unicode_literals
+from tests.support import mock
 
 import dnf.exceptions
 import repoquery
@@ -41,6 +43,7 @@ class ArgParseTest(unittest.TestCase):
         self.assertEqual(opts.whatrequires, 'prudence')
         self.assertEqual(opts.queryformat, repoquery.QFORMAT_DEFAULT)
 
+    @mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
     def test_conflict(self):
         with self.assertRaises(dnf.exceptions.Error):
             repoquery.parse_arguments(['--queryformat', '%{name}', '--provides'])
@@ -48,6 +51,7 @@ class ArgParseTest(unittest.TestCase):
     def test_provides(self):
         opts, _ = repoquery.parse_arguments(['--provides'])
         self.assertEqual(opts.queryformat, '%{provides}')
+
 
 class GetFormatTest(unittest.TestCase):
     def test_get_format(self):
