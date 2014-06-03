@@ -85,7 +85,11 @@ class BuildDepCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(msg)
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)
-            self.base.install(reldep_str)
+            try:
+                self.base.install(reldep_str)
+            except dnf.exceptions.MarkingError as exc:
+                msg = _("No matching package to install: '%s'") % reldep_str
+                raise dnf.exceptions.Error(msg)
 
     def configure(self, args):
         demands = self.cli.demands
