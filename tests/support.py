@@ -77,12 +77,17 @@ class CliStub(object):
         """Initialize the CLI."""
         self.base = base
         self.cli_commands = {}
+        self.demands = DemandsStub()
         self.logger = logging.getLogger()
         self.register_command(dnf.cli.commands.HelpCommand)
 
     def register_command(self, command):
         """Register given *command*."""
         self.cli_commands.update({alias: command for alias in command.aliases})
+
+
+class DemandsStub(object):
+    pass
 
 
 class RepoStub(object):

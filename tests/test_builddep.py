@@ -50,3 +50,8 @@ class BuildDepCommandTest(unittest.TestCase):
             cmd.run((SPEC,))
             self.assertEqual(base.marked,
                              ['emacs-extras', 'emacs-goodies >= 100'])
+
+    def test_configure(self):
+        cmd = builddep.BuildDepCommand(support.CliStub(None))
+        cmd.configure(None)
+        self.assertTrue(cmd.cli.demands.available_repos)

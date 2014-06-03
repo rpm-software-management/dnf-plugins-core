@@ -89,6 +89,7 @@ class BuildDepCommand(dnf.cli.Command):
 
     def configure(self, args):
         demands = self.cli.demands
+        demands.available_repos = True
         demands.resolving = True
         demands.root_user = True
         demands.sack_activation = True
