@@ -35,12 +35,16 @@ class BuildDep(dnf.Plugin):
     name = 'builddep'
 
     def __init__(self, base, cli):
+        super(BuildDep, self).__init__(base, cli)
         if cli:
             cli.register_command(BuildDepCommand)
         logger.debug('initialized BuildDep plugin')
 
 
 class sink_rpm_logging(object):
+    def __init__(self):
+        self.sink = None
+
     def __call__(self, func):
         @functools.wraps(func)
         def inner(*args, **kwds):
@@ -80,14 +84,14 @@ class BuildDepCommand(dnf.cli.Command):
     def _spec_deps(self, spec_fn):
         try:
             spec = rpm.spec(spec_fn)
-        except ValueError as e:
+        except ValueError:
             msg = _("Failed to open: '%s', not a valid spec file.") % spec_fn
             raise dnf.exceptions.Error(msg)
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)
             try:
                 self.base.install(reldep_str)
-            except dnf.exceptions.MarkingError as exc:
+            except dnf.exceptions.MarkingError:
                 msg = _("No matching package to install: '%s'") % reldep_str
                 raise dnf.exceptions.Error(msg)
 
