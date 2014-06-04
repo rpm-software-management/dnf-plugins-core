@@ -2,8 +2,8 @@
 %global dnf_version 0.5.2
 
 Name:		dnf-plugins-core
-Version:	0.0.8
-Release:	2%{?dist}
+Version:	0.1.0
+Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -80,6 +80,22 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Wed Jun 4 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.0-1
+- pylint: fix all pylint builddep problems. (Ales Kozumplik)
+- builddep: better error reporting on deps that actually don't exist. (Ales Kozumplik)
+- builddep: load available repos. (RhBug:1103906) (Ales Kozumplik)
+- tests: stop argparse from printing to stdout when tests run. (Ales Kozumplik)
+- packaging: all the manual pages with a glob. (Ales Kozumplik)
+- fix: packaging problem with query.py. (Ales Kozumplik)
+- doc: add reference documentation for repoquery. (Ales Kozumplik)
+- repoquery: support --provides, --requires etc. (Ales Kozumplik)
+- repoquery: make the CLI more compatible with Yum's repoquery. (Ales Kozumplik)
+- repoquery: some cleanups in the plugin and the tests. (Ales Kozumplik)
+- rename: query->repoquery. (RhBug:1045078) (Ales Kozumplik)
+- add pylint script for dnf-core-plugins. (Ales Kozumplik)
+- tests: repoquery: fix unit tests. (Ales Kozumplik)
+- add query tool (Tim Lauridsen)
 
 * Wed May 28 2014 Aleš Kozumplík <ales@redhat.com> - 0.0.8-1
 - build: add sphinx to build requires. (Ales Kozumplik)
