@@ -25,7 +25,7 @@ Core DNF Plugins Release Notes
  0.1.0 Release Notes
 =====================
 
-This release provides the :doc:`repoquery` plugin and a bugfix for the :doc:`builddep`.
+This release provides the :doc:`repoquery` and a bugfix for the :doc:`builddep`.
 
 Bugs fixed for 0.1.0:
 
