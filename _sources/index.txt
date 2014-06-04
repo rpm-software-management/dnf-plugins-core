@@ -24,6 +24,7 @@ This documents core plugins of DNF:
 .. toctree::
    :maxdepth: 1
 
+   release_notes
    builddep
    copr
    debuginfo-install
@@ -31,6 +32,7 @@ This documents core plugins of DNF:
    generate-completion-cache
    kickstart
    noroot
+   repoquery
 
 
 ========
