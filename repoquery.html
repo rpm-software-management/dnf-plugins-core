@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DNF repoquery Plugin &mdash; dnf-plugins-core 0.1.0-1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0-1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="dnf-plugins-core 0.1.0-1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">dnf-plugins-core 0.1.0-1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dnf-repoquery-plugin">
+<h1>DNF repoquery Plugin<a class="headerlink" href="#dnf-repoquery-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Query package information from Yum repositories.</p>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">repoquery</span> <span class="pre">[&lt;select-options&gt;]</span> <span class="pre">[&lt;query-options&gt;]</span> <span class="pre">[&lt;pkg-name&gt;]</span></tt>
+<tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">repoquery</span> <span class="pre">--querytags</span></tt></p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><cite>repoquery</cite> searches the available Yum repositories for selected packages and displays the requested information about them. It is an equivalent of <tt class="docutils literal"><span class="pre">rpm</span> <span class="pre">-q</span></tt> for remote repositories.</p>
+<div class="section" id="select-options">
+<h3>Select Options<a class="headerlink" href="#select-options" title="Permalink to this headline">¶</a></h3>
+<p>Together with <tt class="docutils literal"><span class="pre">&lt;pkg-name&gt;</span></tt>, control what packages are displayed in the output. If <tt class="docutils literal"><span class="pre">&lt;pkg-name&gt;</span></tt> is given, the set of resulting packages is limited to the ones with a matching name (globbing supported), else all packages are considered.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">--arch</span> <span class="pre">&lt;arch&gt;</span></tt></dt>
+<dd>Limit the resulting set only to packages of arch <tt class="docutils literal"><span class="pre">&lt;arch&gt;</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--repoid</span> <span class="pre">&lt;id&gt;</span></tt></dt>
+<dd>Limit the resulting set only to packages from repo identified by <tt class="docutils literal"><span class="pre">&lt;id&gt;</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--whatprovides</span> <span class="pre">&lt;capability&gt;</span></tt></dt>
+<dd>Limit the resulting set only to packages that provide <tt class="docutils literal"><span class="pre">&lt;capability&gt;</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--whatrequires</span> <span class="pre">&lt;capability&gt;</span></tt></dt>
+<dd>Limit the resulting set only to packages that require <tt class="docutils literal"><span class="pre">&lt;capability&gt;</span></tt>.</dd>
+</dl>
+</div>
+<div class="section" id="query-options">
+<h3>Query Options<a class="headerlink" href="#query-options" title="Permalink to this headline">¶</a></h3>
+<p>Set what information is displayed about each package.</p>
+<p>The following are mutually exclusive, i.e. at most one can be specified. If no query option is given, matching packages are displayed in the standard NEVRA notation.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">--conflicts</span></tt></dt>
+<dd>Display capabilities that the package conflicts with. Same as <tt class="docutils literal"><span class="pre">--qf</span> <span class="pre">&quot;%{conflicts}</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--obsoletes</span></tt></dt>
+<dd>Display capabilities that the package obsoletes. Same as <tt class="docutils literal"><span class="pre">--qf</span> <span class="pre">&quot;%{obsoletes}</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--provides</span></tt></dt>
+<dd>Display capabilities provided by the package. Same as <tt class="docutils literal"><span class="pre">--qf</span> <span class="pre">&quot;%{provides}</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--qf</span> <span class="pre">&lt;format&gt;</span></tt>, <tt class="docutils literal"><span class="pre">--queryformat</span> <span class="pre">&lt;format&gt;</span></tt></dt>
+<dd>Custom display format. <tt class="docutils literal"><span class="pre">&lt;format&gt;</span></tt> is a string to output for each matched package. Every occurrence of <tt class="docutils literal"><span class="pre">%{&lt;tag&gt;}</span></tt> within is replaced by corresponding attribute of the package. List of recognized tags can be displayed by running <tt class="docutils literal"><span class="pre">dnf</span> <span class="pre">repoquery</span> <span class="pre">--querytags</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">--requires</span></tt></dt>
+<dd>Display capabilities that the package depends on. Same as <tt class="docutils literal"><span class="pre">--qf</span> <span class="pre">&quot;%{requires}</span></tt>.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Display NEVRAS of all available packages matching <tt class="docutils literal"><span class="pre">light*</span></tt>:</p>
+<div class="highlight-python"><pre>dnf repoquery 'light*'</pre>
+</div>
+<p>Display requires of all ligttpd packages:</p>
+<div class="highlight-python"><pre>dnf repoquery --requires lighttpd</pre>
+</div>
+<p>Display name, architecture and the containing repository of all lighttpd packages:</p>
+<div class="highlight-python"><pre>dnf repoquery --queryformat '%{name}.%{arch} : %{reponame}' lighttpd</pre>
+</div>
+<p>Display all available packages providing &#8220;webserver&#8221;:</p>
+<div class="highlight-python"><pre>dnf repoquery --whatprovides webserver</pre>
+</div>
+<p>Display all available packages providing &#8220;webserver&#8221; but only for &#8220;i686&#8221; architecture:</p>
+<div class="highlight-python"><pre>dnf repoquery --whatprovides webserver --arch i686</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">DNF repoquery Plugin</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#description">Description</a><ul>
+<li><a class="reference internal" href="#select-options">Select Options</a></li>
+<li><a class="reference internal" href="#query-options">Query Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/repoquery.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">dnf-plugins-core 0.1.0-1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Red Hat, Licensed under GPLv2+.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
