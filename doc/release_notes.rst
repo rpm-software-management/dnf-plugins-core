@@ -16,36 +16,18 @@
   Red Hat, Inc.
 
 ##############################
-Core DNF Plugins Documentation
+Core DNF Plugins Release Notes
 ##############################
 
-This documents core plugins of DNF:
+.. contents::
 
-.. toctree::
-   :maxdepth: 1
+=====================
+ 0.1.0 Release Notes
+=====================
 
-   release_notes
-   builddep
-   copr
-   debuginfo-install
-   download
-   generate-completion-cache
-   kickstart
-   noroot
-   repoquery
+This release provides the :doc:`repoquery` plugin and a bugfix for the :doc:`builddep`.
 
+Bugs fixed for 0.1.0:
 
-========
-See Also
-========
-
-* `DNF project homepage <https://github.com/akozumpl/dnf/>`_
-* `Core DNF Plugins project homepage <https://github.com/akozumpl/dnf-plugins-core/>`_
-
-==================
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+* :rhbug:`1045078`
+* :rhbug:`1103906`
