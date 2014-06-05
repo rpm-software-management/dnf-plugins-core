@@ -22,6 +22,7 @@ BuildRequires:	python-sphinx
 BuildRequires:	python2-devel
 Requires:	dnf >= %{dnf_version}
 Requires:	pykickstart
+Requires:	python-requests
 
 %description
 Core Plugins for DNF.
