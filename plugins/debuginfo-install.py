@@ -53,6 +53,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         self._enable_debug_repos()
         self.base.fill_sack()
         self.done = []
+        self.rejected = []
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
         self.packages_installed = self.packages.installed()
@@ -61,41 +62,84 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             if not pkgs:
                 pkgs = self.packages_available.filter(name=pkg)
             for pkg in pkgs:
-                self._di_install(pkg)
+                self._di_install(pkg, None)
 
-    def _di_install(self, po):
-        if po.name in self.done:
-            return
-        if "-debuginfo" in po.name:
-            di = "{0}-{1}:{2}-{3}.{4}"\
-            .format(po.name, po.epoch, po.version, po.release, po.arch)
+    def _is_available(self, p, flag):
+        if "-debuginfo" in p.name:
+            name = p.name
         else:
-            di = "{0}-debuginfo-{1}:{2}-{3}.{4}"\
-            .format(po.name, po.epoch, po.version, po.release, po.arch)
-        self.done.append(po.name)
-        try:
+            name = "{}-debuginfo".format(p.name)
+        if flag:
+            avail = self.packages_available.filter(
+                name="{}".format(name),
+                epoch=int(p.epoch),
+                version=str(p.version),
+                release=str(p.release),
+                arch=str(p.arch))
+        else:
+            avail = self.packages_available.filter(
+                name="{}".format(name),
+                arch=str(p.arch))
+        if len(avail) != 0:
+            return self.packages_available.filter(
+                name="{}".format(name.replace("-debuginfo", "")),
+                epoch=int(p.epoch),
+                version=str(p.version),
+                release=str(p.release),
+                arch=str(p.arch))
+        else:
+            return False
+
+    def _di_install(self, po, r):
+        if po.name in self.done or r in self.done or po in self.rejected:
+            return
+        if self._is_available(po, True):
+            self.done.append(po.name)
+            if r:
+                self.done.append(r)
+            if "-debuginfo" in po.name:
+                di = "{0}-{1}:{2}-{3}.{4}".format(
+                        po.name, po.epoch, po.version, po.release, po.arch)
+            else:
+                di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(
+                        po.name, po.epoch, po.version, po.release, po.arch)
             self.base.install(di)
-        except dnf.exceptions.MarkingError:
-            di = "{0}-debuginfo.{1}".format(po.name, po.arch)
-            try:
+        else:
+            if self._is_available(po, False):
+                di = "{0}-debuginfo.{1}".format(po.name, po.arch)
                 self.base.install(di)
-            except dnf.exceptions.MarkingError:
-                # FIXME:
-                # libfreebl3.so()(64bit) pointing to nss-softokn-freebl
-                # but we have only nss-softokn-debuginfo
-                # Therefore temporary pass
+                self.done.append(po.name)
+                if r:
+                    self.done.append(r)
+            else:
                 pass
         for req in po.requires:
             if str(req).startswith("rpmlib("):
                 continue
+            elif str(req) in self.done:
+                continue
             elif str(req).find(".so") != -1:
                 provides = self.packages_available.filter(provides=req)
                 for p in provides:
+                    if str(p.name) in self.done or p in self.rejected:
+                        continue
                     pkgs = self.packages_installed.filter(name=p.name)
-                    if not pkgs:
-                        pkgs = self.packages_available.filter(name=p.name)
+                    if len(pkgs) != 0:
+                        pkgs_avail = self._is_available(p, True)
+                        if not pkgs_avail:
+                            for x in pkgs:
+                                # FIXME:
+                                # libfreebl3.so()(64bit) pointing to nss-softokn-freebl
+                                # but we have only nss-softokn-debuginfo
+                                self.cli.logger.debug(
+                                        _("Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}").format(
+                                            x.name, x.epoch, x.version, x.release, x.arch))
+                                self.rejected.append(x)
+                            pkgs = []
+                        else:
+                            pkgs = pkgs_avail
                     for pkg in pkgs:
-                        self._di_install(pkg)
+                        self._di_install(pkg, str(req))
 
     def _enable_debug_repos(self):
         repos = {}
