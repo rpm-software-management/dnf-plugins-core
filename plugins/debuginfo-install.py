@@ -1,5 +1,5 @@
 # debuginfo-install.py
-# Install the debuginfo version of packages and their dependencies to debug this package.
+# Install the debuginfo of packages and their dependencies to debug this package.
 #
 # Copyright (C) 2014 Igor Gnatenko
 #
@@ -44,6 +44,12 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     summary = _('install debuginfo packages')
     usage = "[PACKAGE...]"
 
+    done = []
+    rejected = []
+    packages = None
+    packages_available = None
+    packages_installed = None
+
     def configure(self, args):
         demands = self.cli.demands
         demands.resolving = True
@@ -53,8 +59,6 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     def run(self, args):
         self._enable_debug_repos()
         self.base.fill_sack()
-        self.done = []
-        self.rejected = []
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
         self.packages_installed = self.packages.installed()
@@ -65,56 +69,71 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             for pkg in pkgs:
                 self._di_install(pkg, None)
 
-    def _is_available(self, p, flag):
-        if "-debuginfo" in p.name:
-            name = p.name
+    def _is_available(self, package, flag):
+        if "-debuginfo" in package.name:
+            name = package.name
         else:
-            name = "{}-debuginfo".format(p.name)
+            name = "{}-debuginfo".format(package.name)
         if flag:
             avail = self.packages_available.filter(
                 name="{}".format(name),
-                epoch=int(p.epoch),
-                version=str(p.version),
-                release=str(p.release),
-                arch=str(p.arch))
+                epoch=int(package.epoch),
+                version=str(package.version),
+                release=str(package.release),
+                arch=str(package.arch))
         else:
             avail = self.packages_available.filter(
                 name="{}".format(name),
-                arch=str(p.arch))
+                arch=str(package.arch))
         if len(avail) != 0:
-            return self.packages_available.filter(
-                name="{}".format(name.replace("-debuginfo", "")),
-                epoch=int(p.epoch),
-                version=str(p.version),
-                release=str(p.release),
-                arch=str(p.arch))
+            if flag:
+                return self.packages_available.filter(
+                    name="{}".format(name.replace("-debuginfo", "")),
+                    epoch=int(package.epoch),
+                    version=str(package.version),
+                    release=str(package.release),
+                    arch=str(package.arch))
+            else:
+                return self.packages_available.filter(
+                        name="{}".format(name.replace("-debuginfo", "")),
+                        arch=str(package.arch))
         else:
             return False
 
-    def _di_install(self, po, r):
-        if po.name in self.done or r in self.done or po in self.rejected:
+    def _di_install(self, package, require):
+        if package.name in self.done \
+                or require in self.done \
+                or package in self.rejected:
             return
-        if self._is_available(po, True):
-            self.done.append(po.name)
-            if r:
-                self.done.append(r)
-            if "-debuginfo" in po.name:
+        if self._is_available(package, True):
+            self.done.append(package.name)
+            if require:
+                self.done.append(require)
+            if "-debuginfo" in package.name:
                 di = "{0}-{1}:{2}-{3}.{4}".format(
-                        po.name, po.epoch, po.version, po.release, po.arch)
+                        package.name,
+                        package.epoch,
+                        package.version,
+                        package.release,
+                        package.arch)
             else:
                 di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(
-                        po.name, po.epoch, po.version, po.release, po.arch)
+                        package.name,
+                        package.epoch,
+                        package.version,
+                        package.release,
+                        package.arch)
             self.base.install(di)
         else:
-            if self._is_available(po, False):
-                di = "{0}-debuginfo.{1}".format(po.name, po.arch)
+            if self._is_available(package, False):
+                di = "{0}-debuginfo.{1}".format(package.name, package.arch)
                 self.base.install(di)
-                self.done.append(po.name)
-                if r:
-                    self.done.append(r)
+                self.done.append(package.name)
+                if require:
+                    self.done.append(require)
             else:
                 pass
-        for req in po.requires:
+        for req in package.requires:
             if str(req).startswith("rpmlib("):
                 continue
             elif str(req) in self.done:
@@ -126,15 +145,12 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                         continue
                     pkgs = self.packages_installed.filter(name=p.name)
                     if len(pkgs) != 0:
-                        pkgs_avail = self._is_available(p, True)
+                        pkgs_avail = self._is_available(pkgs[0], True)
                         if not pkgs_avail:
                             for x in pkgs:
-                                # FIXME:
-                                # libfreebl3.so()(64bit) pointing to nss-softokn-freebl
-                                # but we have only nss-softokn-debuginfo
                                 self.cli.logger.debug(
-                                        _("Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}").format(
-                                            x.name, x.epoch, x.version, x.release, x.arch))
+_("Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}").format(
+    x.name, x.epoch, x.version, x.release, x.arch))
                                 self.rejected.append(x)
                             pkgs = []
                         else:
