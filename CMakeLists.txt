@@ -17,6 +17,9 @@ EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from sys import stdout; from di
 EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; sys.stdout.write('%s.%s' % (sys.version_info.major, sys.version_info.minor))" OUTPUT_VARIABLE PYTHON_MAJOR_DOT_MINOR_VERSION)
 MESSAGE(STATUS "Python install dir is ${PYTHON_INSTALL_DIR}")
 
+SET (SYSCONFDIR /etc)
+
+ADD_SUBDIRECTORY (doc)
+ADD_SUBDIRECTORY (etc)
 ADD_SUBDIRECTORY (plugins)
 ADD_SUBDIRECTORY (po)
-ADD_SUBDIRECTORY (doc)

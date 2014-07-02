@@ -70,12 +70,14 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING README.rst
+%dir %{_sysconfdir}/dnf/protected.d
 %{python_sitelib}/dnf-plugins/*
 %{python_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
 
 %files -n python3-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
+%dir %{_sysconfdir}/dnf/protected.d
 %{python3_sitelib}/dnf-plugins/*
 %{python3_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
