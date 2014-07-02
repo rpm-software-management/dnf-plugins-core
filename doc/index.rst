@@ -29,7 +29,7 @@ This documents core plugins of DNF:
    copr
    debuginfo-install
    download
-   generate-completion-cache
+   generate_completion_cache
    kickstart
    noroot
    repoquery
