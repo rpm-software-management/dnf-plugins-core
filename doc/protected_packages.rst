@@ -15,38 +15,27 @@
   License and may only be used or replicated with the express permission of
   Red Hat, Inc.
 
-##############################
-Core DNF Plugins Documentation
-##############################
+===============================
+ DNF protected_packages Plugin
+===============================
 
-This documents core plugins of DNF:
+-----------
+Description
+-----------
 
-.. toctree::
-   :maxdepth: 1
+Prevents any DNF operation that would result in a removal of one of the protected packages from the system. These are typically packages essential for proper system boot and basic operation.
 
-   release_notes
-   builddep
-   copr
-   debuginfo-install
-   download
-   generate_completion_cache
-   kickstart
-   noroot
-   protected_packages
-   repoquery
+-------------
+Configuration
+-------------
 
+Deciding whether a package is protected is based on the package name. The set of packages names considered protected is loaded from configuration files under::
 
-========
-See Also
-========
+  /etc/dnf/protected.d
+  /etc/yum/protected.d
 
-* `DNF project homepage <https://github.com/akozumpl/dnf/>`_
-* `Core DNF Plugins project homepage <https://github.com/akozumpl/dnf-plugins-core/>`_
+Every line in all ``*.conf`` files there is taken as a protected package name.
 
-==================
-Indices and tables
-==================
+Complete disabling of the protected packages feature is done by disabling the plugin::
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+  dnf --disableplugin=protected_packages erase dnf
