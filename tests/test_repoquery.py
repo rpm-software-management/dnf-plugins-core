@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2014 Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,

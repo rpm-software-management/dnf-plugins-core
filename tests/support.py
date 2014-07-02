@@ -21,6 +21,7 @@ from __future__ import unicode_literals
 import dnf
 import logging
 import sys
+import unittest
 
 PY3 = False
 if sys.version_info.major >= 3:
@@ -109,3 +110,10 @@ class RepoStub(object):
     def disable(self):
         """Disable the repo"""
         self.enabled = False
+
+class TestCase(unittest.TestCase):
+    def assertEmpty(self, collection):
+        return self.assertEqual(len(collection), 0)
+
+    if not PY3:
+        assertCountEqual = unittest.TestCase.assertItemsEqual
