@@ -34,7 +34,7 @@ Deciding whether a package is protected is based on the package name. The set of
   /etc/dnf/protected.d
   /etc/yum/protected.d
 
-Every line in all ``*.conf`` files there is taken as a protected package name.
+Every line in all ``*.conf`` files there is taken as a protected package name. Moreover, the currently booted kernel package is always protected.
 
 Complete disabling of the protected packages feature is done by disabling the plugin::
 

@@ -29,7 +29,7 @@ import os
 CONF_DIRS = ['/etc/yum/protected.d', '/etc/dnf/protected.d']
 THREATENED_MSG = _('The operation would result in removing the following '
                    'protected packages: %s.')
-
+KERNEL_MSG = _('The operation would result in removing the booted kernel: %s.')
 
 def get_protected_names():
     protected = []
@@ -76,3 +76,7 @@ class ProtectedPackages(dnf.Plugin):
                                          set_of_names(removes))
         if threatened:
             raise dnf.exceptions.Error(THREATENED_MSG % ', '.join(threatened))
+
+        kernel_pkg = self.base.sack.get_running_kernel()
+        if kernel_pkg in removes:
+            raise dnf.exceptions.Error(KERNEL_MSG % kernel_pkg)
