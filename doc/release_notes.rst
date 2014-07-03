@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.1 Release Notes
+=====================
+
+Provides :doc:`protected_packages` and a bugfix to the Copr plugin.
+
+Bugs fixed in 0.1.1:
+
+* :rhbug:`1049310`
+* :rhbug:`1104088`
+* :rhbug:`1111855`
+
+=====================
  0.1.0 Release Notes
 =====================
 

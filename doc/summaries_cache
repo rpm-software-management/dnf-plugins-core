@@ -6,5 +6,17 @@
     [
         1103906, 
         "dnf builddep command not working"
+    ], 
+    [
+        1049310, 
+        "Keep running kernel"
+    ], 
+    [
+        1104088, 
+        "Failed loading plugin: copr / ImportError: No module named requests"
+    ], 
+    [
+        1111855, 
+        "DNF needs to protect the basesystem"
     ]
 ]
