@@ -1,9 +1,9 @@
-%global gitrev c897eac
+%global gitrev bc10258
 %global dnf_version 0.5.3
 
 Name:		dnf-plugins-core
 Version:	0.1.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -83,6 +83,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Thu Jul 3 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.1-2
+- packaging: add protected_packages.py to the package. (Ales Kozumplik)
 
 * Thu Jul 3 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.1-1
 - protected_packages: prevent removal of the running kernel. (RhBug:1049310) (Ales Kozumplik)
