@@ -1,8 +1,8 @@
-%global gitrev b0157d1
-%global dnf_version 0.5.2
+%global gitrev c897eac
+%global dnf_version 0.5.3
 
 Name:		dnf-plugins-core
-Version:	0.1.0
+Version:	0.1.1
 Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
@@ -83,6 +83,15 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Thu Jul 3 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.1-1
+- protected_packages: prevent removal of the running kernel. (RhBug:1049310) (Ales Kozumplik)
+- packaging: create and own /etc/dnf/protected.d. (Ales Kozumplik)
+- doc: add documentation for protected_packages. (Ales Kozumplik)
+- doc: rename: generate-completion-cache -> generate_completion_cache. (Ales Kozumplik)
+- add protected_packages (RhBug:1111855) (Ales Kozumplik)
+- build: add python-requests to requires (RHBZ: 1104088) (Miroslav Suchý)
+- doc: typo: fix double 'plugin' in release notes. (Ales Kozumplik)
 
 * Wed Jun 4 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.0-1
 - pylint: fix all pylint builddep problems. (Ales Kozumplik)
