@@ -1,8 +1,9 @@
 INSTALL (FILES builddep.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES debuginfo-install.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+INSTALL (FILES download.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES generate_completion_cache.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES noroot.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
-INSTALL (FILES download.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+INSTALL (FILES protected_packages.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES repoquery.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 
 if (${PYTHON_DESIRED} STREQUAL "2")
