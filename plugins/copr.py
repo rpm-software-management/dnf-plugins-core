@@ -211,6 +211,11 @@ Do you want to continue? [y/N]: """)
             ug.urlgrab(cls.copr_url + api_path, filename=repo_filename)
         except grabber.URLGrabError as e:
             cls._remove_repo(repo_filename)
+            if e.errno == 14 and e.code == 404: #HTTPError
+                res = urllib.urlopen(cls.copr_url + "/coprs/" + project_name)
+                if res.getcode() != 404:
+                    raise dnf.exceptions.Error("This repository does not have"\
+                        " any builds yet so you cannot enable it now.")
             raise dnf.exceptions.Error(str(e))
 
     @classmethod
