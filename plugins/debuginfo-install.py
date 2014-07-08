@@ -34,7 +34,6 @@ class DebuginfoInstall(dnf.Plugin):
         super(DebuginfoInstall, self).__init__(base, cli)
         if cli is not None:
             cli.register_command(DebuginfoInstallCommand)
-        cli.logger.debug("initialized DebuginfoInstall plugin")
 
 
 class DebuginfoInstallCommand(dnf.cli.Command):

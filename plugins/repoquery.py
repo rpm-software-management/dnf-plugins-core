@@ -101,7 +101,6 @@ class RepoQuery(dnf.Plugin):
         super(RepoQuery, self).__init__(base, cli)
         self.base = base
         self.cli = cli
-        logger.debug('Initialized %s plugin', self.name)
         if self.cli is not None:
             self.cli.register_command(RepoQueryCommand)
 

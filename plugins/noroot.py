@@ -35,7 +35,6 @@ class Noroot(dnf.Plugin):
     def __init__(self, base, cli):
         self.base = base
         self.cli = cli
-        logger.debug('initialized Noroot plugin')
 
     def config(self):
         if not self.cli.demands.root_user:

@@ -38,7 +38,6 @@ class BuildDep(dnf.Plugin):
         super(BuildDep, self).__init__(base, cli)
         if cli:
             cli.register_command(BuildDepCommand)
-        logger.debug('initialized BuildDep plugin')
 
 
 class sink_rpm_logging(object):

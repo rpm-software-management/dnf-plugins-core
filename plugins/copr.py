@@ -44,7 +44,6 @@ class Copr(dnf.Plugin):
         super(Copr, self).__init__(base, cli)
         if cli is not None:
             cli.register_command(CoprCommand)
-        cli.logger.debug("initialized Copr plugin")
 
 
 class CoprCommand(dnf.cli.Command):
@@ -251,7 +250,6 @@ class Playground(dnf.Plugin):
         super(Playground, self).__init__(base, cli)
         if cli is not None:
             cli.register_command(PlaygroundCommand)
-        cli.logger.debug("initialized Playground plugin")
 
 
 class PlaygroundCommand(CoprCommand):

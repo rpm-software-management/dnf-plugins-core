@@ -61,7 +61,6 @@ class ProtectedPackages(dnf.Plugin):
     def __init__(self, base, cli):
         super(ProtectedPackages, self).__init__(base, cli)
         self.base = base
-        logger.debug('initialized ProtectedPackages plugin')
 
     def resolved(self):
         protected = set(get_protected_names())
