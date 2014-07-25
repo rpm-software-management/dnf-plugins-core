@@ -15,6 +15,7 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
+from dnf.i18n import ucd
 from dnfpluginscore import logger
 
 import dnf
@@ -52,7 +53,7 @@ class BashCompletionCache(dnf.Plugin):
                     for package in available_packages:
                         cache_file.write(package.name + '\n')
             except Exception as e:
-                self._out('Can\'t write completion cache: %s' % e)
+                self._out("Can't write completion cache: %s" % ucd(e))
 
     def transaction(self):
         ''' Generate cache of installed packages '''
@@ -63,4 +64,4 @@ class BashCompletionCache(dnf.Plugin):
                 for package in installed_packages:
                     cache_file.write(package.name + '\n')
         except Exception as e:
-            self._out('Can\'t write completion cache: %s' % e)
+            self._out("Can't write completion cache: %s" % ucd(e))
