@@ -1,4 +1,4 @@
-%global gitrev bc10258
+%global gitrev 87e557d
 %global dnf_version 0.5.3
 
 Name:		dnf-plugins-core
@@ -83,6 +83,14 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Mon Jul 28 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.2-1
+- BashCompletionCache: error strings are unicoded (RhBug:1118809) (Jan Silhan)
+- transifex update (Jan Silhan)
+- debuginfo-install: remove some pylint warnings (Igor Gnatenko)
+- debuginfo-install: fix installing when installed version not found in repos, optimize performance (RhBug: 1108321) (Ig
+- fix: copr plugin message for repo without builds (RhBug:1116389) (Adam Samalik)
+- logging: remove messages about initialization. (Ales Kozumplik)
 
 * Thu Jul 3 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.1-2
 - packaging: add protected_packages.py to the package. (Ales Kozumplik)
