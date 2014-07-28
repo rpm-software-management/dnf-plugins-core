@@ -18,5 +18,17 @@
     [
         1111855, 
         "DNF needs to protect the basesystem"
+    ], 
+    [
+        1108321, 
+        "debuginfo-install can't install anything if debuginfo with version as installed not found"
+    ], 
+    [
+        1116389, 
+        "dnf copr enable - 404 for repo without builds"
+    ], 
+    [
+        1118809, 
+        "[abrt] dnf: generate_completion_cache.py:55:sack:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 22: ordinal not in range(128)"
     ]
 ]
