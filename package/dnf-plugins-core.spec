@@ -1,9 +1,9 @@
-%global gitrev bc10258
+%global gitrev e5b8bef
 %global dnf_version 0.5.3
 
 Name:		dnf-plugins-core
 Version:	0.1.1
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -83,6 +83,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Tue Jul 29 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.1-3
+- BashCompletionCache: error strings are unicoded (RhBug:1118809) (Jan Silhan)
 
 * Thu Jul 3 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.1-2
 - packaging: add protected_packages.py to the package. (Ales Kozumplik)
