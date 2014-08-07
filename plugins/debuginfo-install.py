@@ -68,11 +68,16 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             for pkg in pkgs:
                 self._di_install(pkg, None)
 
+    @staticmethod
+    def _pkgname(package):
+        return package.sourcerpm.replace("-{}.src.rpm".format(package.evr), "")
+
     def _is_available(self, package, flag):
+        pkgname = self._pkgname(package)
         if "-debuginfo" in package.name:
-            name = package.name
+            name = pkgname
         else:
-            name = "{}-debuginfo".format(package.name)
+            name = "{}-debuginfo".format(pkgname)
         if flag:
             avail = self.packages_available.filter(
                 name="{}".format(name),
@@ -100,24 +105,25 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             return False
 
     def _di_install(self, package, require):
-        if package.name in self.done \
+        pkgname = self._pkgname(package)
+        if pkgname in self.done \
                 or require in self.done \
                 or package in self.rejected:
             return
         if self._is_available(package, True):
-            self.done.append(package.name)
+            self.done.append(pkgname)
             if require:
                 self.done.append(require)
-            if "-debuginfo" in package.name:
+            if "-debuginfo" in pkgname:
                 di = "{0}-{1}:{2}-{3}.{4}".format(
-                        package.name,
+                        pkgname,
                         package.epoch,
                         package.version,
                         package.release,
                         package.arch)
             else:
                 di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(
-                        package.name,
+                        pkgname,
                         package.epoch,
                         package.version,
                         package.release,
@@ -125,9 +131,9 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             self.base.install(di)
         else:
             if self._is_available(package, False):
-                di = "{0}-debuginfo.{1}".format(package.name, package.arch)
+                di = "{0}-debuginfo.{1}".format(pkgname, package.arch)
                 self.base.install(di)
-                self.done.append(package.name)
+                self.done.append(pkgname)
                 if require:
                     self.done.append(require)
             else:
