@@ -99,8 +99,8 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                     arch=str(package.arch))
             else:
                 return self.packages_available.filter(
-                        name="{}".format(name.replace("-debuginfo", "")),
-                        arch=str(package.arch))
+                    name="{}".format(name.replace("-debuginfo", "")),
+                    arch=str(package.arch))
         else:
             return False
 
@@ -116,18 +116,18 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 self.done.append(require)
             if "-debuginfo" in pkgname:
                 di = "{0}-{1}:{2}-{3}.{4}".format(
-                        pkgname,
-                        package.epoch,
-                        package.version,
-                        package.release,
-                        package.arch)
+                    pkgname,
+                    package.epoch,
+                    package.version,
+                    package.release,
+                    package.arch)
             else:
                 di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(
-                        pkgname,
-                        package.epoch,
-                        package.version,
-                        package.release,
-                        package.arch)
+                    pkgname,
+                    package.epoch,
+                    package.version,
+                    package.release,
+                    package.arch)
             self.base.install(di)
         else:
             if self._is_available(package, False):
