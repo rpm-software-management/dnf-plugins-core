@@ -69,6 +69,13 @@ class CoprCommand(dnf.cli.Command):
     def run(self, extcmds):
         try:
             subcommand = extcmds[0]
+        except (ValueError, IndexError):
+            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
+            return 0
+        if subcommand == "help":
+            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
+            return 0
+        try:
             project_name = extcmds[1]
         except (ValueError, IndexError):
             self.cli.logger.critical(
