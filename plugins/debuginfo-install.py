@@ -18,7 +18,7 @@
 # Red Hat, Inc.
 #
 
-from dnfpluginscore import _
+from dnfpluginscore import _, logger
 
 import dnf
 import dnf.cli
@@ -153,7 +153,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                         pkgs_avail = self._is_available(pkgs[0], True)
                         if not pkgs_avail:
                             for x in pkgs:
-                                self.cli.logger.debug(
+                                logger.debug(
 _("Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}").format(
     x.name, x.epoch, x.version, x.release, x.arch))
                                 self.rejected.append(x)
@@ -177,5 +177,5 @@ _("Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}").format(
             repo = repos[repoid]
             for r in self.base.repos:
                 if r == di:
-                    self.cli.logger.debug(_("enabling {}").format(di))
+                    logger.debug(_("enabling {}").format(di))
                     self.base.repos[r].enable()

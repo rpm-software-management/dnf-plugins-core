@@ -18,7 +18,7 @@
 #
 
 from __future__ import print_function
-from dnfpluginscore import _
+from dnfpluginscore import _, logger
 from urlgrabber import grabber
 
 import dnf
@@ -78,7 +78,7 @@ class CoprCommand(dnf.cli.Command):
         try:
             project_name = extcmds[1]
         except (ValueError, IndexError):
-            self.cli.logger.critical(
+            logger.critical(
                 _('Error: ') +
                 _('exactly two additional parameters to '
                   'copr command are required'))
@@ -109,11 +109,11 @@ Bugzilla. In case of problems, contact the owner of this repository.
 
 Do you want to continue? [y/N]: """)
             self._download_repo(project_name, repo_filename, chroot)
-            self.cli.logger.info(_("Repository successfully enabled."))
+            logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
             self._need_root()
             self._remove_repo(repo_filename)
-            self.cli.logger.info(_("Repository successfully disabled."))
+            logger.info(_("Repository successfully disabled."))
         elif subcommand == "list":
             #http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
             api_path = "/api/coprs/{}/".format(project_name)
@@ -310,7 +310,7 @@ Do you want to continue? [y/N]: """)
         try:
             subcommand = extcmds[0]
         except (ValueError, IndexError):
-            self.cli.logger.critical(
+            logger.critical(
                 _('Error: ') +
                 _('exactly one parameter to '
                   'playground command are required'))
@@ -321,14 +321,14 @@ Do you want to continue? [y/N]: """)
         chroot = self._guess_chroot()
         if subcommand == "enable":
             self._cmd_enable(chroot)
-            self.cli.logger.info(_("Playground repositories successfully enabled."))
+            logger.info(_("Playground repositories successfully enabled."))
         elif subcommand == "disable":
             self._cmd_disable()
-            self.cli.logger.info(_("Playground repositories successfully disabled."))
+            logger.info(_("Playground repositories successfully disabled."))
         elif subcommand == "upgrade":
             self._cmd_disable()
             self._cmd_enable(chroot)
-            self.cli.logger.info(_("Playground repositories successfully updated."))
+            logger.info(_("Playground repositories successfully updated."))
         else:
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
