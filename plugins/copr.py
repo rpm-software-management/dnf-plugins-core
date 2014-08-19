@@ -19,6 +19,7 @@
 
 from __future__ import print_function
 from dnfpluginscore import _, logger
+from dnf.i18n import ucd
 from urlgrabber import grabber
 
 import dnf
@@ -135,7 +136,7 @@ Do you want to continue? [y/N]: """)
                 desc = json_parse["repos"][i]["description"]
                 if not desc:
                     desc = _("No description given")
-                msg = self.base.output.fmtKeyValFill(msg, desc)
+                msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
                 print(msg)
                 i += 1
         elif subcommand == "search":
@@ -156,7 +157,7 @@ Do you want to continue? [y/N]: """)
                 desc = json_parse["repos"][i]["description"]
                 if not desc:
                     desc = _("No description given.")
-                msg = self.base.output.fmtKeyValFill(msg, desc)
+                msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
                 print(msg)
                 i += 1
         else:
