@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-23 13:50+0200\n"
+"POT-Creation-Date: 2014-08-26 18:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,11 @@ msgstr ""
 msgid "install debuginfo packages"
 msgstr ""
 
-#: ../plugins/debuginfo-install.py:114
+#: ../plugins/debuginfo-install.py:157
+msgid "Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:180
 msgid "enabling {}"
 msgstr ""
 
@@ -161,31 +165,31 @@ msgstr ""
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
 msgstr ""
 
-#: ../plugins/noroot.py:28 ../plugins/copr.py:184
+#: ../plugins/noroot.py:28 ../plugins/copr.py:192
 msgid "This command has to be run under the root user."
 msgstr ""
 
-#: ../plugins/copr.py:33
+#: ../plugins/copr.py:34
 msgid "yes"
 msgstr ""
 
-#: ../plugins/copr.py:33
+#: ../plugins/copr.py:34
 msgid "y"
 msgstr ""
 
-#: ../plugins/copr.py:34
+#: ../plugins/copr.py:35
 msgid "no"
 msgstr ""
 
-#: ../plugins/copr.py:34
+#: ../plugins/copr.py:35
 msgid "n"
 msgstr ""
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:55
 msgid "Interact with Copr repositories."
 msgstr ""
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:56
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -202,80 +206,80 @@ msgid ""
 "    "
 msgstr ""
 
-#: ../plugins/copr.py:75 ../plugins/copr.py:307
+#: ../plugins/copr.py:83 ../plugins/copr.py:315
 msgid "Error: "
 msgstr ""
 
-#: ../plugins/copr.py:76 ../plugins/copr.py:80
+#: ../plugins/copr.py:84 ../plugins/copr.py:88
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 
-#: ../plugins/copr.py:105
+#: ../plugins/copr.py:113
 msgid "Repository successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:109
+#: ../plugins/copr.py:117
 msgid "Repository successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:120
+#: ../plugins/copr.py:128
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:122
+#: ../plugins/copr.py:130
 msgid "List of {} coprs"
 msgstr ""
 
-#: ../plugins/copr.py:130
+#: ../plugins/copr.py:138
 msgid "No description given"
 msgstr ""
 
-#: ../plugins/copr.py:143
+#: ../plugins/copr.py:151
 msgid "Can't parse search for '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:144
+#: ../plugins/copr.py:152
 msgid "Matched: {}"
 msgstr ""
 
-#: ../plugins/copr.py:151
+#: ../plugins/copr.py:159
 msgid "No description given."
 msgstr ""
 
-#: ../plugins/copr.py:157 ../plugins/copr.py:327
+#: ../plugins/copr.py:165 ../plugins/copr.py:335
 msgid "Unknown subcommand {}."
 msgstr ""
 
-#: ../plugins/copr.py:167 ../plugins/copr.py:177
+#: ../plugins/copr.py:175 ../plugins/copr.py:185
 msgid "Safe and good answer. Exiting."
 msgstr ""
 
-#: ../plugins/copr.py:239 ../plugins/copr.py:278
+#: ../plugins/copr.py:247 ../plugins/copr.py:286
 msgid "Unknown response from server."
 msgstr ""
 
-#: ../plugins/copr.py:243
+#: ../plugins/copr.py:251
 msgid ""
 "Something went wrong:\n"
 " {0}\n"
 msgstr ""
 
-#: ../plugins/copr.py:264
+#: ../plugins/copr.py:272
 msgid "Interact with Playground repository."
 msgstr ""
 
-#: ../plugins/copr.py:308 ../plugins/copr.py:312
+#: ../plugins/copr.py:316 ../plugins/copr.py:320
 msgid "exactly one parameter to playground command are required"
 msgstr ""
 
-#: ../plugins/copr.py:317
+#: ../plugins/copr.py:325
 msgid "Playground repositories successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:320
+#: ../plugins/copr.py:328
 msgid "Playground repositories successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:324
+#: ../plugins/copr.py:332
 msgid "Playground repositories successfully updated."
 msgstr ""
