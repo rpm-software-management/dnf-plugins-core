@@ -127,6 +127,7 @@ Do you want to continue? [y/N]: """)
                 raise dnf.exceptions.Error(
                     _("Can't parse repositories for username '{}'.")
                     .format(project_name))
+            self._check_json_output(json_parse)
             section_text = _("List of {} coprs").format(project_name)
             self._print_match_section(section_text)
             i = 0
@@ -149,6 +150,7 @@ Do you want to continue? [y/N]: """)
                 json_parse = json.loads(res.read())
             except ValueError:
                 raise dnf.exceptions.Error(_("Can't parse search for '{}'.").format(project_name))
+            self._check_json_output(json_parse)
             section_text = _("Matched: {}").format(project_name)
             self._print_match_section(section_text)
             i = 0
@@ -251,6 +253,11 @@ Do you want to continue? [y/N]: """)
                 "Something went wrong:\n {0}\n".format(output["error"])))
             return
         return output
+
+    @classmethod
+    def _check_json_output(cls, json):
+        if json["output"] != "ok":
+            raise dnf.exceptions.Error("{}".format(json["error"]))
 
 
 class Playground(dnf.Plugin):
