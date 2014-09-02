@@ -85,6 +85,11 @@ def parse_arguments(args):
                         help=_('show available tags to use with '
                                '--queryformat'))
 
+    help_conflicts = _('Display capabilities that the package conflicts with.')
+    help_obsoletes = _('Display capabilities that the package obsoletes.')
+    help_provides = _('Display capabilities provided by the package.')
+    help_requires = _('Display capabilities that the package depends on.')
+
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
                          default=False, action='store_true',
@@ -93,16 +98,15 @@ def parse_arguments(args):
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
     outform.add_argument('--conflicts', dest='queryformat', action='store_const',
-                         const='%{conflicts}')
+                         const='%{conflicts}', help=help_conflicts)
     outform.add_argument('--obsoletes', dest='queryformat', action='store_const',
-                         const='%{obsoletes}')
+                         const='%{obsoletes}', help=help_obsoletes)
     outform.add_argument('--provides', dest='queryformat', action='store_const',
-                         const='%{provides}')
+                         const='%{provides}', help=help_provides)
     outform.add_argument('--requires', dest='queryformat', action='store_const',
-                         const='%{requires}')
+                         const='%{requires}', help=help_requires)
 
     return parser.parse_args(args), parser
-
 
 
 def rpm2py_format(queryformat):
