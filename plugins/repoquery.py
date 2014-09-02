@@ -225,7 +225,7 @@ class PackageWrapper(object):
     @staticmethod
     def _get_timestamp(timestamp):
         if timestamp > 0:
-            dt = datetime.fromtimestamp(timestamp)
+            dt = datetime.utcfromtimestamp(timestamp)
             return dt.strftime("%Y-%m-%d %H:%M")
         else:
             return ''

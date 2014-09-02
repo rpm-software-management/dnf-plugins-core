@@ -33,7 +33,7 @@ Architecture: x86_64
 Size        : 100
 License     : BSD
 Source RPM  : foo-1.0.1-1.f20.src.rpm
-Build Date  : 1970-01-01 01:01
+Build Date  : 1970-01-01 00:02
 Packager    : Eastford
 URL         : foorl.net
 Summary     : it.
@@ -45,7 +45,7 @@ desc.A desc.A desc.A desc.A desc.A desc.A desc."""
 class PkgStub(object):
     def __init__(self):
         self.arch = 'x86_64'
-        self.buildtime = 100
+        self.buildtime = 120
         self.description = 'A desc.' * 16
         self.license = 'BSD'
         self.name = 'foobar'
