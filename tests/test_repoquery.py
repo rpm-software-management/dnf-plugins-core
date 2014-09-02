@@ -25,14 +25,38 @@ import dnf.exceptions
 import repoquery
 import unittest
 
+EXPECTED_INFO_FORMAT = """\
+Name        : foobar
+Version     : 1.0.1
+Release     : 1.f20
+Architecture: x86_64
+Size        : 100
+License     : BSD
+Source RPM  : foo-1.0.1-1.f20.src.rpm
+Build Date  : 1970-01-01 01:01
+Packager    : Eastford
+URL         : foorl.net
+Summary     : it.
+Description :
+A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A
+desc.A desc.A desc.A desc.A desc.A desc.A desc."""
+
 
 class PkgStub(object):
     def __init__(self):
-        self.name = "foobar"
-        self.version = '1.0.1'
-        self.release = '1.f20'
         self.arch = 'x86_64'
-        self.reponame = "@System"
+        self.buildtime = 100
+        self.description = 'A desc.' * 16
+        self.license = 'BSD'
+        self.name = 'foobar'
+        self.packager = 'Eastford'
+        self.release = '1.f20'
+        self.reponame = '@System'
+        self.size = 100
+        self.sourcerpm = 'foo-1.0.1-1.f20.src.rpm'
+        self.summary = 'it.'
+        self.url = 'foorl.net'
+        self.version = '1.0.1'
 
 
 class ArgParseTest(unittest.TestCase):
@@ -52,29 +76,34 @@ class ArgParseTest(unittest.TestCase):
         self.assertEqual(opts.queryformat, '%{provides}')
 
 
-class GetFormatTest(unittest.TestCase):
-    def test_get_format(self):
-        fmt = repoquery.get_format('%{name}')
-        self.assertEqual(fmt, '{0.name}')
-        fmt = repoquery.get_format('%40{name}')
-        self.assertEqual(fmt, '{0.name:<40}')
-        fmt = repoquery.get_format('%-40{name}')
-        self.assertEqual(fmt, '{0.name:>40}')
-        fmt = repoquery.get_format('%{name}-%{repoid} :: %-40{arch}')
-        self.assertEqual(fmt, '{0.name}-{0.repoid} :: {0.arch:>40}')
+class InfoFormatTest(unittest.TestCase):
+    def test_info(self):
+        pkg = repoquery.PackageWrapper(PkgStub())
+        self.assertEqual(repoquery.info_format(pkg), EXPECTED_INFO_FORMAT)
 
 
 class OutputTest(unittest.TestCase):
     def test_output(self):
         pkg = PkgStub()
-        fmt = repoquery.get_format(
+        fmt = repoquery.rpm2py_format(
             '%{name}-%{version}-%{release}.%{arch} (%{reponame})')
-        self.assertEqual(fmt.format(pkg),
-            'foobar-1.0.1-1.f20.x86_64 (@System)')
+        self.assertEqual(fmt.format(pkg), 'foobar-1.0.1-1.f20.x86_64 (@System)')
 
     def test_illegal_attr(self):
         pkg = PkgStub()
         with self.assertRaises(AttributeError) as ctx:
-            repoquery.get_format('%{notfound}').format(pkg)
+            repoquery.rpm2py_format('%{notfound}').format(pkg)
         self.assertEqual(str(ctx.exception),
                          "'PkgStub' object has no attribute 'notfound'")
+
+
+class Rpm2PyFormatTest(unittest.TestCase):
+    def test_rpm2py_format(self):
+        fmt = repoquery.rpm2py_format('%{name}')
+        self.assertEqual(fmt, '{0.name}')
+        fmt = repoquery.rpm2py_format('%40{name}')
+        self.assertEqual(fmt, '{0.name:<40}')
+        fmt = repoquery.rpm2py_format('%-40{name}')
+        self.assertEqual(fmt, '{0.name:>40}')
+        fmt = repoquery.rpm2py_format('%{name}-%{repoid} :: %-40{arch}')
+        self.assertEqual(fmt, '{0.name}-{0.repoid} :: {0.arch:>40}')

@@ -28,10 +28,26 @@ import dnfpluginscore
 import functools
 import hawkey
 import re
+import textwrap
 
 QFORMAT_DEFAULT = '%{name}-%{epoch}:%{version}-%{release}.%{arch}'
 # matches %[-][dd]{attr}
 QFORMAT_MATCH = re.compile(r'%([-\d]*?){([:\.\w]*?)}')
+
+QUERY_INFO = """\
+Name        : {0.name}
+Version     : {0.version}
+Release     : {0.release}
+Architecture: {0.arch}
+Size        : {0.size}
+License     : {0.license}
+Source RPM  : {0.sourcerpm}
+Build Date  : {0.buildtime}
+Packager    : {0.packager}
+URL         : {0.url}
+Summary     : {0.summary}
+Description :
+{0.description_wrapped}"""
 
 QUERY_TAGS = """
 name, arch, epoch, version, release, reponame (repoid), evr
@@ -41,23 +57,15 @@ description, summary, license, url
 """
 
 
-def get_format(qformat):
-    """Convert a rpm like QUERYFMT to an python .format() string."""
-    def fmt_repl(matchobj):
-        fill = matchobj.groups()[0]
-        key = matchobj.groups()[1]
-        if fill:
-            if fill[0] == '-':
-                fill = '>' + fill[1:]
-            else:
-                fill = '<' + fill
-            fill = ':' + fill
-        return '{0.' + key.lower() + fill + "}"
+def build_format_fn(opts):
+    if opts.queryinfo:
+        return info_format
+    else:
+        return rpm2py_format(opts.queryformat).format
 
-    qformat = qformat.replace("\\n", "\n")
-    qformat = qformat.replace("\\t", "\t")
-    fmt = re.sub(QFORMAT_MATCH, fmt_repl, qformat)
-    return fmt
+
+def info_format(pkg):
+    return QUERY_INFO.format(pkg)
 
 
 def parse_arguments(args):
@@ -78,6 +86,9 @@ def parse_arguments(args):
                                '--queryformat'))
 
     outform = parser.add_mutually_exclusive_group()
+    outform.add_argument('-i', "--info", dest='queryinfo',
+                         default=False, action='store_true',
+                         help=_('show detailed information about the package'))
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
@@ -91,6 +102,26 @@ def parse_arguments(args):
                          const='%{requires}')
 
     return parser.parse_args(args), parser
+
+
+
+def rpm2py_format(queryformat):
+    """Convert a rpm like QUERYFMT to an python .format() string."""
+    def fmt_repl(matchobj):
+        fill = matchobj.groups()[0]
+        key = matchobj.groups()[1]
+        if fill:
+            if fill[0] == '-':
+                fill = '>' + fill[1:]
+            else:
+                fill = '<' + fill
+            fill = ':' + fill
+        return '{0.' + key.lower() + fill + "}"
+
+    queryformat = queryformat.replace("\\n", "\n")
+    queryformat = queryformat.replace("\\t", "\t")
+    fmt = re.sub(QFORMAT_MATCH, fmt_repl, queryformat)
+    return fmt
 
 
 class RepoQuery(dnf.Plugin):
@@ -162,16 +193,16 @@ class RepoQueryCommand(dnf.cli.Command):
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
         if opts.whatrequires:
             q = self.by_requires(self.base.sack, opts.whatrequires, q)
-        fmt = get_format(opts.queryformat)
-        self.show_packages(q, fmt)
+        fmt_fn = build_format_fn(opts)
+        self.show_packages(q, fmt_fn)
 
     @staticmethod
-    def show_packages(query, fmt):
+    def show_packages(query, fmt_fn):
         """Print packages in a query, in a given format."""
         for po in query.run():
             try:
                 pkg = PackageWrapper(po)
-                print(fmt.format(pkg))
+                print(fmt_fn(pkg))
             except AttributeError as e:
                 # catch that the user has specified attributes
                 # there don't exist on the dnf Package object.
@@ -206,6 +237,10 @@ class PackageWrapper(object):
     @property
     def conflicts(self):
         return self._reldep_to_list(self._pkg.obsoletes)
+
+    @property
+    def description_wrapped(self):
+        return '\n'.join(textwrap.wrap(self.description))
 
     @property
     def installtime(self):
