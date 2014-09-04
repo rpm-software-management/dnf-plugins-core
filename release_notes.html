@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Core DNF Plugins Release Notes &mdash; dnf-plugins-core 0.1.2-1 documentation</title>
+    <title>Core DNF Plugins Release Notes &mdash; dnf-plugins-core 0.1.3-1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.2-1',
+        VERSION:     '0.1.3-1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="dnf-plugins-core 0.1.2-1 documentation" href="index.html" />
+    <link rel="top" title="dnf-plugins-core 0.1.3-1 documentation" href="index.html" />
     <link rel="next" title="DNF builddep Plugin" href="builddep.html" />
     <link rel="prev" title="Core DNF Plugins Documentation" href="index.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="index.html" title="Core DNF Plugins Documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">dnf-plugins-core 0.1.2-1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">dnf-plugins-core 0.1.3-1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,20 +52,31 @@
           <div class="body">
             
   <div class="section" id="core-dnf-plugins-release-notes">
-<h1><a class="toc-backref" href="#id3">Core DNF Plugins Release Notes</a><a class="headerlink" href="#core-dnf-plugins-release-notes" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id4">Core DNF Plugins Release Notes</a><a class="headerlink" href="#core-dnf-plugins-release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#core-dnf-plugins-release-notes" id="id3">Core DNF Plugins Release Notes</a><ul>
-<li><a class="reference internal" href="#release-notes" id="id4">0.1.2 Release Notes</a></li>
-<li><a class="reference internal" href="#id1" id="id5">0.1.1 Release Notes</a></li>
-<li><a class="reference internal" href="#id2" id="id6">0.1.0 Release Notes</a></li>
+<li><a class="reference internal" href="#core-dnf-plugins-release-notes" id="id4">Core DNF Plugins Release Notes</a><ul>
+<li><a class="reference internal" href="#release-notes" id="id5">0.1.3 Release Notes</a></li>
+<li><a class="reference internal" href="#id1" id="id6">0.1.2 Release Notes</a></li>
+<li><a class="reference internal" href="#id2" id="id7">0.1.1 Release Notes</a></li>
+<li><a class="reference internal" href="#id3" id="id8">0.1.0 Release Notes</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="release-notes">
-<h2><a class="toc-backref" href="#id4">0.1.2 Release Notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">0.1.3 Release Notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
+<p>Added info switch to <a class="reference internal" href="repoquery.html#info-repoquery-label"><em>repoquery</em></a></p>
+<p>Bugs fixed in 0.1.3:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1135984">Bug 1135984 - rfe: add repoquery -i support</a></li>
+<li><a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1134378">Bug 1134378 - [abrt] dnf: copr.py:147:run:KeyError: &#8216;repos&#8217;</a></li>
+<li><a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1123886">Bug 1123886 - [abrt] dnf: i18n.py:138:_exact_width_char:TypeError: must be unicode, not str</a></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id6">0.1.2 Release Notes</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Bugs fixed in 0.1.2:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1108321">Bug 1108321 - debuginfo-install can&#8217;t install anything if debuginfo with version as installed not found</a></li>
@@ -73,8 +84,8 @@
 <li><a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1118809">Bug 1118809 - [abrt] dnf: generate_completion_cache.py:55:sack:UnicodeDecodeError: &#8216;ascii&#8217; codec can&#8217;t decode byte 0xc3 in position 22: ordinal not in range(128)</a></li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id5">0.1.1 Release Notes</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id7">0.1.1 Release Notes</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Provides <a class="reference internal" href="protected_packages.html"><em>DNF protected_packages Plugin</em></a> and a bugfix to the Copr plugin.</p>
 <p>Bugs fixed in 0.1.1:</p>
 <ul class="simple">
@@ -83,8 +94,8 @@
 <li><a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1111855">Bug 1111855 - DNF needs to protect the basesystem</a></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id6">0.1.0 Release Notes</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id8">0.1.0 Release Notes</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>This release provides the <a class="reference internal" href="repoquery.html"><em>DNF repoquery Plugin</em></a> and a bugfix for the <a class="reference internal" href="builddep.html"><em>DNF builddep Plugin</em></a>.</p>
 <p>Bugs fixed for 0.1.0:</p>
 <ul class="simple">
@@ -103,9 +114,10 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Core DNF Plugins Release Notes</a><ul>
-<li><a class="reference internal" href="#release-notes">0.1.2 Release Notes</a></li>
-<li><a class="reference internal" href="#id1">0.1.1 Release Notes</a></li>
-<li><a class="reference internal" href="#id2">0.1.0 Release Notes</a></li>
+<li><a class="reference internal" href="#release-notes">0.1.3 Release Notes</a></li>
+<li><a class="reference internal" href="#id1">0.1.2 Release Notes</a></li>
+<li><a class="reference internal" href="#id2">0.1.1 Release Notes</a></li>
+<li><a class="reference internal" href="#id3">0.1.0 Release Notes</a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +162,7 @@
         <li class="right" >
           <a href="index.html" title="Core DNF Plugins Documentation"
              >previous</a> |</li>
-        <li><a href="index.html">dnf-plugins-core 0.1.2-1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">dnf-plugins-core 0.1.3-1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

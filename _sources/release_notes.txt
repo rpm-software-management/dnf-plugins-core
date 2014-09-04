@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.3 Release Notes
+=====================
+
+Added info switch to :ref:`repoquery <info_repoquery-label>`
+
+Bugs fixed in 0.1.3:
+
+* :rhbug:`1135984`
+* :rhbug:`1134378`
+* :rhbug:`1123886`
+
+=====================
  0.1.2 Release Notes
 =====================
 
