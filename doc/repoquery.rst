@@ -63,6 +63,8 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``--conflicts``
     Display capabilities that the package conflicts with. Same as ``--qf "%{conflicts}``.
 
+.. _info_repoquery-label:
+
 ``-i, --info``
     Show detailed information about the package.
 

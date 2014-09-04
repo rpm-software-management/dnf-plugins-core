@@ -2,7 +2,7 @@
 %global dnf_version 0.5.3
 
 Name:		dnf-plugins-core
-Version:	0.1.2
+Version:	0.1.3
 Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base

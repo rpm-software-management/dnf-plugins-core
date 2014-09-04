@@ -30,5 +30,17 @@
     [
         1118809, 
         "[abrt] dnf: generate_completion_cache.py:55:sack:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 22: ordinal not in range(128)"
+    ], 
+    [
+        1135984, 
+        "rfe: add repoquery -i support"
+    ], 
+    [
+        1134378, 
+        "[abrt] dnf: copr.py:147:run:KeyError: 'repos'"
+    ], 
+    [
+        1123886, 
+        "[abrt] dnf: i18n.py:138:_exact_width_char:TypeError: must be unicode, not str"
     ]
 ]
