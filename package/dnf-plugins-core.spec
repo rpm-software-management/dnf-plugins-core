@@ -1,4 +1,4 @@
-%global gitrev 87e557d
+%global gitrev d8e8044
 %global dnf_version 0.5.3
 
 Name:		dnf-plugins-core
@@ -86,6 +86,23 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Thu Sep 4 2014 Jan Silhan <jsilhan@redhat.com> - 0.1.3-1
+- repoquery: output times in UTC. (Ales Kozumplik)
+- repoquery: missing help messages. (Ales Kozumplik)
+- repoquery: add --info. (RhBug:1135984) (Ales Kozumplik)
+- add Jan to AUTHORS. (Ales Kozumplik)
+- spec: extended package description with plugin names and commands (Related:RhBug:1132335) (Jan Silhan)
+- copr: check for 'ok' in 'output' for json data (RhBug:1134378) (Igor Gnatenko)
+- README: changed references to new repo location (Jan Silhan)
+- transifex update (Jan Silhan)
+- copr: convert key to unicode before guessing lenght (Miroslav Suchý)
+- Add pnemade to AUTHORS (Ales Kozumplik)
+- debuginfo-install: Use logger as module level variable and not instance attribute since dnf-0.6.0 release (RhBug:1130559) (Parag Nemade)
+- copr: Use logger as module level variable and not instance attribute since dnf-0.6.0 release (RhBug:1130559) (Parag Nemade)
+- copr: implement help command (Igor Gnatenko)
+- debuginfo-install: fix indenting (Igor Gnatenko)
+- debuginfo-install: use srpm basename for debuginfo (Igor Gnatenko)
 
 * Mon Jul 28 2014 Aleš Kozumplík <ales@redhat.com> - 0.1.2-1
 - BashCompletionCache: error strings are unicoded (RhBug:1118809) (Jan Silhan)
