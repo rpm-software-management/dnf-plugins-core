@@ -26,9 +26,9 @@ Requires:	python-requests
 
 %description
 Core Plugins for DNF. This package enhance DNF with builddep, copr,
-debuginfo-install, download, kickstart and repoquery commands. Additionally
-provides generate_completion_cache, noroot and protected_packages passive
-plugins.
+debuginfo-install, download, kickstart, needs-restarting and repoquery
+commands. Additionally provides generate_completion_cache, noroot and
+protected_packages passive plugins.
 
 %package -n python3-dnf-plugins-core
 Summary:	Core Plugins for DNF

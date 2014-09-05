@@ -15,39 +15,30 @@
   License and may only be used or replicated with the express permission of
   Red Hat, Inc.
 
-##############################
-Core DNF Plugins Documentation
-##############################
+===========================
+DNF needs-restarting Plugin
+===========================
 
-This documents core plugins of DNF:
+Check for running processes that should be restarted.
 
-.. toctree::
-   :maxdepth: 1
+--------
+Synopsis
+--------
 
-   release_notes
-   builddep
-   copr
-   debuginfo-install
-   download
-   generate_completion_cache
-   kickstart
-   needs_restarting
-   noroot
-   protected_packages
-   repoquery
+``dnf needs-restarting [-u``
 
+-----------
+Description
+-----------
 
-========
-See Also
-========
+`needs-restarting` looks through running processes and tries to detect those that use files from packages that have been updated after the given process started. Such processes are reported by this tool.
 
-* `DNF project homepage <https://github.com/akozumpl/dnf/>`_
-* `Core DNF Plugins project homepage <https://github.com/akozumpl/dnf-plugins-core/>`_
+Note that in most cases a process should survive update of its binary and libraries it is using without requiring to be restarted for proper operation. There are however specific cases when this does not apply.
 
-==================
-Indices and tables
-==================
+-------
+Options
+-------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+``-u, --useronly``
+
+    Only consider processes belonging to the running user.
