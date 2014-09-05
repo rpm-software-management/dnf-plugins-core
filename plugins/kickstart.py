@@ -96,9 +96,13 @@ class KickstartCommand(dnf.cli.Command):
         group_names = [group.name for group in packages.groupList]
 
         if group_names:
+            self.base.fill_sack()
             self.base.read_comps()
         try:
-            self.base.install_grouplist(group_names)
+            for group in group_names:
+                grp = self.base.comps.group_by_pattern(group)
+                if grp:
+                    self.base.group_install(grp, "default")
         except dnf.exceptions.Error:
             are_groups_installed = False
         else:
