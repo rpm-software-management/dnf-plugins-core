@@ -20,7 +20,6 @@
 from __future__ import print_function
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
-from urlgrabber import grabber
 
 import dnf
 import glob
@@ -215,13 +214,15 @@ Do you want to continue? [y/N]: """)
             chroot = cls._guess_chroot()
         #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
-        ug = grabber.URLGrabber()
-        # FIXME when we are full on python2 urllib.parse
-        try:
-            ug.urlgrab(cls.copr_url + api_path, filename=repo_filename)
-        except grabber.URLGrabError as e:
+        # FIXME when we are full on python3 urllib.parse
+        r = requests.get(cls.copr_url + api_path)
+        if r.status_code == requests.codes.ok:
+            with open(repo_filename, 'wb') as fd:
+                for chunk in r.iter_content(4096):
+                    fd.write(chunk)
+        else:
             cls._remove_repo(repo_filename)
-            if e.errno == 14 and e.code == 404: #HTTPError
+            if r.status_code == 404:
                 res = urllib.urlopen(cls.copr_url + "/coprs/" + project_name)
                 if res.getcode() != 404:
                     raise dnf.exceptions.Error("This repository does not have"\
