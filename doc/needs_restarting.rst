@@ -25,7 +25,7 @@ Check for running processes that should be restarted.
 Synopsis
 --------
 
-``dnf needs-restarting [-u``
+``dnf needs-restarting [-u]``
 
 -----------
 Description
