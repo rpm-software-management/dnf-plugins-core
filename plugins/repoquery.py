@@ -85,11 +85,6 @@ def parse_arguments(args):
                         help=_('show available tags to use with '
                                '--queryformat'))
 
-    help_conflicts = _('Display capabilities that the package conflicts with.')
-    help_obsoletes = _('Display capabilities that the package obsoletes.')
-    help_provides = _('Display capabilities provided by the package.')
-    help_requires = _('Display capabilities that the package depends on.')
-
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
                          default=False, action='store_true',
@@ -97,14 +92,23 @@ def parse_arguments(args):
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
-    outform.add_argument('--conflicts', dest='queryformat', action='store_const',
-                         const='%{conflicts}', help=help_conflicts)
-    outform.add_argument('--obsoletes', dest='queryformat', action='store_const',
-                         const='%{obsoletes}', help=help_obsoletes)
-    outform.add_argument('--provides', dest='queryformat', action='store_const',
-                         const='%{provides}', help=help_provides)
-    outform.add_argument('--requires', dest='queryformat', action='store_const',
-                         const='%{requires}', help=help_requires)
+
+    help_msgs = {
+        'conflicts': _('Display capabilities that the package conflicts with.'),
+        'enhances': _('Display capabilities that the package can enhance.'),
+        'obsoletes': _('Display capabilities that the package obsoletes.'),
+        'provides': _('Display capabilities provided by the package.'),
+        'recommends':  _('Display capabilities that the package recommends.'),
+        'requires':  _('Display capabilities that the package depends on.'),
+        'suggests':  _('Display capabilities that the package suggests.'),
+        'supplements':  _('Display capabilities that the package can supplement.')
+    }
+    for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
+                'requires', 'suggests', 'supplements'):
+        name = '--%s' % arg
+        const = '%%{%s}' % arg
+        outform.add_argument(name, dest='queryformat', action='store_const',
+                             const=const, help=help_msgs[arg])
 
     return parser.parse_args(args), parser
 
@@ -247,6 +251,10 @@ class PackageWrapper(object):
         return '\n'.join(textwrap.wrap(self.description))
 
     @property
+    def enhances(self):
+        return self._reldep_to_list(self._pkg.enhances)
+
+    @property
     def installtime(self):
         return self._get_timestamp(self._pkg.installtime)
 
@@ -259,5 +267,17 @@ class PackageWrapper(object):
         return self._reldep_to_list(self._pkg.provides)
 
     @property
+    def recommends(self):
+        return self._reldep_to_list(self._pkg.recommends)
+
+    @property
     def requires(self):
         return self._reldep_to_list(self._pkg.requires)
+
+    @property
+    def suggests(self):
+        return self._reldep_to_list(self._pkg.suggests)
+
+    @property
+    def supplements(self):
+        return self._reldep_to_list(self._pkg.supplements)
