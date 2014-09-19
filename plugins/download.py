@@ -140,9 +140,12 @@ class DownloadCommand(dnf.cli.Command):
         """Get list of source rpm names for a list of packages."""
         source_pkgs = set()
         for pkg in pkgs:
-            source_pkgs.add(pkg.sourcerpm)
-            logger.debug('  --> Package : %s Source : %s' %
-                         (str(pkg), pkg.sourcerpm))
+            if pkg.sourcerpm:
+                source_pkgs.add(pkg.sourcerpm)
+                logger.debug('  --> Package : %s Source : %s',
+                             str(pkg), pkg.sourcerpm)
+            else:
+                logger.info(_("No source rpm definded for %s"), str(pkg))
         return list(source_pkgs)
 
     def _enable_source_repos(self):

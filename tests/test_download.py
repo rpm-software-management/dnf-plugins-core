@@ -59,6 +59,13 @@ class PkgStub:
         return '/tmp/dnf/%s-%s.%s.rpm' % (self.name, self.evr, self.arch)
 
 
+class NoSrcStub(PkgStub):
+    """ Pkg with no source rpm"""
+
+    @property
+    def sourcerpm(self):
+        return None
+
 class QueryStub(object):
     """Mocking dnf.query.Query."""
     def __init__(self, inst, avail, latest, sources):
@@ -171,6 +178,12 @@ class DownloadlCommandTest(unittest.TestCase):
         pkg = PkgStub('foo', '0', '1.0', '1', 'noarch', 'test-repo')
         found = self.cmd._get_source_packages([pkg])
         self.assertEqual(found[0], 'foo-1.0-1.src.rpm')
+
+    def test_no_source_rpm(self):
+        # test pkgs with no source rpm
+        pkg = NoSrcStub('foo', '0', '1.0', '1', 'noarch', 'test-repo')
+        found = self.cmd._get_source_packages([pkg])
+        self.assertEqual(len(found), 0)
 
     def test_get_query(self):
         found = self.cmd._get_query('foo')
