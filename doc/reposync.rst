@@ -15,40 +15,30 @@
   License and may only be used or replicated with the express permission of
   Red Hat, Inc.
 
-##############################
-Core DNF Plugins Documentation
-##############################
+====================
+DNF reposync Plugin
+====================
 
-This documents core plugins of DNF:
+Synchronize packages of a remote Yum repository to a local directory.
 
-.. toctree::
-   :maxdepth: 1
+--------
+Synopsis
+--------
 
-   release_notes
-   builddep
-   copr
-   debuginfo-install
-   download
-   generate_completion_cache
-   kickstart
-   needs_restarting
-   noroot
-   protected_packages
-   repoquery
-   reposync
+``dnf reposync [-p <download-path>] [--repoid <repo-id>]...``
 
+-----------
+Description
+-----------
 
-========
-See Also
-========
+`reposync` makes local copies of remote repositories. Packages that are already present in the local directory are not downloaded again.
 
-* `DNF project homepage <https://github.com/akozumpl/dnf/>`_
-* `Core DNF Plugins project homepage <https://github.com/akozumpl/dnf-plugins-core/>`_
+-------
+Options
+-------
 
-==================
-Indices and tables
-==================
+``-p <download-path>, --download-path=<download-path>``
+    Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+``--repoid <repo-id>``
+    Limit the operation only to the specified repository. Can be used multiple times with accumulative effect.
