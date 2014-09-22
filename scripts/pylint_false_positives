@@ -1,1 +1,2 @@
 ^C0103: builddep:[0-9,: ]*Invalid class name "sink_rpm_logging"$
+^W0212: tests[ a-z0-9,._:]*Access to a protected member .*$
