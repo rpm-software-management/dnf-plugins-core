@@ -69,16 +69,30 @@ class BuildDepCommand(dnf.cli.Command):
     def _rpm_dep2reldep_str(rpm_dep):
         return rpm_dep.DNEVR()[2:]
 
+    def _install(self, reldep_str):
+        try:
+            self.base.install(reldep_str)
+        except dnf.exceptions.MarkingError:
+            msg = _("No matching package to install: '%s'")
+            logger.warning(msg, reldep_str)
+            return False
+        return True
+
     def _src_deps(self, rpm_ts, src_fn):
         fd = os.open(src_fn, os.O_RDONLY)
         h = rpm_ts.hdrFromFdno(fd)
         os.close(fd)
         ds = h.dsFromHeader('requirename')
+        done = True
         for dep in ds:
             reldep_str = self._rpm_dep2reldep_str(dep)
             if reldep_str.startswith('rpmlib('):
                 continue
-            self.base.install(reldep_str)
+            done &= self._install(reldep_str)
+
+        if not done:
+            err = _("Not all dependencies satisfied")
+            raise dnf.exceptions.Error(err)
 
     def _spec_deps(self, spec_fn):
         try:
@@ -86,13 +100,14 @@ class BuildDepCommand(dnf.cli.Command):
         except ValueError:
             msg = _("Failed to open: '%s', not a valid spec file.") % spec_fn
             raise dnf.exceptions.Error(msg)
+        done = True
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)
-            try:
-                self.base.install(reldep_str)
-            except dnf.exceptions.MarkingError:
-                msg = _("No matching package to install: '%s'") % reldep_str
-                raise dnf.exceptions.Error(msg)
+            done &= self._install(reldep_str)
+
+        if not done:
+            err = _("Not all dependencies satisfied")
+            raise dnf.exceptions.Error(err)
 
     def configure(self, args):
         demands = self.cli.demands

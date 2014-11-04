@@ -70,7 +70,6 @@ class ProtectedPackages(dnf.Plugin):
             installs = installs.union(item.installs())
             removes = removes.union(item.removes())
 
-        #import pdb; pdb.set_trace()
         threatened = threatened_packages(protected, set_of_names(installs),
                                          set_of_names(removes))
         if threatened:
