@@ -39,7 +39,7 @@ t = gettext.translation('dnf-plugins-core', fallback=True)
 _ = t.ugettext
 P_ = t.ungettext
 
-logger = logging.getLogger('dnf-plugin')
+logger = logging.getLogger('dnf.plugin')
 
 
 class ArgumentParser(argparse.ArgumentParser):
