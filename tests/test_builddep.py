@@ -36,22 +36,22 @@ class MockBase(object):
 
 class BuildDepCommandTest(unittest.TestCase):
 
+    def setUp(self):
+        self.cmd = builddep.BuildDepCommand(support.CliStub(None))
+
     def test_source(self):
-        cmd = builddep.BuildDepCommand(None)
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            cmd.run((SOURCE,))
+            self.cmd.run((SOURCE,))
             self.assertEqual(base.marked,
                              ['emacs-extras', 'emacs-goodies >= 100'])
 
     @unittest.skipIf(support.PY3, "rpm.spec not available in Py3")
     def test_spec(self):
-        cmd = builddep.BuildDepCommand(None)
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            cmd.run((SPEC,))
+            self.cmd.run((SPEC,))
             self.assertEqual(base.marked,
                              ['emacs-extras', 'emacs-goodies >= 100'])
 
     def test_configure(self):
-        cmd = builddep.BuildDepCommand(support.CliStub(None))
-        cmd.configure(None)
-        self.assertTrue(cmd.cli.demands.available_repos)
+        self.cmd.configure(None)
+        self.assertTrue(self.cmd.cli.demands.available_repos)

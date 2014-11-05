@@ -80,7 +80,16 @@ class BuildDepCommand(dnf.cli.Command):
 
     def _src_deps(self, rpm_ts, src_fn):
         fd = os.open(src_fn, os.O_RDONLY)
-        h = rpm_ts.hdrFromFdno(fd)
+        if self.cli.nogpgcheck:
+            rpm_ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES)
+        try:
+            h = rpm_ts.hdrFromFdno(fd)
+        except rpm.error as e:
+            if e[0] == 'public key not available':
+                logger.error("Error: public key not available, add "
+                             "'--nogpgcheck' option to ignore package sign")
+                return
+            raise
         os.close(fd)
         ds = h.dsFromHeader('requirename')
         done = True
