@@ -1,6 +1,7 @@
 # coding=utf-8
 # generate_completion_cache.py - generate cache for dnf bash completion
 # Copyright © 2013 Elad Alfassa <elad@fedoraproject.org>
+# Copyright (C) 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com>
 
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
@@ -20,6 +21,7 @@ from dnfpluginscore import logger
 
 import dnf
 import os.path
+import sqlite3
 
 
 class BashCompletionCache(dnf.Plugin):
@@ -27,10 +29,10 @@ class BashCompletionCache(dnf.Plugin):
 
     def __init__(self, base, cli):
         self.base = base
-        self.available_cache_file = '/var/cache/dnf/available.cache'
-        self.installed_cache_file = '/var/cache/dnf/installed.cache'
+        self.cache_file = "/var/cache/dnf/packages.db"
 
-    def _out(self, msg):
+    @staticmethod
+    def _out(msg):
         logger.debug('Completion plugin: %s', msg)
 
     def sack(self):
@@ -45,23 +47,42 @@ class BashCompletionCache(dnf.Plugin):
                 fresh = True
                 break
 
-        if not os.path.exists(self.available_cache_file) or fresh:
+        if not os.path.exists(self.cache_file) or fresh:
             try:
-                with open(self.available_cache_file, 'w') as cache_file:
+                with sqlite3.connect(self.cache_file) as conn:
                     self._out('Generating completion cache...')
-                    available_packages = self.base.sack.query().available()
-                    for package in available_packages:
-                        cache_file.write(package.name + '\n')
-            except Exception as e:
+                    cur = conn.cursor()
+                    cur.execute(
+                        "create table if not exists available (pkg TEXT)")
+                    cur.execute(
+                        "create unique index if not exists "
+                        "pkg_available ON available(pkg)")
+                    cur.execute("delete from available")
+                    avail_pkgs = self.base.sack.query().available()
+                    avail_pkgs_insert = [["{}.{}".format(x.name, x.arch)]
+                        for x in avail_pkgs if x.arch != "src"]
+                    cur.executemany("insert or ignore into available values (?)",
+                                    avail_pkgs_insert)
+                    conn.commit()
+            except sqlite3.OperationalError as e:
                 self._out("Can't write completion cache: %s" % ucd(e))
 
     def transaction(self):
         ''' Generate cache of installed packages '''
         try:
-            with open(self.installed_cache_file, 'w') as cache_file:
-                installed_packages = self.base.sack.query().installed()
+            with sqlite3.connect(self.cache_file) as conn:
                 self._out('Generating completion cache...')
-                for package in installed_packages:
-                    cache_file.write(package.name + '\n')
-        except Exception as e:
+                cur = conn.cursor()
+                cur.execute("create table if not exists installed (pkg TEXT)")
+                cur.execute(
+                    "create unique index if not exists "
+                    "pkg_installed ON installed(pkg)")
+                cur.execute("delete from installed")
+                inst_pkgs = self.base.sack.query().installed()
+                inst_pkgs_insert = [["{}.{}".format(x.name, x.arch)]
+                    for x in inst_pkgs if x.arch != "src"]
+                cur.executemany("insert or ignore into installed values (?)",
+                                inst_pkgs_insert)
+                conn.commit()
+        except sqlite3.OperationalError as e:
             self._out("Can't write completion cache: %s" % ucd(e))
