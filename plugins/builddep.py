@@ -1,7 +1,7 @@
 # builddep.py
 # Install all the deps needed to build this package.
 #
-# Copyright (C) 2013  Red Hat, Inc.
+# Copyright (C) 2013-2015  Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
@@ -62,8 +62,9 @@ class sink_rpm_logging(object):
 class BuildDepCommand(dnf.cli.Command):
 
     aliases = ('builddep',)
-    summary = _("Install build dependencies for .src.rpm or .spec file")
-    usage = _("[PACKAGE.src.rpm|PACKAGE.spec]")
+    msg = "Install build dependencies for .src.rpm, .nosrc.rpm or .spec file"
+    summary = _(msg)
+    usage = _("[PACKAGE.src.rpm|PACKAGE.nosrc.rpm|PACKAGE.spec]")
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
@@ -129,7 +130,7 @@ class BuildDepCommand(dnf.cli.Command):
     def run(self, args):
         rpm_ts = rpm.TransactionSet()
         for fn in args:
-            if fn.endswith('.src.rpm'):
+            if fn.endswith('.src.rpm') or fn.endswith('.nosrc.rpm'):
                 self._src_deps(rpm_ts, fn)
             else:
                 self._spec_deps(fn)

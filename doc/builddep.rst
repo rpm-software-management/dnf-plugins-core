@@ -2,7 +2,7 @@
 DNF builddep Plugin
 ===================
 
-Install whatever is needed to build the given .src.rpm or .spec file.
+Install whatever is needed to build the given .src.rpm, .nosrc.rpm or .spec file.
 
 --------
 Synopsis
@@ -15,7 +15,7 @@ Arguments
 ---------
 
 ``<file>``
-    The path to .src.rpm or .spec file, to read the needed build requirements from.
+    The path to .src.rpm, .nosrc.rpm or .spec file, to read the needed build requirements from.
 
 --------
 Examples
