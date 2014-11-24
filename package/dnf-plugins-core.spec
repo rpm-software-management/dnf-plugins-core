@@ -1,5 +1,5 @@
 %global gitrev d8e8044
-%global dnf_version 0.5.3
+%global dnf_version 0.6.3
 
 Name:		dnf-plugins-core
 Version:	0.1.3
@@ -14,13 +14,13 @@ Source0:	dnf-plugins-core-%{gitrev}.tar.xz
 
 BuildArch:	noarch
 BuildRequires:	cmake
-BuildRequires:	dnf >= %{dnf_version}
+BuildRequires:	dnf = %{dnf_version}
 BuildRequires:	gettext
 BuildRequires:	pykickstart
 BuildRequires:	python-nose
 BuildRequires:	python-sphinx
 BuildRequires:	python2-devel
-Requires:	dnf >= %{dnf_version}
+Requires:	dnf = %{dnf_version}
 Requires:	pykickstart
 Requires:	python-requests
 
@@ -34,14 +34,16 @@ protected_packages passive plugins.
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 BuildRequires:	python3-devel
-BuildRequires:	python3-dnf >= %{dnf_version}
+BuildRequires:	python3-dnf = %{dnf_version}
 BuildRequires:	python3-nose
 BuildRequires:	python3-sphinx
-Requires:	python3-dnf >= %{dnf_version}
+Requires:	python3-dnf = %{dnf_version}
 
 %description -n python3-dnf-plugins-core
-Core Plugins for DNF, Python 3 version.
-
+Core Plugins for DNF, Python 3 version. This package enhance DNF with builddep, copr,
+debuginfo-install, download, kickstart, needs-restarting, repoquery and
+reposync commands. Additionally provides generate_completion_cache, noroot and
+protected_packages passive plugins.
 
 %prep
 %setup -q -n dnf-plugins-core
@@ -74,6 +76,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %files -f %{name}.lang
 %doc AUTHORS COPYING README.rst
 %dir %{_sysconfdir}/dnf/protected.d
+%ghost %{_var}/cache/dnf/packages.db
 %{python_sitelib}/dnf-plugins/*
 %{python_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
@@ -81,6 +84,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %files -n python3-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
 %dir %{_sysconfdir}/dnf/protected.d
+%ghost %{_var}/cache/dnf/packages.db
 %{python3_sitelib}/dnf-plugins/*
 %{python3_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
