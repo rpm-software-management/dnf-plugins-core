@@ -31,7 +31,8 @@ class BashCompletionCache(dnf.Plugin):
         self.base = base
         self.cache_file = "/var/cache/dnf/packages.db"
 
-    def _out(self, msg):
+    @staticmethod
+    def _out(msg):
         logger.debug('Completion plugin: %s', msg)
 
     def sack(self):
@@ -51,14 +52,19 @@ class BashCompletionCache(dnf.Plugin):
                 with sqlite3.connect(self.cache_file) as conn:
                     self._out('Generating completion cache...')
                     cur = conn.cursor()
-                    cur.execute("create table if not exists available (pkg TEXT)")
-                    cur.execute("create unique index if not exists pkg_available ON available(pkg)")
+                    cur.execute(
+                        "create table if not exists available (pkg TEXT)")
+                    cur.execute(
+                        "create unique index if not exists"
+                        "pkg_available ON available(pkg)")
                     cur.execute("delete from available")
-                    available_packages = self.base.sack.query().available()
-                    available_packages_insert = [["{}.{}".format(x.name, x.arch)] for x in available_packages if x.arch != "src"]
-                    cur.executemany("insert or ignore into available values (?)", available_packages_insert)
+                    avail_pkgs = self.base.sack.query().available()
+                    avail_pkgs_insert = [["{}.{}".format(x.name, x.arch)]
+                        for x in avail_pkgs if x.arch != "src"]
+                    cur.executemany("insert or ignore into available values (?)",
+                                    avail_pkgs_insert)
                     conn.commit()
-            except Exception as e:
+            except sqlite3.OperationalError as e:
                 self._out("Can't write completion cache: %s" % ucd(e))
 
     def transaction(self):
@@ -68,11 +74,15 @@ class BashCompletionCache(dnf.Plugin):
                 self._out('Generating completion cache...')
                 cur = conn.cursor()
                 cur.execute("create table if not exists installed (pkg TEXT)")
-                cur.execute("create unique index if not exists pkg_installed ON installed(pkg)")
+                cur.execute(
+                    "create unique index if not exists"
+                    "pkg_installed ON installed(pkg)")
                 cur.execute("delete from installed")
-                installed_packages = self.base.sack.query().installed()
-                installed_packages_insert = [["{}.{}".format(x.name, x.arch)] for x in installed_packages if x.arch != "src"]
-                cur.executemany("insert or ignore into installed values (?)", installed_packages_insert)
+                inst_pkgs = self.base.sack.query().installed()
+                inst_pkgs_insert = [["{}.{}".format(x.name, x.arch)]
+                    for x in inst_pkgs if x.arch != "src"]
+                cur.executemany("insert or ignore into installed values (?)",
+                                inst_pkgs_insert)
                 conn.commit()
-        except Exception as e:
+        except sqlite3.OperationalError as e:
             self._out("Can't write completion cache: %s" % ucd(e))
