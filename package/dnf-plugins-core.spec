@@ -1,4 +1,4 @@
-%global gitrev d8e8044
+%global gitrev c8940d0
 %global dnf_version 0.6.3
 
 Name:		dnf-plugins-core
@@ -90,6 +90,21 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Fri Dec 5 2014 Jan Silhan <jsilhan@redhat.com> - 0.1.4-1
+- revert of commit 80ae3f4 (Jan Silhan)
+- transifex update (Jan Silhan)
+- spec: binded to current dnf version (Jan Silhan)
+- generate_completion_cache: use sqlite instead of text files (Igor Gnatenko)
+- logging: renamed log file (Related:RhBug:1074715) (Jan Silhan)
+- Add reposync. (RhBug:1139738) (Ales Kozumplik)
+- download: fix traceback if rpm package has no defined sourcerpm (RhBug: 1144003) (Tim Lauridsen)
+- lint: ignore warnings of a test accessing protected attribute. (Ales Kozumplik)
+- repoquery lint: logger is not used. (Ales Kozumplik)
+- repoquery: support querying of weak deps. (Ales Kozumplik)
+- needs_restarting: fix typo (Miroslav Suchý)
+- copr: migrate copr plugin form urlgrabber to python-request (Miroslav Suchý)
+- Add needs-restarting command. (Ales Kozumplik)
 
 * Thu Sep 4 2014 Jan Silhan <jsilhan@redhat.com> - 0.1.3-1
 - repoquery: output times in UTC. (Ales Kozumplik)
