@@ -42,5 +42,13 @@
     [
         1123886, 
         "[abrt] dnf: i18n.py:138:_exact_width_char:TypeError: must be unicode, not str"
+    ], 
+    [
+        1139738, 
+        "[rfe] reposync"
+    ], 
+    [
+        1144003, 
+        "[abrt] dnf: download.py:181:_get_query_source:TypeError: 'NoneType' object has no attribute '__getitem__'"
     ]
 ]

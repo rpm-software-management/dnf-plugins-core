@@ -22,6 +22,17 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.4 Release Notes
+=====================
+
+Provides :doc:`needs_restarting` and :doc:`reposync`.
+
+Bugs fixed in 0.1.4:
+
+* :rhbug:`1139738`
+* :rhbug:`1144003`
+
+=====================
  0.1.3 Release Notes
 =====================
 
