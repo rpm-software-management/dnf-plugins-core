@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 18:57+0200\n"
+"POT-Creation-Date: 2014-12-05 15:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,14 @@ msgstr ""
 
 #: ../plugins/debuginfo-install.py:180
 msgid "enabling {}"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:93
+msgid "only consider this user's processes"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:184
+msgid "determine updated binaries that need restarting"
 msgstr ""
 
 #: ../plugins/builddep.py:65
@@ -75,7 +83,12 @@ msgstr ""
 msgid "Error in resolve"
 msgstr ""
 
-#: ../plugins/download.py:166
+#: ../plugins/download.py:148
+#, python-format
+msgid "No source rpm definded for %s"
+msgstr ""
+
+#: ../plugins/download.py:169
 #, python-format
 msgid "enabled %s repository"
 msgstr ""
@@ -125,71 +138,107 @@ msgstr ""
 msgid "Nothing to do."
 msgstr ""
 
-#: ../plugins/repoquery.py:67
+#: ../plugins/repoquery.py:75
 msgid "the key to search for"
 msgstr ""
 
-#: ../plugins/repoquery.py:69
+#: ../plugins/repoquery.py:77
 msgid "show only results from this REPO"
 msgstr ""
 
-#: ../plugins/repoquery.py:71
+#: ../plugins/repoquery.py:79
 msgid "show only results from this ARCH"
 msgstr ""
 
-#: ../plugins/repoquery.py:73
+#: ../plugins/repoquery.py:81
 msgid "show only results there provides REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:75
+#: ../plugins/repoquery.py:83
 msgid "show only results there requires REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:77
+#: ../plugins/repoquery.py:85
 msgid "show available tags to use with --queryformat"
 msgstr ""
 
-#: ../plugins/repoquery.py:83
+#: ../plugins/repoquery.py:91
+msgid "show detailed information about the package"
+msgstr ""
+
+#: ../plugins/repoquery.py:94
 msgid "format for displaying found packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:111
+#: ../plugins/repoquery.py:97
+msgid "Display capabilities that the package conflicts with."
+msgstr ""
+
+#: ../plugins/repoquery.py:98
+msgid "Display capabilities that the package can enhance."
+msgstr ""
+
+#: ../plugins/repoquery.py:99
+msgid "Display capabilities that the package obsoletes."
+msgstr ""
+
+#: ../plugins/repoquery.py:100
+msgid "Display capabilities provided by the package."
+msgstr ""
+
+#: ../plugins/repoquery.py:101
+msgid "Display capabilities that the package recommends."
+msgstr ""
+
+#: ../plugins/repoquery.py:102
+msgid "Display capabilities that the package depends on."
+msgstr ""
+
+#: ../plugins/repoquery.py:103
+msgid "Display capabilities that the package suggests."
+msgstr ""
+
+#: ../plugins/repoquery.py:104
+msgid "Display capabilities that the package can supplement."
+msgstr ""
+
+#: ../plugins/repoquery.py:150
 msgid "search for packages matching keyword"
 msgstr ""
 
-#: ../plugins/repoquery.py:112
+#: ../plugins/repoquery.py:151
 msgid "[OPTIONS] [KEYWORDS]"
 msgstr ""
 
-#: ../plugins/repoquery.py:146
+#: ../plugins/repoquery.py:185
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
 msgstr ""
 
-#: ../plugins/noroot.py:28 ../plugins/copr.py:192
+#: ../plugins/noroot.py:28 ../plugins/copr.py:193
 msgid "This command has to be run under the root user."
 msgstr ""
 
-#: ../plugins/copr.py:34
+#: ../plugins/copr.py:33
 msgid "yes"
 msgstr ""
 
-#: ../plugins/copr.py:34
+#: ../plugins/copr.py:33
 msgid "y"
 msgstr ""
 
-#: ../plugins/copr.py:35
+#: ../plugins/copr.py:34
 msgid "no"
 msgstr ""
 
-#: ../plugins/copr.py:35
+#: ../plugins/copr.py:34
 msgid "n"
 msgstr ""
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "Interact with Copr repositories."
 msgstr ""
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -206,23 +255,23 @@ msgid ""
 "    "
 msgstr ""
 
-#: ../plugins/copr.py:83 ../plugins/copr.py:315
+#: ../plugins/copr.py:82 ../plugins/copr.py:323
 msgid "Error: "
 msgstr ""
 
-#: ../plugins/copr.py:84 ../plugins/copr.py:88
+#: ../plugins/copr.py:83 ../plugins/copr.py:87
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 
-#: ../plugins/copr.py:113
+#: ../plugins/copr.py:112
 msgid "Repository successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:117
+#: ../plugins/copr.py:116
 msgid "Repository successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:128
+#: ../plugins/copr.py:127
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 
@@ -238,48 +287,60 @@ msgstr ""
 msgid "Can't parse search for '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:152
+#: ../plugins/copr.py:153
 msgid "Matched: {}"
 msgstr ""
 
-#: ../plugins/copr.py:159
+#: ../plugins/copr.py:160
 msgid "No description given."
 msgstr ""
 
-#: ../plugins/copr.py:165 ../plugins/copr.py:335
+#: ../plugins/copr.py:166 ../plugins/copr.py:343
 msgid "Unknown subcommand {}."
 msgstr ""
 
-#: ../plugins/copr.py:175 ../plugins/copr.py:185
+#: ../plugins/copr.py:176 ../plugins/copr.py:186
 msgid "Safe and good answer. Exiting."
 msgstr ""
 
-#: ../plugins/copr.py:247 ../plugins/copr.py:286
+#: ../plugins/copr.py:250 ../plugins/copr.py:294
 msgid "Unknown response from server."
 msgstr ""
 
-#: ../plugins/copr.py:251
+#: ../plugins/copr.py:254
 msgid ""
 "Something went wrong:\n"
 " {0}\n"
 msgstr ""
 
-#: ../plugins/copr.py:272
+#: ../plugins/copr.py:280
 msgid "Interact with Playground repository."
 msgstr ""
 
-#: ../plugins/copr.py:316 ../plugins/copr.py:320
+#: ../plugins/copr.py:324 ../plugins/copr.py:328
 msgid "exactly one parameter to playground command are required"
 msgstr ""
 
-#: ../plugins/copr.py:325
+#: ../plugins/copr.py:333
 msgid "Playground repositories successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:328
+#: ../plugins/copr.py:336
 msgid "Playground repositories successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:332
+#: ../plugins/copr.py:340
 msgid "Playground repositories successfully updated."
+msgstr ""
+
+#: ../plugins/reposync.py:36
+msgid "where to store downloaded repositories "
+msgstr ""
+
+#: ../plugins/reposync.py:38
+msgid "repository to download"
+msgstr ""
+
+#: ../plugins/reposync.py:59
+msgid "download all packages from remote repo"
 msgstr ""
