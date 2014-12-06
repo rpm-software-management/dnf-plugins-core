@@ -41,6 +41,11 @@ Description :
 A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A
 desc.A desc.A desc.A desc.A desc.A desc.A desc."""
 
+EXPECTED_FILELIST_FORMAT = """\
+/tmp/foobar
+/var/foobar\
+"""
+
 
 class PkgStub(object):
     def __init__(self):
@@ -57,6 +62,7 @@ class PkgStub(object):
         self.summary = 'it.'
         self.url = 'foorl.net'
         self.version = '1.0.1'
+        self.files = ['/tmp/foobar', '/var/foobar']
 
 
 class ArgParseTest(unittest.TestCase):
@@ -80,6 +86,13 @@ class InfoFormatTest(unittest.TestCase):
     def test_info(self):
         pkg = repoquery.PackageWrapper(PkgStub())
         self.assertEqual(repoquery.info_format(pkg), EXPECTED_INFO_FORMAT)
+
+
+class FilelistFormatTest(unittest.TestCase):
+    def test_filelist(self):
+        pkg = repoquery.PackageWrapper(PkgStub())
+        self.assertEqual(repoquery.filelist_format(pkg),
+                         EXPECTED_FILELIST_FORMAT)
 
 
 class OutputTest(unittest.TestCase):

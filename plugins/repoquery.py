@@ -60,6 +60,8 @@ description, summary, license, url
 def build_format_fn(opts):
     if opts.queryinfo:
         return info_format
+    elif opts.queryfilelist:
+        return filelist_format
     else:
         return rpm2py_format(opts.queryformat).format
 
@@ -67,6 +69,8 @@ def build_format_fn(opts):
 def info_format(pkg):
     return QUERY_INFO.format(pkg)
 
+def filelist_format(pkg):
+    return "\n".join(pkg.files)
 
 def parse_arguments(args):
     # Setup ArgumentParser to handle util
@@ -89,6 +93,9 @@ def parse_arguments(args):
     outform.add_argument('-i', "--info", dest='queryinfo',
                          default=False, action='store_true',
                          help=_('show detailed information about the package'))
+    outform.add_argument('-l', "--list", dest='queryfilelist',
+                         default=False, action='store_true',
+                         help=_('show list of files in the package'))
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
