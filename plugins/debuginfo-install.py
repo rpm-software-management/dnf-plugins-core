@@ -69,61 +69,66 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 self._di_install(pkg, None)
 
     @staticmethod
-    def _pkgname(package):
+    def _pkgname_src(package):
+        """get source package name without debuginfo suffix, e.g. krb5"""
         return package.sourcerpm.replace("-{}.src.rpm".format(package.evr), "")
 
+    @classmethod
+    def _pkgname_dbg(cls, package):
+        """get source package name with debuginfo suffix, e.g. krb5-debuginfo"""
+        srcname = cls._pkgname_src(package)
+        assert "-debuginfo" not in srcname
+        return "{}-debuginfo".format(srcname)
+
     def _is_available(self, package, match_evra):
-        pkgname = self._pkgname(package)
-        if "-debuginfo" in package.name:
-            name = pkgname
-        else:
-            name = "{}-debuginfo".format(pkgname)
+        dbgname = self._pkgname_dbg(package)
         if match_evra:
             avail = self.packages_available.filter(
-                name="{}".format(name),
+                name="{}".format(dbgname),
                 epoch=int(package.epoch),
                 version=str(package.version),
                 release=str(package.release),
                 arch=str(package.arch))
         else:
             avail = self.packages_available.filter(
-                name="{}".format(name),
+                name="{}".format(dbgname),
                 arch=str(package.arch))
         if len(avail) != 0:
+            srcname = self._pkgname_src(package)
             if match_evra:
                 return self.packages_available.filter(
-                    name="{}".format(name.replace("-debuginfo", "")),
+                    name="{}".format(srcname),
                     epoch=int(package.epoch),
                     version=str(package.version),
                     release=str(package.release),
                     arch=str(package.arch))
             else:
                 return self.packages_available.filter(
-                    name="{}".format(name.replace("-debuginfo", "")),
+                    name="{}".format(srcname),
                     arch=str(package.arch))
         else:
             return False
 
     def _di_install(self, package, require):
-        pkgname = self._pkgname(package)
-        if pkgname in self.done \
+        srcname = self._pkgname_src(package)
+        if srcname in self.done \
                 or require in self.done \
                 or package in self.rejected:
             return
         if self._is_available(package, True):
-            self.done.append(pkgname)
+            self.done.append(srcname)
             if require:
                 self.done.append(require)
-            if "-debuginfo" in pkgname:
+            if "-debuginfo" in srcname:
                 di = "{0}-{1}:{2}-{3}.{4}".format(
-                    pkgname,
+                    srcname,
                     package.epoch,
                     package.version,
                     package.release,
                     package.arch)
             else:
                 di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(
-                    pkgname,
+                    srcname,
                     package.epoch,
                     package.version,
                     package.release,
@@ -131,9 +136,9 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             self.base.install(di)
         else:
             if self._is_available(package, False):
-                di = "{0}-debuginfo.{1}".format(pkgname, package.arch)
+                di = "{0}-debuginfo.{1}".format(srcname, package.arch)
                 self.base.install(di)
-                self.done.append(pkgname)
+                self.done.append(srcname)
                 if require:
                     self.done.append(require)
             else:
