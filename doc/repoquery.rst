@@ -68,6 +68,9 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``-i, --info``
     Show detailed information about the package.
 
+``-l, --list``
+    Show list of files in the package.
+
 ``--obsoletes``
     Display capabilities that the package obsoletes. Same as ``--qf "%{obsoletes}``.
 
