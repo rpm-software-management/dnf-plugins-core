@@ -111,6 +111,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
 
     def _di_install(self, package, require):
         srcname = self._pkgname_src(package)
+        dbgname = self._pkgname_dbg(package)
         if srcname in self.done \
                 or require in self.done \
                 or package in self.rejected:
@@ -119,24 +120,16 @@ class DebuginfoInstallCommand(dnf.cli.Command):
             self.done.append(srcname)
             if require:
                 self.done.append(require)
-            if "-debuginfo" in srcname:
-                di = "{0}-{1}:{2}-{3}.{4}".format(
-                    srcname,
-                    package.epoch,
-                    package.version,
-                    package.release,
-                    package.arch)
-            else:
-                di = "{0}-debuginfo-{1}:{2}-{3}.{4}".format(
-                    srcname,
-                    package.epoch,
-                    package.version,
-                    package.release,
-                    package.arch)
+            di = "{0}-{1}:{2}-{3}.{4}".format(
+                dbgname,
+                package.epoch,
+                package.version,
+                package.release,
+                package.arch)
             self.base.install(di)
         else:
             if self._is_available(package, False):
-                di = "{0}-debuginfo.{1}".format(srcname, package.arch)
+                di = "{0}.{1}".format(dbgname, package.arch)
                 self.base.install(di)
                 self.done.append(srcname)
                 if require:
