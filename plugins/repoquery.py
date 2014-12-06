@@ -24,6 +24,7 @@ from dnfpluginscore import _
 import dnf
 import dnf.cli
 import dnf.exceptions
+import dnf.subject
 import dnfpluginscore
 import functools
 import hawkey
@@ -193,13 +194,13 @@ class RepoQueryCommand(dnf.cli.Command):
             print(QUERY_TAGS)
             return
 
-        q = self.base.sack.query().available()
         if opts.key:
-            if set(opts.key) & set('*[?'):  # is pattern ?
-                fdict = {'name__glob': opts.key}
-            else:  # substring
-                fdict = {'name': opts.key}
-            q = q.filter(hawkey.ICASE, **fdict)
+            q = dnf.subject.Subject(opts.key, ignore_case=True).get_best_query(
+                self.base.sack, with_provides=False)
+        else:
+            q = self.base.sack.query()
+        # do not show packages from @System repo
+        q = q.available()
         if opts.repoid:
             q = q.filter(reponame=opts.repoid)
         if opts.arch:

@@ -25,7 +25,7 @@ Query package information from Yum repositories.
 Synopsis
 --------
 
-``dnf repoquery [<select-options>] [<query-options>] [<pkg-name>]``
+``dnf repoquery [<select-options>] [<query-options>] [<pkg-spec>]``
 ``dnf repoquery --querytags``
 
 -----------
@@ -38,7 +38,11 @@ Description
 Select Options
 --------------
 
-Together with ``<pkg-name>``, control what packages are displayed in the output. If ``<pkg-name>`` is given, the set of resulting packages is limited to the ones with a matching name (globbing supported), else all packages are considered.
+Together with ``<pkg-spec>``, control what packages are displayed in the output. If ``<pkg-spec>`` is given, the set of resulting packages matching the specification. All packages are considered if no ``<pkg-spec>`` is specified.
+
+``<pkg-spec>``
+    Package specification like: name[-[epoch:]version[-release]][.arch]. See
+    http://dnf.readthedocs.org/en/latest/command_ref.html#specifying-packages
 
 ``--arch <arch>``
     Limit the resulting set only to packages of arch ``<arch>``.
