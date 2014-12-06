@@ -72,13 +72,13 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     def _pkgname(package):
         return package.sourcerpm.replace("-{}.src.rpm".format(package.evr), "")
 
-    def _is_available(self, package, flag):
+    def _is_available(self, package, match_evra):
         pkgname = self._pkgname(package)
         if "-debuginfo" in package.name:
             name = pkgname
         else:
             name = "{}-debuginfo".format(pkgname)
-        if flag:
+        if match_evra:
             avail = self.packages_available.filter(
                 name="{}".format(name),
                 epoch=int(package.epoch),
@@ -90,7 +90,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 name="{}".format(name),
                 arch=str(package.arch))
         if len(avail) != 0:
-            if flag:
+            if match_evra:
                 return self.packages_available.filter(
                     name="{}".format(name.replace("-debuginfo", "")),
                     epoch=int(package.epoch),
