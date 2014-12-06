@@ -23,6 +23,7 @@ from dnfpluginscore import _, logger
 
 import dnf
 import dnf.cli
+import dnf.subject
 
 
 class DebuginfoInstall(dnf.Plugin):
@@ -62,11 +63,10 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
         self.packages_installed = self.packages.installed()
-        for pkg in args:
-            pkgs = self.packages_installed.filter(name=pkg)
-            if not pkgs:
-                pkgs = self.packages_available.filter(name=pkg)
-            for pkg in pkgs:
+
+        for pkgspec in args:
+            for pkg in dnf.subject.Subject(pkgspec).get_best_query(
+                    self.cli.base.sack):
                 self._di_install(pkg, None)
 
     @staticmethod
