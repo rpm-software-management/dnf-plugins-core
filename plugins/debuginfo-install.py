@@ -45,8 +45,8 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     summary = _('install debuginfo packages')
     usage = "[PACKAGE...]"
 
-    done = []
-    rejected = []
+    srcdone = []
+    reqdone = []
     packages = None
     packages_available = None
     packages_installed = None
@@ -67,7 +67,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         for pkgspec in args:
             for pkg in dnf.subject.Subject(pkgspec).get_best_query(
                     self.cli.base.sack):
-                self._di_install(pkg, None)
+                self._di_install(pkg)
 
     @staticmethod
     def _pkgname_src(package):
@@ -84,86 +84,53 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         assert "-debuginfo" not in srcname
         return "{}-debuginfo".format(srcname)
 
-    def _is_available(self, package, match_evra):
+    def _dbg_available(self, package, match_evra):
         dbgname = self._pkgname_dbg(package)
         if match_evra:
-            avail = self.packages_available.filter(
+            return self.packages_available.filter(
                 name="{}".format(dbgname),
                 epoch=int(package.epoch),
                 version=str(package.version),
                 release=str(package.release),
                 arch=str(package.arch))
         else:
-            avail = self.packages_available.filter(
+            return self.packages_available.filter(
                 name="{}".format(dbgname),
                 arch=str(package.arch))
-        if len(avail) != 0:
-            srcname = self._pkgname_src(package)
-            if match_evra:
-                return self.packages_available.filter(
-                    name="{}".format(srcname),
-                    epoch=int(package.epoch),
-                    version=str(package.version),
-                    release=str(package.release),
-                    arch=str(package.arch))
-            else:
-                return self.packages_available.filter(
-                    name="{}".format(srcname),
-                    arch=str(package.arch))
-        else:
-            return False
 
-    def _di_install(self, package, require):
+    def _di_install(self, package):
         srcname = self._pkgname_src(package)
         dbgname = self._pkgname_dbg(package)
-        if srcname in self.done \
-                or require in self.done \
-                or package in self.rejected:
-            return
-        if self._is_available(package, True):
-            self.done.append(srcname)
-            if require:
-                self.done.append(require)
-            di = "{0}-{1}:{2}-{3}.{4}".format(
-                dbgname,
-                package.epoch,
-                package.version,
-                package.release,
-                package.arch)
-            self.base.install(di)
-        else:
-            if self._is_available(package, False):
+        if not srcname in self.srcdone:
+            if self._dbg_available(package, True):
+                di = "{0}-{1}:{2}-{3}.{4}".format(
+                    dbgname,
+                    package.epoch,
+                    package.version,
+                    package.release,
+                    package.arch)
+                self.base.install(di)
+            elif self._dbg_available(package, False):
                 di = "{0}.{1}".format(dbgname, package.arch)
                 self.base.install(di)
-                self.done.append(srcname)
-                if require:
-                    self.done.append(require)
-            else:
-                pass
+            self.srcdone.append(srcname)
+
+        if package.name in self.reqdone:
+            return
+        self.reqdone.append(package.name)
         for req in package.requires:
             if str(req).startswith("rpmlib("):
                 continue
-            elif str(req) in self.done:
+            elif str(req) in self.reqdone:
                 continue
             elif str(req).find(".so") != -1:
                 provides = self.packages_available.filter(provides=req)
                 for p in provides:
-                    if str(p.name) in self.done or p in self.rejected:
+                    if p.name in self.reqdone:
                         continue
                     pkgs = self.packages_installed.filter(name=p.name)
-                    if len(pkgs) != 0:
-                        pkgs_avail = self._is_available(pkgs[0], True)
-                        if not pkgs_avail:
-                            for x in pkgs:
-                                logger.debug(
-_("Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}").format(
-    x.name, x.epoch, x.version, x.release, x.arch))
-                                self.rejected.append(x)
-                            pkgs = []
-                        else:
-                            pkgs = pkgs_avail
-                    for pkg in pkgs:
-                        self._di_install(pkg, str(req))
+                    for dep in pkgs:
+                        self._di_install(dep)
 
     def _enable_debug_repos(self):
         repos = {}
