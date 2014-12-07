@@ -55,7 +55,7 @@ class BashCompletionCache(dnf.Plugin):
                     cur.execute(
                         "create table if not exists available (pkg TEXT)")
                     cur.execute(
-                        "create unique index if not exists"
+                        "create unique index if not exists "
                         "pkg_available ON available(pkg)")
                     cur.execute("delete from available")
                     avail_pkgs = self.base.sack.query().available()
@@ -75,7 +75,7 @@ class BashCompletionCache(dnf.Plugin):
                 cur = conn.cursor()
                 cur.execute("create table if not exists installed (pkg TEXT)")
                 cur.execute(
-                    "create unique index if not exists"
+                    "create unique index if not exists "
                     "pkg_installed ON installed(pkg)")
                 cur.execute("delete from installed")
                 inst_pkgs = self.base.sack.query().installed()
