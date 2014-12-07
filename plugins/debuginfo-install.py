@@ -72,7 +72,10 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     @staticmethod
     def _pkgname_src(package):
         """get source package name without debuginfo suffix, e.g. krb5"""
-        return package.sourcerpm.replace("-{}.src.rpm".format(package.evr), "")
+        name = package.sourcerpm.replace("-{}.src.rpm".format(package.evr), "")
+        # source package names usually do not contain epoch, handle both cases
+        return name.replace("-{0.version}-{0.release}.src.rpm".format(package),
+                            "")
 
     @classmethod
     def _pkgname_dbg(cls, package):
