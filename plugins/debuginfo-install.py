@@ -2,6 +2,7 @@
 # Install the debuginfo of packages and their dependencies to debug this package.
 #
 # Copyright (C) 2014 Igor Gnatenko
+# Copyright (C) 2014 Red Hat
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
