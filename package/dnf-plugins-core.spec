@@ -85,7 +85,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %doc AUTHORS COPYING README.rst
 %dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
+%exclude %{python3_sitelib}/dnf-plugins/__pycache__/
 %{python3_sitelib}/dnf-plugins/*
+%{python3_sitelib}/dnf-plugins/__pycache__/*
 %{python3_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
 
