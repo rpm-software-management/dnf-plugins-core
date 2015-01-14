@@ -24,6 +24,7 @@ from dnfpluginscore import _, logger
 import dnf
 import dnf.cli
 import dnf.exceptions
+import dnf.i18n
 import dnf.subject
 import dnfpluginscore
 import functools
@@ -88,7 +89,7 @@ class DownloadCommand(dnf.cli.Command):
         if self.opts.destdir:
             dest = self.opts.destdir
         else:
-            dest = os.getcwd()
+            dest = dnf.i18n.ucd(os.getcwd())
 
         move = functools.partial(self._move_package, dest)
         map(move, locations)
