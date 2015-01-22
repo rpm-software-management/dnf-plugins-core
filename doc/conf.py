@@ -242,6 +242,8 @@ AUTHORS=[u'See AUTHORS in your Core DNF Plugins distribution']
 man_pages = [
     ('builddep', 'dnf.plugin.builddep', u'DNF builddep Plugin',
      AUTHORS, 8),
+    ('config_manager', 'dnf.plugin.config_manager',
+     u'DNF config-manager Plugin', AUTHORS, 8),
     ('copr', 'dnf.plugin.copr', u'DNF copr Plugin',
      AUTHORS, 8),
     ('debuginfo-install', 'dnf.plugin.debuginfo-install',

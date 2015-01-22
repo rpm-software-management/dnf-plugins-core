@@ -1,5 +1,6 @@
 INSTALL (FILES builddep.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES debuginfo-install.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+INSTALL (FILES config_manager.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES copr.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES download.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES generate_completion_cache.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)

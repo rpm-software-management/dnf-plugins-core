@@ -25,8 +25,8 @@ Requires:	pykickstart
 Requires:	python-requests
 
 %description
-Core Plugins for DNF. This package enhance DNF with builddep, copr,
-debuginfo-install, download, kickstart, needs-restarting, repoquery and
+Core Plugins for DNF. This package enhance DNF with builddep, config-manager,
+copr, debuginfo-install, download, kickstart, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
 
@@ -40,10 +40,10 @@ BuildRequires:	python3-sphinx
 Requires:	python3-dnf = %{dnf_version}
 
 %description -n python3-dnf-plugins-core
-Core Plugins for DNF, Python 3 version. This package enhance DNF with builddep, copr,
-debuginfo-install, download, kickstart, needs-restarting, repoquery and
-reposync commands. Additionally provides generate_completion_cache, noroot and
-protected_packages passive plugins.
+Core Plugins for DNF, Python 3 version. This package enhance DNF with builddep,
+config-manager, copr, debuginfo-install, download, kickstart, needs-restarting,
+repoquery and reposync commands. Additionally provides generate_completion_cache,
+noroot and protected_packages passive plugins.
 
 %prep
 %setup -q -n dnf-plugins-core
