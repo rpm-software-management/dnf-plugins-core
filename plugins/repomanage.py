@@ -61,7 +61,7 @@ class RepoManageCommand(dnf.cli.Command):
             raise dnf.exceptions.Errror(_("Pass either --old or --new, not both!"))
 
         rpm_list = []
-        rpm_list = self._get_file_list(self.opts.path, ".rpm", rpm_list)
+        rpm_list = self._get_file_list(self.opts.path, ".rpm")
         verfile = {}
         # hold all of them - put them in (n, a) = [(e, v, r),(e1, v1, r1)]
         pkgdict = {}
@@ -161,30 +161,17 @@ class RepoManageCommand(dnf.cli.Command):
 
         return parser.parse_args(args)
 
-    @classmethod
-    def _get_file_list(cls, path, ext, filelist):
-        """
-        Return all files in path matching ext, store them in filelist,
-        recurse dirs
+    @staticmethod
+    def _get_file_list(path, ext):
+        """Return all files in path matching ext
 
         return list object
         """
-
-        try:
-            dir_list = os.listdir(path)
-        except OSError as e:
-            logger.error(_("Error accessing directory {}, {}".format(path,
-                                                                     str(e))))
-            return []
-
-        for d in dir_list:
-            tmp_path = os.path.join(path, d)
-            if os.path.isdir(tmp_path):
-                filelist = cls._get_file_list(tmp_path, ext, filelist)
-            else:
-                if os.path.splitext(d)[1].lower() == str(ext):
-                    newpath = os.path.normpath(tmp_path)
-                    filelist.append(newpath)
+        filelist = []
+        for root, dirs, files in os.walk(path):
+            for f in files:
+                if os.path.splitext(f)[1].lower() == str(ext):
+                    filelist.append(os.path.join(root, f))
 
         return filelist
 
