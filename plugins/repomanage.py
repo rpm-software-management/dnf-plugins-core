@@ -20,13 +20,16 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from dnfpluginscore import _, ArgumentParser, logger
 
 import dnf
 import dnf.cli
+import dnfpluginscore
 import os
 import rpm
 import sys
+
+_ = dnfpluginscore._
+logger = dnfpluginscore.logger
 
 class RepoManage(dnf.Plugin):
 
@@ -142,7 +145,7 @@ class RepoManageCommand(dnf.cli.Command):
     @staticmethod
     def _parse_args(args):
         alias = RepoManageCommand.aliases[0]
-        parser = ArgumentParser(alias)
+        parser = dnfpluginscore.ArgumentParser(alias)
         parser.add_argument("-o", "--old", action="store_true",
                             help=_("Print the older packages"))
         parser.add_argument("-n", "--new", action="store_true",
