@@ -26,7 +26,6 @@ import dnf.cli
 import dnfpluginscore
 import os
 import rpm
-import sys
 
 _ = dnfpluginscore._
 logger = dnfpluginscore.logger
@@ -56,11 +55,11 @@ class RepoManageCommand(dnf.cli.Command):
 
     def configure(self, args):
         self.opts = self._parse_args(args)
-        if self.opts.new and self.opts.old:
-            logger.error(_("Error: Pass either --old or --new, not both!"))
-            sys.exit(1)
 
     def run(self, _):
+        if self.opts.new and self.opts.old:
+            raise dnf.exceptions.Errror(_("Pass either --old or --new, not both!"))
+
         rpm_list = []
         rpm_list = self._get_file_list(self.opts.path, ".rpm", rpm_list)
         verfile = {}
@@ -70,8 +69,8 @@ class RepoManageCommand(dnf.cli.Command):
         keepnum = int(self.opts.keep)*(-1) # the number of items to keep
 
         if len(rpm_list) == 0:
-            logger.error(_("No files to process"))
-            sys.exit(1)
+            raise dnf.exceptions.Error(_("No files to process"))
+
         ts = rpm.TransactionSet()
         if self.opts.nocheck:
             ts.setVSFlags(~(rpm._RPMVSF_NOPAYLOAD))
