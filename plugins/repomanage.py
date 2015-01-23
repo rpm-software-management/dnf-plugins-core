@@ -171,7 +171,6 @@ class RepoManageCommand(dnf.cli.Command):
         return list object
         """
 
-        extlen = len(ext)
         try:
             dir_list = os.listdir(path)
         except OSError as e:
@@ -184,7 +183,7 @@ class RepoManageCommand(dnf.cli.Command):
             if os.path.isdir(tmp_path):
                 filelist = cls._get_file_list(tmp_path, ext, filelist)
             else:
-                if d[-extlen:].lower() == str(ext):
+                if os.path.splitext(d)[1].lower() == str(ext):
                     newpath = os.path.normpath(tmp_path)
                     filelist.append(newpath)
 
