@@ -34,6 +34,7 @@ This documents core plugins of DNF:
    needs_restarting
    noroot
    protected_packages
+   repomanage
    repoquery
    reposync
 
