@@ -28,6 +28,7 @@ class BashCompletionCache(dnf.Plugin):
     name = 'generate_completion_cache'
 
     def __init__(self, base, cli):
+        super(BashCompletionCache, self).__init__(base, cli)
         self.base = base
         self.cache_file = "/var/cache/dnf/packages.db"
 
