@@ -51,6 +51,11 @@ class DownloadCommand(dnf.cli.Command):
     summary = _('Download package to current directory')
     usage = _('PACKAGE...')
 
+    def __init__(self, cli):
+        super(DownloadCommand, self).__init__(cli)
+        self.opts = None
+        self.parser = None
+
     def configure(self, args):
         # setup sack and populate it with enabled repos
         demands = self.cli.demands
