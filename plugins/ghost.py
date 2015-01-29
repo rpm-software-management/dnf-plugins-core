@@ -37,7 +37,8 @@ class Ghost(dnf.Plugin):
         else:
             self._out('loaded (with CLI)')
 
-    def _out(self, msg):
+    @staticmethod
+    def _out(msg):
         logger.debug('Ghost plugin: %s', msg)
 
     def config(self):
