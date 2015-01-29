@@ -132,7 +132,7 @@ Do you want to continue? [y/N]: """)
             i = 0
             while i < len(json_parse["repos"]):
                 msg = "{0}/{1} : ".format(project_name,
-                      json_parse["repos"][i]["name"])
+                                          json_parse["repos"][i]["name"])
                 desc = json_parse["repos"][i]["description"]
                 if not desc:
                     desc = _("No description given")
@@ -294,7 +294,7 @@ Do you want to continue? [y/N]: """)
             raise dnf.cli.CliError(_("Unknown response from server."))
         for repo in output["repos"]:
             project_name = "{0}/{1}".format(repo["username"],
-                repo["coprname"])
+                                            repo["coprname"])
             repo_filename = "/etc/yum.repos.d/_playground_{}.repo" \
                     .format(project_name.replace("/", "-"))
             try:
