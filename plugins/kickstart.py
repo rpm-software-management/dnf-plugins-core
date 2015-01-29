@@ -123,7 +123,7 @@ class MaskableKickstartParser(pykickstart.parser.KickstartParser):
     def mask_all(self, section_exceptions=()):
         """Ignore all sections except the given sections."""
         null_class = pykickstart.sections.NullSection
-        for section_open, _section in self._sections.items():
+        for section_open, _ in self._sections.items():
             if section_open not in section_exceptions:
                 self.registerSection(
                     null_class(self.handler, sectionOpen=section_open))
