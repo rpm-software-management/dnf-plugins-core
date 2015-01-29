@@ -1,7 +1,7 @@
 # protected_packages.py
 # Prevent package removals that could leave the system broken.
 #
-# Copyright (C) 2014  Red Hat, Inc.
+# Copyright (C) 2014-2015  Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
