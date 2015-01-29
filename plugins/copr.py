@@ -258,9 +258,9 @@ Do you want to continue? [y/N]: """)
         return output
 
     @classmethod
-    def _check_json_output(cls, json):
-        if json["output"] != "ok":
-            raise dnf.exceptions.Error("{}".format(json["error"]))
+    def _check_json_output(cls, json_obj):
+        if json_obj["output"] != "ok":
+            raise dnf.exceptions.Error("{}".format(json_obj["error"]))
 
 
 class Playground(dnf.Plugin):
