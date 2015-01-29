@@ -142,7 +142,8 @@ class DownloadCommand(dnf.cli.Command):
             logger.debug(_('Error in resolve'))
             return []
 
-    def _get_source_packages(self, pkgs):
+    @staticmethod
+    def _get_source_packages(pkgs):
         """Get list of source rpm names for a list of packages."""
         source_pkgs = set()
         for pkg in pkgs:
@@ -196,7 +197,8 @@ class DownloadCommand(dnf.cli.Command):
                      release=nevra.release, arch=nevra.arch)
         return q
 
-    def _move_package(self, target, location):
+    @staticmethod
+    def _move_package(target, location):
         """Move the downloaded package to target."""
         shutil.copy(location, target)
         os.unlink(location)
