@@ -30,8 +30,8 @@ import requests
 import urllib
 
 
-yes = set([_('yes'), _('y')])
-no = set([_('no'), _('n'), ''])
+YES = set([_('yes'), _('y')])
+NO = set([_('no'), _('n'), ''])
 
 
 class Copr(dnf.Plugin):
@@ -179,10 +179,10 @@ Do you want to continue? [y/N]: """)
 
         answer = raw_input(question).lower()
         answer = _(answer)
-        while not ((answer in yes) or (answer in no)):
+        while not ((answer in YES) or (answer in NO)):
             answer = raw_input(question).lower()
             answer = _(answer)
-        if answer in yes:
+        if answer in YES:
             return
         else:
             raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
