@@ -148,13 +148,15 @@ Do you want to continue? [y/N]: """)
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
-                raise dnf.exceptions.Error(_("Can't parse search for '{}'.").format(project_name))
+                raise dnf.exceptions.Error(_("Can't parse search for '{}'."
+                                            ).format(project_name))
             self._check_json_output(json_parse)
             section_text = _("Matched: {}").format(project_name)
             self._print_match_section(section_text)
             i = 0
             while i < len(json_parse["repos"]):
-                msg = "{0}/{1} : ".format(json_parse["repos"][i]["username"], json_parse["repos"][i]["coprname"])
+                msg = "{0}/{1} : ".format(json_parse["repos"][i]["username"],
+                                          json_parse["repos"][i]["coprname"])
                 desc = json_parse["repos"][i]["description"]
                 if not desc:
                     desc = _("No description given.")
@@ -304,7 +306,8 @@ Do you want to continue? [y/N]: """)
                     self.copr_url, project_name, chroot)
                 req = requests.get(api_url)
                 output2 = self._get_data(req)
-                if output2 and ("output" in output2) and (output2["output"] == "ok"):
+                if (output2 and ("output" in output2)
+                        and (output2["output"] == "ok")):
                     self._download_repo(project_name, repo_filename, chroot)
             except dnf.exceptions.Error:
                 # likely 404 and that repo does not exist
