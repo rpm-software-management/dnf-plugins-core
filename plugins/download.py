@@ -174,7 +174,7 @@ class DownloadCommand(dnf.cli.Command):
             repo, src_repo = repo_dict[id_]
             repo.disable()
             if src_repo:
-                logger.info(_('enabled %s repository') % src_repo.id)
+                logger.info(_('enabled %s repository'), src_repo.id)
                 src_repo.enable()
        # reload the sack
         self.base.fill_sack()
