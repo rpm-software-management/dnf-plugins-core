@@ -33,6 +33,7 @@ class Noroot(dnf.Plugin):
     name = 'noroot'
 
     def __init__(self, base, cli):
+        super(Noroot, self).__init__(base, cli)
         self.base = base
         self.cli = cli
 
