@@ -29,6 +29,7 @@ class Ghost(dnf.Plugin):
     name = 'ghost'
 
     def __init__(self, base, cli):
+        super(Ghost, self).__init__(base, cli)
         self.base = base
         self.cli = cli
         if cli is None:
