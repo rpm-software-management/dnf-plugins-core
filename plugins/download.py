@@ -39,6 +39,7 @@ class Download(dnf.Plugin):
     name = 'download'
 
     def __init__(self, base, cli):
+        super(Download, self).__init__(base, cli)
         self.base = base
         self.cli = cli
         if self.cli is not None:
