@@ -2,6 +2,7 @@
 # generate_completion_cache.py - generate cache for dnf bash completion
 # Copyright © 2013 Elad Alfassa <elad@fedoraproject.org>
 # Copyright (C) 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com>
+# Copyright (C) 2015  Red Hat, Inc.
 
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
