@@ -1,4 +1,4 @@
-%global gitrev c8940d0
+%{!?gitrev: %global gitrev c8940d0}
 %global dnf_version 0.6.3
 
 Name:		dnf-plugins-core
