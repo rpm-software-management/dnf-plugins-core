@@ -52,6 +52,14 @@ class BuildDepCommandTest(unittest.TestCase):
             self.assertEqual(base.marked,
                              ['emacs-extras', 'emacs-goodies >= 100'])
 
+    @unittest.skipIf(support.PY3, "rpm.spec not available in Py3")
+    def test_macro(self):
+        with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
+            self.cmd.run(('--define', 'enable_optional_module 1', SPEC,))
+            self.assertEqual(base.marked,
+                             ['emacs-extras', 'emacs-goodies >= 100',
+                              'emacs-module'])
+
     def test_configure(self):
         self.cmd.configure(None)
         self.assertTrue(self.cmd.cli.demands.available_repos)
