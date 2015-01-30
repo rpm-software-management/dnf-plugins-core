@@ -25,9 +25,28 @@ from dnfpluginscore import _, logger
 import dnf
 import dnf.cli
 import dnf.exceptions
+import dnfpluginscore
 import functools
 import os
 import rpm
+
+
+def parse_arguments(args):
+    def macro_def(arg):
+        arglist = arg.split(None, 1) if arg else []
+        if len(arglist) < 2:
+            msg = _("'%s' is not of the format 'MACRO EXPR'") % arg
+            raise dnfpluginscore.argparse.ArgumentTypeError(msg)
+        return arglist
+
+    parser = dnfpluginscore.ArgumentParser(BuildDepCommand.aliases[0])
+    parser.add_argument('packages', nargs='*', metavar='package',
+                        help=_('packages with builddeps to install'))
+    parser.add_argument('-D', '--define', action='append', default=[],
+                        metavar="'MACRO EXPR'", type=macro_def,
+                        help=_('define a macro for spec file parsing'))
+
+    return parser.parse_args(args), parser
 
 
 class BuildDep(dnf.Plugin):
@@ -128,9 +147,23 @@ class BuildDepCommand(dnf.cli.Command):
 
     @sink_rpm_logging()
     def run(self, args):
+        (opts, parser) = parse_arguments(args)
+
+        if opts.help_cmd:
+            print(parser.format_help())
+            return
+
+        # Push user-supplied macro definitions for spec parsing
+        for macro in opts.define:
+            rpm.addMacro(macro[0], macro[1])
+
         rpm_ts = rpm.TransactionSet()
-        for fn in args:
+        for fn in opts.packages:
             if fn.endswith('.src.rpm') or fn.endswith('.nosrc.rpm'):
                 self._src_deps(rpm_ts, fn)
             else:
                 self._spec_deps(fn)
+
+        # Pop user macros so they don't affect future rpm calls
+        for macro in opts.define:
+            rpm.delMacro(macro[0])
