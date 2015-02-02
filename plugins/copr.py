@@ -227,7 +227,7 @@ Do you want to continue? [y/N]: """)
                 if res.getcode() != 404:
                     raise dnf.exceptions.Error("This repository does not have"\
                         " any builds yet so you cannot enable it now.")
-            raise dnf.exceptions.Error(str(e))
+            raise dnf.exceptions.Error("Server returned {0} HTTP code.".format(r.status_code))
 
     @classmethod
     def _remove_repo(cls, repo_filename):
