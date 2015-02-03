@@ -7,7 +7,7 @@ Release:	1%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
-URL:		https://github.com/akozumpl/dnf-plugins-core
+URL:		https://github.com/rpm-software-management/dnf-plugins-core
 
 # source archive is created by running package/archive from a git checkout
 Source0:	dnf-plugins-core-%{gitrev}.tar.xz
