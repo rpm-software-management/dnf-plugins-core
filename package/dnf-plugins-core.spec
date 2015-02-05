@@ -1,4 +1,4 @@
-%{!?gitrev: %global gitrev c8940d0}
+%{!?gitrev: %global gitrev 351e094}
 %{?!dnf_version: %global dnf_version 0.6.3}
 
 Name:		dnf-plugins-core
@@ -92,6 +92,27 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+
+* Thu Feb 5 2015 Jan Silhan <jsilhan@redhat.com> - 0.1.5-1
+- updated package url (Michael Mraka)
+- also dnf_version could be specified on rpmbuild commandline (Michael Mraka)
+- simple script to build test package (Michael Mraka)
+- let gitrev be specified on rpmbuild commandline (Michael Mraka)
+- assign default GITREV value (Michael Mraka)
+- standard way to find out latest commit (Michael Mraka)
+- debuginfo-install: fix handling of subpackages with non-zero epoch (Petr Spacek)
+- debuginfo-install: Make laywers happier by assigning copyright to Red Hat (Petr Spacek)
+- debuginfo-install: remove dead code uncovered by variable renaming (Petr Spacek)
+- debuginfo-install: clearly separate source and debug package names (Petr Spacek)
+- debuginfo-install: use descriptive parameter name in _is_available() (Petr Spacek)
+- repoquery: add -l option to list files contained in the package (Petr Spacek)
+- 1187773 - replace undefined variable (Miroslav Suchý)
+- download: fixed unicode location error (RhBug:1178239) (Jan Silhan)
+- builddep recognizes nosrc.rpm pkgs (RhBug:1166126) (Jan Silhan)
+- builddep: added nosignatures flag to rpm transaction set (Jan Silhan)
+- builddep: more verbose output of non-matching packages (RhBug:1155211) (Jan Silhan)
+- package: archive script is the same as in dnf (Jan Silhan)
+- spec: exclude __pycache__ dir (Igor Gnatenko)
 
 * Fri Dec 5 2014 Jan Silhan <jsilhan@redhat.com> - 0.1.4-1
 - revert of commit 80ae3f4 (Jan Silhan)
