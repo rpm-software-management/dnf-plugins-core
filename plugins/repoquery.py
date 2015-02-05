@@ -193,7 +193,7 @@ class RepoQueryCommand(dnf.cli.Command):
             print(QUERY_TAGS)
             return
 
-        q = self.base.sack.query().available()
+        q = self.base.sack.query().available().latest()
         if opts.key:
             if set(opts.key) & set('*[?'):  # is pattern ?
                 fdict = {'name__glob': opts.key}
