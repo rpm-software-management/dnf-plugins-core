@@ -217,7 +217,9 @@ class RepoQueryCommand(dnf.cli.Command):
         for po in query.run():
             try:
                 pkg = PackageWrapper(po)
+                print(po)
                 print(fmt_fn(pkg))
+                print(" ")
             except AttributeError as e:
                 # catch that the user has specified attributes
                 # there don't exist on the dnf Package object.
