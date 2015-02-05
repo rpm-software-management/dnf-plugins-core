@@ -50,5 +50,21 @@
     [
         1144003, 
         "[abrt] dnf: download.py:181:_get_query_source:TypeError: 'NoneType' object has no attribute '__getitem__'"
+    ], 
+    [
+        1187773, 
+        "[abrt] dnf: copr.py:230:_download_repo:NameError: global name 'e' is not defined"
+    ], 
+    [
+        1178239, 
+        "[abrt] dnf: posixpath.py:80:join:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc5 in position 23: ordinal not in range(128)"
+    ], 
+    [
+        1166126, 
+        "dnf builddep does not recognize nosrc.rpm packages"
+    ], 
+    [
+        1155211, 
+        "dnf builddep: print what's missing when package not found"
     ]
 ]

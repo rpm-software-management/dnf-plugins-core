@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.5 Release Notes
+=====================
+
+:doc:`builddep` accepts also `nosrc.rpm` package.
+
+:doc:`repoquery` adds `--list` switch to show files the package contains.
+
+Bugs fixed in 0.1.5:
+
+* :rhbug:`1187773`
+* :rhbug:`1178239`
+* :rhbug:`1166126`
+* :rhbug:`1155211`
+
+=====================
  0.1.4 Release Notes
 =====================
 
