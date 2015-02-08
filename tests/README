@@ -1,0 +1,8 @@
+To run tests from the source tree, run this
+(working directory = root of the source tree):
+
+export PYTHONPATH=./plugins
+nosetests tests/
+
+You can run tests under specific Python version using nosetests-2.7
+or nosetests-3.4.
