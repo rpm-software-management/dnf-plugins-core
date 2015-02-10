@@ -156,7 +156,7 @@ class DownloadCommand(dnf.cli.Command):
             elif pkg.arch == 'src':
                 source_pkgs.add("%s-%s.src.rpm" % (pkg.name, pkg.evr))
             else:
-                logger.info(_("No source rpm definded for %s"), str(pkg))
+                logger.info(_("No source rpm defined for %s"), str(pkg))
         return list(source_pkgs)
 
     def _enable_source_repos(self):
