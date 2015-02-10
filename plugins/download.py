@@ -162,10 +162,9 @@ class DownloadCommand(dnf.cli.Command):
                 repo_dict[repo.id] = (repo, self.base.repos[source_repo])
             else:
                 repo_dict[repo.id] = (repo, None)
-        # disable the binary & enable the source ones
+        # enable the source repos
         for id_ in repo_dict:
             repo, src_repo = repo_dict[id_]
-            repo.disable()
             if src_repo:
                 logger.info(_('enabled %s repository') % src_repo.id)
                 src_repo.enable()

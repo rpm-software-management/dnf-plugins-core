@@ -170,8 +170,8 @@ class DownloadlCommandTest(unittest.TestCase):
         self.assertFalse(repos['foobar-source'].enabled)
         self.cmd._enable_source_repos()
         self.assertTrue(repos['foo-source'].enabled)
-        self.assertFalse(repos['foo'].enabled)
-        self.assertFalse(repos['bar'].enabled)
+        self.assertTrue(repos['foo'].enabled)
+        self.assertTrue(repos['bar'].enabled)
         self.assertFalse(repos['foobar-source'].enabled)
 
     def test_get_source_packages(self):
