@@ -91,8 +91,8 @@ class DownloadCommand(dnf.cli.Command):
         else:
             dest = dnf.i18n.ucd(os.getcwd())
 
-        move = functools.partial(self._move_package, dest)
-        map(move, locations)
+        for pkg in locations:
+            self._move_package(dest, pkg)
 
     def _download_rpms(self, pkg_specs):
         """Download packages to dnf cache."""
