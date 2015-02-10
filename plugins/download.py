@@ -145,6 +145,8 @@ class DownloadCommand(dnf.cli.Command):
                 source_pkgs.add(pkg.sourcerpm)
                 logger.debug('  --> Package : %s Source : %s',
                              str(pkg), pkg.sourcerpm)
+            elif pkg.arch == 'src':
+                source_pkgs.add("%s-%s.src.rpm" % (pkg.name, pkg.evr))
             else:
                 logger.info(_("No source rpm definded for %s"), str(pkg))
         return list(source_pkgs)
