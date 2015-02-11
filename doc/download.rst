@@ -42,7 +42,7 @@ Options
     Show this help.
 
 ``--source``
-    Download the source rpm.
+    Download the source rpm. Enables source repositories of all enabled binary repositories.
 
 ``--destdir``
     Download directory, default is the current directory (the directory must exist).

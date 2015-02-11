@@ -158,24 +158,18 @@ class DownloadCommand(dnf.cli.Command):
     def _enable_source_repos(self):
         """Enable source repositories for enabled binary repositories.
 
-        binary repositories will be disabled and the dnf sack will be reloaded
+        Don't disable the binary ones because they can contain SRPMs as well
+        (this applies to COPR and to user-managed repos).
+        The dnf sack will be reloaded.
         """
-        repo_dict = {}
-        # find the source repos for the enabled binary repos
+        # enable the source repos
         for repo in self.base.repos.iter_enabled():
-            source_repo = '%s-source' % repo.id
-            if source_repo in self.base.repos:
-                repo_dict[repo.id] = (repo, self.base.repos[source_repo])
-            else:
-                repo_dict[repo.id] = (repo, None)
-        # disable the binary & enable the source ones
-        for id_ in repo_dict:
-            repo, src_repo = repo_dict[id_]
-            repo.disable()
-            if src_repo:
-                logger.info(_('enabled %s repository'), src_repo.id)
-                src_repo.enable()
-       # reload the sack
+            source_repo_id = '%s-source' % repo.id
+            if source_repo_id in self.base.repos:
+                source_repo = self.base.repos[source_repo_id]
+                logger.info(_('enabled %s repository'), source_repo.id)
+                source_repo.enable()
+        # reload the sack
         self.base.fill_sack()
 
     def _get_query(self, pkg_spec):
