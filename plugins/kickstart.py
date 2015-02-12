@@ -1,6 +1,6 @@
 # kickstart.py, supplies the 'kickstart' command.
 #
-# Copyright (C) 2013  Red Hat, Inc.
+# Copyright (C) 2013-2015  Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
@@ -123,7 +123,7 @@ class MaskableKickstartParser(pykickstart.parser.KickstartParser):
     def mask_all(self, section_exceptions=()):
         """Ignore all sections except the given sections."""
         null_class = pykickstart.sections.NullSection
-        for section_open, _section in self._sections.items():
+        for section_open, _ in self._sections.items():
             if section_open not in section_exceptions:
                 self.registerSection(
                     null_class(self.handler, sectionOpen=section_open))
