@@ -69,13 +69,15 @@ class DownloadCommand(dnf.cli.Command):
         # You must only add options not used by dnf already
         self.parser = dnfpluginscore.ArgumentParser(self.aliases[0])
         self.parser.add_argument('packages', nargs='+',
-                            help=_('packages to download'))
+                                 help=_('packages to download'))
         self.parser.add_argument("--source", action='store_true',
-                            help=_('download the src.rpm instead'))
-        self.parser.add_argument('--destdir',
-                            help=_('download path, default is current dir'))
-        self.parser.add_argument('--resolve', action='store_true',
-                            help=_('resolve and download needed dependencies'))
+                                 help=_('download the src.rpm instead'))
+        self.parser.add_argument(
+            '--destdir',
+            help=_('download path, default is current dir'))
+        self.parser.add_argument(
+            '--resolve', action='store_true',
+            help=_('resolve and download needed dependencies'))
 
         # parse the options/args
         # list available options/args on errors & exit
