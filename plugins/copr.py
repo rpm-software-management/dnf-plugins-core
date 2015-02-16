@@ -20,6 +20,7 @@
 from __future__ import print_function
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
+import dnfpluginscore.lib
 
 import dnf
 import glob
@@ -118,8 +119,7 @@ Do you want to continue? [y/N]: """)
             #http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
             api_path = "/api/coprs/{}/".format(project_name)
 
-            opener = urllib.FancyURLopener({})
-            res = opener.open(self.copr_url + api_path)
+            res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
@@ -143,8 +143,7 @@ Do you want to continue? [y/N]: """)
             #http://copr.fedoraproject.org/api/coprs/search/tests/
             api_path = "/api/coprs/search/{}/".format(project_name)
 
-            opener = urllib.FancyURLopener({})
-            res = opener.open(self.copr_url + api_path)
+            res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
             try:
                 json_parse = json.loads(res.read())
             except ValueError:
