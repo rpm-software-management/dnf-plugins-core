@@ -2,6 +2,7 @@
 # Install all the deps needed to build this package.
 #
 # Copyright (C) 2013-2015  Red Hat, Inc.
+# Copyright (C) 2015 Igor Gnatenko
 #
 # This copyrighted material is made available to anyone wishing to use,
 # modify, copy, or redistribute it subject to the terms and conditions of
@@ -62,9 +63,32 @@ class sink_rpm_logging(object):
 class BuildDepCommand(dnf.cli.Command):
 
     aliases = ('builddep',)
-    msg = "Install build dependencies for .src.rpm, .nosrc.rpm or .spec file"
+    msg = "Install build dependencies for .src.rpm, .nosrc.rpm, .spec file or repo"
     summary = _(msg)
-    usage = _("[PACKAGE.src.rpm|PACKAGE.nosrc.rpm|PACKAGE.spec]")
+    usage = _("[PACKAGE.src.rpm|PACKAGE.nosrc.rpm|PACKAGE.spec|PACKAGE]")
+
+    def __init__(self, args):
+        super(BuildDepCommand, self).__init__(args)
+        self.to_handle = {}
+        self.rpm_ts = rpm.TransactionSet()
+
+    def configure(self, args):
+        demands = self.cli.demands
+        demands.available_repos = True
+        demands.resolving = True
+        demands.root_user = True
+        demands.sack_activation = True
+        self._enable_source_repos()
+
+    @sink_rpm_logging()
+    def run(self, args):
+        for pkgspec in args:
+            if pkgspec.endswith('.src.rpm') or pkgspec.endswith('nosrc.rpm'):
+                self._src_deps(pkgspec)
+            elif pkgspec.endswith('.spec'):
+                self._spec_deps(pkgspec)
+            else:
+                self._remote_deps(pkgspec)
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
@@ -79,12 +103,12 @@ class BuildDepCommand(dnf.cli.Command):
             return False
         return True
 
-    def _src_deps(self, rpm_ts, src_fn):
+    def _src_deps(self, src_fn):
         fd = os.open(src_fn, os.O_RDONLY)
         if self.cli.nogpgcheck:
-            rpm_ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES)
+            self.rpm_ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES)
         try:
-            h = rpm_ts.hdrFromFdno(fd)
+            h = self.rpm_ts.hdrFromFdno(fd)
         except rpm.error as e:
             if e[0] == 'public key not available':
                 logger.error("Error: public key not available, add "
@@ -119,18 +143,27 @@ class BuildDepCommand(dnf.cli.Command):
             err = _("Not all dependencies satisfied")
             raise dnf.exceptions.Error(err)
 
-    def configure(self, args):
-        demands = self.cli.demands
-        demands.available_repos = True
-        demands.resolving = True
-        demands.root_user = True
-        demands.sack_activation = True
-
-    @sink_rpm_logging()
-    def run(self, args):
-        rpm_ts = rpm.TransactionSet()
-        for fn in args:
-            if fn.endswith('.src.rpm') or fn.endswith('.nosrc.rpm'):
-                self._src_deps(rpm_ts, fn)
+    def _enable_source_repos(self):
+        repos = {}
+        for repo in self.base.repos.iter_enabled():
+            repos[repo.id] = repo
+        for repoid in repos:
+            if repoid.endswith("-rpms"):
+                sr = "{}-source-rpms".format(repoid[:-5])
             else:
-                self._spec_deps(fn)
+                sr = "{}-source".format(repoid)
+            if sr in repos:
+                continue
+            repo = repos[repoid]
+            for r in self.base.repos:
+                if r == sr:
+                    logger.debug(_("enabling {}").format(sr))
+                    self.base.repos[r].enable()
+
+    def _remote_deps(self, package):
+        pkgs = self.base.sack.query().available().filter(name=package,
+                                                         arch="src").run()
+        self.base.download_packages(pkgs)
+        for pkg in pkgs:
+            self._src_deps(pkg.localPkg())
+
