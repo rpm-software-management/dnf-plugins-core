@@ -82,6 +82,8 @@ def parse_arguments(args):
                         help=_('show only results from this REPO'))
     parser.add_argument('--arch', metavar='ARCH',
                         help=_('show only results from this ARCH'))
+    parser.add_argument('-f', '--file', metavar='FILE',
+                        help=_('show only results that owns FILE'))
     parser.add_argument('--whatprovides', metavar='REQ',
                         help=_('show only results there provides REQ'))
     parser.add_argument('--whatrequires', metavar='REQ',
@@ -159,6 +161,11 @@ class RepoQueryCommand(dnf.cli.Command):
     usage = _('[OPTIONS] [KEYWORDS]')
 
     @staticmethod
+    def who_provides(pattern, query):
+        """Get a query for matching given filepath."""
+        return query.filter(file=pattern)
+
+    @staticmethod
     def by_provides(sack, pattern, query):
         """Get a query for matching given provides."""
         try:
@@ -205,6 +212,8 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.filter(reponame=opts.repoid)
         if opts.arch:
             q = q.filter(arch=opts.arch)
+        if opts.file:
+            q = self.who_provides(opts.file, q)
         if opts.whatprovides:
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
         if opts.whatrequires:
