@@ -98,8 +98,7 @@ class DownloadCommand(dnf.cli.Command):
         else:
             dest = dnf.i18n.ucd(os.getcwd())
 
-        for pkg in locations:
-            self._move_package(dest, pkg)
+        self._move_packages(dest, locations)
 
     def _download_rpms(self, pkg_specs):
         """Download packages to dnf cache."""
@@ -196,8 +195,11 @@ class DownloadCommand(dnf.cli.Command):
         return q
 
     @staticmethod
-    def _move_package(target, location):
+    def _move_packages(target, locations):
         """Move the downloaded package to target."""
-        shutil.copy(location, target)
-        os.unlink(location)
+        if not os.path.exists(target):
+            os.makedirs(target)
+        for pkg in locations:
+            shutil.copy(pkg, target)
+            os.unlink(pkg)
         return target
