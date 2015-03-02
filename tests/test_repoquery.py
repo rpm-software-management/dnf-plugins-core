@@ -46,6 +46,8 @@ EXPECTED_FILELIST_FORMAT = """\
 /var/foobar\
 """
 
+EXPECTED_SOURCERPM_FORMAT = """\
+foo-1.0.1-1.f20.src.rpm"""
 
 class PkgStub(object):
     def __init__(self):
@@ -81,6 +83,9 @@ class ArgParseTest(unittest.TestCase):
         opts, _ = repoquery.parse_arguments(['--provides'])
         self.assertEqual(opts.queryformat, '%{provides}')
 
+    def test_file(self):
+        opts, _ = repoquery.parse_arguments(['/var/foobar'])
+        self.assertIsNone(opts.file)
 
 class InfoFormatTest(unittest.TestCase):
     def test_info(self):
@@ -94,6 +99,11 @@ class FilelistFormatTest(unittest.TestCase):
         self.assertEqual(repoquery.filelist_format(pkg),
                          EXPECTED_FILELIST_FORMAT)
 
+class SourceRPMFormatTest(unittest.TestCase):
+    def test_info(self):
+        pkg = repoquery.PackageWrapper(PkgStub())
+        self.assertEqual(repoquery.sourcerpm_format(pkg),
+                         EXPECTED_SOURCERPM_FORMAT)
 
 class OutputTest(unittest.TestCase):
     def test_output(self):
