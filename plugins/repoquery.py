@@ -82,6 +82,8 @@ def parse_arguments(args):
                         help=_('show only results from this REPO'))
     parser.add_argument('--arch', metavar='ARCH',
                         help=_('show only results from this ARCH'))
+    parser.add_argument('-f', '--file', metavar='FILE',
+                        help=_('show only results that owns FILE'))
     parser.add_argument('--whatprovides', metavar='REQ',
                         help=_('show only results there provides REQ'))
     parser.add_argument('--whatrequires', metavar='REQ',
@@ -205,6 +207,8 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.filter(reponame=opts.repoid)
         if opts.arch:
             q = q.filter(arch=opts.arch)
+        if opts.file:
+            q = q.filter(file=opts.file)
         if opts.whatprovides:
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
         if opts.whatrequires:
