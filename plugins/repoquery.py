@@ -161,11 +161,6 @@ class RepoQueryCommand(dnf.cli.Command):
     usage = _('[OPTIONS] [KEYWORDS]')
 
     @staticmethod
-    def who_provides(pattern, query):
-        """Get a query for matching given filepath."""
-        return query.filter(file=pattern)
-
-    @staticmethod
     def by_provides(sack, pattern, query):
         """Get a query for matching given provides."""
         try:
@@ -213,7 +208,7 @@ class RepoQueryCommand(dnf.cli.Command):
         if opts.arch:
             q = q.filter(arch=opts.arch)
         if opts.file:
-            q = self.who_provides(opts.file, q)
+            q = q.filter(file=opts.file)
         if opts.whatprovides:
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
         if opts.whatrequires:
