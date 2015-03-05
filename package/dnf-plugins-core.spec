@@ -28,12 +28,20 @@ protected_packages passive plugins.
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 BuildRequires:  python-dnf >= %{dnf_version}
-BuildRequires:  pykickstart
+%if 0%{?fedora} >= 23
+BuildRequires:   python-kickstart
+%else
+BuildRequires:   pykickstart
+%endif
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
 Requires:   python-dnf >= %{dnf_version}
+%if 0%{?fedora} >= 23
+Requires:   python-kickstart
+%else
 Requires:   pykickstart
+%endif
 Requires:   python-requests
 Obsoletes:  dnf-plugins-core <= 0.1.5
 %description -n python-dnf-plugins-core
