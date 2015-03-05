@@ -27,12 +27,12 @@ protected_packages passive plugins.
 %package -n python-dnf-plugins-core
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
-BuildRequires:  python-dnf = %{dnf_version}
+BuildRequires:  python-dnf >= %{dnf_version}
 BuildRequires:  pykickstart
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
-Requires:   python-dnf = %{dnf_version}
+Requires:   python-dnf >= %{dnf_version}
 Requires:   pykickstart
 Requires:   python-requests
 Obsoletes:  dnf-plugins-core <= 0.1.5
@@ -46,11 +46,11 @@ protected_packages passive plugins.
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 BuildRequires:  python3-devel
-BuildRequires:  python3-dnf = %{dnf_version}
+BuildRequires:  python3-dnf >= %{dnf_version}
 BuildRequires:  python3-nose
 BuildRequires:  python3-sphinx
 Requires:   python3-requests
-Requires:   python3-dnf = %{dnf_version}
+Requires:   python3-dnf >= %{dnf_version}
 Obsoletes:  dnf-plugins-core <= 0.1.5
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,
