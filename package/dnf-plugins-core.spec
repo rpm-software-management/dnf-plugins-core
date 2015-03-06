@@ -94,6 +94,9 @@ popd
 PYTHONPATH=./plugins /usr/bin/nosetests-2.* -s tests/
 PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 
+%files
+# No files, metapackage
+
 %files -n python-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
 %{_mandir}/man8/dnf.plugin.*
