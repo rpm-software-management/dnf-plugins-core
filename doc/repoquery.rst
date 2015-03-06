@@ -47,6 +47,9 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--arch <arch>``
     Limit the resulting set only to packages of arch ``<arch>``.
 
+``-f <file>``, ``--file <file>``
+    Limit the resulting set only to package that owns ``<file>``.
+
 ``--repoid <id>``
     Limit the resulting set only to packages from repo identified by ``<id>``.
 
@@ -99,6 +102,10 @@ Display NEVRAS of all available packages matching ``light*``::
 Display requires of all ligttpd packages::
 
     dnf repoquery --requires lighttpd
+
+Display package name that owns the given file::
+
+    dnf repoquery --file /etc/lighttpd/lighttpd.conf
 
 Display name, architecture and the containing repository of all lighttpd packages::
 
