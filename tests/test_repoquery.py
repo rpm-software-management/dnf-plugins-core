@@ -81,6 +81,9 @@ class ArgParseTest(unittest.TestCase):
         opts, _ = repoquery.parse_arguments(['--provides'])
         self.assertEqual(opts.queryformat, '%{provides}')
 
+    def test_file(self):
+        opts, _ = repoquery.parse_arguments(['/var/foobar'])
+        self.assertIsNone(opts.file)
 
 class InfoFormatTest(unittest.TestCase):
     def test_info(self):
