@@ -78,6 +78,9 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``-l, --list``
     Show list of files in the package.
 
+``-s, --source``
+    Show package source RPM name.
+
 ``--obsoletes``
     Display capabilities that the package obsoletes. Same as ``--qf "%{obsoletes}``.
 
@@ -102,6 +105,10 @@ Display NEVRAS of all available packages matching ``light*``::
 Display requires of all ligttpd packages::
 
     dnf repoquery --requires lighttpd
+
+Display source rpm of ligttpd package::
+
+    dnf repoquery --source lighttpd
 
 Display package name that owns the given file::
 

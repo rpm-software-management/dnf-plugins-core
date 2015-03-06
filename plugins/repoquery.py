@@ -63,6 +63,8 @@ def build_format_fn(opts):
         return info_format
     elif opts.queryfilelist:
         return filelist_format
+    elif opts.querysourcerpm:
+        return sourcerpm_format
     else:
         return rpm2py_format(opts.queryformat).format
 
@@ -72,6 +74,9 @@ def info_format(pkg):
 
 def filelist_format(pkg):
     return "\n".join(pkg.files)
+
+def sourcerpm_format(pkg):
+    return pkg.sourcerpm
 
 def parse_arguments(args):
     # Setup ArgumentParser to handle util
@@ -99,6 +104,9 @@ def parse_arguments(args):
     outform.add_argument('-l', "--list", dest='queryfilelist',
                          default=False, action='store_true',
                          help=_('show list of files in the package'))
+    outform.add_argument('-s', "--source", dest='querysourcerpm',
+                         default=False, action='store_true',
+                         help=_('show package source RPM name'))
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
