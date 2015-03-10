@@ -95,11 +95,10 @@ PYTHONPATH=./plugins /usr/bin/nosetests-2.* -s tests/
 PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 
 %files
-# No files, metapackage
+%{_mandir}/man8/dnf.plugin.*
 
 %files -n python-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
-%{_mandir}/man8/dnf.plugin.*
 %dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
 %{python_sitelib}/dnf-plugins/*
@@ -107,7 +106,6 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 
 %files -n python3-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
-%{_mandir}/man8/dnf.plugin.*
 %dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
 %exclude %{python3_sitelib}/dnf-plugins/__pycache__/
