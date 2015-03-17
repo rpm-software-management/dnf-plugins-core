@@ -125,6 +125,9 @@ def parse_arguments(args):
     pkgfilter.add_argument("--installonly", dest='pkgfilter',
         const='installonly', action='store_const',
         help=_('limit the query to installed installonly packages'))
+    pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
+        const='unsatisfied', action='store_const',
+        help=_('limit the query to installed packages with unsatisfied dependencies'))
 
     help_msgs = {
         'conflicts': _('Display capabilities that the package conflicts with.'),
@@ -240,6 +243,14 @@ class RepoQueryCommand(dnf.cli.Command):
         elif opts.pkgfilter == "installonly":
             instonly = dnf.query.installonly_pkgs(q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=instonly)
+        elif opts.pkgfilter == "unsatisfied":
+            rpmdb = dnf.sack.rpmdb_sack(self.base)
+            goal = dnf.goal.Goal(rpmdb)
+            solved = goal.run(verify=True)
+            if not solved:
+                for msg in goal.problems:
+                    print(msg)
+            return
         else:
             # do not show packages from @System repo
             q = q.available()
