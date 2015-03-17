@@ -111,6 +111,14 @@ def parse_arguments(args):
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
 
+    pkgfilter = parser.add_mutually_exclusive_group()
+    pkgfilter.add_argument("--duplicated", dest='pkgfilter',
+        const='duplicated', action='store_const',
+        help=_('limit the query to installed duplicated packages'))
+    pkgfilter.add_argument("--installonly", dest='pkgfilter',
+        const='installonly', action='store_const',
+        help=_('limit the query to installed installonly packages'))
+
     help_msgs = {
         'conflicts': _('Display capabilities that the package conflicts with.'),
         'enhances': _('Display capabilities that the package can enhance.'),
@@ -209,8 +217,17 @@ class RepoQueryCommand(dnf.cli.Command):
                 self.base.sack, with_provides=False)
         else:
             q = self.base.sack.query()
-        # do not show packages from @System repo
-        q = q.available()
+
+        if opts.pkgfilter == "duplicated":
+            dups = dnf.query.duplicated_pkgs(q, self.base.conf.installonlypkgs)
+            q = q.filter(pkg=dups)
+        elif opts.pkgfilter == "installonly":
+            instonly = dnf.query.installonly_pkgs(q, self.base.conf.installonlypkgs)
+            q = q.filter(pkg=instonly)
+        else:
+            # do not show packages from @System repo
+            q = q.available()
+
         if opts.repoid:
             q = q.filter(reponame=opts.repoid)
         if opts.arch:

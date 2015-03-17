@@ -47,8 +47,15 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--arch <arch>``
     Limit the resulting set only to packages of arch ``<arch>``.
 
+``--duplicated``
+    Limit the resulting set to installed duplicated packages (i.e. more package versions
+    for the same name and architecture). Installonly packages are excluded from this set.
+
 ``-f <file>``, ``--file <file>``
     Limit the resulting set only to package that owns ``<file>``.
+
+``--installonly``
+    Limit the resulting set to installed installonly packages.
 
 ``--repoid <id>``
     Limit the resulting set only to packages from repo identified by ``<id>``.
