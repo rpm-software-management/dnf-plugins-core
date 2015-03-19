@@ -1,5 +1,5 @@
 %{!?gitrev: %global gitrev 351e094}
-%{?!dnf_version: %global dnf_version 0.6.4-2}
+%{?!dnf_version: %global dnf_version 0.6.5}
 
 Name:       dnf-plugins-core
 Version:    0.1.6
