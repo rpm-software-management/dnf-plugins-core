@@ -34,6 +34,11 @@ import urllib
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
+# compatibility with Py2 and Py3 - rename raw_input() to input() on Py2
+try:
+    input = raw_input
+except NameError:
+    pass
 
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
@@ -176,10 +181,10 @@ Do you want to continue? [y/N]: """)
         elif self.base.conf.assumeno and not self.base.conf.assumeyes:
             raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
 
-        answer = raw_input(question).lower()
+        answer = input(question).lower()
         answer = _(answer)
         while not ((answer in YES) or (answer in NO)):
-            answer = raw_input(question).lower()
+            answer = input(question).lower()
             answer = _(answer)
         if answer in YES:
             return
