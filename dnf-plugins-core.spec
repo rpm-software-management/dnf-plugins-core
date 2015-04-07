@@ -1,4 +1,3 @@
-%{!?gitrev: %global gitrev 351e094}
 %{?!dnf_version: %global dnf_version 0.6.5}
 
 Name:       dnf-plugins-core
@@ -9,7 +8,7 @@ Group:      System Environment/Base
 License:    GPLv2+
 URL:        https://github.com/rpm-software-management/dnf-plugins-core
 # source archive is created by running package/archive from a git checkout
-Source0:    dnf-plugins-core-%{gitrev}.tar.xz
+Source0:    dnf-plugins-core-%{version}.tar.gz
 BuildArch:  noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
@@ -67,7 +66,7 @@ reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
 
 %prep
-%setup -q -n dnf-plugins-core
+%setup -q -n dnf-plugins-core-%{version}
 rm -rf py3
 mkdir ../py3
 cp -a . ../py3/
