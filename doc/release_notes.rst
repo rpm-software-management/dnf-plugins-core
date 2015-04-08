@@ -22,6 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.6 Release Notes
+=====================
+
+Newly implemented :doc:`config-manager` plugin.
+
+:doc:`repoquery` now accepts `<pkg-spec>`.
+
+Bugs fixed in 0.1.6:
+
+* :rhbug:`1208399`
+* :rhbug:`1194725`
+* :rhbug:`1198442`
+* :rhbug:`1193047`
+* :rhbug:`1196952`
+* :rhbug:`1171046`
+* :rhbug:`1179366`
+
+=====================
  0.1.5 Release Notes
 =====================
 
