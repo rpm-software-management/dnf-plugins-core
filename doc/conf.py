@@ -56,7 +56,7 @@ copyright = u'2014, Red Hat, Licensed under GPLv2+'
 # The short X.Y version.
 
 def version_readout():
-    fn = os.path.join(_dirname, '../package/dnf-plugins-core.spec')
+    fn = os.path.join(_dirname, '../dnf-plugins-core.spec')
     with open(fn) as f:
         lines = f.readlines()
     for line in lines:
