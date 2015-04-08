@@ -66,5 +66,33 @@
     [
         1155211, 
         "dnf builddep: print what's missing when package not found"
+    ], 
+    [
+        1208399, 
+        "dnf-3 copr enable plautrba/selinux: NameError: name 'raw_input' is not defined"
+    ], 
+    [
+        1194725, 
+        "Every dnf-3 transaction returns \"Failed loading plugin: copr\""
+    ], 
+    [
+        1198442, 
+        "dnf-plugins-core package does not work with dnf package in rawhide"
+    ], 
+    [
+        1193047, 
+        "[abrt] python3-dnf: copr.py:146:run:AttributeError: 'module' object has no attribute 'FancyURLopener'"
+    ], 
+    [
+        1196952, 
+        "dnf repoquery does not provide -f like yum-utils"
+    ], 
+    [
+        1171046, 
+        "dnf debuginfo-install can't install packages when given exact NVR"
+    ], 
+    [
+        1179366, 
+        "repoquery --whatprovides does not accept wildchars as *"
     ]
 ]
