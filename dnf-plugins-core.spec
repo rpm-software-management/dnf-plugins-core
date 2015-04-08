@@ -2,7 +2,7 @@
 
 Name:       dnf-plugins-core
 Version:    0.1.6
-Release:    1%{?dist}
+Release:    3%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 License:    GPLv2+
@@ -114,7 +114,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
-* Wed Apr 08 2015 Michal Luscon <mluscon@redhat.com> 0.1.6-1
+* Wed Apr 08 2015 Michal Luscon <mluscon@redhat.com> 0.1.6-3
 - doc: release notes 0.1.6 (Michal Luscon)
 - initialize to use tito (Michal Luscon)
 - prepare repo for tito build system (Michal Luscon)
@@ -141,6 +141,12 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 - Add README to tests/ directory (Petr Spacek)
 - AUTHORS: updated (Jan Silhan)
 - download: fix package download on Python 3 (Petr Spacek)
+
+* Tue Mar 10 2015 Jan Silhan <jsilhan@redhat.com> - 0.1.6-2
+- man pages moved into dnf-plugins-core subpackage
+
+* Fri Mar 6 2015 Jan Silhan <jsilhan@redhat.com> - 0.1.6-1
+- fixed python(3)-dnf dependency in f23
 
 * Thu Feb 5 2015 Jan Silhan <jsilhan@redhat.com> - 0.1.5-1
 - updated package url (Michael Mraka)
