@@ -114,6 +114,33 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Wed Apr 08 2015 Michal Luscon <mluscon@redhat.com> 0.1.6-1
+- doc: release notes 0.1.6 (Michal Luscon)
+- initialize to use tito (Michal Luscon)
+- prepare repo for tito build system (Michal Luscon)
+- migrate raw_input() to Python3 (RhBug:1208399) (Miroslav Suchý)
+- require dnf 0.6.5+ which contains duplicated/installonly queries (Michael Mraka)
+- implemented --duplicated and --installonly (Michael Mraka)
+- create --destdir if not exist (Michael Mraka)
+- repoquery: Added -s/--source switch, test case and documentation for querying source rpm name (Parag Nemade)
+- repoquery: Added documentation and test case for file switch (Parag Nemade)
+- spec: ship man pages in dnf-plugins-core metapackage (Jan Silhan)
+- debuginfo-install: support cases where src.rpm name != binary package name (Petr Spacek)
+- spec: added empty %files directive to generate rpm (Jan Silhan)
+- spec: adapt to pykickstart f23 package split (Jan Silhan)
+- spec: requires >= dnf version not = (Jan Silhan)
+- spec: python3 source code by default in f23+ (RhBug:1194725,1198442) (Jan Silhan)
+- use dnfpluginscore.lib.urlopen() (RhBug:1193047) (Miroslav Suchý)
+- implemented functionality of yum-config-manager (Michael Mraka)
+- repoquery: Added --file switch to show who owns the given file (RhBug:1196952) (Parag Nemade)
+- debuginfo-install: accept packages names specified as NEVRA (RhBug:1171046) (Petr Spacek)
+- repoquery: accept package names specified as NEVRA (RhBug:1179366) (Petr Spacek)
+- download: fix typo in 'No source rpm definded' (Petr Spacek)
+- download: accept package names ending with .src too (Petr Spacek)
+- download: Do not disable user-enabled repos (thanks Spacekpe) (Jan Silhan)
+- Add README to tests/ directory (Petr Spacek)
+- AUTHORS: updated (Jan Silhan)
+- download: fix package download on Python 3 (Petr Spacek)
 
 * Thu Feb 5 2015 Jan Silhan <jsilhan@redhat.com> - 0.1.5-1
 - updated package url (Michael Mraka)
