@@ -43,8 +43,8 @@ This documents core plugins of DNF:
 See Also
 ========
 
-* `DNF project homepage <https://github.com/akozumpl/dnf/>`_
-* `Core DNF Plugins project homepage <https://github.com/akozumpl/dnf-plugins-core/>`_
+* `DNF project homepage <https://github.com/rpm-software-management/dnf/>`_
+* `Core DNF Plugins project homepage <https://github.com/rpm-software-management/dnf-plugins-core/>`_
 
 ==================
 Indices and tables

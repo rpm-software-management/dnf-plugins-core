@@ -19,7 +19,7 @@
 #
 
 # the original version of this file is at
-# https://raw.githubusercontent.com/akozumpl/dnf/master/doc/rhbug.py
+# https://raw.githubusercontent.com/rpm-software-management/dnf/master/doc/rhbug.py
 
 from docutils import nodes
 
