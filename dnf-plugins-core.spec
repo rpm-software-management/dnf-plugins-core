@@ -2,7 +2,7 @@
 
 Name:		dnf-plugins-core
 Version:	0.1.5
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -91,6 +91,47 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man8/dnf.plugin.*
 
 %changelog
+* Mon Apr 13 2015 Michal Luscon <mluscon@redhat.com> 0.1.5-2
+- prepare repo for tito build system (Michal Luscon)
+- migrate raw_input() to Python3 (RhBug:1208399) (Miroslav Suchý)
+- create --destdir if not exist (Michael Mraka)
+- repoquery: Added -s/--source switch, test case and documentation for querying source rpm name (Parag Nemade)
+- repoquery: Added documentation and test case for file switch (Parag Nemade)
+- debuginfo-install: support cases where src.rpm name != binary package name (Petr Spacek)
+- use dnfpluginscore.lib.urlopen() (RhBug:1193047) (Miroslav Suchý)
+- implemented functionality of yum-config-manager (Michael Mraka)
+- repoquery: Added --file switch to show who owns the given file (RhBug:1196952) (Parag Nemade)
+- debuginfo-install: accept packages names specified as NEVRA (RhBug:1171046) (Petr Spacek)
+- repoquery: accept package names specified as NEVRA (RhBug:1179366) (Petr Spacek)
+- download: fix typo in 'No source rpm definded' (Petr Spacek)
+- download: accept package names ending with .src too (Petr Spacek)
+- cosmetic: download: pylint fixes (Jan Silhan)
+- download: Do not disable user-enabled repos (thanks Spacekpe) (Jan Silhan)
+- let pylint ignore unused variables starting with _ (Michael Mraka)
+- updated copyright (Michael Mraka)
+- fixed pylint warning Redefining name from outer scope (Michael Mraka)
+- fixed pylint warning Invalid constant name (Michael Mraka)
+- fixed pylint warnings Line too long (Michael Mraka)
+- pylint fix for Wrong continued indentation (Michael Mraka)
+- updated copyright (Michael Mraka)
+- pylint fix for Specify string format arguments as logging function parameters (Michael Mraka)
+- pylint fix for Method could be a function (Michael Mraka)
+- pylint fix for  __init__ method from base class is not called (Michael Mraka)
+- pylint fix for Attribute defined outside __init__ (Michael Mraka)
+- updated copyright (Michael Mraka)
+- pylint fix for  __init__ method from base class is not called (Michael Mraka)
+- pylint fix for Wrong continued indentation (Michael Mraka)
+- updated copyright (Michael Mraka)
+- pylint fix for Method could be a function (Michael Mraka)
+- pylint fix for  __init__ method from base class is not called (Michael Mraka)
+- updated copyright (Michael Mraka)
+- pylint fix for Unused import (Michael Mraka)
+- pylint fix for  __init__ method from base class is not called (Michael Mraka)
+- updated copyright (Michael Mraka)
+- pylint fix for Unused import (Michael Mraka)
+- Add README to tests/ directory (Petr Spacek)
+- AUTHORS: updated (Jan Silhan)
+- download: fix package download on Python 3 (Petr Spacek)
 
 * Thu Feb 5 2015 Jan Silhan <jsilhan@redhat.com> - 0.1.5-1
 - updated package url (Michael Mraka)
