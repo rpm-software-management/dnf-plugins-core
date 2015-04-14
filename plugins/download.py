@@ -98,7 +98,7 @@ class DownloadCommand(dnf.cli.Command):
         else:
             dest = dnf.i18n.ucd(os.getcwd())
 
-        self._move_packages(dest, locations)
+        self._copy_packages(dest, locations)
 
     def _download_rpms(self, pkg_specs):
         """Download packages to dnf cache."""
@@ -195,11 +195,13 @@ class DownloadCommand(dnf.cli.Command):
         return q
 
     @staticmethod
-    def _move_packages(target, locations):
-        """Move the downloaded package to target."""
+    def _copy_packages(target, locations):
+        """Copy the downloaded package to target, not move.
+           If package is from local repo it must not be deleted there
+           and download routines will remove them from cache automatically.
+        """
         if not os.path.exists(target):
             os.makedirs(target)
         for pkg in locations:
             shutil.copy(pkg, target)
-            os.unlink(pkg)
         return target
