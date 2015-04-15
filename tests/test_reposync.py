@@ -22,9 +22,9 @@ import reposync
 
 class TestReposyncFunctions(support.TestCase):
     def test_parse_args(self):
-        args = '-p /become/legend --repoid=silver --repoid=screen'.split()
+        args = '-p /become/legend --repo=silver --repo=screen'.split()
         opts = reposync._parse_args(args)
-        self.assertEqual(opts.repoid, ['silver', 'screen'])
+        self.assertEqual(opts.repo, ['silver', 'screen'])
         self.assertEqual(opts.download_path, '/become/legend')
 
     def test_pkgdir(self):

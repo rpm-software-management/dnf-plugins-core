@@ -21,6 +21,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import argparse
 import dnf
 import dnf.cli
 import dnfpluginscore
@@ -34,8 +35,11 @@ def _parse_args(args):
     parser = dnfpluginscore.ArgumentParser(alias)
     parser.add_argument('-p', '--download-path', default='./',
                         help=_('where to store downloaded repositories '), )
-    parser.add_argument('--repoid', action='append',
+    parser.add_argument('--repo', action='append',
                         help=_('repository to download'), )
+    # make --repoid hidden compatibility alias for --repo
+    parser.add_argument('--repoid', action='append', dest='repo',
+                        help=argparse.SUPPRESS)
     return parser.parse_args(args)
 
 
@@ -57,7 +61,7 @@ class RepoSync(dnf.Plugin):
 class RepoSyncCommand(dnf.cli.Command):
     aliases = ('reposync',)
     summary = _('download all packages from remote repo')
-    usage = 'reposync --repoid=<repo-id>'
+    usage = 'reposync --repo=<repoid>'
 
     def configure(self, args):
         demands = self.cli.demands
@@ -67,9 +71,9 @@ class RepoSyncCommand(dnf.cli.Command):
         opts = _parse_args(args)
         repos = self.base.repos
 
-        if opts.repoid:
+        if opts.repo:
             repos.all().disable()
-            for repoid in opts.repoid:
+            for repoid in opts.repo:
                 try:
                     repo = repos[repoid]
                 except KeyError:

@@ -57,8 +57,8 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--installonly``
     Limit the resulting set to installed installonly packages.
 
-``--repoid <id>``
-    Limit the resulting set only to packages from repo identified by ``<id>``.
+``--repo <repoid>``
+    Limit the resulting set only to packages from repo identified by ``<repoid>``.
 
 ``--whatprovides <capability>``
     Limit the resulting set only to packages that provide ``<capability>``.

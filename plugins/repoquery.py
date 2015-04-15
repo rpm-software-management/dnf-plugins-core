@@ -21,6 +21,7 @@ from __future__ import unicode_literals
 from datetime import datetime
 from dnfpluginscore import _
 
+import argparse
 import dnf
 import dnf.cli
 import dnf.exceptions
@@ -83,8 +84,11 @@ def parse_arguments(args):
     parser = dnfpluginscore.ArgumentParser(RepoQueryCommand.aliases[0])
     parser.add_argument('key', nargs='?',
                         help=_('the key to search for'))
-    parser.add_argument('--repoid', metavar='REPO',
+    parser.add_argument('--repo', metavar='REPO',
                         help=_('show only results from this REPO'))
+    # make --repoid hidden compatibility alias for --repo
+    parser.add_argument('--repoid', dest='repo',
+                        help=argparse.SUPPRESS)
     parser.add_argument('--arch', metavar='ARCH',
                         help=_('show only results from this ARCH'))
     parser.add_argument('-f', '--file', metavar='FILE',
@@ -228,8 +232,8 @@ class RepoQueryCommand(dnf.cli.Command):
             # do not show packages from @System repo
             q = q.available()
 
-        if opts.repoid:
-            q = q.filter(reponame=opts.repoid)
+        if opts.repo:
+            q = q.filter(reponame=opts.repo)
         if opts.arch:
             q = q.filter(arch=opts.arch)
         if opts.file:
