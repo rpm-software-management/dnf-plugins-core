@@ -101,6 +101,9 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``--requires``
     Display capabilities that the package depends on. Same as ``--qf "%{requires}``.
 
+``--resolve``
+    resolve capabilities to originating package(s).
+
 
 --------
 Examples
@@ -113,6 +116,10 @@ Display NEVRAS of all available packages matching ``light*``::
 Display requires of all ligttpd packages::
 
     dnf repoquery --requires lighttpd
+
+Display packages providing the requires of python packages::
+
+    dnf repoquery --requires python --resolve
 
 Display source rpm of ligttpd package::
 
