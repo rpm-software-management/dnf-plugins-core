@@ -57,9 +57,17 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--installonly``
     Limit the resulting set to installed installonly packages.
 
+``--latest-limit <number>``
+    Limit the resulting set to <number> of latest packages for every package name and architecture.
+    If <number> is negative skip <number> of latest packages.
+
 ``--repo <repoid>``
     Limit the resulting set only to packages from repo identified by ``<repoid>``.
     Can be used multiple times with accumulative effect.
+
+``--unsatisfied``
+    Report unsatisfied dependencies among installed packages (i.e. missing requires and
+    and existing conflicts).
 
 ``--whatprovides <capability>``
     Limit the resulting set only to packages that provide ``<capability>``.
@@ -133,3 +141,11 @@ Display all available packages providing "webserver"::
 Display all available packages providing "webserver" but only for "i686" architecture::
 
     dnf repoquery --whatprovides webserver --arch i686
+
+Display duplicated packages::
+
+    dnf repoquery --duplicated
+
+Remove older versions of duplicated packages (an equivalent of yum's `package-cleanup --cleandups`)::
+
+    dnf remove $(dnf repoquery --duplicated --latest-limit -1)
