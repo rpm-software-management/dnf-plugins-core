@@ -84,10 +84,10 @@ def parse_arguments(args):
     parser = dnfpluginscore.ArgumentParser(RepoQueryCommand.aliases[0])
     parser.add_argument('key', nargs='?',
                         help=_('the key to search for'))
-    parser.add_argument('--repo', metavar='REPO',
+    parser.add_argument('--repo', metavar='REPO', action='append',
                         help=_('show only results from this REPO'))
     # make --repoid hidden compatibility alias for --repo
-    parser.add_argument('--repoid', dest='repo',
+    parser.add_argument('--repoid', dest='repo', action='append',
                         help=argparse.SUPPRESS)
     parser.add_argument('--arch', metavar='ARCH',
                         help=_('show only results from this ARCH'))

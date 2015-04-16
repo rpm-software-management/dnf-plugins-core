@@ -59,6 +59,7 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 
 ``--repo <repoid>``
     Limit the resulting set only to packages from repo identified by ``<repoid>``.
+    Can be used multiple times with accumulative effect.
 
 ``--whatprovides <capability>``
     Limit the resulting set only to packages that provide ``<capability>``.
