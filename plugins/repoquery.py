@@ -96,6 +96,9 @@ def parse_arguments(args):
     parser.add_argument('--querytags', action='store_true',
                         help=_('show available tags to use with '
                                '--queryformat'))
+    parser.add_argument('--resolve', action='store_true',
+                        help=_('resolve capabilities to originating package(s)')
+                       )
 
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
@@ -195,6 +198,19 @@ class RepoQueryCommand(dnf.cli.Command):
             return query.filter(empty=True)
         return query.filter(requires=reldep)
 
+    @staticmethod
+    def filter_repo_arch(sack, opts, query=None):
+        """Filter query by repoid and arch options"""
+        if query:
+            q = query
+        else:
+            q = sack.query().available()
+        if opts.repoid:
+            q = q.filter(reponame=opts.repoid)
+        if opts.arch:
+            q = q.filter(arch=opts.arch)
+        return q
+
     def configure(self, args):
         demands = self.cli.demands
         demands.sack_activation = True
@@ -228,10 +244,9 @@ class RepoQueryCommand(dnf.cli.Command):
             # do not show packages from @System repo
             q = q.available()
 
-        if opts.repoid:
-            q = q.filter(reponame=opts.repoid)
-        if opts.arch:
-            q = q.filter(arch=opts.arch)
+        # filter repo and arch
+        q = self.filter_repo_arch(self.base.sack, opts, q)
+
         if opts.file:
             q = q.filter(file=opts.file)
         if opts.whatprovides:
@@ -239,7 +254,10 @@ class RepoQueryCommand(dnf.cli.Command):
         if opts.whatrequires:
             q = self.by_requires(self.base.sack, opts.whatrequires, q)
         fmt_fn = build_format_fn(opts)
-        self.show_packages(q, fmt_fn)
+        if opts.resolve:
+            self.show_resolved_packages(q, fmt_fn, opts)
+        else:
+            self.show_packages(q, fmt_fn)
 
     @staticmethod
     def show_packages(query, fmt_fn):
@@ -252,6 +270,27 @@ class RepoQueryCommand(dnf.cli.Command):
                 # catch that the user has specified attributes
                 # there don't exist on the dnf Package object.
                 raise dnf.exceptions.Error(str(e))
+
+    def show_resolved_packages(self, query, fmt_fn, opts):
+        """Print packages providing capabilities from a query"""
+        capabilities = list()
+        for po in query.run():
+            try:
+                pkg = PackageWrapper(po)
+                capabilities.extend(fmt_fn(pkg).split('\n'))
+            except AttributeError as e:
+                # catch that the user has specified attributes
+                # there don't exist on the dnf Package object.
+                raise dnf.exceptions.Error(str(e))
+
+        # find the providing packages and show them
+        query = self.filter_repo_arch(self.base.sack, opts)
+        providers = self.by_provides(self.base.sack, list(capabilities),
+                                     query)
+        fmt_fn = rpm2py_format(QFORMAT_DEFAULT).format
+        for po in providers.latest().run():
+            pkg = PackageWrapper(po)
+            print(fmt_fn(pkg))
 
 
 class PackageWrapper(object):
