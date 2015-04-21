@@ -1,4 +1,5 @@
-%{?!dnf_version: %global dnf_version 0.6.5}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 0.6.5}
+%{?!dnf_not_compatible: %global dnf_not_compatible 1.0}
 
 Name:       dnf-plugins-core
 Version:    0.1.6
@@ -34,7 +35,8 @@ protected_packages passive plugins.
 %package -n python-dnf-plugins-core
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
-BuildRequires:  python-dnf >= %{dnf_version}
+BuildRequires:  python-dnf >= %{dnf_lowest_compatible}
+BuildRequires:  python-dnf < %{dnf_not_compatible}
 %if 0%{?fedora} >= 23
 BuildRequires:   python-kickstart
 %else
@@ -43,7 +45,8 @@ BuildRequires:   pykickstart
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
-Requires:   python-dnf >= %{dnf_version}
+Requires:   python-dnf >= %{dnf_lowest_compatible}
+Requires:   python-dnf < %{dnf_not_compatible}
 %if 0%{?fedora} >= 23
 Requires:   python-kickstart
 %else
@@ -61,11 +64,13 @@ protected_packages passive plugins.
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 BuildRequires:  python3-devel
-BuildRequires:  python3-dnf >= %{dnf_version}
+BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
+BuildRequires:  python3-dnf < %{dnf_not_compatible}
 BuildRequires:  python3-nose
 BuildRequires:  python3-sphinx
 Requires:   python3-requests
-Requires:   python3-dnf >= %{dnf_version}
+Requires:   python3-dnf >= %{dnf_lowest_compatible}
+Requires:   python3-dnf < %{dnf_not_compatible}
 Obsoletes:  dnf-plugins-core <= 0.1.5
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,
