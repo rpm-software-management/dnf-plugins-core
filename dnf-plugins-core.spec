@@ -16,7 +16,15 @@ BuildRequires:  gettext
 Requires:   python3-dnf-plugins-core = %{version}-%{release}
 %else
 Requires:   python-dnf-plugins-core = %{version}-%{release}
+Provides:   dnf-command(kickstart)
 %endif
+Provides:   dnf-command(builddep)
+Provides:   dnf-command(config-manager)
+Provides:   dnf-command(copr)
+Provides:   dnf-command(debuginfo-install)
+Provides:   dnf-command(download)
+Provides:   dnf-command(repoquery)
+Provides:   dnf-command(reposync)
 %description
 Core Plugins for DNF. This package enhance DNF with builddep, config-manager,
 copr, debuginfo-install, download, needs-restarting, repoquery and
