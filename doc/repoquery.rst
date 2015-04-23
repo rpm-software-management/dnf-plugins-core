@@ -155,4 +155,4 @@ Display duplicated packages::
 
 Remove older versions of duplicated packages (an equivalent of yum's `package-cleanup --cleandups`)::
 
-    dnf remove $(dnf repoquery --duplicated --latest-limit -1)
+    dnf remove $(dnf repoquery --duplicated --latest-limit -1 -q)
