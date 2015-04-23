@@ -117,6 +117,9 @@ def parse_arguments(args):
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
+    outform.add_argument("--latest-limit", dest='latest_limit', type=int,
+                         help=_('show N latest packages for a given name.arch'
+                                ' (or latest but N if N is negative)'))
 
     pkgfilter = parser.add_mutually_exclusive_group()
     pkgfilter.add_argument("--duplicated", dest='pkgfilter',
@@ -125,6 +128,9 @@ def parse_arguments(args):
     pkgfilter.add_argument("--installonly", dest='pkgfilter',
         const='installonly', action='store_const',
         help=_('limit the query to installed installonly packages'))
+    pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
+        const='unsatisfied', action='store_const',
+        help=_('limit the query to installed packages with unsatisfied dependencies'))
 
     help_msgs = {
         'conflicts': _('Display capabilities that the package conflicts with.'),
@@ -240,6 +246,14 @@ class RepoQueryCommand(dnf.cli.Command):
         elif opts.pkgfilter == "installonly":
             instonly = dnf.query.installonly_pkgs(q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=instonly)
+        elif opts.pkgfilter == "unsatisfied":
+            rpmdb = dnf.sack.rpmdb_sack(self.base)
+            goal = dnf.goal.Goal(rpmdb)
+            solved = goal.run(verify=True)
+            if not solved:
+                for msg in goal.problems:
+                    print(msg)
+            return
         else:
             # do not show packages from @System repo
             q = q.available()
@@ -253,6 +267,9 @@ class RepoQueryCommand(dnf.cli.Command):
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
         if opts.whatrequires:
             q = self.by_requires(self.base.sack, opts.whatrequires, q)
+        if opts.latest_limit:
+            latest_pkgs = dnf.query.latest_limit_pkgs(q, opts.latest_limit)
+            q = q.filter(pkg=latest_pkgs)
         fmt_fn = build_format_fn(opts)
         if opts.resolve:
             self.show_resolved_packages(q, fmt_fn, opts)
