@@ -203,17 +203,13 @@ class RepoQueryCommand(dnf.cli.Command):
         return query.filter(requires=reldep)
 
     @staticmethod
-    def filter_repo_arch(sack, opts, query=None):
+    def filter_repo_arch(opts, query):
         """Filter query by repoid and arch options"""
-        if query:
-            q = query
-        else:
-            q = sack.query().available()
         if opts.repo:
-            q = q.filter(reponame=opts.repo)
+            query = query.filter(reponame=opts.repo)
         if opts.arch:
-            q = q.filter(arch=opts.arch)
-        return q
+            query = query.filter(arch=opts.arch)
+        return query
 
     def configure(self, args):
         demands = self.cli.demands
@@ -249,7 +245,7 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.available()
 
         # filter repo and arch
-        q = self.filter_repo_arch(self.base.sack, opts, q)
+        q = self.filter_repo_arch(opts, q)
 
         if opts.file:
             q = q.filter(file=opts.file)
@@ -288,7 +284,7 @@ class RepoQueryCommand(dnf.cli.Command):
                 raise dnf.exceptions.Error(str(e))
 
         # find the providing packages and show them
-        query = self.filter_repo_arch(self.base.sack, opts)
+        query = self.filter_repo_arch(opts, self.base.sack.query().available())
         providers = self.by_provides(self.base.sack, list(capabilities),
                                      query)
         fmt_fn = rpm2py_format(QFORMAT_DEFAULT).format
