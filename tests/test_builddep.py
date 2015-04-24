@@ -20,6 +20,7 @@ from __future__ import unicode_literals
 from tests.support import mock
 
 import builddep
+import dnf
 import os
 import tests.support as support
 import unittest
@@ -30,6 +31,7 @@ SPEC = os.path.join(os.path.dirname(__file__), 'resources/tour.spec')
 class MockBase(object):
     def __init__(self):
         self.marked = []
+        self.repos = dnf.repodict.RepoDict()
 
     def install(self, spec):
         self.marked.append(spec)
@@ -61,5 +63,6 @@ class BuildDepCommandTest(unittest.TestCase):
                               'emacs-module'])
 
     def test_configure(self):
-        self.cmd.configure(None)
-        self.assertTrue(self.cmd.cli.demands.available_repos)
+        with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
+            self.cmd.configure(None)
+            self.assertTrue(self.cmd.cli.demands.available_repos)
