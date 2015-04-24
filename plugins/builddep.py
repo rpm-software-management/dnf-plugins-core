@@ -82,9 +82,9 @@ class sink_rpm_logging(object):
 class BuildDepCommand(dnf.cli.Command):
 
     aliases = ('builddep',)
-    msg = "Install build dependencies for .src.rpm, .nosrc.rpm, .spec file or repo"
+    msg = "Install build dependencies for packagei or spec file"
     summary = _(msg)
-    usage = _("[PACKAGE.src.rpm|PACKAGE.nosrc.rpm|PACKAGE.spec|PACKAGE]")
+    usage = _("[PACKAGE|PACKAGE.spec]")
 
     def __init__(self, args):
         super(BuildDepCommand, self).__init__(args)
