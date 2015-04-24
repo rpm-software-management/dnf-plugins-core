@@ -4,8 +4,9 @@ DNF builddep Plugin
 
 Install whatever is needed to build the given .src.rpm, .nosrc.rpm or .spec file.
 
-.. warning:: Build dependencies in src.rpm might be different than you would expect
-             because they were evaluated according macros set on the package build host.
+.. warning:: Build dependencies in a package (i.e. src.rpm) might be different
+             than you would expect because they were evaluated according macros
+             set on the package build host.
 
 --------
 Synopsis
