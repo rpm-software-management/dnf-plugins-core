@@ -89,6 +89,7 @@ class BuildDepCommand(dnf.cli.Command):
     def __init__(self, args):
         super(BuildDepCommand, self).__init__(args)
         self.rpm_ts = rpm.TransactionSet()
+        self.opts = None
 
     def configure(self, args):
         demands = self.cli.demands
@@ -96,21 +97,31 @@ class BuildDepCommand(dnf.cli.Command):
         demands.resolving = True
         demands.root_user = True
         demands.sack_activation = True
-        dnfpluginscore.lib.enable_source_repos(self.base.repos)
 
-    @sink_rpm_logging()
-    def run(self, args):
-        (opts, parser) = parse_arguments(args)
+        (self.opts, parser) = parse_arguments(args)
 
-        if opts.help_cmd:
+        if self.opts.help_cmd:
             print(parser.format_help())
             return
 
+        # enable source repos only if needed
+        for pkgspec in self.opts.packages:
+            if not (pkgspec.endswith('.src.rpm')
+                    or pkgspec.endswith('nosrc.rpm')
+                    or pkgspec.endswith('.spec')):
+                dnfpluginscore.lib.enable_source_repos(self.base.repos)
+                break
+
+    @sink_rpm_logging()
+    def run(self, args):
+        if self.opts.help_cmd:
+            return
+
         # Push user-supplied macro definitions for spec parsing
-        for macro in opts.define:
+        for macro in self.opts.define:
             rpm.addMacro(macro[0], macro[1])
 
-        for pkgspec in opts.packages:
+        for pkgspec in self.opts.packages:
             if pkgspec.endswith('.src.rpm') or pkgspec.endswith('nosrc.rpm'):
                 self._src_deps(pkgspec)
             elif pkgspec.endswith('.spec'):
@@ -119,7 +130,7 @@ class BuildDepCommand(dnf.cli.Command):
                 self._remote_deps(pkgspec)
 
         # Pop user macros so they don't affect future rpm calls
-        for macro in opts.define:
+        for macro in self.opts.define:
             rpm.delMacro(macro[0])
 
     @staticmethod
