@@ -17,6 +17,7 @@
 #
 
 from dnf.pycomp import PY3
+from dnfpluginscore import _, logger
 
 import dnf
 import iniparse
@@ -126,7 +127,10 @@ def write_raw_configfile(filename, section_id, substitutions,
 
 def _enable_sub_repos(repos, sub_name_fn):
     for repo in repos.iter_enabled():
-        repos.get_matching(sub_name_fn(repo.id)).enable()
+        for found in repos.get_matching(sub_name_fn(repo.id)):
+            if not found.enabled:
+                logger.info(_('enabling %s repository'), found.id)
+                found.enable()
 
 def enable_source_repos(repos):
     """
