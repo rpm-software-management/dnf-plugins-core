@@ -1,12 +1,19 @@
-Ales Kozumplik <ales@redhat.com>
-David Michael
-Igor Gnatenko <i.gnatenko.brain@gmail.com>
-Jan Silhan <jsilhan@redhat.com>
-Lubomir Rintel <lkundrak@v3.sk>
-Michael Mraka <michael.mraka@redhat.com>
-Michal Luscon <mluscon@redhat.com>
-Miroslav Suchý <msuchy@redhat.com>
-Parag Nemade <pnemade@redhat.com>
-Petr Špaček <pspacek@redhat.com>
-Radek Holy <rholy@redhat.com>
-Tim Lauridsen <timlau@fedoraproject.org>
+------------------------
+DNF-PLUGINS-CORE AUTHORS
+------------------------
+    Ales Kozumplik <ales@redhat.com>
+    Igor Gnatenko <i.gnatenko.brain@gmail.com>
+    Jan Silhan <jsilhan@redhat.com>
+    Michael Mraka <michael.mraka@redhat.com>
+    Michal Luscon <mluscon@redhat.com>
+    Miroslav Suchý <msuchy@redhat.com>
+    Parag Nemade <pnemade@redhat.com>
+    Petr Špaček <pspacek@redhat.com>
+    Radek Holy <rholy@redhat.com>
+    Tim Lauridsen <timlau@fedoraproject.org>
+
+-----------------------------
+DNF-PLUGINS-CORE CONTRIBUTORS
+-----------------------------
+    David Michael
+    Lubomir Rintel <lkundrak@v3.sk>
