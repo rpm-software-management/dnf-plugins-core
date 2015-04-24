@@ -26,6 +26,7 @@ import tempfile
 
 def current_value(plugin, repo, option):
     """
+    # :api
     Returns current value of the option
     (set in .repo or dnf.conf or on commandline).
     """
@@ -39,8 +40,10 @@ def current_value(plugin, repo, option):
 
 
 def urlopen(plugin, repo, url, mode='w+b', **kwargs):
-    """ modified dnf.util.urlopen() which respects proxy setting
-        even for non-repo downloads
+    """
+    # :api
+    modified dnf.util.urlopen() which respects proxy setting
+    even for non-repo downloads
     """
     conf = plugin.base.conf
 
@@ -75,6 +78,7 @@ def write_raw_configfile(filename, section_id, substitutions,
                          cfgoptions, items, optionobj,
                          modify=None):
     """
+    # :api
     Code adopted from yum-config-manager writeRawRepoFile().
     filename   - name of config file (.conf or .repo)
     section_id - id of modified section (e.g. main, fedora, updates)
@@ -125,12 +129,20 @@ def _enable_sub_repos(repos, sub_name_fn):
         repos.get_matching(sub_name_fn(repo.id)).enable()
 
 def enable_source_repos(repos):
+    """
+    # :api
+    enable source repos corresponding to already enabled binary repos
+    """
     def source_name(name):
         return ("{}-source-rpms".format(name[:-5]) if name.endswith("-rpms")
                 else "{}-source".format(name))
     _enable_sub_repos(repos, source_name)
 
 def enable_gebug_repos(repos):
+    """
+    # :api
+    enable debug repos corresponding to already enabled binary repos
+    """
     def debug_name(repoid):
         return ("{}-debug-rpms".format(name[:-5]) if name.endswith("-rpms")
                 else "{}-debuginfo".format(name))
