@@ -62,9 +62,6 @@ class DownloadCommand(dnf.cli.Command):
         demands.sack_activation = True
         demands.available_repos = True
 
-    def run(self, args):
-        """Execute the util action here."""
-
         # Setup ArgumentParser to handle util
         # You must only add options not used by dnf already
         self.parser = dnfpluginscore.ArgumentParser(self.aliases[0])
@@ -87,6 +84,12 @@ class DownloadCommand(dnf.cli.Command):
         if self.opts.help_cmd:
             print(self.parser.format_help())
             return
+
+        if self.opts.source:
+            dnfpluginscore.lib.enable_source_repos(self.base.repos)
+
+    def run(self, args):
+        """Execute the util action here."""
 
         if self.opts.source:
             locations = self._download_source(self.opts.packages)
@@ -114,9 +117,6 @@ class DownloadCommand(dnf.cli.Command):
         """Download source packages to dnf cache."""
         pkgs = self._get_packages(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
-        dnfpluginscore.lib.enable_source_repos(self.base.repos)
-        # reload the sack
-        self.base.fill_sack()
         pkgs = self._get_packages(source_pkgs, source=True)
         self.base.download_packages(pkgs, self.base.output.progress)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
