@@ -114,7 +114,9 @@ class DownloadCommand(dnf.cli.Command):
         """Download source packages to dnf cache."""
         pkgs = self._get_packages(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
-        self._enable_source_repos()
+        dnfpluginscore.lib.enable_source_repos(self.base.repos)
+        # reload the sack
+        self.base.fill_sack()
         pkgs = self._get_packages(source_pkgs, source=True)
         self.base.download_packages(pkgs, self.base.output.progress)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
@@ -157,23 +159,6 @@ class DownloadCommand(dnf.cli.Command):
             else:
                 logger.info(_("No source rpm defined for %s"), str(pkg))
         return list(source_pkgs)
-
-    def _enable_source_repos(self):
-        """Enable source repositories for enabled binary repositories.
-
-        Don't disable the binary ones because they can contain SRPMs as well
-        (this applies to COPR and to user-managed repos).
-        The dnf sack will be reloaded.
-        """
-        # enable the source repos
-        for repo in self.base.repos.iter_enabled():
-            source_repo_id = '%s-source' % repo.id
-            if source_repo_id in self.base.repos:
-                source_repo = self.base.repos[source_repo_id]
-                logger.info(_('enabled %s repository'), source_repo.id)
-                source_repo.enable()
-        # reload the sack
-        self.base.fill_sack()
 
     def _get_query(self, pkg_spec):
         """Return a query to match a pkg_spec."""

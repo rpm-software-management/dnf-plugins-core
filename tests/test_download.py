@@ -20,6 +20,7 @@ from __future__ import unicode_literals
 from tests.support import mock, RepoStub
 
 import dnf.repodict
+import dnfpluginscore
 import download
 import unittest
 
@@ -168,7 +169,7 @@ class DownloadlCommandTest(unittest.TestCase):
         self.assertFalse(repos['foo-source'].enabled)
         self.assertTrue(repos['bar'].enabled)
         self.assertFalse(repos['foobar-source'].enabled)
-        self.cmd._enable_source_repos()
+        dnfpluginscore.lib.enable_source_repos(repos)
         self.assertTrue(repos['foo-source'].enabled)
         self.assertTrue(repos['foo'].enabled)
         self.assertTrue(repos['bar'].enabled)
