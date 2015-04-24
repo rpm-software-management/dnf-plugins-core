@@ -56,6 +56,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         demands.resolving = True
         demands.root_user = True
         demands.sack_activation = True
+        demands.available_repos = True
         dnfpluginscore.lib.enable_debug_repos(self.base.repos)
 
     def run(self, args):

@@ -138,12 +138,12 @@ def enable_source_repos(repos):
                 else "{}-source".format(name))
     _enable_sub_repos(repos, source_name)
 
-def enable_gebug_repos(repos):
+def enable_debug_repos(repos):
     """
     # :api
     enable debug repos corresponding to already enabled binary repos
     """
-    def debug_name(repoid):
+    def debug_name(name):
         return ("{}-debug-rpms".format(name[:-5]) if name.endswith("-rpms")
                 else "{}-debuginfo".format(name))
     _enable_sub_repos(repos, debug_name)
