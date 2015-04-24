@@ -65,7 +65,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
 
         for pkgspec in args:
             for pkg in dnf.subject.Subject(pkgspec).get_best_query(
-                    self.cli.base.sack):
+                    self.cli.base.sack).filter(arch__neq='src'):
                 self._di_install(pkg)
 
     @staticmethod
