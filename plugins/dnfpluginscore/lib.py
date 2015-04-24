@@ -119,3 +119,19 @@ def write_raw_configfile(filename, section_id, substitutions,
     fp = open(filename, "w")
     fp.write(str(ini))
     fp.close()
+
+def _enable_sub_repos(repos, sub_name_fn):
+    for repo in repos.iter_enabled():
+        repos.get_matching(sub_name_fn(repo.id)).enable()
+
+def enable_source_repos(repos):
+    def source_name(name):
+        return ("{}-source-rpms".format(name[:-5]) if name.endswith("-rpms")
+                else "{}-source".format(name))
+    _enable_sub_repos(repos, source_name)
+
+def enable_gebug_repos(repos):
+    def debug_name(repoid):
+        return ("{}-debug-rpms".format(name[:-5]) if name.endswith("-rpms")
+                else "{}-debuginfo".format(name))
+    _enable_sub_repos(repos, debug_name)

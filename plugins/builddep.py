@@ -96,7 +96,7 @@ class BuildDepCommand(dnf.cli.Command):
         demands.resolving = True
         demands.root_user = True
         demands.sack_activation = True
-        self._enable_source_repos()
+        dnfpluginscore.lib.enable_source_repos(self.base.repos)
 
     @sink_rpm_logging()
     def run(self, args):
@@ -174,23 +174,6 @@ class BuildDepCommand(dnf.cli.Command):
         if not done:
             err = _("Not all dependencies satisfied")
             raise dnf.exceptions.Error(err)
-
-    def _enable_source_repos(self):
-        repos = {}
-        for repo in self.base.repos.iter_enabled():
-            repos[repo.id] = repo
-        for repoid in repos:
-            if repoid.endswith("-rpms"):
-                sr = "{}-source-rpms".format(repoid[:-5])
-            else:
-                sr = "{}-source".format(repoid)
-            if sr in repos:
-                continue
-            repo = repos[repoid]
-            for r in self.base.repos:
-                if r == sr:
-                    logger.debug(_("enabling {}").format(sr))
-                    self.base.repos[r].enable()
 
     def _remote_deps(self, package):
         pkgs = self.base.sack.query().available().filter(name=package,

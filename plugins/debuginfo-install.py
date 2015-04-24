@@ -24,7 +24,7 @@ from dnfpluginscore import _, logger
 import dnf
 import dnf.cli
 import dnf.subject
-
+import dnfpluginscore.lib
 
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""
@@ -56,10 +56,9 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         demands.resolving = True
         demands.root_user = True
         demands.sack_activation = True
+        dnfpluginscore.lib.enable_debug_repos(self.base.repos)
 
     def run(self, args):
-        self._enable_debug_repos()
-        self.base.fill_sack()
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
         self.packages_installed = self.packages.installed()
@@ -131,20 +130,3 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                     pkgs = self.packages_installed.filter(name=p.name)
                     for dep in pkgs:
                         self._di_install(dep)
-
-    def _enable_debug_repos(self):
-        repos = {}
-        for repo in self.base.repos.iter_enabled():
-            repos[repo.id] = repo
-        for repoid in repos:
-            if repoid.endswith("-rpms"):
-                di = repoid[:-5] + "-debug-rpms"
-            else:
-                di = "{}-debuginfo".format(repoid)
-            if di in repos:
-                continue
-            repo = repos[repoid]
-            for r in self.base.repos:
-                if r == di:
-                    logger.debug(_("enabling {}").format(di))
-                    self.base.repos[r].enable()
