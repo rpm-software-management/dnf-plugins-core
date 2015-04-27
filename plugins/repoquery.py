@@ -18,8 +18,8 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from datetime import datetime
 from dnfpluginscore import _
+from dnf.cli.output import PackageFormatter
 
 import argparse
 import dnf
@@ -33,51 +33,23 @@ import re
 import textwrap
 
 QFORMAT_DEFAULT = '%{name}-%{epoch}:%{version}-%{release}.%{arch}'
-# matches %[-][dd]{attr}
-QFORMAT_MATCH = re.compile(r'%([-\d]*?){([:\.\w]*?)}')
-
 QUERY_INFO = """\
-Name        : {0.name}
-Version     : {0.version}
-Release     : {0.release}
-Architecture: {0.arch}
-Size        : {0.size}
-License     : {0.license}
-Source RPM  : {0.sourcerpm}
-Build Date  : {0.buildtime}
-Packager    : {0.packager}
-URL         : {0.url}
-Summary     : {0.summary}
+Name        : %{name}
+Version     : %{version}
+Release     : %{release}
+Architecture: %{arch}
+Size        : %{size:units}
+License     : %{license}
+Source RPM  : %{sourcerpm}
+Build Date  : %{buildtime:date}
+Packager    : %{packager}
+URL         : %{url}
+Summary     : %{summary}
 Description :
-{0.description_wrapped}"""
+%{description:wrapped}"""
+QUERY_FILES = "%{filenames}"
+QUERY_SOURCERPM = "%{sourcerpm}"
 
-QUERY_TAGS = """
-name, arch, epoch, version, release, reponame (repoid), evr
-installtime, buildtime, size, downloadsize, installize
-provides, requires, obsoletes, conflicts, sourcerpm
-description, summary, license, url
-"""
-
-
-def build_format_fn(opts):
-    if opts.queryinfo:
-        return info_format
-    elif opts.queryfilelist:
-        return filelist_format
-    elif opts.querysourcerpm:
-        return sourcerpm_format
-    else:
-        return rpm2py_format(opts.queryformat).format
-
-
-def info_format(pkg):
-    return QUERY_INFO.format(pkg)
-
-def filelist_format(pkg):
-    return "\n".join(pkg.files)
-
-def sourcerpm_format(pkg):
-    return pkg.sourcerpm
 
 def parse_arguments(args):
     # Setup ArgumentParser to handle util
@@ -105,18 +77,19 @@ def parse_arguments(args):
                        )
 
     outform = parser.add_mutually_exclusive_group()
-    outform.add_argument('-i', "--info", dest='queryinfo',
-                         default=False, action='store_true',
-                         help=_('show detailed information about the package'))
-    outform.add_argument('-l', "--list", dest='queryfilelist',
-                         default=False, action='store_true',
-                         help=_('show list of files in the package'))
-    outform.add_argument('-s', "--source", dest='querysourcerpm',
-                         default=False, action='store_true',
-                         help=_('show package source RPM name'))
+    # options with default must go first
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
+    outform.add_argument('-i', "--info", dest='queryformat',
+                         action='store_const', const=QUERY_INFO,
+                         help=_('show detailed information about the package'))
+    outform.add_argument('-l', "--list", dest='queryformat',
+                         action='store_const', const=QUERY_FILES,
+                         help=_('show list of files in the package'))
+    outform.add_argument('-s', "--source", dest='queryformat',
+                         action='store_const', const=QUERY_SOURCERPM,
+                         help=_('show package source RPM name'))
     outform.add_argument("--latest-limit", dest='latest_limit', type=int,
                          help=_('show N latest packages for a given name.arch'
                                 ' (or latest but N if N is negative)'))
@@ -150,25 +123,6 @@ def parse_arguments(args):
                              const=const, help=help_msgs[arg])
 
     return parser.parse_args(args), parser
-
-
-def rpm2py_format(queryformat):
-    """Convert a rpm like QUERYFMT to an python .format() string."""
-    def fmt_repl(matchobj):
-        fill = matchobj.groups()[0]
-        key = matchobj.groups()[1]
-        if fill:
-            if fill[0] == '-':
-                fill = '>' + fill[1:]
-            else:
-                fill = '<' + fill
-            fill = ':' + fill
-        return '{0.' + key.lower() + fill + "}"
-
-    queryformat = queryformat.replace("\\n", "\n")
-    queryformat = queryformat.replace("\\t", "\t")
-    fmt = re.sub(QFORMAT_MATCH, fmt_repl, queryformat)
-    return fmt
 
 
 class RepoQuery(dnf.Plugin):
@@ -231,7 +185,7 @@ class RepoQueryCommand(dnf.cli.Command):
 
         if opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
-            print(QUERY_TAGS)
+            print(textwrap.wrap(', '.join(PackageFormatter().TAGS)))
             return
 
         if opts.key:
@@ -270,31 +224,31 @@ class RepoQueryCommand(dnf.cli.Command):
         if opts.latest_limit:
             latest_pkgs = dnf.query.latest_limit_pkgs(q, opts.latest_limit)
             q = q.filter(pkg=latest_pkgs)
-        fmt_fn = build_format_fn(opts)
+
         if opts.resolve:
-            self.show_resolved_packages(q, fmt_fn, opts)
+            self.show_resolved_packages(q, opts.queryformat, opts)
         else:
-            self.show_packages(q, fmt_fn)
+            self.show_packages(q, opts.queryformat)
 
     @staticmethod
-    def show_packages(query, fmt_fn):
+    def show_packages(query, fmt):
         """Print packages in a query, in a given format."""
         for po in query.run():
             try:
-                pkg = PackageWrapper(po)
-                print(fmt_fn(pkg))
+                pkgfmt = PackageFormatter(fmt)
+                print(pkgfmt.format(po))
             except AttributeError as e:
                 # catch that the user has specified attributes
                 # there don't exist on the dnf Package object.
                 raise dnf.exceptions.Error(str(e))
 
-    def show_resolved_packages(self, query, fmt_fn, opts):
+    def show_resolved_packages(self, query, fmt, opts):
         """Print packages providing capabilities from a query"""
         capabilities = list()
         for po in query.run():
             try:
-                pkg = PackageWrapper(po)
-                capabilities.extend(fmt_fn(pkg).split('\n'))
+                pkg = PackageFormatter(po)
+                capabilities.extend(pkg.format(fmt).split('\n'))
             except AttributeError as e:
                 # catch that the user has specified attributes
                 # there don't exist on the dnf Package object.
@@ -304,73 +258,7 @@ class RepoQueryCommand(dnf.cli.Command):
         query = self.filter_repo_arch(opts, self.base.sack.query().available())
         providers = self.by_provides(self.base.sack, list(capabilities),
                                      query)
-        fmt_fn = rpm2py_format(QFORMAT_DEFAULT).format
+        fmt = QFORMAT_DEFAULT
         for po in providers.latest().run():
-            pkg = PackageWrapper(po)
-            print(fmt_fn(pkg))
-
-
-class PackageWrapper(object):
-    """Wrapper for dnf.package.Package, so we can control formatting."""
-
-    def __init__(self, pkg):
-        self._pkg = pkg
-
-    def __getattr__(self, attr):
-        return getattr(self._pkg, attr)
-
-    @staticmethod
-    def _get_timestamp(timestamp):
-        if timestamp > 0:
-            dt = datetime.utcfromtimestamp(timestamp)
-            return dt.strftime("%Y-%m-%d %H:%M")
-        else:
-            return ''
-
-    @staticmethod
-    def _reldep_to_list(obj):
-        return '\n'.join([str(reldep) for reldep in obj])
-
-    @property
-    def buildtime(self):
-        return self._get_timestamp(self._pkg.buildtime)
-
-    @property
-    def conflicts(self):
-        return self._reldep_to_list(self._pkg.obsoletes)
-
-    @property
-    def description_wrapped(self):
-        return '\n'.join(textwrap.wrap(self.description))
-
-    @property
-    def enhances(self):
-        return self._reldep_to_list(self._pkg.enhances)
-
-    @property
-    def installtime(self):
-        return self._get_timestamp(self._pkg.installtime)
-
-    @property
-    def obsoletes(self):
-        return self._reldep_to_list(self._pkg.obsoletes)
-
-    @property
-    def provides(self):
-        return self._reldep_to_list(self._pkg.provides)
-
-    @property
-    def recommends(self):
-        return self._reldep_to_list(self._pkg.recommends)
-
-    @property
-    def requires(self):
-        return self._reldep_to_list(self._pkg.requires)
-
-    @property
-    def suggests(self):
-        return self._reldep_to_list(self._pkg.suggests)
-
-    @property
-    def supplements(self):
-        return self._reldep_to_list(self._pkg.supplements)
+            pkg = PackageFormatter(po)
+            print(pkg.format(fmt))
