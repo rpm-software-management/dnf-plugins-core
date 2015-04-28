@@ -15,8 +15,10 @@ BuildRequires:  cmake
 BuildRequires:  gettext
 %if 0%{?fedora} >= 23
 Requires:   python3-dnf-plugins-core = %{version}-%{release}
+Conflicts:  python-dnf-plugins-core <= 0.1.6-2
 %else
 Requires:   python-dnf-plugins-core = %{version}-%{release}
+Conflicts:  python3-dnf-plugins-core <= 0.1.6-2
 Provides:   dnf-command(kickstart)
 %endif
 Provides:   dnf-command(builddep)
