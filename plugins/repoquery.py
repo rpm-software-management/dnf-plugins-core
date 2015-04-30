@@ -55,28 +55,42 @@ def parse_arguments(args):
     # Setup ArgumentParser to handle util
     parser = dnfpluginscore.ArgumentParser(RepoQueryCommand.aliases[0])
     parser.add_argument('key', nargs='?',
-                        help=_('the key to search for'))
-    parser.add_argument('--repo', metavar='REPO', action='append',
-                        help=_('show only results from this REPO'))
+        help=_('the key to search for'))
+    insearch = parser.add_argument_group(_('search arguments'))
+    insearch.add_argument('--repo', metavar='REPO', action='append',
+        help=_('show only results from this REPO'))
     # make --repoid hidden compatibility alias for --repo
-    parser.add_argument('--repoid', dest='repo', action='append',
-                        help=argparse.SUPPRESS)
-    parser.add_argument('--arch', metavar='ARCH',
-                        help=_('show only results from this ARCH'))
-    parser.add_argument('-f', '--file', metavar='FILE',
-                        help=_('show only results that owns FILE'))
-    parser.add_argument('--whatprovides', metavar='REQ',
-                        help=_('show only results there provides REQ'))
-    parser.add_argument('--whatrequires', metavar='REQ',
-                        help=_('show only results there requires REQ'))
-    parser.add_argument('--querytags', action='store_true',
-                        help=_('show available tags to use with '
-                               '--queryformat'))
-    parser.add_argument('--resolve', action='store_true',
-                        help=_('resolve capabilities to originating package(s)')
-                       )
+    insearch.add_argument('--repoid', dest='repo', action='append',
+        help=argparse.SUPPRESS)
+    insearch.add_argument('--arch', metavar='ARCH',
+        help=_('show only results from this ARCH'))
+    insearch.add_argument('-f', '--file', metavar='FILE',
+        help=_('show only results that owns FILE'))
+    insearch.add_argument('--whatprovides', metavar='REQ',
+        help=_('show only results there provides REQ'))
+    insearch.add_argument('--whatrequires', metavar='REQ',
+        help=_('show only results there requires REQ'))
+    insearch.add_argument('--querytags', action='store_true',
+        help=_('show available tags to use with --queryformat'))
+    insearch.add_argument('--resolve', action='store_true',
+        help=_('resolve capabilities to originating package(s)'))
+    insearch.add_argument("--latest-limit", dest='latest_limit', type=int,
+        help=_('show N latest packages for a given name.arch'
+               ' (or latest but N if N is negative)'))
 
-    outform = parser.add_mutually_exclusive_group()
+    pkgfilter = insearch.add_mutually_exclusive_group()
+    pkgfilter.add_argument("--duplicated", dest='pkgfilter',
+        const='duplicated', action='store_const',
+        help=_('limit the query to installed duplicated packages'))
+    pkgfilter.add_argument("--installonly", dest='pkgfilter',
+        const='installonly', action='store_const',
+        help=_('limit the query to installed installonly packages'))
+    pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
+        const='unsatisfied', action='store_const',
+        help=_('limit the query to installed packages with unsatisfied dependencies'))
+
+    display = parser.add_argument_group(_('display arguments'))
+    outform = display.add_mutually_exclusive_group()
     # options with default must go first
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
@@ -90,30 +104,16 @@ def parse_arguments(args):
     outform.add_argument('-s', "--source", dest='queryformat',
                          action='store_const', const=QUERY_SOURCERPM,
                          help=_('show package source RPM name'))
-    outform.add_argument("--latest-limit", dest='latest_limit', type=int,
-                         help=_('show N latest packages for a given name.arch'
-                                ' (or latest but N if N is negative)'))
-
-    pkgfilter = parser.add_mutually_exclusive_group()
-    pkgfilter.add_argument("--duplicated", dest='pkgfilter',
-        const='duplicated', action='store_const',
-        help=_('limit the query to installed duplicated packages'))
-    pkgfilter.add_argument("--installonly", dest='pkgfilter',
-        const='installonly', action='store_const',
-        help=_('limit the query to installed installonly packages'))
-    pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
-        const='unsatisfied', action='store_const',
-        help=_('limit the query to installed packages with unsatisfied dependencies'))
 
     help_msgs = {
-        'conflicts': _('Display capabilities that the package conflicts with.'),
-        'enhances': _('Display capabilities that the package can enhance.'),
-        'obsoletes': _('Display capabilities that the package obsoletes.'),
-        'provides': _('Display capabilities provided by the package.'),
-        'recommends':  _('Display capabilities that the package recommends.'),
-        'requires':  _('Display capabilities that the package depends on.'),
-        'suggests':  _('Display capabilities that the package suggests.'),
-        'supplements':  _('Display capabilities that the package can supplement.')
+        'conflicts': _('display capabilities that the package conflicts with'),
+        'enhances': _('display capabilities that the package can enhance'),
+        'obsoletes': _('display capabilities that the package obsoletes'),
+        'provides': _('display capabilities provided by the package'),
+        'recommends': _('display capabilities that the package recommends'),
+        'requires': _('display capabilities that the package depends on'),
+        'suggests': _('display capabilities that the package suggests'),
+        'supplements': _('display capabilities that the package can supplement')
     }
     for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
                 'requires', 'suggests', 'supplements'):
