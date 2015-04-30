@@ -20,6 +20,24 @@ Core DNF Plugins Release Notes
 ##############################
 
 .. contents::
+=====================
+ 0.1.7 Release Notes
+=====================
+
+All occurrences of `repoid` option were replaced by `repo` to unified repository specification in plugins.
+
+:doc:`builddep` now accepts packages from repositories as arguments and allows users
+to define RPM macros used during spec files parsing via `-D` option.
+
+Three new options were added to :doc:`repoquery`: `latest-limit`, `unsatisfied` and `resolve`.
+
+Bugs fixed in 0.1.7:
+
+* :rhbug:`1215154`
+* :rhbug:`1074585`
+* :rhbug:`1156487`
+* :rhbug:`1208773`
+* :rhbug:`1186948`
 
 =====================
  0.1.6 Release Notes

@@ -94,5 +94,25 @@
     [
         1179366, 
         "repoquery --whatprovides does not accept wildchars as *"
+    ], 
+    [
+        1215154, 
+        "[PATCH] dnf debuginfo-install: AttributeError: 'NoneType' object has no attribute 'replace'"
+    ], 
+    [
+        1074585, 
+        "[RFE] 'dnf builddep' should be able to take just the package name as argument rather than SPEC or SRPM"
+    ], 
+    [
+        1156487, 
+        "RFE: Add support for repoquery --resolve"
+    ], 
+    [
+        1208773, 
+        "[RFE] Define virtual provides for DNF commands and suggest installing the appropriate one if a command was not found"
+    ], 
+    [
+        1186948, 
+        "[download] data loss: dnf download should not delete files from local repositories"
     ]
 ]
