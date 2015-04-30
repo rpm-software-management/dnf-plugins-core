@@ -2,8 +2,8 @@
 %{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
 
 Name:       dnf-plugins-core
-Version:    0.1.6
-Release:    3%{?dist}
+Version:    0.1.7
+Release:    1%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 License:    GPLv2+
@@ -129,6 +129,46 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Thu Apr 30 2015 Michal Luscon <mluscon@redhat.com> 0.1.7-1
+- doc: release notes dnf-plugins-core-0.1.7 (Michal Luscon)
+- spec: fix Conflicts of the new plugins (Radek Holy)
+- spec: allow DNF 1.x.x (Radek Holy)
+- AUTHORS: filled in missing email address (Jan Silhan)
+- download: enabling source repos when desired only (Jan Silhan)
+- download: using enable_source_repos from lib (Jan Silhan)
+- lib: inform user when enabling disabled repo (Jan Silhan)
+- AUTHORS: made 2 categories (Jan Silhan)
+- fixed typos and missing demand (Michael Mraka)
+- changed warning paragraph (Michael Mraka)
+- AUTHORS: updated (Jan Silhan)
+- debuginfo-install: don't consider src packages as candidates for installation
+  (RhBug:1215154) (Lubomir Rintel)
+- documentation warning about build deps in srpm (Michael Mraka)
+- fixed builddep tests (Michael Mraka)
+- builddep: enable source repos only when needed (Michael Mraka)
+- fixed builldep documentation (Michael Mraka)
+- mark appropriate dnfpluginscore.lib as API (Michael Mraka)
+- fixed builddep configure test (Michael Mraka)
+- moved enable_{source|debug}_repos() to dnfpluginscore.lib (Michael Mraka)
+- builddep: add feature to get builddeps from remote packages (RhBug:1074585)
+  (Igor Gnatenko)
+- doc: repoquery: doesn't print 'No match for argument:...' garbage (Jan
+  Silhan)
+- updated repoquery documentation (Michael Mraka)
+- implemented repoquery --latest-limit (Michael Mraka)
+- implemented repoquery --unsatisfied (Michael Mraka)
+- builddep: Support defining macros for parsing spec files (David Michael)
+- removed redundant argument (Michael Mraka)
+- doc: update repoquery docs with --resolve (Tim Lauridsen)
+- repoquery: add --resolve option (RhBug:1156487) (Tim Lauridsen)
+- spec: dnf version upper boundaries (Jan Silhan)
+- spec: added plugin command provides (Related:RhBug:1208773) (Jan Silhan)
+- make --repo cumulative (Michael Mraka)
+- rename --repoid to --repo (Michael Mraka)
+- don't delete local repo packages after download (RhBug:1186948) (Michael
+  Mraka)
+- doc: replaced last references pointing to akozumpl (Jan Silhan)
+
 * Wed Apr 08 2015 Michal Luscon <mluscon@redhat.com> 0.1.6-3
 - doc: release notes 0.1.6 (Michal Luscon)
 - initialize to use tito (Michal Luscon)
