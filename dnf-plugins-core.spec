@@ -1,5 +1,5 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 0.6.5}
-%{?!dnf_not_compatible: %global dnf_not_compatible 1.0}
+%{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
 
 Name:       dnf-plugins-core
 Version:    0.1.6
