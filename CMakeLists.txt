@@ -1,4 +1,4 @@
-PROJECT (dnf-plugins-core)
+PROJECT (dnf-plugins-core NONE)
 CMAKE_MINIMUM_REQUIRED (VERSION 2.4)
 
 if (NOT PYTHON_DESIRED)
