@@ -55,7 +55,7 @@ Requires:   python-kickstart
 Requires:   pykickstart
 %endif
 Requires:   python-requests
-Obsoletes:  dnf-plugins-core <= 0.1.5
+Conflicts:  dnf-plugins-core <= 0.1.5
 %description -n python-dnf-plugins-core
 Core Plugins for DNF, Python 2 interface. This package enhance DNF with builddep, copr,
 debuginfo-install, download, kickstart, needs-restarting, repoquery and
@@ -73,7 +73,7 @@ BuildRequires:  python3-sphinx
 Requires:   python3-requests
 Requires:   python3-dnf >= %{dnf_lowest_compatible}
 Requires:   python3-dnf < %{dnf_not_compatible}
-Obsoletes:  dnf-plugins-core <= 0.1.5
+Conflicts:  dnf-plugins-core <= 0.1.5
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
