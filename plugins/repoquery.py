@@ -118,9 +118,8 @@ def parse_arguments(args):
     for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
                 'requires', 'suggests', 'supplements'):
         name = '--%s' % arg
-        const = '%%{%s}' % arg
-        outform.add_argument(name, dest='queryformat', action='store_const',
-                             const=const, help=help_msgs[arg])
+        display.add_argument(name, dest='capabilities', action='append_const',
+                             const=arg, help=help_msgs[arg])
 
     return parser.parse_args(args), parser
 
@@ -226,9 +225,11 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.filter(pkg=latest_pkgs)
 
         if opts.resolve:
-            self.show_resolved_packages(q, opts.queryformat, opts)
+            q = self.resolve_deps(q, opts)
+            qf = opts.queryformat
         else:
-            self.show_packages(q, opts.queryformat)
+            qf = self.caps2queryformat(opts)
+        self.show_packages(q, qf)
 
     @staticmethod
     def show_packages(query, fmt):
@@ -242,23 +243,29 @@ class RepoQueryCommand(dnf.cli.Command):
                 # there don't exist on the dnf Package object.
                 raise dnf.exceptions.Error(str(e))
 
-    def show_resolved_packages(self, query, fmt, opts):
+    def resolve_deps(self, query, opts):
         """Print packages providing capabilities from a query"""
-        capabilities = list()
+        capabilities = set()
         for po in query.run():
-            try:
-                pkg = PackageFormatter(po)
-                capabilities.extend(pkg.format(fmt).split('\n'))
-            except AttributeError as e:
-                # catch that the user has specified attributes
-                # there don't exist on the dnf Package object.
-                raise dnf.exceptions.Error(str(e))
+            for cap in opts.capabilities:
+                try:
+                    capabilities.update(getattr(po, cap))
+                except AttributeError as e:
+                    # catch that the user has specified attributes
+                    # there don't exist on the dnf Package object.
+                    raise dnf.exceptions.Error(str(e))
 
         # find the providing packages and show them
         query = self.filter_repo_arch(opts, self.base.sack.query().available())
-        providers = self.by_provides(self.base.sack, list(capabilities),
-                                     query)
-        fmt = QFORMAT_DEFAULT
-        for po in providers.latest().run():
-            pkg = PackageFormatter(po)
-            print(pkg.format(fmt))
+        providers = query.filter(provides=capabilities)
+        return providers.latest()
+
+    def caps2queryformat(self, opts):
+        if not opts.capabilities:
+            return opts.queryformat
+        qf = []
+        if opts.queryformat != QFORMAT_DEFAULT:
+            qf.append(opts.queryformat)
+        for cap in opts.capabilities:
+            qf.append('%%{%s}' % cap)
+        return '\n'.join(qf)
