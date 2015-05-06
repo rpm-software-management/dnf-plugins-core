@@ -21,6 +21,12 @@ Core DNF Plugins Release Notes
 
 .. contents::
 =====================
+ 0.1.8 Release Notes
+=====================
+
+This release fixes only packaging issues.
+
+=====================
  0.1.7 Release Notes
 =====================
 
