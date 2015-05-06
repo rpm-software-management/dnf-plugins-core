@@ -2,7 +2,7 @@
 %{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
 
 Name:       dnf-plugins-core
-Version:    0.1.7
+Version:    0.1.8
 Release:    1%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -129,6 +129,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Wed May 06 2015 Michal Luscon <mluscon@redhat.com> 0.1.8-1
+- spec: fix an upgrade path from dnf-plugins-core <= 0.1.5 (Radek Holy)
+
 * Thu Apr 30 2015 Michal Luscon <mluscon@redhat.com> 0.1.7-1
 - doc: release notes dnf-plugins-core-0.1.7 (Michal Luscon)
 - spec: fix Conflicts of the new plugins (Radek Holy)
