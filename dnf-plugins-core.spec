@@ -3,7 +3,7 @@
 
 Name:       dnf-plugins-core
 Version:    0.1.8
-Release:    1%{?dist}
+Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 License:    GPLv2+
