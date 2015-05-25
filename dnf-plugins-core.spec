@@ -2,7 +2,7 @@
 
 Name:		dnf-plugins-core
 Version:	0.1.5
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
 License:	GPLv2+
@@ -107,6 +107,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %endif
 
 %changelog
+* Mon May 25 2015 Michal Luscon <mluscon@redhat.com> 0.1.5-3
+- spec: remove python3 subpackage from epel build (Michal Luscon)
+
 * Mon Apr 13 2015 Michal Luscon <mluscon@redhat.com> 0.1.5-2
 - prepare repo for tito build system (Michal Luscon)
 - migrate raw_input() to Python3 (RhBug:1208399) (Miroslav Suchý)
