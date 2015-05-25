@@ -34,6 +34,7 @@ Arguments
 
 ``<repo>``
     Display / modify specified repository. If not specified display / modify main DNF configuration.
+    Repositories can be specified using globs.
 
 -------
 Options
