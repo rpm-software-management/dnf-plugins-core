@@ -21,7 +21,9 @@ BuildRequires:	python-sphinx
 BuildRequires:	python2-devel
 Requires:	dnf = %{dnf_version}
 Requires:	pykickstart
+%if 0%{?fedora}
 Requires:	python-requests
+%endif
 
 %description
 Core Plugins for DNF. This package enhance DNF with builddep, config-manager,
@@ -29,6 +31,7 @@ copr, debuginfo-install, download, kickstart, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
 
+%if 0%{?fedora}
 %package -n python3-dnf-plugins-core
 Summary:	Core Plugins for DNF
 Group:		System Environment/Base
@@ -43,34 +46,45 @@ Core Plugins for DNF, Python 3 version. This package enhance DNF with builddep,
 config-manager, copr, debuginfo-install, download, kickstart, needs-restarting,
 repoquery and reposync commands. Additionally provides generate_completion_cache,
 noroot and protected_packages passive plugins.
+%endif
 
 %prep
 %setup -q -n dnf-plugins-core-%{version}
+%if 0%{?fedora}
 rm -rf py3
 mkdir ../py3
 cp -a . ../py3/
 mv ../py3 ./
+%endif
 
 %build
 %cmake .
 make %{?_smp_mflags}
 make doc-man
+%if 0%{?fedora}
 pushd py3
 %cmake -DPYTHON_DESIRED:str=3 .
 make %{?_smp_mflags}
 make doc-man
 popd
+%endif
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
 %find_lang %{name}
+%if 0%{?fedora}
 pushd py3
 make install DESTDIR=$RPM_BUILD_ROOT
 popd
+%else
+rm $RPM_BUILD_ROOT/%{python_sitelib}/dnf-plugins/copr.py
+%endif
 
 %check
 PYTHONPATH=./plugins /usr/bin/nosetests-2.* -s tests/
+%if 0%{?fedora}
 PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
+%endif
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING README.rst
@@ -80,6 +94,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
 
+%if 0%{?fedora}
 %files -n python3-dnf-plugins-core -f %{name}.lang
 %doc AUTHORS COPYING README.rst
 %dir %{_sysconfdir}/dnf/protected.d
@@ -89,6 +104,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/*
 %{python3_sitelib}/dnfpluginscore/
 %{_mandir}/man8/dnf.plugin.*
+%endif
 
 %changelog
 * Mon Apr 13 2015 Michal Luscon <mluscon@redhat.com> 0.1.5-2
