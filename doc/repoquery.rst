@@ -78,6 +78,8 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--alldeps``
     This option is stackable with ``--whatrequires`` only. Additionally it adds to the result set all packages requiring the package features.
 
+``--srpm``
+    Operate on corresponding source RPM.
 
 Query Options
 -------------
