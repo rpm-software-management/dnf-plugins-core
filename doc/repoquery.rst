@@ -75,6 +75,9 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--whatrequires <capability>``
     Limit the resulting set only to packages that require ``<capability>``.
 
+``--srpm``
+    Operate on corresponding source RPM.
+
 
 Query Options
 -------------
