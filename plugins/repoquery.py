@@ -337,7 +337,7 @@ class PackageWrapper(object):
 
     @property
     def conflicts(self):
-        return self._reldep_to_list(self._pkg.obsoletes)
+        return self._reldep_to_list(self._pkg.conflicts)
 
     @property
     def description_wrapped(self):
