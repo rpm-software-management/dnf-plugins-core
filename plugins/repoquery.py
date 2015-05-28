@@ -73,11 +73,14 @@ def build_format_fn(opts):
 def info_format(pkg):
     return QUERY_INFO.format(pkg)
 
+
 def filelist_format(pkg):
     return "\n".join(pkg.files)
 
+
 def sourcerpm_format(pkg):
     return pkg.sourcerpm
+
 
 def parse_arguments(args):
     # Setup ArgumentParser to handle util
@@ -97,12 +100,16 @@ def parse_arguments(args):
                         help=_('show only results there provides REQ'))
     parser.add_argument('--whatrequires', metavar='REQ',
                         help=_('show only results there requires REQ'))
+    parser.add_argument("--alldeps", action="store_true",
+                        help="shows results that requires package provides and files")
     parser.add_argument('--querytags', action='store_true',
                         help=_('show available tags to use with '
                                '--queryformat'))
     parser.add_argument('--resolve', action='store_true',
                         help=_('resolve capabilities to originating package(s)')
-                       )
+                        )
+    parser.add_argument("--tree", action="store_true", 
+                        help="For the given packages print a tree of the packages.")
 
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
@@ -123,14 +130,14 @@ def parse_arguments(args):
 
     pkgfilter = parser.add_mutually_exclusive_group()
     pkgfilter.add_argument("--duplicated", dest='pkgfilter',
-        const='duplicated', action='store_const',
-        help=_('limit the query to installed duplicated packages'))
+                           const='duplicated', action='store_const',
+                           help=_('limit the query to installed duplicated packages'))
     pkgfilter.add_argument("--installonly", dest='pkgfilter',
-        const='installonly', action='store_const',
-        help=_('limit the query to installed installonly packages'))
+                           const='installonly', action='store_const',
+                           help=_('limit the query to installed installonly packages'))
     pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
-        const='unsatisfied', action='store_const',
-        help=_('limit the query to installed packages with unsatisfied dependencies'))
+                           const='unsatisfied', action='store_const',
+                           help=_('limit the query to installed packages with unsatisfied dependencies'))
 
     help_msgs = {
         'conflicts': _('Display capabilities that the package conflicts with.'),
@@ -184,6 +191,7 @@ class RepoQuery(dnf.Plugin):
 
 
 class RepoQueryCommand(dnf.cli.Command):
+
     """The util command there is extending the dnf command line."""
     aliases = ('repoquery',)
     summary = _('search for packages matching keyword')
@@ -193,8 +201,8 @@ class RepoQueryCommand(dnf.cli.Command):
     def by_provides(sack, pattern, query):
         """Get a query for matching given provides."""
         try:
-            reldeps = list(map(functools.partial(hawkey.Reldep, sack),
-                               pattern))
+            reldeps = list(
+                map(functools.partial(hawkey.Reldep, sack), pattern))
         except hawkey.ValueException:
             return query.filter(empty=True)
         return query.filter(provides=reldeps)
@@ -222,9 +230,22 @@ class RepoQueryCommand(dnf.cli.Command):
         demands.sack_activation = True
         demands.available_repos = True
 
+    def by_all_deps(self, name, query):
+        defaultquery = query.filter(name=name)
+        allpkgs = set()
+        requiresquery = self.by_requires(self.base.sack, name, query)
+        for reqpkg in requiresquery.run():
+            allpkgs.add(reqpkg)
+        for pkg in defaultquery.run():
+            for provide in pkg.provides:
+                providequery = query.filter(requires=provide)
+                for needsprovidepkg in providequery.run():
+                    allpkgs.add(needsprovidepkg)
+        alldepsquery = query.filter(pkg=allpkgs)
+        return alldepsquery
+
     def run(self, args):
         (opts, parser) = parse_arguments(args)
-
         if opts.help_cmd:
             print(parser.format_help())
             return
@@ -244,7 +265,8 @@ class RepoQueryCommand(dnf.cli.Command):
             dups = dnf.query.duplicated_pkgs(q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=dups)
         elif opts.pkgfilter == "installonly":
-            instonly = dnf.query.installonly_pkgs(q, self.base.conf.installonlypkgs)
+            instonly = dnf.query.installonly_pkgs(
+                q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=instonly)
         elif opts.pkgfilter == "unsatisfied":
             rpmdb = dnf.sack.rpmdb_sack(self.base)
@@ -260,21 +282,71 @@ class RepoQueryCommand(dnf.cli.Command):
 
         # filter repo and arch
         q = self.filter_repo_arch(opts, q)
+        orquery = q
 
         if opts.file:
             q = q.filter(file=opts.file)
         if opts.whatprovides:
             q = self.by_provides(self.base.sack, [opts.whatprovides], q)
-        if opts.whatrequires:
+        if opts.alldeps:
+            if not opts.whatrequires:
+                raise dnf.exceptions.Error(
+                    _("--alldeps requires --whatrequires option.\n"
+                      "Example: dnf repoquery --whatrequires audiofile --alldeps"))
+            q = self.by_all_deps(opts.whatrequires, q)
+        elif opts.whatrequires:
             q = self.by_requires(self.base.sack, opts.whatrequires, q)
         if opts.latest_limit:
             latest_pkgs = dnf.query.latest_limit_pkgs(q, opts.latest_limit)
             q = q.filter(pkg=latest_pkgs)
         fmt_fn = build_format_fn(opts)
+        if opts.tree:
+            if not opts.whatrequires and "%{requires}" not in opts.queryformat and "%{conflicts}" not in opts.queryformat and "%{obsoletes}" not in opts.queryformat:
+                raise dnf.exceptions.Error(
+                    _("--tree requires either of these options: --whatrequires --requires --conflicts --obsoletes\n"
+                      "Example: dnf repoquery --whatrequires audiofile --tree"))
+            self.tree_seed(q, orquery, opts)
+            return
         if opts.resolve:
             self.show_resolved_packages(q, fmt_fn, opts)
         else:
             self.show_packages(q, fmt_fn)
+
+    def grow_tree(self, level, pkg):
+        if level == -1:
+            print(pkg)
+            return
+        spacing = " "
+        for x in range(0,level):
+            spacing += "|   "
+        requires = []
+        for reqirepkg in pkg.requires:
+            requires.append(str(reqirepkg))
+        reqstr = "[" + str(len(requires)) + ": " + ", ".join(requires) + "]"
+        print(spacing + "\_ " + str(pkg) + " " + reqstr)
+
+    def tree_seed(self, query, aquery, opts, level = -1, usedpkgs = None):
+        for pkg in sorted(set(query.run()), key = lambda p: p.name):
+            usedpkgs = set() if usedpkgs is None or level is -1 else usedpkgs
+            if pkg.name.startswith("rpmlib") or pkg.name.startswith("solvable"):
+                return
+            self.grow_tree(level, pkg)
+            if pkg not in usedpkgs:
+                usedpkgs.add(pkg)
+                if "%{requires}" in opts.queryformat or "%{conflicts}" in opts.queryformat or "%{obsoletes}" in opts.queryformat:
+                    strpkg = []
+                    strpkg += pkg.conflicts if "%{conflicts}" in opts.queryformat else []
+                    strpkg += pkg.obsoletes if "%{obsoletes}" in opts.queryformat else []
+                    strpkg += pkg.requires if "%{requires}" in opts.queryformat else []
+                    ar = {}
+                    for name in set(strpkg):
+                        pkgquery = self.base.sack.query().filter(provides=name)
+                        for querypkg in pkgquery:
+                            ar[querypkg.name + "." + querypkg.arch] = querypkg
+                    pkgquery = self.base.sack.query().filter(pkg=list(ar.values()))
+                else:
+                    pkgquery = self.by_all_deps(pkg.name, aquery) if opts.alldeps else self.by_requires(self.base.sack, pkg.name, aquery)
+                self.tree_seed(pkgquery, aquery, opts, level + 1, usedpkgs)
 
     @staticmethod
     def show_packages(query, fmt_fn):
@@ -311,6 +383,7 @@ class RepoQueryCommand(dnf.cli.Command):
 
 
 class PackageWrapper(object):
+
     """Wrapper for dnf.package.Package, so we can control formatting."""
 
     def __init__(self, pkg):
