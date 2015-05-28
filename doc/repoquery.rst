@@ -75,6 +75,9 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--whatrequires <capability>``
     Limit the resulting set only to packages that require ``<capability>``.
 
+``--alldeps``
+    This option is stackable with ``--whatrequires`` only. Additionally it adds to the result set all packages requiring the package features.
+
 
 Query Options
 -------------
@@ -102,6 +105,9 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 
 ``--provides``
     Display capabilities provided by the package. Same as ``--qf "%{provides}``.
+
+``--tree``
+    For the given packages print a tree of the packages that require them. --tree also requires either of these options to work: --whatrequires --requires --conflicts
 
 ``--qf <format>``, ``--queryformat <format>``
     Custom display format. ``<format>`` is a string to output for each matched package. Every occurrence of ``%{<tag>}`` within is replaced by corresponding attribute of the package. List of recognized tags can be displayed by running ``dnf repoquery --querytags``.
