@@ -73,11 +73,14 @@ def build_format_fn(opts):
 def info_format(pkg):
     return QUERY_INFO.format(pkg)
 
+
 def filelist_format(pkg):
     return "\n".join(pkg.files)
 
+
 def sourcerpm_format(pkg):
     return pkg.sourcerpm
+
 
 def parse_arguments(args):
     # Setup ArgumentParser to handle util
@@ -101,8 +104,9 @@ def parse_arguments(args):
                         help=_('show available tags to use with '
                                '--queryformat'))
     parser.add_argument('--resolve', action='store_true',
-                        help=_('resolve capabilities to originating package(s)')
-                       )
+                        help=_('resolve capabilities to originating package(s)'))
+    parser.add_argument('--srpm', action='store_true',
+                        help=_('operate on corresponding source RPM. '))
 
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
@@ -218,35 +222,42 @@ class RepoQueryCommand(dnf.cli.Command):
         return query
 
     def configure(self, args):
+        (self.opts, self.parser) = parse_arguments(args)
+
+        if self.opts.help_cmd or self.opts.querytags:
+            return
+
+        if self.opts.srpm:
+            dnfpluginscore.lib.enable_source_repos(self.base.repos)
+
         demands = self.cli.demands
         demands.sack_activation = True
         demands.available_repos = True
 
     def run(self, args):
-        (opts, parser) = parse_arguments(args)
 
-        if opts.help_cmd:
-            print(parser.format_help())
+        if self.opts.help_cmd:
+            print(self.parser.format_help())
             return
 
-        if opts.querytags:
+        if self.opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
             print(QUERY_TAGS)
             return
 
-        if opts.key:
-            q = dnf.subject.Subject(opts.key, ignore_case=True).get_best_query(
+        if self.opts.key:
+            q = dnf.subject.Subject(self.opts.key, ignore_case=True).get_best_query(
                 self.base.sack, with_provides=False)
         else:
             q = self.base.sack.query()
 
-        if opts.pkgfilter == "duplicated":
+        if self.opts.pkgfilter == "duplicated":
             dups = dnf.query.duplicated_pkgs(q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=dups)
-        elif opts.pkgfilter == "installonly":
+        elif self.opts.pkgfilter == "installonly":
             instonly = dnf.query.installonly_pkgs(q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=instonly)
-        elif opts.pkgfilter == "unsatisfied":
+        elif self.opts.pkgfilter == "unsatisfied":
             rpmdb = dnf.sack.rpmdb_sack(self.base)
             goal = dnf.goal.Goal(rpmdb)
             solved = goal.run(verify=True)
@@ -259,20 +270,30 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.available()
 
         # filter repo and arch
-        q = self.filter_repo_arch(opts, q)
+        q = self.filter_repo_arch(self.opts, q)
 
-        if opts.file:
-            q = q.filter(file=opts.file)
-        if opts.whatprovides:
-            q = self.by_provides(self.base.sack, [opts.whatprovides], q)
-        if opts.whatrequires:
-            q = self.by_requires(self.base.sack, opts.whatrequires, q)
-        if opts.latest_limit:
-            latest_pkgs = dnf.query.latest_limit_pkgs(q, opts.latest_limit)
+        if self.opts.file:
+            q = q.filter(file=self.opts.file)
+        if self.opts.whatprovides:
+            q = self.by_provides(self.base.sack, [self.opts.whatprovides], q)
+        if self.opts.whatrequires:
+            q = self.by_requires(self.base.sack, self.opts.whatrequires, q)
+        if self.opts.latest_limit:
+            latest_pkgs = dnf.query.latest_limit_pkgs(q, self.opts.latest_limit)
             q = q.filter(pkg=latest_pkgs)
-        fmt_fn = build_format_fn(opts)
-        if opts.resolve:
-            self.show_resolved_packages(q, fmt_fn, opts)
+
+        if self.opts.srpm:
+            pkg_list = []
+            for pkg in q:
+                pkg = pkg.sourcerpm
+                if (pkg is not None):
+                    tmp_query = self.base.sack.query().filter(nevra=pkg[:-4])
+                    pkg_list += tmp_query.run()
+            q = self.base.sack.query().filter(pkg=pkg_list)
+
+        fmt_fn = build_format_fn(self.opts)
+        if self.opts.resolve:
+            self.show_resolved_packages(q, fmt_fn, self.opts)
         else:
             self.show_packages(q, fmt_fn)
 
