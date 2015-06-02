@@ -218,8 +218,9 @@ Do you want to continue? [y/N]: """)
     def _download_repo(cls, project_name, repo_filename, chroot=None):
         if chroot is None:
             chroot = cls._guess_chroot()
+        short_chroot = '-'.join(chroot.split('-')[:2])
         #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
-        api_path = "/coprs/{0}/repo/{1}/".format(project_name, chroot)
+        api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
         # FIXME when we are full on python3 urllib.parse
         r = requests.get(cls.copr_url + api_path)
         if r.status_code == requests.codes.ok:
