@@ -18,6 +18,7 @@
 #
 
 from __future__ import print_function
+from dnf.pycomp import PY3
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
 import dnfpluginscore.lib
@@ -27,8 +28,7 @@ import glob
 import json
 import os
 import platform
-import requests
-import urllib
+import shutil
 
 
 YES = set([_('yes'), _('y')])
@@ -214,27 +214,36 @@ Do you want to continue? [y/N]: """)
             chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         return chroot
 
-    @classmethod
-    def _download_repo(cls, project_name, repo_filename, chroot=None):
+    def _download_repo(self, project_name, repo_filename, chroot=None):
         if chroot is None:
-            chroot = cls._guess_chroot()
+            chroot = self._guess_chroot()
         short_chroot = '-'.join(chroot.split('-')[:2])
         #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
-        # FIXME when we are full on python3 urllib.parse
-        r = requests.get(cls.copr_url + api_path)
-        if r.status_code == requests.codes.ok:
-            with open(repo_filename, 'wb') as fd:
-                for chunk in r.iter_content(4096):
-                    fd.write(chunk)
-        else:
-            cls._remove_repo(repo_filename)
-            if r.status_code == 404:
-                res = urllib.urlopen(cls.copr_url + "/coprs/" + project_name)
-                if res.getcode() != 404:
-                    raise dnf.exceptions.Error("This repository does not have"\
-                        " any builds yet so you cannot enable it now.")
-            raise dnf.exceptions.Error("Server returned {0} HTTP code.".format(r.status_code))
+        try:
+            f = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path)
+        except IOError as e:
+            if os.path.exists(repo_filename):
+                os.remove(repo_filename)
+            if '404' in str(e):
+                if PY3:
+                    import urllib.request
+                    try:
+                        res = urllib.request.urlopen(self.copr_url + "/coprs/" + project_name)
+                        status_code = res.getcode()
+                    except urllib.error.HTTPError as e:
+                        status_code = e.getcode()
+                else:
+                    import urllib
+                    res = urllib.urlopen(self.copr_url + "/coprs/" + project_name)
+                    status_code = res.getcode()
+                if str(status_code) != '404':
+                    raise dnf.exceptions.Error(_("This repository does not have"\
+                        " any builds yet so you cannot enable it now."))
+                else:
+                    raise dnf.exceptions.Error(_("Such repository does not exists."))
+            raise
+        shutil.copy2(f.name, repo_filename)
 
     @classmethod
     def _remove_repo(cls, repo_filename):
@@ -245,20 +254,16 @@ Do you want to continue? [y/N]: """)
             raise dnf.exceptions.Error(str(e))
 
     @classmethod
-    def _get_data(cls, req):
+    def _get_data(cls, f):
         """ Wrapper around response from server
 
         check data and print nice error in case of some error (and return None)
         otherwise return json object.
         """
         try:
-            output = json.loads(req.text)
+            output = json.loads(f.read())
         except ValueError:
             dnf.cli.CliError(_("Unknown response from server."))
-            return
-        if req.status_code != 200:
-            dnf.cli.CliError(_(
-                "Something went wrong:\n {0}\n".format(output["error"])))
             return
         return output
 
@@ -295,8 +300,9 @@ You are about to enable a Playground repository.
 Do you want to continue? [y/N]: """)
         api_url = "{0}/api/playground/list/".format(
             self.copr_url)
-        req = requests.get(api_url)
-        output = self._get_data(req)
+        f = dnfpluginscore.lib.urlopen(self, None, api_url)
+        output = self._get_data(f)
+        f.close()
         if output["output"] != "ok":
             raise dnf.cli.CliError(_("Unknown response from server."))
         for repo in output["repos"]:
@@ -309,8 +315,9 @@ Do you want to continue? [y/N]: """)
                 # up calls
                 api_url = "{0}/api/coprs/{1}/detail/{2}/".format(
                     self.copr_url, project_name, chroot)
-                req = requests.get(api_url)
-                output2 = self._get_data(req)
+                f = dnfpluginscore.lib.urlopen(self, None, api_url)
+                output2 = self._get_data(f)
+                f.close()
                 if (output2 and ("output" in output2)
                         and (output2["output"] == "ok")):
                     self._download_repo(project_name, repo_filename, chroot)
