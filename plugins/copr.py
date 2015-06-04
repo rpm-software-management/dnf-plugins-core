@@ -19,6 +19,7 @@
 
 from __future__ import print_function
 from dnf.pycomp import PY3
+from subprocess import Popen, call
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
 import dnfpluginscore.lib
@@ -96,8 +97,17 @@ class CoprCommand(dnf.cli.Command):
             chroot = extcmds[2]
         except IndexError:
             chroot = self._guess_chroot()
-        repo_filename = "/etc/yum.repos.d/_copr_{}.repo" \
-                        .format(project_name.replace("/", "-"))
+
+        try:
+            copr_username, copr_projectname = project_name.split("/")
+        except ValueError:
+            logger.critical(
+                _('Error: ') +
+                _('use format `copr_username/copr_projectname` '
+                  'to reference copr project'))
+
+        repo_filename = "/etc/yum.repos.d/_copr_{}-{}.repo" \
+                        .format(copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -118,8 +128,12 @@ Do you want to continue? [y/N]: """)
             logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
             self._need_root()
-            self._remove_repo(repo_filename)
+            self._disable_repo(copr_username, copr_projectname)
             logger.info(_("Repository successfully disabled."))
+        elif subcommand == "remove":
+            self._need_root()
+            self._remove_repo(repo_filename)
+            logger.info(_("Repository successfully removed."))
         elif subcommand == "list":
             #http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
             api_path = "/api/coprs/{}/".format(project_name)
@@ -252,6 +266,15 @@ Do you want to continue? [y/N]: """)
             os.remove(repo_filename)
         except OSError as e:
             raise dnf.exceptions.Error(str(e))
+
+    @classmethod
+    def _disable_repo(cls, copr_username, copr_projectname):
+        exit_code = call(["dnf", "config-manager", "--set-disabled",
+                          "{}-{}".format(copr_username, copr_projectname)])
+        if exit_code != 0:
+            raise dnf.exceptions.Error(
+                _("Failed to disable copr repo {}/{}"
+                  .format(copr_username, copr_projectname)))
 
     @classmethod
     def _get_data(cls, f):
