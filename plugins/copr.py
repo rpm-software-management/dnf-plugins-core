@@ -105,6 +105,7 @@ class CoprCommand(dnf.cli.Command):
                 _('Error: ') +
                 _('use format `copr_username/copr_projectname` '
                   'to reference copr project'))
+            raise dnf.cli.CliError(_('bad copr project format'))
 
         repo_filename = "/etc/yum.repos.d/_copr_{}-{}.repo" \
                         .format(copr_username, copr_projectname)
