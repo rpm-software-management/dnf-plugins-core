@@ -19,7 +19,7 @@
 
 from __future__ import print_function
 from dnf.pycomp import PY3
-from subprocess import Popen, call
+from subprocess import call
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
 import dnfpluginscore.lib
