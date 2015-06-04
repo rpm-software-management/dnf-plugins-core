@@ -28,7 +28,7 @@ Work with Copr & Playground repositories on the local system.
 Synopsis
 --------
 
-``dnf copr [enable|disable|list|search] <parameters>``
+``dnf copr [enable|disable|remove|list|search] <parameters>``
 
 ``dnf playground [enable|disable|upgrade]``
 
@@ -41,6 +41,9 @@ Arguments (copr)
 
 ``disable name/project``
     Disable the ``name/project`` Copr repository.
+
+``remove name/project``
+    Remove the ``name/project`` Copr repository.
 
 ``list name``
     List available Copr repositories for a given ``name``.
