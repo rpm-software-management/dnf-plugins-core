@@ -188,6 +188,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                 try:
                     f = dnfpluginscore.lib.urlopen(self, None, url, 'w+')
                     shutil.copy2(f.name, destname)
+                    os.chmod(destname, 0o644)
                     f.close()
                 except IOError as e:
                     logger.error(e)
@@ -207,6 +208,7 @@ def save_to_file(filename, content):
     try:
         with open(filename, 'w+') as fd:
             dnf.pycomp.write_to_file(fd, content)
+            os.chmod(filename, 0o644)
     except (IOError, OSError) as e:
         logger.error(_('Could not save repo to repofile %s: %s'),
                      filename, e)
