@@ -108,7 +108,7 @@ may vary.
 The Fedora Project does not exercise any power over the contents of
 this repository beyond the rules outlined in the Copr FAQ at
 <https://fedorahosted.org/copr/wiki/UserDocs#WhatIcanbuildinCopr>, and
-packages are not held to any quality or securty level.
+packages are not held to any quality or security level.
 
 Please do not file bug reports about these packages in Fedora
 Bugzilla. In case of problems, contact the owner of this repository.
