@@ -62,6 +62,7 @@ class CoprCommand(dnf.cli.Command):
     usage = _("""
   enable name/project [chroot]
   disable name/project
+  remove name/project
   list name
   search project
 
@@ -69,6 +70,7 @@ class CoprCommand(dnf.cli.Command):
   copr enable rhscl/perl516 epel-6-x86_64
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
+  copr remove rhscl/perl516
   copr list ignatenkobrain
   copr search tests
     """)
@@ -97,6 +99,14 @@ class CoprCommand(dnf.cli.Command):
             chroot = extcmds[2]
         except IndexError:
             chroot = self._guess_chroot()
+
+        # commands without defined copr_username/copr_projectname
+        if subcommand == "list":
+            self._list_user_projects(project_name)
+            return
+        if subcommand == "search":
+            self._search(project_name)
+            return
 
         try:
             copr_username, copr_projectname = project_name.split("/")
@@ -135,56 +145,57 @@ Do you want to continue? [y/N]: """)
             self._need_root()
             self._remove_repo(repo_filename)
             logger.info(_("Repository successfully removed."))
-        elif subcommand == "list":
-            #http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
-            api_path = "/api/coprs/{}/".format(project_name)
 
-            res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
-            try:
-                json_parse = json.loads(res.read())
-            except ValueError:
-                raise dnf.exceptions.Error(
-                    _("Can't parse repositories for username '{}'.")
-                    .format(project_name))
-            self._check_json_output(json_parse)
-            section_text = _("List of {} coprs").format(project_name)
-            self._print_match_section(section_text)
-            i = 0
-            while i < len(json_parse["repos"]):
-                msg = "{0}/{1} : ".format(project_name,
-                                          json_parse["repos"][i]["name"])
-                desc = json_parse["repos"][i]["description"]
-                if not desc:
-                    desc = _("No description given")
-                msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
-                print(msg)
-                i += 1
-        elif subcommand == "search":
-            #http://copr.fedoraproject.org/api/coprs/search/tests/
-            api_path = "/api/coprs/search/{}/".format(project_name)
-
-            res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
-            try:
-                json_parse = json.loads(res.read())
-            except ValueError:
-                raise dnf.exceptions.Error(_("Can't parse search for '{}'."
-                                            ).format(project_name))
-            self._check_json_output(json_parse)
-            section_text = _("Matched: {}").format(project_name)
-            self._print_match_section(section_text)
-            i = 0
-            while i < len(json_parse["repos"]):
-                msg = "{0}/{1} : ".format(json_parse["repos"][i]["username"],
-                                          json_parse["repos"][i]["coprname"])
-                desc = json_parse["repos"][i]["description"]
-                if not desc:
-                    desc = _("No description given.")
-                msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
-                print(msg)
-                i += 1
         else:
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
+
+    def _list_user_projects(self, user_name):
+        # http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
+        api_path = "/api/coprs/{}/".format(user_name)
+        res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
+        try:
+            json_parse = json.loads(res.read())
+        except ValueError:
+            raise dnf.exceptions.Error(
+                _("Can't parse repositories for username '{}'.")
+                .format(user_name))
+        self._check_json_output(json_parse)
+        section_text = _("List of {} coprs").format(user_name)
+        self._print_match_section(section_text)
+        i = 0
+        while i < len(json_parse["repos"]):
+            msg = "{0}/{1} : ".format(user_name,
+                                      json_parse["repos"][i]["name"])
+            desc = json_parse["repos"][i]["description"]
+            if not desc:
+                desc = _("No description given")
+            msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
+            print(msg)
+            i += 1
+
+    def _search(self, query):
+        # http://copr.fedoraproject.org/api/coprs/search/tests/
+        api_path = "/api/coprs/search/{}/".format(query)
+        res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
+        try:
+            json_parse = json.loads(res.read())
+        except ValueError:
+            raise dnf.exceptions.Error(_("Can't parse search for '{}'."
+                                         ).format(query))
+        self._check_json_output(json_parse)
+        section_text = _("Matched: {}").format(query)
+        self._print_match_section(section_text)
+        i = 0
+        while i < len(json_parse["repos"]):
+            msg = "{0}/{1} : ".format(json_parse["repos"][i]["username"],
+                                      json_parse["repos"][i]["coprname"])
+            desc = json_parse["repos"][i]["description"]
+            if not desc:
+                desc = _("No description given.")
+            msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
+            print(msg)
+            i += 1
 
     def _print_match_section(self, text):
         formatted = self.base.output.fmtSection(text)
