@@ -19,7 +19,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 from datetime import datetime
-from dnfpluginscore import _
+from dnfpluginscore import _, logger
 
 import argparse
 import dnf
@@ -105,6 +105,12 @@ def parse_arguments(args):
     parser.add_argument('--querytags', action='store_true',
                         help=_('show available tags to use with '
                                '--queryformat'))
+    parser.add_argument("--repofrompath", action=FromRepoPathAction,
+                        metavar='REPO,PATH', default={},
+                        help="specify label and paths of additional" \
+                             " repositories  - unique label and complete path" \
+                             " required, can be specified multiple times." \
+                             " Example: --repofrompath=myrepo,/path/to/repo")
     parser.add_argument('--resolve', action='store_true',
                         help=_('resolve capabilities to originating package(s)')
                         )
@@ -180,6 +186,20 @@ def rpm2py_format(queryformat):
     return fmt
 
 
+class FromRepoPathAction(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        print('%r %r %r' % (namespace, values, option_string))
+        try:
+            label, path = values.split(',')
+            if not label or not path:
+                raise ValueError
+        except ValueError:
+            msg = _('bad format: %s') % values
+            raise argparse.ArgumentError(self, msg)
+        val = getattr(namespace, self.dest)
+        val[label] = path
+
+
 class RepoQuery(dnf.Plugin):
 
     name = 'Query'
@@ -232,6 +252,15 @@ class RepoQueryCommand(dnf.cli.Command):
 
         if self.opts.help_cmd or self.opts.querytags:
             return
+
+        if self.opts.repofrompath:
+            for label, path in self.opts.repofrompath.items():
+                if path[0] == '/':
+                    path = 'file://' + path
+                repo = dnf.repo.Repo(label, self.base.conf.cachedir)
+                repo.baseurl = path
+                self.base.repos.add(repo)
+                logger.info(_("Added %s repo from %s") % (label, path))
 
         if self.opts.srpm:
             dnfpluginscore.lib.enable_source_repos(self.base.repos)
