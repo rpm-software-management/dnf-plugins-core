@@ -114,6 +114,12 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``--qf <format>``, ``--queryformat <format>``
     Custom display format. ``<format>`` is a string to output for each matched package. Every occurrence of ``%{<tag>}`` within is replaced by corresponding attribute of the package. List of recognized tags can be displayed by running ``dnf repoquery --querytags``.
 
+``--repofrompath <repo>,<path/url>``
+    Specify a path or url to a repository (same path as in a baseurl) to add to
+    the repositories for this query. This option can be used multiple times.
+    If you want to view only the packages from this repository combine this
+    with --repo. The repo label for the repository is specified by <repo>.
+
 ``--requires``
     Display capabilities that the package depends on. Same as ``--qf "%{requires}``.
 
