@@ -1,245 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Tim Lauridsen <tla@rasmil.dk>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: dnf-plugins-core\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-05 15:00+0100\n"
+"POT-Creation-Date: 2015-06-16 19:34-0400\n"
 "PO-Revision-Date: 2014-12-05 14:01+0000\n"
 "Last-Translator: Jan silhan <jsilhan@redhat.com>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/dnf-plugins-core/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/dnf-plugins-core/"
+"language/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../plugins/debuginfo-install.py:43
-msgid "install debuginfo packages"
-msgstr "Installer debuginfo pakker"
-
-#: ../plugins/debuginfo-install.py:157
-msgid "Can't find debuginfo package for: {0}-{1}:{2}-{3}.{4}"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:180
-msgid "enabling {}"
-msgstr "aktiverer {}"
-
-#: ../plugins/needs_restarting.py:93
-msgid "only consider this user's processes"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:184
-msgid "determine updated binaries that need restarting"
-msgstr ""
-
-#: ../plugins/builddep.py:65
-msgid "Install build dependencies for .src.rpm or .spec file"
-msgstr "Installerer afhængigheder for bygning af .src.rpm eller .spec file"
-
-#: ../plugins/builddep.py:66
-msgid "[PACKAGE.src.rpm|PACKAGE.spec]"
-msgstr "[PAKKE.src.rpm|PAKKE.spec]"
-
-#: ../plugins/builddep.py:87
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file."
-msgstr "Kunne ikke læse: '%s', Ikke en gyldig spec fil"
-
-#: ../plugins/builddep.py:94
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr ""
-
-#: ../plugins/download.py:50
-msgid "Download package to current directory"
-msgstr "Downloader paker til aktive bibliotek"
-
-#: ../plugins/download.py:51
-msgid "PACKAGE..."
-msgstr "PAKKE.."
-
-#: ../plugins/download.py:66
-msgid "packages to download"
-msgstr ""
-
-#: ../plugins/download.py:68
-msgid "download the src.rpm instead"
-msgstr ""
-
-#: ../plugins/download.py:70
-msgid "download path, default is current dir"
-msgstr ""
-
-#: ../plugins/download.py:72
-msgid "resolve and download needed dependencies"
-msgstr ""
-
-#: ../plugins/download.py:136
-msgid "Error in resolve"
-msgstr ""
-
-#: ../plugins/download.py:148
-#, python-format
-msgid "No source rpm definded for %s"
-msgstr ""
-
-#: ../plugins/download.py:169
-#, python-format
-msgid "enabled %s repository"
-msgstr ""
-
-#: ../plugins/protected_packages.py:30
-#, python-format
-msgid ""
-"The operation would result in removing the following protected packages: %s."
-msgstr ""
-
-#: ../plugins/protected_packages.py:32
-#, python-format
-msgid "The operation would result in removing the booted kernel: %s."
-msgstr ""
-
-#: ../plugins/dnfpluginscore/__init__.py:58
-msgid "show this help about this tool"
-msgstr ""
-
-#: ../plugins/kickstart.py:58
-msgid "Install packages defined in a kickstart file on your system"
-msgstr "Installer pakker, defineret i en lokal kickstart fil"
-
-#: ../plugins/kickstart.py:59
-msgid "FILE"
-msgstr "FIL"
-
-#: ../plugins/kickstart.py:68
-msgid "Error: Requires exactly one path to a kickstart file"
-msgstr "Fejl: Kommandoen behøver en sti til en enkelt kickstart fil"
-
-#: ../plugins/kickstart.py:71
-msgid "exactly one path to a kickstart file required"
-msgstr "Kommandoen behøver en sti til en enkelt kickstart fil"
-
-#: ../plugins/kickstart.py:95
-#, python-format
-msgid "file cannot be parsed: %s"
-msgstr ""
-
-#: ../plugins/kickstart.py:112
-#, python-format
-msgid "No package %s available."
-msgstr "Pakken %s ikke fundet."
-
-#: ../plugins/kickstart.py:117
-msgid "Nothing to do."
-msgstr "Ingenting at gøre."
-
-#: ../plugins/repoquery.py:75
-msgid "the key to search for"
-msgstr ""
-
-#: ../plugins/repoquery.py:77
-msgid "show only results from this REPO"
-msgstr ""
-
-#: ../plugins/repoquery.py:79
-msgid "show only results from this ARCH"
-msgstr ""
-
-#: ../plugins/repoquery.py:81
-msgid "show only results there provides REQ"
-msgstr ""
-
-#: ../plugins/repoquery.py:83
-msgid "show only results there requires REQ"
-msgstr ""
-
-#: ../plugins/repoquery.py:85
-msgid "show available tags to use with --queryformat"
-msgstr ""
-
-#: ../plugins/repoquery.py:91
-msgid "show detailed information about the package"
-msgstr ""
-
-#: ../plugins/repoquery.py:94
-msgid "format for displaying found packages"
-msgstr ""
-
-#: ../plugins/repoquery.py:97
-msgid "Display capabilities that the package conflicts with."
-msgstr ""
-
-#: ../plugins/repoquery.py:98
-msgid "Display capabilities that the package can enhance."
-msgstr ""
-
-#: ../plugins/repoquery.py:99
-msgid "Display capabilities that the package obsoletes."
-msgstr ""
-
-#: ../plugins/repoquery.py:100
-msgid "Display capabilities provided by the package."
-msgstr ""
-
-#: ../plugins/repoquery.py:101
-msgid "Display capabilities that the package recommends."
-msgstr ""
-
-#: ../plugins/repoquery.py:102
-msgid "Display capabilities that the package depends on."
-msgstr ""
-
-#: ../plugins/repoquery.py:103
-msgid "Display capabilities that the package suggests."
-msgstr ""
-
-#: ../plugins/repoquery.py:104
-msgid "Display capabilities that the package can supplement."
-msgstr ""
-
-#: ../plugins/repoquery.py:150
-msgid "search for packages matching keyword"
-msgstr ""
-
-#: ../plugins/repoquery.py:151
-msgid "[OPTIONS] [KEYWORDS]"
-msgstr ""
-
-#: ../plugins/repoquery.py:185
-msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
-msgstr ""
-
-#: ../plugins/noroot.py:28 ../plugins/copr.py:193
-msgid "This command has to be run under the root user."
-msgstr "Denne kommando kan kun kører som root brugeren."
-
-#: ../plugins/copr.py:33
-msgid "yes"
-msgstr "ja"
-
-#: ../plugins/copr.py:33
-msgid "y"
-msgstr "j"
-
-#: ../plugins/copr.py:34
-msgid "no"
-msgstr "nej"
-
-#: ../plugins/copr.py:34
-msgid "n"
-msgstr "n"
-
-#: ../plugins/copr.py:54
-msgid "Interact with Copr repositories."
-msgstr ""
-
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:61
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -256,92 +36,446 @@ msgid ""
 "    "
 msgstr ""
 
-#: ../plugins/copr.py:82 ../plugins/copr.py:323
-msgid "Error: "
-msgstr "Fejl: "
+#: ../plugins/builddep.py:39
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr ""
 
-#: ../plugins/copr.py:83 ../plugins/copr.py:87
-msgid "exactly two additional parameters to copr command are required"
-msgstr "copr kommandoen behøver to extra parametre"
+#: ../plugins/repoquery.py:303
+msgid ""
+"--alldeps requires --whatrequires option.\n"
+"Example: dnf repoquery --whatrequires audiofile --alldeps"
+msgstr ""
 
-#: ../plugins/copr.py:112
-msgid "Repository successfully enabled."
-msgstr "Fil-kilden er nu tiljøjet"
+#: ../plugins/repoquery.py:327
+msgid ""
+"--tree requires either of these options: --whatrequires --requires --"
+"conflicts --obsoletes\n"
+"Example: dnf repoquery --whatrequires audiofile --tree"
+msgstr ""
 
-#: ../plugins/copr.py:116
-msgid "Repository successfully disabled."
-msgstr "Fil-kilden er nu fjernet"
+#: ../plugins/config_manager.py:183
+#, python-format
+msgid "Adding repo from: %s"
+msgstr ""
 
-#: ../plugins/copr.py:127
+#: ../plugins/repoquery.py:263
+#, python-brace-format
+msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
+msgstr ""
+
+#: ../plugins/copr.py:132
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan ikke læse copr kilderne for følgende bruger '{}'."
 
-#: ../plugins/copr.py:130
-msgid "List of {} coprs"
-msgstr "Liste af  {} coprs"
-
-#: ../plugins/copr.py:138
-msgid "No description given"
-msgstr "Igen beskrivelse er angivet"
-
-#: ../plugins/copr.py:151
+#: ../plugins/copr.py:155
 msgid "Can't parse search for '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:153
-msgid "Matched: {}"
+#: ../plugins/config_manager.py:213
+#, python-format
+msgid "Could not save repo to repofile %s: %s"
 msgstr ""
 
-#: ../plugins/copr.py:160
-msgid "No description given."
+#: ../plugins/repoquery.py:148
+msgid "Display capabilities provided by the package."
 msgstr ""
 
-#: ../plugins/copr.py:166 ../plugins/copr.py:343
-msgid "Unknown subcommand {}."
-msgstr "Ukendt under-kommando {}."
+#: ../plugins/repoquery.py:146
+msgid "Display capabilities that the package can enhance."
+msgstr ""
 
-#: ../plugins/copr.py:176 ../plugins/copr.py:186
-msgid "Safe and good answer. Exiting."
-msgstr "Sikkert og godt svar. Afslutter."
+#: ../plugins/repoquery.py:152
+msgid "Display capabilities that the package can supplement."
+msgstr ""
 
-#: ../plugins/copr.py:250 ../plugins/copr.py:294
-msgid "Unknown response from server."
-msgstr "Ingen svar fra serveren"
+#: ../plugins/repoquery.py:145
+msgid "Display capabilities that the package conflicts with."
+msgstr ""
 
-#: ../plugins/copr.py:254
-msgid ""
-"Something went wrong:\n"
-" {0}\n"
-msgstr "Fejl opstået:\n {0}\n"
+#: ../plugins/repoquery.py:150
+msgid "Display capabilities that the package depends on."
+msgstr ""
 
-#: ../plugins/copr.py:280
+#: ../plugins/repoquery.py:147
+msgid "Display capabilities that the package obsoletes."
+msgstr ""
+
+#: ../plugins/repoquery.py:149
+msgid "Display capabilities that the package recommends."
+msgstr ""
+
+#: ../plugins/repoquery.py:151
+msgid "Display capabilities that the package suggests."
+msgstr ""
+
+#: ../plugins/download.py:51
+msgid "Download package to current directory"
+msgstr "Downloader paker til aktive bibliotek"
+
+#: ../plugins/download.py:145
+msgid "Error in resolve"
+msgstr ""
+
+#: ../plugins/copr.py:88 ../plugins/copr.py:338
+msgid "Error: "
+msgstr "Fejl: "
+
+#: ../plugins/kickstart.py:68
+msgid "Error: Requires exactly one path to a kickstart file"
+msgstr "Fejl: Kommandoen behøver en sti til en enkelt kickstart fil"
+
+#: ../plugins/config_manager.py:102
+msgid "Error: Trying to enable already enabled repos."
+msgstr ""
+
+#: ../plugins/config_manager.py:99
+msgid "Error: Trying to enable and disable repos at the same time."
+msgstr ""
+
+#: ../plugins/kickstart.py:59
+msgid "FILE"
+msgstr "FIL"
+
+#: ../plugins/builddep.py:178
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file."
+msgstr "Kunne ikke læse: '%s', Ikke en gyldig spec fil"
+
+#: ../plugins/kickstart.py:58
+msgid "Install packages defined in a kickstart file on your system"
+msgstr "Installer pakker, defineret i en lokal kickstart fil"
+
+#: ../plugins/copr.py:60
+msgid "Interact with Copr repositories."
+msgstr ""
+
+#: ../plugins/copr.py:292
 msgid "Interact with Playground repository."
 msgstr ""
 
-#: ../plugins/copr.py:324 ../plugins/copr.py:328
-msgid "exactly one parameter to playground command are required"
-msgstr "Præcis en under-kommando, behøves af playground kommandoen"
+#: ../plugins/config_manager.py:49
+msgid "KEYWORDS"
+msgstr ""
 
-#: ../plugins/copr.py:333
-msgid "Playground repositories successfully enabled."
-msgstr "Playground kilden er nu tilføjet"
+#: ../plugins/copr.py:135
+msgid "List of {} coprs"
+msgstr "Liste af  {} coprs"
 
-#: ../plugins/copr.py:336
+#: ../plugins/copr.py:158
+msgid "Matched: {}"
+msgstr ""
+
+#: ../plugins/copr.py:143
+msgid "No description given"
+msgstr "Igen beskrivelse er angivet"
+
+#: ../plugins/copr.py:166
+msgid "No description given."
+msgstr ""
+
+#: ../plugins/builddep.py:144
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr ""
+
+#: ../plugins/config_manager.py:142
+#, python-format
+msgid "No matching repo to modify: %s."
+msgstr ""
+
+#: ../plugins/kickstart.py:112
+#, python-format
+msgid "No package %s available."
+msgstr "Pakken %s ikke fundet."
+
+#: ../plugins/download.py:160
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr ""
+
+#: ../plugins/builddep.py:171 ../plugins/builddep.py:186
+msgid "Not all dependencies satisfied"
+msgstr ""
+
+#: ../plugins/kickstart.py:117
+msgid "Nothing to do."
+msgstr "Ingenting at gøre."
+
+#: ../plugins/config_manager.py:49
+msgid "OPTIONS"
+msgstr ""
+
+#: ../plugins/download.py:52
+msgid "PACKAGE..."
+msgstr "PAKKE.."
+
+#: ../plugins/copr.py:351
 msgid "Playground repositories successfully disabled."
 msgstr "Playground klden er nu fjernet."
 
-#: ../plugins/copr.py:340
+#: ../plugins/copr.py:348
+msgid "Playground repositories successfully enabled."
+msgstr "Playground kilden er nu tilføjet"
+
+#: ../plugins/copr.py:355
 msgid "Playground repositories successfully updated."
 msgstr "Playground kilden er nu opdateret."
 
-#: ../plugins/reposync.py:36
-msgid "where to store downloaded repositories "
+#: ../plugins/copr.py:122
+msgid "Repository successfully disabled."
+msgstr "Fil-kilden er nu fjernet"
+
+#: ../plugins/copr.py:118
+msgid "Repository successfully enabled."
+msgstr "Fil-kilden er nu tiljøjet"
+
+#: ../plugins/copr.py:182 ../plugins/copr.py:192
+msgid "Safe and good answer. Exiting."
+msgstr "Sikkert og godt svar. Afslutter."
+
+#: ../plugins/copr.py:244
+msgid "Such repository does not exists."
 msgstr ""
 
-#: ../plugins/reposync.py:38
+#: ../plugins/protected_packages.py:32
+#, python-format
+msgid "The operation would result in removing the booted kernel: %s."
+msgstr ""
+
+#: ../plugins/protected_packages.py:30
+#, python-format
+msgid ""
+"The operation would result in removing the following protected packages: %s."
+msgstr ""
+
+#: ../plugins/noroot.py:28 ../plugins/copr.py:199
+msgid "This command has to be run under the root user."
+msgstr "Denne kommando kan kun kører som root brugeren."
+
+#: ../plugins/copr.py:241
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr ""
+
+#: ../plugins/copr.py:266 ../plugins/copr.py:307
+msgid "Unknown response from server."
+msgstr "Ingen svar fra serveren"
+
+#: ../plugins/copr.py:172 ../plugins/copr.py:358
+msgid "Unknown subcommand {}."
+msgstr "Ukendt under-kommando {}."
+
+#: ../plugins/repoquery.py:200
+msgid "[OPTIONS] [KEYWORDS]"
+msgstr ""
+
+#: ../plugins/builddep.py:87
+#, fuzzy
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAKKE.src.rpm|PAKKE.spec]"
+
+#: ../plugins/config_manager.py:76
+msgid "add (and enable) the repo from the specified file or url"
+msgstr ""
+
+#: ../plugins/builddep.py:48
+msgid "define a macro for spec file parsing"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:184
+msgid "determine updated binaries that need restarting"
+msgstr ""
+
+#: ../plugins/config_manager.py:73
+msgid "disable the specified repos (automatically saves)"
+msgstr ""
+
+#: ../plugins/reposync.py:63
+msgid "download all packages from remote repo"
+msgstr ""
+
+#: ../plugins/download.py:74
+msgid "download path, default is current dir"
+msgstr ""
+
+#: ../plugins/download.py:71
+msgid "download the src.rpm instead"
+msgstr ""
+
+#: ../plugins/config_manager.py:70
+msgid "enable the specified repos (automatically saves)"
+msgstr ""
+
+#: ../plugins/dnfpluginscore/lib.py:132
+#, python-format
+msgid "enabling %s repository"
+msgstr ""
+
+#: ../plugins/copr.py:339 ../plugins/copr.py:343
+msgid "exactly one parameter to playground command are required"
+msgstr "Præcis en under-kommando, behøves af playground kommandoen"
+
+#: ../plugins/kickstart.py:71
+msgid "exactly one path to a kickstart file required"
+msgstr "Kommandoen behøver en sti til en enkelt kickstart fil"
+
+#: ../plugins/copr.py:89 ../plugins/copr.py:93
+msgid "exactly two additional parameters to copr command are required"
+msgstr "copr kommandoen behøver to extra parametre"
+
+#: ../plugins/kickstart.py:95
+#, python-format
+msgid "file cannot be parsed: %s"
+msgstr ""
+
+#: ../plugins/repoquery.py:128
+msgid "format for displaying found packages"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:45
+msgid "install debuginfo packages"
+msgstr "Installer debuginfo pakker"
+
+#: ../plugins/repoquery.py:136
+msgid "limit the query to installed duplicated packages"
+msgstr ""
+
+#: ../plugins/repoquery.py:139
+msgid "limit the query to installed installonly packages"
+msgstr ""
+
+#: ../plugins/repoquery.py:142
+msgid "limit the query to installed packages with unsatisfied dependencies"
+msgstr ""
+
+#: ../plugins/config_manager.py:48
+msgid "manage dnf configuration options and repositories"
+msgstr ""
+
+#: ../plugins/copr.py:35
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:35
+msgid "no"
+msgstr "nej"
+
+#: ../plugins/needs_restarting.py:93
+msgid "only consider this user's processes"
+msgstr ""
+
+#: ../plugins/repoquery.py:114
+msgid "operate on corresponding source RPM. "
+msgstr ""
+
+#: ../plugins/download.py:69
+msgid "packages to download"
+msgstr ""
+
+#: ../plugins/builddep.py:45
+msgid "packages with builddeps to install"
+msgstr ""
+
+#: ../plugins/config_manager.py:79
+msgid "print current configuration values to stdout"
+msgstr ""
+
+#: ../plugins/config_manager.py:64
+msgid "repo to modify"
+msgstr ""
+
+#: ../plugins/reposync.py:39
 msgid "repository to download"
 msgstr ""
 
-#: ../plugins/reposync.py:59
-msgid "download all packages from remote repo"
+#: ../plugins/download.py:77
+msgid "resolve and download needed dependencies"
 msgstr ""
+
+#: ../plugins/repoquery.py:109
+msgid "resolve capabilities to originating package(s)"
+msgstr ""
+
+#: ../plugins/config_manager.py:67
+msgid "save the current options (useful with --setopt)"
+msgstr ""
+
+#: ../plugins/repoquery.py:199
+msgid "search for packages matching keyword"
+msgstr ""
+
+#: ../plugins/repoquery.py:130
+msgid ""
+"show N latest packages for a given name.arch (or latest but N if N is "
+"negative)"
+msgstr ""
+
+#: ../plugins/repoquery.py:106
+msgid "show available tags to use with --queryformat"
+msgstr ""
+
+#: ../plugins/repoquery.py:119
+msgid "show detailed information about the package"
+msgstr ""
+
+#: ../plugins/repoquery.py:122
+msgid "show list of files in the package"
+msgstr ""
+
+#: ../plugins/repoquery.py:96
+msgid "show only results from this ARCH"
+msgstr ""
+
+#: ../plugins/repoquery.py:91
+msgid "show only results from this REPO"
+msgstr ""
+
+#: ../plugins/repoquery.py:98
+msgid "show only results that owns FILE"
+msgstr ""
+
+#: ../plugins/repoquery.py:100
+msgid "show only results there provides REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:102
+msgid "show only results there requires REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:125
+msgid "show package source RPM name"
+msgstr ""
+
+#: ../plugins/dnfpluginscore/__init__.py:58
+msgid "show this help about this tool"
+msgstr ""
+
+#: ../plugins/repoquery.py:89
+msgid "the key to search for"
+msgstr ""
+
+#: ../plugins/reposync.py:37
+msgid "where to store downloaded repositories "
+msgstr ""
+
+#: ../plugins/copr.py:34
+msgid "y"
+msgstr "j"
+
+#: ../plugins/copr.py:34
+msgid "yes"
+msgstr "ja"
+
+#~ msgid "Install build dependencies for .src.rpm or .spec file"
+#~ msgstr "Installerer afhængigheder for bygning af .src.rpm eller .spec file"
+
+#~ msgid ""
+#~ "Something went wrong:\n"
+#~ " {0}\n"
+#~ msgstr ""
+#~ "Fejl opstået:\n"
+#~ " {0}\n"
+
+#~ msgid "enabling {}"
+#~ msgstr "aktiverer {}"
