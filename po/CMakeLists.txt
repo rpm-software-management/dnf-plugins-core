@@ -1,14 +1,16 @@
+# pushing/pulling translations to zanata
+
 SET(SRC_PO ${CMAKE_SOURCE_DIR}/po)
 
 ADD_CUSTOM_TARGET (gettext-export
                    cd ${SRC_PO} && find ../plugins -iname "*.py" |
                    xargs xgettext --from-code=UTF-8 --output=${SRC_PO}/dnf-plugins-core.pot &&
-                   tx push -s
-                   COMMENT "Pushing translation source file to transifex")
+                   zanata-cli -e -B push --project-config ${SRC_PO}/zanata.xml
+                   COMMENT "Pushing translation source file to zanata")
 ADD_CUSTOM_TARGET (gettext-update
-                   tx pull -f
+                   zanata-cli -e -B pull --project-config ${SRC_PO}/zanata.xml
                    DEPENDS gettext-export
-                   COMMENT "Updating translation files from transifex")                   
+                   COMMENT "Updating translation files from zanata")
 
 FIND_PACKAGE(Gettext)
 IF (GETTEXT_FOUND)
