@@ -127,6 +127,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.8-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Wed May 06 2015 Michal Luscon <mluscon@redhat.com> 0.1.8-1
 - spec: fix an upgrade path from dnf-plugins-core <= 0.1.5 (Radek Holy)
 
