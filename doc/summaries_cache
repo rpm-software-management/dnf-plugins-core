@@ -114,5 +114,25 @@
     [
         1186948, 
         "[download] data loss: dnf download should not delete files from local repositories"
+    ], 
+    [
+        1228693, 
+        "dnf config-manager --add-repo sets permission to 600"
+    ], 
+    [
+        1186689, 
+        "RFE: make dnf repoquery --whatrequires behave like yum based repoquery (add --alldeps support)"
+    ], 
+    [
+        1227190, 
+        "error enable copr"
+    ], 
+    [
+        1186382, 
+        "[rfe] Please provide an equivalent of repoquery --srpm"
+    ], 
+    [
+        1128425, 
+        "RFE: Missing recursive dependency resolution in repoquery"
     ]
 ]

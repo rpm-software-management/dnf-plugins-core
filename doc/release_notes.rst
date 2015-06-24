@@ -21,6 +21,21 @@ Core DNF Plugins Release Notes
 
 .. contents::
 =====================
+ 0.1.9 Release Notes
+=====================
+
+:doc:`repoquery` was extended by newly added select options ``--srpm``, ``--alldeps``
+and query option ``--tree``.
+
+Bugs fixed in 0.1.9:
+
+* :rhbug:`1128425`
+* :rhbug:`1186382`
+* :rhbug:`1228693`
+* :rhbug:`1186689`
+* :rhbug:`1227190`
+
+=====================
  0.1.8 Release Notes
 =====================
 
