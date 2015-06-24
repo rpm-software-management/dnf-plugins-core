@@ -2,7 +2,7 @@
 %{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
 
 Name:       dnf-plugins-core
-Version:    0.1.8
+Version:    0.1.9
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -127,6 +127,17 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Wed Jun 24 2015 Michal Luscon <mluscon@redhat.com> 0.1.9-1
+- repoquery: add srpm option (RhBug:1186382) (Vladan Kudlac)
+- create repo files readable by users (RhBug:1228693) (Michael Mraka)
+- copr: use librepo instead of python-request (Miroslav Suchý)
+- --tree now works with --conflicts --obsoletes --requires and --whatrequires
+  (RhBug:1128424) (RhBug:1186689) (Adam Salih)
+- url for copr repos changed (RhBug:1227190) (Miroslav Suchý)
+- repoquery: fixed conflicts package format (Adam Salih)
+- document that globs can be used in dnf config-manager (Michael Mraka)
+
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.8-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
