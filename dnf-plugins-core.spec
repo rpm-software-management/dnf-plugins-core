@@ -1,5 +1,6 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 0.6.5}
 %{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
+%global hawkey_version 0.5.9
 
 Name:       dnf-plugins-core
 Version:    0.1.9
@@ -49,6 +50,7 @@ BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
 Requires:   python-dnf >= %{dnf_lowest_compatible}
 Requires:   python-dnf < %{dnf_not_compatible}
+Requires:   python-hawkey >= hawkey_version
 %if 0%{?fedora} >= 23
 Requires:   python-kickstart
 %else
@@ -71,6 +73,7 @@ BuildRequires:  python3-nose
 BuildRequires:  python3-sphinx
 Requires:   python3-dnf >= %{dnf_lowest_compatible}
 Requires:   python3-dnf < %{dnf_not_compatible}
+Requires:   python3-hawkey >= hawkey_version
 Conflicts:  dnf-plugins-core <= 0.1.5
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,

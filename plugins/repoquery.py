@@ -99,7 +99,15 @@ def parse_arguments(args):
     parser.add_argument('--whatprovides', metavar='REQ',
                         help=_('show only results there provides REQ'))
     parser.add_argument('--whatrequires', metavar='REQ',
-                        help=_('show only results there requires REQ'))
+                        help=_('show only results there require REQ'))
+    parser.add_argument('--whatrecommends', metavar='REQ',
+                        help=_('show only results that recommend REQ'))
+    parser.add_argument('--whatenhances', metavar='REQ',
+                        help=_('show only results that enhance REQ'))
+    parser.add_argument('--whatsuggests', metavar='REQ',
+                        help=_('show only results that suggest REQ'))
+    parser.add_argument('--whatsupplements', metavar='REQ',
+                        help=_('show only results that supplement REQ'))
     parser.add_argument("--alldeps", action="store_true",
                         help="shows results that requires package provides and files")
     parser.add_argument('--querytags', action='store_true',
@@ -108,7 +116,7 @@ def parse_arguments(args):
     parser.add_argument('--resolve', action='store_true',
                         help=_('resolve capabilities to originating package(s)')
                         )
-    parser.add_argument("--tree", action="store_true", 
+    parser.add_argument("--tree", action="store_true",
                         help="For the given packages print a tree of the packages.")
     parser.add_argument('--srpm', action='store_true',
                         help=_('operate on corresponding source RPM. '))
@@ -198,6 +206,15 @@ class RepoQueryCommand(dnf.cli.Command):
     aliases = ('repoquery',)
     summary = _('search for packages matching keyword')
     usage = _('[OPTIONS] [KEYWORDS]')
+
+    @staticmethod
+    def by_dep(sack, pattern, query, dep):
+        try:
+            reldep = hawkey.Reldep(sack, pattern)
+        except hawkey.ValueException:
+            return query.filter(empty=True)
+        kwarg = {dep: reldep}
+        return query.filter(**kwarg)
 
     @staticmethod
     def by_provides(sack, pattern, query):
@@ -305,6 +322,18 @@ class RepoQueryCommand(dnf.cli.Command):
             q = self.by_all_deps(self.opts.whatrequires, q)
         elif self.opts.whatrequires:
             q = self.by_requires(self.base.sack, self.opts.whatrequires, q)
+        if self.opts.whatrecommends:
+            q = self.by_dep(self.base.sack, self.opts.whatrecommends, q,
+                            'recommends')
+        if self.opts.whatenhances:
+            q = self.by_dep(self.base.sack, self.opts.whatenhances, q,
+                            'enhances')
+        if self.opts.whatsupplements:
+            q = self.by_dep(self.base.sack, self.opts.whatsupplements, q,
+                            'supplements')
+        if self.opts.whatsuggests:
+            q = self.by_dep(self.base.sack, self.opts.whatsuggests, q,
+                            'suggests')
         if self.opts.latest_limit:
             latest_pkgs = dnf.query.latest_limit_pkgs(q,
                 self.opts.latest_limit)
