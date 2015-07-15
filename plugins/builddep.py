@@ -41,7 +41,7 @@ def parse_arguments(args):
         return arglist
 
     parser = dnfpluginscore.ArgumentParser(BuildDepCommand.aliases[0])
-    parser.add_argument('packages', nargs='*', metavar='package',
+    parser.add_argument('packages', nargs='+', metavar='package',
                         help=_('packages with builddeps to install'))
     parser.add_argument('-D', '--define', action='append', default=[],
                         metavar="'MACRO EXPR'", type=macro_def,
@@ -127,21 +127,29 @@ class BuildDepCommand(dnf.cli.Command):
         for macro in self.opts.define:
             rpm.addMacro(macro[0], macro[1])
 
+        pkg_errors = False
         for pkgspec in self.opts.packages:
-            if self.opts.srpm:
-                self._src_deps(pkgspec)
-            elif self.opts.spec:
-                self._spec_deps(pkgspec)
-            elif pkgspec.endswith('.src.rpm') or pkgspec.endswith('nosrc.rpm'):
-                self._src_deps(pkgspec)
-            elif pkgspec.endswith('.spec'):
-                self._spec_deps(pkgspec)
-            else:
-                self._remote_deps(pkgspec)
+            try:
+                if self.opts.srpm:
+                    self._src_deps(pkgspec)
+                elif self.opts.spec:
+                    self._spec_deps(pkgspec)
+                elif pkgspec.endswith('.src.rpm') or pkgspec.endswith('nosrc.rpm'):
+                    self._src_deps(pkgspec)
+                elif pkgspec.endswith('.spec'):
+                    self._spec_deps(pkgspec)
+                else:
+                    self._remote_deps(pkgspec)
+            except dnf.exceptions.Error as e:
+                logger.error(e)
+                pkg_errors = True
 
         # Pop user macros so they don't affect future rpm calls
         for macro in self.opts.define:
             rpm.delMacro(macro[0])
+
+        if pkg_errors:
+            raise dnf.exceptions.Error(_("Some packages could not be found."))
 
     @staticmethod
     def _rpm_dep2reldep_str(rpm_dep):
@@ -202,6 +210,8 @@ class BuildDepCommand(dnf.cli.Command):
     def _remote_deps(self, package):
         pkgs = self.base.sack.query().available().filter(name=package,
                                                          arch="src").run()
+        if not pkgs:
+            raise dnf.exceptions.Error(_('no package matched: %s') % package)
         self.base.download_packages(pkgs)
         for pkg in pkgs:
             self._src_deps(pkg.localPkg())
