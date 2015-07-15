@@ -162,11 +162,11 @@ class BuildDepCommand(dnf.cli.Command):
         try:
             h = self.rpm_ts.hdrFromFdno(fd)
         except rpm.error as e:
-            if e[0] == 'public key not available':
+            if str(e) == 'public key not available':
                 logger.error("Error: public key not available, add "
                              "'--nogpgcheck' option to ignore package sign")
                 return
-            elif e[0] == 'error reading package header':
+            elif str(e) == 'error reading package header':
                 e = _("Failed to open: '%s', not a valid source rpm file.") % (
                       src_fn,)
             raise dnf.exceptions.Error(e)
