@@ -31,12 +31,22 @@ Options
 ``-D <macro expr>, --define <macro expr>``
     Define the RPM macro named `macro` to the value `expr` when parsing spec files.
 
+``--spec``
+    Treat arguments as .spec files.
+
+``--srpm``
+    Treat arguments as source rpm files.
+
 --------
 Examples
 --------
 
 ``dnf builddep foobar.spec``
     Install the needed build requirements, defined in the foobar.spec file.
+
+``dnf builddep --spec foobar.spec.in``
+    Install the needed build requirements, defined in the spec file when filename ends
+    with something different than ``.spec``.
 
 ``dnf builddep foobar-1.0-1.src.rpm``
     Install the needed build requirements, defined in the foobar-1.0-1.src.rpm file.
