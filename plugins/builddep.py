@@ -46,9 +46,10 @@ def parse_arguments(args):
     parser.add_argument('-D', '--define', action='append', default=[],
                         metavar="'MACRO EXPR'", type=macro_def,
                         help=_('define a macro for spec file parsing'))
-    parser.add_argument('--spec', action='store_true',
+    ptype = parser.add_mutually_exclusive_group()
+    ptype.add_argument('--spec', action='store_true',
                         help=_('treat commandline arguments as spec files'))
-    parser.add_argument('--srpm', action='store_true',
+    ptype.add_argument('--srpm', action='store_true',
                         help=_('treat commandline arguments as source rpm'))
 
     return parser.parse_args(args), parser
