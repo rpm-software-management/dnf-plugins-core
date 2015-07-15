@@ -41,7 +41,7 @@ def parse_arguments(args):
         return arglist
 
     parser = dnfpluginscore.ArgumentParser(BuildDepCommand.aliases[0])
-    parser.add_argument('packages', nargs='*', metavar='package',
+    parser.add_argument('packages', nargs='+', metavar='package',
                         help=_('packages with builddeps to install'))
     parser.add_argument('-D', '--define', action='append', default=[],
                         metavar="'MACRO EXPR'", type=macro_def,
@@ -202,6 +202,8 @@ class BuildDepCommand(dnf.cli.Command):
     def _remote_deps(self, package):
         pkgs = self.base.sack.query().available().filter(name=package,
                                                          arch="src").run()
+        if not pkgs:
+            raise dnf.exceptions.Error(_('no package matched: %s') % package)
         self.base.download_packages(pkgs)
         for pkg in pkgs:
             self._src_deps(pkg.localPkg())
