@@ -1,7 +1,7 @@
 # coding=utf-8
 # generate_completion_cache.py - generate cache for dnf bash completion
 # Copyright © 2013 Elad Alfassa <elad@fedoraproject.org>
-# Copyright (C) 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com>
+# Copyright (C) 2014-2015 Igor Gnatenko <i.gnatenko.brain@gmail.com>
 # Copyright (C) 2015  Red Hat, Inc.
 
 # This copyrighted material is made available to anyone wishing to use,
@@ -61,8 +61,7 @@ class BashCompletionCache(dnf.Plugin):
                         "pkg_available ON available(pkg)")
                     cur.execute("delete from available")
                     avail_pkgs = self.base.sack.query().available()
-                    avail_pkgs_insert = [["{}.{}".format(x.name, x.arch)]
-                                         for x in avail_pkgs if x.arch != "src"]
+                    avail_pkgs_insert = [str(x) for x in avail_pkgs if x.arch != "src"]
                     cur.executemany("insert or ignore into available values (?)",
                                     avail_pkgs_insert)
                     conn.commit()
@@ -81,8 +80,7 @@ class BashCompletionCache(dnf.Plugin):
                     "pkg_installed ON installed(pkg)")
                 cur.execute("delete from installed")
                 inst_pkgs = self.base.sack.query().installed()
-                inst_pkgs_insert = [["{}.{}".format(x.name, x.arch)]
-                                    for x in inst_pkgs if x.arch != "src"]
+                inst_pkgs_insert = [str(x) for x in inst_pkgs if x.arch != "src"]
                 cur.executemany("insert or ignore into installed values (?)",
                                 inst_pkgs_insert)
                 conn.commit()
