@@ -207,8 +207,7 @@ Do you want to continue? [y/N]: """)
         elif self.base.conf.assumeno and not self.base.conf.assumeyes:
             raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
 
-        answer = ucd(input(question)).lower()
-        answer = _(answer)
+        answer = None
         while not ((answer in YES) or (answer in NO)):
             answer = ucd(input(question)).lower()
             answer = _(answer)
