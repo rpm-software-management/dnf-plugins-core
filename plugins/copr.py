@@ -30,7 +30,7 @@ import json
 import os
 import platform
 import shutil
-
+import stat
 
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
@@ -269,6 +269,7 @@ Do you want to continue? [y/N]: """)
                     raise dnf.exceptions.Error(_("Such repository does not exists."))
             raise
         shutil.copy2(f.name, repo_filename)
+        os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
     @classmethod
     def _remove_repo(cls, repo_filename):
