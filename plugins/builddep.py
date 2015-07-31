@@ -41,11 +41,16 @@ def parse_arguments(args):
         return arglist
 
     parser = dnfpluginscore.ArgumentParser(BuildDepCommand.aliases[0])
-    parser.add_argument('packages', nargs='*', metavar='package',
+    parser.add_argument('packages', nargs='+', metavar='package',
                         help=_('packages with builddeps to install'))
     parser.add_argument('-D', '--define', action='append', default=[],
                         metavar="'MACRO EXPR'", type=macro_def,
                         help=_('define a macro for spec file parsing'))
+    ptype = parser.add_mutually_exclusive_group()
+    ptype.add_argument('--spec', action='store_true',
+                        help=_('treat commandline arguments as spec files'))
+    ptype.add_argument('--srpm', action='store_true',
+                        help=_('treat commandline arguments as source rpm'))
 
     return parser.parse_args(args), parser
 
@@ -105,12 +110,13 @@ class BuildDepCommand(dnf.cli.Command):
             return
 
         # enable source repos only if needed
-        for pkgspec in self.opts.packages:
-            if not (pkgspec.endswith('.src.rpm')
-                    or pkgspec.endswith('nosrc.rpm')
-                    or pkgspec.endswith('.spec')):
-                dnfpluginscore.lib.enable_source_repos(self.base.repos)
-                break
+        if not (self.opts.spec or self.opts.srpm):
+            for pkgspec in self.opts.packages:
+                if not (pkgspec.endswith('.src.rpm')
+                        or pkgspec.endswith('nosrc.rpm')
+                        or pkgspec.endswith('.spec')):
+                    dnfpluginscore.lib.enable_source_repos(self.base.repos)
+                    break
 
     @sink_rpm_logging()
     def run(self, args):
@@ -122,7 +128,11 @@ class BuildDepCommand(dnf.cli.Command):
             rpm.addMacro(macro[0], macro[1])
 
         for pkgspec in self.opts.packages:
-            if pkgspec.endswith('.src.rpm') or pkgspec.endswith('nosrc.rpm'):
+            if self.opts.srpm:
+                self._src_deps(pkgspec)
+            elif self.opts.spec:
+                self._spec_deps(pkgspec)
+            elif pkgspec.endswith('.src.rpm') or pkgspec.endswith('nosrc.rpm'):
                 self._src_deps(pkgspec)
             elif pkgspec.endswith('.spec'):
                 self._spec_deps(pkgspec)
@@ -153,11 +163,14 @@ class BuildDepCommand(dnf.cli.Command):
         try:
             h = self.rpm_ts.hdrFromFdno(fd)
         except rpm.error as e:
-            if e[0] == 'public key not available':
+            if str(e) == 'public key not available':
                 logger.error("Error: public key not available, add "
                              "'--nogpgcheck' option to ignore package sign")
                 return
-            raise
+            elif str(e) == 'error reading package header':
+                e = _("Failed to open: '%s', not a valid source rpm file.") % (
+                      src_fn,)
+            raise dnf.exceptions.Error(e)
         os.close(fd)
         ds = h.dsFromHeader('requirename')
         done = True
@@ -189,6 +202,8 @@ class BuildDepCommand(dnf.cli.Command):
     def _remote_deps(self, package):
         pkgs = self.base.sack.query().available().filter(name=package,
                                                          arch="src").run()
+        if not pkgs:
+            raise dnf.exceptions.Error(_('no package matched: %s') % package)
         self.base.download_packages(pkgs)
         for pkg in pkgs:
             self._src_deps(pkg.localPkg())
