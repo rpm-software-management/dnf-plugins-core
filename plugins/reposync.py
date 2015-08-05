@@ -44,7 +44,8 @@ def _parse_args(args):
 
 
 def _pkgdir(intermediate, target):
-    return os.path.normpath(os.path.join(os.getcwd(), intermediate, target))
+    cwd = dnf.i18n.ucd(os.getcwd())
+    return os.path.normpath(os.path.join(cwd, intermediate, target))
 
 
 class RepoSync(dnf.Plugin):
