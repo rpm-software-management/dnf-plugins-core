@@ -67,5 +67,5 @@ class BuildDepCommandTest(unittest.TestCase):
 
     def test_configure(self):
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            self.cmd.configure([])
+            self.cmd.configure(['tour'])
             self.assertTrue(self.cmd.cli.demands.available_repos)
