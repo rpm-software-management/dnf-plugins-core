@@ -20,6 +20,26 @@ Core DNF Plugins Release Notes
 ##############################
 
 .. contents::
+
+=====================
+ 0.1.10 Release Notes
+=====================
+
+:doc:`builddep` was extended by newly added options ``--srpm`` and ``--spec`` for specifying the input file.
+
+Implemented ``remove`` command in :doc:`copr` plugin.
+
+Bugs fixed in 0.1.10:
+
+* :rhbug:`1226663`
+* :rhbug:`1184930`
+* :rhbug:`1234099`
+* :rhbug:`1241126`
+* :rhbug:`1218299`
+* :rhbug:`1241135`
+* :rhbug:`1244125`
+
+
 =====================
  0.1.9 Release Notes
 =====================
