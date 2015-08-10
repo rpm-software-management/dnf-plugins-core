@@ -3,7 +3,7 @@
 %global hawkey_version 0.5.9
 
 Name:       dnf-plugins-core
-Version:    0.1.9
+Version:    0.1.10
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -130,6 +130,30 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Mon Aug 10 2015 Jan Silhan <jsilhan@redhat.com> 0.1.10-1
+- generate_completion_cache: use list for each insert (fixes regression
+  introduced in e020c96) (Igor Gnatenko)
+- generate_completion_cache: store NEVRA insted of NA (RhBug:1226663) (Igor
+  Gnatenko)
+- repoquery: weak deps queries (RhBug:1184930) (Michal Luscon)
+- builddep requires an argument (Michael Mraka)
+- disable c++ checks in rpmbuild (Michael Mraka)
+- path may contain unicode (RhBug:1234099) (Michael Mraka)
+- fail if no package match (RhBug:1241126) (Michael Mraka)
+- make --spec and --srpm mutually exclusive (Michael Mraka)
+- handle error message in python3 (RhBug:1218299) (Michael Mraka)
+- options to recognize spec/srpm files (RhBug:1241135) (Michael Mraka)
+- copr: set chmod to rw-r--r-- on repo files (Miroslav Suchý)
+- [copr] refactor duplicated lines (Jakub Kadlčík)
+- [copr] allow utf-8 user input (RhBug:1244125) (Jakub Kadlčík)
+- [copr] fix regression with handling `search` and `list` subcommands (Valentin
+  Gologuzov)
+- [copr] terminate execution when failed to parse project name (Valentin
+  Gologuzov)
+- [copr] unused import (Valentin Gologuzov)
+- [copr] subcommand `disable` now only set `enabled=0`, repo file could be
+  deleted by new subcommand `remove` (Valentin Gologuzov)
+
 * Wed Jun 24 2015 Michal Luscon <mluscon@redhat.com> 0.1.9-1
 - repoquery: add srpm option (RhBug:1186382) (Vladan Kudlac)
 - create repo files readable by users (RhBug:1228693) (Michael Mraka)
