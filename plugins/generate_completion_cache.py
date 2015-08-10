@@ -61,7 +61,7 @@ class BashCompletionCache(dnf.Plugin):
                         "pkg_available ON available(pkg)")
                     cur.execute("delete from available")
                     avail_pkgs = self.base.sack.query().available()
-                    avail_pkgs_insert = [str(x) for x in avail_pkgs if x.arch != "src"]
+                    avail_pkgs_insert = [[str(x)] for x in avail_pkgs if x.arch != "src"]
                     cur.executemany("insert or ignore into available values (?)",
                                     avail_pkgs_insert)
                     conn.commit()
@@ -80,7 +80,7 @@ class BashCompletionCache(dnf.Plugin):
                     "pkg_installed ON installed(pkg)")
                 cur.execute("delete from installed")
                 inst_pkgs = self.base.sack.query().installed()
-                inst_pkgs_insert = [str(x) for x in inst_pkgs if x.arch != "src"]
+                inst_pkgs_insert = [[str(x)] for x in inst_pkgs if x.arch != "src"]
                 cur.executemany("insert or ignore into installed values (?)",
                                 inst_pkgs_insert)
                 conn.commit()
