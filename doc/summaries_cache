@@ -134,5 +134,33 @@
     [
         1128425, 
         "RFE: Missing recursive dependency resolution in repoquery"
+    ], 
+    [
+        1226663, 
+        "dnf bash completion: show version of packages"
+    ], 
+    [
+        1184930, 
+        "[rfe] repoquery: implement weak deps flag options"
+    ], 
+    [
+        1234099, 
+        "reposync unicode error"
+    ], 
+    [
+        1241126, 
+        "builddep: empty run or run on unknown package name doesn't fail"
+    ], 
+    [
+        1218299, 
+        "TypeError: 'error' object does not support indexing"
+    ], 
+    [
+        1241135, 
+        "allow builddep to process file regardless of filename"
+    ], 
+    [
+        1244125, 
+        "[abrt] dnf: gettext.py:222:ugettext:UnicodeDecodeError: 'ascii' codec can't decode byte 0xe6 in position 0: ordinal not in range(128)"
     ]
 ]
