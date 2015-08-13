@@ -224,7 +224,7 @@ class RepoQueryCommand(dnf.cli.Command):
         if opts.repo:
             query = query.filter(reponame=opts.repo)
         if opts.arch:
-            query = query.filter(arch=opts.arch)
+            query = query.filter(arch=opts.arch.split(","))
         return query
 
     def configure(self, args):
