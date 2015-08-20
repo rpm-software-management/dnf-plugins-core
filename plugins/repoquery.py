@@ -75,7 +75,7 @@ def info_format(pkg):
 
 
 def filelist_format(pkg):
-    return "\n".join(pkg.files)
+    return pkg.files
 
 
 def sourcerpm_format(pkg):
@@ -114,12 +114,11 @@ def parse_arguments(args):
                         help=_('show available tags to use with '
                                '--queryformat'))
     parser.add_argument('--resolve', action='store_true',
-                        help=_('resolve capabilities to originating package(s)')
-                        )
+                        help=_('resolve capabilities to originating package(s)'))
     parser.add_argument("--tree", action="store_true",
-                        help="For the given packages print a tree of the packages.")
+                        help=_('show recursive tree for package(s)'))
     parser.add_argument('--srpm', action='store_true',
-                        help=_('operate on corresponding source RPM. '))
+                        help=_('operate on corresponding source RPM'))
 
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
@@ -149,6 +148,7 @@ def parse_arguments(args):
                            const='unsatisfied', action='store_const',
                            help=_('limit the query to installed packages with unsatisfied dependencies'))
 
+    package_atribute = parser.add_mutually_exclusive_group()
     help_msgs = {
         'conflicts': _('Display capabilities that the package conflicts with.'),
         'enhances': _('Display capabilities that the package can enhance.'),
@@ -162,9 +162,8 @@ def parse_arguments(args):
     for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
                 'requires', 'suggests', 'supplements'):
         name = '--%s' % arg
-        const = '%%{%s}' % arg
-        outform.add_argument(name, dest='queryformat', action='store_const',
-                             const=const, help=help_msgs[arg])
+        package_atribute.add_argument(name, dest='packageatr', action='store_const',
+                                      const=arg, help=help_msgs[arg])
 
     return parser.parse_args(args), parser
 
@@ -336,7 +335,7 @@ class RepoQueryCommand(dnf.cli.Command):
                             'suggests')
         if self.opts.latest_limit:
             latest_pkgs = dnf.query.latest_limit_pkgs(q,
-                self.opts.latest_limit)
+                                                      self.opts.latest_limit)
             q = q.filter(pkg=latest_pkgs)
         if self.opts.srpm:
             pkg_list = []
@@ -348,26 +347,54 @@ class RepoQueryCommand(dnf.cli.Command):
             q = self.base.sack.query().filter(pkg=pkg_list)
         fmt_fn = build_format_fn(self.opts)
         if self.opts.tree:
-            if not self.opts.whatrequires and \
-                "%{requires}" not in self.opts.queryformat and \
-                "%{conflicts}" not in self.opts.queryformat and \
-                "%{obsoletes}" not in self.opts.queryformat:
+            if not self.opts.whatrequires and not self.opts.packageatr:
                 raise dnf.exceptions.Error(
-                    _("--tree requires either of these options: --whatrequires --requires --conflicts --obsoletes\n"
-                      "Example: dnf repoquery --whatrequires audiofile --tree"))
+                    _("No switch specified\nusage: dnf repoquery [--whatrequires|"
+                        "--requires|--conflicts|--obsoletes|--enhances|--suggest|"
+                        "--provides|--suplements|--recommends] [key] [--tree]\n\n"
+                        "description:\n  For the given packages print a tree of the packages."))
             self.tree_seed(q, orquery, self.opts)
             return
-        if self.opts.resolve:
-            self.show_resolved_packages(q, fmt_fn, self.opts)
+
+        pkgs = set()
+        if self.opts.packageatr:
+            for pkg in q.run():
+                rels = getattr(pkg, self.opts.packageatr)
+                for rel in rels:
+                    pkgs.add(str(rel))
         else:
-            self.show_packages(q, fmt_fn)
+            for pkg in q.run():
+                po = PackageWrapper(pkg)
+                try:
+                    pkgs.add(fmt_fn(po))
+                except AttributeError as e:
+                    # catch that the user has specified attributes
+                    # there don't exist on the dnf Package object.
+                    raise dnf.exceptions.Error(str(e))
+        if self.opts.resolve:
+            # find the providing packages and show them
+            query = self.filter_repo_arch(
+                self.opts, self.base.sack.query().available())
+            providers = self.by_provides(self.base.sack, list(pkgs),
+                                         query)
+            pkgs = set()
+            for pkg in providers.latest().run():
+                po = PackageWrapper(pkg)
+                try:
+                    pkgs.add(fmt_fn(po))
+                except AttributeError as e:
+                    # catch that the user has specified attributes
+                    # there don't exist on the dnf Package object.
+                    raise dnf.exceptions.Error(str(e))
+        for pkg in sorted(pkgs):
+            print(pkg)
 
     def grow_tree(self, level, pkg):
         if level == -1:
             print(pkg)
             return
         spacing = " "
-        for x in range(0,level):
+        for x in range(0, level):
             spacing += "|   "
         requires = []
         for reqirepkg in pkg.requires:
@@ -375,61 +402,27 @@ class RepoQueryCommand(dnf.cli.Command):
         reqstr = "[" + str(len(requires)) + ": " + ", ".join(requires) + "]"
         print(spacing + "\_ " + str(pkg) + " " + reqstr)
 
-    def tree_seed(self, query, aquery, opts, level = -1, usedpkgs = None):
-        for pkg in sorted(set(query.run()), key = lambda p: p.name):
+    def tree_seed(self, query, aquery, opts, level=-1, usedpkgs=None):
+        for pkg in sorted(set(query.run()), key=lambda p: p.name):
             usedpkgs = set() if usedpkgs is None or level is -1 else usedpkgs
             if pkg.name.startswith("rpmlib") or pkg.name.startswith("solvable"):
                 return
             self.grow_tree(level, pkg)
             if pkg not in usedpkgs:
                 usedpkgs.add(pkg)
-                if "%{requires}" in opts.queryformat or "%{conflicts}" in opts.queryformat or "%{obsoletes}" in opts.queryformat:
-                    strpkg = []
-                    strpkg += pkg.conflicts if "%{conflicts}" in opts.queryformat else []
-                    strpkg += pkg.obsoletes if "%{obsoletes}" in opts.queryformat else []
-                    strpkg += pkg.requires if "%{requires}" in opts.queryformat else []
+                if opts.packageatr:
+                    strpkg = getattr(pkg, opts.packageatr)
                     ar = {}
                     for name in set(strpkg):
                         pkgquery = self.base.sack.query().filter(provides=name)
                         for querypkg in pkgquery:
                             ar[querypkg.name + "." + querypkg.arch] = querypkg
-                    pkgquery = self.base.sack.query().filter(pkg=list(ar.values()))
+                    pkgquery = self.base.sack.query().filter(
+                        pkg=list(ar.values()))
                 else:
-                    pkgquery = self.by_all_deps(pkg.name, aquery) if opts.alldeps else self.by_requires(self.base.sack, pkg.name, aquery)
+                    pkgquery = self.by_all_deps(pkg.name, aquery) if opts.alldeps else self.by_requires(
+                        self.base.sack, pkg.name, aquery)
                 self.tree_seed(pkgquery, aquery, opts, level + 1, usedpkgs)
-
-    @staticmethod
-    def show_packages(query, fmt_fn):
-        """Print packages in a query, in a given format."""
-        for po in query.run():
-            try:
-                pkg = PackageWrapper(po)
-                print(fmt_fn(pkg))
-            except AttributeError as e:
-                # catch that the user has specified attributes
-                # there don't exist on the dnf Package object.
-                raise dnf.exceptions.Error(str(e))
-
-    def show_resolved_packages(self, query, fmt_fn, opts):
-        """Print packages providing capabilities from a query"""
-        capabilities = list()
-        for po in query.run():
-            try:
-                pkg = PackageWrapper(po)
-                capabilities.extend(fmt_fn(pkg).split('\n'))
-            except AttributeError as e:
-                # catch that the user has specified attributes
-                # there don't exist on the dnf Package object.
-                raise dnf.exceptions.Error(str(e))
-
-        # find the providing packages and show them
-        query = self.filter_repo_arch(opts, self.base.sack.query().available())
-        providers = self.by_provides(self.base.sack, list(capabilities),
-                                     query)
-        fmt_fn = rpm2py_format(QFORMAT_DEFAULT).format
-        for po in providers.latest().run():
-            pkg = PackageWrapper(po)
-            print(fmt_fn(pkg))
 
 
 class PackageWrapper(object):
@@ -440,7 +433,10 @@ class PackageWrapper(object):
         self._pkg = pkg
 
     def __getattr__(self, attr):
-        return getattr(self._pkg, attr)
+        atr = getattr(self._pkg, attr)
+        if isinstance(atr, list):
+            return '\n'.join(sorted([str(reldep) for reldep in atr]))
+        return str(atr)
 
     @staticmethod
     def _get_timestamp(timestamp):
@@ -450,50 +446,14 @@ class PackageWrapper(object):
         else:
             return ''
 
-    @staticmethod
-    def _reldep_to_list(obj):
-        return '\n'.join([str(reldep) for reldep in obj])
-
     @property
     def buildtime(self):
         return self._get_timestamp(self._pkg.buildtime)
-
-    @property
-    def conflicts(self):
-        return self._reldep_to_list(self._pkg.conflicts)
 
     @property
     def description_wrapped(self):
         return '\n'.join(textwrap.wrap(self.description))
 
     @property
-    def enhances(self):
-        return self._reldep_to_list(self._pkg.enhances)
-
-    @property
     def installtime(self):
         return self._get_timestamp(self._pkg.installtime)
-
-    @property
-    def obsoletes(self):
-        return self._reldep_to_list(self._pkg.obsoletes)
-
-    @property
-    def provides(self):
-        return self._reldep_to_list(self._pkg.provides)
-
-    @property
-    def recommends(self):
-        return self._reldep_to_list(self._pkg.recommends)
-
-    @property
-    def requires(self):
-        return self._reldep_to_list(self._pkg.requires)
-
-    @property
-    def suggests(self):
-        return self._reldep_to_list(self._pkg.suggests)
-
-    @property
-    def supplements(self):
-        return self._reldep_to_list(self._pkg.supplements)
