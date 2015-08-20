@@ -167,6 +167,22 @@ def parse_arguments(args):
         package_atribute.add_argument(name, dest='packageatr', action='store_const',
                                       const=arg, help=help_msgs[arg])
 
+    help_list = {
+        'available': _('Display details about a available package or group of packages'),
+        'installed': _('Display details about a installed package or group of packages'),
+        'extras': _('Display details about a extra package or group of packages'),
+        'upgrades': _('Display details about a package upgrade or group of package upgrades'),
+        'autoremove': _('Display details about a autoremove package or group of packages'),
+        'recent': _('Display details about a recently edited package or group of packages'),
+        'downgrades': _('Display details about a downgrade package or group of packages')
+    }
+    list_group = parser.add_mutually_exclusive_group()
+    for list_arg in ('available', 'installed', 'extras', 'upgrades', 'autoremove',
+                     'recent', 'downgrades'):
+        switch = '--%s' % list_arg
+        list_group.add_argument(switch, dest='list', action='store_const',
+                                const=list_arg, help=help_list[list_arg])
+
     return parser.parse_args(args), parser
 
 
@@ -288,6 +304,21 @@ class RepoQueryCommand(dnf.cli.Command):
         else:
             q = self.base.sack.query()
 
+        if self.opts.list:
+            if self.opts.list in ["available", "installed", "upgrades", "downgrades"]:
+                func = getattr(q, self.opts.list)
+                _list = func().run()
+            elif self.opts.list == "extras":
+                _list = dnf.query.extras_pkgs(q)
+            elif self.opts.list == "autoremove":
+                _list = dnf.query.autoremove_pkgs(
+                    q, self.base.sack, self.base.yumdb)
+            elif self.opts.list == "recent":
+                _list = dnf.query.recent_pkgs(q, self.base.conf.recent)
+            for pkg in sorted(_list):
+                print(pkg)
+            return
+
         if self.opts.pkgfilter == "duplicated":
             dups = dnf.query.duplicated_pkgs(q, self.base.conf.installonlypkgs)
             q = q.filter(pkg=dups)
@@ -318,8 +349,9 @@ class RepoQueryCommand(dnf.cli.Command):
         if self.opts.alldeps:
             if not self.opts.whatrequires:
                 raise dnf.exceptions.Error(
-                    _("--alldeps requires --whatrequires option.\n"
-                      "Example: dnf repoquery --whatrequires audiofile --alldeps"))
+                    _("--alldeps works only with --whatrequires switch"
+                        "\nusage: dnf repoquery [--whatrequires] [key] [--alldeps]\n\n"
+                        "description:\n  Shows results that requires package provides and files"))
             q = self.by_all_deps(self.opts.whatrequires, q)
         elif self.opts.whatrequires:
             q = self.by_requires(self.base.sack, self.opts.whatrequires, q)
