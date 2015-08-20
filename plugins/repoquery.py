@@ -165,6 +165,21 @@ def parse_arguments(args):
         package_atribute.add_argument(name, dest='packageatr', action='store_const',
                                       const=arg, help=help_msgs[arg])
 
+    help_list = {
+        'available': _('Display only available packages.'),
+        'installed': _('Display only installed packages.'),
+        'extras': _('Display only packages that are not present in any of available repositories.'),
+        'upgrades': _('Display only packages that provide an upgrade for some already installed package.'),
+        'autoremove': _('Display only packages that can be autoremoved.'),
+        'recent': _('Display only recently edited packages')
+    }
+    list_group = parser.add_mutually_exclusive_group()
+    for list_arg in ('available', 'installed', 'extras', 'upgrades', 'autoremove',
+                     'recent'):
+        switch = '--%s' % list_arg
+        list_group.add_argument(switch, dest='list', action='store_const',
+                                const=list_arg, help=help_list[list_arg])
+
     return parser.parse_args(args), parser
 
 
@@ -275,6 +290,15 @@ class RepoQueryCommand(dnf.cli.Command):
             print(self.parser.format_help())
             return
 
+        if self.opts.list:
+            key = [self.opts.key] if self.opts.key else None
+            _list = self.base.returnPkgLists(self.opts.list, key)
+            if self.opts.list == "upgrades":
+                _list = _list.updates
+            for pkg in sorted(_list):
+                print(pkg)
+            return
+
         if self.opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
             print(QUERY_TAGS)
@@ -317,7 +341,7 @@ class RepoQueryCommand(dnf.cli.Command):
             if not self.opts.whatrequires:
                 raise dnf.exceptions.Error(
                     _("--alldeps requires --whatrequires option.\n"
-                      "Example: dnf repoquery --whatrequires audiofile --alldeps"))
+                      "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n\n"))
             q = self.by_all_deps(self.opts.whatrequires, q)
         elif self.opts.whatrequires:
             q = self.by_requires(self.base.sack, self.opts.whatrequires, q)
