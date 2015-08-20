@@ -124,10 +124,13 @@ class DownloadCommand(dnf.cli.Command):
 
     def _get_packages(self, pkg_specs, source=False):
         """Get packages matching pkg_specs."""
-        if source:
-            queries = map(self._get_query_source, pkg_specs)
-        else:
-            queries = map(self._get_query, pkg_specs)
+        func = self._get_query_source if source else self._get_query
+        queries = []
+        for pkg_spec in pkg_specs:
+            try:
+                queries.append(func(pkg_spec))
+            except dnf.exceptions.PackageNotFoundError as e:
+                logger.error(dnf.i18n.ucd(e))
         pkgs = list(itertools.chain(*queries))
         return pkgs
 
@@ -166,6 +169,9 @@ class DownloadCommand(dnf.cli.Command):
         q = subj.get_best_query(self.base.sack)
         q = q.available()
         q = q.latest()
+        if len(q.run()) == 0:
+            msg = _("No package " + pkg_spec + " available.")
+            raise dnf.exceptions.PackageNotFoundError(msg)
         return q
 
     def _get_query_source(self, pkg_spec):
@@ -177,6 +183,9 @@ class DownloadCommand(dnf.cli.Command):
         q = q.latest()
         q = q.filter(name=nevra.name, version=nevra.version,
                      release=nevra.release, arch=nevra.arch)
+        if len(q.run()) == 0:
+            msg = _("No package " + pkg_spec + " available.")
+            raise dnf.exceptions.PackageNotFoundError(msg)
         return q
 
     @staticmethod
