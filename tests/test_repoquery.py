@@ -77,11 +77,13 @@ class ArgParseTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
     def test_conflict(self):
         with self.assertRaises(dnf.exceptions.Error):
-            repoquery.parse_arguments(['--queryformat', '%{name}', '--provides'])
+            repoquery.parse_arguments(['--conflicts', '%{name}', '--provides'])
 
     def test_provides(self):
-        opts, _ = repoquery.parse_arguments(['--provides'])
-        self.assertEqual(opts.queryformat, '%{provides}')
+        for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
+                    'requires', 'suggests', 'supplements'):
+            opts, _ = repoquery.parse_arguments(['--' + arg])
+            self.assertEqual(opts.packageatr, arg)
 
     def test_file(self):
         opts, _ = repoquery.parse_arguments(['/var/foobar'])
