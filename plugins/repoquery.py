@@ -49,7 +49,7 @@ Packager    : {0.packager}
 URL         : {0.url}
 Summary     : {0.summary}
 Description :
-{0.description_wrapped}"""
+{0.description}\n"""
 
 QUERY_TAGS = """
 name, arch, epoch, version, release, reponame (repoid), evr
@@ -483,10 +483,6 @@ class PackageWrapper(object):
     @property
     def buildtime(self):
         return self._get_timestamp(self._pkg.buildtime)
-
-    @property
-    def description_wrapped(self):
-        return '\n'.join(textwrap.wrap(self.description))
 
     @property
     def installtime(self):

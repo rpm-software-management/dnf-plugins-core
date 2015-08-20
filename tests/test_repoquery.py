@@ -38,8 +38,7 @@ Packager    : Eastford
 URL         : foorl.net
 Summary     : it.
 Description :
-A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A
-desc.A desc.A desc.A desc.A desc.A desc.A desc."""
+A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.\n"""
 
 EXPECTED_FILELIST_FORMAT = """\
 /tmp/foobar
@@ -53,7 +52,7 @@ class PkgStub(object):
     def __init__(self):
         self.arch = 'x86_64'
         self.buildtime = 120
-        self.description = 'A desc.' * 16
+        self.description = 'A desc.' * 8
         self.license = 'BSD'
         self.name = 'foobar'
         self.packager = 'Eastford'
