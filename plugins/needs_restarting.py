@@ -44,7 +44,7 @@ def list_opened_files(uid):
             with open(smaps, 'r') as smaps_file:
                 lines = smaps_file.readlines()
         except EnvironmentError:
-            logger.warning("Can not to read PID's %d smaps.", pid)
+            logger.warning("Failed to read PID %d's smaps.", pid)
             continue
 
         for line in lines:
