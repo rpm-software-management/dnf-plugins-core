@@ -85,7 +85,7 @@ def sourcerpm_format(pkg):
 def parse_arguments(args):
     # Setup ArgumentParser to handle util
     parser = dnfpluginscore.ArgumentParser(RepoQueryCommand.aliases[0])
-    parser.add_argument('key', nargs='?',
+    parser.add_argument('key', nargs='*',
                         help=_('the key to search for'))
     parser.add_argument('--repo', metavar='REPO', action='append',
                         help=_('show only results from this REPO'))
@@ -291,7 +291,7 @@ class RepoQueryCommand(dnf.cli.Command):
             return
 
         if self.opts.list:
-            key = [self.opts.key] if self.opts.key else None
+            key = self.opts.key if len(self.opts.key) > 0 else None
             _list = self.base.returnPkgLists(self.opts.list, key)
             if self.opts.list == "upgrades":
                 _list = _list.updates
@@ -305,8 +305,12 @@ class RepoQueryCommand(dnf.cli.Command):
             return
 
         if self.opts.key:
-            q = dnf.subject.Subject(self.opts.key, ignore_case=True).get_best_query(
-                self.base.sack, with_provides=False)
+            pkgs = []
+            for key in self.opts.key:
+                q = dnf.subject.Subject(key, ignore_case=True).get_best_query(
+                    self.base.sack, with_provides=False)
+                pkgs += q.run()
+            q = self.base.sack.query().filter(pkg=pkgs)
         else:
             q = self.base.sack.query()
 
