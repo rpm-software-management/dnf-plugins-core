@@ -53,7 +53,7 @@ Description :
 
 QUERY_TAGS = """
 name, arch, epoch, version, release, reponame (repoid), evr
-installtime, buildtime, size, downloadsize, installize
+installtime, buildtime, size, downloadsize, installsize
 provides, requires, obsoletes, conflicts, sourcerpm
 description, summary, license, url
 """
