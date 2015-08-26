@@ -117,7 +117,7 @@ class DownloadCommand(dnf.cli.Command):
         """Download source packages to dnf cache."""
         pkgs = self._get_packages(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
-        pkgs = self._get_packages(source_pkgs, source=True)
+        pkgs = set(self._get_packages(source_pkgs, source=True))
         self.base.download_packages(pkgs, self.base.output.progress)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
         return locations
