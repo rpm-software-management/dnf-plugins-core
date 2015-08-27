@@ -44,8 +44,8 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Package specification like: name[-[epoch:]version[-release]][.arch]. See
     http://dnf.readthedocs.org/en/latest/command_ref.html#specifying-packages
 
-``--arch <arch>``
-    Limit the resulting set only to packages of arch ``<arch>``.
+``--arch <arch>[,<arch>...]``
+    Limit the resulting set only to packages of selected architectures.
 
 ``--duplicated``
     Limit the resulting set to installed duplicated packages (i.e. more package versions
