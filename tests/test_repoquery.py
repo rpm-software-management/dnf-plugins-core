@@ -38,8 +38,7 @@ Packager    : Eastford
 URL         : foorl.net
 Summary     : it.
 Description :
-A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.A
-desc.A desc.A desc.A desc.A desc.A desc.A desc."""
+A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.\n"""
 
 EXPECTED_FILELIST_FORMAT = """\
 /tmp/foobar
@@ -53,7 +52,7 @@ class PkgStub(object):
     def __init__(self):
         self.arch = 'x86_64'
         self.buildtime = 120
-        self.description = 'A desc.' * 16
+        self.description = 'A desc.' * 8
         self.license = 'BSD'
         self.name = 'foobar'
         self.packager = 'Eastford'
@@ -77,11 +76,13 @@ class ArgParseTest(unittest.TestCase):
     @mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
     def test_conflict(self):
         with self.assertRaises(dnf.exceptions.Error):
-            repoquery.parse_arguments(['--queryformat', '%{name}', '--provides'])
+            repoquery.parse_arguments(['--conflicts', '%{name}', '--provides'])
 
     def test_provides(self):
-        opts, _ = repoquery.parse_arguments(['--provides'])
-        self.assertEqual(opts.queryformat, '%{provides}')
+        for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
+                    'requires', 'suggests', 'supplements'):
+            opts, _ = repoquery.parse_arguments(['--' + arg])
+            self.assertEqual(opts.packageatr, arg)
 
     def test_file(self):
         opts, _ = repoquery.parse_arguments(['/var/foobar'])
