@@ -22,6 +22,25 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.11 Release Notes
+=====================
+
+Option ``--arch`` now accepts more than one architecture.
+
+Introduced select options ``--available``, ``--extras``, ``--installed``, ``--upgrades``.
+
+Added ability to use weak dependencies query options in combination with ``--tree`` switch.
+
+Bugs fixed in 0.1.11:
+
+* :rhbug:`1250114`
+* :rhbug:`1186381`
+* :rhbug:`1225784`
+* :rhbug:`1233728`
+* :rhbug:`1199601`
+* :rhbug:`1156778`
+
+=====================
  0.1.10 Release Notes
 =====================
 

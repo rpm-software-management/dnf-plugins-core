@@ -51,8 +51,17 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Limit the resulting set to installed duplicated packages (i.e. more package versions
     for the same name and architecture). Installonly packages are excluded from this set.
 
+``--available``
+    Limit the resulting set to available packages only.
+
+``--extras``
+    Limit the resulting set to packages that are not present in any of available repositories.
+
 ``-f <file>``, ``--file <file>``
     Limit the resulting set only to package that owns ``<file>``.
+
+``--installed``
+    Limit the resulting set to installed packges.
 
 ``--installonly``
     Limit the resulting set to installed installonly packages.
@@ -69,11 +78,26 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Report unsatisfied dependencies among installed packages (i.e. missing requires and
     and existing conflicts).
 
+``--upgrades``
+    Limit the resulting set to packages that provide an upgrade for some already installed package.
+
+``--whatenhances <capability>``
+    Limit the resulting set only to packages that enhance ``<capability>``.
+
 ``--whatprovides <capability>``
     Limit the resulting set only to packages that provide ``<capability>``.
 
+``--whatrecommends <capability>``
+    Limit the resulting set only to packages that recommend ``<capability>``.
+
 ``--whatrequires <capability>``
     Limit the resulting set only to packages that require ``<capability>``.
+
+``--whatsuggests <capability>``
+    Limit the resulting set only to packages that suggest ``<capability>``.
+
+``--whatsupplements <capability>``
+    Limit the resulting set only to packages that supplement ``<capability>``.
 
 ``--alldeps``
     This option is stackable with ``--whatrequires`` only. Additionally it adds to the result set all packages requiring the package features.
@@ -88,9 +112,6 @@ Set what information is displayed about each package.
 
 The following are mutually exclusive, i.e. at most one can be specified. If no query option is given, matching packages are displayed in the standard NEVRA notation.
 
-``--conflicts``
-    Display capabilities that the package conflicts with. Same as ``--qf "%{conflicts}``.
-
 .. _info_repoquery-label:
 
 ``-i, --info``
@@ -102,20 +123,36 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``-s, --source``
     Show package source RPM name.
 
+``--conflicts``
+    Display capabilities that the package conflicts with. Same as ``--qf "%{conflicts}``.
+
+``--enhances``
+    Display capabilities enhanced by the package. Same as ``--qf "%{enhances}""``.
+
 ``--obsoletes``
-    Display capabilities that the package obsoletes. Same as ``--qf "%{obsoletes}``.
+    Display capabilities that the package obsoletes. Same as ``--qf "%{obsoletes}"``.
 
 ``--provides``
-    Display capabilities provided by the package. Same as ``--qf "%{provides}``.
+    Display capabilities provided by the package. Same as ``--qf "%{provides}"``.
+
+``--recommends``
+    Display capabilities recommended by the package. Same as ``--qf "%{recommends}"``.
+
+``--requires``
+    Display capabilities that the package depends on. Same as ``--qf "%{requires}"``.
+
+``--suggests``
+    Display capabilities suggested by the package. Same as ``--qf "%{suggests}"``.
+
+``--supplements``
+    Display capabilities supplemented by the package. Same as ``--qf "%{supplements}"``.
 
 ``--tree``
-    For the given packages print a tree of the packages that require them. --tree also requires either of these options to work: --whatrequires --requires --conflicts
+    Display a recursive tree of packages with capabilities specified by one of the following supplementary options: ``--whatrequires``, ``--requires``, ``--conflicts``, ``--enhances``, ``--suggests``, ``--provides``, ``--suplements``, ``--recommends``.
 
 ``--qf <format>``, ``--queryformat <format>``
     Custom display format. ``<format>`` is a string to output for each matched package. Every occurrence of ``%{<tag>}`` within is replaced by corresponding attribute of the package. List of recognized tags can be displayed by running ``dnf repoquery --querytags``.
 
-``--requires``
-    Display capabilities that the package depends on. Same as ``--qf "%{requires}``.
 
 ``--resolve``
     resolve capabilities to originating package(s).

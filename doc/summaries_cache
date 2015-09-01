@@ -162,5 +162,29 @@
     [
         1244125, 
         "[abrt] dnf: gettext.py:222:ugettext:UnicodeDecodeError: 'ascii' codec can't decode byte 0xe6 in position 0: ordinal not in range(128)"
+    ], 
+    [
+        1250114, 
+        "dnf download appears to write the destination twice"
+    ], 
+    [
+        1186381, 
+        "[rfe] Please provide an equivalent of repoquery --archlist"
+    ], 
+    [
+        1225784, 
+        "dnf download should print message when it does not find requested packages"
+    ], 
+    [
+        1233728, 
+        "dnf repoquery doesn't support multi args"
+    ], 
+    [
+        1199601, 
+        "RFE: repoquery support for --pkgnarrow"
+    ], 
+    [
+        1156778, 
+        "dnf repoquery: sort the output alphabetically"
     ]
 ]
