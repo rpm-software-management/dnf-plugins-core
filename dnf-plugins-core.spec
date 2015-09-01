@@ -3,7 +3,7 @@
 %global hawkey_version 0.5.9
 
 Name:       dnf-plugins-core
-Version:    0.1.10
+Version:    0.1.11
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -130,6 +130,18 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Tue Sep 01 2015 Michal Luscon <mluscon@redhat.com> 0.1.11-1
+- dnf donwload checks for duplicate packages (rhBug:1250114) (Adam Salih)
+- Extend repoquery --arch option. You can now pass multiple archs separated by
+  commas (RhBug:1186381) (Adam Salih)
+- download plugin now prints not valid packages (RhBug:1225784) (Adam Salih)
+- correct typo (Adam Salih)
+- dnf now accepts more than one key (RhBug:1233728) (Adam Salih)
+- description should be print unwrapped (Adam Salih)
+- alternative to pkgnarrow (RhBug:1199601) (Adam Salih)
+- sort output alphabetically, tree accepts switches --enhances --suggests
+  --provides --suplements --recommends (RhBug:1156778) (Adam Salih)
+
 * Mon Aug 10 2015 Jan Silhan <jsilhan@redhat.com> 0.1.10-1
 - generate_completion_cache: use list for each insert (fixes regression
   introduced in e020c96) (Igor Gnatenko)
