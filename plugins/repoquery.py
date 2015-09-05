@@ -151,8 +151,6 @@ class RepoQueryCommand(dnf.cli.Command):
     @staticmethod
     def filter_repo_arch(opts, query):
         """Filter query by repoid and arch options"""
-        if opts.repo:
-            query = query.filter(reponame=opts.repo)
         if opts.arch:
             archs = [arch.strip() for arch in opts.arch.split(",")]
             query = query.filter(arch=archs)
@@ -162,11 +160,6 @@ class RepoQueryCommand(dnf.cli.Command):
     def set_argparse_subparser(parser):
         parser.add_argument('key', nargs='*',
                             help=_('the key to search for'))
-        parser.add_argument('--repo', metavar='REPO', action='append',
-                            help=_('show only results from this REPO'))
-        # make --repoid hidden compatibility alias for --repo
-        parser.add_argument('--repoid', dest='repo', action='append',
-                            help=argparse.SUPPRESS)
         parser.add_argument('--arch', metavar='ARCH',
                             help=_('show only results from this ARCH'))
         parser.add_argument('-f', '--file', metavar='FILE',
