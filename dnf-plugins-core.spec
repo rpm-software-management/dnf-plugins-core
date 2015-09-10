@@ -12,6 +12,7 @@ URL:        https://github.com/rpm-software-management/dnf-plugins-core
 # source archive is created by running package/archive from a git checkout
 Source0:    dnf-plugins-core-%{version}.tar.gz
 BuildArch:  noarch
+BuildRequires: pycharm-community
 BuildRequires:  cmake
 BuildRequires:  gettext
 %if 0%{?fedora} >= 23
