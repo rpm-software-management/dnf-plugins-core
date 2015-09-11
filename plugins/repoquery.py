@@ -231,25 +231,6 @@ class RepoQueryCommand(dnf.cli.Command):
         return query.filter(**kwarg)
 
     @staticmethod
-    def by_provides(sack, pattern, query):
-        """Get a query for matching given provides."""
-        try:
-            reldeps = list(
-                map(functools.partial(hawkey.Reldep, sack), pattern))
-        except hawkey.ValueException:
-            return query.filter(empty=True)
-        return query.filter(provides=reldeps)
-
-    @staticmethod
-    def by_requires(sack, pattern, query):
-        """Get a query for matching given requirements."""
-        try:
-            reldep = hawkey.Reldep(sack, pattern)
-        except hawkey.ValueException:
-            return query.filter(empty=True)
-        return query.filter(requires=reldep)
-
-    @staticmethod
     def filter_repo_arch(opts, query):
         """Filter query by repoid and arch options"""
         if opts.repo:
@@ -275,7 +256,7 @@ class RepoQueryCommand(dnf.cli.Command):
     def by_all_deps(self, name, query):
         defaultquery = query.filter(name=name)
         allpkgs = set()
-        requiresquery = self.by_requires(self.base.sack, name, query)
+        requiresquery = query.filter(requires__glob=name)
         for reqpkg in requiresquery.run():
             allpkgs.add(reqpkg)
         for pkg in defaultquery.run():
@@ -341,7 +322,7 @@ class RepoQueryCommand(dnf.cli.Command):
         if self.opts.file:
             q = q.filter(file=self.opts.file)
         if self.opts.whatprovides:
-            q = self.by_provides(self.base.sack, [self.opts.whatprovides], q)
+            q = q.filter(provides__glob=[self.opts.whatprovides])
         if self.opts.alldeps:
             if not self.opts.whatrequires:
                 raise dnf.exceptions.Error(
@@ -349,7 +330,7 @@ class RepoQueryCommand(dnf.cli.Command):
                       "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n\n"))
             q = self.by_all_deps(self.opts.whatrequires, q)
         elif self.opts.whatrequires:
-            q = self.by_requires(self.base.sack, self.opts.whatrequires, q)
+            q = q.filter(requires__glob=self.opts.whatrequires)
         if self.opts.whatrecommends:
             q = self.by_dep(self.base.sack, self.opts.whatrecommends, q,
                             'recommends')
@@ -404,8 +385,7 @@ class RepoQueryCommand(dnf.cli.Command):
             # find the providing packages and show them
             query = self.filter_repo_arch(
                 self.opts, self.base.sack.query().available())
-            providers = self.by_provides(self.base.sack, list(pkgs),
-                                         query)
+            providers = query.filter(provides__glob=list(pkgs))
             pkgs = set()
             for pkg in providers.latest().run():
                 po = PackageWrapper(pkg)
@@ -449,8 +429,8 @@ class RepoQueryCommand(dnf.cli.Command):
                     pkgquery = self.base.sack.query().filter(
                         pkg=list(ar.values()))
                 else:
-                    pkgquery = self.by_all_deps(pkg.name, aquery) if opts.alldeps else self.by_requires(
-                        self.base.sack, pkg.name, aquery)
+                    pkgquery = self.by_all_deps(pkg.name, aquery) if opts.alldeps else aquery.filter(
+                        requires__glob=pkg.name)
                 self.tree_seed(pkgquery, aquery, opts, level + 1, usedpkgs)
 
 
