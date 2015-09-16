@@ -19,7 +19,7 @@
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
-from tests.support import mock
+from tests import support
 
 import argparse
 import dnf.exceptions
@@ -67,12 +67,9 @@ class PkgStub(object):
         self.files = ['/tmp/foobar', '/var/foobar']
 
 
-class ArgParseTest(unittest.TestCase):
+class ArgParseTest(support.TestCase):
     def setUp(self):
-        op = dnf.cli.option_parser.OptionParser()
-        repoquery_cmd = repoquery.RepoQueryCommand(None)
-        self.argparser = op.argparser
-        repoquery_cmd.set_argparse_subparser(self.argparser)
+        self.argparser = support.init_parser(repoquery.RepoQueryCommand)
 
     def test_parse(self):
         opts = self.argparser.parse_args(['--whatrequires', 'prudence'])
@@ -80,7 +77,7 @@ class ArgParseTest(unittest.TestCase):
         self.assertEqual(opts.whatrequires, 'prudence')
         self.assertEqual(opts.queryformat, repoquery.QFORMAT_DEFAULT)
 
-    @mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
+    @support.mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
     def test_conflict(self):
 
         with self.assertRaises(dnf.cli.CliError):

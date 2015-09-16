@@ -33,6 +33,16 @@ else:
     from . import mock
 
 
+def init_parser(command):
+    """initialize argparser for given 'command' class"""
+
+    op = dnf.cli.option_parser.OptionParser()
+    repoquery_cmd = command(None)
+    argparser = op.argparser
+    repoquery_cmd.set_argparse_subparser(argparser)
+    return argparser
+
+
 class BaseCliStub(object):
     """A class mocking `dnf.cli.cli.BaseCli`."""
 

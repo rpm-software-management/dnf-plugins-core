@@ -19,15 +19,11 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 from tests import support
 import reposync
-import dnf
 
 
 class TestReposyncFunctions(support.TestCase):
     def test_parse_args(self):
-        op = dnf.cli.option_parser.OptionParser()
-        repoquery_cmd = reposync.RepoSyncCommand(None)
-        argparser = op.argparser
-        repoquery_cmd.set_argparse_subparser(argparser)
+        argparser = support.init_parser(reposync.RepoSyncCommand)
         opts = argparser.parse_args(['-p', '/become/legend'])
         self.assertEqual(opts.download_path, '/become/legend')
 
