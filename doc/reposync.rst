@@ -33,7 +33,7 @@ Description
 
 `reposync` makes local copies of remote repositories. Packages that are already present in the local directory are not downloaded again.
 
-Note that repositories could be specified by ``--repo``, ``--enablerepo`` and ``--disablerepo`` dnf options (see ``man dnf``).
+Note that repositories can be specified by ``--repo``, ``--enablerepo`` and ``--disablerepo`` dnf options (see ``man dnf``).
 
 -------
 Options
