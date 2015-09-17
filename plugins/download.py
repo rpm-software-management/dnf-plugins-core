@@ -109,7 +109,11 @@ class DownloadCommand(dnf.cli.Command):
             pkgs = self._get_packages_with_deps(pkg_specs)
         else:
             pkgs = self._get_packages(pkg_specs)
-        self.base.download_packages(pkgs, self.base.output.progress)
+        try:
+            self.base.download_packages(pkgs, self.base.output.progress)
+        except dnf.exceptions.DownloadError as e:
+            errstring = dnf.i18n.ucd(e)
+            raise dnf.exceptions.Error(errstring)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
         return locations
 
@@ -118,7 +122,11 @@ class DownloadCommand(dnf.cli.Command):
         pkgs = self._get_packages(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
         pkgs = set(self._get_packages(source_pkgs, source=True))
-        self.base.download_packages(pkgs, self.base.output.progress)
+        try:
+            self.base.download_packages(pkgs, self.base.output.progress)
+        except dnf.exceptions.DownloadError as e:
+            errstring = dnf.i18n.ucd(e)
+            raise dnf.exceptions.Error(errstring)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
         return locations
 
