@@ -46,6 +46,9 @@ Options
 ``--source``
     Download the source rpm. Enables source repositories of all enabled binary repositories.
 
+``--debuginfo``
+    Download the debuginfo rpm. Enables debuginfo repositories of all enabled binary repositories.
+
 ``--destdir``
     Download directory, default is the current directory (the directory must exist).
 
@@ -63,6 +66,9 @@ Examples
 
 ``dnf download dnf --source``
     Download the latest dnf source package to the current directory.
+
+``dnf download rpm --debuginfo``
+    Download the latest rpm-debuginfo package to the current directory.
 
 ``dnf download btanks --resolve``
     Download the latest btanks package and the uninstalled dependencies to the current directory.
