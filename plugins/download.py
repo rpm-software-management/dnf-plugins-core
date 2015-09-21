@@ -175,7 +175,7 @@ class DownloadCommand(dnf.cli.Command):
         return q
 
     def _get_query_source(self, pkg_spec):
-        """"Return a query to match a source rpm file name."""
+        """Return a query to match a source rpm file name."""
         pkg_spec = pkg_spec[:-4]  # skip the .rpm
         nevra = hawkey.split_nevra(pkg_spec)
         q = self.base.sack.query()
