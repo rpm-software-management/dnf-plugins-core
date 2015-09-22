@@ -1,10 +1,10 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 0.6.5}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 1.1.2}
 %{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
 Version:    0.1.12
-Release:    1%{?snapshot}%{?dist}
+Release:    2%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 License:    GPLv2+
@@ -38,8 +38,8 @@ protected_packages passive plugins.
 %package -n python-dnf-plugins-core
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
-BuildRequires:  python-dnf >= %{dnf_lowest_compatible}
-BuildRequires:  python-dnf < %{dnf_not_compatible}
+BuildRequires:  python2-dnf >= %{dnf_lowest_compatible}
+BuildRequires:  python2-dnf < %{dnf_not_compatible}
 %if 0%{?fedora} >= 23
 BuildRequires:   python-kickstart
 %else
@@ -48,8 +48,8 @@ BuildRequires:   pykickstart
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
-Requires:   python-dnf >= %{dnf_lowest_compatible}
-Requires:   python-dnf < %{dnf_not_compatible}
+Requires:   python2-dnf >= %{dnf_lowest_compatible}
+Requires:   python2-dnf < %{dnf_not_compatible}
 Requires:   python-hawkey >= hawkey_version
 %if 0%{?fedora} >= 23
 Requires:   python-kickstart
@@ -130,6 +130,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.1.12-2
+- add python2-dnf requirements
+
 * Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.1.12-1
 - repoquery: add globbing support to whatrequires/whatprovides.
   (RhBug:1249073) (Valentina Mukhamedzhanova)
