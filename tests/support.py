@@ -30,7 +30,7 @@ if sys.version_info.major >= 3:
 if PY3:
     from unittest import mock
 else:
-    from . import mock
+    import mock
 
 
 class BaseCliStub(object):

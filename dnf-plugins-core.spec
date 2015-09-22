@@ -45,6 +45,7 @@ BuildRequires:   python-kickstart
 %else
 BuildRequires:   pykickstart
 %endif
+BuildRequires:  python-mock
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
@@ -69,6 +70,8 @@ Group:      System Environment/Base
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-dnf < %{dnf_not_compatible}
+# not needed b/c we're using unittest.mock
+#BuildRequires:  python3-mock
 BuildRequires:  python3-nose
 BuildRequires:  python3-sphinx
 Requires:   python3-dnf >= %{dnf_lowest_compatible}
