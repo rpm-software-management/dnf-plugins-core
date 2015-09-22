@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.11
+Version:    0.1.12
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -130,6 +130,12 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.1.12-1
+- repoquery: add globbing support to whatrequires/whatprovides.
+  (RhBug:1249073) (Valentina Mukhamedzhanova)
+- needs_restarting: Rewrite a warning message (Wieland Hoffmann)
+- Remove extra quotation mark in comment (Alexander Todorov)
+
 * Tue Sep 01 2015 Michal Luscon <mluscon@redhat.com> 0.1.11-1
 - dnf donwload checks for duplicate packages (rhBug:1250114) (Adam Salih)
 - Extend repoquery --arch option. You can now pass multiple archs separated by
