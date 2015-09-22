@@ -20,11 +20,11 @@ from __future__ import unicode_literals
 from tests import support
 import reposync
 
+
 class TestReposyncFunctions(support.TestCase):
     def test_parse_args(self):
-        args = '-p /become/legend --repo=silver --repo=screen'.split()
-        opts = reposync._parse_args(args)
-        self.assertEqual(opts.repo, ['silver', 'screen'])
+        argparser = support.init_parser(reposync.RepoSyncCommand)
+        opts = argparser.parse_args(['-p', '/become/legend'])
         self.assertEqual(opts.download_path, '/become/legend')
 
     def test_pkgdir(self):

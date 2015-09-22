@@ -19,8 +19,9 @@
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
-from tests.support import mock
+from tests import support
 
+import argparse
 import dnf.exceptions
 import repoquery
 import unittest
@@ -66,26 +67,30 @@ class PkgStub(object):
         self.files = ['/tmp/foobar', '/var/foobar']
 
 
-class ArgParseTest(unittest.TestCase):
+class ArgParseTest(support.TestCase):
+    def setUp(self):
+        self.argparser = support.init_parser(repoquery.RepoQueryCommand)
+
     def test_parse(self):
-        opts, _ = repoquery.parse_arguments(['--whatrequires', 'prudence'])
+        opts = self.argparser.parse_args(['--whatrequires', 'prudence'])
         self.assertIsNone(opts.whatprovides)
         self.assertEqual(opts.whatrequires, 'prudence')
         self.assertEqual(opts.queryformat, repoquery.QFORMAT_DEFAULT)
 
-    @mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
+    @support.mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
     def test_conflict(self):
-        with self.assertRaises(dnf.exceptions.Error):
-            repoquery.parse_arguments(['--conflicts', '%{name}', '--provides'])
+
+        with self.assertRaises(dnf.cli.CliError):
+            self.argparser.parse_args(['--conflicts', '%{name}', '--provides'])
 
     def test_options(self):
         for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
                     'requires', 'suggests', 'supplements'):
-            opts, _ = repoquery.parse_arguments(['--' + arg])
+            opts = self.argparser.parse_args(['--' + arg])
             self.assertEqual(opts.packageatr, arg)
 
     def test_file(self):
-        opts, _ = repoquery.parse_arguments(['/var/foobar'])
+        opts = self.argparser.parse_args(['/var/foobar'])
         self.assertIsNone(opts.file)
 
 class InfoFormatTest(unittest.TestCase):

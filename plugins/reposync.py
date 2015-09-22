@@ -21,26 +21,12 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-import argparse
 import dnf
 import dnf.cli
 import dnfpluginscore
 import os
 
 _ = dnfpluginscore._
-
-
-def _parse_args(args):
-    alias = RepoSyncCommand.aliases[0]
-    parser = dnfpluginscore.ArgumentParser(alias)
-    parser.add_argument('-p', '--download-path', default='./',
-                        help=_('where to store downloaded repositories '), )
-    parser.add_argument('--repo', action='append',
-                        help=_('repository to download'), )
-    # make --repoid hidden compatibility alias for --repo
-    parser.add_argument('--repoid', action='append', dest='repo',
-                        help=argparse.SUPPRESS)
-    return parser.parse_args(args)
 
 
 def _pkgdir(intermediate, target):
@@ -62,26 +48,23 @@ class RepoSync(dnf.Plugin):
 class RepoSyncCommand(dnf.cli.Command):
     aliases = ('reposync',)
     summary = _('download all packages from remote repo')
-    usage = 'reposync --repo=<repoid>'
+    usage = 'reposync --download-path=<path>'
+
+    @staticmethod
+    def set_argparse_subparser(parser):
+        parser.add_argument(
+            '-p', '--download-path', default='./',
+            help=_('where to store downloaded repositories '), )
 
     def configure(self, args):
         demands = self.cli.demands
         demands.available_repos = True
         demands.sack_activation = True
 
-        opts = _parse_args(args)
         repos = self.base.repos
 
-        if opts.repo:
-            repos.all().disable()
-            for repoid in opts.repo:
-                try:
-                    repo = repos[repoid]
-                except KeyError:
-                    raise dnf.cli.CliError("Unknown repo: '%s'." % repoid)
-                repo.enable()
         for repo in repos.iter_enabled():
-            repo.pkgdir = _pkgdir(opts.download_path, repo.id)
+            repo.pkgdir = _pkgdir(self.opts.download_path, repo.id)
 
     def run(self, _):
         base = self.base
