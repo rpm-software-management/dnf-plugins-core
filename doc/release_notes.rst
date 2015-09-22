@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.12 Release Notes
+=====================
+
+Added support of globs to ``--whatrequires`` and ``--whatprovides`` options.
+
+Bugs fixed in 0.1.12:
+
+* :rhbug:`1249073`
+
+=====================
  0.1.11 Release Notes
 =====================
 

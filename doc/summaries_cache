@@ -186,5 +186,9 @@
     [
         1156778, 
         "dnf repoquery: sort the output alphabetically"
+    ], 
+    [
+        1249073, 
+        "dnf repoquery does not support wildcards in --whatrequires"
     ]
 ]
