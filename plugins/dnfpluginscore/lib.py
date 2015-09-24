@@ -151,3 +151,33 @@ def enable_debug_repos(repos):
         return ("{}-debug-rpms".format(name[:-5]) if name.endswith("-rpms")
                 else "{}-debuginfo".format(name))
     _enable_sub_repos(repos, debug_name)
+
+def package_debug_name(package):
+    """
+    # :api
+    returns name of debuginfo package for given package
+    e.g. kernel-PAE -> kernel-PAE-debuginfo
+    """
+    return "{}-debuginfo".format(package.name)
+
+def package_source_name(package):
+    """"
+    # :api
+    returns name of source package for given pkgname
+    e.g. krb5-libs -> krb5
+    """
+    # strip suffix first
+    srcname = package.sourcerpm.rstrip(".src.rpm")
+    # source package filenames may not contain epoch, handle both cases
+    srcname = srcname.rstrip("-{}".format(package.evr))
+    srcname = srcname.rstrip("-{0.version}-{0.release}".format(package))
+    return srcname
+
+def package_source_debug_name(package):
+    """
+    # :api
+    returns name of debuginfo package for source package of given package
+    e.g. krb5-libs -> krb5-debuginfo
+    """
+    srcname = package_source_name(package)
+    return "{}-debuginfo".format(srcname)
