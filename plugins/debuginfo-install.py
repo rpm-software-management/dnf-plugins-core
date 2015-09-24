@@ -69,21 +69,6 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                     self.cli.base.sack).filter(arch__neq='src'):
                 self._di_install(pkg)
 
-    @staticmethod
-    def _pkg_dbgname(package):
-        """get package name with debuginfo suffix, e.g. kernel-PAE-debuginfo"""
-        return "{}-debuginfo".format(package.name)
-
-    @staticmethod
-    def _pkg_dbgsrcname(package):
-        """get package name with debuginfo suffix, e.g. krb5-debuginfo"""
-        # strip src suffix
-        srcname = package.sourcerpm.rstrip(".src.rpm")
-        # source package filenames may not contain epoch, handle both cases
-        srcname = srcname.rstrip("-{}".format(package.evr))
-        srcname = srcname.rstrip("-{0.version}-{0.release}".format(package))
-        return "{}-debuginfo".format(srcname)
-
     def _dbg_available(self, dbgname, package, match_evra):
         if match_evra:
             return self.packages_available.filter(
@@ -98,7 +83,8 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 arch=str(package.arch))
 
     def _di_install(self, package):
-        for dbgname in [self._pkg_dbgname(package), self._pkg_dbgsrcname(package)]:
+        for dbgname in [dnfpluginscore.lib.package_debug_name(package),
+                        dnfpluginscore.lib.package_source_debug_name(package)]:
             if dbgname in self.dbgdone:
                 break
             if self._dbg_available(dbgname, package, True):
