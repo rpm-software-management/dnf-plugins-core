@@ -208,8 +208,11 @@ class BuildDepCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(err)
 
     def _remote_deps(self, package):
-        pkgs = self.base.sack.query().available().filter(name=package,
-                                                         arch="src").run()
+        sourcenames = list({dnfpluginscore.lib.package_source_name(pkg)
+                           for pkg in dnf.subject.Subject(
+                               package).get_best_query(self.base.sack)})
+        pkgs = self.base.sack.query().available().filter(
+                name=(sourcenames + [package]), arch="src").latest().run()
         if not pkgs:
             raise dnf.exceptions.Error(_('no package matched: %s') % package)
         self.base.download_packages(pkgs)
