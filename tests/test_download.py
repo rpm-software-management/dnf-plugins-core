@@ -134,7 +134,7 @@ Query = QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
                   PACKAGES_LASTEST, PACKAGES_SOURCE)
 
 
-class DownloadlCommandTest(unittest.TestCase):
+class DownloadCommandTest(unittest.TestCase):
 
     def setUp(self):
         def stub_fn(pkg_spec):
