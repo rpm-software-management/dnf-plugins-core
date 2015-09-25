@@ -20,6 +20,8 @@ from __future__ import unicode_literals
 from tests.support import mock, RepoStub
 
 import dnf.repodict
+import dnf.sack
+import dnf.subject
 import dnfpluginscore
 import download
 import unittest
@@ -77,29 +79,63 @@ class QueryStub(object):
         self._all = []
         self._all.extend(inst)
         self._all.extend(avail)
+        self._all.extend(sources)
+        self._filter = {}
+        self._pkg_spec = None
 
     def available(self):
-        return self.filter(available=True)
+        self._filter = {'available' : True}
+        return self
 
     def installed(self):
-        return self.filter(installed=True)
+        self._filter = {'installed' : True }
+        return self
 
     def latest(self):
-        return self.filter(latest=True)
+        self._filter = {'latest' : True }
+        return self
 
     def filter(self, **kwargs):
+        self._filter = kwargs
+        return self
+
+    def _stub_filter(self, **kwargs):
+        results = self._all
+
         if 'available' in kwargs:
-            return self._avail
+            results = self._avail
         elif 'installed' in kwargs:
-            return self._inst
+            results = self._inst
         elif 'latest' in kwargs:
-            return self._latest
-        elif 'name' in kwargs:
+            results = self._latest
+
+        name = None
+        if 'name' in kwargs:
             name = kwargs['name']
-            return [pkg for pkg in self._all if pkg.name == name]
-        elif 'sourcerpm' in kwargs:
-            src_name = kwargs['sourcerpm']
-            return [pkg for pkg in self._sources if pkg.sourcerpm == src_name]
+            self._pkg_spec = None
+        elif self._pkg_spec:
+            name = self._pkg_spec
+        if name:
+            results = [pkg for pkg in results if pkg.name == name]
+
+        if 'arch' in kwargs:
+            arch = kwargs['arch']
+            results = [pkg for pkg in results if pkg.arch == arch]
+
+        if 'version' in kwargs:
+            version = kwargs['version']
+            results = [pkg for pkg in results if pkg.version == version]
+        return results
+
+    def run(self):
+        return self._stub_filter(**self._filter)
+
+    def __len__(self):
+        results = self.run()
+        return len(results)
+
+    def __getitem__(self, key):
+        return self.run()[key]
 
 PACKAGES_AVAIL = [
 PkgStub('foo', '0', '1.0', '1', 'noarch', 'test-repo'),
@@ -130,24 +166,37 @@ PkgStub('foobar', '0', '1.0', '1', 'src', 'test-repo-source'),
 PkgStub('foobar', '0', '2.0', '1', 'src', 'test-repo-source')
 ]
 
-Query = QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
+class SackStub(dnf.sack.Sack):
+    def query(self):
+        return QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
                   PACKAGES_LASTEST, PACKAGES_SOURCE)
 
+class SubjectStub(dnf.subject.Subject):
+    def __init__(self, pkg_spec, ignore_case=False):
+        super(self.__class__, self).__init__(pkg_spec, ignore_case)
+        self.pkg_spec = pkg_spec
+
+    def get_best_query(self, sack, with_provides=True, forms=None):
+        Q = QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
+                  PACKAGES_LASTEST, PACKAGES_SOURCE)
+        Q._pkg_spec = self.pkg_spec
+        return Q
 
 class DownloadCommandTest(unittest.TestCase):
 
     def setUp(self):
-        def stub_fn(pkg_spec):
-            if '.src.rpm' in pkg_spec:
-                return Query.filter(sourcerpm=pkg_spec)
-            else:
-                q = Query.latest()
-                return [pkg for pkg in q if pkg_spec == pkg.name]
         cli = mock.MagicMock()
         self.cmd = download.DownloadCommand(cli)
         self.cmd.cli.base.repos = dnf.repodict.RepoDict()
-        self.cmd._get_query = stub_fn
-        self.cmd._get_query_source = stub_fn
+
+        # point the Sack and Subject to out stubs
+        # b/c these are used in the _get_query methods
+        self.orig_sack = self.cmd.cli.base.sack
+        self.cmd.cli.base.sack = SackStub()
+
+        self.orig_subject = dnf.subject.Subject
+        dnf.subject.Subject = SubjectStub
+
         self.cmd.opts = mock.Mock()
         self.cmd.opts.resolve = False
         repo = RepoStub('foo')
@@ -162,6 +211,11 @@ class DownloadCommandTest(unittest.TestCase):
         repo = RepoStub('foobar-source')
         repo.disable()
         self.cmd.base.repos.add(repo)
+
+    def tearDown(self):
+        # restore the default values
+        self.cmd.cli.base.sack = self.orig_sack
+        dnf.subject.Subject = self.orig_subject
 
     def test_enable_source_repos(self):
         repos = self.cmd.base.repos
