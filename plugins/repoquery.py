@@ -267,6 +267,11 @@ class RepoQueryCommand(dnf.cli.Command):
         alldepsquery = query.filter(pkg=allpkgs)
         return alldepsquery
 
+    def installonly(self, q):
+            installonly = q.installed().filter(
+                provides__glob=self.base.conf.installonlypkgs)
+            return installonly
+
     def run(self, args):
         if self.opts.help_cmd:
             print(self.parser.format_help())
@@ -297,12 +302,11 @@ class RepoQueryCommand(dnf.cli.Command):
             q = self.base.sack.query()
 
         if self.opts.pkgfilter == "duplicated":
-            dups = dnf.query.duplicated_pkgs(q, self.base.conf.installonlypkgs)
-            q = q.filter(pkg=dups)
+            installonly = self.installonly(q)
+            exclude = [pkg.name for pkg in installonly]
+            q = q.filter(name__neq=exclude).duplicated()
         elif self.opts.pkgfilter == "installonly":
-            instonly = dnf.query.installonly_pkgs(
-                q, self.base.conf.installonlypkgs)
-            q = q.filter(pkg=instonly)
+            q = self.installonly(q)
         elif self.opts.pkgfilter == "unsatisfied":
             rpmdb = dnf.sack.rpmdb_sack(self.base)
             goal = dnf.goal.Goal(rpmdb)
@@ -344,9 +348,7 @@ class RepoQueryCommand(dnf.cli.Command):
             q = self.by_dep(self.base.sack, self.opts.whatsuggests, q,
                             'suggests')
         if self.opts.latest_limit:
-            latest_pkgs = dnf.query.latest_limit_pkgs(q,
-                                                      self.opts.latest_limit)
-            q = q.filter(pkg=latest_pkgs)
+            q = q.latest(self.opts.latest_limit)
         if self.opts.srpm:
             pkg_list = []
             for pkg in q:
