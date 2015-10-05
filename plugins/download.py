@@ -136,17 +136,22 @@ class DownloadCommand(dnf.cli.Command):
         q = q.available()
 
         for pkg in self._get_packages(pkg_specs):
-            for src_spec in self._get_source_packages([pkg]):
-                src_spec = src_spec.replace(".rpm", "")
-                nevra = hawkey.split_nevra(src_spec)
-                dbg_name = "{}-debuginfo-{}:{}-{}.{}".format(
-                                    nevra.name, nevra.epoch,
-                                    nevra.version, nevra.release,
-                                    pkg.arch
-                            )
-
-                for p in self._get_packages([dbg_name]):
+            for dbg_name in [dnfpluginscore.lib.package_debug_name(pkg),
+                            dnfpluginscore.lib.package_source_debug_name(pkg)]:
+                dbg_available = q.filter(
+                                        name=dbg_name,
+                                        epoch=int(pkg.epoch),
+                                        version=str(pkg.version),
+                                        release=str(pkg.release),
+                                        arch=str(pkg.arch)
+                                    )
+                dbg_found = False
+                for p in dbg_available:
                     dbg_pkgs.add(p)
+                    dbg_found = True
+
+                if dbg_found:
+                    break
 
         self.base.download_packages(dbg_pkgs, self.base.output.progress)
         locations = sorted([pkg.localPkg() for pkg in dbg_pkgs])
