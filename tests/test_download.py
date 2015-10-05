@@ -53,10 +53,18 @@ class PkgStub:
 
     @property
     def sourcerpm(self):
+        name = self.name
+
+        # special cases for debuginfo tests
+        if self.name == "kernel-PAE":
+            name = "kernel"
+        elif self.name == "krb5-libs":
+            name = "krb5"
+
         if self.arch != 'src':
-            return '%s-%s.src.rpm' % (self.name, self.evr)
+            return '%s-%s.src.rpm' % (name, self.evr)
         else:
-            return '%s-%s.%s.rpm' % (self.name, self.evr, self.arch)
+            return '%s-%s.%s.rpm' % (name, self.evr, self.arch)
 
     @property
     def fullname(self):
@@ -79,15 +87,17 @@ class NoSrcStub(PkgStub):
 
 class QueryStub(object):
     """Mocking dnf.query.Query."""
-    def __init__(self, inst, avail, latest, sources):
+    def __init__(self, inst, avail, latest, sources, debuginfo):
         self._inst = inst
         self._avail = avail
         self._latest = latest
         self._sources = sources
+        self._debuginfo = debuginfo
         self._all = []
         self._all.extend(inst)
         self._all.extend(avail)
         self._all.extend(sources)
+        self._all.extend(debuginfo)
         self._filter = {}
         self._pkg_spec = None
 
@@ -151,13 +161,30 @@ PkgStub('foo', '0', '2.0', '1', 'noarch', 'test-repo'),
 PkgStub('bar', '0', '1.0', '1', 'noarch', 'test-repo'),
 PkgStub('bar', '0', '2.0', '1', 'noarch', 'test-repo'),
 PkgStub('foobar', '0', '1.0', '1', 'noarch', 'test-repo'),
-PkgStub('foobar', '0', '2.0', '1', 'noarch', 'test-repo')
+PkgStub('foobar', '0', '2.0', '1', 'noarch', 'test-repo'),
+PkgStub('kernel-PAE', '0', '4.0', '1', 'x86_64', 'test-repo'),
+PkgStub('krb5-libs', '0', '1.12', '1', 'x86_64', 'test-repo'),
+]
+
+PACKAGES_DEBUGINFO = [
+PkgStub('foo-debuginfo', '0', '1.0', '1', 'noarch', 'test-repo-debuginfo'),
+PkgStub('foo-debuginfo', '0', '2.0', '1', 'noarch', 'test-repo-debuginfo'),
+PkgStub('bar-debuginfo', '0', '1.0', '1', 'noarch', 'test-repo-debuginfo'),
+PkgStub('bar-debuginfo', '0', '2.0', '1', 'noarch', 'test-repo-debuginfo'),
+PkgStub('kernel-PAE-debuginfo', '0', '4.0', '1', 'x86_64', 'test-repo-debuginfo'),
+PkgStub('krb5-debuginfo', '0', '1.12', '1', 'x86_64', 'test-repo-debuginfo'),
 ]
 
 PACKAGES_LASTEST = [
 PACKAGES_AVAIL[1],
 PACKAGES_AVAIL[3],
-PACKAGES_AVAIL[5]
+PACKAGES_AVAIL[5],
+PACKAGES_AVAIL[6],
+PACKAGES_AVAIL[7],
+PACKAGES_DEBUGINFO[1],
+PACKAGES_DEBUGINFO[3],
+PACKAGES_DEBUGINFO[4],
+PACKAGES_DEBUGINFO[5],
 ]
 
 PACKAGES_INST = [
@@ -171,13 +198,18 @@ PkgStub('foo', '0', '2.0', '1', 'src', 'test-repo-source'),
 PkgStub('bar', '0', '1.0', '1', 'src', 'test-repo-source'),
 PkgStub('bar', '0', '2.0', '1', 'src', 'test-repo-source'),
 PkgStub('foobar', '0', '1.0', '1', 'src', 'test-repo-source'),
-PkgStub('foobar', '0', '2.0', '1', 'src', 'test-repo-source')
+PkgStub('foobar', '0', '2.0', '1', 'src', 'test-repo-source'),
+PkgStub('kernel', '0', '4.0', '1', 'src', 'test-repo-source'),
+PkgStub('krb5', '0', '1.12', '1', 'src', 'test-repo-source'),
 ]
+
+
 
 class SackStub(dnf.sack.Sack):
     def query(self):
         return QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
-                  PACKAGES_LASTEST, PACKAGES_SOURCE)
+                  PACKAGES_LASTEST, PACKAGES_SOURCE,
+                  PACKAGES_DEBUGINFO)
 
 class SubjectStub(dnf.subject.Subject):
     def __init__(self, pkg_spec, ignore_case=False):
@@ -186,7 +218,8 @@ class SubjectStub(dnf.subject.Subject):
 
     def get_best_query(self, sack, with_provides=True, forms=None):
         Q = QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
-                  PACKAGES_LASTEST, PACKAGES_SOURCE)
+                  PACKAGES_LASTEST, PACKAGES_SOURCE,
+                  PACKAGES_DEBUGINFO)
         Q._pkg_spec = self.pkg_spec
         return Q
 
@@ -221,6 +254,9 @@ class DownloadCommandTest(unittest.TestCase):
         repo = RepoStub('foobar-source')
         repo.disable()
         self.cmd.base.repos.add(repo)
+        repo = RepoStub('foo-debuginfo')
+        repo.disable()
+        self.cmd.base.repos.add(repo)
 
     def tearDown(self):
         # restore the default values
@@ -238,6 +274,12 @@ class DownloadCommandTest(unittest.TestCase):
         self.assertTrue(repos['foo'].enabled)
         self.assertTrue(repos['bar'].enabled)
         self.assertFalse(repos['foobar-source'].enabled)
+
+    def test_enable_debuginfo_repos(self):
+        repos = self.cmd.base.repos
+        self.assertFalse(repos['foo-debuginfo'].enabled)
+        dnfpluginscore.lib.enable_debug_repos(repos)
+        self.assertTrue(repos['foo-debuginfo'].enabled)
 
     def test_get_source_packages(self):
         pkg = PkgStub('foo', '0', '1.0', '1', 'noarch', 'test-repo')
@@ -321,3 +363,20 @@ class DownloadCommandTest(unittest.TestCase):
         self.assertEqual(len(locations), 2)
         self.assertEqual(locations[0], '/tmp/dnf/bar-2.0-1.src.rpm')
         self.assertEqual(locations[1], '/tmp/dnf/foo-2.0-1.src.rpm')
+
+    def test_download_debuginfo(self):
+        locations = self.cmd._download_debuginfo(['kernel-PAE'])
+        self.assertEqual(len(locations), 1)
+        self.assertEqual(locations[0], '/tmp/dnf/kernel-PAE-debuginfo-4.0-1.x86_64.rpm')
+
+        locations = self.cmd._download_debuginfo(['krb5-libs'])
+        self.assertEqual(len(locations), 1)
+        self.assertEqual(locations[0], '/tmp/dnf/krb5-debuginfo-1.12-1.x86_64.rpm')
+
+        locations = self.cmd._download_debuginfo(['foo'])
+        self.assertEqual(len(locations), 1)
+        self.assertEqual(locations[0], '/tmp/dnf/foo-debuginfo-2.0-1.noarch.rpm')
+        locations = self.cmd._download_debuginfo(['foo', 'bar'])
+        self.assertEqual(len(locations), 2)
+        self.assertEqual(locations[0], '/tmp/dnf/bar-debuginfo-2.0-1.noarch.rpm')
+        self.assertEqual(locations[1], '/tmp/dnf/foo-debuginfo-2.0-1.noarch.rpm')
