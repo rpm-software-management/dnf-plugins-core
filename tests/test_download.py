@@ -25,6 +25,9 @@ import dnf.subject
 import dnfpluginscore
 import download
 import unittest
+import hawkey
+import tempfile
+import os
 
 
 class PkgStub:
@@ -247,6 +250,18 @@ class DownloadCommandTest(unittest.TestCase):
         found = self.cmd._get_query('bar')
         self.assertEqual(len(found), 1)
         self.assertEqual(found[0].name, 'bar')
+
+    def test_get_query_with_local_rpm(self):
+        try:
+            (fs, rpm_path) = tempfile.mkstemp('foobar-99.99-1.x86_64.rpm')
+            # b/c self.cmd.cli.base is a mock object add_remote_rpm
+            # will not update the available packages while testing.
+            # it is expected to hit an exception
+            with self.assertRaises(dnf.exceptions.PackageNotFoundError):
+                self.cmd._get_query(rpm_path)
+            self.cmd.cli.base.add_remote_rpm.assert_called_with(rpm_path)
+        finally:
+            os.remove(rpm_path)
 
     def test_get_query_source(self):
         pkgs = self.cmd._get_query_source('foo-2.0-1.src.rpm')
