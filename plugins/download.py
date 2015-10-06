@@ -31,6 +31,7 @@ import hawkey
 import itertools
 import os
 import shutil
+import sys
 
 
 class Download(dnf.Plugin):
@@ -75,6 +76,9 @@ class DownloadCommand(dnf.cli.Command):
         self.parser.add_argument(
             '--resolve', action='store_true',
             help=_('resolve and download needed dependencies'))
+        self.parser.add_argument("--fail", action='store_true',
+                                 help=_("Exit with error if package \
+                                         is not found"))
 
         # parse the options/args
         # list available options/args on errors & exit
@@ -131,6 +135,8 @@ class DownloadCommand(dnf.cli.Command):
                 queries.append(func(pkg_spec))
             except dnf.exceptions.PackageNotFoundError as e:
                 logger.error(dnf.i18n.ucd(e))
+                if self.opts.fail:
+                    sys.exit(1)
         pkgs = list(itertools.chain(*queries))
         return pkgs
 
