@@ -131,6 +131,10 @@ class DownloadCommand(dnf.cli.Command):
                 queries.append(func(pkg_spec))
             except dnf.exceptions.PackageNotFoundError as e:
                 logger.error(dnf.i18n.ucd(e))
+                if self.base.conf.strict:
+                    logger.error(_("Exiting due to strict setting."))
+                    raise dnf.exceptions.Error(e)
+
         pkgs = list(itertools.chain(*queries))
         return pkgs
 
