@@ -31,6 +31,7 @@ import hawkey
 import itertools
 import os
 import shutil
+import sys
 
 
 class Download(dnf.Plugin):
@@ -131,6 +132,10 @@ class DownloadCommand(dnf.cli.Command):
                 queries.append(func(pkg_spec))
             except dnf.exceptions.PackageNotFoundError as e:
                 logger.error(dnf.i18n.ucd(e))
+                if self.base.conf.strict:
+                    logger.error(_("Exiting due to strict setting.")
+                    sys.exit(1)
+
         pkgs = list(itertools.chain(*queries))
         return pkgs
 
