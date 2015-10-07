@@ -31,7 +31,6 @@ import hawkey
 import itertools
 import os
 import shutil
-import sys
 
 
 class Download(dnf.Plugin):
@@ -134,7 +133,7 @@ class DownloadCommand(dnf.cli.Command):
                 logger.error(dnf.i18n.ucd(e))
                 if self.base.conf.strict:
                     logger.error(_("Exiting due to strict setting."))
-                    sys.exit(1)
+                    raise dnf.exceptions.Error(e)
 
         pkgs = list(itertools.chain(*queries))
         return pkgs
