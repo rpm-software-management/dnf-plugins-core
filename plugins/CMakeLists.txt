@@ -10,8 +10,4 @@ INSTALL (FILES protected_packages.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugi
 INSTALL (FILES repoquery.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES reposync.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 
-if (${PYTHON_DESIRED} STREQUAL "2")
-    INSTALL (FILES kickstart.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
-endif()
-
 ADD_SUBDIRECTORY (dnfpluginscore)
