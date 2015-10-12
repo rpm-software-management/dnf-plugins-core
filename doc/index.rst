@@ -31,7 +31,6 @@ This documents core plugins of DNF:
    debuginfo-install
    download
    generate_completion_cache
-   kickstart
    needs_restarting
    noroot
    protected_packages
