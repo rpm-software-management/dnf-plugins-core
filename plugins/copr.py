@@ -246,7 +246,7 @@ Do you want to continue? [y/N]: """)
         #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
         try:
-            f = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path)
+            f = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
         except IOError as e:
             if os.path.exists(repo_filename):
                 os.remove(repo_filename)
@@ -254,13 +254,13 @@ Do you want to continue? [y/N]: """)
                 if PY3:
                     import urllib.request
                     try:
-                        res = urllib.request.urlopen(self.copr_url + "/coprs/" + project_name)
+                        res = urllib.request.urlopen(self.copr_url + "/coprs/" + project_name, 'w+')
                         status_code = res.getcode()
                     except urllib.error.HTTPError as e:
                         status_code = e.getcode()
                 else:
                     import urllib
-                    res = urllib.urlopen(self.copr_url + "/coprs/" + project_name)
+                    res = urllib.urlopen(self.copr_url + "/coprs/" + project_name, 'w+')
                     status_code = res.getcode()
                 if str(status_code) != '404':
                     raise dnf.exceptions.Error(_("This repository does not have"\
@@ -335,7 +335,7 @@ You are about to enable a Playground repository.
 Do you want to continue? [y/N]: """)
         api_url = "{0}/api/playground/list/".format(
             self.copr_url)
-        f = dnfpluginscore.lib.urlopen(self, None, api_url)
+        f = dnfpluginscore.lib.urlopen(self, None, api_url, "w+")
         output = self._get_data(f)
         f.close()
         if output["output"] != "ok":
@@ -350,7 +350,7 @@ Do you want to continue? [y/N]: """)
                     continue
                 api_url = "{0}/api/coprs/{1}/detail/{2}/".format(
                     self.copr_url, project_name, chroot)
-                f = dnfpluginscore.lib.urlopen(self, None, api_url)
+                f = dnfpluginscore.lib.urlopen(self, None, api_url, 'w+')
                 output2 = self._get_data(f)
                 f.close()
                 if (output2 and ("output" in output2)
