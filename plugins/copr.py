@@ -346,8 +346,8 @@ Do you want to continue? [y/N]: """)
             repo_filename = "/etc/yum.repos.d/_playground_{}.repo" \
                     .format(project_name.replace("/", "-"))
             try:
-                # check if that repo exist? but that will result in twice
-                # up calls
+                if chroot not in repo["chroots"]:
+                    continue
                 api_url = "{0}/api/coprs/{1}/detail/{2}/".format(
                     self.copr_url, project_name, chroot)
                 f = dnfpluginscore.lib.urlopen(self, None, api_url)
