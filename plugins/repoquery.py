@@ -445,7 +445,7 @@ class PackageWrapper(object):
         atr = getattr(self._pkg, attr)
         if isinstance(atr, list):
             return '\n'.join(sorted([str(reldep) for reldep in atr]))
-        return str(atr)
+        return dnf.i18n.ucd(atr)
 
     @staticmethod
     def _get_timestamp(timestamp):
