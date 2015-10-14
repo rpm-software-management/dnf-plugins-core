@@ -190,5 +190,21 @@
     [
         1249073, 
         "dnf repoquery does not support wildcards in --whatrequires"
+    ], 
+    [
+        1267808, 
+        "dnf playground enable doesn't work"
+    ], 
+    [
+        1264125, 
+        "UnicodeEncodeError running dnf repoquery"
+    ], 
+    [
+        1265622, 
+        "'dnf builddep' is not always as 'clever' as yum-builddep or dnf download --source"
+    ], 
+    [
+        1159614, 
+        "dnf debuginfo-install kernel-PAE picks wrong debuginfo package"
     ]
 ]
