@@ -3,8 +3,8 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.12
-Release:    2%{?snapshot}%{?dist}
+Version:    0.1.13
+Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
 License:    GPLv2+
@@ -119,6 +119,26 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Wed Oct 14 2015 Jan Silhan <jsilhan@redhat.com> 0.1.13-1
+- updated: release notes for 0.1.13 (Jan Silhan)
+- Remove kickstart plugin from core plugins (Neal Gompa
+  (ニール・ゴンパ))
+- read file as utf-8 in Py3 (RhBug:1267808) (Miroslav Suchý)
+- playground: check if repo actually exists for our version of OS (Miroslav
+  Suchý)
+- add Catalan (Robert Antoni Buj Gelonch)
+- repoquery: Fix UnicodeEncodeError with --info (RhBug:1264125) (Jaroslav
+  Mracek)
+- lookup builddeps in source package for given package name (RhBug:1265622)
+  (Michael Mraka)
+- functions moved to library (Michael Mraka)
+- functions to return name of source and debuginfo package (Michael Mraka)
+- try <name>-debuginfo first then <srcname>-debuginfo (RhBug:1159614) (Michael
+  Mraka)
+- Automatic commit of package [dnf-plugins-core] release [0.1.12-2]. (Michal
+  Luscon)
+- doc: release notes 0.1.12 (Michal Luscon)
+
 * Tue Sep 22 2015 Michal Luscon <mluscon@redhat.com> 0.1.12-2
 - add python2-dnf requirements
 
