@@ -44,7 +44,7 @@ BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
 Requires:   python2-dnf >= %{dnf_lowest_compatible}
 Requires:   python2-dnf < %{dnf_not_compatible}
-Requires:   python-hawkey >= hawkey_version
+Requires:   python-hawkey >= %{hawkey_version}
 Conflicts:  dnf-plugins-core <= 0.1.5
 %description -n python-dnf-plugins-core
 Core Plugins for DNF, Python 2 interface. This package enhance DNF with builddep, copr,
@@ -62,7 +62,7 @@ BuildRequires:  python3-nose
 BuildRequires:  python3-sphinx
 Requires:   python3-dnf >= %{dnf_lowest_compatible}
 Requires:   python3-dnf < %{dnf_not_compatible}
-Requires:   python3-hawkey >= hawkey_version
+Requires:   python3-hawkey >= %{hawkey_version}
 Conflicts:  dnf-plugins-core <= 0.1.5
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,
