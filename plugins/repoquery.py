@@ -277,19 +277,12 @@ class RepoQueryCommand(dnf.cli.Command):
             print(self.parser.format_help())
             return
 
-        if self.opts.list:
-            key = self.opts.key if len(self.opts.key) > 0 else None
-            _list = self.base.returnPkgLists(self.opts.list, key)
-            if self.opts.list == "upgrades":
-                _list = _list.updates
-            for pkg in sorted(_list):
-                print(pkg)
-            return
-
         if self.opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
             print(QUERY_TAGS)
             return
+
+        q = self.base.sack.query()
 
         if self.opts.key:
             pkgs = []
@@ -298,8 +291,13 @@ class RepoQueryCommand(dnf.cli.Command):
                     self.base.sack, with_provides=False)
                 pkgs += q.run()
             q = self.base.sack.query().filter(pkg=pkgs)
-        else:
-            q = self.base.sack.query()
+
+        if self.opts.list == "recent":
+            q.recent(self.base.conf.recent)
+        elif self.opts.list == "autoremove":
+            q = q.unneeded(self.base.sack, self.base.yumdb)
+        elif self.opts.list:
+            q = getattr(q, self.opts.list)()
 
         if self.opts.pkgfilter == "duplicated":
             installonly = self.installonly(q)
@@ -315,7 +313,7 @@ class RepoQueryCommand(dnf.cli.Command):
                 for msg in goal.problems:
                     print(msg)
             return
-        else:
+        elif self.opts.pkgfilter == "unsatisfied":
             # do not show packages from @System repo
             q = q.available()
 
