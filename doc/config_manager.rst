@@ -67,10 +67,10 @@ Examples
 ``dnf config-manager --add-repo http://example.com/different/repo``
     Create new repo file with http://example.com/different/repo as baseurl and enable it.
 
-``dnf config-manager``
+``dnf config-manager --dump``
     Display main DNF configuration.
 
-``dnf config-manager repo``
+``dnf config-manager repo --dump``
     Display configuration of repo.
 
 ``dnf config-manager --set-enabled repo``
