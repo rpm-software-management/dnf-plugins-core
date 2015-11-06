@@ -97,7 +97,7 @@ def parse_args(args):
 def print_cmd(pid):
     cmdline = '/proc/%d/cmdline' % pid
     with open(cmdline) as cmdline_file:
-        command = cmdline_file.read()
+        command = dnf.i18n.ucd(cmdline_file.read())
     command = ' '.join(command.split('\000'))
     print('%d : %s' % (pid, command))
 
