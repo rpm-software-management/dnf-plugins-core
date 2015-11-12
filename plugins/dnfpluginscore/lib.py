@@ -76,22 +76,16 @@ def urlopen(plugin, repo, url, mode='w+b', **kwargs):
 
 
 def write_raw_configfile(filename, section_id, substitutions,
-                         cfgoptions, items, optionobj,
-                         modify=None):
+                         modify):
     """
     # :api
-    Code adopted from yum-config-manager writeRawRepoFile().
     filename   - name of config file (.conf or .repo)
     section_id - id of modified section (e.g. main, fedora, updates)
     substitutions - instance of base.conf.substitutions
-    cfgoptions - options parsed from conf file (e.g. base.conf.cfg.options)
-    items      - current global or repo settings (e.g. base.conf.iteritems)
-    optionobj  - option parse object (e.g. base.conf.optionobj)
-    modify     - list of modified options
+    modify     - dict of modified options
     """
     ini = iniparse.INIConfig(open(filename))
 
-    osection_id = section_id
     # b/c repoids can have $values in them we need to map both ways to figure
     # out which one is which
     if section_id not in ini:
@@ -99,28 +93,11 @@ def write_raw_configfile(filename, section_id, substitutions,
             if dnf.conf.parser.substitute(sect, substitutions) == section_id:
                 section_id = sect
 
-    # Updated the ConfigParser with the changed values
-    cfgopts = cfgoptions(osection_id)
-    for name, value in items():
-        if value is None: # Proxy
-            continue
+    for name, value in modify.items():
+        if isinstance(value, list):
+            value = ' '.join(value)
+        ini[section_id][name] = value
 
-        if modify is not None and name not in modify:
-            continue
-
-        option = optionobj(name)
-        ovalue = option.tostring(value)
-        #  If the value is the same, but just interpreted ... when we don't want
-        # to keep the interpreted values.
-        if (name in ini[section_id] and
-                ovalue == dnf.conf.parser.substitute(ini[section_id][name],
-                                                     substitutions)):
-            ovalue = ini[section_id][name]
-
-        if name not in cfgopts and option.default == value:
-            continue
-
-        ini[section_id][name] = ovalue
     fp = open(filename, "w")
     fp.write(str(ini))
     fp.close()

@@ -111,9 +111,10 @@ class ConfigManagerCommand(dnf.cli.Command):
         """ process --set-enabled, --set-disabled and --setopt options """
 
         sbc = self.base.conf
-        modify = []
+        modify = {}
         if hasattr(self.cli, 'main_setopts') and self.cli.main_setopts:
-            modify = self.cli.main_setopts.items
+            modify = dict((i, getattr(sbc, i))
+                          for i in self.cli.main_setopts.items)
         if not self.opts.repo or 'main' in self.opts.repo:
             if self.opts.dump:
                 print(self.base.output.fmtSection('main'))
@@ -122,21 +123,17 @@ class ConfigManagerCommand(dnf.cli.Command):
                 # modify [main] in dnf.conf
                 dnfpluginscore.lib.write_raw_configfile(dnf.const.CONF_FILENAME,
                                                         'main', sbc.substitutions,
-                                                        sbc.cfg.options,
-                                                        sbc.iteritems,
-                                                        sbc.optionobj,
                                                         modify)
 
         if self.opts.set_enabled or self.opts.set_disabled:
             self.opts.save = True
-            modify.append('enabled')
 
         if self.opts.repo:
             matched = []
             for name in self.opts.repo:
                 matched.extend(self.base.repos.get_matching(name))
         else:
-            matched = self.base.repos.iter_enabled()
+            return
 
         if not matched:
             raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
@@ -144,23 +141,21 @@ class ConfigManagerCommand(dnf.cli.Command):
         for repo in sorted(matched):
             if self.opts.dump:
                 print(self.base.output.fmtSection('repo: ' + repo.id))
-            if self.opts.set_enabled and not repo.enabled:
-                repo.enable()
-            elif self.opts.set_disabled and repo.enabled:
-                repo.disable()
+            repo_modify = dict(modify)  # create local copy
+            if self.opts.set_enabled:
+                repo_modify['enabled'] = 1
+            elif self.opts.set_disabled:
+                repo_modify['enabled'] = 0
             if self.opts.dump:
                 print(repo.dump())
-            repo_modify = modify[:]
             if (hasattr(self.cli, 'repo_setopts')
                     and repo.id in self.cli.repo_setopts):
-                repo_modify.extend(self.cli.repo_setopts[repo.id].items)
-            if self.opts.save and modify:
+                repo_modify.update((i, getattr(repo, i))
+                                   for i in self.cli.repo_setopts[repo.id].items)
+            if self.opts.save and repo_modify:
                 dnfpluginscore.lib.write_raw_configfile(repo.repofile,
                                                         repo.id,
                                                         sbc.substitutions,
-                                                        repo.cfg.options,
-                                                        repo.iteritems,
-                                                        repo.optionobj,
                                                         repo_modify)
 
     def add_repo(self):
