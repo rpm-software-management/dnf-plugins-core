@@ -282,7 +282,9 @@ Do you want to continue? [y/N]: """)
     @classmethod
     def _disable_repo(cls, copr_username, copr_projectname):
         exit_code = call(["dnf", "config-manager", "--set-disabled",
-                          "{}-{}".format(copr_username, copr_projectname)])
+                          "{}-{}".format(
+                          cls._sanitize_username(copr_username),
+                          copr_projectname)])
         if exit_code != 0:
             raise dnf.exceptions.Error(
                 _("Failed to disable copr repo {}/{}"
@@ -306,6 +308,13 @@ Do you want to continue? [y/N]: """)
     def _check_json_output(cls, json_obj):
         if json_obj["output"] != "ok":
             raise dnf.exceptions.Error("{}".format(json_obj["error"]))
+
+    @classmethod
+    def _sanitize_username(cls, copr_username):
+        if copr_username[0] == "@":
+            return "group_{}".format(copr_username[1:])
+        else:
+            return copr_username
 
 
 class Playground(dnf.Plugin):
