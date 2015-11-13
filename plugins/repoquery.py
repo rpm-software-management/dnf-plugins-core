@@ -242,6 +242,7 @@ class RepoQueryCommand(dnf.cli.Command):
 
     def configure(self, args):
         (self.opts, self.parser) = parse_arguments(args)
+        demands = self.cli.demands
 
         if self.opts.help_cmd or self.opts.querytags:
             return
@@ -249,9 +250,11 @@ class RepoQueryCommand(dnf.cli.Command):
         if self.opts.srpm:
             dnfpluginscore.lib.enable_source_repos(self.base.repos)
 
-        demands = self.cli.demands
+        if self.opts.pkgfilter != "installonly" and \
+           self.opts.list != "installed":
+            demands.available_repos = True
+
         demands.sack_activation = True
-        demands.available_repos = True
 
     def by_all_deps(self, name, query):
         defaultquery = query.filter(name=name)
