@@ -444,7 +444,7 @@ class PackageWrapper(object):
     def __getattr__(self, attr):
         atr = getattr(self._pkg, attr)
         if isinstance(atr, list):
-            return '\n'.join(sorted([str(reldep) for reldep in atr]))
+            return '\n'.join(sorted([dnf.i18n.ucd(reldep) for reldep in atr]))
         return dnf.i18n.ucd(atr)
 
     @staticmethod
