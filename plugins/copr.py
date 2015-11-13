@@ -40,6 +40,10 @@ try:
     input = raw_input
 except NameError:
     pass
+if PY3:
+    from configparser import ConfigParser
+else:
+    from ConfigParser import ConfigParser
 
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
@@ -74,6 +78,17 @@ class CoprCommand(dnf.cli.Command):
   copr list ignatenkobrain
   copr search tests
     """)
+
+    def configure(self, args):
+        raw_config = ConfigParser()
+        filepath = os.path.join(os.path.expanduser("~"), ".config", "copr")
+        if raw_config.read(filepath):
+            if PY3:
+                self.copr_url = raw_config["copr-cli"].get("copr_url", None)
+            else:
+                self.copr_url = raw_config.get("copr-cli", "copr_url", None)
+            if self.copr_url != "https://copr.fedoraproject.org":
+                print(_("Warning: we are using non-standard Copr URL '{}'.").format(self.copr_url))
 
     def run(self, extcmds):
         try:
