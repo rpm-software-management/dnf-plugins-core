@@ -69,6 +69,8 @@ class DownloadCommand(dnf.cli.Command):
                                  help=_('packages to download'))
         self.parser.add_argument("--source", action='store_true',
                                  help=_('download the src.rpm instead'))
+        self.parser.add_argument("--debuginfo", action='store_true',
+                                 help=_('download the -debuginfo package instead'))
         self.parser.add_argument(
             '--destdir',
             help=_('download path, default is current dir'))
@@ -88,11 +90,16 @@ class DownloadCommand(dnf.cli.Command):
         if self.opts.source:
             dnfpluginscore.lib.enable_source_repos(self.base.repos)
 
+        if self.opts.debuginfo:
+            dnfpluginscore.lib.enable_debug_repos(self.base.repos)
+
     def run(self, args):
         """Execute the util action here."""
 
         if self.opts.source:
             locations = self._download_source(self.opts.packages)
+        elif self.opts.debuginfo:
+            locations = self._download_debuginfo(self.opts.packages)
         else:
             locations = self._download_rpms(self.opts.packages)
 
@@ -120,6 +127,34 @@ class DownloadCommand(dnf.cli.Command):
         pkgs = set(self._get_packages(source_pkgs, source=True))
         self.base.download_packages(pkgs, self.base.output.progress)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
+        return locations
+
+    def _download_debuginfo(self, pkg_specs):
+        """Download debuginfo packages to dnf cache."""
+        dbg_pkgs = set()
+        q = self.base.sack.query()
+        q = q.available()
+
+        for pkg in self._get_packages(pkg_specs):
+            for dbg_name in [dnfpluginscore.lib.package_debug_name(pkg),
+                            dnfpluginscore.lib.package_source_debug_name(pkg)]:
+                dbg_available = q.filter(
+                                        name=dbg_name,
+                                        epoch=int(pkg.epoch),
+                                        version=str(pkg.version),
+                                        release=str(pkg.release),
+                                        arch=str(pkg.arch)
+                                    )
+                dbg_found = False
+                for p in dbg_available:
+                    dbg_pkgs.add(p)
+                    dbg_found = True
+
+                if dbg_found:
+                    break
+
+        self.base.download_packages(dbg_pkgs, self.base.output.progress)
+        locations = sorted([pkg.localPkg() for pkg in dbg_pkgs])
         return locations
 
     def _get_packages(self, pkg_specs, source=False):
