@@ -298,8 +298,8 @@ Do you want to continue? [y/N]: """)
     def _disable_repo(cls, copr_username, copr_projectname):
         exit_code = call(["dnf", "config-manager", "--set-disabled",
                           "{}-{}".format(
-                          cls._sanitize_username(copr_username),
-                          copr_projectname)])
+                              cls._sanitize_username(copr_username),
+                              copr_projectname)])
         if exit_code != 0:
             raise dnf.exceptions.Error(
                 _("Failed to disable copr repo {}/{}"
