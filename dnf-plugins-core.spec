@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.13
+Version:    0.1.14
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -119,6 +119,24 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Mon Nov 16 2015 Michal Luscon <mluscon@redhat.com> 0.1.14-1
+- zanata update (Jan Silhan)
+- repoquery: do not require loading metadata when we want to query system only
+  (Jan Silhan)
+- repoquery: fix unicode tracebacks (Michal Luscon)
+- repoquery: use new methods recent, extras, unneeded (Michal Luscon)
+- repoquery: use new api methods duplicated and latest (RhBug:1231572) (Michal
+  Luscon)
+- Exit with non-zero status if strict and package not found (alde)
+- Fix cmdline conversion to unicode (RhBug:1265210) (Michal Domonkos)
+- Remove extra 'l' in test class name (Alexander Todorov)
+- copr: PEP formating (Miroslav Suchý)
+- copr: allow to use staging instance of Copr for testing (Miroslav Suchý)
+- do not use @ in repoid (RhBug:1280416) (Miroslav Suchý)
+- reverts unintentional releaser from e035152 (Jan Silhan)
+- don't look for builddeps on source packages (RhBug:1272936) (Michael Mraka)
+- Fix hawkey version constraint (Neal Gompa (ニール・ゴンパ))
+
 * Wed Oct 14 2015 Jan Silhan <jsilhan@redhat.com> 0.1.13-1
 - updated: release notes for 0.1.13 (Jan Silhan)
 - Remove kickstart plugin from core plugins (Neal Gompa
