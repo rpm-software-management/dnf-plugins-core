@@ -22,12 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 =====================
+ 0.1.14 Release Notes
+=====================
+
+Bugs fixed in 0.1.14:
+
+* :rhbug:`1231572`
+* :rhbug:`1265210`
+* :rhbug:`1280416`
+* :rhbug:`1270091`
+* :rhbug:`1272936`
+
+=====================
  0.1.13 Release Notes
 =====================
 
 Kickstart plugin has been moved to `dnf plugins extras`_ as a separate ``python-dnf-plugins-extras-kickstart`` package.
 
-Bugs fixed in 0.1.12:
+Bugs fixed in 0.1.13:
 
 * :rhbug:`1267808`
 * :rhbug:`1264125`

@@ -206,5 +206,25 @@
     [
         1159614, 
         "dnf debuginfo-install kernel-PAE picks wrong debuginfo package"
+    ], 
+    [
+        1231572, 
+        "dnf repoquery --duplicated report is different than package-cleanup --dupes"
+    ], 
+    [
+        1265210, 
+        "[abrt] dnf: needs_restarting.py:101:print_cmd:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 108: ordinal not in range(128)"
+    ], 
+    [
+        1280416, 
+        "Copr inserts @ in the id of the repo, causing it not to work"
+    ], 
+    [
+        1270091, 
+        "man dnf.plugin.config-manager does not mention --dump in examples"
+    ], 
+    [
+        1272936, 
+        "[abrt] dnf: lib.py:170:package_source_name:AttributeError: 'NoneType' object has no attribute 'rstrip'"
     ]
 ]
