@@ -20,25 +20,11 @@ from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from gettext import NullTranslations
-from sys import version_info
-
 import argparse
 import dnf.exceptions
-import gettext
 import logging
 
-# python 3 compabillity settings
-if version_info.major >= 3:
-    PY3 = True
-    # u?gettext dont exists in python3 NullTranslations
-    NullTranslations.ugettext = NullTranslations.gettext
-    NullTranslations.ungettext = NullTranslations.ngettext
-
-t = gettext.translation('dnf-plugins-core', fallback=True)
-_ = t.ugettext
-P_ = t.ungettext
-
+_, P_ = dnf.i18n.translation('dnf-plugins-core')
 logger = logging.getLogger('dnf.plugin')
 
 
