@@ -4,7 +4,7 @@ SET(SRC_PO ${CMAKE_SOURCE_DIR}/po)
 
 ADD_CUSTOM_TARGET (gettext-export
                    cd ${SRC_PO} && find ../plugins -iname "*.py" |
-                   xargs xgettext --from-code=UTF-8 --output=${SRC_PO}/dnf-plugins-core.pot &&
+                   xargs xgettext --from-code=UTF-8 --keyword=P_:1,2 --output=${SRC_PO}/dnf-plugins-core.pot &&
                    zanata-cli -e -B push --project-config ${SRC_PO}/zanata.xml
                    COMMENT "Pushing translation source file to zanata")
 ADD_CUSTOM_TARGET (gettext-update
