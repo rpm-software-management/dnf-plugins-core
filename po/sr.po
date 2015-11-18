@@ -1,0 +1,536 @@
+# Momcilo Medic <medicmomcilo@gmail.com>, 2015. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-16 14:04+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-06-23 11:46-0400\n"
+"Last-Translator: Momcilo Medic <medicmomcilo@gmail.com>\n"
+"Language-Team: Serbian\n"
+"Language: sr\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: ../plugins/debuginfo-install.py:45
+msgid "install debuginfo packages"
+msgstr "инсталирај debuginfo пакете"
+
+#: ../plugins/needs_restarting.py:93
+msgid "only consider this user's processes"
+msgstr "узми у обзир процесе само од овог корисника"
+
+#: ../plugins/needs_restarting.py:184
+msgid "determine updated binaries that need restarting"
+msgstr "утврди ажуриране бинарне датотеке које треба поново покренути"
+
+#: ../plugins/builddep.py:39
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "'%s' није формата 'MACRO EXPR'"
+
+#: ../plugins/builddep.py:45
+msgid "packages with builddeps to install"
+msgstr "пакети са builddeps за инсталирање"
+
+#: ../plugins/builddep.py:48
+msgid "define a macro for spec file parsing"
+msgstr "дефиниши макро за обраду spec датотеке"
+
+#: ../plugins/builddep.py:51
+msgid "treat commandline arguments as spec files"
+msgstr ""
+
+#: ../plugins/builddep.py:53
+msgid "treat commandline arguments as source rpm"
+msgstr ""
+
+#: ../plugins/builddep.py:92
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[ПАКЕТ|ПАКЕТ.spec]"
+
+#: ../plugins/builddep.py:152
+msgid "Some packages could not be found."
+msgstr ""
+
+#: ../plugins/builddep.py:162
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Нема одговарајућег пакета за инсталацију: '%s'"
+
+#: ../plugins/builddep.py:179
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr ""
+
+#: ../plugins/builddep.py:192 ../plugins/builddep.py:207
+msgid "Not all dependencies satisfied"
+msgstr "Нису све програмске зависности задовољене"
+
+#: ../plugins/builddep.py:199
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file."
+msgstr "Неуспешно отварање: '%s', није исправна spec датотека."
+
+#: ../plugins/builddep.py:218
+#, python-format
+msgid "no package matched: %s"
+msgstr ""
+
+#: ../plugins/config_manager.py:48
+msgid "manage dnf configuration options and repositories"
+msgstr "управља dnf опцијама подешавања и ризницама"
+
+#: ../plugins/config_manager.py:49
+msgid "OPTIONS"
+msgstr "ОПЦИЈЕ"
+
+#: ../plugins/config_manager.py:49
+msgid "KEYWORDS"
+msgstr "КЉУЧНЕ_РЕЧИ"
+
+#: ../plugins/config_manager.py:64
+msgid "repo to modify"
+msgstr "ризница за измену"
+
+#: ../plugins/config_manager.py:67
+msgid "save the current options (useful with --setopt)"
+msgstr "сачувај тренутне опције (корисно са --setopt)"
+
+#: ../plugins/config_manager.py:70
+msgid "enable the specified repos (automatically saves)"
+msgstr "омогући назначене ризнице (аутоматски чува)"
+
+#: ../plugins/config_manager.py:73
+msgid "disable the specified repos (automatically saves)"
+msgstr "онемогући назначене ризнице (аутоматски чува)"
+
+#: ../plugins/config_manager.py:76
+msgid "add (and enable) the repo from the specified file or url"
+msgstr "додај (и омогући) ризницу из назначене датотеке или url-а"
+
+#: ../plugins/config_manager.py:79
+msgid "print current configuration values to stdout"
+msgstr "испиши тренутне вредности подешавања на стандардни излаз"
+
+#: ../plugins/config_manager.py:99
+msgid "Error: Trying to enable and disable repos at the same time."
+msgstr "Грешка: Покушај да се омогуће и онемогуће ризнице у исто време."
+
+#: ../plugins/config_manager.py:102
+msgid "Error: Trying to enable already enabled repos."
+msgstr "Грешка: Покушај да се омогуће већ омогућене ризнице."
+
+#: ../plugins/config_manager.py:142
+#, python-format
+msgid "No matching repo to modify: %s."
+msgstr "Нема одговарајуће ризнице за измену: %s"
+
+#: ../plugins/config_manager.py:183
+#, python-format
+msgid "Adding repo from: %s"
+msgstr "Додајем ризницу из: %s"
+
+#: ../plugins/config_manager.py:213
+#, python-format
+msgid "Could not save repo to repofile %s: %s"
+msgstr "Не могу да сачувам ризницу у датотеку ризнице %s: %s"
+
+#: ../plugins/download.py:51
+msgid "Download package to current directory"
+msgstr "Преузми пакете у тренутни директоријум"
+
+#: ../plugins/download.py:52
+msgid "PACKAGE..."
+msgstr "ПАКЕТ..."
+
+#: ../plugins/download.py:69
+msgid "packages to download"
+msgstr "пакети за преузимање"
+
+#: ../plugins/download.py:71
+msgid "download the src.rpm instead"
+msgstr "преузми src.rpm"
+
+#: ../plugins/download.py:74
+msgid "download path, default is current dir"
+msgstr "путања за преузимање, подразумевано тренутни директоријум"
+
+#: ../plugins/download.py:77
+msgid "resolve and download needed dependencies"
+msgstr "разреши и преузми неопходне програмске зависности"
+
+#: ../plugins/download.py:148
+msgid "Error in resolve"
+msgstr "Грешка у разрешењу"
+
+#: ../plugins/download.py:163
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Није дефинисан изворни rpm за %s"
+
+#: ../plugins/download.py:173 ../plugins/download.py:187
+msgid "No package "
+msgstr ""
+
+#: ../plugins/protected_packages.py:30
+#, python-format
+msgid ""
+"The operation would result in removing the following protected packages: %s."
+msgstr "Операција би узроковала уклањање следећих заштићених пакета: %s"
+
+#: ../plugins/protected_packages.py:32
+#, python-format
+msgid "The operation would result in removing the booted kernel: %s."
+msgstr "Операција би узроковала уклањање покренутог кернела: %s"
+
+#: ../plugins/dnfpluginscore/lib.py:132
+#, python-format
+msgid "enabling %s repository"
+msgstr "омогућујем %s ризницу"
+
+#: ../plugins/dnfpluginscore/__init__.py:44
+msgid "show this help about this tool"
+msgstr "прикажи ову помоћ за овај алат"
+
+#: ../plugins/repoquery.py:89
+msgid "the key to search for"
+msgstr "кључ за претрагу"
+
+#: ../plugins/repoquery.py:91
+msgid "show only results from this REPO"
+msgstr "прикажи само резултате из ове РИЗНИЦЕ"
+
+#: ../plugins/repoquery.py:96
+msgid "show only results from this ARCH"
+msgstr "прикажи само резултате за ову АРХИТЕКТУРУ"
+
+#: ../plugins/repoquery.py:98
+msgid "show only results that owns FILE"
+msgstr "прикажи само резултате који су власници ДАТОТЕКЕ"
+
+#: ../plugins/repoquery.py:100
+msgid "show only results there provides REQ"
+msgstr "прикажи само резултате који пружају ЗАХТЕВ"
+
+#: ../plugins/repoquery.py:102
+msgid "show only results there require REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:104
+msgid "show only results that recommend REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:106
+msgid "show only results that enhance REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:108
+msgid "show only results that suggest REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:110
+msgid "show only results that supplement REQ"
+msgstr ""
+
+#: ../plugins/repoquery.py:114
+msgid "show available tags to use with --queryformat"
+msgstr "прикажи доступне ознаке који се могу користити са --queryformat"
+
+#: ../plugins/repoquery.py:117
+msgid "resolve capabilities to originating package(s)"
+msgstr "разреши могућности у изворном пакету(има)"
+
+#: ../plugins/repoquery.py:119
+msgid "show recursive tree for package(s)"
+msgstr ""
+
+#: ../plugins/repoquery.py:121
+msgid "operate on corresponding source RPM"
+msgstr ""
+
+#: ../plugins/repoquery.py:126
+msgid "show detailed information about the package"
+msgstr "прикажи детаљне информације о пакету"
+
+#: ../plugins/repoquery.py:129
+msgid "show list of files in the package"
+msgstr "прикажи списак датотека у пакету"
+
+#: ../plugins/repoquery.py:132
+msgid "show package source RPM name"
+msgstr "прикажи име изворног RPM пакета"
+
+#: ../plugins/repoquery.py:135
+msgid "format for displaying found packages"
+msgstr "формат за приказ пронађених пакета"
+
+#: ../plugins/repoquery.py:137
+msgid ""
+"show N latest packages for a given name.arch (or latest but N if N is "
+"negative)"
+msgstr ""
+"прикажи N најновијих пакета за дато име.архитектура (или најновије осим N "
+"ако је N негативно)"
+
+#: ../plugins/repoquery.py:143
+msgid "limit the query to installed duplicated packages"
+msgstr "ограничи захтев само на инсталиране дуплиране пакете"
+
+#: ../plugins/repoquery.py:146
+msgid "limit the query to installed installonly packages"
+msgstr "ограничи захтев на инсталиране installonly пакете"
+
+#: ../plugins/repoquery.py:149
+msgid "limit the query to installed packages with unsatisfied dependencies"
+msgstr ""
+"ограничи захтев на инсталиране пакете који немају задовољене програмске "
+"зависности"
+
+#: ../plugins/repoquery.py:153
+msgid "Display capabilities that the package conflicts with."
+msgstr "Прикажи могућности са којима је пакет у конфликту."
+
+#: ../plugins/repoquery.py:154
+msgid "Display capabilities that the package can enhance."
+msgstr "Прикажи могућности које пакет може побољшати."
+
+#: ../plugins/repoquery.py:155
+msgid "Display capabilities that the package obsoletes."
+msgstr "Прикажи могућности које пакет чини застарелим."
+
+#: ../plugins/repoquery.py:156
+msgid "Display capabilities provided by the package."
+msgstr "Прикажи могућности које пружа пакет."
+
+#: ../plugins/repoquery.py:157
+msgid "Display capabilities that the package recommends."
+msgstr "Прикажи могућности које пакет препоручује."
+
+#: ../plugins/repoquery.py:158
+msgid "Display capabilities that the package depends on."
+msgstr "Прикажи могућности о којима пакет зависи."
+
+#: ../plugins/repoquery.py:159
+msgid "Display capabilities that the package suggests."
+msgstr "Прикажи могућности које пакет саветује."
+
+#: ../plugins/repoquery.py:160
+msgid "Display capabilities that the package can supplement."
+msgstr "Прикажи могућности које пакет може проширити."
+
+#: ../plugins/repoquery.py:169
+msgid "Display only available packages."
+msgstr ""
+
+#: ../plugins/repoquery.py:170
+msgid "Display only installed packages."
+msgstr ""
+
+#: ../plugins/repoquery.py:171
+msgid ""
+"Display only packages that are not present in any of available repositories."
+msgstr ""
+
+#: ../plugins/repoquery.py:172
+msgid ""
+"Display only packages that provide an upgrade for some already installed "
+"package."
+msgstr ""
+
+#: ../plugins/repoquery.py:173
+msgid "Display only packages that can be autoremoved."
+msgstr ""
+
+#: ../plugins/repoquery.py:174
+msgid "Display only recently edited packages"
+msgstr ""
+
+#: ../plugins/repoquery.py:221
+msgid "search for packages matching keyword"
+msgstr "претражи пакете који одговарају кључној речи"
+
+#: ../plugins/repoquery.py:222
+msgid "[OPTIONS] [KEYWORDS]"
+msgstr "[ОПЦИЈЕ] [КЉУЧНЕ_РЕЧИ]"
+
+#: ../plugins/repoquery.py:285
+#, python-brace-format
+msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
+msgstr "Доступни query-tags: користите --queryformat \".. %{tag} ..\""
+
+#: ../plugins/repoquery.py:329
+msgid ""
+"--alldeps requires --whatrequires option.\n"
+"usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n"
+"\n"
+msgstr ""
+
+#: ../plugins/repoquery.py:362
+msgid ""
+"No switch specified\n"
+"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--"
+"enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
+"\n"
+"description:\n"
+"  For the given packages print a tree of the packages."
+msgstr ""
+
+#: ../plugins/noroot.py:28 ../plugins/copr.py:239
+msgid "This command has to be run under the root user."
+msgstr "Ова команда мора бити извршена под root налогом."
+
+#: ../plugins/copr.py:35
+msgid "yes"
+msgstr "да"
+
+#: ../plugins/copr.py:35
+msgid "y"
+msgstr "д"
+
+#: ../plugins/copr.py:36
+msgid "no"
+msgstr "не"
+
+#: ../plugins/copr.py:36
+msgid "n"
+msgstr "н"
+
+#: ../plugins/copr.py:65
+msgid "Interact with Copr repositories."
+msgstr "Интеракција са Copr ризницама."
+
+#: ../plugins/copr.py:66
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list name\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+
+#: ../plugins/copr.py:91
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr ""
+
+#: ../plugins/copr.py:106 ../plugins/copr.py:130 ../plugins/copr.py:397
+msgid "Error: "
+msgstr "Грешка:"
+
+#: ../plugins/copr.py:107 ../plugins/copr.py:111
+msgid "exactly two additional parameters to copr command are required"
+msgstr "тачно два додатна параметра copr команде су неопходна"
+
+#: ../plugins/copr.py:131
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr ""
+
+#: ../plugins/copr.py:133
+msgid "bad copr project format"
+msgstr ""
+
+#: ../plugins/copr.py:154
+msgid "Repository successfully enabled."
+msgstr "Ризница успешно омогућена."
+
+#: ../plugins/copr.py:158
+msgid "Repository successfully disabled."
+msgstr "Ризница успешно онемогућена."
+
+#: ../plugins/copr.py:162
+msgid "Repository successfully removed."
+msgstr ""
+
+#: ../plugins/copr.py:166 ../plugins/copr.py:417
+msgid "Unknown subcommand {}."
+msgstr "Непозната подкоманда {}."
+
+#: ../plugins/copr.py:176
+msgid "Can't parse repositories for username '{}'."
+msgstr "Не могу да обрадим ризницу за корисничко име '{}'."
+
+#: ../plugins/copr.py:179
+msgid "List of {} coprs"
+msgstr "Списак {} copr-а"
+
+#: ../plugins/copr.py:187
+msgid "No description given"
+msgstr "Опис није дат"
+
+#: ../plugins/copr.py:199
+msgid "Can't parse search for '{}'."
+msgstr "Не могу да обрадим претрагу за '{}'."
+
+#: ../plugins/copr.py:202
+msgid "Matched: {}"
+msgstr "Пронађено: {}"
+
+#: ../plugins/copr.py:210
+msgid "No description given."
+msgstr "Опис није дат."
+
+#: ../plugins/copr.py:223 ../plugins/copr.py:232
+msgid "Safe and good answer. Exiting."
+msgstr "Безбедан и добар одговор. Излазим."
+
+#: ../plugins/copr.py:281
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr "Ова ризница још нема изградњи тако да не можете да је омогућите сада."
+
+#: ../plugins/copr.py:284
+msgid "Such repository does not exists."
+msgstr "Таква ризница не постоји."
+
+#: ../plugins/copr.py:305
+msgid "Failed to disable copr repo {}/{}"
+msgstr ""
+
+#: ../plugins/copr.py:318 ../plugins/copr.py:366
+msgid "Unknown response from server."
+msgstr "Непознат одговор од сервера."
+
+#: ../plugins/copr.py:351
+msgid "Interact with Playground repository."
+msgstr "Интеракција са Playground ризницом."
+
+#: ../plugins/copr.py:398 ../plugins/copr.py:402
+msgid "exactly one parameter to playground command are required"
+msgstr "тачно један параметар за playground команду је неопходан"
+
+#: ../plugins/copr.py:407
+msgid "Playground repositories successfully enabled."
+msgstr "Playground ризнице успешно омогућене."
+
+#: ../plugins/copr.py:410
+msgid "Playground repositories successfully disabled."
+msgstr "Playground ризнице успешно онемогућене."
+
+#: ../plugins/copr.py:414
+msgid "Playground repositories successfully updated."
+msgstr "Playground ризнице успешно ажуриране."
+
+#: ../plugins/reposync.py:37
+msgid "where to store downloaded repositories "
+msgstr "где да се чувају преузете ризнице"
+
+#: ../plugins/reposync.py:39
+msgid "repository to download"
+msgstr "ризнице за преузимање"
+
+#: ../plugins/reposync.py:64
+msgid "download all packages from remote repo"
+msgstr "преузми све пакете из удаљене ризнице"
