@@ -102,6 +102,21 @@ class DownloadCommand(dnf.cli.Command):
             dest = dnf.i18n.ucd(os.getcwd())
 
         self._copy_packages(dest, locations)
+        self._clean(locations)
+
+    def _clean(self, locations):
+        if not self.base.conf.keepcache:
+            for path in locations:
+                if not os.path.exists(path):
+                    continue
+                try:
+                    os.unlink(path)
+                except OSError:
+                    logger.warning(_('Cannot remove %s'), path)
+                    continue
+                else:
+                    logger.log(dnf.logging.DDEBUG,
+                               _('%s removed'), path)
 
     def _download_rpms(self, pkg_specs):
         """Download packages to dnf cache."""
@@ -109,7 +124,12 @@ class DownloadCommand(dnf.cli.Command):
             pkgs = self._get_packages_with_deps(pkg_specs)
         else:
             pkgs = self._get_packages(pkg_specs)
-        self.base.download_packages(pkgs, self.base.output.progress)
+        try:
+            self.base.download_packages(pkgs, self.base.output.progress,
+                                        backup=False)
+        except dnf.exceptions.DownloadError as e:
+            errstring = dnf.i18n.ucd(e)
+            raise dnf.exceptions.Error(errstring)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
         return locations
 
@@ -118,7 +138,12 @@ class DownloadCommand(dnf.cli.Command):
         pkgs = self._get_packages(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
         pkgs = set(self._get_packages(source_pkgs, source=True))
-        self.base.download_packages(pkgs, self.base.output.progress)
+        try:
+            self.base.download_packages(pkgs, self.base.output.progress,
+                                        backup=False)
+        except dnf.exceptions.DownloadError as e:
+            errstring = dnf.i18n.ucd(e)
+            raise dnf.exceptions.Error(errstring)
         locations = sorted([pkg.localPkg() for pkg in pkgs])
         return locations
 

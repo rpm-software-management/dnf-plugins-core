@@ -163,6 +163,18 @@ class DownloadCommandTest(unittest.TestCase):
         repo.disable()
         self.cmd.base.repos.add(repo)
 
+    @mock.patch('os.unlink')
+    @mock.patch('os.path.exists', lambda x: True)
+    def test_clean_up(self, unlink):
+        self.cmd.base.conf.keepcache = True
+        packages = self.cmd._get_packages(['bar'])
+        self.cmd._clean([str(pkg) for pkg in packages])
+        self.assertFalse(unlink.called)
+        self.cmd.base.conf.keepcache = False
+        locations = self.cmd._get_packages(['bar', 'foo'])
+        self.cmd._clean([str(pkg) for pkg in packages])
+        self.assertTrue(unlink.called)
+
     def test_enable_source_repos(self):
         repos = self.cmd.base.repos
         self.assertTrue(repos['foo'].enabled)
