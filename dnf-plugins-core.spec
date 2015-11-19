@@ -29,7 +29,7 @@ Provides:   dnf-command(download)
 Provides:   dnf-command(repoquery)
 Provides:   dnf-command(reposync)
 %description
-Core Plugins for DNF. This package enhance DNF with builddep, config-manager,
+Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
 copr, debuginfo-install, download, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
@@ -49,7 +49,7 @@ Conflicts:  dnf-plugins-core <= 0.1.5
 # let the both python plugin versions be updated simultaneously
 Conflicts:  python3-dnf-plugins-core < %{version}-%{release}
 %description -n python-dnf-plugins-core
-Core Plugins for DNF, Python 2 interface. This package enhance DNF with builddep, copr,
+Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
@@ -69,7 +69,7 @@ Conflicts:  dnf-plugins-core <= 0.1.5
 # let the both python plugin versions be updated simultaneously
 Conflicts:  python-dnf-plugins-core < %{version}-%{release}
 %description -n python3-dnf-plugins-core
-Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,
+Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
