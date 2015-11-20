@@ -46,6 +46,8 @@ Requires:   python2-dnf >= %{dnf_lowest_compatible}
 Requires:   python2-dnf < %{dnf_not_compatible}
 Requires:   python-hawkey >= %{hawkey_version}
 Conflicts:  dnf-plugins-core <= 0.1.5
+# let the both python plugin versions be updated simultaneously
+Conflicts:  python3-dnf-plugins-core < %{version}-%{release}
 %description -n python-dnf-plugins-core
 Core Plugins for DNF, Python 2 interface. This package enhance DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
@@ -64,6 +66,8 @@ Requires:   python3-dnf >= %{dnf_lowest_compatible}
 Requires:   python3-dnf < %{dnf_not_compatible}
 Requires:   python3-hawkey >= %{hawkey_version}
 Conflicts:  dnf-plugins-core <= 0.1.5
+# let the both python plugin versions be updated simultaneously
+Conflicts:  python-dnf-plugins-core < %{version}-%{release}
 %description -n python3-dnf-plugins-core
 Core Plugins for DNF, Python 3 interface. This package enhance DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
