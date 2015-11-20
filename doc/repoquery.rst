@@ -73,6 +73,9 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Limit the resulting set to <number> of latest packages for every package name and architecture.
     If <number> is negative skip <number> of latest packages.
 
+``--recent``
+    Limit the resulting set to packages that were recently edited.
+
 ``--repo <repoid>``
     Limit the resulting set only to packages from repo identified by ``<repoid>``.
     Can be used multiple times with accumulative effect.
