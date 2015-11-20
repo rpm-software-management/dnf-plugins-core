@@ -170,11 +170,11 @@ def parse_arguments(args):
         'installed': _('Display only installed packages.'),
         'extras': _('Display only packages that are not present in any of available repositories.'),
         'upgrades': _('Display only packages that provide an upgrade for some already installed package.'),
-        'autoremove': _('Display only packages that can be autoremoved.'),
+        'unneeded': _('Display only packages that can be removed by "dnf autoremove" command.'),
         'recent': _('Display only recently edited packages')
     }
     list_group = parser.add_mutually_exclusive_group()
-    for list_arg in ('available', 'installed', 'extras', 'upgrades', 'autoremove',
+    for list_arg in ('available', 'installed', 'extras', 'upgrades', 'unneeded',
                      'recent'):
         switch = '--%s' % list_arg
         list_group.add_argument(switch, dest='list', action='store_const',
@@ -297,7 +297,7 @@ class RepoQueryCommand(dnf.cli.Command):
 
         if self.opts.list == "recent":
             q.recent(self.base.conf.recent)
-        elif self.opts.list == "autoremove":
+        elif self.opts.list == "unneeded":
             q = q.unneeded(self.base.sack, self.base.yumdb)
         elif self.opts.list:
             q = getattr(q, self.opts.list)()

@@ -51,6 +51,9 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Limit the resulting set to installed duplicated packages (i.e. more package versions
     for the same name and architecture). Installonly packages are excluded from this set.
 
+``--unneeded``
+    Limit the resulting set to leaves packages that were installed as dependencies so they are no longer needed. This switch lists packages that are going to be removed after executing ``dnf autoremove`` command.
+
 ``--available``
     Limit the resulting set to available packages only.
 
