@@ -19,6 +19,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 from tests.support import mock, RepoStub
 
+import dnf.cli
 import dnf.repodict
 import dnf.sack
 import dnf.subject
@@ -63,6 +64,10 @@ class PkgStub:
 
     def localPkg(self):
         return '/tmp/dnf/%s-%s.%s.rpm' % (self.name, self.evr, self.arch)
+
+    @property
+    def from_cmdline(self):
+        return True
 
 
 class NoSrcStub(PkgStub):
@@ -190,12 +195,14 @@ class DownloadCommandTest(unittest.TestCase):
     def setUp(self):
         cli = mock.MagicMock()
         self.cmd = download.DownloadCommand(cli)
-        self.cmd.cli.base.repos = dnf.repodict.RepoDict()
+        self.cmd.cli.base = dnf.cli.cli.BaseCli()
+        self.cmd.cli.base.add_remote_rpm = mock.Mock()
+        self.cmd.cli.base.download_packages = mock.Mock()
 
         # point the Sack and Subject to out stubs
         # b/c these are used in the _get_query methods
         self.orig_sack = self.cmd.cli.base.sack
-        self.cmd.cli.base.sack = SackStub()
+        self.cmd.cli.base._sack = SackStub()
 
         self.orig_subject = dnf.subject.Subject
         dnf.subject.Subject = SubjectStub
@@ -217,7 +224,7 @@ class DownloadCommandTest(unittest.TestCase):
 
     def tearDown(self):
         # restore the default values
-        self.cmd.cli.base.sack = self.orig_sack
+        self.cmd.cli.base._sack = self.orig_sack
         dnf.subject.Subject = self.orig_subject
 
     def test_enable_source_repos(self):
@@ -254,9 +261,9 @@ class DownloadCommandTest(unittest.TestCase):
     def test_get_query_with_local_rpm(self):
         try:
             (fs, rpm_path) = tempfile.mkstemp('foobar-99.99-1.x86_64.rpm')
-            # b/c self.cmd.cli.base is a mock object add_remote_rpm
+            # b/c self.cmd.cli.base.add_remote_rpm is a mock object it
             # will not update the available packages while testing.
-            # it is expected to hit an exception
+            # it is expected to hit this exception
             with self.assertRaises(dnf.exceptions.PackageNotFoundError):
                 self.cmd._get_query(rpm_path)
             self.cmd.cli.base.add_remote_rpm.assert_called_with(rpm_path)
