@@ -277,10 +277,19 @@ class DownloadCommandTest(unittest.TestCase):
         self.assertEqual(len(pkgs), 2)
         self.assertEqual(pkgs[0].name, 'bar')
         self.assertEqual(pkgs[1].name, 'foo')
+
+        strict_orig = self.cmd.base.conf.strict
+        self.cmd.base.conf.strict = True
+        with self.assertRaises(dnf.exceptions.Error):
+            pkgs = self.cmd._get_packages(['notfound'])
+            pkgs = self.cmd._get_packages(['notfound', 'bar'])
+        self.cmd.base.conf.strict = False
         pkgs = self.cmd._get_packages(['notfound'])
         self.assertEqual(len(pkgs), 0)
         pkgs = self.cmd._get_packages(['notfound', 'bar'])
         self.assertEqual(len(pkgs), 1)
+        self.cmd.base.conf.strict = strict_orig
+
         self.assertEqual(pkgs[0].name, 'bar')
         pkgs = self.cmd._get_packages(['foo-2.0-1.src.rpm'], source=True)
         self.assertEqual(len(pkgs), 1)
