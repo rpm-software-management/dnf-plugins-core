@@ -28,7 +28,7 @@ import unittest
 
 
 class PkgStub:
-    def __init__(self, n, e, v, r, a, repo_id):
+    def __init__(self, n, e, v, r, a, repo_id, src_name=""):
         """Mocking dnf.package.Package."""
         self.name = n
         self.version = v
@@ -36,6 +36,7 @@ class PkgStub:
         self.arch = a
         self.epoch = e
         self.reponame = repo_id
+        self.src_name = src_name
 
     def __str__(self):
         return '%s : %s' % (self.fullname, self.reponame)
@@ -49,12 +50,12 @@ class PkgStub:
 
     @property
     def sourcerpm(self):
-        name = self.name
+        name = self.src_name or self.name
 
         # special cases for debuginfo tests
-        if self.name == "kernel-PAE":
+        if name == "kernel-PAE":
             name = "kernel"
-        elif self.name == "krb5-libs":
+        elif name == "krb5-libs":
             name = "krb5"
 
         if self.arch != 'src':
