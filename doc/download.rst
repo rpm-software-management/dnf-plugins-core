@@ -33,6 +33,8 @@ Arguments
 
 ``<pkg-spec>``
     Package specification for the package to download.
+    Local RPMs can be specified as well. This is useful with the ``--source``
+    option or if you want to download the same RPM again.
 
 -------
 Options
