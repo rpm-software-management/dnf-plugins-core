@@ -22,6 +22,7 @@ from dnfpluginscore import _, logger
 import dnf
 import iniparse
 import librepo
+import re
 import tempfile
 
 
@@ -143,11 +144,10 @@ def package_source_name(package):
     returns name of source package for given pkgname
     e.g. krb5-libs -> krb5
     """
-    # strip suffix first
-    srcname = package.sourcerpm.rstrip(".src.rpm")
     # source package filenames may not contain epoch, handle both cases
-    srcname = srcname.rstrip("-{}".format(package.evr))
-    srcname = srcname.rstrip("-{0.version}-{0.release}".format(package))
+    srpm_tail = re.compile(
+        r"-({0.evr}|{0.version}-{0.release}).src.rpm$".format(package))
+    srcname = srpm_tail.sub("", package.sourcerpm)
     return srcname
 
 def package_source_debug_name(package):
