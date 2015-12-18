@@ -226,5 +226,13 @@
     [
         1272936, 
         "[abrt] dnf: lib.py:170:package_source_name:AttributeError: 'NoneType' object has no attribute 'rstrip'"
+    ], 
+    [
+        1283448, 
+        "python3-dnf-plugins-core update fails with file conflicts"
+    ], 
+    [
+        1253237, 
+        "dnf config-manager --setopt options are not saved to repo (--save does not work)"
     ]
 ]

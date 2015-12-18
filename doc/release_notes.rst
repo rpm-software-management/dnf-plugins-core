@@ -21,6 +21,21 @@ Core DNF Plugins Release Notes
 
 .. contents::
 
+====================
+0.1.15 Release Notes
+====================
+
+Newly implemented :doc:`download` options ``--resolve`` and ``debuginfo``.
+
+Improved the start-up time of bash completion.
+
+Reviewed documentation.
+
+Bugs fixed in 0.1.15:
+
+* :rhbug:`1283448`
+* :rhbug:`1253237`
+
 =====================
  0.1.14 Release Notes
 =====================
@@ -94,9 +109,9 @@ Bugs fixed in 0.1.10:
 * :rhbug:`1244125`
 
 
-=====================
+====================
  0.1.9 Release Notes
-=====================
+====================
 
 :doc:`repoquery` was extended by newly added select options ``--srpm``, ``--alldeps``
 and query option ``--tree``.
@@ -109,15 +124,15 @@ Bugs fixed in 0.1.9:
 * :rhbug:`1186689`
 * :rhbug:`1227190`
 
-=====================
+====================
  0.1.8 Release Notes
-=====================
+====================
 
 This release fixes only packaging issues.
 
-=====================
+====================
  0.1.7 Release Notes
-=====================
+====================
 
 All occurrences of `repoid` option were replaced by `repo` to unified repository specification in plugins.
 
@@ -134,9 +149,9 @@ Bugs fixed in 0.1.7:
 * :rhbug:`1208773`
 * :rhbug:`1186948`
 
-=====================
+====================
  0.1.6 Release Notes
-=====================
+====================
 
 Newly implemented :doc:`config_manager` plugin.
 
@@ -152,9 +167,9 @@ Bugs fixed in 0.1.6:
 * :rhbug:`1171046`
 * :rhbug:`1179366`
 
-=====================
+====================
  0.1.5 Release Notes
-=====================
+====================
 
 :doc:`builddep` accepts also `nosrc.rpm` package.
 
@@ -167,9 +182,9 @@ Bugs fixed in 0.1.5:
 * :rhbug:`1166126`
 * :rhbug:`1155211`
 
-=====================
+====================
  0.1.4 Release Notes
-=====================
+====================
 
 Provides :doc:`needs_restarting` and :doc:`reposync`.
 
@@ -178,9 +193,9 @@ Bugs fixed in 0.1.4:
 * :rhbug:`1139738`
 * :rhbug:`1144003`
 
-=====================
+====================
  0.1.3 Release Notes
-=====================
+====================
 
 Added info switch to :ref:`repoquery <info_repoquery-label>`
 
@@ -190,9 +205,9 @@ Bugs fixed in 0.1.3:
 * :rhbug:`1134378`
 * :rhbug:`1123886`
 
-=====================
+====================
  0.1.2 Release Notes
-=====================
+====================
 
 Bugs fixed in 0.1.2:
 
@@ -200,9 +215,9 @@ Bugs fixed in 0.1.2:
 * :rhbug:`1116389`
 * :rhbug:`1118809`
 
-=====================
+====================
  0.1.1 Release Notes
-=====================
+====================
 
 Provides :doc:`protected_packages` and a bugfix to the Copr plugin.
 
@@ -212,9 +227,9 @@ Bugs fixed in 0.1.1:
 * :rhbug:`1104088`
 * :rhbug:`1111855`
 
-=====================
+====================
  0.1.0 Release Notes
-=====================
+====================
 
 This release provides the :doc:`repoquery` and a bugfix for the :doc:`builddep`.
 
