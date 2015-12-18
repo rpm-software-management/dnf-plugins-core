@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.14
+Version:    0.1.15
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -123,6 +123,15 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Fri Dec 18 2015 Michal Luscon <mluscon@redhat.com> 0.1.15-1
+- Make it possible to specify the source package name as parameter in stub
+  constructor. (Alexander Todorov)
+- Add --debuginfo to download (Alexander Todorov)
+- resolve local RPMs when downloading. useful with --source (Alexander Todorov)
+- spec: ensure python*-dnf-plugins-core versions are the same (RhBug:1283448)
+  (Jan Silhan)
+- reimplemented config file writing (RhBug:1253237) (Michael Mraka)
+
 * Mon Nov 16 2015 Michal Luscon <mluscon@redhat.com> 0.1.14-1
 - zanata update (Jan Silhan)
 - repoquery: do not require loading metadata when we want to query system only
