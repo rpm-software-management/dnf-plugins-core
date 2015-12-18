@@ -65,8 +65,8 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         self.packages_installed = self.packages.installed()
 
         for pkgspec in args:
-            for pkg in dnf.subject.Subject(pkgspec).get_best_query(
-                    self.cli.base.sack).filter(arch__neq='src'):
+            for pkg in sorted(dnf.subject.Subject(pkgspec).get_best_query(
+                    self.cli.base.sack).filter(arch__neq='src'), reverse=True):
                 self._di_install(pkg)
 
     def _dbg_available(self, dbgname, package, match_evra):
