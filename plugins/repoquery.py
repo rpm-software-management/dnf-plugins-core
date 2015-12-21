@@ -178,6 +178,11 @@ def parse_arguments(args):
         list_group.add_argument(switch, dest='list', action='store_const',
                                 const=list_arg, help=help_list[list_arg])
 
+    # make --autoremove hidden compatibility alias for --unneeded
+    list_group.add_argument(
+        '--autoremove', dest='list', action='store_const',
+        const="unneeded", help=argparse.SUPPRESS)
+
     return parser.parse_args(args), parser
 
 
