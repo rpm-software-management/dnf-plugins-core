@@ -27,10 +27,8 @@ import dnf.cli
 import dnf.exceptions
 import dnf.subject
 import dnfpluginscore
-import functools
 import hawkey
 import re
-import textwrap
 
 QFORMAT_DEFAULT = '%{name}-%{epoch}:%{version}-%{release}.%{arch}'
 # matches %[-][dd]{attr}
