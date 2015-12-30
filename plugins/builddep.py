@@ -216,6 +216,11 @@ class BuildDepCommand(dnf.cli.Command):
                 name=(sourcenames + [package]), arch="src").latest().run()
         if not pkgs:
             raise dnf.exceptions.Error(_('no package matched: %s') % package)
-        self.base.download_packages(pkgs)
+        done = True
         for pkg in pkgs:
-            self._src_deps(pkg.localPkg())
+            for req in pkg.requires:
+                done &= self._install(str(req))
+
+        if not done:
+            err = _("Not all dependencies satisfied")
+            raise dnf.exceptions.Error(err)
