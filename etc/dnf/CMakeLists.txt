@@ -1,1 +1,2 @@
 ADD_SUBDIRECTORY (protected.d)
+ADD_SUBDIRECTORY (plugins)
