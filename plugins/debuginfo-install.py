@@ -26,6 +26,8 @@ import dnf.cli
 import dnf.subject
 import dnfpluginscore.lib
 
+PLUGIN_CONF = 'debuginfo-install'
+
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""
 
@@ -34,9 +36,21 @@ class DebuginfoInstall(dnf.Plugin):
     def __init__(self, base, cli):
         """Initialize the plugin instance."""
         super(DebuginfoInstall, self).__init__(base, cli)
+        self.base = base
+        self.cli = cli
         if cli is not None:
             cli.register_command(DebuginfoInstallCommand)
 
+    def config(self):
+        cp = self.read_config(self.base.conf, PLUGIN_CONF)
+        autoupdate = cp.getboolean('main','autoupdate')
+
+        if autoupdate:
+            # allow update of already installed debuginfo packages
+            dbginfo = dnf.sack.rpmdb_sack(self.base).query().filter(
+                                                name__glob="*-debuginfo")
+            if len(dbginfo):
+                dnfpluginscore.lib.enable_debug_repos(self.base.repos)
 
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
