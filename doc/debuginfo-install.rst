@@ -34,6 +34,21 @@ Arguments
 ``<pkg-spec>``
     The package to install the associated debuginfo package for.
 
+-------------
+Configuration
+-------------
+
+``/etc/dnf/plugins/debuginfo-install.conf``
+
+The minimal content of conf file should contain ``main`` sections with ``enabled`` and
+``autoupdate`` parameter.
+
+``autoupdate``
+    A boolean option which controls updates of debuginfo packages. If options is enabled
+    and there are debuginfo packages installed it automatically enables all configured
+    debuginfo repositories.
+    (Disabled by default.)
+
 --------
 Examples
 --------
