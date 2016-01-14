@@ -117,6 +117,9 @@ def parse_arguments(args):
                         help=_('show recursive tree for package(s)'))
     parser.add_argument('--srpm', action='store_true',
                         help=_('operate on corresponding source RPM'))
+    parser.add_argument("--latest-limit", dest='latest_limit', type=int,
+                         help=_('show N latest packages for a given name.arch'
+                                ' (or latest but N if N is negative)'))
 
     outform = parser.add_mutually_exclusive_group()
     outform.add_argument('-i', "--info", dest='queryinfo',
@@ -131,9 +134,6 @@ def parse_arguments(args):
     outform.add_argument('--qf', "--queryformat", dest='queryformat',
                          default=QFORMAT_DEFAULT,
                          help=_('format for displaying found packages'))
-    outform.add_argument("--latest-limit", dest='latest_limit', type=int,
-                         help=_('show N latest packages for a given name.arch'
-                                ' (or latest but N if N is negative)'))
 
     pkgfilter = parser.add_mutually_exclusive_group()
     pkgfilter.add_argument("--duplicated", dest='pkgfilter',
