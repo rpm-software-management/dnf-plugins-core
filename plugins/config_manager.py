@@ -212,7 +212,7 @@ def save_to_file(filename, content):
 
 # Regular expressions to sanitise cache filenames
 RE_SCHEME = re.compile(r'^\w+:/*(\w+:|www\.)?')
-RE_SLASH = re.compile(r'[?/:&#|]+')
+RE_SLASH = re.compile(r'[?/:&#|~]+')
 RE_BEGIN = re.compile(r'^[,.]*')
 RE_FINAL = re.compile(r'[,.]*$')
 
