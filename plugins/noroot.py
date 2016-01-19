@@ -38,7 +38,7 @@ class Noroot(dnf.Plugin):
         self.cli = cli
 
     def config(self):
-        if not self.cli.demands.root_user:
+        if not self.cli or not self.cli.demands.root_user:
             return
         if os.geteuid() == 0:
             return
