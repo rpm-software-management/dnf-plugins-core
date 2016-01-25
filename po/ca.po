@@ -3,16 +3,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-16 14:04+0100\n"
+"POT-Creation-Date: 2016-01-25 15:47+0100\n"
+"PO-Revision-Date: 2015-12-10 09:46-0500\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
+"Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-11-03 02:51-0500\n"
-"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
-"Language-Team: Catalan\n"
 "Language: ca\n"
-"X-Generator: Zanata 3.7.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 3.7.3\n"
 
 #: ../plugins/debuginfo-install.py:45
 msgid "install debuginfo packages"
@@ -66,6 +66,7 @@ msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "Ha fallat l'obertura: «%s», no és un fitxer vàlid rpm de les fonts."
 
 #: ../plugins/builddep.py:192 ../plugins/builddep.py:207
+#: ../plugins/builddep.py:225
 msgid "Not all dependencies satisfied"
 msgstr "No s'han satisfet totes les dependències"
 
@@ -126,17 +127,17 @@ msgstr ""
 msgid "Error: Trying to enable already enabled repos."
 msgstr "Error: Intent d'habilitació de dipòsits ja habilitats."
 
-#: ../plugins/config_manager.py:142
+#: ../plugins/config_manager.py:139
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Cap dipòsit que coincideixi per modificar: %s."
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:178
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Afegiment del dipòsit: %s"
 
-#: ../plugins/config_manager.py:213
+#: ../plugins/config_manager.py:208
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "No es pot desar el dipòsit al repofile %s: %s"
@@ -153,28 +154,36 @@ msgstr "PAQUET..."
 msgid "packages to download"
 msgstr "paquets a baixar"
 
-#: ../plugins/download.py:71
+#: ../plugins/download.py:72
 msgid "download the src.rpm instead"
 msgstr "en lloc seu baixa el src.rpm"
 
 #: ../plugins/download.py:74
+msgid "download the -debuginfo package instead"
+msgstr ""
+
+#: ../plugins/download.py:77
 msgid "download path, default is current dir"
 msgstr "el camí de la baixada, el predeterminat és el directori actual"
 
-#: ../plugins/download.py:77
+#: ../plugins/download.py:80
 msgid "resolve and download needed dependencies"
 msgstr "resol i baixa les dependències necessàries"
 
-#: ../plugins/download.py:148
+#: ../plugins/download.py:171
+msgid "Exiting due to strict setting."
+msgstr ""
+
+#: ../plugins/download.py:188
 msgid "Error in resolve"
 msgstr "Error en la resolució"
 
-#: ../plugins/download.py:163
+#: ../plugins/download.py:203
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "rpm de les fonts sense definir per %s"
 
-#: ../plugins/download.py:173 ../plugins/download.py:187
+#: ../plugins/download.py:217 ../plugins/download.py:231
 msgid "No package "
 msgstr "Cap paquet"
 
@@ -191,7 +200,7 @@ msgid "The operation would result in removing the booted kernel: %s."
 msgstr ""
 "L'operació podria provocar la supressió del nucli del sistema arrencat: %s."
 
-#: ../plugins/dnfpluginscore/lib.py:132
+#: ../plugins/dnfpluginscore/lib.py:109
 #, python-format
 msgid "enabling %s repository"
 msgstr "s'està habilitant el dipòsit %s"
@@ -200,177 +209,176 @@ msgstr "s'està habilitant el dipòsit %s"
 msgid "show this help about this tool"
 msgstr "mostra aquest missatge d'ajuda quant a aquesta eina"
 
-#: ../plugins/repoquery.py:89
+#: ../plugins/repoquery.py:87
 msgid "the key to search for"
 msgstr "la clau a cercar"
 
-#: ../plugins/repoquery.py:91
+#: ../plugins/repoquery.py:89
 msgid "show only results from this REPO"
 msgstr "Mostra únicament els resultats d'aquest REPO"
 
-#: ../plugins/repoquery.py:96
+#: ../plugins/repoquery.py:94
 msgid "show only results from this ARCH"
 msgstr "Mostra únicament els resultats d'aquesta ARCH"
 
-#: ../plugins/repoquery.py:98
+#: ../plugins/repoquery.py:96
 msgid "show only results that owns FILE"
 msgstr "mostra únicament els resultats que posseeixin el FITXER "
 
-#: ../plugins/repoquery.py:100
+#: ../plugins/repoquery.py:98
 msgid "show only results there provides REQ"
-msgstr ""
+msgstr "mostra només si hi ha resultats que proporcionen el REQ"
+
+#: ../plugins/repoquery.py:100
+msgid "show only results there require REQ"
+msgstr "mostra només si hi ha resultats que requereixen el REQ"
 
 #: ../plugins/repoquery.py:102
-msgid "show only results there require REQ"
-msgstr ""
+msgid "show only results that recommend REQ"
+msgstr "mostra només els resultats que recomanin el REQ"
 
 #: ../plugins/repoquery.py:104
-msgid "show only results that recommend REQ"
-msgstr ""
+msgid "show only results that enhance REQ"
+msgstr "mostra només els resultats que millorin el REQ"
 
 #: ../plugins/repoquery.py:106
-msgid "show only results that enhance REQ"
-msgstr ""
+msgid "show only results that suggest REQ"
+msgstr "mostra només els resultats que suggereixin el REQ"
 
 #: ../plugins/repoquery.py:108
-msgid "show only results that suggest REQ"
-msgstr ""
-
-#: ../plugins/repoquery.py:110
 msgid "show only results that supplement REQ"
-msgstr ""
+msgstr "mostra només els resultats que suplementin el REQ"
 
-#: ../plugins/repoquery.py:114
+#: ../plugins/repoquery.py:112
 msgid "show available tags to use with --queryformat"
 msgstr "mostra les etiquetes disponibles per utilitzar amb --queryformat"
 
-#: ../plugins/repoquery.py:117
+#: ../plugins/repoquery.py:115
 msgid "resolve capabilities to originating package(s)"
-msgstr ""
+msgstr "resol les característiques als paquets originaris"
 
-#: ../plugins/repoquery.py:119
+#: ../plugins/repoquery.py:117
 msgid "show recursive tree for package(s)"
 msgstr "mostra l'arbre recursiu per als paquets"
 
-#: ../plugins/repoquery.py:121
+#: ../plugins/repoquery.py:119
 msgid "operate on corresponding source RPM"
 msgstr "opera amb el corresponent RPM de les fonts"
 
-#: ../plugins/repoquery.py:126
-msgid "show detailed information about the package"
-msgstr "mostra la informació detallada quant al paquet"
-
-#: ../plugins/repoquery.py:129
-msgid "show list of files in the package"
-msgstr "mostra la llista de fitxers en el paquet"
-
-#: ../plugins/repoquery.py:132
-msgid "show package source RPM name"
-msgstr "mostra el nom del RPM de les fonts"
-
-#: ../plugins/repoquery.py:135
-msgid "format for displaying found packages"
-msgstr "el format per mostrar els paquets trobats"
-
-#: ../plugins/repoquery.py:137
+#: ../plugins/repoquery.py:121
 msgid ""
 "show N latest packages for a given name.arch (or latest but N if N is "
 "negative)"
 msgstr ""
 "mostra els N últims paquets per al nom.arq donat (o l'últim si N és negatiu)"
 
-#: ../plugins/repoquery.py:143
+#: ../plugins/repoquery.py:127
+msgid "show detailed information about the package"
+msgstr "mostra la informació detallada quant al paquet"
+
+#: ../plugins/repoquery.py:130
+msgid "show list of files in the package"
+msgstr "mostra la llista de fitxers en el paquet"
+
+#: ../plugins/repoquery.py:133
+msgid "show package source RPM name"
+msgstr "mostra el nom del RPM de les fonts"
+
+#: ../plugins/repoquery.py:136
+msgid "format for displaying found packages"
+msgstr "el format per mostrar els paquets trobats"
+
+#: ../plugins/repoquery.py:141
 msgid "limit the query to installed duplicated packages"
 msgstr "limita la consulta als paquets instal·lats amb duplicats"
 
-#: ../plugins/repoquery.py:146
+#: ../plugins/repoquery.py:144
 msgid "limit the query to installed installonly packages"
 msgstr "limita la consulta als paquets instal·lats amb installonly"
 
-#: ../plugins/repoquery.py:149
+#: ../plugins/repoquery.py:147
 msgid "limit the query to installed packages with unsatisfied dependencies"
 msgstr ""
 "limita la consulta als paquets instal·lats amb dependències insatisfetes"
 
-#: ../plugins/repoquery.py:153
+#: ../plugins/repoquery.py:151
 msgid "Display capabilities that the package conflicts with."
 msgstr "Mostra les funcions que el paquet entra amb conflicte."
 
-#: ../plugins/repoquery.py:154
+#: ../plugins/repoquery.py:152
 msgid "Display capabilities that the package can enhance."
 msgstr "Mostra les funcions que pot millorar el paquet."
 
-#: ../plugins/repoquery.py:155
+#: ../plugins/repoquery.py:153
 msgid "Display capabilities that the package obsoletes."
 msgstr "Mostra les funcions que es devaluen amb el paquet."
 
-#: ../plugins/repoquery.py:156
+#: ../plugins/repoquery.py:154
 msgid "Display capabilities provided by the package."
 msgstr "Mostra les funcions que proporciona el paquet."
 
-#: ../plugins/repoquery.py:157
+#: ../plugins/repoquery.py:155
 msgid "Display capabilities that the package recommends."
 msgstr "Mostra les funcions que recomana el paquet."
 
-#: ../plugins/repoquery.py:158
+#: ../plugins/repoquery.py:156
 msgid "Display capabilities that the package depends on."
 msgstr "Mostra les funcions que el paquet en depèn."
 
-#: ../plugins/repoquery.py:159
+#: ../plugins/repoquery.py:157
 msgid "Display capabilities that the package suggests."
 msgstr "Mostra les funcions que suggereix el paquet."
 
-#: ../plugins/repoquery.py:160
+#: ../plugins/repoquery.py:158
 msgid "Display capabilities that the package can supplement."
 msgstr "Mostra les funcions que el paquet pot complementar."
 
-#: ../plugins/repoquery.py:169
+#: ../plugins/repoquery.py:167
 msgid "Display only available packages."
 msgstr "Mostra tan sols els paquets disponibles."
 
-#: ../plugins/repoquery.py:170
+#: ../plugins/repoquery.py:168
 msgid "Display only installed packages."
 msgstr "Mostra tan sols els paquets instal·lats."
 
-#: ../plugins/repoquery.py:171
+#: ../plugins/repoquery.py:169
 msgid ""
 "Display only packages that are not present in any of available repositories."
 msgstr ""
 "Mostra tan sols els paquets que no estan presents en cap dels dipòsits "
 "disponibles."
 
-#: ../plugins/repoquery.py:172
+#: ../plugins/repoquery.py:170
 msgid ""
 "Display only packages that provide an upgrade for some already installed "
 "package."
 msgstr ""
-"Mostra tan sols els paquets que proporcionin una actualització de versió per "
-"algun dels paquets ja instal·lats."
+"Mostra tan sols els paquets que proporcionin una actualització de versió per"
+" algun dels paquets ja instal·lats."
 
-#: ../plugins/repoquery.py:173
-msgid "Display only packages that can be autoremoved."
+#: ../plugins/repoquery.py:171
+msgid "Display only packages that can be removed by \"dnf autoremove\" command."
 msgstr ""
-"Mostra tan sols els paquets que poden ser eliminats de forma automàtica."
 
-#: ../plugins/repoquery.py:174
+#: ../plugins/repoquery.py:172
 msgid "Display only recently edited packages"
 msgstr "Mostra tan sols els paquets que s'han editat recentment"
 
-#: ../plugins/repoquery.py:221
+#: ../plugins/repoquery.py:224
 msgid "search for packages matching keyword"
 msgstr "cerca els paquets que coincideixin amb la paraula clau"
 
-#: ../plugins/repoquery.py:222
+#: ../plugins/repoquery.py:225
 msgid "[OPTIONS] [KEYWORDS]"
 msgstr "[OPCIONS] [PARAULES_CLAU]"
 
-#: ../plugins/repoquery.py:285
+#: ../plugins/repoquery.py:287
 #, python-brace-format
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
 msgstr ""
 "Etiquetes disponibles de consulta: utilitzeu --queryformat \".. %{tag} ..\""
 
-#: ../plugins/repoquery.py:329
+#: ../plugins/repoquery.py:337
 msgid ""
 "--alldeps requires --whatrequires option.\n"
 "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n"
@@ -380,18 +388,16 @@ msgstr ""
 "ús: dnf repoquery [--whatrequires] [clau] [--alldeps]\n"
 "\n"
 
-#: ../plugins/repoquery.py:362
+#: ../plugins/repoquery.py:368
 msgid ""
 "No switch specified\n"
-"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--"
-"enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
+"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
 "\n"
 "description:\n"
 "  For the given packages print a tree of the packages."
 msgstr ""
 "No s'ha especificat cap commutador\n"
-"ús: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--"
-"enhances|--suggest|--provides|--suplements|--recommends] [clau] [--tree]\n"
+"ús: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [clau] [--tree]\n"
 "\n"
 "descripció:\n"
 "  Per als paquets donats, imprimeix un arbre dels paquets."
@@ -456,7 +462,7 @@ msgstr ""
 
 #: ../plugins/copr.py:91
 msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr ""
+msgstr "Advertència: estem utilitzant l'URL de Copr no estàndard '{}'."
 
 #: ../plugins/copr.py:106 ../plugins/copr.py:130 ../plugins/copr.py:397
 msgid "Error: "

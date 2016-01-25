@@ -3,16 +3,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-16 14:04+0100\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2016-01-25 15:47+0100\n"
 "PO-Revision-Date: 2015-10-13 09:00-0400\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
-"X-Generator: Zanata 3.7.3\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.7.3\n"
 
 #: ../plugins/debuginfo-install.py:45
 msgid "install debuginfo packages"
@@ -66,6 +66,7 @@ msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr ""
 
 #: ../plugins/builddep.py:192 ../plugins/builddep.py:207
+#: ../plugins/builddep.py:225
 msgid "Not all dependencies satisfied"
 msgstr "すべての依存関係が満たされていません"
 
@@ -128,17 +129,17 @@ msgstr ""
 msgid "Error: Trying to enable already enabled repos."
 msgstr ""
 
-#: ../plugins/config_manager.py:142
+#: ../plugins/config_manager.py:139
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr ""
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:178
 #, python-format
 msgid "Adding repo from: %s"
 msgstr ""
 
-#: ../plugins/config_manager.py:213
+#: ../plugins/config_manager.py:208
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr ""
@@ -156,28 +157,36 @@ msgstr ""
 msgid "packages to download"
 msgstr ""
 
-#: ../plugins/download.py:71
+#: ../plugins/download.py:72
 msgid "download the src.rpm instead"
 msgstr ""
 
 #: ../plugins/download.py:74
-msgid "download path, default is current dir"
+msgid "download the -debuginfo package instead"
 msgstr ""
 
 #: ../plugins/download.py:77
+msgid "download path, default is current dir"
+msgstr ""
+
+#: ../plugins/download.py:80
 msgid "resolve and download needed dependencies"
 msgstr ""
 
-#: ../plugins/download.py:148
+#: ../plugins/download.py:171
+msgid "Exiting due to strict setting."
+msgstr ""
+
+#: ../plugins/download.py:188
 msgid "Error in resolve"
 msgstr ""
 
-#: ../plugins/download.py:163
+#: ../plugins/download.py:203
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr ""
 
-#: ../plugins/download.py:173 ../plugins/download.py:187
+#: ../plugins/download.py:217 ../plugins/download.py:231
 msgid "No package "
 msgstr ""
 
@@ -192,7 +201,7 @@ msgstr ""
 msgid "The operation would result in removing the booted kernel: %s."
 msgstr ""
 
-#: ../plugins/dnfpluginscore/lib.py:132
+#: ../plugins/dnfpluginscore/lib.py:109
 #, python-format
 msgid "enabling %s repository"
 msgstr ""
@@ -202,183 +211,182 @@ msgstr ""
 msgid "show this help about this tool"
 msgstr "このツールについてのヘルプを表示"
 
-#: ../plugins/repoquery.py:89
+#: ../plugins/repoquery.py:87
 msgid "the key to search for"
 msgstr ""
 
-#: ../plugins/repoquery.py:91
+#: ../plugins/repoquery.py:89
 msgid "show only results from this REPO"
 msgstr ""
 
-#: ../plugins/repoquery.py:96
+#: ../plugins/repoquery.py:94
 msgid "show only results from this ARCH"
 msgstr ""
 
-#: ../plugins/repoquery.py:98
+#: ../plugins/repoquery.py:96
 msgid "show only results that owns FILE"
 msgstr ""
 
-#: ../plugins/repoquery.py:100
+#: ../plugins/repoquery.py:98
 msgid "show only results there provides REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:102
+#: ../plugins/repoquery.py:100
 msgid "show only results there require REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:104
+#: ../plugins/repoquery.py:102
 msgid "show only results that recommend REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:106
+#: ../plugins/repoquery.py:104
 msgid "show only results that enhance REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:108
+#: ../plugins/repoquery.py:106
 msgid "show only results that suggest REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:110
+#: ../plugins/repoquery.py:108
 msgid "show only results that supplement REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:114
+#: ../plugins/repoquery.py:112
 msgid "show available tags to use with --queryformat"
 msgstr ""
 
-#: ../plugins/repoquery.py:117
+#: ../plugins/repoquery.py:115
 msgid "resolve capabilities to originating package(s)"
 msgstr ""
 
-#: ../plugins/repoquery.py:119
+#: ../plugins/repoquery.py:117
 msgid "show recursive tree for package(s)"
 msgstr ""
 
-#: ../plugins/repoquery.py:121
+#: ../plugins/repoquery.py:119
 msgid "operate on corresponding source RPM"
 msgstr ""
 
-#: ../plugins/repoquery.py:126
-msgid "show detailed information about the package"
-msgstr "パッケージについての詳細情報を表示"
-
-#: ../plugins/repoquery.py:129
-msgid "show list of files in the package"
-msgstr "パッケージ内のファイルのリストを表示"
-
-#: ../plugins/repoquery.py:132
-msgid "show package source RPM name"
-msgstr "パッケージソース RPM 名を表示"
-
-#: ../plugins/repoquery.py:135
-msgid "format for displaying found packages"
-msgstr ""
-
-#: ../plugins/repoquery.py:137
+#: ../plugins/repoquery.py:121
 msgid ""
 "show N latest packages for a given name.arch (or latest but N if N is "
 "negative)"
 msgstr ""
 
-#: ../plugins/repoquery.py:143
+#: ../plugins/repoquery.py:127
+msgid "show detailed information about the package"
+msgstr "パッケージについての詳細情報を表示"
+
+#: ../plugins/repoquery.py:130
+msgid "show list of files in the package"
+msgstr "パッケージ内のファイルのリストを表示"
+
+#: ../plugins/repoquery.py:133
+msgid "show package source RPM name"
+msgstr "パッケージソース RPM 名を表示"
+
+#: ../plugins/repoquery.py:136
+msgid "format for displaying found packages"
+msgstr ""
+
+#: ../plugins/repoquery.py:141
 msgid "limit the query to installed duplicated packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:146
+#: ../plugins/repoquery.py:144
 msgid "limit the query to installed installonly packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:149
+#: ../plugins/repoquery.py:147
 msgid "limit the query to installed packages with unsatisfied dependencies"
 msgstr ""
 
-#: ../plugins/repoquery.py:153
+#: ../plugins/repoquery.py:151
 #, fuzzy
 msgid "Display capabilities that the package conflicts with."
 msgstr "パッケージ競合している capabilities を表示する。"
 
-#: ../plugins/repoquery.py:154
+#: ../plugins/repoquery.py:152
 msgid "Display capabilities that the package can enhance."
 msgstr ""
 
-#: ../plugins/repoquery.py:155
+#: ../plugins/repoquery.py:153
 #, fuzzy
 msgid "Display capabilities that the package obsoletes."
 msgstr "廃止のパッケージの capabilities を表示する。"
 
-#: ../plugins/repoquery.py:156
+#: ../plugins/repoquery.py:154
 #, fuzzy
 msgid "Display capabilities provided by the package."
 msgstr "パッケージによって提供されている capabilities を表示する。"
 
-#: ../plugins/repoquery.py:157
+#: ../plugins/repoquery.py:155
 msgid "Display capabilities that the package recommends."
 msgstr ""
 
-#: ../plugins/repoquery.py:158
+#: ../plugins/repoquery.py:156
 msgid "Display capabilities that the package depends on."
 msgstr ""
 
-#: ../plugins/repoquery.py:159
+#: ../plugins/repoquery.py:157
 msgid "Display capabilities that the package suggests."
 msgstr ""
 
-#: ../plugins/repoquery.py:160
+#: ../plugins/repoquery.py:158
 msgid "Display capabilities that the package can supplement."
 msgstr ""
 
-#: ../plugins/repoquery.py:169
+#: ../plugins/repoquery.py:167
 msgid "Display only available packages."
 msgstr ""
 
-#: ../plugins/repoquery.py:170
+#: ../plugins/repoquery.py:168
 msgid "Display only installed packages."
 msgstr ""
 
-#: ../plugins/repoquery.py:171
+#: ../plugins/repoquery.py:169
 msgid ""
 "Display only packages that are not present in any of available repositories."
 msgstr ""
 
-#: ../plugins/repoquery.py:172
+#: ../plugins/repoquery.py:170
 msgid ""
 "Display only packages that provide an upgrade for some already installed "
 "package."
 msgstr ""
 
-#: ../plugins/repoquery.py:173
-msgid "Display only packages that can be autoremoved."
+#: ../plugins/repoquery.py:171
+msgid "Display only packages that can be removed by \"dnf autoremove\" command."
 msgstr ""
 
-#: ../plugins/repoquery.py:174
+#: ../plugins/repoquery.py:172
 msgid "Display only recently edited packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:221
+#: ../plugins/repoquery.py:224
 msgid "search for packages matching keyword"
 msgstr "キーワードに合致するパッケージを検索"
 
-#: ../plugins/repoquery.py:222
+#: ../plugins/repoquery.py:225
 msgid "[OPTIONS] [KEYWORDS]"
 msgstr ""
 
-#: ../plugins/repoquery.py:285
+#: ../plugins/repoquery.py:287
 #, python-brace-format
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
 msgstr ""
 
-#: ../plugins/repoquery.py:329
+#: ../plugins/repoquery.py:337
 msgid ""
 "--alldeps requires --whatrequires option.\n"
 "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n"
 "\n"
 msgstr ""
 
-#: ../plugins/repoquery.py:362
+#: ../plugins/repoquery.py:368
 msgid ""
 "No switch specified\n"
-"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--"
-"enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
+"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
 "\n"
 "description:\n"
 "  For the given packages print a tree of the packages."

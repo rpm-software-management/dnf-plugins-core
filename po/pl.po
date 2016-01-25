@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-16 14:04+0100\n"
+"POT-Creation-Date: 2016-01-25 15:47+0100\n"
+"PO-Revision-Date: 2015-11-16 11:50-0500\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-11-03 02:23-0500\n"
-"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-"
-"extras/language/pl/)\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Zanata 3.7.3\n"
 
 #: ../plugins/debuginfo-install.py:45
@@ -76,6 +74,7 @@ msgstr ""
 "Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
 
 #: ../plugins/builddep.py:192 ../plugins/builddep.py:207
+#: ../plugins/builddep.py:225
 msgid "Not all dependencies satisfied"
 msgstr "Nie spełniono wszystkich zależności"
 
@@ -133,17 +132,17 @@ msgstr "Błąd: próba włączenia i wyłączenia repozytoriów w tym samym czas
 msgid "Error: Trying to enable already enabled repos."
 msgstr "Błąd: próba włączenia już włączonych repozytoriów."
 
-#: ../plugins/config_manager.py:142
+#: ../plugins/config_manager.py:139
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Brak pasującego repozytorium do modyfikacji: %s."
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:178
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Dodawanie repozytorium z: %s"
 
-#: ../plugins/config_manager.py:213
+#: ../plugins/config_manager.py:208
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Nie można zapisać repozytorium do pliku %s: %s"
@@ -160,28 +159,36 @@ msgstr "PAKIET…"
 msgid "packages to download"
 msgstr "pakiety do pobrania"
 
-#: ../plugins/download.py:71
+#: ../plugins/download.py:72
 msgid "download the src.rpm instead"
 msgstr "pobiera pakiet src.rpm zamiast tego"
 
 #: ../plugins/download.py:74
+msgid "download the -debuginfo package instead"
+msgstr ""
+
+#: ../plugins/download.py:77
 msgid "download path, default is current dir"
 msgstr "ścieżka pobierania, domyślnie bieżący katalog"
 
-#: ../plugins/download.py:77
+#: ../plugins/download.py:80
 msgid "resolve and download needed dependencies"
 msgstr "rozwiązuje i pobiera wymagane zależności"
 
-#: ../plugins/download.py:148
+#: ../plugins/download.py:171
+msgid "Exiting due to strict setting."
+msgstr ""
+
+#: ../plugins/download.py:188
 msgid "Error in resolve"
 msgstr "Błąd podczas rozwiązywania"
 
-#: ../plugins/download.py:163
+#: ../plugins/download.py:203
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Nie określono źródłowego pakietu RPM dla %s"
 
-#: ../plugins/download.py:173 ../plugins/download.py:187
+#: ../plugins/download.py:217 ../plugins/download.py:231
 msgid "No package "
 msgstr "Brak pakietu "
 
@@ -197,7 +204,7 @@ msgstr ""
 msgid "The operation would result in removing the booted kernel: %s."
 msgstr "Działanie spowodowałoby usunięcie uruchomionego jądra: %s."
 
-#: ../plugins/dnfpluginscore/lib.py:132
+#: ../plugins/dnfpluginscore/lib.py:109
 #, python-format
 msgid "enabling %s repository"
 msgstr "włączanie repozytorium %s"
@@ -206,79 +213,63 @@ msgstr "włączanie repozytorium %s"
 msgid "show this help about this tool"
 msgstr "wyświetla pomoc dla tego narzędzia"
 
-#: ../plugins/repoquery.py:89
+#: ../plugins/repoquery.py:87
 msgid "the key to search for"
 msgstr "wyszukiwany klucz"
 
-#: ../plugins/repoquery.py:91
+#: ../plugins/repoquery.py:89
 msgid "show only results from this REPO"
 msgstr "wyświetla tylko wyniki z tego REPOZYTORIUM"
 
-#: ../plugins/repoquery.py:96
+#: ../plugins/repoquery.py:94
 msgid "show only results from this ARCH"
 msgstr "wyświetla tylko wyniki dla tej ARCHITEKTURY"
 
-#: ../plugins/repoquery.py:98
+#: ../plugins/repoquery.py:96
 msgid "show only results that owns FILE"
 msgstr "wyświetla tylko wyniki posiadające PLIK"
 
-#: ../plugins/repoquery.py:100
+#: ../plugins/repoquery.py:98
 msgid "show only results there provides REQ"
 msgstr "wyświetla tylko wyniki dostarczające ZALEŻNOŚĆ"
 
-#: ../plugins/repoquery.py:102
+#: ../plugins/repoquery.py:100
 msgid "show only results there require REQ"
 msgstr "wyświetla tylko wyniki wymagające ZALEŻNOŚCI"
 
-#: ../plugins/repoquery.py:104
+#: ../plugins/repoquery.py:102
 msgid "show only results that recommend REQ"
 msgstr "wyświetla tylko wyniki zalecające ZALEŻNOŚCI"
 
-#: ../plugins/repoquery.py:106
+#: ../plugins/repoquery.py:104
 msgid "show only results that enhance REQ"
 msgstr "wyświetla tylko wyniki ulepszające ZALEŻNOŚCI"
 
-#: ../plugins/repoquery.py:108
+#: ../plugins/repoquery.py:106
 msgid "show only results that suggest REQ"
 msgstr "wyświetla tylko wyniki sugerujące ZALEŻNOŚCI"
 
-#: ../plugins/repoquery.py:110
+#: ../plugins/repoquery.py:108
 msgid "show only results that supplement REQ"
 msgstr "wyświetla tylko wyniki uzupełniające ZALEŻNOŚCI"
 
-#: ../plugins/repoquery.py:114
+#: ../plugins/repoquery.py:112
 msgid "show available tags to use with --queryformat"
 msgstr "wyświetla dostępne etykiety do używania za pomocą opcji --queryformat"
 
-#: ../plugins/repoquery.py:117
+#: ../plugins/repoquery.py:115
 msgid "resolve capabilities to originating package(s)"
 msgstr "rozwiązuje możliwości do ich pakietów"
 
-#: ../plugins/repoquery.py:119
+#: ../plugins/repoquery.py:117
 msgid "show recursive tree for package(s)"
 msgstr "wyświetla rekursywne drzewo dla pakietów"
 
-#: ../plugins/repoquery.py:121
+#: ../plugins/repoquery.py:119
 msgid "operate on corresponding source RPM"
 msgstr "działa na odpowiednim źródłowym pakiecie RPM"
 
-#: ../plugins/repoquery.py:126
-msgid "show detailed information about the package"
-msgstr "wyświetla szczegółowe informacje o pakiecie"
-
-#: ../plugins/repoquery.py:129
-msgid "show list of files in the package"
-msgstr "wyświetla listę plików w pakiecie"
-
-#: ../plugins/repoquery.py:132
-msgid "show package source RPM name"
-msgstr "wyświetla nazwę źródłowego pakietu RPM"
-
-#: ../plugins/repoquery.py:135
-msgid "format for displaying found packages"
-msgstr "format wyświetlania odnalezionych pakietów"
-
-#: ../plugins/repoquery.py:137
+#: ../plugins/repoquery.py:121
 msgid ""
 "show N latest packages for a given name.arch (or latest but N if N is "
 "negative)"
@@ -286,66 +277,82 @@ msgstr ""
 "wyświetla N najnowszych pakietów dla podanej nazwy.architektury (lub "
 "najnowsze oprócz N, jeśli N jest ujemne)"
 
-#: ../plugins/repoquery.py:143
+#: ../plugins/repoquery.py:127
+msgid "show detailed information about the package"
+msgstr "wyświetla szczegółowe informacje o pakiecie"
+
+#: ../plugins/repoquery.py:130
+msgid "show list of files in the package"
+msgstr "wyświetla listę plików w pakiecie"
+
+#: ../plugins/repoquery.py:133
+msgid "show package source RPM name"
+msgstr "wyświetla nazwę źródłowego pakietu RPM"
+
+#: ../plugins/repoquery.py:136
+msgid "format for displaying found packages"
+msgstr "format wyświetlania odnalezionych pakietów"
+
+#: ../plugins/repoquery.py:141
 msgid "limit the query to installed duplicated packages"
 msgstr "ogranicza zapytanie do zainstalowanych podwójnych pakietów"
 
-#: ../plugins/repoquery.py:146
+#: ../plugins/repoquery.py:144
 msgid "limit the query to installed installonly packages"
 msgstr "ogranicza zapytanie do zainstalowanych pakietów installonly"
 
-#: ../plugins/repoquery.py:149
+#: ../plugins/repoquery.py:147
 msgid "limit the query to installed packages with unsatisfied dependencies"
 msgstr ""
 "ogranicza zapytanie do zainstalowanych pakietów z niespełnionymi "
 "zależnościami"
 
-#: ../plugins/repoquery.py:153
+#: ../plugins/repoquery.py:151
 msgid "Display capabilities that the package conflicts with."
 msgstr "Wyświetla możliwości, z którymi pakiet jest w konflikcie."
 
-#: ../plugins/repoquery.py:154
+#: ../plugins/repoquery.py:152
 msgid "Display capabilities that the package can enhance."
 msgstr "Wyświetla możliwości, które pakiet może ulepszyć."
 
-#: ../plugins/repoquery.py:155
+#: ../plugins/repoquery.py:153
 msgid "Display capabilities that the package obsoletes."
 msgstr "Wyświetla możliwości, które pakiet zastępuje."
 
-#: ../plugins/repoquery.py:156
+#: ../plugins/repoquery.py:154
 msgid "Display capabilities provided by the package."
 msgstr "Wyświetla możliwości dostarczane przez pakiet."
 
-#: ../plugins/repoquery.py:157
+#: ../plugins/repoquery.py:155
 msgid "Display capabilities that the package recommends."
 msgstr "Wyświetla możliwości zalecane przez pakiet."
 
-#: ../plugins/repoquery.py:158
+#: ../plugins/repoquery.py:156
 msgid "Display capabilities that the package depends on."
 msgstr "Wyświetla możliwości, od których pakiet jest zależny."
 
-#: ../plugins/repoquery.py:159
+#: ../plugins/repoquery.py:157
 msgid "Display capabilities that the package suggests."
 msgstr "Wyświetla możliwości sugerowane przez pakiet."
 
-#: ../plugins/repoquery.py:160
+#: ../plugins/repoquery.py:158
 msgid "Display capabilities that the package can supplement."
 msgstr "Wyświetla możliwości uzupełniane przez pakiet."
 
-#: ../plugins/repoquery.py:169
+#: ../plugins/repoquery.py:167
 msgid "Display only available packages."
 msgstr "Wyświetla tylko dostępne pakiety."
 
-#: ../plugins/repoquery.py:170
+#: ../plugins/repoquery.py:168
 msgid "Display only installed packages."
 msgstr "Wyświetla tylko zainstalowane pakiety."
 
-#: ../plugins/repoquery.py:171
+#: ../plugins/repoquery.py:169
 msgid ""
 "Display only packages that are not present in any of available repositories."
 msgstr "Wyświetla tylko pakiety nieobecne w żadnym z dostępnych repozytoriów."
 
-#: ../plugins/repoquery.py:172
+#: ../plugins/repoquery.py:170
 msgid ""
 "Display only packages that provide an upgrade for some already installed "
 "package."
@@ -353,28 +360,28 @@ msgstr ""
 "Wyświetla tylko pakiety dostarczające aktualizację dla jakiegoś już "
 "zainstalowanego pakietu."
 
-#: ../plugins/repoquery.py:173
-msgid "Display only packages that can be autoremoved."
-msgstr "Wyświetla tylko pakiety, które mogą być automatycznie usunięte."
+#: ../plugins/repoquery.py:171
+msgid "Display only packages that can be removed by \"dnf autoremove\" command."
+msgstr ""
 
-#: ../plugins/repoquery.py:174
+#: ../plugins/repoquery.py:172
 msgid "Display only recently edited packages"
 msgstr "Wyświetla tylko ostatnio modyfikowane pakiety"
 
-#: ../plugins/repoquery.py:221
+#: ../plugins/repoquery.py:224
 msgid "search for packages matching keyword"
 msgstr "wyszukuje pakiety pasujące do słowa kluczowego"
 
-#: ../plugins/repoquery.py:222
+#: ../plugins/repoquery.py:225
 msgid "[OPTIONS] [KEYWORDS]"
 msgstr "[OPCJE] [SŁOWA-KLUCZOWE]"
 
-#: ../plugins/repoquery.py:285
+#: ../plugins/repoquery.py:287
 #, python-brace-format
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
 msgstr "Dostępne query-tags: należy użyć --queryformat \".. %{tag} ..\""
 
-#: ../plugins/repoquery.py:329
+#: ../plugins/repoquery.py:337
 msgid ""
 "--alldeps requires --whatrequires option.\n"
 "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n"
@@ -384,18 +391,16 @@ msgstr ""
 "użycie: dnf repoquery [--whatrequires] [klucz] [--alldeps]\n"
 "\n"
 
-#: ../plugins/repoquery.py:362
+#: ../plugins/repoquery.py:368
 msgid ""
 "No switch specified\n"
-"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--"
-"enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
+"usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
 "\n"
 "description:\n"
 "  For the given packages print a tree of the packages."
 msgstr ""
 "Nie podano przełącznika\n"
-"użycie: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--"
-"enhances|--suggest|--provides|--suplements|--recommends] [klucz] [--tree]\n"
+"użycie: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [klucz] [--tree]\n"
 "\n"
 "opis:\n"
 "  Wyświetla drzewo dla podanych pakietów."
@@ -422,7 +427,7 @@ msgstr "n"
 
 #: ../plugins/copr.py:65
 msgid "Interact with Copr repositories."
-msgstr "Używanie repozytoriów Copr."
+msgstr "Używanie repozytoriów copr."
 
 #: ../plugins/copr.py:66
 msgid ""
@@ -460,7 +465,7 @@ msgstr ""
 
 #: ../plugins/copr.py:91
 msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr ""
+msgstr "Ostrzeżenie: używany jest niestandardowy adres URL copr „{}”."
 
 #: ../plugins/copr.py:106 ../plugins/copr.py:130 ../plugins/copr.py:397
 msgid "Error: "
