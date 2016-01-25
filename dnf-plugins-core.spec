@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.15
+Version:    0.1.16
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -123,6 +123,20 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Mon Jan 25 2016 Jan Silhan <jsilhan@redhat.com> 0.1.16-1
+- zanata update (Jan Silhan)
+- AUTHORS: updated (Jan Silhan)
+- run noroot in non cli mode (RhBug:1297511) (Jan Silhan)
+- Sanitize repos containing a tilde in the URL (François RIGAULT)
+- contributor added (clime)
+- latest-limit option moved to base set of options making it compatible with
+  --queryformat and other output formatters (RhBug: 1292475) (clime)
+- builddep: do not download source package (Jeff Smith)
+- repoquery: keep --autoremove as secret option (Jan Silhan)
+- cosmetic: repoquery: remove unused imports (Jan Silhan)
+- doc: repoquery: --recent (Jan Silhan)
+- doc: renamed autoremove to unneeded and extended docs (Jan Silhan)
+
 * Fri Dec 18 2015 Michal Luscon <mluscon@redhat.com> 0.1.15-1
 - Make it possible to specify the source package name as parameter in stub
   constructor. (Alexander Todorov)
