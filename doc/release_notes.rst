@@ -22,6 +22,15 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+0.1.16 Release Notes
+====================
+
+Documented :doc:`repoquery` options ``--unneeded`` and ``--recent``.
+
+* :rhbug:`1297511`
+* :rhbug:`1292475`
+
+====================
 0.1.15 Release Notes
 ====================
 
