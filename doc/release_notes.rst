@@ -34,7 +34,7 @@ Documented :doc:`repoquery` options ``--unneeded`` and ``--recent``.
 0.1.15 Release Notes
 ====================
 
-Newly implemented :doc:`download` options ``--resolve`` and ``debuginfo``.
+Newly implemented :doc:`download` options ``--resolve`` and ``--debuginfo``.
 
 Improved the start-up time of bash completion.
 
