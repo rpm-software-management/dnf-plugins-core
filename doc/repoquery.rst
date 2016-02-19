@@ -64,7 +64,10 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Limit the resulting set only to package that owns ``<file>``.
 
 ``--installed``
-    Limit the resulting set to installed packges.
+    Limit the resulting set to installed packages. The `exclude <https://dnf.readthedocs.org/en/latest/conf_ref.html#exclude-label>`_
+    option in configuration file (.conf) might influence the result, but if the
+    command line option \-\ `-disableexcludes\ <https://dnf.readthedocs.org/en/latest/command_ref.html#disableexcludes-label>`_
+    is used, it ensures that all installed packages will be listed.
 
 ``--installonly``
     Limit the resulting set to installed installonly packages.
