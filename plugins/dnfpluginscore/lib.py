@@ -137,6 +137,11 @@ def package_debug_name(package):
     """
     return "{}-debuginfo".format(package.name)
 
+def _rchop(origstr, chopstr):
+    if chopstr and origstr.endswith(chopstr):
+        return origstr[:-len(chopstr)]
+    return origstr
+
 def package_source_name(package):
     """"
     # :api
@@ -144,10 +149,10 @@ def package_source_name(package):
     e.g. krb5-libs -> krb5
     """
     # strip suffix first
-    srcname = package.sourcerpm.rstrip(".src.rpm")
+    srcname = _rchop(package.sourcerpm, ".src.rpm")
     # source package filenames may not contain epoch, handle both cases
-    srcname = srcname.rstrip("-{}".format(package.evr))
-    srcname = srcname.rstrip("-{0.version}-{0.release}".format(package))
+    srcname = _rchop(srcname, "-{}".format(package.evr))
+    srcname = _rchop(srcname, "-{0.version}-{0.release}".format(package))
     return srcname
 
 def package_source_debug_name(package):
