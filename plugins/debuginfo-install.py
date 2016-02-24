@@ -43,7 +43,9 @@ class DebuginfoInstall(dnf.Plugin):
 
     def config(self):
         cp = self.read_config(self.base.conf, PLUGIN_CONF)
-        autoupdate = cp.getboolean('main','autoupdate')
+        autoupdate = (cp.has_section('main')
+                      and cp.has_option('main', 'autoupdate')
+                      and cp.getboolean('main', 'autoupdate'))
 
         if autoupdate:
             # allow update of already installed debuginfo packages
