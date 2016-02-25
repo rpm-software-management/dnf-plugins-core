@@ -22,10 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+0.1.17 Release Notes
+====================
+
+Added configuration file for :doc:`debuginfo-install`.
+
+
+Bugs fixed in 0.1.17:
+
+* :rhbug:`1024701`
+* :rhbug:`1302214`
+
+====================
 0.1.16 Release Notes
 ====================
 
 Documented :doc:`repoquery` options ``--unneeded`` and ``--recent``.
+
+Bugs fixed in 0.1.16:
 
 * :rhbug:`1297511`
 * :rhbug:`1292475`

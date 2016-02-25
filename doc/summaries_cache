@@ -234,5 +234,21 @@
     [
         1253237, 
         "dnf config-manager --setopt options are not saved to repo (--save does not work)"
+    ], 
+    [
+        1024701, 
+        "[rfe] debuginfo-install plugin: add passive feature to keep debuginfo packages in sync"
+    ], 
+    [
+        1302214, 
+        "Translation incomplete of the download plugin"
+    ], 
+    [
+        1297511, 
+        "noroot configure causes a traceback when plugins are loaded without a cli"
+    ], 
+    [
+        1292475, 
+        "RFE: dnf repoquery options \"--queryformat\" and \"--latest-limit\" should be usable together"
     ]
 ]
