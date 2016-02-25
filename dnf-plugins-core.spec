@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.16
+Version:    0.1.17
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -125,6 +125,12 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Thu Feb 25 2016 Michal Luscon <mluscon@redhat.com> 0.1.17-1
+- enable debuginfo repos if autoupdate is on (RhBug:1024701) (Michael Mraka)
+- fixed string suffix removal (Michael Mraka)
+- install latest debuginfo by default (Michael Mraka)
+- Enable strings for translation (RhBug:1302214) (Parag Nemade)
+
 * Mon Jan 25 2016 Jan Silhan <jsilhan@redhat.com> 0.1.16-1
 - zanata update (Jan Silhan)
 - AUTHORS: updated (Jan Silhan)
