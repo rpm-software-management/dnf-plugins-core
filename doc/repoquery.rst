@@ -150,6 +150,10 @@ The following are mutually exclusive, i.e. at most one can be specified. If no q
 ``--requires``
     Display capabilities that the package depends on. Same as ``--qf "%{requires}"``.
 
+``--requires-pre``
+    Display capabilities that the package depends on for running a ``%pre`` script.
+    Same as ``--qf "%{requires-pre}"``.
+
 ``--suggests``
     Display capabilities suggested by the package. Same as ``--qf "%{suggests}"``.
 

@@ -55,6 +55,17 @@ provides, requires, obsoletes, conflicts, sourcerpm
 description, summary, license, url
 """
 
+OPTS_MAPPING = {
+    'conflicts': 'conflicts',
+    'enhances': 'enhances',
+    'obsoletes': 'obsoletes',
+    'provides': 'provides',
+    'recommends': 'recommends',
+    'requires': 'requires',
+    'requires-pre': 'requires_pre',
+    'suggests': 'suggests',
+    'supplements': 'supplements'
+}
 
 def build_format_fn(opts):
     if opts.queryinfo:
@@ -94,6 +105,8 @@ def rpm2py_format(queryformat):
 
     queryformat = queryformat.replace("\\n", "\n")
     queryformat = queryformat.replace("\\t", "\t")
+    for key, value in OPTS_MAPPING.items():
+        queryformat = queryformat.replace(key, value)
     fmt = re.sub(QFORMAT_MATCH, fmt_repl, queryformat)
     return fmt
 
@@ -183,11 +196,12 @@ class RepoQueryCommand(dnf.cli.Command):
             'provides': _('Display capabilities provided by the package.'),
             'recommends':  _('Display capabilities that the package recommends.'),
             'requires':  _('Display capabilities that the package depends on.'),
+            'requires-pre':  _('Display capabilities that the package depends on for running a %%pre script.'),
             'suggests':  _('Display capabilities that the package suggests.'),
             'supplements':  _('Display capabilities that the package can supplement.')
         }
         for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
-                    'requires', 'suggests', 'supplements'):
+                    'requires', 'requires-pre', 'suggests', 'supplements'):
             name = '--%s' % arg
             package_atribute.add_argument(name, dest='packageatr', action='store_const',
                                           const=arg, help=help_msgs[arg])
@@ -338,7 +352,7 @@ class RepoQueryCommand(dnf.cli.Command):
         pkgs = set()
         if self.opts.packageatr:
             for pkg in q.run():
-                rels = getattr(pkg, self.opts.packageatr)
+                rels = getattr(pkg, OPTS_MAPPING[self.opts.packageatr])
                 for rel in rels:
                     pkgs.add(str(rel))
         else:
@@ -413,7 +427,7 @@ class PackageWrapper(object):
     def __getattr__(self, attr):
         atr = getattr(self._pkg, attr)
         if isinstance(atr, list):
-            return '\n'.join(sorted([dnf.i18n.ucd(reldep) for reldep in atr]))
+            return '\n'.join(sorted({dnf.i18n.ucd(reldep) for reldep in atr}))
         return dnf.i18n.ucd(atr)
 
     @staticmethod
