@@ -60,7 +60,7 @@ class Copr(dnf.Plugin):
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
 
-    copr_url = "https://copr.fedoraproject.org"
+    copr_url = "https://copr.fedorainfracloud.org"
     aliases = ("copr",)
     summary = _("Interact with Copr repositories.")
     usage = _("""
@@ -87,7 +87,7 @@ class CoprCommand(dnf.cli.Command):
                 self.copr_url = raw_config["copr-cli"].get("copr_url", None)
             else:
                 self.copr_url = raw_config.get("copr-cli", "copr_url", None)
-            if self.copr_url != "https://copr.fedoraproject.org":
+            if self.copr_url != "https://copr.fedorainfracloud.org":
                 print(_("Warning: we are using non-standard Copr URL '{}'.").format(self.copr_url))
 
     def run(self, extcmds):
@@ -166,7 +166,7 @@ Do you want to continue? [y/N]: """)
                 _('Unknown subcommand {}.').format(subcommand))
 
     def _list_user_projects(self, user_name):
-        # http://copr.fedoraproject.org/api/coprs/ignatenkobrain/
+        # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
         api_path = "/api/coprs/{}/".format(user_name)
         res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
         try:
@@ -190,7 +190,7 @@ Do you want to continue? [y/N]: """)
             i += 1
 
     def _search(self, query):
-        # http://copr.fedoraproject.org/api/coprs/search/tests/
+        # http://copr.fedorainfracloud.org/api/coprs/search/tests/
         api_path = "/api/coprs/search/{}/".format(query)
         res = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
         try:
@@ -258,7 +258,7 @@ Do you want to continue? [y/N]: """)
         if chroot is None:
             chroot = self._guess_chroot()
         short_chroot = '-'.join(chroot.split('-')[:2])
-        #http://copr.fedoraproject.org/coprs/larsks/rcm/repo/epel-7-x86_64/
+        #http://copr.fedorainfracloud.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
         try:
             f = dnfpluginscore.lib.urlopen(self, None, self.copr_url + api_path, 'w+')
