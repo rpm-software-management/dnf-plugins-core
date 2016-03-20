@@ -32,6 +32,8 @@ import platform
 import shutil
 import stat
 
+PLUGIN_CONF = 'copr'
+
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
@@ -56,6 +58,17 @@ def get_reposdir():
             myrepodir = self.base.conf.reposdir[0]
             dnf.util.ensure_dir(myrepodir)
     return myrepodir
+
+# Useful for forcing a distribution
+def chroot_config(self):
+    cp = self.read_config(self.base.conf, PLUGIN_CONF)
+    distribution = (cp.has_section('main')
+                  and cp.has_option('main', 'distribution')
+                  and cp.get('main', 'distribution'))
+    releasever = (cp.has_section('main')
+                  and cp.has_option('main', 'releasever')
+                  and cp.get('main', 'releasever'))
+    return [distribution, releasever]
 
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
@@ -252,9 +265,11 @@ Do you want to continue? [y/N]: """)
 
     @classmethod
     def _guess_chroot(cls):
-        """ Guess which choot is equivalent to this machine """
+        """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = platform.linux_distribution()
+        dist = chroot_config()
+        if (dist[0] is False) or (dist[1] is False):
+            dist = platform.linux_distribution()
         if "Fedora" in dist:
             # x86_64 because repo-file is same for all arch
             # ($basearch is used)
