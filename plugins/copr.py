@@ -45,6 +45,18 @@ if PY3:
 else:
     from ConfigParser import ConfigParser
 
+def get_reposdir():
+    myrepodir = None
+    # put repo file into first reposdir which exists or create it
+    for rdir in self.base.conf.reposdir:
+        if os.path.exists(rdir):
+            myrepodir = rdir
+
+        if not myrepodir:
+            myrepodir = self.base.conf.reposdir[0]
+            dnf.util.ensure_dir(myrepodir)
+    return myrepodir
+
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
 
@@ -132,8 +144,8 @@ class CoprCommand(dnf.cli.Command):
                   'to reference copr project'))
             raise dnf.cli.CliError(_('bad copr project format'))
 
-        repo_filename = "/etc/yum.repos.d/_copr_{}-{}.repo" \
-                        .format(copr_username, copr_projectname)
+        repo_filename = "{}/_copr_{}-{}.repo" \
+                        .format(get_reposdir(), copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -367,8 +379,8 @@ Do you want to continue? [y/N]: """)
         for repo in output["repos"]:
             project_name = "{0}/{1}".format(repo["username"],
                                             repo["coprname"])
-            repo_filename = "/etc/yum.repos.d/_playground_{}.repo" \
-                    .format(project_name.replace("/", "-"))
+            repo_filename = "{}/_playground_{}.repo" \
+                    .format(get_reposdir(), project_name.replace("/", "-"))
             try:
                 if chroot not in repo["chroots"]:
                     continue
@@ -386,7 +398,7 @@ Do you want to continue? [y/N]: """)
 
     def _cmd_disable(self):
         self._need_root()
-        for repo_filename in glob.glob('/etc/yum.repos.d/_playground_*.repo'):
+        for repo_filename in glob.glob("{}/_playground_*.repo".format(get_reposdir())):
             self._remove_repo(repo_filename)
 
     def run(self, extcmds):
