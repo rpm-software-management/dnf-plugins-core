@@ -269,13 +269,13 @@ Do you want to continue? [y/N]: """)
                 if PY3:
                     import urllib.request
                     try:
-                        res = urllib.request.urlopen(self.copr_url + "/coprs/" + project_name, 'w+')
+                        res = urllib.request.urlopen(self.copr_url + "/coprs/" + project_name)
                         status_code = res.getcode()
                     except urllib.error.HTTPError as e:
                         status_code = e.getcode()
                 else:
                     import urllib
-                    res = urllib.urlopen(self.copr_url + "/coprs/" + project_name, 'w+')
+                    res = urllib.urlopen(self.copr_url + "/coprs/" + project_name)
                     status_code = res.getcode()
                 if str(status_code) != '404':
                     raise dnf.exceptions.Error(_("This repository does not have"\
