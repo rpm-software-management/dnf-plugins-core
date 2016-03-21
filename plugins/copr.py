@@ -34,6 +34,8 @@ import stat
 
 PLUGIN_CONF = 'copr'
 
+CHROOT_CONFIG = None
+
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
@@ -58,6 +60,17 @@ class Copr(dnf.Plugin):
         if cli is not None:
             cli.register_command(CoprCommand)
 
+    # Useful for forcing a distribution
+    def config(self):
+        cp = self.read_config(self.base.conf, PLUGIN_CONF)
+        distribution = (cp.has_section('main')
+                        and cp.has_option('main', 'distribution')
+                        and cp.get('main', 'distribution'))
+        releasever = (cp.has_section('main')
+                      and cp.has_option('main', 'releasever')
+                      and cp.get('main', 'releasever'))
+        CHROOT_CONFIG = [distribution, releasever]
+
 
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
@@ -80,17 +93,6 @@ class CoprCommand(dnf.cli.Command):
   copr list ignatenkobrain
   copr search tests
     """)
-
-# Useful for forcing a distribution
-    def _chroot_config(self):
-        cp = self.read_config(self.base.conf, PLUGIN_CONF)
-        distribution = (cp.has_section('main')
-                        and cp.has_option('main', 'distribution')
-                        and cp.get('main', 'distribution'))
-        releasever = (cp.has_section('main')
-                      and cp.has_option('main', 'releasever')
-                      and cp.get('main', 'releasever'))
-        return [distribution, releasever]
 
     def _get_reposdir(self):
         myrepodir = None
@@ -267,8 +269,8 @@ Do you want to continue? [y/N]: """)
     def _guess_chroot(cls):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = self._chroot_config()
-        if (dist[0] is False) or (dist[1] is False):
+        dist = CHROOT_CONFIG
+        if (dist[0] is False) or (dist[1] is False) or dist is None:
             dist = platform.linux_distribution()
         if "Fedora" in dist:
             # x86_64 because repo-file is same for all arch
