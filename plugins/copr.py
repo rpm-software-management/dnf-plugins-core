@@ -47,29 +47,6 @@ if PY3:
 else:
     from ConfigParser import ConfigParser
 
-def get_reposdir():
-    myrepodir = None
-    # put repo file into first reposdir which exists or create it
-    for rdir in self.base.conf.reposdir:
-        if os.path.exists(rdir):
-            myrepodir = rdir
-
-        if not myrepodir:
-            myrepodir = self.base.conf.reposdir[0]
-            dnf.util.ensure_dir(myrepodir)
-    return myrepodir
-
-# Useful for forcing a distribution
-def chroot_config(self):
-    cp = self.read_config(self.base.conf, PLUGIN_CONF)
-    distribution = (cp.has_section('main')
-                  and cp.has_option('main', 'distribution')
-                  and cp.get('main', 'distribution'))
-    releasever = (cp.has_section('main')
-                  and cp.has_option('main', 'releasever')
-                  and cp.get('main', 'releasever'))
-    return [distribution, releasever]
-
 class Copr(dnf.Plugin):
     """DNF plugin supplying the 'copr' command."""
 
@@ -103,6 +80,29 @@ class CoprCommand(dnf.cli.Command):
   copr list ignatenkobrain
   copr search tests
     """)
+
+# Useful for forcing a distribution
+    def _chroot_config(self):
+        cp = self.read_config(self.base.conf, PLUGIN_CONF)
+        distribution = (cp.has_section('main')
+                        and cp.has_option('main', 'distribution')
+                        and cp.get('main', 'distribution'))
+        releasever = (cp.has_section('main')
+                      and cp.has_option('main', 'releasever')
+                      and cp.get('main', 'releasever'))
+        return [distribution, releasever]
+
+    def _get_reposdir(self):
+        myrepodir = None
+        # put repo file into first reposdir which exists or create it
+        for rdir in self.base.conf.reposdir:
+            if os.path.exists(rdir):
+                myrepodir = rdir
+
+            if not myrepodir:
+                myrepodir = self.base.conf.reposdir[0]
+                dnf.util.ensure_dir(myrepodir)
+        return myrepodir
 
     def configure(self, args):
         raw_config = ConfigParser()
@@ -158,7 +158,7 @@ class CoprCommand(dnf.cli.Command):
             raise dnf.cli.CliError(_('bad copr project format'))
 
         repo_filename = "{}/_copr_{}-{}.repo" \
-                        .format(get_reposdir(), copr_username, copr_projectname)
+                        .format(self._get_reposdir(), copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -267,7 +267,7 @@ Do you want to continue? [y/N]: """)
     def _guess_chroot(cls):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = chroot_config()
+        dist = self._chroot_config()
         if (dist[0] is False) or (dist[1] is False):
             dist = platform.linux_distribution()
         if "Fedora" in dist:
@@ -395,7 +395,7 @@ Do you want to continue? [y/N]: """)
             project_name = "{0}/{1}".format(repo["username"],
                                             repo["coprname"])
             repo_filename = "{}/_playground_{}.repo" \
-                    .format(get_reposdir(), project_name.replace("/", "-"))
+                    .format(self._get_reposdir(), project_name.replace("/", "-"))
             try:
                 if chroot not in repo["chroots"]:
                     continue
@@ -413,7 +413,7 @@ Do you want to continue? [y/N]: """)
 
     def _cmd_disable(self):
         self._need_root()
-        for repo_filename in glob.glob("{}/_playground_*.repo".format(get_reposdir())):
+        for repo_filename in glob.glob("{}/_playground_*.repo".format(self._get_reposdir())):
             self._remove_repo(repo_filename)
 
     def run(self, extcmds):
