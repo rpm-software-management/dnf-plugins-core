@@ -161,16 +161,8 @@ class ConfigManagerCommand(dnf.cli.Command):
     def add_repo(self):
         """ process --add-repo option """
 
-        # put repo file into first reposdir which exists or create it
-        myrepodir = None
-        for rdir in self.base.conf.reposdir:
-            if os.path.exists(rdir):
-                myrepodir = rdir
-                break
-
-        if not myrepodir:
-            myrepodir = self.base.conf.reposdir[0]
-            dnf.util.ensure_dir(myrepodir)
+        # Get the reposdir location
+        myrepodir = dnfpluginscore.lib.get_reposdir()
 
         for url in self.opts.add_repo:
             if dnf.pycomp.urlparse.urlparse(url).scheme == '':
