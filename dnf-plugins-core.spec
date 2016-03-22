@@ -42,8 +42,14 @@ BuildRequires:  python2-dnf < %{dnf_not_compatible}
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
+# F22 + RHELs
+%if 0%{?fedora} < 23
+Requires:   python-dnf >= %{dnf_lowest_compatible}
+Requires:   python-dnf < %{dnf_not_compatible}
+%else
 Requires:   python2-dnf >= %{dnf_lowest_compatible}
 Requires:   python2-dnf < %{dnf_not_compatible}
+%endif
 Requires:   python-hawkey >= %{hawkey_version}
 Conflicts:  dnf-plugins-core <= 0.1.5
 # let the both python plugin versions be updated simultaneously
