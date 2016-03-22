@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.18
+Version:    0.1.19
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -136,6 +136,9 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Tue Mar 22 2016 Miroslav Suchý <msuchy@redhat.com> 0.1.19-1
+- spec: correct requires on F22 + EPEL (Miroslav Suchý)
+
 * Tue Mar 22 2016 Miroslav Suchý <msuchy@redhat.com> 0.1.18-1
 - Add myself as contributor in AUTHORS (Neal Gompa (ニール・ゴンパ))
 - copr: copr.fedoraproject.org -> copr.fedorainfracloud.org (Neal Gompa
