@@ -94,18 +94,6 @@ class CoprCommand(dnf.cli.Command):
   copr search tests
     """)
 
-    def _get_reposdir(self):
-        myrepodir = None
-        # put repo file into first reposdir which exists or create it
-        for rdir in self.base.conf.reposdir:
-            if os.path.exists(rdir):
-                myrepodir = rdir
-
-            if not myrepodir:
-                myrepodir = self.base.conf.reposdir[0]
-                dnf.util.ensure_dir(myrepodir)
-        return myrepodir
-
     def configure(self, args):
         raw_config = ConfigParser()
         filepath = os.path.join(os.path.expanduser("~"), ".config", "copr")
@@ -160,7 +148,7 @@ class CoprCommand(dnf.cli.Command):
             raise dnf.cli.CliError(_('bad copr project format'))
 
         repo_filename = "{}/_copr_{}-{}.repo" \
-                        .format(self._get_reposdir(), copr_username, copr_projectname)
+                        .format(dnfpluginscore.lib.get_reposdir(self), copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -397,7 +385,7 @@ Do you want to continue? [y/N]: """)
             project_name = "{0}/{1}".format(repo["username"],
                                             repo["coprname"])
             repo_filename = "{}/_playground_{}.repo" \
-                    .format(self._get_reposdir(), project_name.replace("/", "-"))
+                    .format(dnfpluginscore.lib.get_reposdir(self), project_name.replace("/", "-"))
             try:
                 if chroot not in repo["chroots"]:
                     continue
@@ -415,7 +403,7 @@ Do you want to continue? [y/N]: """)
 
     def _cmd_disable(self):
         self._need_root()
-        for repo_filename in glob.glob("{}/_playground_*.repo".format(self._get_reposdir())):
+        for repo_filename in glob.glob("{}/_playground_*.repo".format(dnfpluginscore.lib.get_reposdir(self))):
             self._remove_repo(repo_filename)
 
     def run(self, extcmds):

@@ -25,6 +25,22 @@ import librepo
 import tempfile
 
 
+def get_reposdir(plugin):
+    """
+    # :api
+    Returns the value of reposdir
+    """
+    myrepodir = None
+    # put repo file into first reposdir which exists or create it
+    for rdir in plugin.base.conf.reposdir:
+        if os.path.exists(rdir):
+            myrepodir = rdir
+
+    if not myrepodir:
+        myrepodir = plugin.base.conf.reposdir[0]
+        dnf.util.ensure_dir(myrepodir)
+    return myrepodir
+
 def current_value(plugin, repo, option):
     """
     # :api
