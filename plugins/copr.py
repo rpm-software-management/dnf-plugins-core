@@ -34,8 +34,6 @@ import stat
 
 PLUGIN_CONF = 'copr'
 
-CHROOT_CONFIG = None
-
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
@@ -60,20 +58,11 @@ class Copr(dnf.Plugin):
         if cli is not None:
             cli.register_command(CoprCommand)
 
-    # Useful for forcing a distribution
-    def config(self):
-        cp = self.read_config(self.base.conf, PLUGIN_CONF)
-        distribution = (cp.has_section('main')
-                        and cp.has_option('main', 'distribution')
-                        and cp.get('main', 'distribution'))
-        releasever = (cp.has_section('main')
-                      and cp.has_option('main', 'releasever')
-                      and cp.get('main', 'releasever'))
-        CHROOT_CONFIG = [distribution, releasever]
-
 
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
+
+    chroot_config = None
 
     copr_url = "https://copr.fedoraproject.org"
     aliases = ("copr",)
@@ -104,6 +93,17 @@ class CoprCommand(dnf.cli.Command):
                 self.copr_url = raw_config.get("copr-cli", "copr_url", None)
             if self.copr_url != "https://copr.fedoraproject.org":
                 print(_("Warning: we are using non-standard Copr URL '{}'.").format(self.copr_url))
+
+        # Useful for forcing a distribution
+        cp = self.read_config(self.base.conf, PLUGIN_CONF)
+        distribution = (cp.has_section('main')
+                        and cp.has_option('main', 'distribution')
+                        and cp.get('main', 'distribution'))
+        releasever = (cp.has_section('main')
+                      and cp.has_option('main', 'releasever')
+                      and cp.get('main', 'releasever'))
+        self.chroot_config = [distribution, releasever]
+
 
     def run(self, extcmds):
         try:
@@ -257,7 +257,7 @@ Do you want to continue? [y/N]: """)
     def _guess_chroot(cls):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = CHROOT_CONFIG
+        dist = self.chroot_config
         if (dist[0] is False) or (dist[1] is False) or dist is None:
             dist = platform.linux_distribution()
         if "Fedora" in dist:
