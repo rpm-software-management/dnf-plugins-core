@@ -37,8 +37,13 @@ protected_packages passive plugins.
 %package -n python-dnf-plugins-core
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
+%if 0%{?fedora} < 23
+BuildRequires:   python-dnf >= %{dnf_lowest_compatible}
+BuildRequires:   python-dnf < %{dnf_not_compatible}
+%else
 BuildRequires:  python2-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python2-dnf < %{dnf_not_compatible}
+%endif
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
