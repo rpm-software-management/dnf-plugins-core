@@ -32,6 +32,8 @@ import platform
 import shutil
 import stat
 
+PLUGIN_CONF = 'copr'
+
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
@@ -59,6 +61,8 @@ class Copr(dnf.Plugin):
 
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
+
+    chroot_config = None
 
     copr_url = "https://copr.fedorainfracloud.org"
     aliases = ("copr",)
@@ -89,6 +93,26 @@ class CoprCommand(dnf.cli.Command):
                 self.copr_url = raw_config.get("copr-cli", "copr_url", None)
             if self.copr_url != "https://copr.fedorainfracloud.org":
                 print(_("Warning: we are using non-standard Copr URL '{}'.").format(self.copr_url))
+
+
+        # Useful for forcing a distribution
+        raw_copr_plugin_config = ConfigParser()
+        config_file = None
+        for path in self.base.conf.pluginconfpath:
+            test_config_file = '{}/{}.conf'.format(path, PLUGIN_CONF)
+            if os.path.isfile(test_config_file):
+                config_file = test_config_file
+
+        if config_file is not None:
+            cp = raw_copr_plugin_config.read_file(config_file)
+            distribution = (cp.has_section('main')
+                            and cp.has_option('main', 'distribution')
+                            and cp.get('main', 'distribution'))
+            releasever = (cp.has_section('main')
+                          and cp.has_option('main', 'releasever')
+                          and cp.get('main', 'releasever'))
+            self.chroot_config = [distribution, releasever]
+
 
     def run(self, extcmds):
         try:
@@ -132,8 +156,8 @@ class CoprCommand(dnf.cli.Command):
                   'to reference copr project'))
             raise dnf.cli.CliError(_('bad copr project format'))
 
-        repo_filename = "/etc/yum.repos.d/_copr_{}-{}.repo" \
-                        .format(copr_username, copr_projectname)
+        repo_filename = "{}/_copr_{}-{}.repo" \
+                        .format(dnfpluginscore.lib.get_reposdir(self), copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -240,9 +264,11 @@ Do you want to continue? [y/N]: """)
 
     @classmethod
     def _guess_chroot(cls):
-        """ Guess which choot is equivalent to this machine """
+        """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = platform.linux_distribution()
+        dist = cls.chroot_config
+        if dist is None or (dist[0] is False) or (dist[1] is False):
+            dist = platform.linux_distribution()
         if "Fedora" in dist:
             # x86_64 because repo-file is same for all arch
             # ($basearch is used)
@@ -367,8 +393,8 @@ Do you want to continue? [y/N]: """)
         for repo in output["repos"]:
             project_name = "{0}/{1}".format(repo["username"],
                                             repo["coprname"])
-            repo_filename = "/etc/yum.repos.d/_playground_{}.repo" \
-                    .format(project_name.replace("/", "-"))
+            repo_filename = "{}/_playground_{}.repo" \
+                    .format(dnfpluginscore.lib.get_reposdir(self), project_name.replace("/", "-"))
             try:
                 if chroot not in repo["chroots"]:
                     continue
@@ -386,7 +412,7 @@ Do you want to continue? [y/N]: """)
 
     def _cmd_disable(self):
         self._need_root()
-        for repo_filename in glob.glob('/etc/yum.repos.d/_playground_*.repo'):
+        for repo_filename in glob.glob("{}/_playground_*.repo".format(dnfpluginscore.lib.get_reposdir(self))):
             self._remove_repo(repo_filename)
 
     def run(self, extcmds):
