@@ -32,6 +32,10 @@ import platform
 import shutil
 import stat
 
+PLUGIN_CONF = 'copr'
+
+CHROOT_CONFIG = None
+
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
@@ -55,6 +59,17 @@ class Copr(dnf.Plugin):
         super(Copr, self).__init__(base, cli)
         if cli is not None:
             cli.register_command(CoprCommand)
+
+    # Useful for forcing a distribution
+    def config(self):
+        cp = self.read_config(self.base.conf, PLUGIN_CONF)
+        distribution = (cp.has_section('main')
+                        and cp.has_option('main', 'distribution')
+                        and cp.get('main', 'distribution'))
+        releasever = (cp.has_section('main')
+                      and cp.has_option('main', 'releasever')
+                      and cp.get('main', 'releasever'))
+        CHROOT_CONFIG = [distribution, releasever]
 
 
 class CoprCommand(dnf.cli.Command):
@@ -132,8 +147,8 @@ class CoprCommand(dnf.cli.Command):
                   'to reference copr project'))
             raise dnf.cli.CliError(_('bad copr project format'))
 
-        repo_filename = "/etc/yum.repos.d/_copr_{}-{}.repo" \
-                        .format(copr_username, copr_projectname)
+        repo_filename = "{}/_copr_{}-{}.repo" \
+                        .format(dnfpluginscore.lib.get_reposdir(self), copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -240,9 +255,11 @@ Do you want to continue? [y/N]: """)
 
     @classmethod
     def _guess_chroot(cls):
-        """ Guess which choot is equivalent to this machine """
+        """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = platform.linux_distribution()
+        dist = CHROOT_CONFIG
+        if (dist[0] is False) or (dist[1] is False) or dist is None:
+            dist = platform.linux_distribution()
         if "Fedora" in dist:
             # x86_64 because repo-file is same for all arch
             # ($basearch is used)
@@ -367,8 +384,8 @@ Do you want to continue? [y/N]: """)
         for repo in output["repos"]:
             project_name = "{0}/{1}".format(repo["username"],
                                             repo["coprname"])
-            repo_filename = "/etc/yum.repos.d/_playground_{}.repo" \
-                    .format(project_name.replace("/", "-"))
+            repo_filename = "{}/_playground_{}.repo" \
+                    .format(dnfpluginscore.lib.get_reposdir(self), project_name.replace("/", "-"))
             try:
                 if chroot not in repo["chroots"]:
                     continue
@@ -386,7 +403,7 @@ Do you want to continue? [y/N]: """)
 
     def _cmd_disable(self):
         self._need_root()
-        for repo_filename in glob.glob('/etc/yum.repos.d/_playground_*.repo'):
+        for repo_filename in glob.glob("{}/_playground_*.repo".format(dnfpluginscore.lib.get_reposdir(self))):
             self._remove_repo(repo_filename)
 
     def run(self, extcmds):
