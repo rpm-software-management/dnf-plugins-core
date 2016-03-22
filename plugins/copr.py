@@ -31,6 +31,7 @@ import os
 import platform
 import shutil
 import stat
+import iniparse
 
 PLUGIN_CONF = 'copr'
 
@@ -94,7 +95,12 @@ class CoprCommand(dnf.cli.Command):
             if self.copr_url != "https://copr.fedoraproject.org":
                 print(_("Warning: we are using non-standard Copr URL '{}'.").format(self.copr_url))
 
+
         # Useful for forcing a distribution
+        raw_copr_plugin_config = iniparse.compat.ConfigParser()
+        config_files = ['{}/{}.conf'.format(self.base.conf, PLUGIN_CONF) for path in self.base.conf.pluginconfpath]
+        cp.read(config_files)
+
         cp = self.read_config(self.base.conf, PLUGIN_CONF)
         distribution = (cp.has_section('main')
                         and cp.has_option('main', 'distribution')
