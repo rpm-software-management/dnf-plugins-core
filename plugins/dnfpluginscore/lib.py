@@ -23,7 +23,7 @@ import dnf
 import iniparse
 import librepo
 import tempfile
-
+import os
 
 def get_reposdir(plugin):
     """
