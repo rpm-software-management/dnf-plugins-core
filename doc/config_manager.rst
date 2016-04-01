@@ -44,7 +44,8 @@ Options
     Show this help.
 
 ``--add-repo=URL``
-    Add (and enable) the repo from the specified file or url.
+    Add (and enable) the repo from the specified file or url. If it has to be added into installroot, combine it with
+    ``--setopt=reposdir=/<installroot>/etc/yum.repos.d`` command-line option.
 
 ``--dump``
     Print dump of current configuration values to stdout.
