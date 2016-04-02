@@ -281,7 +281,7 @@ Do you want to continue? [y/N]: """)
                     raise dnf.exceptions.Error(_("This repository does not have"\
                         " any builds yet so you cannot enable it now."))
                 else:
-                    raise dnf.exceptions.Error(_("Such repository does not exists."))
+                    raise dnf.exceptions.Error(_("Such repository does not exist."))
             raise
         shutil.copy2(f.name, repo_filename)
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
