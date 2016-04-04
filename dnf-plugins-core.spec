@@ -2,130 +2,139 @@
 %{?!dnf_not_compatible: %global dnf_not_compatible 2.0}
 %global hawkey_version 0.6.1
 
-Name:       dnf-plugins-core
-Version:    0.1.20
-Release:    1%{?snapshot}%{?dist}
-Summary:    Core Plugins for DNF
-Group:      System Environment/Base
-License:    GPLv2+
-URL:        https://github.com/rpm-software-management/dnf-plugins-core
-# source archive is created by running package/archive from a git checkout
-Source0:    dnf-plugins-core-%{version}.tar.gz
-BuildArch:  noarch
+%if 0%{?rhel} && 0%{?rhel} <= 7
+%bcond_with python3
+%else
+%bcond_without python3
+%endif
+
+Name:           dnf-plugins-core
+Version:        0.1.20
+Release:        1%{?dist}
+Summary:        Core Plugins for DNF
+License:        GPLv2+
+URL:            https://github.com/rpm-software-management/dnf-plugins-core
+Source0:        %{url}/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
+BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
-%if 0%{?fedora} >= 23
-Requires:   python3-dnf-plugins-core = %{version}-%{release}
-Conflicts:  python-dnf-plugins-core <= 0.1.6-2
-%else
-Requires:   python-dnf-plugins-core = %{version}-%{release}
-Conflicts:  python3-dnf-plugins-core <= 0.1.6-2
-%endif
-Provides:   dnf-command(builddep)
-Provides:   dnf-command(config-manager)
-Provides:   dnf-command(copr)
-Provides:   dnf-command(debuginfo-install)
-Provides:   dnf-command(download)
-Provides:   dnf-command(repoquery)
-Provides:   dnf-command(reposync)
+Requires:       python-%{name} = %{version}-%{release}
+Provides:       dnf-command(builddep)
+Provides:       dnf-command(config-manager)
+Provides:       dnf-command(copr)
+Provides:       dnf-command(debuginfo-install)
+Provides:       dnf-command(download)
+Provides:       dnf-command(repoquery)
+Provides:       dnf-command(reposync)
+
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
 copr, debuginfo-install, download, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
 
-%package -n python-dnf-plugins-core
-Summary:    Core Plugins for DNF
-Group:      System Environment/Base
-%if 0%{?fedora} < 23
-BuildRequires:   python-dnf >= %{dnf_lowest_compatible}
-BuildRequires:   python-dnf < %{dnf_not_compatible}
-%else
+%package -n python2-%{name}
+Summary:        Core Plugins for DNF
+%{?python_provide:%python_provide python2-%{name}}
 BuildRequires:  python2-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python2-dnf < %{dnf_not_compatible}
-%endif
+%if 0%{?rhel} && 0%{?rhel} <= 7
 BuildRequires:  python-nose
+%else
+BuildRequires:  python2-nose
+%endif
 BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
-# F22 + RHELs
-%if 0%{?fedora} < 23
-Requires:   python-dnf >= %{dnf_lowest_compatible}
-Requires:   python-dnf < %{dnf_not_compatible}
-%else
-Requires:   python2-dnf >= %{dnf_lowest_compatible}
-Requires:   python2-dnf < %{dnf_not_compatible}
-%endif
-Requires:   python-hawkey >= %{hawkey_version}
-Conflicts:  dnf-plugins-core <= 0.1.5
+Requires:       python2-dnf >= %{dnf_lowest_compatible}
+Requires:       python2-dnf < %{dnf_not_compatible}
+Requires:       python-hawkey >= %{hawkey_version}
+Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
-Conflicts:  python3-dnf-plugins-core < %{version}-%{release}
-%description -n python-dnf-plugins-core
+Conflicts:      python3-%{name} < %{version}-%{release}
+
+%description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
 
-%package -n python3-dnf-plugins-core
+%if %{with python3}
+%package -n python3-%{name}
 Summary:    Core Plugins for DNF
-Group:      System Environment/Base
+%{?python_provide:%python_provide python3-%{name}}
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-dnf < %{dnf_not_compatible}
 BuildRequires:  python3-nose
 BuildRequires:  python3-sphinx
-Requires:   python3-dnf >= %{dnf_lowest_compatible}
-Requires:   python3-dnf < %{dnf_not_compatible}
-Requires:   python3-hawkey >= %{hawkey_version}
-Conflicts:  dnf-plugins-core <= 0.1.5
+Requires:       python3-dnf >= %{dnf_lowest_compatible}
+Requires:       python3-dnf < %{dnf_not_compatible}
+Requires:       python3-hawkey >= %{hawkey_version}
+Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
-Conflicts:  python-dnf-plugins-core < %{version}-%{release}
-%description -n python3-dnf-plugins-core
+Conflicts:      python2-%{name} < %{version}-%{release}
+
+%description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, copr,
 config-manager, debuginfo-install, download, needs-restarting, repoquery and
 reposync commands. Additionally provides generate_completion_cache, noroot and
 protected_packages passive plugins.
+%endif
 
 %prep
-%setup -q -n dnf-plugins-core-%{version}
-rm -rf py3
-mkdir ../py3
-cp -a . ../py3/
-mv ../py3 ./
+%autosetup
+mkdir build-py2
+%if %{with python3}
+mkdir build-py3
+%endif
 
 %build
-%cmake .
-make %{?_smp_mflags}
-make doc-man
-pushd py3
-%cmake -DPYTHON_DESIRED:str=3 .
-make %{?_smp_mflags}
-make doc-man
+pushd build-py2
+  %cmake ../
+  %make_build
+  make doc-man
 popd
+%if %{with python3}
+pushd build-py3
+  %cmake ../ -DPYTHON_DESIRED:str=3
+  %make_build
+  make doc-man
+popd
+%endif
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
-%find_lang dnf-plugins-core
-pushd py3
-make install DESTDIR=$RPM_BUILD_ROOT
+pushd build-py2
+  %make_install
 popd
+%if %{with python3}
+pushd build-py3
+  %make_install
+popd
+%endif
+%find_lang %{name}
 
 %check
-PYTHONPATH=./plugins /usr/bin/nosetests-2.* -s tests/
-PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
+PYTHONPATH=./plugins nosetests-%{python2_version} -s tests/
+%if %{with python3}
+PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
+%endif
 
 %files
 %{_mandir}/man8/dnf.plugin.*
 
-%files -n python-dnf-plugins-core -f %{name}.lang
-%doc AUTHORS COPYING README.rst
+%files -n python2-%{name} -f %{name}.lang
+%license COPYING
+%doc AUTHORS README.rst
 %dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
 %config %{_sysconfdir}/dnf/plugins/*
-%{python_sitelib}/dnf-plugins/*
-%{python_sitelib}/dnfpluginscore/
+%{python2_sitelib}/dnf-plugins/*
+%{python2_sitelib}/dnfpluginscore/
 
-%files -n python3-dnf-plugins-core -f %{name}.lang
-%doc AUTHORS COPYING README.rst
+%if %{with python3}
+%files -n python3-%{name} -f %{name}.lang
+%license COPYING
+%doc AUTHORS README.rst
 %dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
 %config %{_sysconfdir}/dnf/plugins/*
@@ -134,6 +143,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnf-plugins/*
 %{python3_sitelib}/dnf-plugins/__pycache__/*
 %{python3_sitelib}/dnfpluginscore/
+%endif
 
 %changelog
 * Tue Apr 05 2016 Michal Luscon <mluscon@redhat.com> 0.1.20-1
