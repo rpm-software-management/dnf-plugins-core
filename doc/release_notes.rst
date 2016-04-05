@@ -22,6 +22,12 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+0.1.18 Release Notes
+====================
+
+Small fixes in COPR plugin, internal improvements.
+
+====================
 0.1.17 Release Notes
 ====================
 
