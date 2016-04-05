@@ -3,7 +3,7 @@
 %global hawkey_version 0.6.1
 
 Name:       dnf-plugins-core
-Version:    0.1.19
+Version:    0.1.20
 Release:    1%{?snapshot}%{?dist}
 Summary:    Core Plugins for DNF
 Group:      System Environment/Base
@@ -136,6 +136,15 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnfpluginscore/
 
 %changelog
+* Tue Apr 05 2016 Michal Luscon <mluscon@redhat.com> 0.1.20-1
+- doc: release notes 0.1.20 (Igor Gnatenko)
+- copr: Properly detect reposdir and add chroot override capability (Neal Gompa
+  (ニール・ゴンパ))
+- config_manager: Use new API in dnfpluginscore.lib for determining reposdir
+  (Neal Gompa (ニール・ゴンパ))
+- dnfpluginscore.lib: Add get_reposdir() API function (Neal Gompa (ニール・ゴンパ))
+- Fix typo (Eduardo Mayorga Téllez)
+
 * Tue Mar 22 2016 Miroslav Suchý <msuchy@redhat.com> 0.1.19-1
 - spec: correct requires on F22 + EPEL (Miroslav Suchý)
 
