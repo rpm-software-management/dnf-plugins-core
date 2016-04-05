@@ -6,3 +6,7 @@ nosetests tests/
 
 You can run tests under specific Python version using nosetests-2.7
 or nosetests-3.4.
+
+On Python2 you need to have the mock module installed before running the tests.
+This is not needed when working with Python3 because the tests use
+unittest.mock instead.
