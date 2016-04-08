@@ -26,19 +26,17 @@ import repoquery
 import unittest
 
 EXPECTED_INFO_FORMAT = """\
-Name        : foobar
-Version     : 1.0.1
-Release     : 1.f20
-Architecture: x86_64
-Size        : 100
-License     : BSD
-Source RPM  : foo-1.0.1-1.f20.src.rpm
-Build Date  : 1970-01-01 00:02
-Packager    : Eastford
-URL         : foorl.net
-Summary     : it.
-Description :
-A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.\n"""
+Name         : foobar
+Arch         : x86_64
+Version      : 1.0.1
+Release      : 1.f20
+Size         : 100
+Source RPM   : foo-1.0.1-1.f20.src.rpm
+Repo         : @System
+Summary      : it.
+URL          : foorl.net
+License      : BSD
+Description  : A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.\n"""
 
 EXPECTED_FILELIST_FORMAT = """\
 /tmp/foobar
@@ -50,9 +48,12 @@ foo-1.0.1-1.f20.src.rpm"""
 
 class PkgStub(object):
     def __init__(self):
+        self.base = dnf.Base()
         self.arch = 'x86_64'
         self.buildtime = 120
         self.description = 'A desc.' * 8
+        self.epoch = 0
+        self.from_system = False
         self.license = 'BSD'
         self.name = 'foobar'
         self.packager = 'Eastford'
@@ -88,23 +89,29 @@ class ArgParseTest(unittest.TestCase):
         opts, _ = repoquery.parse_arguments(['/var/foobar'])
         self.assertIsNone(opts.file)
 
+
 class InfoFormatTest(unittest.TestCase):
     def test_info(self):
         pkg = repoquery.PackageWrapper(PkgStub())
-        self.assertEqual(repoquery.info_format(pkg), EXPECTED_INFO_FORMAT)
+        base = dnf.Base()
+        cli = dnf.cli.cli.Cli(base)
+        self.assertEqual(repoquery.RepoQueryCommand(repoquery.RepoQuery(base, cli)).info_format(PkgStub(), pkg),
+                         EXPECTED_INFO_FORMAT)
 
 
 class FilelistFormatTest(unittest.TestCase):
     def test_filelist(self):
         pkg = repoquery.PackageWrapper(PkgStub())
-        self.assertEqual(repoquery.filelist_format(pkg),
+        self.assertEqual(repoquery.RepoQueryCommand(pkg).filelist_format(pkg),
                          EXPECTED_FILELIST_FORMAT)
+
 
 class SourceRPMFormatTest(unittest.TestCase):
     def test_info(self):
         pkg = repoquery.PackageWrapper(PkgStub())
-        self.assertEqual(repoquery.sourcerpm_format(pkg),
+        self.assertEqual(repoquery.RepoQueryCommand(pkg).sourcerpm_format(pkg),
                          EXPECTED_SOURCERPM_FORMAT)
+
 
 class OutputTest(unittest.TestCase):
     def test_output(self):

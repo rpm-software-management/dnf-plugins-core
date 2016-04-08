@@ -19,6 +19,8 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 from datetime import datetime
+from dnf.cli.format import format_number
+from dnf.i18n import fill_exact_width
 from dnfpluginscore import _
 
 import argparse
@@ -29,25 +31,11 @@ import dnf.subject
 import dnfpluginscore
 import hawkey
 import re
+import time
 
 QFORMAT_DEFAULT = '%{name}-%{epoch}:%{version}-%{release}.%{arch}'
 # matches %[-][dd]{attr}
 QFORMAT_MATCH = re.compile(r'%([-\d]*?){([:\.\w]*?)}')
-
-QUERY_INFO = """\
-Name        : {0.name}
-Version     : {0.version}
-Release     : {0.release}
-Architecture: {0.arch}
-Size        : {0.size}
-License     : {0.license}
-Source RPM  : {0.sourcerpm}
-Build Date  : {0.buildtime}
-Packager    : {0.packager}
-URL         : {0.url}
-Summary     : {0.summary}
-Description :
-{0.description}\n"""
 
 QUERY_TAGS = """
 name, arch, epoch, version, release, reponame (repoid), evr
@@ -55,29 +43,6 @@ installtime, buildtime, size, downloadsize, installsize
 provides, requires, obsoletes, conflicts, sourcerpm
 description, summary, license, url
 """
-
-
-def build_format_fn(opts):
-    if opts.queryinfo:
-        return info_format
-    elif opts.queryfilelist:
-        return filelist_format
-    elif opts.querysourcerpm:
-        return sourcerpm_format
-    else:
-        return rpm2py_format(opts.queryformat).format
-
-
-def info_format(pkg):
-    return QUERY_INFO.format(pkg)
-
-
-def filelist_format(pkg):
-    return pkg.files
-
-
-def sourcerpm_format(pkg):
-    return pkg.sourcerpm
 
 
 def parse_arguments(args):
@@ -218,7 +183,6 @@ class RepoQuery(dnf.Plugin):
 
 
 class RepoQueryCommand(dnf.cli.Command):
-
     """The util command there is extending the dnf command line."""
     aliases = ('repoquery',)
     summary = _('search for packages matching keyword')
@@ -258,6 +222,72 @@ class RepoQueryCommand(dnf.cli.Command):
             demands.available_repos = True
 
         demands.sack_activation = True
+
+    def build_format_fn(self, opts, pkg):
+        po = PackageWrapper(pkg)
+        if opts.queryinfo:
+            return self.info_format(pkg, po)
+        elif opts.queryfilelist:
+            return self.filelist_format(po)
+        elif opts.querysourcerpm:
+            return self.sourcerpm_format(po)
+        else:
+            return rpm2py_format(opts.queryformat).format(po)
+
+    def info_format(self, pkg, po):
+
+        def string_key_val_fill(key, val, output_instance):
+            return output_instance.fmtKeyValFill(
+                fill_exact_width(key, 12, 12) + " : ", val or "") + "\n"
+
+        output_instance = dnf.cli.output.Output(self.base, self.base.conf)
+        yumdb_info = self.base.yumdb.get_package(pkg) if pkg.from_system else {}
+        query_info = ""
+        query_info += string_key_val_fill("Name", po.name, output_instance)
+        query_info += string_key_val_fill("Arch", po.arch, output_instance)
+        if po.epoch != "0":
+            query_info += string_key_val_fill("Epoch", po.epoch, output_instance)
+        query_info += string_key_val_fill("Version", po.version, output_instance)
+        query_info += string_key_val_fill("Release", po.release, output_instance)
+        query_info += string_key_val_fill("Size", format_number(float(po.size)), output_instance)
+        query_info += string_key_val_fill("Source RPM", po.sourcerpm, output_instance)
+        query_info += string_key_val_fill("Repo", po.reponame if pkg.from_system else po.reponame, output_instance)
+        if 'from_repo' in yumdb_info:
+            query_info += string_key_val_fill("From repo", yumdb_info.from_repo, output_instance)
+        if self.base.conf.verbose:
+            query_info += string_key_val_fill("Packager", po.packager, output_instance)
+            query_info += string_key_val_fill("Buildtime", po.buildtime, output_instance)
+            if po.installtime:
+                query_info += string_key_val_fill("Install time", po.installtime, output_instance)
+            if yumdb_info:
+                uid = None
+                if 'installed_by' in yumdb_info:
+                    try:
+                        uid = int(yumdb_info.installed_by)
+                    except ValueError:  # In case int() fails
+                        uid = None
+                query_info += string_key_val_fill(
+                    "Installed by", output_instance._pwd_ui_username(uid), output_instance)
+                uid = None
+                if 'changed_by' in yumdb_info:
+                    try:
+                        uid = int(yumdb_info.changed_by)
+                    except ValueError:  # In case int() fails
+                        uid = None
+                query_info += string_key_val_fill("Changed by", output_instance._pwd_ui_username(uid), output_instance)
+
+        query_info += string_key_val_fill("Summary", po.summary, output_instance)
+        if po.url:
+            query_info += string_key_val_fill("URL", po.url, output_instance)
+        query_info += string_key_val_fill("License", po.license, output_instance)
+        query_info += string_key_val_fill("Description", po.description, output_instance)
+        return query_info
+
+    def filelist_format(self, pkg):
+        return pkg.files
+
+    def sourcerpm_format(self, pkg):
+        return pkg.sourcerpm
 
     def by_all_deps(self, name, query):
         defaultquery = query.filter(name=name)
@@ -361,7 +391,6 @@ class RepoQueryCommand(dnf.cli.Command):
                     tmp_query = self.base.sack.query().filter(nevra=pkg[:-4])
                     pkg_list += tmp_query.run()
             q = self.base.sack.query().filter(pkg=pkg_list)
-        fmt_fn = build_format_fn(self.opts)
         if self.opts.tree:
             if not self.opts.whatrequires and not self.opts.packageatr:
                 raise dnf.exceptions.Error(
@@ -380,9 +409,8 @@ class RepoQueryCommand(dnf.cli.Command):
                     pkgs.add(str(rel))
         else:
             for pkg in q.run():
-                po = PackageWrapper(pkg)
                 try:
-                    pkgs.add(fmt_fn(po))
+                    pkgs.add(self.build_format_fn(self.opts, pkg))
                 except AttributeError as e:
                     # catch that the user has specified attributes
                     # there don't exist on the dnf Package object.
@@ -394,9 +422,8 @@ class RepoQueryCommand(dnf.cli.Command):
             providers = query.filter(provides__glob=list(pkgs))
             pkgs = set()
             for pkg in providers.latest().run():
-                po = PackageWrapper(pkg)
                 try:
-                    pkgs.add(fmt_fn(po))
+                    pkgs.add(self.build_format_fn(self.opts, pkg))
                 except AttributeError as e:
                     # catch that the user has specified attributes
                     # there don't exist on the dnf Package object.
@@ -456,8 +483,7 @@ class PackageWrapper(object):
     @staticmethod
     def _get_timestamp(timestamp):
         if timestamp > 0:
-            dt = datetime.utcfromtimestamp(timestamp)
-            return dt.strftime("%Y-%m-%d %H:%M")
+            return time.strftime("%a %b %d %Y %H:%M:%S %Z", time.localtime(timestamp))
         else:
             return ''
 
