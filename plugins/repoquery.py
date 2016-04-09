@@ -95,9 +95,9 @@ def parse_arguments(args):
     parser.add_argument('-f', '--file', metavar='FILE',
                         help=_('show only results that owns FILE'))
     parser.add_argument('--whatprovides', metavar='REQ',
-                        help=_('show only results there provides REQ'))
+                        help=_('show only results that provide REQ'))
     parser.add_argument('--whatrequires', metavar='REQ',
-                        help=_('show only results there require REQ'))
+                        help=_('show only results that require REQ'))
     parser.add_argument('--whatrecommends', metavar='REQ',
                         help=_('show only results that recommend REQ'))
     parser.add_argument('--whatenhances', metavar='REQ',
