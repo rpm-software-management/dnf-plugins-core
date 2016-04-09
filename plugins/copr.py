@@ -422,11 +422,11 @@ Do you want to continue? [y/N]: """)
             logger.critical(
                 _('Error: ') +
                 _('exactly one parameter to '
-                  'playground command are required'))
+                  'playground command is required'))
             dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
             raise dnf.cli.CliError(
                 _('exactly one parameter to '
-                  'playground command are required'))
+                  'playground command is required'))
         chroot = self._guess_chroot()
         if subcommand == "enable":
             self._cmd_enable(chroot)
