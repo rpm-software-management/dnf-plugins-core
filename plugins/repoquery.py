@@ -27,7 +27,6 @@ import dnf.cli
 import dnf.exceptions
 import dnf.subject
 import dnfpluginscore
-import hawkey
 import re
 
 QFORMAT_DEFAULT = '%{name}-%{epoch}:%{version}-%{release}.%{arch}'
@@ -226,11 +225,9 @@ class RepoQueryCommand(dnf.cli.Command):
 
     @staticmethod
     def by_dep(sack, pattern, query, dep):
-        try:
-            reldep = hawkey.Reldep(sack, pattern)
-        except hawkey.ValueException:
-            return query.filter(empty=True)
-        kwarg = {dep: reldep}
+        if dnf.util.is_glob_pattern(pattern):
+            dep += '__glob'
+        kwarg = {dep: pattern}
         return query.filter(**kwarg)
 
     @staticmethod
