@@ -21,11 +21,18 @@ Core DNF Plugins Release Notes
 
 .. contents::
 
+
+====================
+0.1.20 Release Notes
+====================
+
+Small fixes in COPR plugin, added ``get_reposdir`` function to dnfpluginscore lib.
+
 ====================
 0.1.18 Release Notes
 ====================
 
-Small fixes in COPR plugin, internal improvements.
+Changed COPR server adress to the new one.
 
 ====================
 0.1.17 Release Notes
