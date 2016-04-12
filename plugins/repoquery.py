@@ -238,22 +238,22 @@ class RepoQueryCommand(dnf.cli.Command):
 
         def string_key_val_fill(key, val, output_instance):
             return output_instance.fmtKeyValFill(
-                fill_exact_width(key, 12, 12) + " : ", val or "") + "\n"
+                fill_exact_width(key, 19, 19) + " : ", val or "") + "\n"
 
         output_instance = dnf.cli.output.Output(self.base, self.base.conf)
         yumdb_info = self.base.yumdb.get_package(pkg) if pkg.from_system else {}
         query_info = ""
         query_info += string_key_val_fill("Name", po.name, output_instance)
-        query_info += string_key_val_fill("Arch", po.arch, output_instance)
         if po.epoch != "0":
             query_info += string_key_val_fill("Epoch", po.epoch, output_instance)
         query_info += string_key_val_fill("Version", po.version, output_instance)
         query_info += string_key_val_fill("Release", po.release, output_instance)
+        query_info += string_key_val_fill("Architecture", po.arch, output_instance)
         query_info += string_key_val_fill("Size", format_number(float(po.size)), output_instance)
         query_info += string_key_val_fill("Source RPM", po.sourcerpm, output_instance)
-        query_info += string_key_val_fill("Repo", po.reponame if pkg.from_system else po.reponame, output_instance)
-        if 'from_repo' in yumdb_info:
-            query_info += string_key_val_fill("From repo", yumdb_info.from_repo, output_instance)
+        query_info += string_key_val_fill("Installed from repo" if pkg.from_system else "Available from repo",
+                                          yumdb_info.from_repo if 'from_repo' in yumdb_info else po.reponame,
+                                          output_instance)
         if self.base.conf.verbose:
             query_info += string_key_val_fill("Packager", po.packager, output_instance)
             query_info += string_key_val_fill("Buildtime", po.buildtime, output_instance)

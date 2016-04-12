@@ -26,17 +26,17 @@ import repoquery
 import unittest
 
 EXPECTED_INFO_FORMAT = """\
-Name         : foobar
-Arch         : x86_64
-Version      : 1.0.1
-Release      : 1.f20
-Size         : 100
-Source RPM   : foo-1.0.1-1.f20.src.rpm
-Repo         : @System
-Summary      : it.
-URL          : foorl.net
-License      : BSD
-Description  : A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.\n"""
+Name                : foobar
+Version             : 1.0.1
+Release             : 1.f20
+Architecture        : x86_64
+Size                : 100
+Source RPM          : foo-1.0.1-1.f20.src.rpm
+Available from repo : @System
+Summary             : it.
+URL                 : foorl.net
+License             : BSD
+Description         : A desc.A desc.A desc.A desc.A desc.A desc.A desc.A desc.\n"""
 
 EXPECTED_FILELIST_FORMAT = """\
 /tmp/foobar
