@@ -26,6 +26,7 @@ Synopsis
 --------
 
 ``dnf repoquery [<select-options>] [<query-options>] [<pkg-spec>]``
+
 ``dnf repoquery --querytags``
 
 -----------
@@ -76,7 +77,7 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
 ``--recent``
     Limit the resulting set to packages that were recently edited.
 
-``--repo <repoid>``
+``--repoid <repoid>``
     Limit the resulting set only to packages from repo identified by ``<repoid>``.
     Can be used multiple times with accumulative effect.
 
