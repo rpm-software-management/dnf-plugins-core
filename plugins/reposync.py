@@ -35,17 +35,7 @@ def _pkgdir(intermediate, target):
     return os.path.normpath(os.path.join(cwd, intermediate, target))
 
 
-class RepoSync(dnf.Plugin):
-
-    name = 'reposync'
-
-    def __init__(self, base, cli):
-        super(RepoSync, self).__init__(base, cli)
-        if cli is None:
-            return
-        cli.register_command(RepoSyncCommand)
-
-
+@dnf.plugin.register_command
 class RepoSyncCommand(dnf.cli.Command):
     aliases = ('reposync',)
     summary = _('download all packages from remote repo')
