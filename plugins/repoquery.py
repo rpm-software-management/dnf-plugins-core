@@ -224,13 +224,6 @@ class RepoQueryCommand(dnf.cli.Command):
     usage = _('[OPTIONS] [KEYWORDS]')
 
     @staticmethod
-    def by_dep(sack, pattern, query, dep):
-        if dnf.util.is_glob_pattern(pattern):
-            dep += '__glob'
-        kwarg = {dep: pattern}
-        return query.filter(**kwarg)
-
-    @staticmethod
     def filter_repo_arch(opts, query):
         """Filter query by repoid and arch options"""
         if opts.repo:
@@ -337,17 +330,13 @@ class RepoQueryCommand(dnf.cli.Command):
         elif self.opts.whatrequires:
             q = q.filter(requires__glob=self.opts.whatrequires)
         if self.opts.whatrecommends:
-            q = self.by_dep(self.base.sack, self.opts.whatrecommends, q,
-                            'recommends')
+            q = q.filter(recommends__glob=self.opts.whatrecommends)
         if self.opts.whatenhances:
-            q = self.by_dep(self.base.sack, self.opts.whatenhances, q,
-                            'enhances')
+            q = q.filter(enhances__glob=self.opts.whatenhances)
         if self.opts.whatsupplements:
-            q = self.by_dep(self.base.sack, self.opts.whatsupplements, q,
-                            'supplements')
+            q = q.filter(supplements__glob=self.opts.whatsupplements)
         if self.opts.whatsuggests:
-            q = self.by_dep(self.base.sack, self.opts.whatsuggests, q,
-                            'suggests')
+            q = q.filter(suggests__glob=self.opts.whatsuggests)
         if self.opts.latest_limit:
             q = q.latest(self.opts.latest_limit)
         if self.opts.srpm:
