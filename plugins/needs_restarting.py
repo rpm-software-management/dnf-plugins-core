@@ -162,16 +162,7 @@ class ProcessStart(object):
         return self.boot_time + secs_after_boot
 
 
-class NeedsRestarting(dnf.Plugin):
-    name = 'needs-restarting'
-
-    def __init__(self, base, cli):
-        super(NeedsRestarting, self).__init__(base, cli)
-        if cli is None:
-            return
-        cli.register_command(NeedsRestartingCommand)
-
-
+@dnf.plugin.register_command
 class NeedsRestartingCommand(dnf.cli.Command):
     aliases = ('needs-restarting',)
     summary = _('determine updated binaries that need restarting')

@@ -48,18 +48,7 @@ if PY3:
 else:
     from ConfigParser import ConfigParser
 
-class Copr(dnf.Plugin):
-    """DNF plugin supplying the 'copr' command."""
-
-    name = 'copr'
-
-    def __init__(self, base, cli):
-        """Initialize the plugin instance."""
-        super(Copr, self).__init__(base, cli)
-        if cli is not None:
-            cli.register_command(CoprCommand)
-
-
+@dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
 
@@ -368,18 +357,7 @@ Do you want to continue? [y/N]: """)
             return copr_username
 
 
-class Playground(dnf.Plugin):
-    """DNF plugin supplying the 'playground' command."""
-
-    name = 'playground'
-
-    def __init__(self, base, cli):
-        """Initialize the plugin instance."""
-        super(Playground, self).__init__(base, cli)
-        if cli is not None:
-            cli.register_command(PlaygroundCommand)
-
-
+@dnf.plugin.register_command
 class PlaygroundCommand(CoprCommand):
     """ Playground plugin for DNF """
 

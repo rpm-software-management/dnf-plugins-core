@@ -33,18 +33,7 @@ import os
 import shutil
 
 
-class Download(dnf.Plugin):
-
-    name = 'download'
-
-    def __init__(self, base, cli):
-        super(Download, self).__init__(base, cli)
-        self.base = base
-        self.cli = cli
-        if self.cli is not None:
-            self.cli.register_command(DownloadCommand)
-
-
+@dnf.plugin.register_command
 class DownloadCommand(dnf.cli.Command):
 
     aliases = ['download']

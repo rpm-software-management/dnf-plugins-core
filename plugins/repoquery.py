@@ -98,18 +98,7 @@ def rpm2py_format(queryformat):
     return fmt
 
 
-class RepoQuery(dnf.Plugin):
-
-    name = 'Query'
-
-    def __init__(self, base, cli):
-        super(RepoQuery, self).__init__(base, cli)
-        self.base = base
-        self.cli = cli
-        if self.cli is not None:
-            self.cli.register_command(RepoQueryCommand)
-
-
+@dnf.plugin.register_command
 class RepoQueryCommand(dnf.cli.Command):
 
     """The util command there is extending the dnf command line."""

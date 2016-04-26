@@ -32,14 +32,6 @@ import functools
 import os
 import rpm
 
-class BuildDep(dnf.Plugin):
-
-    name = 'builddep'
-
-    def __init__(self, base, cli):
-        super(BuildDep, self).__init__(base, cli)
-        if cli:
-            cli.register_command(BuildDepCommand)
 
 
 class sink_rpm_logging(object):
@@ -61,6 +53,7 @@ class sink_rpm_logging(object):
         self.sink.close()
 
 
+@dnf.plugin.register_command
 class BuildDepCommand(dnf.cli.Command):
 
     aliases = ('builddep',)

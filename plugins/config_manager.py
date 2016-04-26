@@ -30,18 +30,7 @@ import re
 import shutil
 
 
-class ConfigManager(dnf.Plugin):
-
-    name = 'config-manager'
-
-    def __init__(self, base, cli):
-        super(ConfigManager, self).__init__(base, cli)
-        self.base = base
-        self.cli = cli
-        if self.cli is not None:
-            self.cli.register_command(ConfigManagerCommand)
-
-
+@dnf.plugin.register_command
 class ConfigManagerCommand(dnf.cli.Command):
 
     aliases = ['config-manager']
