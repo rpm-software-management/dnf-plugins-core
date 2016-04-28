@@ -26,23 +26,4 @@ import unittest
 
 
 class DnfPluginCoreLibTest(unittest.TestCase):
-
-    def test_argparse(self):
-        """Test the ArgumentParser."""
-        parser = dnfpluginscore.ArgumentParser('test')
-        parser.add_argument('cmd', nargs=1)
-        parser.add_argument('parms', nargs='*')
-        self.assertEqual(parser.prog, 'dnf test')
-        # test --help-cmd is added
-        self.assertIn('--help-cmd', parser._option_string_actions)
-        # test unknown option
-        with mock.patch('argparse.ArgumentParser.print_help', lambda x: x):
-            self.assertRaises(dnf.exceptions.Error, parser.parse_args,
-                              ['--dummy'])
-        # test --help-cmd is working
-        opts = parser.parse_args(['subcmd', '--help-cmd'])
-        self.assertTrue(opts.help_cmd)
-        # test args
-        opts = parser.parse_args(['subcmd', 'parm1', 'parm2'])
-        self.assertEqual(opts.cmd, ['subcmd'])
-        self.assertEqual(opts.parms, ['parm1', 'parm2'])
+    pass
