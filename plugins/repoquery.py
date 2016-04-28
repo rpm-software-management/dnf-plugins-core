@@ -79,112 +79,6 @@ def sourcerpm_format(pkg):
     return pkg.sourcerpm
 
 
-def parse_arguments(args):
-    # Setup ArgumentParser to handle util
-    parser = dnfpluginscore.ArgumentParser(RepoQueryCommand.aliases[0])
-    parser.add_argument('key', nargs='*',
-                        help=_('the key to search for'))
-    parser.add_argument('--repo', metavar='REPO', action='append',
-                        help=_('show only results from this REPO'))
-    # make --repoid hidden compatibility alias for --repo
-    parser.add_argument('--repoid', dest='repo', action='append',
-                        help=argparse.SUPPRESS)
-    parser.add_argument('--arch', metavar='ARCH',
-                        help=_('show only results from this ARCH'))
-    parser.add_argument('-f', '--file', metavar='FILE',
-                        help=_('show only results that owns FILE'))
-    parser.add_argument('--whatprovides', metavar='REQ',
-                        help=_('show only results that provide REQ'))
-    parser.add_argument('--whatrequires', metavar='REQ',
-                        help=_('show only results that require REQ'))
-    parser.add_argument('--whatrecommends', metavar='REQ',
-                        help=_('show only results that recommend REQ'))
-    parser.add_argument('--whatenhances', metavar='REQ',
-                        help=_('show only results that enhance REQ'))
-    parser.add_argument('--whatsuggests', metavar='REQ',
-                        help=_('show only results that suggest REQ'))
-    parser.add_argument('--whatsupplements', metavar='REQ',
-                        help=_('show only results that supplement REQ'))
-    parser.add_argument("--alldeps", action="store_true",
-                        help="shows results that requires package provides and files")
-    parser.add_argument('--querytags', action='store_true',
-                        help=_('show available tags to use with '
-                               '--queryformat'))
-    parser.add_argument('--resolve', action='store_true',
-                        help=_('resolve capabilities to originating package(s)'))
-    parser.add_argument("--tree", action="store_true",
-                        help=_('show recursive tree for package(s)'))
-    parser.add_argument('--srpm', action='store_true',
-                        help=_('operate on corresponding source RPM'))
-    parser.add_argument("--latest-limit", dest='latest_limit', type=int,
-                         help=_('show N latest packages for a given name.arch'
-                                ' (or latest but N if N is negative)'))
-
-    outform = parser.add_mutually_exclusive_group()
-    outform.add_argument('-i', "--info", dest='queryinfo',
-                         default=False, action='store_true',
-                         help=_('show detailed information about the package'))
-    outform.add_argument('-l', "--list", dest='queryfilelist',
-                         default=False, action='store_true',
-                         help=_('show list of files in the package'))
-    outform.add_argument('-s', "--source", dest='querysourcerpm',
-                         default=False, action='store_true',
-                         help=_('show package source RPM name'))
-    outform.add_argument('--qf', "--queryformat", dest='queryformat',
-                         default=QFORMAT_DEFAULT,
-                         help=_('format for displaying found packages'))
-
-    pkgfilter = parser.add_mutually_exclusive_group()
-    pkgfilter.add_argument("--duplicated", dest='pkgfilter',
-                           const='duplicated', action='store_const',
-                           help=_('limit the query to installed duplicated packages'))
-    pkgfilter.add_argument("--installonly", dest='pkgfilter',
-                           const='installonly', action='store_const',
-                           help=_('limit the query to installed installonly packages'))
-    pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
-                           const='unsatisfied', action='store_const',
-                           help=_('limit the query to installed packages with unsatisfied dependencies'))
-
-    package_atribute = parser.add_mutually_exclusive_group()
-    help_msgs = {
-        'conflicts': _('Display capabilities that the package conflicts with.'),
-        'enhances': _('Display capabilities that the package can enhance.'),
-        'obsoletes': _('Display capabilities that the package obsoletes.'),
-        'provides': _('Display capabilities provided by the package.'),
-        'recommends':  _('Display capabilities that the package recommends.'),
-        'requires':  _('Display capabilities that the package depends on.'),
-        'suggests':  _('Display capabilities that the package suggests.'),
-        'supplements':  _('Display capabilities that the package can supplement.')
-    }
-    for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
-                'requires', 'suggests', 'supplements'):
-        name = '--%s' % arg
-        package_atribute.add_argument(name, dest='packageatr', action='store_const',
-                                      const=arg, help=help_msgs[arg])
-
-    help_list = {
-        'available': _('Display only available packages.'),
-        'installed': _('Display only installed packages.'),
-        'extras': _('Display only packages that are not present in any of available repositories.'),
-        'upgrades': _('Display only packages that provide an upgrade for some already installed package.'),
-        'unneeded': _('Display only packages that can be removed by "dnf autoremove" command.'),
-        'recent': _('Display only recently edited packages')
-    }
-    list_group = parser.add_mutually_exclusive_group()
-    for list_arg in ('available', 'installed', 'extras', 'upgrades', 'unneeded',
-                     'recent'):
-        switch = '--%s' % list_arg
-        list_group.add_argument(switch, dest='list', action='store_const',
-                                const=list_arg, help=help_list[list_arg])
-
-    # make --autoremove hidden compatibility alias for --unneeded
-    list_group.add_argument(
-        '--autoremove', dest='list', action='store_const',
-        const="unneeded", help=argparse.SUPPRESS)
-
-    return parser.parse_args(args), parser
-
-
 def rpm2py_format(queryformat):
     """Convert a rpm like QUERYFMT to an python .format() string."""
     def fmt_repl(matchobj):
@@ -221,7 +115,6 @@ class RepoQueryCommand(dnf.cli.Command):
     """The util command there is extending the dnf command line."""
     aliases = ('repoquery',)
     summary = _('search for packages matching keyword')
-    usage = _('[OPTIONS] [KEYWORDS]')
 
     @staticmethod
     def filter_repo_arch(opts, query):
@@ -233,11 +126,107 @@ class RepoQueryCommand(dnf.cli.Command):
             query = query.filter(arch=archs)
         return query
 
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument('key', nargs='*',
+                            help=_('the key to search for'))
+        parser.add_argument('--arch', metavar='ARCH',
+                            help=_('show only results from this ARCH'))
+        parser.add_argument('-f', '--file', metavar='FILE',
+                            help=_('show only results that owns FILE'))
+        parser.add_argument('--whatprovides', metavar='REQ',
+                            help=_('show only results that provide REQ'))
+        parser.add_argument('--whatrequires', metavar='REQ',
+                            help=_('show only results that require REQ'))
+        parser.add_argument('--whatrecommends', metavar='REQ',
+                            help=_('show only results that recommend REQ'))
+        parser.add_argument('--whatenhances', metavar='REQ',
+                            help=_('show only results that enhance REQ'))
+        parser.add_argument('--whatsuggests', metavar='REQ',
+                            help=_('show only results that suggest REQ'))
+        parser.add_argument('--whatsupplements', metavar='REQ',
+                            help=_('show only results that supplement REQ'))
+        parser.add_argument("--alldeps", action="store_true",
+                            help="shows results that requires package provides and files")
+        parser.add_argument('--querytags', action='store_true',
+                            help=_('show available tags to use with '
+                                   '--queryformat'))
+        parser.add_argument('--resolve', action='store_true',
+                            help=_('resolve capabilities to originating package(s)'))
+        parser.add_argument("--tree", action="store_true",
+                            help=_('show recursive tree for package(s)'))
+        parser.add_argument('--srpm', action='store_true',
+                            help=_('operate on corresponding source RPM'))
+        parser.add_argument("--latest-limit", dest='latest_limit', type=int,
+                             help=_('show N latest packages for a given name.arch'
+                                    ' (or latest but N if N is negative)'))
+
+        outform = parser.add_mutually_exclusive_group()
+        outform.add_argument('-i', "--info", dest='queryinfo',
+                             default=False, action='store_true',
+                             help=_('show detailed information about the package'))
+        outform.add_argument('-l', "--list", dest='queryfilelist',
+                             default=False, action='store_true',
+                             help=_('show list of files in the package'))
+        outform.add_argument('-s', "--source", dest='querysourcerpm',
+                             default=False, action='store_true',
+                             help=_('show package source RPM name'))
+        outform.add_argument('--qf', "--queryformat", dest='queryformat',
+                             default=QFORMAT_DEFAULT,
+                             help=_('format for displaying found packages'))
+
+        pkgfilter = parser.add_mutually_exclusive_group()
+        pkgfilter.add_argument("--duplicated", dest='pkgfilter',
+                               const='duplicated', action='store_const',
+                               help=_('limit the query to installed duplicated packages'))
+        pkgfilter.add_argument("--installonly", dest='pkgfilter',
+                               const='installonly', action='store_const',
+                               help=_('limit the query to installed installonly packages'))
+        pkgfilter.add_argument("--unsatisfied", dest='pkgfilter',
+                               const='unsatisfied', action='store_const',
+                               help=_('limit the query to installed packages with unsatisfied dependencies'))
+
+        package_atribute = parser.add_mutually_exclusive_group()
+        help_msgs = {
+            'conflicts': _('Display capabilities that the package conflicts with.'),
+            'enhances': _('Display capabilities that the package can enhance.'),
+            'obsoletes': _('Display capabilities that the package obsoletes.'),
+            'provides': _('Display capabilities provided by the package.'),
+            'recommends':  _('Display capabilities that the package recommends.'),
+            'requires':  _('Display capabilities that the package depends on.'),
+            'suggests':  _('Display capabilities that the package suggests.'),
+            'supplements':  _('Display capabilities that the package can supplement.')
+        }
+        for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
+                    'requires', 'suggests', 'supplements'):
+            name = '--%s' % arg
+            package_atribute.add_argument(name, dest='packageatr', action='store_const',
+                                          const=arg, help=help_msgs[arg])
+
+        help_list = {
+            'available': _('Display only available packages.'),
+            'installed': _('Display only installed packages.'),
+            'extras': _('Display only packages that are not present in any of available repositories.'),
+            'upgrades': _('Display only packages that provide an upgrade for some already installed package.'),
+            'unneeded': _('Display only packages that can be removed by "dnf autoremove" command.'),
+            'recent': _('Display only recently edited packages')
+        }
+        list_group = parser.add_mutually_exclusive_group()
+        for list_arg in ('available', 'installed', 'extras', 'upgrades', 'unneeded',
+                         'recent'):
+            switch = '--%s' % list_arg
+            list_group.add_argument(switch, dest='list', action='store_const',
+                                    const=list_arg, help=help_list[list_arg])
+
+        # make --autoremove hidden compatibility alias for --unneeded
+        list_group.add_argument(
+            '--autoremove', dest='list', action='store_const',
+            const="unneeded", help=argparse.SUPPRESS)
+
     def configure(self, args):
-        (self.opts, self.parser) = parse_arguments(args)
         demands = self.cli.demands
 
-        if self.opts.help_cmd or self.opts.querytags:
+        if self.opts.querytags:
             return
 
         if self.opts.srpm:
@@ -269,10 +258,6 @@ class RepoQueryCommand(dnf.cli.Command):
             return installonly
 
     def run(self, args):
-        if self.opts.help_cmd:
-            print(self.parser.format_help())
-            return
-
         if self.opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
             print(QUERY_TAGS)
