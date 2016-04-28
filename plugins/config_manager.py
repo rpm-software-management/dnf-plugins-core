@@ -46,43 +46,32 @@ class ConfigManagerCommand(dnf.cli.Command):
 
     aliases = ['config-manager']
     summary = _('manage dnf configuration options and repositories')
-    usage = '[%s] [%s]' % (_('OPTIONS'), _('KEYWORDS'))
 
-    def __init__(self, cli):
-        super(ConfigManagerCommand, self).__init__(cli)
-        self.opts = None
-        self.parser = None
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument(
+            'repo', nargs='*',
+            help=_('repo to modify'))
+        parser.add_argument(
+            '--save', default=False, action='store_true',
+            help=_('save the current options (useful with --setopt)'))
+        parser.add_argument(
+            '--set-enabled', default=False, action='store_true',
+            help=_('enable the specified repos (automatically saves)'))
+        parser.add_argument(
+            '--set-disabled', default=False, action='store_true',
+            help=_('disable the specified repos (automatically saves)'))
+        parser.add_argument(
+            '--add-repo', default=[], action='append', metavar='URL',
+            help=_('add (and enable) the repo from the specified file or url'))
+        parser.add_argument(
+            '--dump', default=False, action='store_true',
+            help=_('print current configuration values to stdout'))
 
     def configure(self, args):
         # setup sack and populate it with enabled repos
         demands = self.cli.demands
         demands.available_repos = True
-
-        self.parser = dnfpluginscore.ArgumentParser(self.aliases[0])
-        self.parser.add_argument(
-            'repo', nargs='*',
-            help=_('repo to modify'))
-        self.parser.add_argument(
-            '--save', default=False, action='store_true',
-            help=_('save the current options (useful with --setopt)'))
-        self.parser.add_argument(
-            '--set-enabled', default=False, action='store_true',
-            help=_('enable the specified repos (automatically saves)'))
-        self.parser.add_argument(
-            '--set-disabled', default=False, action='store_true',
-            help=_('disable the specified repos (automatically saves)'))
-        self.parser.add_argument(
-            '--add-repo', default=[], action='append', metavar='URL',
-            help=_('add (and enable) the repo from the specified file or url'))
-        self.parser.add_argument(
-            '--dump', default=False, action='store_true',
-            help=_('print current configuration values to stdout'))
-
-        self.opts = self.parser.parse_args(args)
-
-        if self.opts.help_cmd:
-            print(self.parser.format_help())
-            return
 
         if (self.opts.save or self.opts.set_enabled or
                 self.opts.set_disabled or self.opts.add_repo):
@@ -92,8 +81,6 @@ class ConfigManagerCommand(dnf.cli.Command):
     def run(self, _args):
         """Execute the util action here."""
 
-        if self.opts.help_cmd:
-            return
         if self.opts.set_enabled and self.opts.set_disabled:
             logger.error(
                 _("Error: Trying to enable and disable repos at the same time."))
