@@ -25,7 +25,7 @@ Synchronize packages of a remote Yum repository to a local directory.
 Synopsis
 --------
 
-``dnf reposync [-p <download-path>] [--repo <repo-id>]...``
+``dnf reposync [-p <download-path>] ...``
 
 -----------
 Description
@@ -40,5 +40,3 @@ Options
 ``-p <download-path>, --download-path=<download-path>``
     Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
 
-``--repo <repoid>``
-    Limit the operation only to the specified repository. Can be used multiple times with accumulative effect.
