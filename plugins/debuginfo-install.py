@@ -59,13 +59,16 @@ class DebuginfoInstallCommand(dnf.cli.Command):
 
     aliases = ("debuginfo-install",)
     summary = _('install debuginfo packages')
-    usage = "[PACKAGE...]"
 
     dbgdone = []
     reqdone = []
     packages = None
     packages_available = None
     packages_installed = None
+
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument('package', nargs='+')
 
     def configure(self, args):
         demands = self.cli.demands
@@ -80,7 +83,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         self.packages_available = self.packages.available()
         self.packages_installed = self.packages.installed()
 
-        for pkgspec in args:
+        for pkgspec in self.opts.package:
             for pkg in sorted(dnf.subject.Subject(pkgspec).get_best_query(
                     self.cli.base.sack).filter(arch__neq='src'), reverse=True):
                 self._di_install(pkg)
