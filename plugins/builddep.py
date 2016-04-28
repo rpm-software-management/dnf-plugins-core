@@ -32,29 +32,6 @@ import os
 import rpm
 
 
-def parse_arguments(args):
-    def macro_def(arg):
-        arglist = arg.split(None, 1) if arg else []
-        if len(arglist) < 2:
-            msg = _("'%s' is not of the format 'MACRO EXPR'") % arg
-            raise dnfpluginscore.argparse.ArgumentTypeError(msg)
-        return arglist
-
-    parser = dnfpluginscore.ArgumentParser(BuildDepCommand.aliases[0])
-    parser.add_argument('packages', nargs='+', metavar='package',
-                        help=_('packages with builddeps to install'))
-    parser.add_argument('-D', '--define', action='append', default=[],
-                        metavar="'MACRO EXPR'", type=macro_def,
-                        help=_('define a macro for spec file parsing'))
-    ptype = parser.add_mutually_exclusive_group()
-    ptype.add_argument('--spec', action='store_true',
-                        help=_('treat commandline arguments as spec files'))
-    ptype.add_argument('--srpm', action='store_true',
-                        help=_('treat commandline arguments as source rpm'))
-
-    return parser.parse_args(args), parser
-
-
 class BuildDep(dnf.Plugin):
 
     name = 'builddep'
@@ -91,10 +68,29 @@ class BuildDepCommand(dnf.cli.Command):
     summary = _(msg)
     usage = _("[PACKAGE|PACKAGE.spec]")
 
-    def __init__(self, args):
-        super(BuildDepCommand, self).__init__(args)
+    def __init__(self, cli):
+        super(BuildDepCommand, self).__init__(cli)
         self.rpm_ts = rpm.TransactionSet()
-        self.opts = None
+
+    @staticmethod
+    def set_argparser(parser):
+        def macro_def(arg):
+            arglist = arg.split(None, 1) if arg else []
+            if len(arglist) < 2:
+                msg = _("'%s' is not of the format 'MACRO EXPR'") % arg
+                raise dnfpluginscore.argparse.ArgumentTypeError(msg)
+            return arglist
+
+        parser.add_argument('packages', nargs='+', metavar='package',
+                            help=_('packages with builddeps to install'))
+        parser.add_argument('-D', '--define', action='append', default=[],
+                            metavar="'MACRO EXPR'", type=macro_def,
+                            help=_('define a macro for spec file parsing'))
+        ptype = parser.add_mutually_exclusive_group()
+        ptype.add_argument('--spec', action='store_true',
+                            help=_('treat commandline arguments as spec files'))
+        ptype.add_argument('--srpm', action='store_true',
+                            help=_('treat commandline arguments as source rpm'))
 
     def configure(self, args):
         demands = self.cli.demands
@@ -102,12 +98,6 @@ class BuildDepCommand(dnf.cli.Command):
         demands.resolving = True
         demands.root_user = True
         demands.sack_activation = True
-
-        (self.opts, parser) = parse_arguments(args)
-
-        if self.opts.help_cmd:
-            print(parser.format_help())
-            return
 
         # enable source repos only if needed
         if not (self.opts.spec or self.opts.srpm):
@@ -120,9 +110,6 @@ class BuildDepCommand(dnf.cli.Command):
 
     @sink_rpm_logging()
     def run(self, args):
-        if self.opts.help_cmd:
-            return
-
         # Push user-supplied macro definitions for spec parsing
         for macro in self.opts.define:
             rpm.addMacro(macro[0], macro[1])
