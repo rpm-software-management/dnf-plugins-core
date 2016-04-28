@@ -87,13 +87,6 @@ def owning_package(sack, fname):
     return None
 
 
-def parse_args(args):
-    parser = dnfpluginscore.ArgumentParser(NeedsRestartingCommand.aliases[0])
-    parser.add_argument('-u', '--useronly', action='store_true',
-                        help=_("only consider this user's processes"))
-    return parser.parse_args(args)
-
-
 def print_cmd(pid):
     cmdline = '/proc/%d/cmdline' % pid
     with open(cmdline) as cmdline_file:
@@ -182,20 +175,23 @@ class NeedsRestarting(dnf.Plugin):
 class NeedsRestartingCommand(dnf.cli.Command):
     aliases = ('needs-restarting',)
     summary = _('determine updated binaries that need restarting')
-    usage = ''
+
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument('-u', '--useronly', action='store_true',
+                        help=_("only consider this user's processes"))
 
     def configure(self, _):
         demands = self.cli.demands
         demands.sack_activation = True
 
     def run(self, args):
-        opts = parse_args(args)
         process_start = ProcessStart()
         owning_pkg_fn = functools.partial(owning_package, self.base.sack)
         owning_pkg_fn = memoize(owning_pkg_fn)
 
         stale_pids = set()
-        uid = os.geteuid() if opts.useronly else None
+        uid = os.geteuid() if self.opts.useronly else None
         for ofile in list_opened_files(uid):
             pkg = owning_pkg_fn(ofile.presumed_name)
             if pkg is None:
