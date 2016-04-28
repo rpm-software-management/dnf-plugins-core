@@ -84,6 +84,13 @@ class CoprCommand(dnf.cli.Command):
   copr search tests
     """)
 
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument('subcommand', nargs=1,
+                            choices=['help', 'enable', 'disable',
+                                     'remove', 'list', 'search'])
+        parser.add_argument('arg', nargs='*')
+
     def configure(self, args):
         raw_config = ConfigParser()
         filepath = os.path.join(os.path.expanduser("~"), ".config", "copr")
@@ -114,27 +121,23 @@ class CoprCommand(dnf.cli.Command):
                 self.chroot_config = [False, False]
 
     def run(self, extcmds):
-        try:
-            subcommand = extcmds[0]
-        except (ValueError, IndexError):
-            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
-            return 0
+        subcommand = self.opts.subcommand[0]
         if subcommand == "help":
-            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
+            self.cli.optparser.print_help(self)
             return 0
         try:
-            project_name = extcmds[1]
+            project_name = self.opts.arg[0]
         except (ValueError, IndexError):
             logger.critical(
                 _('Error: ') +
                 _('exactly two additional parameters to '
                   'copr command are required'))
-            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
+            self.cli.optparser.print_help(self)
             raise dnf.cli.CliError(
                 _('exactly two additional parameters to '
                   'copr command are required'))
         try:
-            chroot = extcmds[2]
+            chroot = self.opts.arg[1]
         except IndexError:
             chroot = self._guess_chroot()
 
@@ -422,18 +425,13 @@ Do you want to continue? [y/N]: """)
         for repo_filename in glob.glob("{}/_playground_*.repo".format(dnfpluginscore.lib.get_reposdir(self))):
             self._remove_repo(repo_filename)
 
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument('subcommand', nargs=1,
+                            choices=['enable', 'disable', 'upgrade'])
+
     def run(self, extcmds):
-        try:
-            subcommand = extcmds[0]
-        except (ValueError, IndexError):
-            logger.critical(
-                _('Error: ') +
-                _('exactly one parameter to '
-                  'playground command is required'))
-            dnf.cli.commands.err_mini_usage(self.cli, self.cli.base.basecmd)
-            raise dnf.cli.CliError(
-                _('exactly one parameter to '
-                  'playground command is required'))
+        subcommand = self.opts.subcommand[0]
         chroot = self._guess_chroot()
         if subcommand == "enable":
             self._cmd_enable(chroot)
