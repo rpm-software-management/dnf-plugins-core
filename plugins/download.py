@@ -49,44 +49,31 @@ class DownloadCommand(dnf.cli.Command):
 
     aliases = ['download']
     summary = _('Download package to current directory')
-    usage = _('PACKAGE...')
 
     def __init__(self, cli):
         super(DownloadCommand, self).__init__(cli)
         self.opts = None
         self.parser = None
 
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument('packages', nargs='+',
+                            help=_('packages to download'))
+        target = parser.add_mutually_exclusive_group()
+        target.add_argument("--source", action='store_true',
+                            help=_('download the src.rpm instead'))
+        target.add_argument("--debuginfo", action='store_true',
+                            help=_('download the -debuginfo package instead'))
+        parser.add_argument('--destdir',
+                            help=_('download path, default is current dir'))
+        parser.add_argument('--resolve', action='store_true',
+                            help=_('resolve and download needed dependencies'))
+
     def configure(self, args):
         # setup sack and populate it with enabled repos
         demands = self.cli.demands
         demands.sack_activation = True
         demands.available_repos = True
-
-        # Setup ArgumentParser to handle util
-        # You must only add options not used by dnf already
-        self.parser = dnfpluginscore.ArgumentParser(self.aliases[0])
-        self.parser.add_argument('packages', nargs='+',
-                                 help=_('packages to download'))
-        target = self.parser.add_mutually_exclusive_group()
-        target.add_argument("--source", action='store_true',
-                             help=_('download the src.rpm instead'))
-        target.add_argument("--debuginfo", action='store_true',
-                             help=_('download the -debuginfo package instead'))
-        self.parser.add_argument(
-            '--destdir',
-            help=_('download path, default is current dir'))
-        self.parser.add_argument(
-            '--resolve', action='store_true',
-            help=_('resolve and download needed dependencies'))
-
-        # parse the options/args
-        # list available options/args on errors & exit
-        self.opts = self.parser.parse_args(args)
-
-        # show util help & exit
-        if self.opts.help_cmd:
-            print(self.parser.format_help())
-            return
 
         if self.opts.source:
             dnfpluginscore.lib.enable_source_repos(self.base.repos)
