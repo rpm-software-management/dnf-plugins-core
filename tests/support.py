@@ -99,6 +99,8 @@ class RepoStub(object):
     def __init__(self, id_):
         """Initialize the repository."""
         self.id = id_
+        self.priority = 99
+        self.cost = 1000
 
     def valid(self):
         """Return a message if the repository is not valid."""
