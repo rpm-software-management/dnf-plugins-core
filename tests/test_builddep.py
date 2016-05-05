@@ -43,29 +43,26 @@ class BuildDepCommandTest(unittest.TestCase):
 
     def test_source(self):
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            self.cmd.configure((SOURCE,))
-            self.cmd.run((SOURCE,))
-            self.assertEqual(base.marked,
-                             ['emacs-extras', 'emacs-goodies >= 100'])
+            support.command_run(self.cmd, [SOURCE])
+            self.assertEqual(set(base.marked),
+                             set(['emacs-extras', 'emacs-goodies >= 100']))
 
     @unittest.skipIf(support.PY3, "rpm.spec not available in Py3")
     def test_spec(self):
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            self.cmd.configure((SPEC,))
-            self.cmd.run((SPEC,))
-            self.assertEqual(base.marked,
-                             ['emacs-extras', 'emacs-goodies >= 100'])
+            support.command_run(self.cmd, [SPEC])
+            self.assertEqual(set(base.marked),
+                             set(['emacs-extras', 'emacs-goodies >= 100']))
 
     @unittest.skipIf(support.PY3, "rpm.spec not available in Py3")
     def test_macro(self):
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            self.cmd.configure(('--define', 'enable_optional_module 1', SPEC,))
-            self.cmd.run(('--define', 'enable_optional_module 1', SPEC,))
-            self.assertEqual(base.marked,
-                             ['emacs-extras', 'emacs-goodies >= 100',
-                              'emacs-module'])
+            support.command_run(self.cmd, ['--define', 'enable_optional_module 1', SPEC])
+            self.assertEqual(set(base.marked),
+                             set(['emacs-extras', 'emacs-goodies >= 100',
+                              'emacs-module']))
 
     def test_configure(self):
         with mock.patch('builddep.BuildDepCommand.base', MockBase()) as base:
-            self.cmd.configure(['tour'])
+            support.command_configure(self.cmd, ['tour'])
             self.assertTrue(self.cmd.cli.demands.available_repos)
