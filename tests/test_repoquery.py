@@ -19,7 +19,7 @@
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
-from tests.support import mock
+from tests.support import command_configure, mock, BaseCliStub, CliStub
 
 import dnf.exceptions
 import repoquery
@@ -67,26 +67,30 @@ class PkgStub(object):
 
 
 class ArgParseTest(unittest.TestCase):
+    def setUp(self):
+        self.cmd = repoquery.RepoQueryCommand(CliStub(BaseCliStub()))
+
     def test_parse(self):
-        opts, _ = repoquery.parse_arguments(['--whatrequires', 'prudence'])
-        self.assertIsNone(opts.whatprovides)
-        self.assertEqual(opts.whatrequires, 'prudence')
-        self.assertEqual(opts.queryformat, repoquery.QFORMAT_DEFAULT)
+        command_configure(self.cmd, ['--whatrequires', 'prudence'])
+        self.assertIsNone(self.cmd.opts.whatprovides)
+        self.assertEqual(self.cmd.opts.whatrequires, 'prudence')
+        self.assertEqual(self.cmd.opts.queryformat, repoquery.QFORMAT_DEFAULT)
 
     @mock.patch('argparse.ArgumentParser.print_help', lambda x: x)
     def test_conflict(self):
-        with self.assertRaises(dnf.exceptions.Error):
-            repoquery.parse_arguments(['--conflicts', '%{name}', '--provides'])
+        with self.assertRaises(SystemExit) as exit:
+            command_configure(self.cmd, ['--conflicts', '%{name}', '--provides'])
+        self.assertEqual(exit.exception.code, 1)
 
     def test_options(self):
         for arg in ('conflicts', 'enhances', 'obsoletes', 'provides', 'recommends',
                     'requires', 'suggests', 'supplements'):
-            opts, _ = repoquery.parse_arguments(['--' + arg])
-            self.assertEqual(opts.packageatr, arg)
+            command_configure(self.cmd, ['--' + arg])
+            self.assertEqual(self.cmd.opts.packageatr, arg)
 
     def test_file(self):
-        opts, _ = repoquery.parse_arguments(['/var/foobar'])
-        self.assertIsNone(opts.file)
+        command_configure(self.cmd, ['/var/foobar'])
+        self.assertIsNone(self.cmd.opts.file)
 
 class InfoFormatTest(unittest.TestCase):
     def test_info(self):
