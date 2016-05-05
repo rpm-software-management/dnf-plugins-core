@@ -70,7 +70,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     def set_argparser(parser):
         parser.add_argument('package', nargs='+')
 
-    def configure(self, args):
+    def configure(self):
         demands = self.cli.demands
         demands.resolving = True
         demands.root_user = True
@@ -78,7 +78,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         demands.available_repos = True
         dnfpluginscore.lib.enable_debug_repos(self.base.repos)
 
-    def run(self, args):
+    def run(self):
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
         self.packages_installed = self.packages.installed()

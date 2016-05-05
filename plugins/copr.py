@@ -90,7 +90,7 @@ class CoprCommand(dnf.cli.Command):
                                      'remove', 'list', 'search'])
         parser.add_argument('arg', nargs='*')
 
-    def configure(self, args):
+    def configure(self):
         raw_config = ConfigParser()
         filepath = os.path.join(os.path.expanduser("~"), ".config", "copr")
         if raw_config.read(filepath):
@@ -121,7 +121,7 @@ class CoprCommand(dnf.cli.Command):
             self.chroot_config = [distribution, releasever]
 
 
-    def run(self, extcmds):
+    def run(self):
         subcommand = self.opts.subcommand[0]
         if subcommand == "help":
             self.cli.optparser.print_help(self)
@@ -423,7 +423,7 @@ Do you want to continue? [y/N]: """)
         parser.add_argument('subcommand', nargs=1,
                             choices=['enable', 'disable', 'upgrade'])
 
-    def run(self, extcmds):
+    def run(self):
         subcommand = self.opts.subcommand[0]
         chroot = self._guess_chroot()
         if subcommand == "enable":

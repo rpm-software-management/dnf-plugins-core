@@ -181,11 +181,11 @@ class NeedsRestartingCommand(dnf.cli.Command):
         parser.add_argument('-u', '--useronly', action='store_true',
                         help=_("only consider this user's processes"))
 
-    def configure(self, _):
+    def configure(self):
         demands = self.cli.demands
         demands.sack_activation = True
 
-    def run(self, args):
+    def run(self):
         process_start = ProcessStart()
         owning_pkg_fn = functools.partial(owning_package, self.base.sack)
         owning_pkg_fn = memoize(owning_pkg_fn)

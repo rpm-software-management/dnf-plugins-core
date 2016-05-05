@@ -223,7 +223,7 @@ class RepoQueryCommand(dnf.cli.Command):
             '--autoremove', dest='list', action='store_const',
             const="unneeded", help=argparse.SUPPRESS)
 
-    def configure(self, args):
+    def configure(self):
         demands = self.cli.demands
 
         if self.opts.querytags:
@@ -257,7 +257,7 @@ class RepoQueryCommand(dnf.cli.Command):
                 provides__glob=self.base.conf.installonlypkgs)
             return installonly
 
-    def run(self, args):
+    def run(self):
         if self.opts.querytags:
             print(_('Available query-tags: use --queryformat ".. %{tag} .."'))
             print(QUERY_TAGS)

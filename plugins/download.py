@@ -69,7 +69,7 @@ class DownloadCommand(dnf.cli.Command):
         parser.add_argument('--resolve', action='store_true',
                             help=_('resolve and download needed dependencies'))
 
-    def configure(self, args):
+    def configure(self):
         # setup sack and populate it with enabled repos
         demands = self.cli.demands
         demands.sack_activation = True
@@ -81,7 +81,7 @@ class DownloadCommand(dnf.cli.Command):
         if self.opts.debuginfo:
             dnfpluginscore.lib.enable_debug_repos(self.base.repos)
 
-    def run(self, args):
+    def run(self):
         """Execute the util action here."""
 
         if self.opts.source:

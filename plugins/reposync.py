@@ -55,7 +55,7 @@ class RepoSyncCommand(dnf.cli.Command):
         parser.add_argument('-p', '--download-path', default='./',
                             help=_('where to store downloaded repositories '), )
 
-    def configure(self, args):
+    def configure(self):
         demands = self.cli.demands
         demands.available_repos = True
         demands.sack_activation = True
@@ -73,7 +73,7 @@ class RepoSyncCommand(dnf.cli.Command):
         for repo in repos.iter_enabled():
             repo.pkgdir = _pkgdir(self.opts.download_path, repo.id)
 
-    def run(self, _):
+    def run(self):
         base = self.base
         pkgs = base.sack.query().available()
         base.download_packages(pkgs, self.base.output.progress)

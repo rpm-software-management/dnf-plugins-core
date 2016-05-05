@@ -68,7 +68,7 @@ class ConfigManagerCommand(dnf.cli.Command):
             '--dump', default=False, action='store_true',
             help=_('print current configuration values to stdout'))
 
-    def configure(self, args):
+    def configure(self):
         # setup sack and populate it with enabled repos
         demands = self.cli.demands
         demands.available_repos = True
@@ -78,7 +78,7 @@ class ConfigManagerCommand(dnf.cli.Command):
             demands.root_user = True
 
 
-    def run(self, _args):
+    def run(self):
         """Execute the util action here."""
 
         if self.opts.set_enabled and self.opts.set_disabled:

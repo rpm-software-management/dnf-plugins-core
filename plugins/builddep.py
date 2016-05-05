@@ -92,7 +92,7 @@ class BuildDepCommand(dnf.cli.Command):
         ptype.add_argument('--srpm', action='store_true',
                             help=_('treat commandline arguments as source rpm'))
 
-    def configure(self, args):
+    def configure(self):
         demands = self.cli.demands
         demands.available_repos = True
         demands.resolving = True
@@ -109,7 +109,7 @@ class BuildDepCommand(dnf.cli.Command):
                     break
 
     @sink_rpm_logging()
-    def run(self, args):
+    def run(self):
         # Push user-supplied macro definitions for spec parsing
         for macro in self.opts.define:
             rpm.addMacro(macro[0], macro[1])
