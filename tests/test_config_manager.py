@@ -17,7 +17,7 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from tests.support import mock, RepoStub
+from tests.support import command_run, mock, RepoStub
 
 import config_manager
 import dnf
@@ -57,9 +57,7 @@ class ConfigManagerCommandTest(unittest.TestCase):
         dnf.pycomp.write_to_file(repofile, REPOCONTENT)
         repofile.close()
 
-        args = ['--add-repo', repofile.name]
-        self.cmd.configure(args)
-        self.cmd.run(args)
+        command_run(self.cmd, ['--add-repo', repofile.name])
 
         installed_repofile = os.path.join(self.cmd.base.conf.reposdir[0],
                                           os.path.basename(repofile.name))
@@ -93,18 +91,14 @@ class ConfigManagerCommandTest(unittest.TestCase):
 
         repocontent = "[%s]\nname=created by dnf config-manager from %s\n" \
                       "baseurl=%s\nenabled=1\n" % (name, long_url, long_url)
-        args = ['--add-repo', long_url]
-        self.cmd.configure(args)
-        self.cmd.run(args)
+        command_run(self.cmd, ['--add-repo', long_url])
         with open(os.path.join(self.cmd.base.conf.reposdir[0], repofile)) as f:
             added = f.read()
 
         self.assertMultiLineEqual(repocontent, added)
 
     def subtest_disable(self, label, fname):
-        args = ['--set-disabled', label]
-        self.cmd.configure(args)
-        self.cmd.run(args)
+        command_run(self.cmd, ['--set-disabled', label])
 
         with open(fname) as f:
             added = f.read()
@@ -112,9 +106,7 @@ class ConfigManagerCommandTest(unittest.TestCase):
         self.assertMultiLineEqual(disabled, added)
 
     def subtest_enable(self, label, fname):
-        args = ['--set-enabled', label]
-        self.cmd.configure(args)
-        self.cmd.run(args)
+        command_run(self.cmd, ['--set-enabled', label])
 
         with open(fname) as f:
             added = f.read()
