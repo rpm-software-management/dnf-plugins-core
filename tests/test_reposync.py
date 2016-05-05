@@ -22,10 +22,14 @@ import reposync
 
 class TestReposyncFunctions(support.TestCase):
     def test_parse_args(self):
+        cli = support.CliStub(support.BaseCliStub())
+        cli.base.repos.add(support.RepoStub('silver'))
+        cli.base.repos.add(support.RepoStub('screen'))
+        cmd = reposync.RepoSyncCommand(cli)
         args = '-p /become/legend --repo=silver --repo=screen'.split()
-        opts = reposync._parse_args(args)
-        self.assertEqual(opts.repo, ['silver', 'screen'])
-        self.assertEqual(opts.download_path, '/become/legend')
+        support.command_configure(cmd, args)
+        self.assertEqual(cmd.opts.repo, ['silver', 'screen'])
+        self.assertEqual(cmd.opts.download_path, '/become/legend')
 
     def test_pkgdir(self):
         self.assertEqual(reposync._pkgdir('/honey/../pie', 'crazy'),
