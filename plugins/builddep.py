@@ -23,14 +23,14 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 from dnfpluginscore import _, logger
 
+import argparse
 import dnf
 import dnf.cli
 import dnf.exceptions
-import dnfpluginscore
+import dnfpluginscore.lib
 import functools
 import os
 import rpm
-
 
 class BuildDep(dnf.Plugin):
 
@@ -78,7 +78,7 @@ class BuildDepCommand(dnf.cli.Command):
             arglist = arg.split(None, 1) if arg else []
             if len(arglist) < 2:
                 msg = _("'%s' is not of the format 'MACRO EXPR'") % arg
-                raise dnfpluginscore.argparse.ArgumentTypeError(msg)
+                raise argparse.ArgumentTypeError(msg)
             return arglist
 
         parser.add_argument('packages', nargs='+', metavar='package',
