@@ -106,7 +106,12 @@ Together with ``<pkg-spec>``, control what packages are displayed in the output.
     Limit the resulting set only to packages that supplement ``<capability>``.
 
 ``--alldeps``
-    This option is stackable with ``--whatrequires`` only. Additionally it adds to the result set all packages requiring the package features.
+    This option is stackable with ``--whatrequires`` only. Additionally it adds to the result set all packages requiring
+    the package features (used as default).
+
+``--nodeps``
+    This option is stackable with ``--whatrequires`` only. Limit the resulting set only to packages that require
+    ``<capability>`` specified by --whatrequires.
 
 ``--srpm``
     Operate on corresponding source RPM.

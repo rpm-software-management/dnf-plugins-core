@@ -96,7 +96,7 @@ def parse_arguments(args):
     parser.add_argument('--whatprovides', metavar='REQ',
                         help=_('show only results that provide REQ'))
     parser.add_argument('--whatrequires', metavar='REQ',
-                        help=_('show only results that require REQ'))
+                        help=_('shows results that requires package provides and files REQ'))
     parser.add_argument('--whatrecommends', metavar='REQ',
                         help=_('show only results that recommend REQ'))
     parser.add_argument('--whatenhances', metavar='REQ',
@@ -105,8 +105,11 @@ def parse_arguments(args):
                         help=_('show only results that suggest REQ'))
     parser.add_argument('--whatsupplements', metavar='REQ',
                         help=_('show only results that supplement REQ'))
-    parser.add_argument("--alldeps", action="store_true",
-                        help="shows results that requires package provides and files")
+    whatrequiresform = parser.add_mutually_exclusive_group()
+    whatrequiresform.add_argument("--alldeps", action="store_true",
+                        help=_("check non-explicit dependencies (files and Provides); default"))
+    whatrequiresform.add_argument("--exactdeps", action="store_true",
+                        help=_('check dependencies exactly as given, opposite of --alldeps'))
     parser.add_argument('--querytags', action='store_true',
                         help=_('show available tags to use with '
                                '--queryformat'))
@@ -321,14 +324,18 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.filter(file=self.opts.file)
         if self.opts.whatprovides:
             q = q.filter(provides__glob=[self.opts.whatprovides])
-        if self.opts.alldeps:
+        if self.opts.alldeps or self.opts.exactdeps:
             if not self.opts.whatrequires:
                 raise dnf.exceptions.Error(
-                    _("--alldeps requires --whatrequires option.\n"
-                      "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n\n"))
-            q = self.by_all_deps(self.opts.whatrequires, q)
+                    _("{} requires --whatrequires option.\n"
+                      "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n\n".format(
+                        '--alldeps' if self.opts.alldeps else '--exactdeps')))
+            if self.opts.alldeps:
+                q = self.by_all_deps(self.opts.whatrequires, q)
+            else:
+                q = q.filter(requires__glob=self.opts.whatrequires)
         elif self.opts.whatrequires:
-            q = q.filter(requires__glob=self.opts.whatrequires)
+            q = self.by_all_deps(self.opts.whatrequires, q)
         if self.opts.whatrecommends:
             q = q.filter(recommends__glob=self.opts.whatrecommends)
         if self.opts.whatenhances:
