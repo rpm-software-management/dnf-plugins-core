@@ -291,7 +291,7 @@ class RepoQueryCommand(dnf.cli.Command):
         if self.opts.list == "recent":
             q.recent(self.base.conf.recent)
         elif self.opts.list == "unneeded":
-            q = q.unneeded(self.base.sack, self.base.yumdb)
+            q = q.unneeded(self.base.sack, self.base._yumdb)
         elif self.opts.list:
             q = getattr(q, self.opts.list)()
 
