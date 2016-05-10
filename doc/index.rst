@@ -44,6 +44,9 @@ See Also
 
 * `DNF project homepage <https://github.com/rpm-software-management/dnf/>`_
 * `Core DNF Plugins project homepage <https://github.com/rpm-software-management/dnf-plugins-core/>`_
+* `DNF documentation <https://dnf.readthedocs.org/en/latest/>`_
+* `DNF Plugins Extras documentation <https://dnf-plugins-extras.readthedocs.org/en/latest/>`_
+* `Hawkey documentation <https://hawkey.readthedocs.org/en/latest/>`_
 
 ==================
 Indices and tables
@@ -52,3 +55,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
