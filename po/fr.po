@@ -1,188 +1,191 @@
-# Marco Aurélio Krause <ouesten@me.com>, 2015. #zanata
+# Charles-Antoine Couret <renault@fedoraproject.org>, 2016. #zanata
+# Jibec <jean-baptiste@holcroft.fr>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-12 22:22+0200\n"
-"PO-Revision-Date: 2015-09-21 04:42-0400\n"
-"Last-Translator: Marco Aurélio Krause <ouesten@me.com>\n"
-"Language-Team: Portuguese (Brazil)\n"
+"PO-Revision-Date: 2016-04-05 04:18-0400\n"
+"Last-Translator: Jibec <jean-baptiste@holcroft.fr>\n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt-BR\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Zanata 3.8.4\n"
 
 #: ../plugins/debuginfo-install.py:61
 msgid "install debuginfo packages"
-msgstr ""
+msgstr "installe les paquets debuginfo"
 
 #: ../plugins/needs_restarting.py:93
 msgid "only consider this user's processes"
-msgstr ""
+msgstr "considère uniquement les processus de cet utilisateur"
 
 #: ../plugins/needs_restarting.py:184
 msgid "determine updated binaries that need restarting"
-msgstr ""
+msgstr "détermine les binaires mis à jour qui nécessitent un redémarrage"
 
 #: ../plugins/builddep.py:39
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr ""
+msgstr "« %s » n'est pas du format « MACRO EXPR »"
 
 #: ../plugins/builddep.py:45
 msgid "packages with builddeps to install"
-msgstr ""
+msgstr "paquets avec dépendances de construction à installer"
 
 #: ../plugins/builddep.py:48
 msgid "define a macro for spec file parsing"
-msgstr ""
+msgstr "définit une macro pour l'interprétation du fichier spec"
 
 #: ../plugins/builddep.py:51
 msgid "treat commandline arguments as spec files"
-msgstr ""
+msgstr "traite les arguments en ligne de commande comme des fichiers spec"
 
 #: ../plugins/builddep.py:53
 msgid "treat commandline arguments as source rpm"
-msgstr ""
+msgstr "traite les arguments en ligne de commande comme des sources rpm"
 
 #: ../plugins/builddep.py:92
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr ""
+msgstr "[PAQUET|PAQUET.spec]"
 
 #: ../plugins/builddep.py:152
 msgid "Some packages could not be found."
-msgstr ""
+msgstr "Certains paquets n'ont pu être trouvés."
 
 #: ../plugins/builddep.py:162
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr ""
+msgstr "Aucun paquet correspondant à installer : « %s »"
 
 #: ../plugins/builddep.py:179
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
+msgstr "Échec d'ouverture : « %s », n'est pas un fichier source rpm valide."
 
 #: ../plugins/builddep.py:192 ../plugins/builddep.py:207
 #: ../plugins/builddep.py:225
 msgid "Not all dependencies satisfied"
-msgstr "Nem todas as dependências satisfeitas"
+msgstr "Toutes les dépendances ne sont pas satisfaites"
 
 #: ../plugins/builddep.py:199
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file."
-msgstr "Falha ao abrir: '%s', não é um arquivo spec válido."
+msgstr "Impossible d'ouvrir « %s », pas un fichier spec valide"
 
 #: ../plugins/builddep.py:218
 #, python-format
 msgid "no package matched: %s"
-msgstr ""
+msgstr "aucun paquet ne correspond à : %s"
 
 #: ../plugins/config_manager.py:48
 msgid "manage dnf configuration options and repositories"
-msgstr ""
+msgstr "gestion de la configuration et des dépôts dnf"
 
 #: ../plugins/config_manager.py:49
 msgid "OPTIONS"
-msgstr ""
+msgstr "OPTIONS"
 
 #: ../plugins/config_manager.py:49
 msgid "KEYWORDS"
-msgstr ""
+msgstr "MOTS CLÉS"
 
 #: ../plugins/config_manager.py:64
 msgid "repo to modify"
-msgstr ""
+msgstr "dépôt à modifier"
 
 #: ../plugins/config_manager.py:67
 msgid "save the current options (useful with --setopt)"
-msgstr ""
+msgstr "enregistrer les options actuelles (utile avec --setopt)"
 
 #: ../plugins/config_manager.py:70
 msgid "enable the specified repos (automatically saves)"
-msgstr ""
+msgstr "active les dépôts indiqués (rend la modification permanente)"
 
 #: ../plugins/config_manager.py:73
 msgid "disable the specified repos (automatically saves)"
-msgstr ""
+msgstr "désactive les dépôts indiqués (rend la modification permanente)"
 
 #: ../plugins/config_manager.py:76
 msgid "add (and enable) the repo from the specified file or url"
-msgstr ""
+msgstr "ajoute (et active) le dépôt à partir du fichier ou de l'url indiqué"
 
 #: ../plugins/config_manager.py:79
 msgid "print current configuration values to stdout"
 msgstr ""
+"affiche les valeurs de la configuration actuelle sur la sortie strandard"
 
 #: ../plugins/config_manager.py:99
 msgid "Error: Trying to enable and disable repos at the same time."
 msgstr ""
+"Erreur : tentative d'activation et de désactivation simultanée de dépôts."
 
 #: ../plugins/config_manager.py:102
 msgid "Error: Trying to enable already enabled repos."
-msgstr ""
+msgstr "Erreur : tentative d'activation de dépôts déjà activés."
 
 #: ../plugins/config_manager.py:139
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr ""
+msgstr "Aucun dépôt correspondant à modifier : %s."
 
 #: ../plugins/config_manager.py:170
 #, python-format
 msgid "Adding repo from: %s"
-msgstr ""
+msgstr "Ajout du dépôt depuis : %s"
 
 #: ../plugins/config_manager.py:200
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr ""
+msgstr "Sauvegarde impossible du dépôt dans le fichier du dépôt %s : %s"
 
 #: ../plugins/download.py:51
 msgid "Download package to current directory"
-msgstr ""
+msgstr "Téléchargement du paquet dans le répertoire courant"
 
 #: ../plugins/download.py:52
 msgid "PACKAGE..."
-msgstr ""
+msgstr "PAQUET ..."
 
 #: ../plugins/download.py:69
 msgid "packages to download"
-msgstr ""
+msgstr "paquets à télécharger"
 
 #: ../plugins/download.py:72
 msgid "download the src.rpm instead"
-msgstr ""
+msgstr "télécharge plutôt le src.rpm"
 
 #: ../plugins/download.py:74
 msgid "download the -debuginfo package instead"
-msgstr ""
+msgstr "télécharge plutôt le paquet -debuginfo"
 
 #: ../plugins/download.py:77
 msgid "download path, default is current dir"
-msgstr ""
+msgstr "chemin d'accès du téléchargement, dossier courant par défaut"
 
 #: ../plugins/download.py:80
 msgid "resolve and download needed dependencies"
-msgstr ""
+msgstr "résout et télécharge les dépendances nécessaires"
 
 #: ../plugins/download.py:171
 msgid "Exiting due to strict setting."
-msgstr ""
+msgstr "Fin du programme suite au paramétrage stricte."
 
 #: ../plugins/download.py:188
 msgid "Error in resolve"
-msgstr ""
+msgstr "Erreur dans la résolution"
 
 #: ../plugins/download.py:203
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr ""
+msgstr "Aucune source définie pour %s"
 
 #: ../plugins/download.py:217 ../plugins/download.py:231
 msgid "No package "
-msgstr ""
+msgstr "Aucun paquet "
 
 #: ../plugins/download.py:217 ../plugins/download.py:231
 msgid " available."
@@ -192,37 +195,37 @@ msgstr ""
 #, python-format
 msgid ""
 "The operation would result in removing the following protected packages: %s."
-msgstr ""
+msgstr "L'opération aboutira au retrait des paquets protégés suivants : %s."
 
 #: ../plugins/protected_packages.py:32
 #, python-format
 msgid "The operation would result in removing the booted kernel: %s."
-msgstr ""
+msgstr "L'opération aboutira au retrait du noyau actuellement démarré : %s."
 
 #: ../plugins/dnfpluginscore/lib.py:125
 #, python-format
 msgid "enabling %s repository"
-msgstr ""
+msgstr "activation du dépôt %s"
 
 #: ../plugins/dnfpluginscore/__init__.py:44
 msgid "show this help about this tool"
-msgstr ""
+msgstr "montre cette aide à propos de cet outil"
 
 #: ../plugins/repoquery.py:86
 msgid "the key to search for"
-msgstr ""
+msgstr "la clef à chercher"
 
 #: ../plugins/repoquery.py:88
 msgid "show only results from this REPO"
-msgstr "mostrar apenas os resultados deste REPO"
+msgstr "montre uniquement les résultats de ce dépôt (REPO)"
 
 #: ../plugins/repoquery.py:93
 msgid "show only results from this ARCH"
-msgstr "mostrar apenas os resultados desta ARCH"
+msgstr "montre uniquement les résultats de cette architecture (ARCH)"
 
 #: ../plugins/repoquery.py:95
 msgid "show only results that owns FILE"
-msgstr ""
+msgstr "montre uniquement les résultats qui possèdent FILE"
 
 #: ../plugins/repoquery.py:97
 msgid "show only results that provide REQ"
@@ -234,143 +237,150 @@ msgstr ""
 
 #: ../plugins/repoquery.py:101
 msgid "show only results that recommend REQ"
-msgstr ""
+msgstr "montre uniquement les résultats qui recommandent REQ"
 
 #: ../plugins/repoquery.py:103
 msgid "show only results that enhance REQ"
-msgstr ""
+msgstr "montre uniquement les résultats qui améliorent REQ"
 
 #: ../plugins/repoquery.py:105
 msgid "show only results that suggest REQ"
-msgstr ""
+msgstr "montre uniquement les résultats qui suggèrent REQ"
 
 #: ../plugins/repoquery.py:107
 msgid "show only results that supplement REQ"
-msgstr ""
+msgstr "montre uniquement les résultats qui complètent REQ"
 
 #: ../plugins/repoquery.py:111
 msgid "show available tags to use with --queryformat"
-msgstr ""
+msgstr "montre les tags disponibles à utiliser avec --queryformat"
 
 #: ../plugins/repoquery.py:114
 msgid "resolve capabilities to originating package(s)"
-msgstr ""
+msgstr "résout les fournitures aux paquets d'origine"
 
 #: ../plugins/repoquery.py:116
 msgid "show recursive tree for package(s)"
-msgstr ""
+msgstr "affiche un arbre récursif pour les paquets"
 
 #: ../plugins/repoquery.py:118
 msgid "operate on corresponding source RPM"
-msgstr ""
+msgstr "opère sur les RPM sources correspondants"
 
 #: ../plugins/repoquery.py:120
 msgid ""
 "show N latest packages for a given name.arch (or latest but N if N is "
 "negative)"
 msgstr ""
+"montre les N derniers paquets pour un nom.arch donné (ou le dernier sauf N "
+"si N est négatif)"
 
 #: ../plugins/repoquery.py:126
 msgid "show detailed information about the package"
-msgstr "mostrar informações detalhadas sobre o pacote"
+msgstr "montre les informations détaillées à propos du paquet"
 
 #: ../plugins/repoquery.py:129
 msgid "show list of files in the package"
-msgstr "mostrar lista de arquivos do pacote"
+msgstr "montre la liste des fichiers du paquet"
 
 #: ../plugins/repoquery.py:132
 msgid "show package source RPM name"
-msgstr ""
+msgstr "montre le nom RPM du paquet source"
 
 #: ../plugins/repoquery.py:135
 msgid "format for displaying found packages"
-msgstr ""
+msgstr "format d'affichage des paquets trouvés"
 
 #: ../plugins/repoquery.py:140
 msgid "limit the query to installed duplicated packages"
-msgstr "limitar a consulta para os pacotes duplicados instalados"
+msgstr "limite la requête aux paquets dupliqués installés"
 
 #: ../plugins/repoquery.py:143
 msgid "limit the query to installed installonly packages"
-msgstr "limitar a consulta para apenas os pacotes instalados"
+msgstr "limite la requête aux paquets installés « installonly »"
 
 #: ../plugins/repoquery.py:146
 msgid "limit the query to installed packages with unsatisfied dependencies"
 msgstr ""
-"limitar a consulta para os pacotes instalados com dependências não "
-"satisfeitas"
+"limite la requête aux paquets installés avec des dépendances non satisfaites"
 
 #: ../plugins/repoquery.py:150
 msgid "Display capabilities that the package conflicts with."
-msgstr "mostrar capacidades para o pacote entra em conflito com."
+msgstr "Affiche les fournitures avec lesquelles le paquet est en conflit."
 
 #: ../plugins/repoquery.py:151
 msgid "Display capabilities that the package can enhance."
-msgstr ""
+msgstr "Affiche les fournitures que le paquet est capable d'améliorer."
 
 #: ../plugins/repoquery.py:152
 msgid "Display capabilities that the package obsoletes."
-msgstr ""
+msgstr "Affiche les fournitures que le paquet rend obsolètes."
 
 #: ../plugins/repoquery.py:153
 msgid "Display capabilities provided by the package."
-msgstr ""
+msgstr "Affiche les fournitures que le paquet fournit."
 
 #: ../plugins/repoquery.py:154
 msgid "Display capabilities that the package recommends."
-msgstr ""
+msgstr "Affiche les fournitures que le paquet recommande."
 
 #: ../plugins/repoquery.py:155
 msgid "Display capabilities that the package depends on."
-msgstr ""
+msgstr "Affiche les fournitures dont le paquet dépend."
 
 #: ../plugins/repoquery.py:156
 msgid "Display capabilities that the package suggests."
-msgstr ""
+msgstr "Affiche les fournitures suggérées par le paquet."
 
 #: ../plugins/repoquery.py:157
 msgid "Display capabilities that the package can supplement."
-msgstr ""
+msgstr "Affiche les fournitures que le paquet peut compléter."
 
 #: ../plugins/repoquery.py:166
 msgid "Display only available packages."
-msgstr ""
+msgstr "N'affiche que les paquets disponibles."
 
 #: ../plugins/repoquery.py:167
 msgid "Display only installed packages."
-msgstr ""
+msgstr "N'affiche que les paquets installés."
 
 #: ../plugins/repoquery.py:168
 msgid ""
 "Display only packages that are not present in any of available repositories."
 msgstr ""
+"N'affiche que les paquets qui ne sont présents dans aucun des dépôts "
+"disponibles."
 
 #: ../plugins/repoquery.py:169
 msgid ""
 "Display only packages that provide an upgrade for some already installed "
 "package."
 msgstr ""
+"N'affiche que les paquets qui fournissent une montée en version pour un "
+"paquet déjà installé."
 
 #: ../plugins/repoquery.py:170
 msgid "Display only packages that can be removed by \"dnf autoremove\" command."
 msgstr ""
+"N'affiche que les paquets qui peuvent être retirés par la commande « dnf "
+"autoremove »."
 
 #: ../plugins/repoquery.py:171
 msgid "Display only recently edited packages"
-msgstr ""
+msgstr "N'affiche que les paquets édités récemment."
 
 #: ../plugins/repoquery.py:223
 msgid "search for packages matching keyword"
-msgstr ""
+msgstr "recherche les paquets qui correspondent au mot clé"
 
 #: ../plugins/repoquery.py:224
 msgid "[OPTIONS] [KEYWORDS]"
-msgstr ""
+msgstr "[OPTIONS] [MOTS CLÉS]"
 
 #: ../plugins/repoquery.py:277
 #, python-brace-format
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
-msgstr ""
+msgstr "Balises de requêtes disponibles : utiliser --queryformat \"..%{tag}..\""
 
 #: ../plugins/repoquery.py:327
 msgid ""
@@ -378,6 +388,9 @@ msgid ""
 "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n"
 "\n"
 msgstr ""
+"options --alldeps requiert l'option --whatrequires.\n"
+"utilisation : dnf repoquery [--whatrequires] [key] [--alldeps]\n"
+"\n"
 
 #: ../plugins/repoquery.py:354
 msgid ""
@@ -387,22 +400,27 @@ msgid ""
 "description:\n"
 "  For the given packages print a tree of the packages."
 msgstr ""
+"Aucun commutateur spécifié\n"
+"utilisation : dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
+"\n"
+"description :\n"
+"   Imprime un arbre des paquets pour les paquets donnés."
 
 #: ../plugins/noroot.py:28 ../plugins/copr.py:263
 msgid "This command has to be run under the root user."
-msgstr ""
+msgstr "Cette commande requiert les privilèges du super utilisateur."
 
 #: ../plugins/copr.py:37
 msgid "yes"
-msgstr "sim"
+msgstr "oui"
 
 #: ../plugins/copr.py:37
 msgid "y"
-msgstr "s"
+msgstr "o"
 
 #: ../plugins/copr.py:38
 msgid "no"
-msgstr "não"
+msgstr "non"
 
 #: ../plugins/copr.py:38
 msgid "n"
@@ -410,7 +428,7 @@ msgstr "n"
 
 #: ../plugins/copr.py:69
 msgid "Interact with Copr repositories."
-msgstr "Interagir com repositórios COPR."
+msgstr "Interagit avec les dépôts Copr."
 
 #: ../plugins/copr.py:70
 msgid ""
@@ -430,76 +448,95 @@ msgid ""
 "  copr search tests\n"
 "    "
 msgstr ""
+"\n"
+"  enable nom/projet [chroot]\n"
+"  disable nom/projet\n"
+"  remove nom/projet\n"
+"  list nom\n"
+"  search projet\n"
+"\n"
+"  Exemples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
 
 #: ../plugins/copr.py:95
 msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr ""
+msgstr "Attention : nous utilisons une URL Copr non standard '{}'."
 
 #: ../plugins/copr.py:130 ../plugins/copr.py:154 ../plugins/copr.py:423
 msgid "Error: "
-msgstr "Erro: "
+msgstr "Erreur : "
 
 #: ../plugins/copr.py:131 ../plugins/copr.py:135
 msgid "exactly two additional parameters to copr command are required"
-msgstr ""
-"são necessários exatamente dois parâmetros adicionais para o comando copr"
+msgstr "la commande copr requiert exactement deux paramètres additionnels"
 
 #: ../plugins/copr.py:155
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
+"utilisez le  format `copr_username/copr_projectname` pour faire référence au"
+" projet copr"
 
 #: ../plugins/copr.py:157
 msgid "bad copr project format"
-msgstr ""
+msgstr "mauvais format de projet  copr"
 
 #: ../plugins/copr.py:178
 msgid "Repository successfully enabled."
-msgstr "Repositório ativado com êxito."
+msgstr "Activation du dépôt réussie."
 
 #: ../plugins/copr.py:182
 msgid "Repository successfully disabled."
-msgstr "Repositório desativado com êxito."
+msgstr "Désactivation du dépôt réussie."
 
 #: ../plugins/copr.py:186
 msgid "Repository successfully removed."
-msgstr ""
+msgstr "Suppression du dépôt réussie."
 
 #: ../plugins/copr.py:190 ../plugins/copr.py:443
 msgid "Unknown subcommand {}."
-msgstr ""
+msgstr "Sous-commande inconnue {}."
 
 #: ../plugins/copr.py:200
 msgid "Can't parse repositories for username '{}'."
-msgstr "Não é possível analisar repositórios para o username '{}'."
+msgstr ""
+"Ne peut analyser les dépôts pour y chercher le nom d'utilisateur '{}'."
 
 #: ../plugins/copr.py:203
 msgid "List of {} coprs"
-msgstr "Lista de {} coprs"
+msgstr "Liste de  {} coprs"
 
 #: ../plugins/copr.py:211
 msgid "No description given"
-msgstr "Nenhuma descrição dada"
+msgstr "Aucune description fournie"
 
 #: ../plugins/copr.py:223
 msgid "Can't parse search for '{}'."
-msgstr ""
+msgstr "Impossible d'analyser la recherche pour '{}'."
 
 #: ../plugins/copr.py:226
 msgid "Matched: {}"
-msgstr ""
+msgstr "Correspondance : {}"
 
 #: ../plugins/copr.py:234
 msgid "No description given."
-msgstr "Nenhuma descrição dada."
+msgstr "Pas de description fournie."
 
 #: ../plugins/copr.py:247 ../plugins/copr.py:256
 msgid "Safe and good answer. Exiting."
-msgstr ""
+msgstr "Réponse sûre et exacte. Fin."
 
 #: ../plugins/copr.py:307
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
+"Ce dépôt ne contient pas encore d'exécutables vous ne pouvez donc pas "
+"l'activer."
 
 #: ../plugins/copr.py:310
 msgid "Such repository does not exist."
@@ -507,15 +544,15 @@ msgstr ""
 
 #: ../plugins/copr.py:331
 msgid "Failed to disable copr repo {}/{}"
-msgstr ""
+msgstr "Échec de la désactivation du  dépôt copr {}/{}"
 
 #: ../plugins/copr.py:344 ../plugins/copr.py:392
 msgid "Unknown response from server."
-msgstr ""
+msgstr "Réponse inconnue du serveur."
 
 #: ../plugins/copr.py:377
 msgid "Interact with Playground repository."
-msgstr ""
+msgstr "Interagit avec le dépôt Playground."
 
 #: ../plugins/copr.py:424 ../plugins/copr.py:428
 msgid "exactly one parameter to playground command is required"
@@ -523,24 +560,24 @@ msgstr ""
 
 #: ../plugins/copr.py:433
 msgid "Playground repositories successfully enabled."
-msgstr ""
+msgstr "Activation des  dépôts Playground réussie."
 
 #: ../plugins/copr.py:436
 msgid "Playground repositories successfully disabled."
-msgstr ""
+msgstr "Désactivation des dépôts Playground réussie."
 
 #: ../plugins/copr.py:440
 msgid "Playground repositories successfully updated."
-msgstr ""
+msgstr "Mise à jour des dépôts Playground réussie."
 
 #: ../plugins/reposync.py:37
 msgid "where to store downloaded repositories "
-msgstr ""
+msgstr "là où stocker les dépôts téléchargés "
 
 #: ../plugins/reposync.py:39
 msgid "repository to download"
-msgstr ""
+msgstr "dépôt à télécharger"
 
 #: ../plugins/reposync.py:64
 msgid "download all packages from remote repo"
-msgstr ""
+msgstr "télécharge tous les paquets depuis le dépôt distant"

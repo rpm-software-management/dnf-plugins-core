@@ -1,10 +1,11 @@
 # Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2015. #zanata
+# Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 15:47+0100\n"
-"PO-Revision-Date: 2015-10-13 09:00-0400\n"
+"POT-Creation-Date: 2016-05-12 22:22+0200\n"
+"PO-Revision-Date: 2016-05-01 06:18-0400\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -12,9 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Zanata 3.7.3\n"
+"X-Generator: Zanata 3.8.4\n"
 
-#: ../plugins/debuginfo-install.py:45
+#: ../plugins/debuginfo-install.py:61
 msgid "install debuginfo packages"
 msgstr ""
 
@@ -134,20 +135,19 @@ msgstr ""
 msgid "No matching repo to modify: %s."
 msgstr ""
 
-#: ../plugins/config_manager.py:178
+#: ../plugins/config_manager.py:170
 #, python-format
 msgid "Adding repo from: %s"
 msgstr ""
 
-#: ../plugins/config_manager.py:208
+#: ../plugins/config_manager.py:200
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr ""
 
 #: ../plugins/download.py:51
-#, fuzzy
 msgid "Download package to current directory"
-msgstr "現在のディレクトリにパッケージをダウンロード"
+msgstr "現在のディレクトリにパッケージをダウンロードする"
 
 #: ../plugins/download.py:52
 msgid "PACKAGE..."
@@ -190,18 +190,22 @@ msgstr ""
 msgid "No package "
 msgstr ""
 
+#: ../plugins/download.py:217 ../plugins/download.py:231
+msgid " available."
+msgstr ""
+
 #: ../plugins/protected_packages.py:30
 #, python-format
 msgid ""
 "The operation would result in removing the following protected packages: %s."
-msgstr ""
+msgstr "この操作は以下の保護パッケージを削除することになります: %s."
 
 #: ../plugins/protected_packages.py:32
 #, python-format
 msgid "The operation would result in removing the booted kernel: %s."
 msgstr ""
 
-#: ../plugins/dnfpluginscore/lib.py:109
+#: ../plugins/dnfpluginscore/lib.py:125
 #, python-format
 msgid "enabling %s repository"
 msgstr ""
@@ -211,179 +215,179 @@ msgstr ""
 msgid "show this help about this tool"
 msgstr "このツールについてのヘルプを表示"
 
-#: ../plugins/repoquery.py:87
+#: ../plugins/repoquery.py:86
 msgid "the key to search for"
 msgstr ""
 
-#: ../plugins/repoquery.py:89
+#: ../plugins/repoquery.py:88
 msgid "show only results from this REPO"
 msgstr ""
 
-#: ../plugins/repoquery.py:94
+#: ../plugins/repoquery.py:93
 msgid "show only results from this ARCH"
 msgstr ""
 
-#: ../plugins/repoquery.py:96
+#: ../plugins/repoquery.py:95
 msgid "show only results that owns FILE"
 msgstr ""
 
-#: ../plugins/repoquery.py:98
-msgid "show only results there provides REQ"
+#: ../plugins/repoquery.py:97
+msgid "show only results that provide REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:100
-msgid "show only results there require REQ"
+#: ../plugins/repoquery.py:99
+msgid "show only results that require REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:102
+#: ../plugins/repoquery.py:101
 msgid "show only results that recommend REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:104
+#: ../plugins/repoquery.py:103
 msgid "show only results that enhance REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:106
+#: ../plugins/repoquery.py:105
 msgid "show only results that suggest REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:108
+#: ../plugins/repoquery.py:107
 msgid "show only results that supplement REQ"
 msgstr ""
 
-#: ../plugins/repoquery.py:112
+#: ../plugins/repoquery.py:111
 msgid "show available tags to use with --queryformat"
 msgstr ""
 
-#: ../plugins/repoquery.py:115
+#: ../plugins/repoquery.py:114
 msgid "resolve capabilities to originating package(s)"
 msgstr ""
 
-#: ../plugins/repoquery.py:117
+#: ../plugins/repoquery.py:116
 msgid "show recursive tree for package(s)"
 msgstr ""
 
-#: ../plugins/repoquery.py:119
+#: ../plugins/repoquery.py:118
 msgid "operate on corresponding source RPM"
 msgstr ""
 
-#: ../plugins/repoquery.py:121
+#: ../plugins/repoquery.py:120
 msgid ""
 "show N latest packages for a given name.arch (or latest but N if N is "
 "negative)"
 msgstr ""
 
-#: ../plugins/repoquery.py:127
+#: ../plugins/repoquery.py:126
 msgid "show detailed information about the package"
 msgstr "パッケージについての詳細情報を表示"
 
-#: ../plugins/repoquery.py:130
+#: ../plugins/repoquery.py:129
 msgid "show list of files in the package"
 msgstr "パッケージ内のファイルのリストを表示"
 
-#: ../plugins/repoquery.py:133
+#: ../plugins/repoquery.py:132
 msgid "show package source RPM name"
 msgstr "パッケージソース RPM 名を表示"
 
-#: ../plugins/repoquery.py:136
+#: ../plugins/repoquery.py:135
 msgid "format for displaying found packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:141
+#: ../plugins/repoquery.py:140
 msgid "limit the query to installed duplicated packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:144
+#: ../plugins/repoquery.py:143
 msgid "limit the query to installed installonly packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:147
+#: ../plugins/repoquery.py:146
 msgid "limit the query to installed packages with unsatisfied dependencies"
 msgstr ""
 
-#: ../plugins/repoquery.py:151
+#: ../plugins/repoquery.py:150
 #, fuzzy
 msgid "Display capabilities that the package conflicts with."
 msgstr "パッケージ競合している capabilities を表示する。"
 
-#: ../plugins/repoquery.py:152
+#: ../plugins/repoquery.py:151
 msgid "Display capabilities that the package can enhance."
 msgstr ""
 
-#: ../plugins/repoquery.py:153
+#: ../plugins/repoquery.py:152
 #, fuzzy
 msgid "Display capabilities that the package obsoletes."
 msgstr "廃止のパッケージの capabilities を表示する。"
 
-#: ../plugins/repoquery.py:154
+#: ../plugins/repoquery.py:153
 #, fuzzy
 msgid "Display capabilities provided by the package."
 msgstr "パッケージによって提供されている capabilities を表示する。"
 
-#: ../plugins/repoquery.py:155
+#: ../plugins/repoquery.py:154
 msgid "Display capabilities that the package recommends."
 msgstr ""
 
-#: ../plugins/repoquery.py:156
+#: ../plugins/repoquery.py:155
 msgid "Display capabilities that the package depends on."
 msgstr ""
 
-#: ../plugins/repoquery.py:157
+#: ../plugins/repoquery.py:156
 msgid "Display capabilities that the package suggests."
 msgstr ""
 
-#: ../plugins/repoquery.py:158
+#: ../plugins/repoquery.py:157
 msgid "Display capabilities that the package can supplement."
 msgstr ""
 
-#: ../plugins/repoquery.py:167
+#: ../plugins/repoquery.py:166
 msgid "Display only available packages."
 msgstr ""
 
-#: ../plugins/repoquery.py:168
+#: ../plugins/repoquery.py:167
 msgid "Display only installed packages."
 msgstr ""
 
-#: ../plugins/repoquery.py:169
+#: ../plugins/repoquery.py:168
 msgid ""
 "Display only packages that are not present in any of available repositories."
 msgstr ""
 
-#: ../plugins/repoquery.py:170
+#: ../plugins/repoquery.py:169
 msgid ""
 "Display only packages that provide an upgrade for some already installed "
 "package."
 msgstr ""
 
-#: ../plugins/repoquery.py:171
+#: ../plugins/repoquery.py:170
 msgid "Display only packages that can be removed by \"dnf autoremove\" command."
 msgstr ""
 
-#: ../plugins/repoquery.py:172
+#: ../plugins/repoquery.py:171
 msgid "Display only recently edited packages"
 msgstr ""
 
-#: ../plugins/repoquery.py:224
+#: ../plugins/repoquery.py:223
 msgid "search for packages matching keyword"
 msgstr "キーワードに合致するパッケージを検索"
 
-#: ../plugins/repoquery.py:225
+#: ../plugins/repoquery.py:224
 msgid "[OPTIONS] [KEYWORDS]"
 msgstr ""
 
-#: ../plugins/repoquery.py:287
+#: ../plugins/repoquery.py:277
 #, python-brace-format
 msgid "Available query-tags: use --queryformat \".. %{tag} ..\""
 msgstr ""
 
-#: ../plugins/repoquery.py:337
+#: ../plugins/repoquery.py:327
 msgid ""
 "--alldeps requires --whatrequires option.\n"
 "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n"
 "\n"
 msgstr ""
 
-#: ../plugins/repoquery.py:368
+#: ../plugins/repoquery.py:354
 msgid ""
 "No switch specified\n"
 "usage: dnf repoquery [--whatrequires|--requires|--conflicts|--obsoletes|--enhances|--suggest|--provides|--suplements|--recommends] [key] [--tree]\n"
@@ -392,31 +396,31 @@ msgid ""
 "  For the given packages print a tree of the packages."
 msgstr ""
 
-#: ../plugins/noroot.py:28 ../plugins/copr.py:239
+#: ../plugins/noroot.py:28 ../plugins/copr.py:263
 msgid "This command has to be run under the root user."
 msgstr "このコマンドは root ユーザーの下で実行する必要があります。"
 
-#: ../plugins/copr.py:35
+#: ../plugins/copr.py:37
 msgid "yes"
 msgstr "はい"
 
-#: ../plugins/copr.py:35
+#: ../plugins/copr.py:37
 msgid "y"
 msgstr ""
 
-#: ../plugins/copr.py:36
+#: ../plugins/copr.py:38
 msgid "no"
 msgstr "いいえ"
 
-#: ../plugins/copr.py:36
+#: ../plugins/copr.py:38
 msgid "n"
 msgstr ""
 
-#: ../plugins/copr.py:65
+#: ../plugins/copr.py:69
 msgid "Interact with Copr repositories."
 msgstr ""
 
-#: ../plugins/copr.py:66
+#: ../plugins/copr.py:70
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -435,106 +439,105 @@ msgid ""
 "    "
 msgstr ""
 
-#: ../plugins/copr.py:91
+#: ../plugins/copr.py:95
 msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:106 ../plugins/copr.py:130 ../plugins/copr.py:397
+#: ../plugins/copr.py:130 ../plugins/copr.py:154 ../plugins/copr.py:423
 msgid "Error: "
 msgstr "エラー: "
 
-#: ../plugins/copr.py:107 ../plugins/copr.py:111
+#: ../plugins/copr.py:131 ../plugins/copr.py:135
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 
-#: ../plugins/copr.py:131
+#: ../plugins/copr.py:155
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 
-#: ../plugins/copr.py:133
+#: ../plugins/copr.py:157
 msgid "bad copr project format"
 msgstr ""
 
-#: ../plugins/copr.py:154
+#: ../plugins/copr.py:178
 msgid "Repository successfully enabled."
 msgstr "リポジトリが正常に有効化されました。"
 
-#: ../plugins/copr.py:158
+#: ../plugins/copr.py:182
 msgid "Repository successfully disabled."
 msgstr "リポジトリが正常に無効化されました。"
 
-#: ../plugins/copr.py:162
+#: ../plugins/copr.py:186
 msgid "Repository successfully removed."
 msgstr ""
 
-#: ../plugins/copr.py:166 ../plugins/copr.py:417
+#: ../plugins/copr.py:190 ../plugins/copr.py:443
 msgid "Unknown subcommand {}."
 msgstr ""
 
-#: ../plugins/copr.py:176
+#: ../plugins/copr.py:200
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:179
+#: ../plugins/copr.py:203
 msgid "List of {} coprs"
 msgstr ""
 
-#: ../plugins/copr.py:187
+#: ../plugins/copr.py:211
 #, fuzzy
 msgid "No description given"
 msgstr "説明が与えられていません。"
 
-#: ../plugins/copr.py:199
+#: ../plugins/copr.py:223
 msgid "Can't parse search for '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:202
+#: ../plugins/copr.py:226
 msgid "Matched: {}"
 msgstr ""
 
-#: ../plugins/copr.py:210
+#: ../plugins/copr.py:234
 msgid "No description given."
 msgstr "説明が与えられていません。"
 
-#: ../plugins/copr.py:223 ../plugins/copr.py:232
+#: ../plugins/copr.py:247 ../plugins/copr.py:256
 msgid "Safe and good answer. Exiting."
 msgstr ""
 
-#: ../plugins/copr.py:281
+#: ../plugins/copr.py:307
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 
-#: ../plugins/copr.py:284
-#, fuzzy
-msgid "Such repository does not exists."
-msgstr "そのようなリポジトリは存在しません。"
+#: ../plugins/copr.py:310
+msgid "Such repository does not exist."
+msgstr ""
 
-#: ../plugins/copr.py:305
+#: ../plugins/copr.py:331
 msgid "Failed to disable copr repo {}/{}"
 msgstr ""
 
-#: ../plugins/copr.py:318 ../plugins/copr.py:366
+#: ../plugins/copr.py:344 ../plugins/copr.py:392
 msgid "Unknown response from server."
 msgstr "サーバーからの不明な応答です。"
 
-#: ../plugins/copr.py:351
+#: ../plugins/copr.py:377
 msgid "Interact with Playground repository."
 msgstr ""
 
-#: ../plugins/copr.py:398 ../plugins/copr.py:402
-msgid "exactly one parameter to playground command are required"
+#: ../plugins/copr.py:424 ../plugins/copr.py:428
+msgid "exactly one parameter to playground command is required"
 msgstr ""
 
-#: ../plugins/copr.py:407
+#: ../plugins/copr.py:433
 msgid "Playground repositories successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:410
+#: ../plugins/copr.py:436
 msgid "Playground repositories successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:414
+#: ../plugins/copr.py:440
 msgid "Playground repositories successfully updated."
 msgstr ""
 
