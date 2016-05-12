@@ -326,9 +326,9 @@ class RepoQueryCommand(dnf.cli.Command):
             q = q.filter(provides__glob=[self.opts.whatprovides])
         if self.opts.alldeps or self.opts.exactdeps:
             if not self.opts.whatrequires:
+                print(self.parser.format_help())
                 raise dnf.exceptions.Error(
-                    _("{} requires --whatrequires option.\n"
-                      "usage: dnf repoquery [--whatrequires] [key] [--alldeps]\n\n".format(
+                    _("argument {} requires --whatrequires option".format(
                         '--alldeps' if self.opts.alldeps else '--exactdeps')))
             if self.opts.alldeps:
                 q = self.by_all_deps(self.opts.whatrequires, q)
