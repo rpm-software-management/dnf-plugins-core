@@ -251,8 +251,6 @@ man_pages = [
      AUTHORS, 8),
     ('download', 'dnf.plugin.download', u'DNF download Plugin',
      AUTHORS, 8),
-    ('protected_packages', 'dnf.plugin.protected_packages',
-     u'DNF protected_packages Plugin', AUTHORS, 8),
     ('repoquery', 'dnf.plugin.repoquery', u'DNF repoquery Plugin',
      AUTHORS, 8),
 ]

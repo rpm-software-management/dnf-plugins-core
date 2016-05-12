@@ -6,7 +6,6 @@ INSTALL (FILES download.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES generate_completion_cache.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES needs_restarting.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES noroot.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
-INSTALL (FILES protected_packages.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES repoquery.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES reposync.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 
