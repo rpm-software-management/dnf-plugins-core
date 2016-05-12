@@ -34,8 +34,8 @@ Provides:       dnf-command(reposync)
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
 copr, debuginfo-install, download, needs-restarting, repoquery and
-reposync commands. Additionally provides generate_completion_cache, noroot and
-protected_packages passive plugins.
+reposync commands. Additionally provides generate_completion_cache and noroot
+passive plugins.
 
 %package -n python2-%{name}
 Summary:        Core Plugins for DNF
@@ -81,10 +81,10 @@ Conflicts:      python2-%{name} < %{version}-%{release}
 Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
-Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, copr,
-config-manager, debuginfo-install, download, needs-restarting, repoquery and
-reposync commands. Additionally provides generate_completion_cache, noroot and
-protected_packages passive plugins.
+Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
+copr, debuginfo-install, download, needs-restarting, repoquery and
+reposync commands. Additionally provides generate_completion_cache and noroot
+passive plugins.
 %endif
 
 %prep
@@ -131,7 +131,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python2-%{name} -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.rst
-%dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
 %config %{_sysconfdir}/dnf/plugins/*
 %{python2_sitelib}/dnf-plugins/*
@@ -141,7 +140,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python3-%{name} -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.rst
-%dir %{_sysconfdir}/dnf/protected.d
 %ghost %{_var}/cache/dnf/packages.db
 %config %{_sysconfdir}/dnf/plugins/*
 %exclude %{python3_sitelib}/dnf-plugins/__pycache__/
