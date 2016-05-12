@@ -18,7 +18,11 @@ Source0:        %{url}/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
-Requires:       python-%{name} = %{version}-%{release}
+%if %{with python3}
+Requires:       python3-%{name} = %{version}-%{release}
+%else
+Requires:       python2-%{name} = %{version}-%{release}
+%endif
 Provides:       dnf-command(builddep)
 Provides:       dnf-command(config-manager)
 Provides:       dnf-command(copr)
