@@ -109,7 +109,7 @@ class CoprCommand(dnf.cli.Command):
             if copr_plugin_config.has_option('main', 'distribution') and copr_plugin_config.has_option('main', 'releasever'):
                 distribution = copr_plugin_config.get('main', 'distribution')
                 releasever = copr_plugin_config.get('main', 'releasever')
-                self.chroot_config = ["{}".format(distribution), "{}".format(releasever)]
+                self.chroot_config = [distribution, releasever]
             else:
                 self.chroot_config = [False, False]
 
@@ -278,7 +278,7 @@ Do you want to continue? [y/N]: """)
         elif "Mageia" in dist:
             # Detect architecture (Mageia does not use $basearch)
             distarch = platform.machine()
-            if re.match("^i[3-6]86$", distarch, flags=0) is not None:
+            if re.match("^i[3-6]86$", distarch):
                 distarch = "i586"
             if "arm" in distarch:
                 distarch = "armv5tl"
