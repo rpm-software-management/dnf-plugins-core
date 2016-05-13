@@ -31,6 +31,7 @@ import os
 import platform
 import shutil
 import stat
+import re
 
 PLUGIN_CONF = 'copr'
 
@@ -96,7 +97,7 @@ class CoprCommand(dnf.cli.Command):
 
 
         # Useful for forcing a distribution
-        raw_copr_plugin_config = ConfigParser()
+        copr_plugin_config = ConfigParser()
         config_file = None
         for path in self.base.conf.pluginconfpath:
             test_config_file = '{}/{}.conf'.format(path, PLUGIN_CONF)
@@ -104,15 +105,14 @@ class CoprCommand(dnf.cli.Command):
                 config_file = test_config_file
 
         if config_file is not None:
-            cp = raw_copr_plugin_config.read_file(config_file)
-            distribution = (cp.has_section('main')
-                            and cp.has_option('main', 'distribution')
-                            and cp.get('main', 'distribution'))
-            releasever = (cp.has_section('main')
-                          and cp.has_option('main', 'releasever')
-                          and cp.get('main', 'releasever'))
-            self.chroot_config = [distribution, releasever]
-
+            copr_plugin_config.read(config_file)
+            if copr_plugin_config.has_option('main', 'distribution') and copr_plugin_config.has_option('main', 'releasever'):
+                distribution = copr_plugin_config.get('main', 'distribution')
+                releasever = copr_plugin_config.get('main', 'releasever')
+                self.chroot_config = ["{}".format(distribution), "{}".format(releasever)]
+                print(self.chroot_config)
+            else:
+                self.chroot_config = [False, False]
 
     def run(self, extcmds):
         try:
@@ -276,6 +276,18 @@ Do you want to continue? [y/N]: """)
                 chroot = ("fedora-rawhide-x86_64")
             else:
                 chroot = ("fedora-{}-x86_64".format(dist[1]))
+        elif "Mageia" in dist:
+            # Detect architecture (Mageia does not use $basearch)
+            distarch = platform.machine()
+            if re.match("^i[3-6]86$", distarch, flags=0) is not None:
+                distarch = "i586"
+            if "arm" in distarch:
+                distarch = "armv5tl"
+            # Set the chroot
+            if "Cauldron" in dist:
+                chroot = ("mageia-cauldron-{}".format(distarch))
+            else:
+                chroot = ("mageia-{0}-{1}".format(dist[1], distarch))
         else:
             chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         return chroot
