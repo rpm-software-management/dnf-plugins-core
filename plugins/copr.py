@@ -31,6 +31,7 @@ import os
 import platform
 import shutil
 import stat
+import re
 
 PLUGIN_CONF = 'copr'
 
@@ -275,6 +276,18 @@ Do you want to continue? [y/N]: """)
                 chroot = ("fedora-rawhide-x86_64")
             else:
                 chroot = ("fedora-{}-x86_64".format(dist[1]))
+        elif "Mageia" in dist:
+            # Detect architecture (Mageia does not use $basearch)
+            distarch = platform.machine()
+            if re.match("^i[3-6]86$", distarch, flags=0) is not None:
+                distarch = "i586"
+            if "arm" in distarch:
+                distarch = "armv5tl"
+            # Set the chroot
+            if "Cauldron" in dist:
+                chroot = ("mageia-cauldron-{}".format(distarch))
+            else:
+                chroot = ("mageia-{0}-{1}".format(dist[1], distarch))
         else:
             chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         return chroot
