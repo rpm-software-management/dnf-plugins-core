@@ -96,7 +96,7 @@ class CoprCommand(dnf.cli.Command):
 
 
         # Useful for forcing a distribution
-        raw_copr_plugin_config = ConfigParser()
+        copr_plugin_config = ConfigParser()
         config_file = None
         for path in self.base.conf.pluginconfpath:
             test_config_file = '{}/{}.conf'.format(path, PLUGIN_CONF)
@@ -104,15 +104,13 @@ class CoprCommand(dnf.cli.Command):
                 config_file = test_config_file
 
         if config_file is not None:
-            cp = raw_copr_plugin_config.read_file(config_file)
-            distribution = (cp.has_section('main')
-                            and cp.has_option('main', 'distribution')
-                            and cp.get('main', 'distribution'))
-            releasever = (cp.has_section('main')
-                          and cp.has_option('main', 'releasever')
-                          and cp.get('main', 'releasever'))
-            self.chroot_config = [distribution, releasever]
-
+            copr_plugin_config.read(config_file)
+            if copr_plugin_config.has_option('main', 'distribution') and copr_plugin_config.has_option('main', 'releasever'):
+                distribution = copr_plugin_config.get('main', 'distribution')
+                releasever = copr_plugin_config.get('main', 'releasever')
+                self.chroot_config = ["{}".format(distribution), "{}".format(releasever)]
+            else:
+                self.chroot_config = [False, False]
 
     def run(self, extcmds):
         try:
