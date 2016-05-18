@@ -342,9 +342,12 @@ class RepoQueryCommand(dnf.cli.Command):
         if self.opts.srpm:
             pkg_list = []
             for pkg in q:
-                pkg = pkg.sourcerpm
-                if (pkg is not None):
-                    tmp_query = self.base.sack.query().filter(nevra=pkg[:-4])
+                srcname = dnfpluginscore.lib.package_source_name(pkg)
+                if srcname is not None:
+                    tmp_query = self.base.sack.query().filter(
+                        name=srcname,
+                        evr=pkg.evr,
+                        arch='src')
                     pkg_list += tmp_query.run()
             q = self.base.sack.query().filter(pkg=pkg_list)
         fmt_fn = build_format_fn(self.opts)
