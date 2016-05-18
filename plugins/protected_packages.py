@@ -66,7 +66,7 @@ class ProtectedPackages(dnf.Plugin):
         protected = set(get_protected_names())
         installs = set()
         removes = set()
-        for item in self.base._transaction:
+        for item in self.base.transaction:
             installs = installs.union(item.installs())
             removes = removes.union(item.removes())
 
