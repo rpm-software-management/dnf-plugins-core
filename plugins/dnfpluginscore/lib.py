@@ -159,11 +159,14 @@ def package_source_name(package):
     returns name of source package for given pkgname
     e.g. krb5-libs -> krb5
     """
-    # trim suffix first
-    srcname = rtrim(package.sourcerpm, ".src.rpm")
-    # source package filenames may not contain epoch, handle both cases
-    srcname = rtrim(srcname, "-{}".format(package.evr))
-    srcname = rtrim(srcname, "-{0.version}-{0.release}".format(package))
+    if package.sourcerpm is not None:
+        # trim suffix first
+        srcname = rtrim(package.sourcerpm, ".src.rpm")
+        # source package filenames may not contain epoch, handle both cases
+        srcname = rtrim(srcname, "-{}".format(package.evr))
+        srcname = rtrim(srcname, "-{0.version}-{0.release}".format(package))
+    else:
+        srcname = None
     return srcname
 
 def package_source_debug_name(package):
