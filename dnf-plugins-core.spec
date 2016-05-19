@@ -9,7 +9,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        0.1.20
+Version:        0.1.21
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -150,6 +150,30 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Thu May 19 2016 Igor Gnatenko <ignatenko@redhat.com> 0.1.21-1
+- doc: release notes 0.1.21 (Igor Gnatenko)
+- spec: correctly set up requirements for python subpkg (Igor Gnatenko)
+- spec: improve python packaging according to new guidelines & compat with EL7
+  (Igor Gnatenko)
+- tests/support: set priority and cost in RepoStub (Igor Gnatenko)
+- repoquery: sourcerpm does not contain epoch (RhBug:1335959) (Michael Mraka)
+- enforce-api: use api method transaction (Michal Luscon)
+- enforce-api: apply changes from Base class (Michal Luscon)
+- copr: Read the %%distro_arch macro to determine Mageia chroot arch (Neal
+  Gompa (ニール・ゴンパ))
+- copr: Remove unnecessary function calls/options and simplify conditional
+  (Neal Gompa (ニール・ゴンパ))
+- copr: Add Mageia chroot selection support (Neal Gompa (ニール・ゴンパ))
+- copr: Simplify and fix up reading copr chroot config override (Neal Gompa
+  (ニール・ゴンパ))
+- zanata update (Jan Silhan)
+- Add link for other project documentation pages (Jaroslav Mracek)
+- autoglob feature has been moved to filter() (RhBug:1279538) (Michael Mraka)
+- support globs in --what<weak_dep> (RhBug:1303311) (Michael Mraka)
+- repoquery: fix typo (there -> that, and plural form) (Luigi Toscano)
+- copr: fix string - singular is required (Luigi Toscano)
+- doc: release notes updated to vallid plugins version (Jan Šilhan)
+
 * Tue Apr 05 2016 Michal Luscon <mluscon@redhat.com> 0.1.20-1
 - doc: release notes 0.1.20 (Igor Gnatenko)
 - copr: Properly detect reposdir and add chroot override capability (Neal Gompa
