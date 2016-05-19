@@ -250,5 +250,17 @@
     [
         1292475, 
         "RFE: dnf repoquery options \"--queryformat\" and \"--latest-limit\" should be usable together"
+    ], 
+    [
+        1335959, 
+        "dnf repoquery --srpm does not work"
+    ], 
+    [
+        1279538, 
+        "[perf] dnf repoquery --resolve  is extremely slow"
+    ], 
+    [
+        1303311, 
+        "[weakdeps] --whatsupplements not working"
     ]
 ]

@@ -23,6 +23,18 @@ Core DNF Plugins Release Notes
 
 
 ====================
+0.1.21 Release Notes
+====================
+
+Bugfixes, internal improvements.
+
+Bugs fixed in 0.1.21:
+
+* :rhbug:`1335959`
+* :rhbug:`1279538`
+* :rhbug:`1303311`
+
+====================
 0.1.20 Release Notes
 ====================
 
