@@ -162,17 +162,17 @@ def parse_arguments(args):
         package_atribute.add_argument(name, dest='packageatr', action='store_const',
                                       const=arg, help=help_msgs[arg])
 
+    parser.add_argument('--available', action="store_true",
+                        help=_('Display only available packages.'))
+
     help_list = {
-        'available': _('Display only available packages.'),
         'installed': _('Display only installed packages.'),
         'extras': _('Display only packages that are not present in any of available repositories.'),
         'upgrades': _('Display only packages that provide an upgrade for some already installed package.'),
         'unneeded': _('Display only packages that can be removed by "dnf autoremove" command.'),
-        'recent': _('Display only recently edited packages')
     }
     list_group = parser.add_mutually_exclusive_group()
-    for list_arg in ('available', 'installed', 'extras', 'upgrades', 'unneeded',
-                     'recent'):
+    for list_arg in ('installed', 'extras', 'upgrades', 'unneeded'):
         switch = '--%s' % list_arg
         list_group.add_argument(switch, dest='list', action='store_const',
                                 const=list_arg, help=help_list[list_arg])
@@ -181,7 +181,8 @@ def parse_arguments(args):
     list_group.add_argument(
         '--autoremove', dest='list', action='store_const',
         const="unneeded", help=argparse.SUPPRESS)
-
+    parser.add_argument('--recent', action="store_true",
+                        help=_('Display only recently edited packages'))
     return parser.parse_args(args), parser
 
 
@@ -243,8 +244,8 @@ class RepoQueryCommand(dnf.cli.Command):
         if self.opts.srpm:
             dnfpluginscore.lib.enable_source_repos(self.base.repos)
 
-        if self.opts.pkgfilter != "installonly" and \
-           self.opts.list != "installed":
+        if (self.opts.pkgfilter != "installonly" and \
+           self.opts.list != "installed") or self.opts.available:
             demands.available_repos = True
 
         demands.sack_activation = True
@@ -279,7 +280,6 @@ class RepoQueryCommand(dnf.cli.Command):
             return
 
         q = self.base.sack.query()
-
         if self.opts.key:
             pkgs = []
             for key in self.opts.key:
@@ -288,8 +288,13 @@ class RepoQueryCommand(dnf.cli.Command):
                 pkgs += q.run()
             q = self.base.sack.query().filter(pkg=pkgs)
 
-        if self.opts.list == "recent":
+        if self.opts.recent:
             q.recent(self.base.conf.recent)
+        if self.opts.available:
+            if self.opts.list and self.opts.list != "installed":
+                print(self.parser.format_help())
+                raise dnf.exceptions.Error(_("argument {}: not allowed with argument {}".format(
+                    "--available", "--" + self.opts.list)))
         elif self.opts.list == "unneeded":
             q = q.unneeded(self.base.sack, self.base._yumdb)
         elif self.opts.list:
@@ -309,7 +314,7 @@ class RepoQueryCommand(dnf.cli.Command):
                 for msg in goal.problems:
                     print(msg)
             return
-        elif self.opts.pkgfilter == "unsatisfied":
+        elif not self.opts.list:
             # do not show packages from @System repo
             q = q.available()
 
