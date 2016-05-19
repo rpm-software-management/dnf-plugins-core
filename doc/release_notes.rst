@@ -23,6 +23,12 @@ Core DNF Plugins Release Notes
 
 
 ====================
+0.1.21 Release Notes
+====================
+
+Set --alldeps as defaults in Repoquery plugin and added --exactdeps option.
+
+====================
 0.1.20 Release Notes
 ====================
 
