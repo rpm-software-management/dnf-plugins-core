@@ -62,7 +62,7 @@ Bugs fixed in 0.1.17:
 0.1.16 Release Notes
 ====================
 
-Documented :doc:`repoquery` options ``--unneeded`` and ``--recent``.
+Documented `DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_ options ``--unneeded`` and ``--recent``.
 
 Bugs fixed in 0.1.16:
 
@@ -161,7 +161,7 @@ Bugs fixed in 0.1.10:
  0.1.9 Release Notes
 ====================
 
-:doc:`repoquery` was extended by newly added select options ``--srpm``, ``--alldeps``
+`DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_ was extended by newly added select options ``--srpm``, ``--alldeps``
 and query option ``--tree``.
 
 Bugs fixed in 0.1.9:
@@ -187,7 +187,7 @@ All occurrences of `repoid` option were replaced by `repo` to unified repository
 :doc:`builddep` now accepts packages from repositories as arguments and allows users
 to define RPM macros used during spec files parsing via `-D` option.
 
-Three new options were added to :doc:`repoquery`: `latest-limit`, `unsatisfied` and `resolve`.
+Three new options were added to `DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_: `latest-limit`, `unsatisfied` and `resolve`.
 
 Bugs fixed in 0.1.7:
 
@@ -203,7 +203,7 @@ Bugs fixed in 0.1.7:
 
 Newly implemented :doc:`config_manager` plugin.
 
-:doc:`repoquery` now accepts `<pkg-spec>`.
+`DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_ now accepts `<pkg-spec>`.
 
 Bugs fixed in 0.1.6:
 
@@ -221,7 +221,7 @@ Bugs fixed in 0.1.6:
 
 :doc:`builddep` accepts also `nosrc.rpm` package.
 
-:doc:`repoquery` adds `--list` switch to show files the package contains.
+`DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_ adds `--list` switch to show files the package contains.
 
 Bugs fixed in 0.1.5:
 
@@ -245,7 +245,7 @@ Bugs fixed in 0.1.4:
  0.1.3 Release Notes
 ====================
 
-Added info switch to :ref:`repoquery <info_repoquery-label>`
+Added info switch to `DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#info_repoquery-label>`_
 
 Bugs fixed in 0.1.3:
 
@@ -279,7 +279,7 @@ Bugs fixed in 0.1.1:
  0.1.0 Release Notes
 ====================
 
-This release provides the :doc:`repoquery` and a bugfix for the :doc:`builddep`.
+This release provides the `DNF repoquery <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_ and a bugfix for the :doc:`builddep`.
 
 Bugs fixed for 0.1.0:
 
