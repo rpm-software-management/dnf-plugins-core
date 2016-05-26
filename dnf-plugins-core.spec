@@ -55,6 +55,7 @@ Requires:       python-hawkey >= %{hawkey_version}
 Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
 Conflicts:      python3-%{name} < %{version}-%{release}
+Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, copr,
@@ -77,6 +78,7 @@ Requires:       python3-hawkey >= %{hawkey_version}
 Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
 Conflicts:      python2-%{name} < %{version}-%{release}
+Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, copr,
