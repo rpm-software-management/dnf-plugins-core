@@ -10,7 +10,7 @@
 
 Name:           dnf-plugins-core
 Version:        0.1.21
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/dnf-plugins-core
@@ -152,6 +152,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Fri May 27 2016 Igor Gnatenko <ignatenko@redhat.com> 0.1.21-2
+- spec: explicitly conflict with python-%%{name} with different version (Igor
+  Gnatenko)
+
 * Thu May 19 2016 Igor Gnatenko <ignatenko@redhat.com> 0.1.21-1
 - doc: release notes 0.1.21 (Igor Gnatenko)
 - spec: correctly set up requirements for python subpkg (Igor Gnatenko)
