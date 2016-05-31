@@ -105,6 +105,8 @@ def rpm2py_format(queryformat):
 
     queryformat = queryformat.replace("\\n", "\n")
     queryformat = queryformat.replace("\\t", "\t")
+    for key, value in OPTS_MAPPING.items():
+        queryformat = queryformat.replace(key, value)
     fmt = re.sub(QFORMAT_MATCH, fmt_repl, queryformat)
     return fmt
 
