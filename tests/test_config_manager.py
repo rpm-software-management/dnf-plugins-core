@@ -67,7 +67,7 @@ class ConfigManagerCommandTest(unittest.TestCase):
         self.assertMultiLineEqual(REPOCONTENT, added)
 
         def get_matching(x):
-            repo = dnf.repo.Repo(x, '/tmp')
+            repo = dnf.repo.Repo(x, self.cmd.base.conf)
             repo.repofile = installed_repofile
             repo.cfg = iniparse.compat.RawConfigParser()
             repo.cfg.read(installed_repofile)
