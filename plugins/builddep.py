@@ -190,7 +190,7 @@ class BuildDepCommand(dnf.cli.Command):
     def _remote_deps(self, package):
         available = dnf.subject.Subject(package).get_best_query(
                         self.base.sack).filter(arch__neq="src")
-        sourcenames = list({dnfpluginscore.lib.package_source_name(pkg)
+        sourcenames = list({dnf.util.package_source_name(pkg)
                            for pkg in available})
         pkgs = self.base.sack.query().available().filter(
                 name=(sourcenames + [package]), arch="src").latest().run()
