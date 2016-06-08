@@ -65,7 +65,7 @@ class DownloadCommand(dnf.cli.Command):
         demands.available_repos = True
 
         if self.opts.source:
-            dnfpluginscore.lib.enable_source_repos(self.base.repos)
+            dnf.util.enable_source_repos(self.base.repos)
 
         if self.opts.debuginfo:
             dnfpluginscore.lib.enable_debug_repos(self.base.repos)
