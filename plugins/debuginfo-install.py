@@ -50,7 +50,7 @@ class DebuginfoInstall(dnf.Plugin):
             dbginfo = dnf.sack.rpmdb_sack(self.base).query().filter(
                                                 name__glob="*-debuginfo")
             if len(dbginfo):
-                dnfpluginscore.lib.enable_debug_repos(self.base.repos)
+                dnf.util.enable_debug_repos(self.base.repos)
 
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
@@ -74,7 +74,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         demands.root_user = True
         demands.sack_activation = True
         demands.available_repos = True
-        dnfpluginscore.lib.enable_debug_repos(self.base.repos)
+        dnf.util.enable_debug_repos(self.base.repos)
 
     def run(self):
         self.packages = self.base.sack.query()

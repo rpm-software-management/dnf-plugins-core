@@ -280,7 +280,7 @@ class DownloadCommandTest(unittest.TestCase):
     def test_enable_debuginfo_repos(self):
         repos = self.cmd.base.repos
         self.assertFalse(repos['foo-debuginfo'].enabled)
-        dnfpluginscore.lib.enable_debug_repos(repos)
+        dnf.util.enable_debug_repos(repos)
         self.assertTrue(repos['foo-debuginfo'].enabled)
 
     def test_get_source_packages(self):
