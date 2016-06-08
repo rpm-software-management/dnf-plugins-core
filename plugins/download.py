@@ -68,7 +68,7 @@ class DownloadCommand(dnf.cli.Command):
             dnf.util.enable_source_repos(self.base.repos)
 
         if self.opts.debuginfo:
-            dnfpluginscore.lib.enable_debug_repos(self.base.repos)
+            dnf.util.enable_debug_repos(self.base.repos)
 
     def run(self):
         """Execute the util action here."""
