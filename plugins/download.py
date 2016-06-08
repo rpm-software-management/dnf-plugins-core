@@ -114,7 +114,7 @@ class DownloadCommand(dnf.cli.Command):
 
         for pkg in self._get_packages(pkg_specs):
             for dbg_name in [dnf.util.package_debug_name(pkg),
-                            dnfpluginscore.lib.package_source_debug_name(pkg)]:
+                            dnf.util.package_source_debug_name(pkg)]:
                 dbg_available = q.filter(
                                         name=dbg_name,
                                         epoch=int(pkg.epoch),
