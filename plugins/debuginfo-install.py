@@ -100,7 +100,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 arch=str(package.arch))
 
     def _di_install(self, package):
-        for dbgname in [dnfpluginscore.lib.package_debug_name(package),
+        for dbgname in [dnf.util.package_debug_name(package),
                         dnfpluginscore.lib.package_source_debug_name(package)]:
             if dbgname in self.dbgdone:
                 break
