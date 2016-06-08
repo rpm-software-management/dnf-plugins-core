@@ -98,7 +98,7 @@ class BuildDepCommand(dnf.cli.Command):
                 if not (pkgspec.endswith('.src.rpm')
                         or pkgspec.endswith('nosrc.rpm')
                         or pkgspec.endswith('.spec')):
-                    dnfpluginscore.lib.enable_source_repos(self.base.repos)
+                    dnf.util.enable_source_repos(self.base.repos)
                     break
 
     @sink_rpm_logging()
