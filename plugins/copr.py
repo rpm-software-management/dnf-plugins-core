@@ -148,7 +148,7 @@ class CoprCommand(dnf.cli.Command):
             raise dnf.cli.CliError(_('bad copr project format'))
 
         repo_filename = "{}/_copr_{}-{}.repo" \
-                        .format(dnfpluginscore.lib.get_reposdir(self), copr_username, copr_projectname)
+                        .format(dnf.util.get_reposdir(self), copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             self._ask_user("""
@@ -382,7 +382,7 @@ Do you want to continue? [y/N]: """)
             project_name = "{0}/{1}".format(repo["username"],
                                             repo["coprname"])
             repo_filename = "{}/_playground_{}.repo" \
-                    .format(dnfpluginscore.lib.get_reposdir(self), project_name.replace("/", "-"))
+                    .format(dnf.util.get_reposdir(self), project_name.replace("/", "-"))
             try:
                 if chroot not in repo["chroots"]:
                     continue
@@ -400,7 +400,7 @@ Do you want to continue? [y/N]: """)
 
     def _cmd_disable(self):
         self._need_root()
-        for repo_filename in glob.glob("{}/_playground_*.repo".format(dnfpluginscore.lib.get_reposdir(self))):
+        for repo_filename in glob.glob("{}/_playground_*.repo".format(dnf.util.get_reposdir(self))):
             self._remove_repo(repo_filename)
 
     @staticmethod

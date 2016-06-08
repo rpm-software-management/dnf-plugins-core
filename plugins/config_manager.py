@@ -138,7 +138,7 @@ class ConfigManagerCommand(dnf.cli.Command):
         """ process --add-repo option """
 
         # Get the reposdir location
-        myrepodir = dnfpluginscore.lib.get_reposdir(self)
+        myrepodir = dnf.util.get_reposdir(self)
 
         for url in self.opts.add_repo:
             if dnf.pycomp.urlparse.urlparse(url).scheme == '':
