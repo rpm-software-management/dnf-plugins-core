@@ -97,9 +97,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                 print(self.base.conf.dump())
             if self.opts.save and modify:
                 # modify [main] in dnf.conf
-                dnfpluginscore.lib.write_raw_configfile(dnf.const.CONF_FILENAME,
-                                                        'main', sbc.substitutions,
-                                                        modify)
+                dnf.util.write_raw_configfile(dnf.const.CONF_FILENAME, 'main', sbc.substitutions, modify)
 
         if self.opts.set_enabled or self.opts.set_disabled:
             self.opts.save = True
@@ -129,10 +127,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                 repo_modify.update((i, getattr(repo, i))
                                    for i in self.cli.repo_setopts[repo.id].items)
             if self.opts.save and repo_modify:
-                dnfpluginscore.lib.write_raw_configfile(repo.repofile,
-                                                        repo.id,
-                                                        sbc.substitutions,
-                                                        repo_modify)
+                dnf.util.write_raw_configfile(repo.repofile, repo.id, sbc.substitutions, repo_modify)
 
     def add_repo(self):
         """ process --add-repo option """
