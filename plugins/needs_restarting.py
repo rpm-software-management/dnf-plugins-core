@@ -29,7 +29,6 @@ from dnfpluginscore import logger, _
 
 import dnf
 import dnf.cli
-import dnfpluginscore
 import functools
 import os
 import re

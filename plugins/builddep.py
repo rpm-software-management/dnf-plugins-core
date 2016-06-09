@@ -27,7 +27,6 @@ import argparse
 import dnf
 import dnf.cli
 import dnf.exceptions
-import dnfpluginscore.lib
 import functools
 import os
 import rpm
@@ -98,7 +97,7 @@ class BuildDepCommand(dnf.cli.Command):
                 if not (pkgspec.endswith('.src.rpm')
                         or pkgspec.endswith('nosrc.rpm')
                         or pkgspec.endswith('.spec')):
-                    dnf.util.enable_source_repos(self.base.repos)
+                    self.base.repos.enable_source_repos()
                     break
 
     @sink_rpm_logging()
@@ -190,8 +189,7 @@ class BuildDepCommand(dnf.cli.Command):
     def _remote_deps(self, package):
         available = dnf.subject.Subject(package).get_best_query(
                         self.base.sack).filter(arch__neq="src")
-        sourcenames = list({dnf.util.package_source_name(pkg)
-                           for pkg in available})
+        sourcenames = list({pkg.source_name for pkg in available})
         pkgs = self.base.sack.query().available().filter(
                 name=(sourcenames + [package]), arch="src").latest().run()
         if not pkgs:

@@ -23,8 +23,6 @@ from dnfpluginscore import _, logger
 import dnf
 import dnf.cli
 import dnf.pycomp
-import dnfpluginscore
-import dnfpluginscore.lib
 import os
 import re
 import shutil

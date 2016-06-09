@@ -26,7 +26,6 @@ import dnf.cli
 import dnf.exceptions
 import dnf.i18n
 import dnf.subject
-import dnfpluginscore
 import hawkey
 import itertools
 import os
@@ -65,10 +64,10 @@ class DownloadCommand(dnf.cli.Command):
         demands.available_repos = True
 
         if self.opts.source:
-            dnf.util.enable_source_repos(self.base.repos)
+            self.base.repos.enable_source_repos()
 
         if self.opts.debuginfo:
-            dnf.util.enable_debug_repos(self.base.repos)
+            self.base.repos.enable_debug_repos()
 
     def run(self):
         """Execute the util action here."""
@@ -113,8 +112,7 @@ class DownloadCommand(dnf.cli.Command):
         q = q.available()
 
         for pkg in self._get_packages(pkg_specs):
-            for dbg_name in [dnf.util.package_debug_name(pkg),
-                            dnf.util.package_source_debug_name(pkg)]:
+            for dbg_name in [pkg.debug_name, pkg.source_debug_name]:
                 dbg_available = q.filter(
                                         name=dbg_name,
                                         epoch=int(pkg.epoch),

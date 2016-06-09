@@ -19,12 +19,11 @@
 # Red Hat, Inc.
 #
 
-from dnfpluginscore import _, logger
+from dnfpluginscore import _
 
 import dnf
 import dnf.cli
 import dnf.subject
-import dnfpluginscore.lib
 
 class DebuginfoInstall(dnf.Plugin):
     """DNF plugin supplying the 'debuginfo-install' command."""
@@ -50,7 +49,7 @@ class DebuginfoInstall(dnf.Plugin):
             dbginfo = dnf.sack.rpmdb_sack(self.base).query().filter(
                                                 name__glob="*-debuginfo")
             if len(dbginfo):
-                dnf.util.enable_debug_repos(self.base.repos)
+                self.base.repos.enable_debug_repos()
 
 class DebuginfoInstallCommand(dnf.cli.Command):
     """ DebuginfoInstall plugin for DNF """
@@ -74,7 +73,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
         demands.root_user = True
         demands.sack_activation = True
         demands.available_repos = True
-        dnf.util.enable_debug_repos(self.base.repos)
+        self.base.repos.enable_debug_repos()
 
     def run(self):
         self.packages = self.base.sack.query()
@@ -100,8 +99,7 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 arch=str(package.arch))
 
     def _di_install(self, package):
-        for dbgname in [dnf.util.package_debug_name(package),
-                        dnf.util.package_source_debug_name(package)]:
+        for dbgname in [package.debug_name, package.source_debug_name]:
             if dbgname in self.dbgdone:
                 break
             if self._dbg_available(dbgname, package, True):
