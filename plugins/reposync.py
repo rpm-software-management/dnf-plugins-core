@@ -21,7 +21,6 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-import argparse
 import dnf
 import dnf.cli
 import dnfpluginscore
