@@ -144,7 +144,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                 destname = os.path.basename(url)
                 destname = os.path.join(myrepodir, destname)
                 try:
-                    f = dnfpluginscore.lib.urlopen(self, None, url, 'w+')
+                    f = dnf.util.urlopen(url, self.base.conf, mode='w+')
                     shutil.copy2(f.name, destname)
                     os.chmod(destname, 0o644)
                     f.close()

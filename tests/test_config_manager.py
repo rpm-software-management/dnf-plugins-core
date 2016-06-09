@@ -36,7 +36,7 @@ baseurl=file:///tmp
 enabled=1
 """
 
-class ConfigManagerBase(mock.MagicMock):
+class ConfigManagerBase(mock.MagicMock, dnf.base.Base):
       conf = dnf.conf.Conf()
 
 class ConfigManagerCommandTest(unittest.TestCase):
