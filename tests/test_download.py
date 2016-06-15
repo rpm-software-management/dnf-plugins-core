@@ -52,6 +52,30 @@ class PkgStub:
             return '%s-%s' % (self.version, self.release)
 
     @property
+    def source_debug_name(self):
+        """
+        returns name of debuginfo package for source package of given package
+        e.g. krb5-libs -> krb5-debuginfo
+        """
+        return "{}-debuginfo".format(self.source_name)
+
+    @property
+    def source_name(self):
+        """"
+        returns name of source package
+        e.g. krb5-libs -> krb5
+        """
+        if self.sourcerpm is not None:
+            # trim suffix first
+            srcname = dnf.util.rtrim(self.sourcerpm, ".src.rpm")
+            # source package filenames may not contain epoch, handle both cases
+            srcname = dnf.util.rtrim(srcname, "-{}".format(self.evr))
+            srcname = dnf.util.rtrim(srcname, "-{0.version}-{0.release}".format(self))
+        else:
+            srcname = None
+        return srcname
+
+    @property
     def sourcerpm(self):
         name = self.src_name or self.name
 
@@ -76,6 +100,14 @@ class PkgStub:
     @property
     def from_cmdline(self):
         return True
+
+    @property
+    def debug_name(self):
+        """
+        returns name of debuginfo package for given package
+        e.g. kernel-PAE -> kernel-PAE-debuginfo
+        """
+        return "{}-debuginfo".format(self.name)
 
 
 class NoSrcStub(PkgStub):

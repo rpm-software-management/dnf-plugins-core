@@ -182,7 +182,7 @@ Do you want to continue? [y/N]: """)
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
         api_path = "/api/coprs/{}/".format(user_name)
-        res = dnf.util.urlopen(self.copr_url + api_path, self.base.conf, mode='w+')
+        res = self.base.urlopen(self.copr_url + api_path, mode='w+')
         try:
             json_parse = json.loads(res.read())
         except ValueError:
@@ -206,7 +206,7 @@ Do you want to continue? [y/N]: """)
     def _search(self, query):
         # http://copr.fedorainfracloud.org/api/coprs/search/tests/
         api_path = "/api/coprs/search/{}/".format(query)
-        res = dnf.util.urlopen(self.copr_url + api_path, self.base.conf, mode='w+')
+        res = self.base.urlopen(self.copr_url + api_path, mode='w+')
         try:
             json_parse = json.loads(res.read())
         except ValueError:
@@ -285,7 +285,7 @@ Do you want to continue? [y/N]: """)
         #http://copr.fedorainfracloud.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
         try:
-            f = dnf.util.urlopen(self.copr_url + api_path, self.base.conf, mode='w+')
+            f = self.base.urlopen(self.copr_url + api_path, mode='w+')
         except IOError as e:
             if os.path.exists(repo_filename):
                 os.remove(repo_filename)
@@ -372,7 +372,7 @@ You are about to enable a Playground repository.
 Do you want to continue? [y/N]: """)
         api_url = "{0}/api/playground/list/".format(
             self.copr_url)
-        f = dnf.util.urlopen(api_url, self.base.conf, mode="w+")
+        f = self.base.urlopen(api_url, mode="w+")
         output = self._get_data(f)
         f.close()
         if output["output"] != "ok":
@@ -386,7 +386,7 @@ Do you want to continue? [y/N]: """)
                     continue
                 api_url = "{0}/api/coprs/{1}/detail/{2}/".format(
                     self.copr_url, project_name, chroot)
-                f = dnf.util.urlopen(api_url, self.base.conf, mode='w+')
+                f = self.base.urlopen(api_url, mode='w+')
                 output2 = self._get_data(f)
                 f.close()
                 if (output2 and ("output" in output2)
