@@ -230,7 +230,7 @@ class DownloadCommandTest(unittest.TestCase):
         cli = mock.MagicMock()
         self.cmd = download.DownloadCommand(cli)
         self.cmd.cli.base = dnf.cli.cli.BaseCli()
-        self.cmd.cli.base.add_remote_rpm = mock.Mock()
+        self.cmd.cli.base.add_remote_rpms = mock.MagicMock()
         self.cmd.cli.base.download_packages = mock.Mock()
 
         # point the Sack and Subject to out stubs
@@ -304,12 +304,12 @@ class DownloadCommandTest(unittest.TestCase):
     def test_get_query_with_local_rpm(self):
         try:
             (fs, rpm_path) = tempfile.mkstemp('foobar-99.99-1.x86_64.rpm')
-            # b/c self.cmd.cli.base.add_remote_rpm is a mock object it
+            # b/c self.cmd.cli.base.add_remote_rpms is a mock object it
             # will not update the available packages while testing.
             # it is expected to hit this exception
             with self.assertRaises(dnf.exceptions.PackageNotFoundError):
                 self.cmd._get_query(rpm_path)
-            self.cmd.cli.base.add_remote_rpm.assert_called_with(rpm_path)
+            self.cmd.cli.base.add_remote_rpms.assert_called_with([rpm_path])
         finally:
             os.remove(rpm_path)
 
