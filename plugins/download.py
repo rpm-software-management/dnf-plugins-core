@@ -180,8 +180,8 @@ class DownloadCommand(dnf.cli.Command):
     def _get_query(self, pkg_spec):
         """Return a query to match a pkg_spec."""
         if os.path.exists(pkg_spec):
-            pkg = self.base.add_remote_rpm(pkg_spec)
-            pkg_spec = "{0.name}-{0.epoch}:{0.version}-{0.release}.{0.arch}".format(pkg)
+            pkgs = self.base.add_remote_rpms([pkg_spec])
+            pkg_spec = "{0.name}-{0.epoch}:{0.version}-{0.release}.{0.arch}".format(pkgs[0])
 
         subj = dnf.subject.Subject(pkg_spec)
         q = subj.get_best_query(self.base.sack)
