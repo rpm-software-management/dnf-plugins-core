@@ -46,7 +46,7 @@ class DebuginfoInstall(dnf.Plugin):
 
         if autoupdate:
             # allow update of already installed debuginfo packages
-            dbginfo = dnf.sack.rpmdb_sack(self.base).query().filter(
+            dbginfo = dnf.sack._rpmdb_sack(self.base).query().filter(
                                                 name__glob="*-debuginfo")
             if len(dbginfo):
                 self.base.repos.enable_debug_repos()
