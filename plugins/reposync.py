@@ -64,5 +64,6 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def run(self):
         base = self.base
+        base.conf.keepcache = True
         pkgs = base.sack.query().available()
         base.download_packages(pkgs, self.base.output.progress)
