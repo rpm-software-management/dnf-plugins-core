@@ -55,7 +55,7 @@ class sink_rpm_logging(object):
 @dnf.plugin.register_command
 class BuildDepCommand(dnf.cli.Command):
 
-    aliases = ('builddep', 'build-dep', )
+    aliases = ('builddep', 'build-dep')
     msg = "Install build dependencies for package or spec file"
     summary = _(msg)
     usage = _("[PACKAGE|PACKAGE.spec]")
