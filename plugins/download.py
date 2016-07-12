@@ -188,7 +188,7 @@ class DownloadCommand(dnf.cli.Command):
         q = q.available()
         q = q.latest()
         if len(q.run()) == 0:
-            msg = _("No package ") + pkg_spec + _(" available.")
+            msg = _("No package %s available.") % (pkg_spec)
             raise dnf.exceptions.PackageNotFoundError(msg)
         return q
 
@@ -202,7 +202,7 @@ class DownloadCommand(dnf.cli.Command):
         q = q.filter(name=nevra.name, version=nevra.version,
                      release=nevra.release, arch=nevra.arch)
         if len(q.run()) == 0:
-            msg = _("No package ") + pkg_spec + _(" available.")
+            msg = _("No package %s available.") % (pkg_spec)
             raise dnf.exceptions.PackageNotFoundError(msg)
         return q
 
