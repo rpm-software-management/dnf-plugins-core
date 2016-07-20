@@ -113,7 +113,7 @@ class RepoStub(object):
         self.priority = 99
         self.cost = 1000
 
-    def valid(self):
+    def _valid(self):
         """Return a message if the repository is not valid."""
 
     def enable(self):
