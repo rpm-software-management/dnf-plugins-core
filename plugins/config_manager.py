@@ -90,12 +90,12 @@ class ConfigManagerCommand(dnf.cli.Command):
             modify = dict((i, getattr(sbc, i))
                           for i in self.cli.main_setopts.items)
         if not self.opts.crepo or 'main' in self.opts.crepo:
-            if self.opts.dump:
-                print(self.base.output.fmtSection('main'))
-                print(self.base.conf.dump())
             if self.opts.save and modify:
                 # modify [main] in dnf.conf
                 self.base.conf.write_raw_configfile(dnf.const.CONF_FILENAME, 'main', sbc.substitutions, modify)
+            if self.opts.dump:
+                print(self.base.output.fmtSection('main'))
+                print(self.base.conf.dump())
 
         if self.opts.set_enabled or self.opts.set_disabled:
             self.opts.save = True
@@ -118,14 +118,14 @@ class ConfigManagerCommand(dnf.cli.Command):
                 repo_modify['enabled'] = 1
             elif self.opts.set_disabled:
                 repo_modify['enabled'] = 0
-            if self.opts.dump:
-                print(repo.dump())
             if (hasattr(self.cli, 'repo_setopts')
                     and repo.id in self.cli.repo_setopts):
                 repo_modify.update((i, getattr(repo, i))
                                    for i in self.cli.repo_setopts[repo.id].items)
             if self.opts.save and repo_modify:
                 self.base.conf.write_raw_configfile(repo.repofile, repo.id, sbc.substitutions, repo_modify)
+            if self.opts.dump:
+                print(repo.dump())
 
     def add_repo(self):
         """ process --add-repo option """
