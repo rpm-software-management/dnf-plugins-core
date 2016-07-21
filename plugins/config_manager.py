@@ -86,15 +86,16 @@ class ConfigManagerCommand(dnf.cli.Command):
 
         sbc = self.base.conf
         modify = {}
-        if hasattr(self.cli, 'main_setopts') and self.cli.main_setopts:
-            modify = dict((i, getattr(sbc, i))
-                          for i in self.cli.main_setopts.items)
+        if hasattr(self.opts, 'main_setopts') and self.opts.main_setopts:
+            modify = dict(self.opts.main_setopts._get_kwargs())
         if not self.opts.crepo or 'main' in self.opts.crepo:
             if self.opts.save and modify:
                 # modify [main] in dnf.conf
                 self.base.conf.write_raw_configfile(dnf.const.CONF_FILENAME, 'main', sbc.substitutions, modify)
             if self.opts.dump:
                 print(self.base.output.fmtSection('main'))
+                for name, val in modify.items():
+                    sbc._set_value(name, val)
                 print(self.base.conf.dump())
 
         if self.opts.set_enabled or self.opts.set_disabled:
@@ -111,20 +112,22 @@ class ConfigManagerCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
                                        % ', '.join(self.opts.crepo))
         for repo in sorted(matched):
-            if self.opts.dump:
-                print(self.base.output.fmtSection('repo: ' + repo.id))
             repo_modify = dict(modify)  # create local copy
             if self.opts.set_enabled:
                 repo_modify['enabled'] = 1
             elif self.opts.set_disabled:
                 repo_modify['enabled'] = 0
-            if (hasattr(self.cli, 'repo_setopts')
-                    and repo.id in self.cli.repo_setopts):
-                repo_modify.update((i, getattr(repo, i))
-                                   for i in self.cli.repo_setopts[repo.id].items)
+            if (hasattr(self.opts, 'repo_setopts')
+                    and repo.id in self.opts.repo_setopts):
+                repo_modify.update(self.opts.repo_setopts[repo.id]._get_kwargs())
             if self.opts.save and repo_modify:
                 self.base.conf.write_raw_configfile(repo.repofile, repo.id, sbc.substitutions, repo_modify)
             if self.opts.dump:
+                print(self.base.output.fmtSection('repo: ' + repo.id))
+                for name, val in repo_modify.items():
+                    opt = repo._get_option(name)
+                    if opt:
+                        opt._set(val)
                 print(repo.dump())
 
     def add_repo(self):
