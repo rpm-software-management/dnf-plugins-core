@@ -37,7 +37,7 @@ class ConfigManagerCommand(dnf.cli.Command):
     @staticmethod
     def set_argparser(parser):
         parser.add_argument(
-            'repo', nargs='*',
+            'crepo', nargs='*', metavar='repo',
             help=_('repo to modify'))
         parser.add_argument(
             '--save', default=False, action='store_true',
@@ -72,7 +72,7 @@ class ConfigManagerCommand(dnf.cli.Command):
             logger.error(
                 _("Error: Trying to enable and disable repos at the same time."))
             self.opts.set_enabled = self.opts.set_disabled = False
-        if self.opts.set_enabled and not self.opts.repo:
+        if self.opts.set_enabled and not self.opts.crepo:
             logger.error(_("Error: Trying to enable already enabled repos."))
             self.opts.set_enabled = False
 
@@ -89,7 +89,7 @@ class ConfigManagerCommand(dnf.cli.Command):
         if hasattr(self.cli, 'main_setopts') and self.cli.main_setopts:
             modify = dict((i, getattr(sbc, i))
                           for i in self.cli.main_setopts.items)
-        if not self.opts.repo or 'main' in self.opts.repo:
+        if not self.opts.crepo or 'main' in self.opts.crepo:
             if self.opts.dump:
                 print(self.base.output.fmtSection('main'))
                 print(self.base.conf.dump())
@@ -100,16 +100,16 @@ class ConfigManagerCommand(dnf.cli.Command):
         if self.opts.set_enabled or self.opts.set_disabled:
             self.opts.save = True
 
-        if self.opts.repo:
+        if self.opts.crepo:
             matched = []
-            for name in self.opts.repo:
+            for name in self.opts.crepo:
                 matched.extend(self.base.repos.get_matching(name))
         else:
             return
 
         if not matched:
             raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
-                                       % ', '.join(self.opts.repo))
+                                       % ', '.join(self.opts.crepo))
         for repo in sorted(matched):
             if self.opts.dump:
                 print(self.base.output.fmtSection('repo: ' + repo.id))
