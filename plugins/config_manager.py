@@ -54,6 +54,9 @@ class ConfigManagerCommand(dnf.cli.Command):
         parser.add_argument(
             '--dump', default=False, action='store_true',
             help=_('print current configuration values to stdout'))
+        parser.add_argument(
+            '--dump-variables', default=False, action='store_true',
+            help=_('print variable values to stdout'))
 
     def configure(self):
         # setup sack and populate it with enabled repos
@@ -88,6 +91,9 @@ class ConfigManagerCommand(dnf.cli.Command):
         modify = {}
         if hasattr(self.opts, 'main_setopts') and self.opts.main_setopts:
             modify = dict(self.opts.main_setopts._get_kwargs())
+        if self.opts.dump_variables:
+            for name, val in self.base.conf.substitutions.items():
+                print("%s = %s" % (name, val))
         if not self.opts.crepo or 'main' in self.opts.crepo:
             if self.opts.save and modify:
                 # modify [main] in dnf.conf
