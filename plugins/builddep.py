@@ -145,7 +145,7 @@ class BuildDepCommand(dnf.cli.Command):
 
     def _src_deps(self, src_fn):
         fd = os.open(src_fn, os.O_RDONLY)
-        if self.cli.nogpgcheck:
+        if not self.base.conf.gpgcheck:
             self.rpm_ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES)
         try:
             h = self.rpm_ts.hdrFromFdno(fd)

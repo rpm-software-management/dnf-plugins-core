@@ -32,6 +32,7 @@ class MockBase(object):
     def __init__(self):
         self.marked = []
         self.repos = dnf.repodict.RepoDict()
+        self.conf = support.FakeConf()
 
     def install(self, spec):
         self.marked.append(spec)
