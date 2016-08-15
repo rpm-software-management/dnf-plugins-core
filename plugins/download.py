@@ -217,7 +217,7 @@ class DownloadCommand(dnf.cli.Command):
             goal.install(pkg)
         rc = goal.run()
         if rc:
-            pkgs = goal.list_installs()
+            pkgs = goal.list_installs() + goal.list_upgrades()
             return pkgs
         else:
             logger.debug(_('Error in resolve'))
