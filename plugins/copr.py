@@ -127,7 +127,7 @@ class CoprCommand(dnf.cli.Command):
         try:
             chroot = self.opts.arg[1]
         except IndexError:
-            chroot = self._guess_chroot()
+            chroot = self._guess_chroot(self.chroot_config)
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "list":
@@ -252,11 +252,11 @@ Do you want to continue? [y/N]: """)
             raise dnf.exceptions.Error(
                 _('This command has to be run under the root user.'))
 
-    @classmethod
-    def _guess_chroot(cls):
+    @staticmethod
+    def _guess_chroot(chroot_config):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = cls.chroot_config
+        dist = chroot_config
         if dist is None or (dist[0] is False) or (dist[1] is False):
             dist = platform.linux_distribution()
         if "Fedora" in dist:
@@ -280,7 +280,7 @@ Do you want to continue? [y/N]: """)
 
     def _download_repo(self, project_name, repo_filename, chroot=None):
         if chroot is None:
-            chroot = self._guess_chroot()
+            chroot = self._guess_chroot(self.chroot_config)
         short_chroot = '-'.join(chroot.split('-')[:2])
         #http://copr.fedorainfracloud.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
@@ -408,7 +408,7 @@ Do you want to continue? [y/N]: """)
 
     def run(self):
         subcommand = self.opts.subcommand[0]
-        chroot = self._guess_chroot()
+        chroot = self._guess_chroot(self.chroot_config)
         if subcommand == "enable":
             self._cmd_enable(chroot)
             logger.info(_("Playground repositories successfully enabled."))
