@@ -59,7 +59,7 @@ copyright = u'2014, Red Hat, Licensed under GPLv2+'
 def version_readout():
     fn = os.path.join(_dirname, '../dnf-plugins-core.spec')
     with codecs.open(fn, "r", "utf-8") as f:
-        for line in f.readlines()
+        for line in f.readlines():
             if line.startswith('Version:'):
                 return line.split(':')[1].strip()
 
