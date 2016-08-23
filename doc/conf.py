@@ -12,6 +12,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+import codecs
 import sys
 import os
 import os.path
@@ -57,11 +58,10 @@ copyright = u'2014, Red Hat, Licensed under GPLv2+'
 
 def version_readout():
     fn = os.path.join(_dirname, '../dnf-plugins-core.spec')
-    with open(fn) as f:
-        lines = f.readlines()
-    for line in lines:
-        if line.startswith('Version:'):
-            return line.split(':')[1].strip()
+    with codecs.open(fn, "r", "utf-8") as f:
+        for line in f.readlines()
+            if line.startswith('Version:'):
+                return line.split(':')[1].strip()
 
 version = '%s' % version_readout()
 # The full version, including alpha/beta/rc tags.
