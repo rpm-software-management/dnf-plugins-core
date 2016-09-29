@@ -149,6 +149,41 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Thu Sep 29 2016 Michal Luscon <mluscon@redhat.com> 1.0.0-0.rc1.1
+- doc: open rpmspec in utf-8 mode (Igor Gnatenko)
+- cls.chroot_config inside _guess_chroot returns None (RhBug: 1361003) (Michael
+  Goodwin)
+- builddep: adjust to new config (dnf-2.0) (Michal Luscon)
+- Change minimal required version (Jaroslav Mracek)
+- introduced config-manager --dump-variables (RhBug:1360752) (Michael Mraka)
+- Fix string puzzle in translatable message (Luigi Toscano)
+- Added alias to 'builddep'->'build-dep' (RhBug:1350604) (stepasm)
+- reposync should keep packages (RhBug:1325350) (Michael Mraka)
+- Change usage of add_remote_rpm according to new API (Jaroslav Mracek)
+- Remove lib.py from plugins-core (Jaroslav Mracek)
+- Delete repoquery from dnf-plugins-core (Jaroslav Mracek)
+- removed protected_packages plugin (Jan Silhan)
+- repoquery: add --requires-pre switch (RhBug:1303117) (Michal Luscon)
+- spec: bump version to 1.0.0 (Igor Gnatenko)
+- Automatic commit of package [dnf-plugins-core] release [0.1.21-2]. (Igor
+  Gnatenko)
+- Automatic commit of package [dnf-plugins-core] release [0.1.21-1]. (Igor
+  Gnatenko)
+- spec: explicitly conflict with python-%%{name} with different version (Igor
+  Gnatenko)
+- updated plugin to read_config() change (RhBug:1193823) (Michael Mraka)
+- repoquery: sourcerpm does not contain epoch (RhBug:1335959) (Michael Mraka)
+- enforce-api: use api method transaction (Michal Luscon)
+- enforce-api: apply changes from Base class (Michal Luscon)
+- copr: Read the %%distro_arch macro to determine Mageia chroot arch (Neal
+  Gompa (ニール・ゴンパ))
+- copr: Remove unnecessary function calls/options and simplify conditional
+  (Neal Gompa (ニール・ゴンパ))
+- copr: Add Mageia chroot selection support (Neal Gompa (ニール・ゴンパ))
+- copr: Simplify and fix up reading copr chroot config override (Neal Gompa
+  (ニール・ゴンパ))
+- autoglob feature has been moved to filter() (RhBug:1279538) (Michael Mraka)
+
 * Fri May 27 2016 Igor Gnatenko <ignatenko@redhat.com> 0.1.21-2
 - spec: explicitly conflict with python-%%{name} with different version (Igor
   Gnatenko)
