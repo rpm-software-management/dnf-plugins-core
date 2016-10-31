@@ -174,8 +174,9 @@ class BuildDepCommand(dnf.cli.Command):
     def _spec_deps(self, spec_fn):
         try:
             spec = rpm.spec(spec_fn)
-        except ValueError:
-            msg = _("Failed to open: '%s', not a valid spec file.") % spec_fn
+        except ValueError as ex:
+            msg = _("Failed to open: '%s', not a valid spec file: %s") % (
+                    spec_fn, ex)
             raise dnf.exceptions.Error(msg)
         done = True
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
