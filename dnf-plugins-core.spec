@@ -131,7 +131,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %license COPYING
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
-%config %{_sysconfdir}/dnf/plugins/*
+%config(noreplace) %{_sysconfdir}/dnf/plugins/*
 %{python2_sitelib}/dnf-plugins/*
 %{python2_sitelib}/dnfpluginscore/
 
@@ -140,7 +140,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %license COPYING
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
-%config %{_sysconfdir}/dnf/plugins/*
+%config(noreplace) %{_sysconfdir}/dnf/plugins/*
 %{python3_sitelib}/dnf-plugins/*.py
 %{python3_sitelib}/dnf-plugins/__pycache__/*
 %{python3_sitelib}/dnfpluginscore/
