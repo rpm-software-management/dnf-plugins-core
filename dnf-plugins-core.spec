@@ -141,9 +141,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
 %config %{_sysconfdir}/dnf/plugins/*
-%exclude %{python3_sitelib}/dnf-plugins/__pycache__/
-%exclude %{python3_sitelib}/dnf-plugins/kickstart.py
-%{python3_sitelib}/dnf-plugins/*
+%{python3_sitelib}/dnf-plugins/*.py
 %{python3_sitelib}/dnf-plugins/__pycache__/*
 %{python3_sitelib}/dnfpluginscore/
 %endif
