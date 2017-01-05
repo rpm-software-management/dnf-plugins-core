@@ -1,0 +1,105 @@
+#!@PYTHON_EXECUTABLE@
+# The dnf-utils executable script.
+#
+# Copyright (C) 2017 Red Hat, Inc.
+#
+# This copyrighted material is made available to anyone wishing to use,
+# modify, copy, or redistribute it subject to the terms and conditions of
+# the GNU General Public License v.2, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY expressed or implied, including the implied warranties of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+# Public License for more details.  You should have received a copy of the
+# GNU General Public License along with this program; if not, write to the
+# Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.  Any Red Hat trademarks that are incorporated in the
+# source code or documentation are not subject to the GNU General Public
+# License and may only be used or replicated with the express permission of
+# Red Hat, Inc.
+#
+
+from __future__ import unicode_literals
+import sys
+import os.path
+
+MAPPING = {'debuginfo-install': ['debuginfo-install'],
+           'find-repos-of-install': ['list', 'installed'],
+           'package-cleanup': [],
+           'repo-graph': ['repograph'],
+           'repoclosure': ['repoclosure'],
+           'repomanage': ['repomanage'],
+           'repoquery': ['repoquery'],
+           'reposync': ['reposync'],
+           'repotrack': ['download'],
+           'yum-builddep': ['builddep'],
+           'yum-config-manager': ['config-manager'],
+           'yum-debug-dump': ['debug-dump'],
+           'yum-debug-restore': ['debug-restore'],
+           'yumdownloader': ['download']
+           }
+
+def suppress_keyboard_interrupt_message():
+    """Prevent unsightly KeyboardInterrupt tracebacks.
+
+    Nothing will be printed to the terminal after an uncaught
+    :class:`exceptions.KeyboardInterrupt`.
+
+    """
+    old_excepthook = sys.excepthook
+
+    def new_hook(type, value, traceback):
+        if type != KeyboardInterrupt:
+            old_excepthook(type, value, traceback)
+        else:
+            pass
+
+    sys.excepthook = new_hook
+
+
+# do this ASAP to prevent tracebacks after ^C during imports
+suppress_keyboard_interrupt_message()
+
+if __name__ != "__main__":
+    sys.stderr.write('The executable DNF module must not be imported.')
+    sys.exit(1)
+
+here = sys.path[0]
+if here != '/usr/bin':
+    # git checkout
+    import os
+    dnf_toplevel = os.path.dirname(here)
+    sys.path[0] = dnf_toplevel
+
+from dnf.cli import main
+command = os.path.basename(sys.argv[0])
+args = sys.argv[1:]
+
+if command == 'package-cleanup':
+    if '--dupes' in args:
+        args[args.ingex('--dupes')] = '--duplicates'
+        MAPPING[command] = ['repoquery']
+    elif '--leaves' in args:
+        args[args.ingex('--leaves')] = '--unneeded'
+        MAPPING[command] = ['repoquery']
+    elif '--orphans' in args:
+        args[args.ingex('--orphans')] = '--extras'
+        MAPPING[command] = ['repoquery']
+    elif '--oldkernels' in args:
+        args[args.ingex('--oldkernels')] = '--installonly'
+        MAPPING[command] = ['repoquery']
+    elif '--problems' in args:
+        args[args.ingex('--problems')] = '--unsatisfied'
+        MAPPING[command] = ['repoquery']
+    elif '--cleandupes' in args:
+        args[args.ingex('--cleandupes')] = '--duplicates'
+        MAPPING[command] = ['remove']
+    elif '--oldkernels' in args:
+        args[args.ingex('--oldkernels')] = '--oldinstallonly'
+        MAPPING[command] = ['remove']
+    else:
+        sys.stderr.write('package-cleanup has to be executed with one of the options: --dupes, '
+                         '--leaves, --orphans, --oldkernels, --problems, --cleandupes, '
+                         'or --oldkernels\n')
+        sys.exit(1)
+
+main.user_main(MAPPING[command] + args, exit_code=True)
