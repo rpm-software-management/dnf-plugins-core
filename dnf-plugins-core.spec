@@ -121,6 +121,23 @@ copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repogra
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
+%package -n dnf-utils
+Conflicts:      yum-utils < 1.1.32
+Requires:       dnf >= %{dnf_lowest_compatible}
+Requires:       %{name} = %{version}-%{release}
+%if %{with python3}
+Requires:       python3-dnf >= %{dnf_lowest_compatible}
+Requires:       python3-dnf < %{dnf_not_compatible}
+%else
+Requires:       python2-dnf >= %{dnf_lowest_compatible}
+Requires:       python2-dnf < %{dnf_not_compatible}
+%endif
+Summary:        Yum-utils CLI compatibility layer
+
+%description -n dnf-utils
+As a Yum-utils CLI compatibility layer, supplies in /usr/bin/ builddep, repoquery, repoclosure,
+download, debuginfo-install, and config-manager and redirecting to DNF.
+
 %package -n python2-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -308,6 +325,26 @@ pushd build-py3
 popd
 %endif
 %find_lang %{name}
+%if %{with python3}
+mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
+%else
+mv %{buildroot}%{_libexecdir}/dnf-utils-2 %{buildroot}%{_libexecdir}/dnf-utils
+%endif
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoclosure
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repomanage
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoquery
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
+rm -vf %{_libexecdir}/dnf-utils-*
 
 %check
 PYTHONPATH=./plugins nosetests-%{python2_version} -s tests/
@@ -380,6 +417,23 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
 %{python3_sitelib}/dnfpluginscore/
 %endif
+
+%files -n dnf-utils
+%{_libexecdir}/dnf-utils
+%{_bindir}/debuginfo-install
+%{_bindir}/find-repos-of-install
+%{_bindir}/package-cleanup
+%{_bindir}/repo-graph
+%{_bindir}/repoclosure
+%{_bindir}/repomanage
+%{_bindir}/repoquery
+%{_bindir}/reposync
+%{_bindir}/repotrack
+%{_bindir}/yum-builddep
+%{_bindir}/yum-config-manager
+%{_bindir}/yum-debug-dump
+%{_bindir}/yum-debug-restore
+%{_bindir}/yumdownloader
 
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
