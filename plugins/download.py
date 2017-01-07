@@ -73,11 +73,13 @@ class DownloadCommand(dnf.cli.Command):
         """Execute the util action here."""
 
         if self.opts.source:
-            locations = self._download_source(self.opts.packages)
+            pkgs = self._get_pkg_objs_source(self.opts.packages)
         elif self.opts.debuginfo:
-            locations = self._download_debuginfo(self.opts.packages)
+            pkgs = self._get_pkg_objs_debuginfo(self.opts.packages)
         else:
-            locations = self._download_rpms(self.opts.packages)
+            pkgs = self._get_pkg_objs_rpms(self.opts.packages)
+
+        locations = self._do_downloads(pkgs)  # download rpms
 
         if self.opts.destdir:
             dest = self.opts.destdir
@@ -86,27 +88,40 @@ class DownloadCommand(dnf.cli.Command):
 
         self._copy_packages(dest, locations)
 
-    def _download_rpms(self, pkg_specs):
-        """Download packages to dnf cache."""
+    def _do_downloads(self, pkgs):
+        """
+        Perform the download for a list of packages
+        """
+        self.base.download_packages(pkgs, self.base.output.progress)
+        locations = sorted([pkg.localPkg() for pkg in pkgs])
+        return locations
+
+    def _get_pkg_objs_rpms(self, pkg_specs):
+        """
+        Return a list of dnf.Package objects that represent the rpms
+        to download.
+        """
         if self.opts.resolve:
             pkgs = self._get_packages_with_deps(pkg_specs)
         else:
             pkgs = self._get_packages(pkg_specs)
-        self.base.download_packages(pkgs, self.base.output.progress)
-        locations = sorted([pkg.localPkg() for pkg in pkgs])
-        return locations
+        return pkgs
 
-    def _download_source(self, pkg_specs):
-        """Download source packages to dnf cache."""
+    def _get_pkg_objs_source(self, pkg_specs):
+        """
+        Return a list of dnf.Package objects that represent the source
+        rpms to download.
+        """
         pkgs = self._get_packages(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
         pkgs = set(self._get_packages(source_pkgs, source=True))
-        self.base.download_packages(pkgs, self.base.output.progress)
-        locations = sorted([pkg.localPkg() for pkg in pkgs])
-        return locations
+        return pkgs
 
-    def _download_debuginfo(self, pkg_specs):
-        """Download debuginfo packages to dnf cache."""
+    def _get_pkg_objs_debuginfo(self, pkg_specs):
+        """
+        Return a list of dnf.Package objects that represent the debuginfo
+        rpms to download.
+        """
         dbg_pkgs = set()
         q = self.base.sack.query()
         q = q.available()
@@ -128,9 +143,7 @@ class DownloadCommand(dnf.cli.Command):
                 if dbg_found:
                     break
 
-        self.base.download_packages(dbg_pkgs, self.base.output.progress)
-        locations = sorted([pkg.localPkg() for pkg in dbg_pkgs])
-        return locations
+        return dbg_pkgs
 
     def _get_packages(self, pkg_specs, source=False):
         """Get packages matching pkg_specs."""
