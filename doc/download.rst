@@ -52,14 +52,17 @@ Options
 ``--destdir``
     Download directory, default is the current directory (the directory must exist).
 
-``--resolve``
-    Resolve and download dependencies, not installed on the local system.
+``--url``
+    Instead of downloading, print list of urls where the rpms can be downloaded.
 
 --------
 Examples
 --------
 ``dnf download dnf``
     Download the latest dnf package to the current directory.
+
+``dnf download --url dnf``
+    Just print the remote location url where the dnf rpm can be downloaded from.
 
 ``dnf download dnf --destdir /tmp/dnl``
     Download the latest dnf package to the /tmp/dnl directory (the directory must exist).
