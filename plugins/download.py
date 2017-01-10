@@ -58,8 +58,13 @@ class DownloadCommand(dnf.cli.Command):
         parser.add_argument('--resolve', action='store_true',
                             help=_('resolve and download needed dependencies'))
         parser.add_argument('--url', action='store_true',
-                            help=_('print list of http(s) urls where the rpms '
+                            help=_('print list of urls where the rpms '
                                    'can be downloaded instead of downloading'))
+        parser.add_argument('--urlprotocols', action='append',
+                            choices=['http', 'https', 'rsync', 'ftp'],
+                            default=[],
+                            help=_('when running with --url, '
+                                   'limit to specific protocols'))
 
     def configure(self):
         # setup sack and populate it with enabled repos
@@ -154,8 +159,7 @@ class DownloadCommand(dnf.cli.Command):
 
         return dbg_pkgs
 
-    @staticmethod
-    def _print_download_urls_for_pkgs(pkgs):
+    def _print_download_urls_for_pkgs(self, pkgs):
         """Print out a url for each dnf.Package object in the pkgs list."""
 
         # Create a tmpdir so that librepo tmp files don't get left behind
@@ -172,14 +176,22 @@ class DownloadCommand(dnf.cli.Command):
                 h.fetchmirrors = True  # sets LRO_FETCHMIRRORS
                 h.destdir = tmpdir     # store tmp files in tmpdir
                 h.perform()
-                for mirror in h.mirrors:
-                    if mirror.startswith('http'):
-                        baseurl = mirror
-                        break
+                baseurl = self._filter_mirrors(h.mirrors)
+
                 if not baseurl:
                     msg = _("Failed to get mirror for package: %s") % pkg.name
                     raise dnf.exceptions.Error(msg)
                 print(baseurl + pkg.location)
+
+    def _filter_mirrors(self, mirrors):
+        """Find the first mirror that matches an acceptable protocol"""
+        for mirror in mirrors:
+            protocol = mirror.split(':')[0]
+            if not self.opts.urlprotocols:
+                return mirror
+            if protocol in self.opts.urlprotocols:
+                return mirror
+        return None  # no acceptable mirror
 
     def _get_packages(self, pkg_specs, source=False):
         """Get packages matching pkg_specs."""

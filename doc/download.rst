@@ -55,6 +55,9 @@ Options
 ``--url``
     Instead of downloading, print list of urls where the rpms can be downloaded.
 
+``--urlprotocol``
+    Limit the protocol of the urls output by the --url option. Options are http, https, rsync, ftp.
+
 --------
 Examples
 --------
@@ -63,6 +66,9 @@ Examples
 
 ``dnf download --url dnf``
     Just print the remote location url where the dnf rpm can be downloaded from.
+
+``dnf download --url --urlprotocols=https --urlprotocols=rsync dnf``
+    Same as above, but limit urls to https or rsync urls.
 
 ``dnf download dnf --destdir /tmp/dnl``
     Download the latest dnf package to the /tmp/dnl directory (the directory must exist).
