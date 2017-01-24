@@ -30,14 +30,17 @@ Provides:       dnf-command(copr)
 Provides:       dnf-command(debuginfo-install)
 Provides:       dnf-command(download)
 Provides:       dnf-command(repoclosure)
+Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
 Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
+Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       dnf-plugins-extras-repomanage = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, debuginfo-install, download, needs-restarting, repoclosure, repomanage and
+copr, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 
 %package -n python2-%{name}
@@ -56,8 +59,10 @@ Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-dnf < %{dnf_not_compatible}
 Requires:       python-hawkey >= %{hawkey_version}
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
+Provides:       python2-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repomanage = %{version}-%{release}
 Obsoletes:      python2-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
+Obsoletes:      python2-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
 
 Conflicts:      %{name} <= 0.1.5
@@ -67,8 +72,8 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, copr,
-config-manager, debuginfo-install, download, needs-restarting, repoclosure, repomanage and
-reposync commands. Additionally provides generate_completion_cache passive plugin.
+config-manager, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage
+and reposync commands. Additionally provides generate_completion_cache passive plugin.
 
 %if %{with python3}
 %package -n python3-%{name}
@@ -87,13 +92,15 @@ Conflicts:      %{name} <= 0.1.5
 Conflicts:      python2-%{name} < %{version}-%{release}
 Conflicts:      python-%{name} < %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
+Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repomanage = %{version}-%{release}
 Obsoletes:      python3-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
+Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
 
 %description -n python3-%{name}
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, debuginfo-install, download, needs-restarting, repoclosure, repomanage and
+copr, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
