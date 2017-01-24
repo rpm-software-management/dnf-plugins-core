@@ -251,6 +251,7 @@ man_pages = [
      AUTHORS, 8),
     ('download', 'dnf.plugin.download', u'DNF download Plugin',
      AUTHORS, 8),
+    ('repoclosure', 'dnf.plugin.repoclosure', u'DNF repoclosure Plugin', AUTHORS, 8),
     ('repomanage', 'dnf.plugin.repomanage', u'DNF repomanage Plugin', AUTHORS, 8),
 ]
 
