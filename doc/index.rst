@@ -33,6 +33,7 @@ This documents core plugins of DNF:
    generate_completion_cache
    needs_restarting
    repoclosure
+   repograph
    repomanage
    reposync
 
