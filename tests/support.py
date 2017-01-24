@@ -44,6 +44,20 @@ def command_run(cmd, args):
     command_configure(cmd, args)
     return cmd.run()
 
+class BaseStub(object):
+    def __init__(self):
+        self.sack = dnf.sack.Sack()
+        self.repos = dnf.repodict.RepoDict()
+        self.conf = FakeConf()
+
+    def add_remote_rpms(self, path_list):
+        self.sack.create_cmdline_repo()
+        pkgs = []
+        for path in path_list:
+            pkgs.append(self.sack.add_cmdline_package(path))
+        return pkgs
+
+
 class BaseCliStub(object):
     """A class mocking `dnf.cli.cli.BaseCli`."""
 
@@ -94,6 +108,9 @@ class CliStub(object):
     def register_command(self, command):
         """Register given *command*."""
         self.cli_commands.update({alias: command for alias in command.aliases})
+
+    def redirect_logger(self, stdout=None, stderr=None):
+        return
 
 
 class DemandsStub(object):

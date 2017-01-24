@@ -32,6 +32,7 @@ This documents core plugins of DNF:
    download
    generate_completion_cache
    needs_restarting
+   repomanage
    reposync
 
 
