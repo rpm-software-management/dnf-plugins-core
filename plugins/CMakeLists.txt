@@ -9,5 +9,6 @@ INSTALL (FILES repoclosure.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES repograph.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES repomanage.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES reposync.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+INSTALL (FILES versionlock.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 
 ADD_SUBDIRECTORY (dnfpluginscore)
