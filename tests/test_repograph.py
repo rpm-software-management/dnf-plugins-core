@@ -23,7 +23,6 @@ import dnf.pycomp
 import os
 import repograph
 import tests.support as support
-import unittest
 
 
 class TestRepoGraphFunctions(support.TestCase):
@@ -50,16 +49,14 @@ class TestRepoGraphFunctions(support.TestCase):
 
     def test_base(self):
         args = []
-        self.cmd.base.add_remote_rpms([os.path.join(self.path,
-            "noarch/foo-4-6.noarch.rpm")])
-        self.cmd.base.add_remote_rpms([os.path.join(self.path,
-            "noarch/bar-4-6.noarch.rpm")])
+        self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/foo-4-6.noarch.rpm")])
+        self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/bar-4-6.noarch.rpm")])
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
             support.command_run(self.cmd, args)
             expected_graph = ["digraph packages {", repograph.DOT_HEADER,
-                '"foo" [color="0.526086956522 0.626086956522 1.0"];',
-                '"foo" -> {',
-                '"bar"',
-                '} [color="0.526086956522 0.626086956522 1.0"];\n',
-                "}\n"]
+                              '"foo" [color="0.526086956522 0.626086956522 1.0"];',
+                              '"foo" -> {',
+                              '"bar"',
+                              '} [color="0.526086956522 0.626086956522 1.0"];\n',
+                              "}\n"]
         self.assertEqual(stdout.getvalue(), "\n".join(expected_graph))

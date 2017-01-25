@@ -97,8 +97,8 @@ class LeavesCommand(dnf.cli.Command):
                 i = idx[-1]
 
                 if i:
-                    i-=1
-                    idx[-1]=i
+                    i -= 1
+                    idx[-1] = i
                     v = graph[u][i]
                     if not tag[v]:
                         stack.append(v)

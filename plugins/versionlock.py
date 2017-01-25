@@ -38,6 +38,7 @@ NOTFOUND_SPEC = _('No package found for:')
 
 locklist_fn = None
 
+
 class VersionLock(dnf.Plugin):
 
     name = 'versionlock'
@@ -84,6 +85,7 @@ EXC_CMDS = ['exclude', 'add-!', 'add!', 'blacklist']
 DEL_CMDS = ['delete', 'del']
 ALL_CMDS = ['add', 'clear', 'list'] + EXC_CMDS + DEL_CMDS
 
+
 class VersionLockCommand(dnf.cli.Command):
 
     aliases = ("versionlock",)
@@ -96,7 +98,6 @@ class VersionLockCommand(dnf.cli.Command):
                             metavar="[add|exclude|list|delete|clear]")
         parser.add_argument("package", nargs='*',
                             metavar="[<package-nevr-spec>]")
-
 
     def configure(self):
         self.cli.demands.sack_activation = True
@@ -125,7 +126,7 @@ class VersionLockCommand(dnf.cli.Command):
                             EXCLUDING_SPEC, '!')
         elif cmd == 'list':
             for pat in _read_locklist():
-               logger.info(pat)
+                logger.info(pat)
         elif cmd == 'clear':
             with open(locklist_fn, 'w') as f:
                 # open in write mode truncates file
@@ -162,6 +163,7 @@ def _read_locklist():
         raise dnf.exceptions.Error(NOT_READABLE % e)
     return locklist
 
+
 def _write_locklist(base, args, try_installed, comment, info, prefix):
     specs = set()
     for pat in args:
@@ -183,6 +185,7 @@ def _write_locklist(base, args, try_installed, comment, info, prefix):
             logger.info("%s %s", info, spec)
             f.write("%s%s\n" % (prefix, spec))
 
+
 def _match(ent, patterns):
     try:
         n = hawkey.split_nevra(ent)
@@ -201,6 +204,7 @@ def _match(ent, patterns):
             if fnmatch.fnmatch(name, pat):
                 return True
     return False
+
 
 def pkgtup2spec(name, arch, epoch, version, release):
     # we ignore arch

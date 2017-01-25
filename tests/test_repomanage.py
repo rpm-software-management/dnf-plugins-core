@@ -23,7 +23,6 @@ import dnf.pycomp
 import os
 import repomanage
 import tests.support as support
-import unittest
 
 
 class TestRepoManageFunctions(support.TestCase):
@@ -46,7 +45,7 @@ class TestRepoManageFunctions(support.TestCase):
                              "noarch/foo-4-6.noarch.rpm",
                              "noarch/foo-4-7.noarch.rpm"]
             self.assertEqual(stdout.getvalue().split(),
-                self._path_join_in_list(expected_list, self.path))
+                             self._path_join_in_list(expected_list, self.path))
 
     def test_new_option(self):
         args = ["--new", self.path]
@@ -55,7 +54,7 @@ class TestRepoManageFunctions(support.TestCase):
             expected_list = ["foo-4-8.src.rpm",
                              "noarch/foo-4-8.noarch.rpm"]
             self.assertEqual(stdout.getvalue().split(),
-                self._path_join_in_list(expected_list, self.path))
+                             self._path_join_in_list(expected_list, self.path))
 
     def test_keep_option(self):
         args = ["--new", "--keep", "2", self.path]
@@ -66,7 +65,7 @@ class TestRepoManageFunctions(support.TestCase):
                              "noarch/foo-4-7.noarch.rpm",
                              "noarch/foo-4-8.noarch.rpm"]
             self.assertEqual(stdout.getvalue().split(),
-                self._path_join_in_list(expected_list, self.path))
+                             self._path_join_in_list(expected_list, self.path))
 
     def test_space_option(self):
         args = ["--new", "--space", self.path]
@@ -75,4 +74,4 @@ class TestRepoManageFunctions(support.TestCase):
             expected_list = ["foo-4-8.src.rpm",
                              "noarch/foo-4-8.noarch.rpm"]
             self.assertEqual(stdout.getvalue()[:-1],
-                " ".join(self._path_join_in_list(expected_list, self.path)))
+                             " ".join(self._path_join_in_list(expected_list, self.path)))
