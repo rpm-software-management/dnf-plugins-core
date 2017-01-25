@@ -31,11 +31,13 @@ This documents core plugins of DNF:
    debuginfo-install
    download
    generate_completion_cache
+   leaves
    needs_restarting
    repoclosure
    repograph
    repomanage
    reposync
+   show-leaves
    versionlock
 
 

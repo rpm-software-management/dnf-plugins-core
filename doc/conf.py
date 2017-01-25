@@ -253,11 +253,13 @@ man_pages = [
      AUTHORS, 8),
     ('generate_completion_cache', 'dnf.plugin.generate_completion_cache',
      u'DNF generate_completion_cache Plugin', AUTHORS, 8),
+    ('leaves', 'dnf.plugin.leaves', u'DNF leaves Plugin', AUTHORS, 8),
     ('needs_restarting', 'dnf.plugin.needs_restarting', u'DNF needs_restarting Plugin', AUTHORS, 8),
     ('repoclosure', 'dnf.plugin.repoclosure', u'DNF repoclosure Plugin', AUTHORS, 8),
     ('repograph', 'dnf.plugin.repograph', u'DNF repograph Plugin', AUTHORS, 8),
     ('repomanage', 'dnf.plugin.repomanage', u'DNF repomanage Plugin', AUTHORS, 8),
     ('reposync', 'dnf.plugin.reposync', u'DNF reposync Plugin', AUTHORS, 8),
+    ('show-leaves', 'dnf.plugin.show-leaves', u'DNF show-leaves Plugin', AUTHORS, 8),
     ('versionlock', 'dnf.plugin.versionlock', u'DNF versionlock Plugin', AUTHORS, 8),
 ]
 
