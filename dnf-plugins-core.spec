@@ -104,6 +104,70 @@ copr, debuginfo-install, download, needs-restarting, repoclosure, repograph, rep
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
+%package -n python2-dnf-plugin-leaves
+Summary:        Leaves Plugin for DNF
+Requires:       python2-%{name} = %{version}-%{release}
+Provides:       python2-dnf-plugins-extras-leaves = %{version}-%{release}
+Provides:       dnf-command(leaves)
+Provides:       dnf-plugin-leaves = %{version}-%{release}
+Provides:       dnf-plugins-extras-leaves = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python3-dnf-plugin-leaves < %{version}-%{release}
+Obsoletes:      python2-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
+
+%description -n python2-dnf-plugin-leaves
+Leaves Plugin for DNF, Python 2 version. List all installed packages
+not required by any other installed package.
+
+%package -n python3-dnf-plugin-leaves
+Summary:        Leaves Plugin for DNF
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       python3-dnf-plugins-extras-leaves = %{version}-%{release}
+Provides:       dnf-command(leaves)
+Provides:       dnf-plugin-leaves = %{version}-%{release}
+Provides:       dnf-plugins-extras-leaves = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python2-dnf-plugin-leaves < %{version}-%{release}
+Obsoletes:      python3-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
+
+%description -n python3-dnf-plugin-leaves
+Leaves Plugin for DNF, Python 3 version. List all installed packages
+not required by any other installed package.
+
+%package -n python2-dnf-plugin-show-leaves
+Summary:        Leaves Plugin for DNF
+Requires:       python2-%{name} = %{version}-%{release}
+Requires:       python2-dnf-plugin-leaves = %{version}-%{release}
+Provides:       dnf-plugin-show-leaves =  %{version}-%{release}
+Provides:       python2-dnf-plugins-extras-show-leaves = %{version}-%{release}
+Provides:       dnf-command(show-leaves)
+Provides:       dnf-plugins-extras-show-leaves = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python3-dnf-plugin-show-leaves < %{version}-%{release}
+Obsoletes:      python2-dnf-plugins-extras-show-leaves < %{dnf_plugins_extra}
+
+%description -n python2-dnf-plugin-show-leaves
+Show-leaves Plugin for DNF, Python 2 version. List all installed
+packages that are no longer required by any other installed package
+after a transaction.
+
+%package -n python3-dnf-plugin-show-leaves
+Summary:        Show-leaves Plugin for DNF
+Requires:       python3-%{name} = %{version}-%{release}
+Requires:       python3-dnf-plugin-leaves = %{version}-%{release}
+Provides:       dnf-plugin-show-leaves =  %{version}-%{release}
+Provides:       python3-dnf-plugins-extras-show-leaves = %{version}-%{release}
+Provides:       dnf-command(show-leaves)
+Provides:       dnf-plugins-extras-show-leaves = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python2-dnf-plugin-show-leaves < %{version}-%{release}
+Obsoletes:      python3-dnf-plugins-extras-show-leaves < %{dnf_plugins_extra}
+
+%description -n python3-dnf-plugin-show-leaves
+Show-leaves Plugin for DNF, Python 3 version. List all installed
+packages that are no longer required by any other installed package
+after a transaction.
+
 %package -n python2-dnf-plugin-versionlock
 Summary:        Version Lock Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -235,6 +299,26 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
 %{python3_sitelib}/dnfpluginscore/
 %endif
+
+%files -n dnf-plugin-leaves
+%{_mandir}/man8/dnf.plugin.leaves.*
+
+%files -n python2-dnf-plugin-leaves
+%{python2_sitelib}/dnf-plugins/leaves.*
+
+%files -n python3-dnf-plugin-leaves
+%{python3_sitelib}/dnf-plugins/leaves.*
+%{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
+
+%files -n dnf-plugin-show-leaves
+%{_mandir}/man8/dnf.plugin.show-leaves.*
+
+%files -n python2-dnf-plugin-show-leaves
+%{python2_sitelib}/dnf-plugins/show_leaves.*
+
+%files -n python3-dnf-plugin-show-leaves
+%{python3_sitelib}/dnf-plugins/show_leaves.*
+%{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
 
 %files -n dnf-plugin-versionlock
 %{_mandir}/man8/dnf.plugin.versionlock.*
