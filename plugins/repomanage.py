@@ -27,6 +27,7 @@ import dnf.cli
 import logging
 import os
 
+
 class RepoManage(dnf.Plugin):
 
     name = "repomanage"
@@ -58,7 +59,7 @@ class RepoManageCommand(dnf.cli.Command):
         verfile = {}
         pkgdict = {}
 
-        keepnum = int(self.opts.keep)*(-1) # the number of items to keep
+        keepnum = int(self.opts.keep) * (-1)  # the number of items to keep
 
         if len(rpm_list) == 0:
             raise dnf.exceptions.Error(_("No files to process"))

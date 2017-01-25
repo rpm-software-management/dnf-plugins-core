@@ -23,7 +23,6 @@ import dnf.pycomp
 import os
 import repoclosure
 import tests.support as support
-import unittest
 
 
 class TestRepoClosureFunctions(support.TestCase):
@@ -44,8 +43,7 @@ class TestRepoClosureFunctions(support.TestCase):
     def test_check_option(self):
         args = ["--check", "@commandline"]
         self.cmd.base.repos.add(support.RepoStub("main"))
-        self.cmd.base.add_remote_rpms([os.path.join(self.path,
-            "noarch/foo-4-6.noarch.rpm")])
+        self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/foo-4-6.noarch.rpm")])
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
             support.command_run(self.cmd, args)
             expected_out = ["package: foo-4-6.noarch from @commandline",
@@ -59,8 +57,7 @@ class TestRepoClosureFunctions(support.TestCase):
 
     def test_pkg_option(self):
         args = ["--pkg", "foo"]
-        self.cmd.base.add_remote_rpms([os.path.join(self.path,
-            "noarch/foo-4-6.noarch.rpm")])
+        self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/foo-4-6.noarch.rpm")])
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
             support.command_run(self.cmd, args)
             expected_out = ["package: foo-4-6.noarch from @commandline",
@@ -74,8 +71,7 @@ class TestRepoClosureFunctions(support.TestCase):
 
     def test_base(self):
         args = []
-        self.cmd.base.add_remote_rpms([os.path.join(self.path,
-            "noarch/foo-4-6.noarch.rpm")])
+        self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/foo-4-6.noarch.rpm")])
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
             support.command_run(self.cmd, args)
             expected_out = ["package: foo-4-6.noarch from @commandline",
