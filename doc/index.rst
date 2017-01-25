@@ -36,6 +36,7 @@ This documents core plugins of DNF:
    repograph
    repomanage
    reposync
+   versionlock
 
 
 ========

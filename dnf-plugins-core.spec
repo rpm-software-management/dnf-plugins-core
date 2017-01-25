@@ -104,6 +104,38 @@ copr, debuginfo-install, download, needs-restarting, repoclosure, repograph, rep
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
+%package -n python2-dnf-plugin-versionlock
+Summary:        Version Lock Plugin for DNF
+Requires:       python2-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-versionlock =  %{version}-%{release}
+Provides:       python2-dnf-plugins-extras-versionlock = %{version}-%{release}
+Provides:       dnf-command(versionlock)
+Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python3-dnf-plugin-versionlock < %{version}-%{release}
+Obsoletes:      python2-dnf-plugins-extras-versionlock < %{dnf_plugins_extra}
+
+%description -n python2-dnf-plugin-versionlock
+Version lock plugin takes a set of name/versions for packages and excludes all other
+versions of those packages. This allows you to e.g. protect packages from being
+updated by newer versions.
+
+%package -n python3-dnf-plugin-versionlock
+Summary:        Version Lock Plugin for DNF
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-versionlock =  %{version}-%{release}
+Provides:       python3-dnf-plugins-extras-versionlock = %{version}-%{release}
+Provides:       dnf-command(versionlock)
+Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python2-dnf-plugin-versionlock < %{version}-%{release}
+Obsoletes:      python3-dnf-plugins-extras-versionlock < %{dnf_plugins_extra}
+
+%description -n python3-dnf-plugin-versionlock
+Version lock plugin takes a set of name/versions for packages and excludes all other
+versions of those packages. This allows you to e.g. protect packages from being
+updated by newer versions.
+
 %prep
 %autosetup
 mkdir build-py2
@@ -143,14 +175,34 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %files
-%{_mandir}/man8/dnf.plugin.*
+%{_mandir}/man8/dnf.plugin.builddep.*
+%{_mandir}/man8/dnf.plugin.config_manager.*
+%{_mandir}/man8/dnf.plugin.copr.*
+%{_mandir}/man8/dnf.plugin.debuginfo-install.*
+%{_mandir}/man8/dnf.plugin.download.*
+%{_mandir}/man8/dnf.plugin.generate_completion_cache.*
+%{_mandir}/man8/dnf.plugin.needs_restarting.*
+%{_mandir}/man8/dnf.plugin.repoclosure.*
+%{_mandir}/man8/dnf.plugin.repograph.*
+%{_mandir}/man8/dnf.plugin.repomanage.*
+%{_mandir}/man8/dnf.plugin.reposync.*
 
 %files -n python2-%{name} -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
-%config(noreplace) %{_sysconfdir}/dnf/plugins/*
-%{python2_sitelib}/dnf-plugins/*
+%config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
+%{python2_sitelib}/dnf-plugins/builddep.*
+%{python2_sitelib}/dnf-plugins/config_manager.*
+%{python2_sitelib}/dnf-plugins/copr.*
+%{python2_sitelib}/dnf-plugins/debuginfo-install.*
+%{python2_sitelib}/dnf-plugins/download.*
+%{python2_sitelib}/dnf-plugins/generate_completion_cache.*
+%{python2_sitelib}/dnf-plugins/needs_restarting.*
+%{python2_sitelib}/dnf-plugins/repoclosure.*
+%{python2_sitelib}/dnf-plugins/repograph.*
+%{python2_sitelib}/dnf-plugins/repomanage.*
+%{python2_sitelib}/dnf-plugins/reposync.*
 %{python2_sitelib}/dnfpluginscore/
 
 %if %{with python3}
@@ -158,11 +210,45 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %license COPYING
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
-%config(noreplace) %{_sysconfdir}/dnf/plugins/*
-%{python3_sitelib}/dnf-plugins/*.py
-%{python3_sitelib}/dnf-plugins/__pycache__/*
+%config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
+%{python3_sitelib}/dnf-plugins/builddep.py
+%{python3_sitelib}/dnf-plugins/config_manager.py
+%{python3_sitelib}/dnf-plugins/copr.py
+%{python3_sitelib}/dnf-plugins/debuginfo-install.py
+%{python3_sitelib}/dnf-plugins/download.py
+%{python3_sitelib}/dnf-plugins/generate_completion_cache.py
+%{python3_sitelib}/dnf-plugins/needs_restarting.py
+%{python3_sitelib}/dnf-plugins/repoclosure.py
+%{python3_sitelib}/dnf-plugins/repograph.py
+%{python3_sitelib}/dnf-plugins/repomanage.py
+%{python3_sitelib}/dnf-plugins/reposync.py
+%{python3_sitelib}/dnf-plugins/__pycache__/builddep.*
+%{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*
+%{python3_sitelib}/dnf-plugins/__pycache__/copr.*
+%{python3_sitelib}/dnf-plugins/__pycache__/debuginfo-install.*
+%{python3_sitelib}/dnf-plugins/__pycache__/download.*
+%{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
+%{python3_sitelib}/dnf-plugins/__pycache__/needs_restarting.*
+%{python3_sitelib}/dnf-plugins/__pycache__/repoclosure.*
+%{python3_sitelib}/dnf-plugins/__pycache__/repograph.*
+%{python3_sitelib}/dnf-plugins/__pycache__/repomanage.*
+%{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
 %{python3_sitelib}/dnfpluginscore/
 %endif
+
+%files -n dnf-plugin-versionlock
+%{_mandir}/man8/dnf.plugin.versionlock.*
+
+%files -n python2-dnf-plugin-versionlock
+%config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
+%{python2_sitelib}/dnf-plugins/versionlock.*
+
+%files -n python3-dnf-plugin-versionlock
+%config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
+%{python3_sitelib}/dnf-plugins/versionlock.*
+%{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
 
 %changelog
 * Tue Mar 21 2017 Igor Gnatenko <ignatenko@redhat.com> 1.1.0-1
