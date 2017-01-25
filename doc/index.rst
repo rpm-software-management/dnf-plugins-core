@@ -32,6 +32,7 @@ This documents core plugins of DNF:
    download
    generate_completion_cache
    leaves
+   local
    needs_restarting
    repoclosure
    repograph

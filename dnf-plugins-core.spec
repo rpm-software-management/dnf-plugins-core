@@ -134,6 +134,36 @@ Obsoletes:      python3-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
 Leaves Plugin for DNF, Python 3 version. List all installed packages
 not required by any other installed package.
 
+%package -n python2-dnf-plugin-local
+Summary:        Local Plugin for DNF
+Requires:       %{_bindir}/createrepo_c
+Requires:       python2-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-local =  %{version}-%{release}
+Provides:       python2-dnf-plugins-extras-local = %{version}-%{release}
+Provides:       dnf-plugins-extras-local = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python3-dnf-plugin-local < %{version}-%{release}
+Obsoletes:      python2-dnf-plugins-extras-local < %{dnf_plugins_extra}
+
+%description -n python2-dnf-plugin-local
+Local Plugin for DNF, Python 2 version. Automatically copy all downloaded packages to a
+repository on the local filesystem and generating repo metadata.
+
+%package -n python3-dnf-plugin-local
+Summary:        Local Plugin for DNF
+Requires:       %{_bindir}/createrepo_c
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-local =  %{version}-%{release}
+Provides:       python3-dnf-plugins-extras-local = %{version}-%{release}
+Provides:       dnf-plugins-extras-local = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Conflicts:      python2-dnf-plugin-local < %{version}-%{release}
+Obsoletes:      python3-dnf-plugins-extras-local < %{dnf_plugins_extra}
+
+%description -n python3-dnf-plugin-local
+Local Plugin for DNF, Python 3 version. Automatically copy all downloaded
+packages to a repository on the local filesystem and generating repo metadata.
+
 %package -n python2-dnf-plugin-show-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -309,6 +339,18 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python3-dnf-plugin-leaves
 %{python3_sitelib}/dnf-plugins/leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
+
+%files -n dnf-plugin-local
+%{_mandir}/man8/dnf.plugin.local.*
+
+%files -n python2-dnf-plugin-local
+%config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
+%{python2_sitelib}/dnf-plugins/local.*
+
+%files -n python3-dnf-plugin-local
+%config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
+%{python3_sitelib}/dnf-plugins/local.*
+%{python3_sitelib}/dnf-plugins/__pycache__/local.*
 
 %files -n dnf-plugin-show-leaves
 %{_mandir}/man8/dnf.plugin.show-leaves.*
