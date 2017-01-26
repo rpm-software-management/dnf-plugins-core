@@ -340,51 +340,47 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnfpluginscore/
 %endif
 
-%files -n dnf-plugin-leaves
-%{_mandir}/man8/dnf.plugin.leaves.*
-
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
+%{_mandir}/man8/dnf.plugin.leaves.*
 
 %files -n python3-dnf-plugin-leaves
 %{python3_sitelib}/dnf-plugins/leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
-
-%files -n dnf-plugin-local
-%{_mandir}/man8/dnf.plugin.local.*
+%{_mandir}/man8/dnf.plugin.leaves.*
 
 %files -n python2-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python2_sitelib}/dnf-plugins/local.*
+%{_mandir}/man8/dnf.plugin.local.*
 
 %files -n python3-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python3_sitelib}/dnf-plugins/local.*
 %{python3_sitelib}/dnf-plugins/__pycache__/local.*
-
-%files -n dnf-plugin-show-leaves
-%{_mandir}/man8/dnf.plugin.show-leaves.*
+%{_mandir}/man8/dnf.plugin.local.*
 
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
+%{_mandir}/man8/dnf.plugin.show-leaves.*
 
 %files -n python3-dnf-plugin-show-leaves
 %{python3_sitelib}/dnf-plugins/show_leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
-
-%files -n dnf-plugin-versionlock
-%{_mandir}/man8/dnf.plugin.versionlock.*
+%{_mandir}/man8/dnf.plugin.show-leaves.*
 
 %files -n python2-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python2_sitelib}/dnf-plugins/versionlock.*
+%{_mandir}/man8/dnf.plugin.versionlock.*
 
 %files -n python3-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
+%{_mandir}/man8/dnf.plugin.versionlock.*
 
 %changelog
 * Tue Mar 21 2017 Igor Gnatenko <ignatenko@redhat.com> 1.1.0-1
