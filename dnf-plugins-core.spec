@@ -36,6 +36,16 @@ Provides:       dnf-command(reposync)
 Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       dnf-plugins-extras-repomanage = %{version}-%{release}
+Provides:       dnf-plugin-builddep = %{version}-%{release}
+Provides:       dnf-plugin-config-manager = %{version}-%{release}
+Provides:       dnf-plugin-debuginfo-install = %{version}-%{release}
+Provides:       dnf-plugin-download = %{version}-%{release}
+Provides:       dnf-plugin-generate_completion_cache = %{version}-%{release}
+Provides:       dnf-plugin-needs_restarting = %{version}-%{release}
+Provides:       dnf-plugin-repoclosure = %{version}-%{release}
+Provides:       dnf-plugin-repograph = %{version}-%{release}
+Provides:       dnf-plugin-repomanage = %{version}-%{release}
+Provides:       dnf-plugin-reposync = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
