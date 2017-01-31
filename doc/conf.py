@@ -255,6 +255,7 @@ man_pages = [
      u'DNF generate_completion_cache Plugin', AUTHORS, 8),
     ('leaves', 'dnf.plugin.leaves', u'DNF leaves Plugin', AUTHORS, 8),
     ('local', 'dnf.plugin.local', u'DNF local Plugin', AUTHORS, 8),
+    ('migrate', 'dnf.plugin.migrate', u'DNF migrate Plugin', AUTHORS, 8),
     ('needs_restarting', 'dnf.plugin.needs_restarting', u'DNF needs_restarting Plugin', AUTHORS, 8),
     ('repoclosure', 'dnf.plugin.repoclosure', u'DNF repoclosure Plugin', AUTHORS, 8),
     ('repograph', 'dnf.plugin.repograph', u'DNF repograph Plugin', AUTHORS, 8),

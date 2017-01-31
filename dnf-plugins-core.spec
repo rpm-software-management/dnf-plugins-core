@@ -174,6 +174,20 @@ Obsoletes:      python3-dnf-plugins-extras-local < %{dnf_plugins_extra}
 Local Plugin for DNF, Python 3 version. Automatically copy all downloaded
 packages to a repository on the local filesystem and generating repo metadata.
 
+%package -n python2-dnf-plugin-migrate
+Summary:        Migrate Plugin for DNF
+Requires:       python2-%{name} = %{version}-%{release}
+Requires:       yum
+Provides:       dnf-plugin-migrate = %{version}-%{release}
+Provides:       python2-dnf-plugins-extras-migrate = %{version}-%{release}
+Provides:       dnf-command(migrate)
+Provides:       dnf-plugins-extras-migrate = %{version}-%{release}
+Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
+Obsoletes:      python2-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
+
+%description -n python2-dnf-plugin-migrate
+Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data from yum to dnf.
+
 %package -n python2-dnf-plugin-show-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -359,6 +373,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/local.*
 %{python3_sitelib}/dnf-plugins/__pycache__/local.*
 %{_mandir}/man8/dnf.plugin.local.*
+
+%files -n python2-dnf-plugin-migrate
+%{python2_sitelib}/dnf-plugins/migrate.*
+%{_mandir}/man8/dnf.plugin.migrate.*
 
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
