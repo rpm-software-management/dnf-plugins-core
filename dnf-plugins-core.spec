@@ -147,6 +147,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Thu Feb 09 2017 Jaroslav Mracek <jmracek@redhat.com> 1.0.1-1
+- bump version to 1.0.1 + update release notes (Jaroslav Mracek)
+- setup SideCI to ignore some PEP8 violations (Jaroslav Mracek)
+- spec: define all configs as (noreplace) (Igor Gnatenko)
+- spec: include __pycache__ files (Igor Gnatenko)
+- builddep: print errors from RPM SPEC parser (Petr Spacek)
+
 * Thu Feb 09 2017 Jaroslav Mracek <jmracek@redhat.com> 2.0.1-1
 
 
