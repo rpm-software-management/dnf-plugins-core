@@ -9,8 +9,8 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        1.0.0
-Release:        0.rc1.1%{?dist}
+Version:        1.0.1
+Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/dnf-plugins-core
@@ -147,6 +147,9 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Thu Feb 09 2017 Jaroslav Mracek <jmracek@redhat.com> 2.0.1-1
+
+
 * Thu Sep 29 2016 Michal Luscon <mluscon@redhat.com> 1.0.0-0.rc1.1
 - doc: open rpmspec in utf-8 mode (Igor Gnatenko)
 - cls.chroot_config inside _guess_chroot returns None (RhBug: 1361003) (Michael
