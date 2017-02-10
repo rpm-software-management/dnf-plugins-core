@@ -20,9 +20,15 @@ Core DNF Plugins Release Notes
 ##############################
 
 .. contents::
-====================
+===================
+1.0.1 Release Notes
+===================
+
+Minor changes in builddep: print errors from RPM SPEC parser
+
+===================
 1.0.0 Release Notes
-====================
+===================
 
 `Repoquery  <https://dnf.readthedocs.org/en/latest/command_ref.html#repoquery_command-label>`_ and
 `protected_packages <dnf.readthedocs.io/en/latest/conf_ref.html>`_ plugins were integrated into DNF.
