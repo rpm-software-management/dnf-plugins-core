@@ -152,8 +152,7 @@ class CoprCommand(dnf.cli.Command):
             self._need_root()
             self._ask_user("""
 You are about to enable a Copr repository. Please note that this
-repository is not part of the main Fedora distribution, and quality
-may vary.
+repository is not part of the main distribution, and quality may vary.
 
 The Fedora Project does not exercise any power over the contents of
 this repository beyond the rules outlined in the Copr FAQ at
