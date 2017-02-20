@@ -147,6 +147,16 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Feb 20 2017 Jaroslav Mracek <jmracek@redhat.com> 1.0.2-1
+- bump version to 1.0.2 + update release notes (Jaroslav Mracek)
+- download: add --urlprotocols option (Dusty Mabe)
+- download: add --url cli option (RhBug:1250115) (Dusty Mabe)
+- download: refactor download code (Dusty Mabe)
+- copr: Tweak wording to be more generic (Neal Gompa)
+- Automatic commit of package [dnf-plugins-core] release [1.0.1-1]. (Jaroslav
+  Mracek)
+- bump version to 1.0.1 + update release notes (Jaroslav Mracek)
+
 * Thu Feb 09 2017 Jaroslav Mracek <jmracek@redhat.com> 1.0.1-1
 - bump version to 1.0.1 + update release notes (Jaroslav Mracek)
 - setup SideCI to ignore some PEP8 violations (Jaroslav Mracek)
