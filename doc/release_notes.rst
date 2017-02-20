@@ -21,6 +21,16 @@ Core DNF Plugins Release Notes
 
 .. contents::
 ===================
+1.0.2 Release Notes
+===================
+
+Newly implemented :doc:`download` options ``--url`` and ``--urlprotocol``.
+
+Bugs fixed in 1.0.2:
+
+* :rhbug:`1250115`
+
+===================
 1.0.1 Release Notes
 ===================
 
