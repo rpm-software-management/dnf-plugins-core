@@ -156,13 +156,15 @@ class BuildDepCommand(dnf.cli.Command):
         return rpm_dep.DNEVR()[2:]
 
     def _install(self, reldep_str):
-        try:
-            self.base.install(reldep_str)
-        except dnf.exceptions.MarkingError:
+        sltr = dnf.selector.Selector(self.base.sack)
+        sltr = sltr.set(provides=reldep_str)
+        if sltr.matches():
+            self.base._goal.install(select=sltr)
+            return True
+        else:
             msg = _("No matching package to install: '%s'")
             logger.warning(msg, reldep_str)
             return False
-        return True
 
     def _src_deps(self, src_fn):
         fd = os.open(src_fn, os.O_RDONLY)
