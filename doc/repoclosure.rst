@@ -66,13 +66,13 @@ Display list of unresolved dependencies for all enabled repositories::
 
 Display list of unresolved dependencies for rawhide repository and packages with architecture noarch and x86_64::
 
-    dnf repoclosure --repoid rawhide --arch noarch --arch x86_64
+    dnf repoclosure --repo rawhide --arch noarch --arch x86_64
 
 Display list of unresolved dependencies for zmap package from rawhide repository::
 
-    dnf repoclosure --repoid rawhide --pkg zmap
+    dnf repoclosure --repo rawhide --pkg zmap
 
 Display list of unresolved dependencies for myrepo, an add-on for the rawhide repository::
 
-    dnf repoclosure --repoid rawhide --check myrepo
+    dnf repoclosure --repo rawhide --check myrepo
 
