@@ -24,4 +24,4 @@ Shows newly installed leaf packages and packages that became leaves
 after a transaction.
 
 For more information about leaf packages, see documentation for the
-``leaves'' DNF plugin.
+``leaves`` DNF plugin.
