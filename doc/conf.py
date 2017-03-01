@@ -246,6 +246,7 @@ man_pages = [
      u'DNF config-manager Plugin', AUTHORS, 8),
     ('copr', 'dnf.plugin.copr', u'DNF copr Plugin',
      AUTHORS, 8),
+    ('debug', 'dnf.plugin.debug', u'DNF debug Plugin', AUTHORS, 8),
     ('debuginfo-install', 'dnf.plugin.debuginfo-install',
      u'DNF debuginfo-install Plugin',
      AUTHORS, 8),

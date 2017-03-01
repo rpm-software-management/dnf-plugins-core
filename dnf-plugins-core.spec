@@ -27,12 +27,15 @@ Requires:       python2-%{name} = %{version}-%{release}
 Provides:       dnf-command(builddep)
 Provides:       dnf-command(config-manager)
 Provides:       dnf-command(copr)
+Provides:       dnf-command(debug-dump)
+Provides:       dnf-command(debug-restore)
 Provides:       dnf-command(debuginfo-install)
 Provides:       dnf-command(download)
 Provides:       dnf-command(repoclosure)
 Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
+Provides:       dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       dnf-plugins-extras-repomanage = %{version}-%{release}
@@ -49,9 +52,9 @@ Provides:       dnf-plugin-reposync = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
-Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
-reposync commands. Additionally provides generate_completion_cache passive plugin.
+Core Plugins for DNF. This package enhances DNF with builddep, config-manager, copr, debug,
+debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and reposync
+commands. Additionally provides generate_completion_cache passive plugin.
 
 %package -n python2-%{name}
 Summary:        Core Plugins for DNF
@@ -68,9 +71,11 @@ BuildRequires:  python2-devel
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-dnf < %{dnf_not_compatible}
 Requires:       python-hawkey >= %{hawkey_version}
+Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repomanage = %{version}-%{release}
+Obsoletes:      python2-dnf-plugins-extras-debug < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
@@ -81,9 +86,9 @@ Conflicts:      python3-%{name} < %{version}-%{release}
 Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
-Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, copr,
-config-manager, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage
-and reposync commands. Additionally provides generate_completion_cache passive plugin.
+Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, config-manager,
+copr, degug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
+reposync commands. Additionally provides generate_completion_cache passive plugin.
 
 %if %{with python3}
 %package -n python3-%{name}
@@ -101,16 +106,18 @@ Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
 Conflicts:      python2-%{name} < %{version}-%{release}
 Conflicts:      python-%{name} < %{version}-%{release}
+Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repomanage = %{version}-%{release}
+Obsoletes:      python3-dnf-plugins-extras-debug < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
 
 %description -n python3-%{name}
-Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
+Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, config-manager, 
+copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
@@ -296,6 +303,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.builddep.*
 %{_mandir}/man8/dnf.plugin.config_manager.*
 %{_mandir}/man8/dnf.plugin.copr.*
+%{_mandir}/man8/dnf.plugin.debug.*
 %{_mandir}/man8/dnf.plugin.debuginfo-install.*
 %{_mandir}/man8/dnf.plugin.download.*
 %{_mandir}/man8/dnf.plugin.generate_completion_cache.*
@@ -313,6 +321,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python2_sitelib}/dnf-plugins/builddep.*
 %{python2_sitelib}/dnf-plugins/config_manager.*
 %{python2_sitelib}/dnf-plugins/copr.*
+%{python2_sitelib}/dnf-plugins/debug.*
 %{python2_sitelib}/dnf-plugins/debuginfo-install.*
 %{python2_sitelib}/dnf-plugins/download.*
 %{python2_sitelib}/dnf-plugins/generate_completion_cache.*
@@ -332,6 +341,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/builddep.py
 %{python3_sitelib}/dnf-plugins/config_manager.py
 %{python3_sitelib}/dnf-plugins/copr.py
+%{python3_sitelib}/dnf-plugins/debug.py
 %{python3_sitelib}/dnf-plugins/debuginfo-install.py
 %{python3_sitelib}/dnf-plugins/download.py
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
@@ -343,6 +353,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/builddep.*
 %{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*
 %{python3_sitelib}/dnf-plugins/__pycache__/copr.*
+%{python3_sitelib}/dnf-plugins/__pycache__/debug.*
 %{python3_sitelib}/dnf-plugins/__pycache__/debuginfo-install.*
 %{python3_sitelib}/dnf-plugins/__pycache__/download.*
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
