@@ -316,6 +316,7 @@ mv %{buildroot}%{_bindir}/repoquery-2 %{buildroot}%{_bindir}/repoquery
 %endif
 ln -sr %{buildroot}%{_bindir}/repoquery %{buildroot}%{_bindir}/debuginfo-install
 ln -sr %{buildroot}%{_bindir}/repoquery %{buildroot}%{_bindir}/find-repos-of-install
+ln -sr %{buildroot}%{_bindir}/repoquery %{buildroot}%{_bindir}/package-cleanup
 ln -sr %{buildroot}%{_bindir}/repoquery %{buildroot}%{_bindir}/repo-graph
 ln -sr %{buildroot}%{_bindir}/repoquery %{buildroot}%{_bindir}/repoclosure
 ln -sr %{buildroot}%{_bindir}/repoquery %{buildroot}%{_bindir}/repomanage
@@ -403,6 +404,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n dnf-utils
 %{_bindir}/debuginfo-install
 %{_bindir}/find-repos-of-install
+%{_bindir}/package-cleanup
 %{_bindir}/repo-graph
 %{_bindir}/repoclosure
 %{_bindir}/repomanage
