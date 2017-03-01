@@ -28,6 +28,7 @@ This documents core plugins of DNF:
    builddep
    config_manager
    copr
+   debug
    debuginfo-install
    download
    generate_completion_cache
