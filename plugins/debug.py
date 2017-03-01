@@ -33,6 +33,7 @@ import time
 
 DEBUG_VERSION = "dnf-debug-dump version 1\n"
 
+
 class Debug(dnf.Plugin):
 
     name = 'debug'
@@ -126,7 +127,6 @@ class DebugDumpCommand(dnf.cli.Command):
         self.write("".join(["Package %s conflicts with %s\n" % (ucd(pkg),
                                                                 ucd(conf))
                             for (conf, pkg) in conflicts]))
-
 
     def dump_packages(self, load_repos):
         q = self.base.sack.query()
@@ -296,6 +296,7 @@ class DebugRestoreCommand(dnf.cli.Command):
 
         return pkgs
 
+
 def rpm_problems(base):
     rpmdb = dnf.sack._rpmdb_sack(base)
     allpkgs = rpmdb.query().installed()
@@ -312,10 +313,12 @@ def rpm_problems(base):
                         if not allpkgs.filter(provides=req)]
     existing_conflicts = [(conf, pkg) for (conf, pkg) in conflicts
                           if allpkgs.filter(provides=conf)]
-    return (missing_requires, existing_conflicts)
+    return missing_requires, existing_conflicts
+
 
 def pkgspec(pkg):
     return pkgtup2spec(pkg.name, pkg.arch, pkg.epoch, pkg.version, pkg.release)
+
 
 def pkgtup2spec(name, arch, epoch, version, release):
     a = "" if not arch else ".%s" % arch
