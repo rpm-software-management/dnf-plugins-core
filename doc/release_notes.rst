@@ -78,6 +78,12 @@ Small fixes in COPR plugin, added ``get_reposdir`` function to dnfpluginscore li
 Changed COPR server adress to the new one.
 
 ====================
+0.1.18 Release Notes
+====================
+
+Small fixes in COPR plugin, internal improvements.
+
+====================
 0.1.17 Release Notes
 ====================
 
