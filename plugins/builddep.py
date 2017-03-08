@@ -136,14 +136,16 @@ class BuildDepCommand(dnf.cli.Command):
 
     def _install(self, reldep_str):
         sltr = dnf.selector.Selector(self.base.sack)
-        sltr = sltr.set(provides=reldep_str)
-        if sltr.matches():
-            self.base._goal.install(select=sltr)
-            return True
+        if reldep_str.startswith("/"):
+            sltr.set(file=reldep_str)
         else:
+            sltr.set(provides=reldep_str)
+        if not sltr.matches():
             msg = _("No matching package to install: '%s'")
             logger.warning(msg, reldep_str)
             return False
+        self.base._goal.install(select=sltr, optional=False)
+        return True
 
     def _src_deps(self, src_fn):
         fd = os.open(src_fn, os.O_RDONLY)
