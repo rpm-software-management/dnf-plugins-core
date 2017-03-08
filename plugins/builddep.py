@@ -165,6 +165,10 @@ class BuildDepCommand(dnf.cli.Command):
             msg = _("No matching package to install: '%s'")
             logger.warning(msg, reldep_str)
             return False
+        already_inst = self.base._sltr_matches_installed(sltr)
+        if already_inst:
+            for package in already_inst:
+                dnf.base._msg_installed(package)
         self.base._goal.install(select=sltr, optional=False)
         return True
 
