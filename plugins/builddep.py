@@ -156,15 +156,22 @@ class BuildDepCommand(dnf.cli.Command):
         return rpm_dep.DNEVR()[2:]
 
     def _install(self, reldep_str):
+        # Try to find something by provides
         sltr = dnf.selector.Selector(self.base.sack)
-        if reldep_str.startswith("/"):
+        sltr.set(provides=reldep_str)
+        found = sltr.matches()
+        if not found and reldep_str.startswith("/"):
+            # Nothing matches by provides and since it's file, try by files
+            sltr = dnf.selector.Selector(self.base.sack)
             sltr.set(file=reldep_str)
-        else:
-            sltr.set(provides=reldep_str)
-        if not sltr.matches():
+            found = sltr.matches()
+
+        if not found:
+            # No provides, no files
             msg = _("No matching package to install: '%s'")
             logger.warning(msg, reldep_str)
             return False
+
         already_inst = self.base._sltr_matches_installed(sltr)
         if already_inst:
             for package in already_inst:
