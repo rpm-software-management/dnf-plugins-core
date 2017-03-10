@@ -1,46 +1,49 @@
-# Momcilo Medic <medicmomcilo@gmail.com>, 2015. #zanata
+# Charles-Antoine Couret <renault@fedoraproject.org>, 2016. #zanata
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2016. #zanata
+# Jérôme Fenal <jfenal@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-10 14:01+0100\n"
-"PO-Revision-Date: 2015-06-23 11:46-0400\n"
-"Last-Translator: Momcilo Medic <medicmomcilo@gmail.com>\n"
-"Language-Team: Serbian\n"
+"PO-Revision-Date: 2016-05-23 05:09-0400\n"
+"Last-Translator: Jérôme Fenal <jfenal@gmail.com>\n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Zanata 3.9.6\n"
 
 #: ../plugins/config_manager.py:35
 msgid "manage dnf configuration options and repositories"
-msgstr "управља dnf опцијама подешавања и ризницама"
+msgstr "gestion de la configuration et des dépôts dnf"
 
 #: ../plugins/config_manager.py:41
 msgid "repo to modify"
-msgstr "ризница за измену"
+msgstr "dépôt à modifier"
 
 #: ../plugins/config_manager.py:44
 msgid "save the current options (useful with --setopt)"
-msgstr "сачувај тренутне опције (корисно са --setopt)"
+msgstr "enregistrer les options actuelles (utile avec --setopt)"
 
 #: ../plugins/config_manager.py:47
 msgid "enable the specified repos (automatically saves)"
-msgstr "омогући назначене ризнице (аутоматски чува)"
+msgstr "active les dépôts indiqués (rend la modification permanente)"
 
 #: ../plugins/config_manager.py:50
 msgid "disable the specified repos (automatically saves)"
-msgstr "онемогући назначене ризнице (аутоматски чува)"
+msgstr "désactive les dépôts indiqués (rend la modification permanente)"
 
 #: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
-msgstr "додај (и омогући) ризницу из назначене датотеке или url-а"
+msgstr "ajoute (et active) le dépôt à partir du fichier ou de l'url indiqué"
 
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
-msgstr "испиши тренутне вредности подешавања на стандардни излаз"
+msgstr ""
+"affiche les valeurs de la configuration actuelle sur la sortie strandard"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
@@ -48,62 +51,63 @@ msgstr ""
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
-msgstr "Грешка: Покушај да се омогуће и онемогуће ризнице у исто време."
+msgstr ""
+"Erreur : tentative d'activation et de désactivation simultanée de dépôts."
 
 #: ../plugins/config_manager.py:79
 msgid "Error: Trying to enable already enabled repos."
-msgstr "Грешка: Покушај да се омогуће већ омогућене ризнице."
+msgstr "Erreur : tentative d'activation de dépôts déjà activés."
 
 #: ../plugins/config_manager.py:118
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr "Нема одговарајуће ризнице за измену: %s"
+msgstr "Aucun dépôt correspondant à modifier : %s."
 
 #: ../plugins/config_manager.py:148
 #, python-format
 msgid "Adding repo from: %s"
-msgstr "Додајем ризницу из: %s"
+msgstr "Ajout du dépôt depuis : %s"
 
 #: ../plugins/config_manager.py:178
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr "Не могу да сачувам ризницу у датотеку ризнице %s: %s"
+msgstr "Sauvegarde impossible du dépôt dans le fichier du dépôt %s : %s"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
-msgstr "утврди ажуриране бинарне датотеке које треба поново покренути"
+msgstr "détermine les binaires mis à jour qui nécessitent un redémarrage"
 
 #: ../plugins/needs_restarting.py:172
 msgid "only consider this user's processes"
-msgstr "узми у обзир процесе само од овог корисника"
+msgstr "considère uniquement les processus de cet utilisateur"
 
 #: ../plugins/reposync.py:40
 msgid "download all packages from remote repo"
-msgstr "преузми све пакете из удаљене ризнице"
+msgstr "télécharge tous les paquets depuis le dépôt distant"
 
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
-msgstr "где да се чувају преузете ризнице"
+msgstr "là où stocker les dépôts téléchargés"
 
 #: ../plugins/copr.py:37
 msgid "yes"
-msgstr "да"
+msgstr "oui"
 
 #: ../plugins/copr.py:37
 msgid "y"
-msgstr "д"
+msgstr "o"
 
 #: ../plugins/copr.py:38
 msgid "no"
-msgstr "не"
+msgstr "non"
 
 #: ../plugins/copr.py:38
 msgid "n"
-msgstr "н"
+msgstr "n"
 
 #: ../plugins/copr.py:58
 msgid "Interact with Copr repositories."
-msgstr "Интеракција са Copr ризницама."
+msgstr "  Interagit avec les dépôts Copr."
 
 #: ../plugins/copr.py:59
 msgid ""
@@ -123,131 +127,151 @@ msgid ""
 "  copr search tests\n"
 "    "
 msgstr ""
+"\n"
+"  enable nom/projet [chroot]\n"
+"  disable nom/projet\n"
+"  remove nom/projet\n"
+"  list nom\n"
+"  search projet\n"
+"\n"
+"  Exemples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
 
 #: ../plugins/copr.py:91
 msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr ""
+msgstr "Attention : nous utilisons une URL Copr non standard '{}'."
 
 #: ../plugins/copr.py:120 ../plugins/copr.py:144
 msgid "Error: "
-msgstr "Грешка:"
+msgstr "Erreur :"
 
 #: ../plugins/copr.py:121 ../plugins/copr.py:125
 msgid "exactly two additional parameters to copr command are required"
-msgstr "тачно два додатна параметра copr команде су неопходна"
+msgstr "la commande copr requiert exactement deux paramètres additionnels"
 
 #: ../plugins/copr.py:145
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
+"utilisez le  format `copr_username/copr_projectname` pour faire référence au"
+" projet copr"
 
 #: ../plugins/copr.py:147
 msgid "bad copr project format"
-msgstr ""
+msgstr "mauvais format de projet  copr"
 
 #: ../plugins/copr.py:167
 msgid "Repository successfully enabled."
-msgstr "Ризница успешно омогућена."
+msgstr "Activation du dépôt réussie."
 
 #: ../plugins/copr.py:171
 msgid "Repository successfully disabled."
-msgstr "Ризница успешно онемогућена."
+msgstr "Désactivation du dépôt réussie."
 
 #: ../plugins/copr.py:175
 msgid "Repository successfully removed."
-msgstr ""
+msgstr "Suppression du dépôt réussie."
 
 #: ../plugins/copr.py:179 ../plugins/copr.py:423
 msgid "Unknown subcommand {}."
-msgstr "Непозната подкоманда {}."
+msgstr "Sous-commande inconnue {}."
 
 #: ../plugins/copr.py:189
 msgid "Can't parse repositories for username '{}'."
-msgstr "Не могу да обрадим ризницу за корисничко име '{}'."
+msgstr ""
+"Ne peut analyser les dépôts pour y chercher le nom d'utilisateur '{}'."
 
 #: ../plugins/copr.py:192
 msgid "List of {} coprs"
-msgstr "Списак {} copr-а"
+msgstr "Liste de  {} coprs"
 
 #: ../plugins/copr.py:200
 msgid "No description given"
-msgstr "Опис није дат"
+msgstr "Aucune description fournie"
 
 #: ../plugins/copr.py:212
 msgid "Can't parse search for '{}'."
-msgstr "Не могу да обрадим претрагу за '{}'."
+msgstr "Impossible d'analyser la recherche pour '{}'."
 
 #: ../plugins/copr.py:215
 msgid "Matched: {}"
-msgstr "Пронађено: {}"
+msgstr "Correspondance : {}"
 
 #: ../plugins/copr.py:223
 msgid "No description given."
-msgstr "Опис није дат."
+msgstr "Pas de description fournie."
 
 #: ../plugins/copr.py:236 ../plugins/copr.py:245
 msgid "Safe and good answer. Exiting."
-msgstr "Безбедан и добар одговор. Излазим."
+msgstr "Réponse sûre et exacte. Fin."
 
 #: ../plugins/copr.py:252
 msgid "This command has to be run under the root user."
-msgstr "Ова команда мора бити извршена под root налогом."
+msgstr "Cette commande requiert les privilèges du super utilisateur."
 
 #: ../plugins/copr.py:304
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
-msgstr "Ова ризница још нема изградњи тако да не можете да је омогућите сада."
+msgstr ""
+"Ce dépôt ne contient pas encore d'exécutables vous ne pouvez donc pas "
+"l'activer."
 
 #: ../plugins/copr.py:307
 msgid "Such repository does not exist."
-msgstr ""
+msgstr "Ce dépôt n'existe pas."
 
 #: ../plugins/copr.py:328
 msgid "Failed to disable copr repo {}/{}"
-msgstr ""
+msgstr "Échec de la désactivation du  dépôt copr {}/{}"
 
 #: ../plugins/copr.py:341 ../plugins/copr.py:378
 msgid "Unknown response from server."
-msgstr "Непознат одговор од сервера."
+msgstr "Réponse inconnue du serveur."
 
 #: ../plugins/copr.py:363
 msgid "Interact with Playground repository."
-msgstr "Интеракција са Playground ризницом."
+msgstr "Interagit avec le dépôt Playground."
 
 #: ../plugins/copr.py:413
 msgid "Playground repositories successfully enabled."
-msgstr "Playground ризнице успешно омогућене."
+msgstr "Activation des  dépôts Playground réussie."
 
 #: ../plugins/copr.py:416
 msgid "Playground repositories successfully disabled."
-msgstr "Playground ризнице успешно онемогућене."
+msgstr "Désactivation des dépôts Playground réussie."
 
 #: ../plugins/copr.py:420
 msgid "Playground repositories successfully updated."
-msgstr "Playground ризнице успешно ажуриране."
+msgstr "Mise à jour des dépôts Playground réussie."
 
 #: ../plugins/download.py:40
 msgid "Download package to current directory"
-msgstr "Преузми пакете у тренутни директоријум"
+msgstr "Téléchargement du paquet dans le répertoire courant"
 
 #: ../plugins/download.py:50
 msgid "packages to download"
-msgstr "пакети за преузимање"
+msgstr "paquets à télécharger"
 
 #: ../plugins/download.py:53
 msgid "download the src.rpm instead"
-msgstr "преузми src.rpm"
+msgstr "télécharge plutôt le src.rpm"
 
 #: ../plugins/download.py:55
 msgid "download the -debuginfo package instead"
-msgstr ""
+msgstr "télécharge plutôt le paquet -debuginfo"
 
 #: ../plugins/download.py:57
 msgid "download path, default is current dir"
-msgstr "путања за преузимање, подразумевано тренутни директоријум"
+msgstr "chemin d'accès du téléchargement, dossier courant par défaut"
 
 #: ../plugins/download.py:59
 msgid "resolve and download needed dependencies"
-msgstr "разреши и преузми неопходне програмске зависности"
+msgstr "résout et télécharge les dépendances nécessaires"
 
 #: ../plugins/download.py:61
 msgid ""
@@ -265,65 +289,65 @@ msgstr ""
 
 #: ../plugins/download.py:206
 msgid "Exiting due to strict setting."
-msgstr ""
+msgstr "Fin du programme suite au paramétrage stricte."
 
 #: ../plugins/download.py:223
 msgid "Error in resolve"
-msgstr "Грешка у разрешењу"
+msgstr "Erreur dans la résolution"
 
 #: ../plugins/download.py:238
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr "Није дефинисан изворни rpm за %s"
+msgstr "Aucune source définie pour %s"
 
 #: ../plugins/download.py:252 ../plugins/download.py:266
 #, python-format
 msgid "No package %s available."
-msgstr "Нема доступног пакета %s."
+msgstr ""
 
 #: ../plugins/builddep.py:61
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[ПАКЕТ|ПАКЕТ.spec]"
+msgstr "[PAQUET|PAQUET.spec]"
 
 #: ../plugins/builddep.py:72
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' није формата 'MACRO EXPR'"
+msgstr "« %s » n'est pas du format « MACRO EXPR »"
 
 #: ../plugins/builddep.py:77
 msgid "packages with builddeps to install"
-msgstr "пакети са builddeps за инсталирање"
+msgstr "paquets avec dépendances de construction à installer"
 
 #: ../plugins/builddep.py:80
 msgid "define a macro for spec file parsing"
-msgstr "дефиниши макро за обраду spec датотеке"
+msgstr "définit une macro pour l'interprétation du fichier spec"
 
 #: ../plugins/builddep.py:83
 msgid "treat commandline arguments as spec files"
-msgstr ""
+msgstr "traite les arguments en ligne de commande comme des fichiers spec"
 
 #: ../plugins/builddep.py:85
 msgid "treat commandline arguments as source rpm"
-msgstr ""
+msgstr "traite les arguments en ligne de commande comme des sources rpm"
 
 #: ../plugins/builddep.py:131
 msgid "Some packages could not be found."
-msgstr ""
+msgstr "Certains paquets n'ont pu être trouvés."
 
 #: ../plugins/builddep.py:141
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr "Нема одговарајућег пакета за инсталацију: '%s'"
+msgstr "Aucun paquet correspondant à installer : « %s »"
 
 #: ../plugins/builddep.py:158
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
+msgstr "Échec d'ouverture : « %s », n'est pas un fichier source rpm valide."
 
 #: ../plugins/builddep.py:171 ../plugins/builddep.py:187
 #: ../plugins/builddep.py:204
 msgid "Not all dependencies satisfied"
-msgstr "Нису све програмске зависности задовољене"
+msgstr "Toutes les dépendances ne sont pas satisfaites"
 
 #: ../plugins/builddep.py:178
 #, python-format
@@ -333,8 +357,8 @@ msgstr ""
 #: ../plugins/builddep.py:197
 #, python-format
 msgid "no package matched: %s"
-msgstr ""
+msgstr "aucun paquet ne correspond à : %s"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
-msgstr "инсталирај debuginfo пакете"
+msgstr "installe les paquets debuginfo"
