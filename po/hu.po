@@ -1,46 +1,46 @@
-# Momcilo Medic <medicmomcilo@gmail.com>, 2015. #zanata
+# Meskó Balázs <meskobalazs@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-10 14:01+0100\n"
-"PO-Revision-Date: 2015-06-23 11:46-0400\n"
-"Last-Translator: Momcilo Medic <medicmomcilo@gmail.com>\n"
-"Language-Team: Serbian\n"
+"PO-Revision-Date: 2016-12-26 05:32-0500\n"
+"Last-Translator: Bendegúz Gyönki <gyonkibendeguz@gmail.com>\n"
+"Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.9.6\n"
 
 #: ../plugins/config_manager.py:35
 msgid "manage dnf configuration options and repositories"
-msgstr "управља dnf опцијама подешавања и ризницама"
+msgstr "a dnf konfigurációs beállítások és tárolók kezelése"
 
 #: ../plugins/config_manager.py:41
 msgid "repo to modify"
-msgstr "ризница за измену"
+msgstr "a módosítandó tároló"
 
 #: ../plugins/config_manager.py:44
 msgid "save the current options (useful with --setopt)"
-msgstr "сачувај тренутне опције (корисно са --setopt)"
+msgstr "a jelenlegi beállítások mentése (a --setopt kapcsolóval hasznos)"
 
 #: ../plugins/config_manager.py:47
 msgid "enable the specified repos (automatically saves)"
-msgstr "омогући назначене ризнице (аутоматски чува)"
+msgstr "a megadott tárolók engedélyezése (automatikusan ment)"
 
 #: ../plugins/config_manager.py:50
 msgid "disable the specified repos (automatically saves)"
-msgstr "онемогући назначене ризнице (аутоматски чува)"
+msgstr "a megadott tárolók letiltása (automatikusan ment)"
 
 #: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
-msgstr "додај (и омогући) ризницу из назначене датотеке или url-а"
+msgstr "hozzáadja (és engedélyezi) a tárolót a megadott fájlból vagy URL-ből"
 
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
-msgstr "испиши тренутне вредности подешавања на стандардни излаз"
+msgstr "kiírja a jelenlegi konfigurációs értékeket a sztenderd kimenetre"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
@@ -48,62 +48,62 @@ msgstr ""
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
-msgstr "Грешка: Покушај да се омогуће и онемогуће ризнице у исто време."
+msgstr "Hiba: A tárolók egyszerre történő engedélyezése és letiltása."
 
 #: ../plugins/config_manager.py:79
 msgid "Error: Trying to enable already enabled repos."
-msgstr "Грешка: Покушај да се омогуће већ омогућене ризнице."
+msgstr "Hiba: Már engedélyezett tároló engedélyezési kísérlete."
 
 #: ../plugins/config_manager.py:118
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr "Нема одговарајуће ризнице за измену: %s"
+msgstr "Nincs egyező módosítandó tároló: %s."
 
 #: ../plugins/config_manager.py:148
 #, python-format
 msgid "Adding repo from: %s"
-msgstr "Додајем ризницу из: %s"
+msgstr "Tároló hozzáadása innen: %s"
 
 #: ../plugins/config_manager.py:178
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr "Не могу да сачувам ризницу у датотеку ризнице %s: %s"
+msgstr "A tároló nem menthető a(z) %s tárolófájlba: %s"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
-msgstr "утврди ажуриране бинарне датотеке које треба поново покренути"
+msgstr "határozza meg az újraindítást igénylő frissített binárisokat"
 
 #: ../plugins/needs_restarting.py:172
 msgid "only consider this user's processes"
-msgstr "узми у обзир процесе само од овог корисника"
+msgstr "csak ezen felhasználó folyamatait vegye figyelembe"
 
 #: ../plugins/reposync.py:40
 msgid "download all packages from remote repo"
-msgstr "преузми све пакете из удаљене ризнице"
+msgstr "minden csomag letöltése a távoli tárolóból"
 
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
-msgstr "где да се чувају преузете ризнице"
+msgstr "hol tárolja a letöltött tárolókat"
 
 #: ../plugins/copr.py:37
 msgid "yes"
-msgstr "да"
+msgstr "igen"
 
 #: ../plugins/copr.py:37
 msgid "y"
-msgstr "д"
+msgstr "i"
 
 #: ../plugins/copr.py:38
 msgid "no"
-msgstr "не"
+msgstr "nem"
 
 #: ../plugins/copr.py:38
 msgid "n"
-msgstr "н"
+msgstr "n"
 
 #: ../plugins/copr.py:58
 msgid "Interact with Copr repositories."
-msgstr "Интеракција са Copr ризницама."
+msgstr "Együttműködés a Copr tárolókkal."
 
 #: ../plugins/copr.py:59
 msgid ""
@@ -123,131 +123,150 @@ msgid ""
 "  copr search tests\n"
 "    "
 msgstr ""
+"\n"
+"  enable név/projekt [chroot]\n"
+"  disable név/projekt\n"
+"  remove név/projekt\n"
+"  list név\n"
+"  search projekt\n"
+"\n"
+"  Példák:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
 
 #: ../plugins/copr.py:91
 msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr ""
+"Figyelmeztetés: a következő nem szabványos Copr URL-t használjuk: „{}”."
 
 #: ../plugins/copr.py:120 ../plugins/copr.py:144
 msgid "Error: "
-msgstr "Грешка:"
+msgstr "Hiba: "
 
 #: ../plugins/copr.py:121 ../plugins/copr.py:125
 msgid "exactly two additional parameters to copr command are required"
-msgstr "тачно два додатна параметра copr команде су неопходна"
+msgstr "pontosan két további paraméter szükséges a copr parancshoz"
 
 #: ../plugins/copr.py:145
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
+"használja a `copr_felhasználónév/copr_projektnév` formátumot a copr "
+"projektre való hivatkozáshoz"
 
 #: ../plugins/copr.py:147
 msgid "bad copr project format"
-msgstr ""
+msgstr "hibás copr projektformátum"
 
 #: ../plugins/copr.py:167
 msgid "Repository successfully enabled."
-msgstr "Ризница успешно омогућена."
+msgstr "Tároló sikeresen engedélyezve."
 
 #: ../plugins/copr.py:171
 msgid "Repository successfully disabled."
-msgstr "Ризница успешно онемогућена."
+msgstr "Tároló sikeresen letiltva."
 
 #: ../plugins/copr.py:175
 msgid "Repository successfully removed."
-msgstr ""
+msgstr "Tároló sikeresen eltávolítva."
 
 #: ../plugins/copr.py:179 ../plugins/copr.py:423
 msgid "Unknown subcommand {}."
-msgstr "Непозната подкоманда {}."
+msgstr "Ismeretlen alparancs: {}."
 
 #: ../plugins/copr.py:189
 msgid "Can't parse repositories for username '{}'."
-msgstr "Не могу да обрадим ризницу за корисничко име '{}'."
+msgstr "A tárolók nem értelmezhetőek a(z) „{}” felhasználónévhez."
 
 #: ../plugins/copr.py:192
 msgid "List of {} coprs"
-msgstr "Списак {} copr-а"
+msgstr "{} copr tárolók listája"
 
 #: ../plugins/copr.py:200
 msgid "No description given"
-msgstr "Опис није дат"
+msgstr "Nincs leírás adva"
 
 #: ../plugins/copr.py:212
 msgid "Can't parse search for '{}'."
-msgstr "Не могу да обрадим претрагу за '{}'."
+msgstr "Nem értelmezhető a keresés erre: „{}”."
 
 #: ../plugins/copr.py:215
 msgid "Matched: {}"
-msgstr "Пронађено: {}"
+msgstr "Találat: {}"
 
 #: ../plugins/copr.py:223
 msgid "No description given."
-msgstr "Опис није дат."
+msgstr "Nincs leírás adva."
 
 #: ../plugins/copr.py:236 ../plugins/copr.py:245
 msgid "Safe and good answer. Exiting."
-msgstr "Безбедан и добар одговор. Излазим."
+msgstr "Biztonságos és jó válasz. Kilépés."
 
 #: ../plugins/copr.py:252
 msgid "This command has to be run under the root user."
-msgstr "Ова команда мора бити извршена под root налогом."
+msgstr "Ezt a parancsot root felhasználóként kell futtatni."
 
 #: ../plugins/copr.py:304
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
-msgstr "Ова ризница још нема изградњи тако да не можете да је омогућите сада."
+msgstr ""
+"Ez a tároló még nem tartalmaz építéseket, így most nem engedélyezheti."
 
 #: ../plugins/copr.py:307
 msgid "Such repository does not exist."
-msgstr ""
+msgstr "Nem létezik ilyen tároló."
 
 #: ../plugins/copr.py:328
 msgid "Failed to disable copr repo {}/{}"
-msgstr ""
+msgstr "Nem sikerült a(z) {}/{} copr tároló letiltása"
 
 #: ../plugins/copr.py:341 ../plugins/copr.py:378
 msgid "Unknown response from server."
-msgstr "Непознат одговор од сервера."
+msgstr "Ismeretlen válasz a kiszolgálótól."
 
 #: ../plugins/copr.py:363
 msgid "Interact with Playground repository."
-msgstr "Интеракција са Playground ризницом."
+msgstr "Együttműködés a Playground tárolóval."
 
 #: ../plugins/copr.py:413
 msgid "Playground repositories successfully enabled."
-msgstr "Playground ризнице успешно омогућене."
+msgstr "Playground tárolók sikeresen engedélyezve."
 
 #: ../plugins/copr.py:416
 msgid "Playground repositories successfully disabled."
-msgstr "Playground ризнице успешно онемогућене."
+msgstr "Playground tárolók sikeresen letiltva."
 
 #: ../plugins/copr.py:420
 msgid "Playground repositories successfully updated."
-msgstr "Playground ризнице успешно ажуриране."
+msgstr "Playground tárolók sikeresen frissítve."
 
 #: ../plugins/download.py:40
 msgid "Download package to current directory"
-msgstr "Преузми пакете у тренутни директоријум"
+msgstr "Csomag letöltése a jelenlegi könyvtárba"
 
 #: ../plugins/download.py:50
 msgid "packages to download"
-msgstr "пакети за преузимање"
+msgstr "letöltendő csomagok"
 
 #: ../plugins/download.py:53
 msgid "download the src.rpm instead"
-msgstr "преузми src.rpm"
+msgstr "az src.rpm letöltése helyette"
 
 #: ../plugins/download.py:55
 msgid "download the -debuginfo package instead"
-msgstr ""
+msgstr "a -debuginfo csomag letöltése helyette"
 
 #: ../plugins/download.py:57
 msgid "download path, default is current dir"
-msgstr "путања за преузимање, подразумевано тренутни директоријум"
+msgstr "letöltési útvonal, az alapértelmezett a jelenlegi könyvtár"
 
 #: ../plugins/download.py:59
 msgid "resolve and download needed dependencies"
-msgstr "разреши и преузми неопходне програмске зависности"
+msgstr "a szükséges függőségek feloldása és letöltése"
 
 #: ../plugins/download.py:61
 msgid ""
@@ -265,65 +284,65 @@ msgstr ""
 
 #: ../plugins/download.py:206
 msgid "Exiting due to strict setting."
-msgstr ""
+msgstr "Kilépés a szigorú beállítás miatt."
 
 #: ../plugins/download.py:223
 msgid "Error in resolve"
-msgstr "Грешка у разрешењу"
+msgstr "Hiba a feloldáskor"
 
 #: ../plugins/download.py:238
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr "Није дефинисан изворни rpm за %s"
+msgstr "Nincs forrás rpm megadva ehhez: %s"
 
 #: ../plugins/download.py:252 ../plugins/download.py:266
 #, python-format
 msgid "No package %s available."
-msgstr "Нема доступног пакета %s."
+msgstr ""
 
 #: ../plugins/builddep.py:61
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[ПАКЕТ|ПАКЕТ.spec]"
+msgstr "[CSOMAG|CSOMAG.spec]"
 
 #: ../plugins/builddep.py:72
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' није формата 'MACRO EXPR'"
+msgstr "a(z) „%s” nem „MACRO EXPR” formátumú"
 
 #: ../plugins/builddep.py:77
 msgid "packages with builddeps to install"
-msgstr "пакети са builddeps за инсталирање"
+msgstr "az építési függőségekkel rendelkező telepítendő csomagok"
 
 #: ../plugins/builddep.py:80
 msgid "define a macro for spec file parsing"
-msgstr "дефиниши макро за обраду spec датотеке"
+msgstr "határozzon meg egy makrót a specifikációs fájl feldolgozáshoz"
 
 #: ../plugins/builddep.py:83
 msgid "treat commandline arguments as spec files"
-msgstr ""
+msgstr "a parancssori argumentumok spec fájlokként történő kezelése"
 
 #: ../plugins/builddep.py:85
 msgid "treat commandline arguments as source rpm"
-msgstr ""
+msgstr "a parancssori argumentumok forrás rpm-ként történő kezelése"
 
 #: ../plugins/builddep.py:131
 msgid "Some packages could not be found."
-msgstr ""
+msgstr "Néhány csomag nem található."
 
 #: ../plugins/builddep.py:141
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr "Нема одговарајућег пакета за инсталацију: '%s'"
+msgstr "Nincs egyező csomag a(z) „%s” telepítéséhez"
 
 #: ../plugins/builddep.py:158
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
+msgstr "A(z) „%s” megnyitása sikertelen, nem érvényes forrás rpm fájl."
 
 #: ../plugins/builddep.py:171 ../plugins/builddep.py:187
 #: ../plugins/builddep.py:204
 msgid "Not all dependencies satisfied"
-msgstr "Нису све програмске зависности задовољене"
+msgstr "Nincs minden függőség kielégítve"
 
 #: ../plugins/builddep.py:178
 #, python-format
@@ -333,8 +352,8 @@ msgstr ""
 #: ../plugins/builddep.py:197
 #, python-format
 msgid "no package matched: %s"
-msgstr ""
+msgstr "nincs egyező csomag: %s"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
-msgstr "инсталирај debuginfo пакете"
+msgstr "debuginfo csomagok telepítése"
