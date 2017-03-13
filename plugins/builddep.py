@@ -95,7 +95,7 @@ class BuildDepCommand(dnf.cli.Command):
         if not (self.opts.spec or self.opts.srpm):
             for pkgspec in self.opts.packages:
                 if not (pkgspec.endswith('.src.rpm')
-                        or pkgspec.endswith('nosrc.rpm')
+                        or pkgspec.endswith('.nosrc.rpm')
                         or pkgspec.endswith('.spec')):
                     self.base.repos.enable_source_repos()
                     break
