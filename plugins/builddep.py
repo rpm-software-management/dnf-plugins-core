@@ -27,6 +27,7 @@ import argparse
 import dnf
 import dnf.cli
 import dnf.exceptions
+import dnf.rpm.transaction
 import functools
 import os
 import rpm
@@ -62,7 +63,7 @@ class BuildDepCommand(dnf.cli.Command):
 
     def __init__(self, cli):
         super(BuildDepCommand, self).__init__(cli)
-        self.rpm_ts = rpm.TransactionSet()
+        self._rpm_ts = dnf.rpm.transaction.initReadOnlyTransaction()
 
     @staticmethod
     def set_argparser(parser):
@@ -144,21 +145,13 @@ class BuildDepCommand(dnf.cli.Command):
         return True
 
     def _src_deps(self, src_fn):
-        fd = os.open(src_fn, os.O_RDONLY)
-        if not self.base.conf.gpgcheck:
-            self.rpm_ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES)
-        try:
-            h = self.rpm_ts.hdrFromFdno(fd)
-        except rpm.error as e:
-            if str(e) == 'public key not available':
-                logger.error("Error: public key not available, add "
-                             "'--nogpgcheck' option to ignore package sign")
-                return
-            elif str(e) == 'error reading package header':
-                e = _("Failed to open: '%s', not a valid source rpm file.") % (
-                      src_fn,)
-            raise dnf.exceptions.Error(e)
-        os.close(fd)
+        with os.open(src_fn, os.O_RDONLY) as fd:
+            try:
+                h = self._rpm_ts.hdrFromFdno(fd)
+            except rpm.error as e:
+                if str(e) == 'error reading package header':
+                    e = _("Failed to open: '%s', not a valid source rpm file.") % src_fn
+                raise dnf.exceptions.Error(e)
         ds = h.dsFromHeader('requirename')
         done = True
         for dep in ds:
