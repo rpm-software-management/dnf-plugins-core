@@ -58,6 +58,9 @@ Options
 ``--urlprotocol``
     Limit the protocol of the urls output by the --url option. Options are http, https, rsync, ftp.
 
+``--resolve``
+    Resolves dependencies of specified packages and downloads missing dependencies in the system.
+
 --------
 Examples
 --------
