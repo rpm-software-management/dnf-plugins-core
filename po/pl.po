@@ -6,12 +6,13 @@
 # Piotr Drąg <piotrdrag@gmail.com>, 2015
 # Piotr Drąg <piotrdrag@gmail.com>, 2015. #zanata
 # Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata
+# Piotr Drąg <piotrdrag@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-10 14:01+0100\n"
-"PO-Revision-Date: 2016-08-31 10:05-0400\n"
+"PO-Revision-Date: 2017-03-10 08:17-0500\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +52,7 @@ msgstr "wyświetla bieżące wartości konfiguracji w standardowym wyjściu"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr ""
+msgstr "wyświetla zmienne wartości w standardowym wyjściu"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
@@ -280,15 +281,17 @@ msgstr "rozwiązuje i pobiera wymagane zależności"
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
+"zamiast pobierać, wyświetla listę adresów URL, z których można pobrać "
+"pakiety RPM"
 
 #: ../plugins/download.py:66
 msgid "when running with --url, limit to specific protocols"
-msgstr ""
+msgstr "podczas działania z opcją --url, ogranicza do podanych protokołów"
 
 #: ../plugins/download.py:182
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr ""
+msgstr "Uzyskanie serwera lustrzanego dla pakietu się nie powiodło: %s"
 
 #: ../plugins/download.py:206
 msgid "Exiting due to strict setting."
@@ -356,7 +359,7 @@ msgstr "Nie spełniono wszystkich zależności"
 #: ../plugins/builddep.py:178
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
+msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
 
 #: ../plugins/builddep.py:197
 #, python-format
