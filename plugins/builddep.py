@@ -145,13 +145,15 @@ class BuildDepCommand(dnf.cli.Command):
         return True
 
     def _src_deps(self, src_fn):
-        with os.open(src_fn, os.O_RDONLY) as fd:
-            try:
-                h = self._rpm_ts.hdrFromFdno(fd)
-            except rpm.error as e:
-                if str(e) == 'error reading package header':
-                    e = _("Failed to open: '%s', not a valid source rpm file.") % src_fn
-                raise dnf.exceptions.Error(e)
+        fd = os.open(src_fn, os.O_RDONLY)
+        try:
+            h = self._rpm_ts.hdrFromFdno(fd)
+        except rpm.error as e:
+            if str(e) == 'error reading package header':
+                e = _("Failed to open: '%s', not a valid source rpm file.") % src_fn
+            os.close(fd)
+            raise dnf.exceptions.Error(e)
+        os.close(fd)
         ds = h.dsFromHeader('requirename')
         done = True
         for dep in ds:
