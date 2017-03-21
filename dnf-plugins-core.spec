@@ -9,7 +9,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        1.0.2
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -144,6 +144,15 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Mar 21 2017 Igor Gnatenko <ignatenko@redhat.com> 1.1.0-1
+- dnf dowload --resolve should download everytime requested packages
+  (RhBug:1276611) (stepasm)
+- builddep: install requirements by provides (RhBug:1332830) (Igor Gnatenko)
+- builddep: do not check GPG key of SRPM (RhBug:1431486) (Igor Gnatenko)
+- builddep: properly check for nosrc.rpm (Igor Gnatenko)
+- po: Update translations (RhBug:1429087) (Igor Gnatenko)
+- Remove noroot plugin that was move into dnf itself (Jaroslav Mracek)
+
 * Mon Feb 20 2017 Jaroslav Mracek <jmracek@redhat.com> 1.0.2-1
 - bump version to 1.0.2 + update release notes (Jaroslav Mracek)
 - download: add --urlprotocols option (Dusty Mabe)
