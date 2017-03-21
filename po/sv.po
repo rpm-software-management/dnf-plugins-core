@@ -1,0 +1,361 @@
+# Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-21 12:37+0100\n"
+"PO-Revision-Date: 2017-03-21 04:27-0400\n"
+"Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
+"Language-Team: Swedish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 3.9.6\n"
+
+#: ../plugins/config_manager.py:35
+msgid "manage dnf configuration options and repositories"
+msgstr "hantera dnf-konfigurationsalternativ och -förråd"
+
+#: ../plugins/config_manager.py:41
+msgid "repo to modify"
+msgstr "förråd att ändra"
+
+#: ../plugins/config_manager.py:44
+msgid "save the current options (useful with --setopt)"
+msgstr "spara de nuvarande alternativen (användbart med --setopt)"
+
+#: ../plugins/config_manager.py:47
+msgid "enable the specified repos (automatically saves)"
+msgstr "aktivera de angivna förråden (sparas automatiskt)"
+
+#: ../plugins/config_manager.py:50
+msgid "disable the specified repos (automatically saves)"
+msgstr "avaktivera de angivna förråden (sparas automatiskt)"
+
+#: ../plugins/config_manager.py:53
+msgid "add (and enable) the repo from the specified file or url"
+msgstr "lägg till (och aktivera) förrådet från den angivna filen eller url:en"
+
+#: ../plugins/config_manager.py:56
+msgid "print current configuration values to stdout"
+msgstr "skriv ut aktuella konfigurationsvärden till standard ut"
+
+#: ../plugins/config_manager.py:59
+msgid "print variable values to stdout"
+msgstr "skriv ut variabelvärden till standard ut"
+
+#: ../plugins/config_manager.py:76
+msgid "Error: Trying to enable and disable repos at the same time."
+msgstr "Fel: försöker aktivera och avaktivera förråd på samma gång."
+
+#: ../plugins/config_manager.py:79
+msgid "Error: Trying to enable already enabled repos."
+msgstr "Fel: försöker aktivera redan aktiverade förråd."
+
+#: ../plugins/config_manager.py:118
+#, python-format
+msgid "No matching repo to modify: %s."
+msgstr "Inget matchande förråd att ändra: %s."
+
+#: ../plugins/config_manager.py:148
+#, python-format
+msgid "Adding repo from: %s"
+msgstr "Lägger till förråd från: %s"
+
+#: ../plugins/config_manager.py:178
+#, python-format
+msgid "Could not save repo to repofile %s: %s"
+msgstr "Kunde inte spara förrådet till förrådsfilen %s: %s"
+
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "avgör vilka uppdaterade binärer som behöver startas om"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "betrakta endast denna användarens processer"
+
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "hämta alla paket från fjärrförrådet"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "var hämtade förråd skall sparas."
+
+#: ../plugins/copr.py:37
+msgid "yes"
+msgstr "ja"
+
+#: ../plugins/copr.py:37
+msgid "y"
+msgstr "j"
+
+#: ../plugins/copr.py:38
+msgid "no"
+msgstr "nej"
+
+#: ../plugins/copr.py:38
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:58
+msgid "Interact with Copr repositories."
+msgstr "Interagera med Copr-förråd."
+
+#: ../plugins/copr.py:59
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list name\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+"\n"
+"  enable namn/projekt [bytrot]\n"
+"  disable namn/projekt\n"
+"  remove name/project\n"
+"  list namn\n"
+"  search projekt\n"
+"\n"
+"  Exempel:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+
+#: ../plugins/copr.py:91
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr "Varning: vi använder icke-standard Copr URL ”{}”."
+
+#: ../plugins/copr.py:120 ../plugins/copr.py:144
+msgid "Error: "
+msgstr "Fel: "
+
+#: ../plugins/copr.py:121 ../plugins/copr.py:125
+msgid "exactly two additional parameters to copr command are required"
+msgstr "exakt två ytterligare parametrar till kommandot copr behövs"
+
+#: ../plugins/copr.py:145
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr ""
+"använd formatet ”copr_användarnamn/copr_projektnamn” för att referera copr-"
+"projekt"
+
+#: ../plugins/copr.py:147
+msgid "bad copr project format"
+msgstr "felaktigt copr-projektformat"
+
+#: ../plugins/copr.py:167
+msgid "Repository successfully enabled."
+msgstr "Förrådet aktiverat."
+
+#: ../plugins/copr.py:171
+msgid "Repository successfully disabled."
+msgstr "Förrådet avaktiverat."
+
+#: ../plugins/copr.py:175
+msgid "Repository successfully removed."
+msgstr "Förrådet borttaget."
+
+#: ../plugins/copr.py:179 ../plugins/copr.py:423
+msgid "Unknown subcommand {}."
+msgstr "Okänt underkommando {}."
+
+#: ../plugins/copr.py:189
+msgid "Can't parse repositories for username '{}'."
+msgstr "Kan inte tolka förråd för användarnamnet ”{}”."
+
+#: ../plugins/copr.py:192
+msgid "List of {} coprs"
+msgstr "lista över {} copr"
+
+#: ../plugins/copr.py:200
+msgid "No description given"
+msgstr "Ingen beskrivning angiven"
+
+#: ../plugins/copr.py:212
+msgid "Can't parse search for '{}'."
+msgstr "Kan inte tolka sökningen efter ”{}”."
+
+#: ../plugins/copr.py:215
+msgid "Matched: {}"
+msgstr "Matchade: {}"
+
+#: ../plugins/copr.py:223
+msgid "No description given."
+msgstr "Ingen beskrivning angiven."
+
+#: ../plugins/copr.py:236 ../plugins/copr.py:245
+msgid "Safe and good answer. Exiting."
+msgstr "Säkert och bra svar.  Avslutar."
+
+#: ../plugins/copr.py:252
+msgid "This command has to be run under the root user."
+msgstr "Detta kommando måste köras som användaren root."
+
+#: ../plugins/copr.py:304
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr ""
+"Detta förråd har inte några byggen ännu så du kan inte aktivera det nu."
+
+#: ../plugins/copr.py:307
+msgid "Such repository does not exist."
+msgstr "Något sådant förråd finns inte."
+
+#: ../plugins/copr.py:328
+msgid "Failed to disable copr repo {}/{}"
+msgstr "Misslyckades att avaktivera copr-förrådet {}/{}"
+
+#: ../plugins/copr.py:341 ../plugins/copr.py:378
+msgid "Unknown response from server."
+msgstr "Okänt svar från servern."
+
+#: ../plugins/copr.py:363
+msgid "Interact with Playground repository."
+msgstr "Interagera med Playground-förrådet."
+
+#: ../plugins/copr.py:413
+msgid "Playground repositories successfully enabled."
+msgstr "Playground-förråden aktiverades."
+
+#: ../plugins/copr.py:416
+msgid "Playground repositories successfully disabled."
+msgstr "Playground-förråden avaktiverades."
+
+#: ../plugins/copr.py:420
+msgid "Playground repositories successfully updated."
+msgstr "Playground-förråden uppdaterades."
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr ""
+
+#: ../plugins/builddep.py:62
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAKET|PAKET.spec]"
+
+#: ../plugins/builddep.py:73
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "”%s” är inte på formatet ”MAKRO UTTR”"
+
+#: ../plugins/builddep.py:78
+msgid "packages with builddeps to install"
+msgstr ""
+
+#: ../plugins/builddep.py:81
+msgid "define a macro for spec file parsing"
+msgstr ""
+
+#: ../plugins/builddep.py:84
+msgid "treat commandline arguments as spec files"
+msgstr ""
+
+#: ../plugins/builddep.py:86
+msgid "treat commandline arguments as source rpm"
+msgstr ""
+
+#: ../plugins/builddep.py:132
+msgid "Some packages could not be found."
+msgstr ""
+
+#. No provides, no files
+#: ../plugins/builddep.py:151
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr ""
+
+#: ../plugins/builddep.py:168
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr ""
+
+#: ../plugins/builddep.py:181 ../plugins/builddep.py:197
+#: ../plugins/builddep.py:214
+msgid "Not all dependencies satisfied"
+msgstr ""
+
+#: ../plugins/builddep.py:188
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr ""
+
+#: ../plugins/builddep.py:207
+#, python-format
+msgid "no package matched: %s"
+msgstr ""
+
+#: ../plugins/download.py:40
+msgid "Download package to current directory"
+msgstr "Hämta ett paket till aktuell katalog"
+
+#: ../plugins/download.py:50
+msgid "packages to download"
+msgstr "paket att hämta"
+
+#: ../plugins/download.py:53
+msgid "download the src.rpm instead"
+msgstr "hämta källkods-rpm:en istället"
+
+#: ../plugins/download.py:55
+msgid "download the -debuginfo package instead"
+msgstr "hämta debuginfo-paketet istället"
+
+#: ../plugins/download.py:57
+msgid "download path, default is current dir"
+msgstr "sökväg att hämta till, standard är aktuell katalog"
+
+#: ../plugins/download.py:59
+msgid "resolve and download needed dependencies"
+msgstr "lös upp och hämta de nödvändiga beroendena"
+
+#: ../plugins/download.py:61
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr ""
+"skriv en lista på url:ar rpm:erna kan hämtas ifrån istället för att hämta "
+"dem"
+
+#: ../plugins/download.py:66
+msgid "when running with --url, limit to specific protocols"
+msgstr "när använt med --url, begränsa till specifika protokoll"
+
+#: ../plugins/download.py:182
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Misslyckades att få tag i spegeln för paket: %s"
+
+#: ../plugins/download.py:206
+msgid "Exiting due to strict setting."
+msgstr "Avslutar på grund av strict-inställning"
+
+#: ../plugins/download.py:226
+msgid "Error in resolve"
+msgstr "Fel i upplösningen"
+
+#: ../plugins/download.py:241
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Ingen källkods-rpm definierad för %s"
+
+#: ../plugins/download.py:255 ../plugins/download.py:269
+#, python-format
+msgid "No package %s available."
+msgstr "Inget paket %s tillgängligt."
