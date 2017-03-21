@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 14:01+0100\n"
+"POT-Creation-Date: 2017-03-21 12:37+0100\n"
 "PO-Revision-Date: 2017-03-10 08:17-0500\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
@@ -253,6 +253,66 @@ msgstr "Pomyślnie wyłączono repozytoria Playground."
 msgid "Playground repositories successfully updated."
 msgstr "Pomyślnie zaktualizowano repozytoria Playground."
 
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "instaluje pakiety debuginfo"
+
+#: ../plugins/builddep.py:62
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAKIET|PAKIET.spec]"
+
+#: ../plugins/builddep.py:73
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "„%s” nie jest w formacie „MAKRO WYRAŻENIE”"
+
+#: ../plugins/builddep.py:78
+msgid "packages with builddeps to install"
+msgstr "pakiety z zależnościami budowania do zainstalowania"
+
+#: ../plugins/builddep.py:81
+msgid "define a macro for spec file parsing"
+msgstr "określa makro do przetwarzania plików spec"
+
+#: ../plugins/builddep.py:84
+msgid "treat commandline arguments as spec files"
+msgstr "traktuje parametry wiersza poleceń jako pliki spec"
+
+#: ../plugins/builddep.py:86
+msgid "treat commandline arguments as source rpm"
+msgstr "traktuje parametry wiersza poleceń jako źródłowe pliki RPM"
+
+#: ../plugins/builddep.py:132
+msgid "Some packages could not be found."
+msgstr "Nie można odnaleźć niektórych pakietów."
+
+#. No provides, no files
+#: ../plugins/builddep.py:151
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Brak pasujących pakietów do zainstalowania: „%s”"
+
+#: ../plugins/builddep.py:168
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr ""
+"Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
+
+#: ../plugins/builddep.py:181 ../plugins/builddep.py:197
+#: ../plugins/builddep.py:214
+msgid "Not all dependencies satisfied"
+msgstr "Nie spełniono wszystkich zależności"
+
+#: ../plugins/builddep.py:188
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
+
+#: ../plugins/builddep.py:207
+#, python-format
+msgid "no package matched: %s"
+msgstr "żaden pakiet nie pasuje: %s"
+
 #: ../plugins/download.py:40
 msgid "Download package to current directory"
 msgstr "Pobiera pakiet do bieżącego katalogu"
@@ -297,75 +357,16 @@ msgstr "Uzyskanie serwera lustrzanego dla pakietu się nie powiodło: %s"
 msgid "Exiting due to strict setting."
 msgstr "Kończenie działania z powodu ścisłego ustawienia."
 
-#: ../plugins/download.py:223
+#: ../plugins/download.py:226
 msgid "Error in resolve"
 msgstr "Błąd podczas rozwiązywania"
 
-#: ../plugins/download.py:238
+#: ../plugins/download.py:241
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Nie określono źródłowego pakietu RPM dla %s"
 
-#: ../plugins/download.py:252 ../plugins/download.py:266
+#: ../plugins/download.py:255 ../plugins/download.py:269
 #, python-format
 msgid "No package %s available."
 msgstr "Pakiet %s jest niedostępny."
-
-#: ../plugins/builddep.py:61
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PAKIET|PAKIET.spec]"
-
-#: ../plugins/builddep.py:72
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "„%s” nie jest w formacie „MAKRO WYRAŻENIE”"
-
-#: ../plugins/builddep.py:77
-msgid "packages with builddeps to install"
-msgstr "pakiety z zależnościami budowania do zainstalowania"
-
-#: ../plugins/builddep.py:80
-msgid "define a macro for spec file parsing"
-msgstr "określa makro do przetwarzania plików spec"
-
-#: ../plugins/builddep.py:83
-msgid "treat commandline arguments as spec files"
-msgstr "traktuje parametry wiersza poleceń jako pliki spec"
-
-#: ../plugins/builddep.py:85
-msgid "treat commandline arguments as source rpm"
-msgstr "traktuje parametry wiersza poleceń jako źródłowe pliki RPM"
-
-#: ../plugins/builddep.py:131
-msgid "Some packages could not be found."
-msgstr "Nie można odnaleźć niektórych pakietów."
-
-#: ../plugins/builddep.py:141
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Brak pasujących pakietów do zainstalowania: „%s”"
-
-#: ../plugins/builddep.py:158
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
-"Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
-
-#: ../plugins/builddep.py:171 ../plugins/builddep.py:187
-#: ../plugins/builddep.py:204
-msgid "Not all dependencies satisfied"
-msgstr "Nie spełniono wszystkich zależności"
-
-#: ../plugins/builddep.py:178
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
-
-#: ../plugins/builddep.py:197
-#, python-format
-msgid "no package matched: %s"
-msgstr "żaden pakiet nie pasuje: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "instaluje pakiety debuginfo"

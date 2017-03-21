@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 14:01+0100\n"
+"POT-Creation-Date: 2017-03-21 12:37+0100\n"
 "PO-Revision-Date: 2017-03-10 01:26-0500\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -247,6 +247,65 @@ msgstr "Сховища playground успішно вимкнено."
 msgid "Playground repositories successfully updated."
 msgstr "Сховища playground успішно оновлено."
 
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "встановити пакунки debuginfo"
+
+#: ../plugins/builddep.py:62
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[ПАКУНОК|ПАКУНОК.spec]"
+
+#: ../plugins/builddep.py:73
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "«%s» не записано у форматі «МАКРОС ВИРАЗ»"
+
+#: ../plugins/builddep.py:78
+msgid "packages with builddeps to install"
+msgstr "пакунки із залежностями для збирання, які встановлюватимуться"
+
+#: ../plugins/builddep.py:81
+msgid "define a macro for spec file parsing"
+msgstr "визначити макрос для обробки файла специфікацій"
+
+#: ../plugins/builddep.py:84
+msgid "treat commandline arguments as spec files"
+msgstr "вважати аргументи рядка команди назвами файлів spec"
+
+#: ../plugins/builddep.py:86
+msgid "treat commandline arguments as source rpm"
+msgstr "вважати аргументи рядка команди назвами rpm із кодом пакунків"
+
+#: ../plugins/builddep.py:132
+msgid "Some packages could not be found."
+msgstr "Не вдалося знайти деякі з пакунків."
+
+#. No provides, no files
+#: ../plugins/builddep.py:151
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Немає відповідних пакунків для встановлення: «%s»"
+
+#: ../plugins/builddep.py:168
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "Не вдалося відкрити «%s», це не файл rpm із кодом пакунка."
+
+#: ../plugins/builddep.py:181 ../plugins/builddep.py:197
+#: ../plugins/builddep.py:214
+msgid "Not all dependencies satisfied"
+msgstr "Задоволено не усі залежності"
+
+#: ../plugins/builddep.py:188
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "Не вдалося відкрити «%s» — файл не є коректним файлом spec: %s"
+
+#: ../plugins/builddep.py:207
+#, python-format
+msgid "no package matched: %s"
+msgstr "немає відповідного пакунка: %s"
+
 #: ../plugins/download.py:40
 msgid "Download package to current directory"
 msgstr "Отримати пакунок до поточного каталогу"
@@ -291,74 +350,16 @@ msgstr "Не вдалося отримати дзеркало для пакун�
 msgid "Exiting due to strict setting."
 msgstr "Завершуємо роботу через строгі обмеження."
 
-#: ../plugins/download.py:223
+#: ../plugins/download.py:226
 msgid "Error in resolve"
 msgstr "Помилка у визначенні"
 
-#: ../plugins/download.py:238
+#: ../plugins/download.py:241
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Не визначено rpm із початковим кодом для %s"
 
-#: ../plugins/download.py:252 ../plugins/download.py:266
+#: ../plugins/download.py:255 ../plugins/download.py:269
 #, python-format
 msgid "No package %s available."
 msgstr "Немає доступного пакунка %s."
-
-#: ../plugins/builddep.py:61
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[ПАКУНОК|ПАКУНОК.spec]"
-
-#: ../plugins/builddep.py:72
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "«%s» не записано у форматі «МАКРОС ВИРАЗ»"
-
-#: ../plugins/builddep.py:77
-msgid "packages with builddeps to install"
-msgstr "пакунки із залежностями для збирання, які встановлюватимуться"
-
-#: ../plugins/builddep.py:80
-msgid "define a macro for spec file parsing"
-msgstr "визначити макрос для обробки файла специфікацій"
-
-#: ../plugins/builddep.py:83
-msgid "treat commandline arguments as spec files"
-msgstr "вважати аргументи рядка команди назвами файлів spec"
-
-#: ../plugins/builddep.py:85
-msgid "treat commandline arguments as source rpm"
-msgstr "вважати аргументи рядка команди назвами rpm із кодом пакунків"
-
-#: ../plugins/builddep.py:131
-msgid "Some packages could not be found."
-msgstr "Не вдалося знайти деякі з пакунків."
-
-#: ../plugins/builddep.py:141
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Немає відповідних пакунків для встановлення: «%s»"
-
-#: ../plugins/builddep.py:158
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Не вдалося відкрити «%s», це не файл rpm із кодом пакунка."
-
-#: ../plugins/builddep.py:171 ../plugins/builddep.py:187
-#: ../plugins/builddep.py:204
-msgid "Not all dependencies satisfied"
-msgstr "Задоволено не усі залежності"
-
-#: ../plugins/builddep.py:178
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Не вдалося відкрити «%s» — файл не є коректним файлом spec: %s"
-
-#: ../plugins/builddep.py:197
-#, python-format
-msgid "no package matched: %s"
-msgstr "немає відповідного пакунка: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "встановити пакунки debuginfo"

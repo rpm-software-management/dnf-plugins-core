@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 14:01+0100\n"
+"POT-Creation-Date: 2017-03-21 12:37+0100\n"
 "PO-Revision-Date: 2016-07-20 07:05-0400\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian\n"
@@ -248,6 +248,65 @@ msgstr "Repository Playground disabilitati con successo."
 msgid "Playground repositories successfully updated."
 msgstr "Repository Playground aggiornati con successo."
 
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "installa pacchetti debuginfo"
+
+#: ../plugins/builddep.py:62
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "PACCHETTO|PACCHETTO.spec"
+
+#: ../plugins/builddep.py:73
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "'%s' non è nel formato 'MACRO ESPR'"
+
+#: ../plugins/builddep.py:78
+msgid "packages with builddeps to install"
+msgstr "pachetti con dipendenze di compilazione da installare"
+
+#: ../plugins/builddep.py:81
+msgid "define a macro for spec file parsing"
+msgstr "definisce una macro per l'analisi del file spec"
+
+#: ../plugins/builddep.py:84
+msgid "treat commandline arguments as spec files"
+msgstr "considera gli argomenti a linea di comando come file spec"
+
+#: ../plugins/builddep.py:86
+msgid "treat commandline arguments as source rpm"
+msgstr "considera gli argomenti a linea di comando come file rpm sorgenti"
+
+#: ../plugins/builddep.py:132
+msgid "Some packages could not be found."
+msgstr "Non è stato possibile trovare alcuni pacchetti."
+
+#. No provides, no files
+#: ../plugins/builddep.py:151
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Nessun pacchetto corrispondente da installare: '%s'"
+
+#: ../plugins/builddep.py:168
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "Apertura non riuscita di '%s', non è un valido file rpm sorgente."
+
+#: ../plugins/builddep.py:181 ../plugins/builddep.py:197
+#: ../plugins/builddep.py:214
+msgid "Not all dependencies satisfied"
+msgstr "Non tutte le dipendenze sono soddisfatte."
+
+#: ../plugins/builddep.py:188
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr ""
+
+#: ../plugins/builddep.py:207
+#, python-format
+msgid "no package matched: %s"
+msgstr "nessun pacchetto corrispondente: %s"
+
 #: ../plugins/download.py:40
 msgid "Download package to current directory"
 msgstr "Scarica pacchetti nella directory attuale"
@@ -290,74 +349,16 @@ msgstr ""
 msgid "Exiting due to strict setting."
 msgstr "Uscita a causa delle impostazioni restrittive."
 
-#: ../plugins/download.py:223
+#: ../plugins/download.py:226
 msgid "Error in resolve"
 msgstr "Errore nella risoluzione"
 
-#: ../plugins/download.py:238
+#: ../plugins/download.py:241
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Nessun rpm sorgente definito per %s"
 
-#: ../plugins/download.py:252 ../plugins/download.py:266
+#: ../plugins/download.py:255 ../plugins/download.py:269
 #, python-format
 msgid "No package %s available."
 msgstr ""
-
-#: ../plugins/builddep.py:61
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "PACCHETTO|PACCHETTO.spec"
-
-#: ../plugins/builddep.py:72
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' non è nel formato 'MACRO ESPR'"
-
-#: ../plugins/builddep.py:77
-msgid "packages with builddeps to install"
-msgstr "pachetti con dipendenze di compilazione da installare"
-
-#: ../plugins/builddep.py:80
-msgid "define a macro for spec file parsing"
-msgstr "definisce una macro per l'analisi del file spec"
-
-#: ../plugins/builddep.py:83
-msgid "treat commandline arguments as spec files"
-msgstr "considera gli argomenti a linea di comando come file spec"
-
-#: ../plugins/builddep.py:85
-msgid "treat commandline arguments as source rpm"
-msgstr "considera gli argomenti a linea di comando come file rpm sorgenti"
-
-#: ../plugins/builddep.py:131
-msgid "Some packages could not be found."
-msgstr "Non è stato possibile trovare alcuni pacchetti."
-
-#: ../plugins/builddep.py:141
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Nessun pacchetto corrispondente da installare: '%s'"
-
-#: ../plugins/builddep.py:158
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Apertura non riuscita di '%s', non è un valido file rpm sorgente."
-
-#: ../plugins/builddep.py:171 ../plugins/builddep.py:187
-#: ../plugins/builddep.py:204
-msgid "Not all dependencies satisfied"
-msgstr "Non tutte le dipendenze sono soddisfatte."
-
-#: ../plugins/builddep.py:178
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
-
-#: ../plugins/builddep.py:197
-#, python-format
-msgid "no package matched: %s"
-msgstr "nessun pacchetto corrispondente: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "installa pacchetti debuginfo"
