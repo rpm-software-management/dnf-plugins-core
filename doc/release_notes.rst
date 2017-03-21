@@ -20,6 +20,23 @@ Core DNF Plugins Release Notes
 ##############################
 
 .. contents::
+
+===================
+1.1.0 Release Notes
+===================
+
+* Updated translations
+* :doc:`builddep` doesn't check GPG key of src.rpm anymore
+* :doc:`builddep` installs dependencies by provides
+* :doc:`download` with ``--resolve`` now downloads all needed packages for transaction
+
+Bugs fixed in 1.1.0:
+
+* :rhbug:`1429087`
+* :rhbug:`1431486`
+* :rhbug:`1332830`
+* :rhbug:`1276611`
+
 ===================
 1.0.2 Release Notes
 ===================
