@@ -57,7 +57,7 @@ class DownloadCommand(dnf.cli.Command):
                             help=_('download path, default is current dir'))
         parser.add_argument('--resolve', action='store_true',
                             help=_('resolve and download needed dependencies'))
-        parser.add_argument('--url', action='store_true',
+        parser.add_argument('--url', '--urls', action='store_true', dest='url',
                             help=_('print list of urls where the rpms '
                                    'can be downloaded instead of downloading'))
         parser.add_argument('--urlprotocols', action='append',
@@ -90,7 +90,13 @@ class DownloadCommand(dnf.cli.Command):
 
         # If user asked for just urls then print them and we're done
         if self.opts.url:
-            self._print_download_urls_for_pkgs(pkgs)
+            for pkg in pkgs:
+                url = pkg.remote_location(schemes=self.opts.urlprotocols)
+                if url:
+                    print(url)
+                else:
+                    msg = _("Failed to get mirror for package: %s") % pkg.name
+                    raise dnf.exceptions.Error(msg)
             return
         else: 
             locations = self._do_downloads(pkgs)  # download rpms
@@ -158,40 +164,6 @@ class DownloadCommand(dnf.cli.Command):
                     break
 
         return dbg_pkgs
-
-    def _print_download_urls_for_pkgs(self, pkgs):
-        """Print out a url for each dnf.Package object in the pkgs list."""
-
-        # Create a tmpdir so that librepo tmp files don't get left behind
-        with dnf.util.tmpdir() as tmpdir:
-            # For each dnf.Package object get the librepo.Handle (which
-            # represents a download configuration) and set fetchmirrors
-            # so that it will only get a mirrorlist when calling perform()
-            # and won't actually try to download anything else. Once we
-            # have a mirrorlist we can then just choose one of the mirrors
-            # and merge the mirror url with the relative location of the
-            # package on the mirror.
-            for pkg in pkgs:
-                h = pkg.repo._get_handle()
-                h.fetchmirrors = True  # sets LRO_FETCHMIRRORS
-                h.destdir = tmpdir     # store tmp files in tmpdir
-                h.perform()
-                baseurl = self._filter_mirrors(h.mirrors)
-
-                if not baseurl:
-                    msg = _("Failed to get mirror for package: %s") % pkg.name
-                    raise dnf.exceptions.Error(msg)
-                print(baseurl + pkg.location)
-
-    def _filter_mirrors(self, mirrors):
-        """Find the first mirror that matches an acceptable protocol"""
-        for mirror in mirrors:
-            protocol = mirror.split(':')[0]
-            if not self.opts.urlprotocols:
-                return mirror
-            if protocol in self.opts.urlprotocols:
-                return mirror
-        return None  # no acceptable mirror
 
     def _get_packages(self, pkg_specs, source=False):
         """Get packages matching pkg_specs."""
