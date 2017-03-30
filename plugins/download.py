@@ -20,6 +20,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 from dnfpluginscore import _, logger
+from dnf.cli.option_parser import OptionParser
 
 import dnf
 import dnf.cli
@@ -53,6 +54,9 @@ class DownloadCommand(dnf.cli.Command):
                             help=_('download the src.rpm instead'))
         target.add_argument("--debuginfo", action='store_true',
                             help=_('download the -debuginfo package instead'))
+        parser.add_argument("--arch", '--archlist', dest='arch', default=[],
+                            action=OptionParser._SplitCallback, metavar='[arch]',
+                            help=_("limit  the  query to packages of given architectures."))
         parser.add_argument('--destdir',
                             help=_('download path, default is current dir'))
         parser.add_argument('--resolve', action='store_true',
@@ -223,6 +227,8 @@ class DownloadCommand(dnf.cli.Command):
         q = subj.get_best_query(self.base.sack)
         q = q.available()
         q = q.latest()
+        if self.opts.arch:
+            q = q.filter(arch=self.opts.arch)
         if len(q.run()) == 0:
             msg = _("No package %s available.") % (pkg_spec)
             raise dnf.exceptions.PackageNotFoundError(msg)
