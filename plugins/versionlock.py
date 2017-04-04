@@ -35,6 +35,7 @@ ADDING_SPEC = _('Adding versionlock on:')
 EXCLUDING_SPEC = _('Adding exclude on:')
 DELETING_SPEC = _('Deleting versionlock for:')
 NOTFOUND_SPEC = _('No package found for:')
+NO_VERSIONLOCK = _('Ignoring versionlock for non-transactional operation')
 
 locklist_fn = None
 
@@ -57,6 +58,9 @@ class VersionLock(dnf.Plugin):
                        and cp.get('main', 'locklist'))
 
     def sack(self):
+        if not self.cli.demands.resolving:
+            raise dnf.exceptions.Error(NO_VERSIONLOCK)
+
         if not locklist_fn:
             raise dnf.exceptions.Error(NO_LOCKLIST)
 
