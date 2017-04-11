@@ -219,7 +219,7 @@ class DownloadCommand(dnf.cli.Command):
 
     def _get_query(self, pkg_spec):
         """Return a query to match a pkg_spec."""
-        if os.path.exists(pkg_spec):
+        if pkg_spec.endswith('.rpm') and os.path.isfile(pkg_spec):
             pkgs = self.base.add_remote_rpms([pkg_spec])
             pkg_spec = "{0.name}-{0.epoch}:{0.version}-{0.release}.{0.arch}".format(pkgs[0])
 
