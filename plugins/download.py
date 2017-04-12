@@ -100,7 +100,9 @@ class DownloadCommand(dnf.cli.Command):
                     print(url)
                 else:
                     msg = _("Failed to get mirror for package: %s") % pkg.name
-                    raise dnf.exceptions.Error(msg)
+                    if self.base.conf.strict:
+                        raise dnf.exceptions.Error(msg)
+                    logger.warning(msg)
             return
         else: 
             locations = self._do_downloads(pkgs)  # download rpms
