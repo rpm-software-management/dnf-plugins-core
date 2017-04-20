@@ -62,6 +62,9 @@ class RepoClosureCommand(dnf.cli.Command):
             print("  unresolved deps:")
             for dep in unresolved[pkg]:
                 print("    {}".format(dep))
+        if len(unresolved) > 0:
+            msg = _("Repoclosure ended with unresolved dependencies.")
+            raise dnf.exceptions.Error(msg)
 
     def _get_unresolved(self, arch=None):
         unresolved = {}
