@@ -136,6 +136,7 @@ Obsoletes:      python2-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
 Leaves Plugin for DNF, Python 2 version. List all installed packages
 not required by any other installed package.
 
+%if %{with python3}
 %package -n python3-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -150,6 +151,7 @@ Obsoletes:      python3-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
 %description -n python3-dnf-plugin-leaves
 Leaves Plugin for DNF, Python 3 version. List all installed packages
 not required by any other installed package.
+%endif
 
 %package -n python2-dnf-plugin-local
 Summary:        Local Plugin for DNF
@@ -166,6 +168,7 @@ Obsoletes:      python2-dnf-plugins-extras-local < %{dnf_plugins_extra}
 Local Plugin for DNF, Python 2 version. Automatically copy all downloaded packages to a
 repository on the local filesystem and generating repo metadata.
 
+%if %{with python3}
 %package -n python3-dnf-plugin-local
 Summary:        Local Plugin for DNF
 Requires:       %{_bindir}/createrepo_c
@@ -180,6 +183,7 @@ Obsoletes:      python3-dnf-plugins-extras-local < %{dnf_plugins_extra}
 %description -n python3-dnf-plugin-local
 Local Plugin for DNF, Python 3 version. Automatically copy all downloaded
 packages to a repository on the local filesystem and generating repo metadata.
+%endif
 
 %package -n python2-dnf-plugin-migrate
 Summary:        Migrate Plugin for DNF
@@ -212,6 +216,7 @@ Show-leaves Plugin for DNF, Python 2 version. List all installed
 packages that are no longer required by any other installed package
 after a transaction.
 
+%if %{with python3}
 %package -n python3-dnf-plugin-show-leaves
 Summary:        Show-leaves Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -228,6 +233,7 @@ Obsoletes:      python3-dnf-plugins-extras-show-leaves < %{dnf_plugins_extra}
 Show-leaves Plugin for DNF, Python 3 version. List all installed
 packages that are no longer required by any other installed package
 after a transaction.
+%endif
 
 %package -n python2-dnf-plugin-versionlock
 Summary:        Version Lock Plugin for DNF
@@ -245,6 +251,7 @@ Version lock plugin takes a set of name/versions for packages and excludes all o
 versions of those packages. This allows you to e.g. protect packages from being
 updated by newer versions.
 
+%if %{with python3}
 %package -n python3-dnf-plugin-versionlock
 Summary:        Version Lock Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -260,6 +267,7 @@ Obsoletes:      python3-dnf-plugins-extras-versionlock < %{dnf_plugins_extra}
 Version lock plugin takes a set of name/versions for packages and excludes all other
 versions of those packages. This allows you to e.g. protect packages from being
 updated by newer versions.
+%endif
 
 %prep
 %autosetup
@@ -369,21 +377,25 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python2_sitelib}/dnf-plugins/leaves.*
 %{_mandir}/man8/dnf.plugin.leaves.*
 
+%if %{with python3}
 %files -n python3-dnf-plugin-leaves
 %{python3_sitelib}/dnf-plugins/leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
 %{_mandir}/man8/dnf.plugin.leaves.*
+%endif
 
 %files -n python2-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python2_sitelib}/dnf-plugins/local.*
 %{_mandir}/man8/dnf.plugin.local.*
 
+%if %{with python3}
 %files -n python3-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python3_sitelib}/dnf-plugins/local.*
 %{python3_sitelib}/dnf-plugins/__pycache__/local.*
 %{_mandir}/man8/dnf.plugin.local.*
+%endif
 
 %files -n python2-dnf-plugin-migrate
 %{python2_sitelib}/dnf-plugins/migrate.*
@@ -393,10 +405,12 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python2_sitelib}/dnf-plugins/show_leaves.*
 %{_mandir}/man8/dnf.plugin.show-leaves.*
 
+%if %{with python3}
 %files -n python3-dnf-plugin-show-leaves
 %{python3_sitelib}/dnf-plugins/show_leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
 %{_mandir}/man8/dnf.plugin.show-leaves.*
+%endif
 
 %files -n python2-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
@@ -404,12 +418,14 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python2_sitelib}/dnf-plugins/versionlock.*
 %{_mandir}/man8/dnf.plugin.versionlock.*
 
+%if %{with python3}
 %files -n python3-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
 %{_mandir}/man8/dnf.plugin.versionlock.*
+%endif
 
 %changelog
 * Tue Mar 21 2017 Igor Gnatenko <ignatenko@redhat.com> 1.1.0-1
