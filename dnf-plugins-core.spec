@@ -125,9 +125,11 @@ reposync commands. Additionally provides generate_completion_cache passive plugi
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-leaves = %{version}-%{release}
+%if !%{with python3}
 Provides:       dnf-command(leaves)
 Provides:       dnf-plugin-leaves = %{version}-%{release}
 Provides:       dnf-plugins-extras-leaves = %{version}-%{release}
+%endif
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 Conflicts:      python3-dnf-plugin-leaves < %{version}-%{release}
 Obsoletes:      python2-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
@@ -157,9 +159,11 @@ not required by any other installed package.
 Summary:        Local Plugin for DNF
 Requires:       %{_bindir}/createrepo_c
 Requires:       python2-%{name} = %{version}-%{release}
+%if !%{with python3}
 Provides:       dnf-plugin-local =  %{version}-%{release}
-Provides:       python2-dnf-plugins-extras-local = %{version}-%{release}
 Provides:       dnf-plugins-extras-local = %{version}-%{release}
+%endif
+Provides:       python2-dnf-plugins-extras-local = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 Conflicts:      python3-dnf-plugin-local < %{version}-%{release}
 Obsoletes:      python2-dnf-plugins-extras-local < %{dnf_plugins_extra}
@@ -203,10 +207,12 @@ Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
 Requires:       python2-dnf-plugin-leaves = %{version}-%{release}
+%if !%{with python3}
 Provides:       dnf-plugin-show-leaves =  %{version}-%{release}
-Provides:       python2-dnf-plugins-extras-show-leaves = %{version}-%{release}
 Provides:       dnf-command(show-leaves)
 Provides:       dnf-plugins-extras-show-leaves = %{version}-%{release}
+%endif
+Provides:       python2-dnf-plugins-extras-show-leaves = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 Conflicts:      python3-dnf-plugin-show-leaves < %{version}-%{release}
 Obsoletes:      python2-dnf-plugins-extras-show-leaves < %{dnf_plugins_extra}
@@ -238,10 +244,12 @@ after a transaction.
 %package -n python2-dnf-plugin-versionlock
 Summary:        Version Lock Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
+%if !%{with python3}
 Provides:       dnf-plugin-versionlock =  %{version}-%{release}
-Provides:       python2-dnf-plugins-extras-versionlock = %{version}-%{release}
 Provides:       dnf-command(versionlock)
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
+%endif
+Provides:       python2-dnf-plugins-extras-versionlock = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 Conflicts:      python3-dnf-plugin-versionlock < %{version}-%{release}
 Obsoletes:      python2-dnf-plugins-extras-versionlock < %{dnf_plugins_extra}
