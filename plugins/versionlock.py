@@ -60,7 +60,9 @@ class VersionLock(dnf.Plugin):
         if not locklist_fn:
             raise dnf.exceptions.Error(NO_LOCKLIST)
 
-        locked = set()
+        excludes_query = self.base.sack.query().filter(empty=True)
+        include_query = self.base.sack.query().filter(empty=True)
+
         for pat in _read_locklist():
             excl = False
             if pat and pat[0] == '!':
@@ -71,15 +73,14 @@ class VersionLock(dnf.Plugin):
             pkgs = subj.get_best_query(self.base.sack)
 
             if excl:
-                self.base.sack.add_excludes(pkgs)
+                excludes_query = excludes_query.union(pkgs)
             else:
-                locked.update(pkgs.run())
+                include_query = include_query.union(pkgs)
 
-        if locked:
-            locked_names = [pkg.name for pkg in locked]
-            all_versions = set(self.base.sack.query().filter(name=locked_names))
-            other_versions = all_versions.difference(locked)
-            self.base.sack.add_excludes(other_versions)
+        if excludes_query:
+            self.base.sack.add_excludes(excludes_query)
+        if include_query:
+            self.base.sack.add_includes(include_query)
 
 EXC_CMDS = ['exclude', 'add-!', 'add!', 'blacklist']
 DEL_CMDS = ['delete', 'del']
