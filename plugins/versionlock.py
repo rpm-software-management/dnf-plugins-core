@@ -70,7 +70,8 @@ class VersionLock(dnf.Plugin):
                 excl = True
 
             subj = dnf.subject.Subject(pat)
-            pkgs = subj.get_best_query(self.base.sack)
+            pkgs = subj.get_best_query(self.base.sack, with_nevra=True, with_provides=False,
+                                       with_filenames=False)
 
             if excl:
                 excludes_query = excludes_query.union(pkgs)
@@ -171,9 +172,11 @@ def _write_locklist(base, args, try_installed, comment, info, prefix):
         subj = dnf.subject.Subject(pat)
         pkgs = None
         if try_installed:
-            pkgs = subj.get_best_query(dnf.sack._rpmdb_sack(base))
+            pkgs = subj.get_best_query(dnf.sack._rpmdb_sack(base), with_nevra=True,
+                                       with_provides=False, with_filenames=False)
         if not pkgs:
-            pkgs = subj.get_best_query(base.sack)
+            pkgs = subj.get_best_query(base.sack, with_nevra=True, with_provides=False,
+                                       with_filenames=False)
         if not pkgs:
             logger.info("%s %s", NOTFOUND_SPEC, pat)
 
