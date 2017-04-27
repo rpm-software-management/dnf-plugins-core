@@ -59,7 +59,8 @@ class VersionLock(dnf.Plugin):
 
     def sack(self):
         if not self.cli.demands.resolving:
-            raise dnf.exceptions.Error(NO_VERSIONLOCK)
+            logger.info(NO_VERSIONLOCK)
+            return
 
         if not locklist_fn:
             raise dnf.exceptions.Error(NO_LOCKLIST)
