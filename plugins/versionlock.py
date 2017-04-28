@@ -61,8 +61,8 @@ class VersionLock(dnf.Plugin):
             raise dnf.exceptions.Error(NO_LOCKLIST)
 
         excludes_query = self.base.sack.query().filter(empty=True)
-        include_query = self.base.sack.query().filter(empty=True)
-
+        locked_query = self.base.sack.query().filter(empty=True)
+        locked_names = set()
         for pat in _read_locklist():
             excl = False
             if pat and pat[0] == '!':
@@ -70,18 +70,21 @@ class VersionLock(dnf.Plugin):
                 excl = True
 
             subj = dnf.subject.Subject(pat)
-            pkgs = subj.get_best_query(self.base.sack, with_nevra=True, with_provides=False,
-                                       with_filenames=False)
+            solution = subj._get_nevra_solution(self.base.sack, with_nevra=True,
+                                                with_provides=False, with_filenames=False)
 
             if excl:
-                excludes_query = excludes_query.union(pkgs)
-            else:
-                include_query = include_query.union(pkgs)
+                excludes_query = excludes_query.union(solution['query'])
+            elif solution['nevra'] is not None and solution['nevra'].name is not None:
+                locked_names.add(solution['nevra'].name)
+                locked_query = locked_query.union(solution['query'])
+        if locked_query:
+            all_versions = self.base.sack.query().filter(name=list(locked_names))
+            other_versions = all_versions.difference(locked_query)
+            excludes_query = excludes_query.union(other_versions)
 
         if excludes_query:
             self.base.sack.add_excludes(excludes_query)
-        if include_query:
-            self.base.sack.add_includes(include_query)
 
 EXC_CMDS = ['exclude', 'add-!', 'add!', 'blacklist']
 DEL_CMDS = ['delete', 'del']
