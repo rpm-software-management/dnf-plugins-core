@@ -1,367 +1,364 @@
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015. #zanata
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016. #zanata
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017. #zanata
+# Igor Gorbounov <igor.gorbounov@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 12:34+0200\n"
-"PO-Revision-Date: 2017-04-12 03:53-0400\n"
-"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
-"Language-Team: Catalan\n"
+"PO-Revision-Date: 2017-04-15 03:11-0400\n"
+"Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
+"Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 3.9.6\n"
 
 #: ../plugins/builddep.py:62
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PAQUET|PAQUET.spec]"
+msgstr "[ПАКЕТ|ПАКЕТ.spec]"
 
 #: ../plugins/builddep.py:73
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "«%s» no té el format «MACRO EXPR»"
+msgstr "«%s» не в формате «MACRO EXPR»"
 
 #: ../plugins/builddep.py:78
 msgid "packages with builddeps to install"
-msgstr "els paquets amb dependències de construcció a instal·lar"
+msgstr "пакеты с builddeps для установк"
 
 #: ../plugins/builddep.py:81
 msgid "define a macro for spec file parsing"
-msgstr "defineix una macro per a l'anàlisi sintàctica del fitxer spec"
+msgstr "определить макрос для разбора spec-файла"
 
 #: ../plugins/builddep.py:84
 msgid "treat commandline arguments as spec files"
-msgstr "tracta els arguments de la línia d'ordres com els fitxers spec"
+msgstr "обрабатывать аргументы командной строки как spec-файлы"
 
 #: ../plugins/builddep.py:86
 msgid "treat commandline arguments as source rpm"
-msgstr "tracta els arguments de la línia d'ordres com el rpm de les fonts"
+msgstr "обрабатывать аргументы командной строки как rpm с исходными файлами"
 
 #: ../plugins/builddep.py:132
 msgid "Some packages could not be found."
-msgstr "No s'han pogut trobar alguns paquets."
+msgstr "Некоторые пакеты не удалось найти."
 
 #. No provides, no files
 #: ../plugins/builddep.py:151
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr "Cap paquet que coincideixi per instal·lar: «%s»"
+msgstr "Нет подходящего пакета для установки: «%s»"
 
 #: ../plugins/builddep.py:168
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Ha fallat l'obertura: «%s», no és un fitxer vàlid rpm de les fonts."
+msgstr ""
+"Ошибка открытия файла: «%s», неправильный файл rpm с исходными текстами."
 
 #: ../plugins/builddep.py:181 ../plugins/builddep.py:197
 #: ../plugins/builddep.py:214
 msgid "Not all dependencies satisfied"
-msgstr "No s'han satisfet totes les dependències"
+msgstr "Не все зависимости удовлетворены"
 
 #: ../plugins/builddep.py:188
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Ha fallat l'obertura: «%s», no és un fitxer spec vàlid: %s"
+msgstr "Ошибка открытия файла: «%s», неправильный spec-файл: %s"
 
 #: ../plugins/builddep.py:207
 #, python-format
 msgid "no package matched: %s"
-msgstr "cap paquet que coincideixi: %s"
+msgstr "нет подходящих пакетов: %s"
 
 #: ../plugins/config_manager.py:35
 msgid "manage dnf configuration options and repositories"
-msgstr "gestiona les opcions de configuració del dnf i els dipòsits"
+msgstr "управление параметрами конфигурации dnf и репозиториями"
 
 #: ../plugins/config_manager.py:41
 msgid "repo to modify"
-msgstr "Dipòsit a modificar"
+msgstr "репозиторий для изменения"
 
 #: ../plugins/config_manager.py:44
 msgid "save the current options (useful with --setopt)"
-msgstr "desa les opcions actuals (útil amb --setopt)"
+msgstr "сохранить текущие параметры (хорошо с --setopt)"
 
 #: ../plugins/config_manager.py:47
 msgid "enable the specified repos (automatically saves)"
-msgstr "habilita els dipòsits especificats (es desa automàticament)"
+msgstr "подключить указанные репозитории (сохранение автоматическое)"
 
 #: ../plugins/config_manager.py:50
 msgid "disable the specified repos (automatically saves)"
-msgstr "inhabilita els dipòsits especificats (es desa automàticament)"
+msgstr "отключить указанные репозитории (сохранение автоматическое)"
 
 #: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
-msgstr ""
-"afegeix (i habilita) el dipòsit del fitxer o de l'URL que s'especifica"
+msgstr "добавить (и подключить) репозиторий из указанного файла или url"
 
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
-msgstr ""
-"imprimeix els valors actuals de la configuració per la sortida estàndard"
+msgstr "вывести текущие параметры конфигурации в stdout"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr "imprimeix els valors de les variables per la sortida estàndard"
+msgstr "вывести значения переменных в stdout"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
 msgstr ""
-"Error: Intent d'habilitació i d'inhabilitació de dipòsits al mateix temps."
+"Ошибка: попытка подключения и отключения репозитория в одно и то же время."
 
 #: ../plugins/config_manager.py:79
 msgid "Error: Trying to enable already enabled repos."
-msgstr "Error: Intent d'habilitació de dipòsits ja habilitats."
+msgstr "Ошибка: попытка подключения уже подключенных репозиториев."
 
 #: ../plugins/config_manager.py:118
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr "Cap dipòsit que coincideixi per modificar: %s."
+msgstr "Нет подходящего репозиторий для изменения: %s."
 
 #: ../plugins/config_manager.py:148
 #, python-format
 msgid "Adding repo from: %s"
-msgstr "Afegiment del dipòsit: %s"
+msgstr "Добавление репозитория из: %s"
 
 #: ../plugins/config_manager.py:178
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr "No es pot desar el dipòsit al repofile %s: %s"
+msgstr "Не удалось сохранить репозиторий в repofile %s: %s"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
-msgstr "instal·la els paquets debuginfo"
+msgstr "установить пакеты debuginfo"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
-msgstr "determina els binaris que requereixen reinici"
+msgstr "определить обновленные двоичные файлы, требующие перезапуска"
 
 #: ../plugins/needs_restarting.py:172
 msgid "only consider this user's processes"
-msgstr "considera únicament els processos d'aquest usuari"
+msgstr "рассматривать только процессы этого пользователя"
 
 #: ../plugins/reposync.py:40
 msgid "download all packages from remote repo"
-msgstr "baixa tots els paquets del dipòsit remot"
+msgstr "загрузить все пакеты из удаленного репозитория"
 
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
-msgstr "on emmagatzemar els dipòsits que s'han baixat"
+msgstr "где хранить загруженные репозитории"
 
 #: ../plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr "bolca al fitxer la informació quant als paquets rpm instal·lats"
+msgstr "вывести информацию об установленных rpm-пакетах в файл"
 
 #: ../plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
-msgstr "no provis de bolcar el contingut dels dipòsits."
+msgstr "не пытаться выгрузить содержимое репозитория."
 
 #: ../plugins/debug.py:70
 msgid "optional name of dump file"
-msgstr "nom opcional del fitxer del blocat"
+msgstr "дополнительно имя файла для выгрузки"
 
 #: ../plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
-msgstr "La sortida es va escriure a: %s"
+msgstr "Вывод записан в: %s"
 
 #: ../plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
-msgstr "restaura els paquets registrats al fitxer de depuració de bolcat"
+msgstr "восстановить пакеты, записанные в файл debug-dump"
 
 #: ../plugins/debug.py:183
 msgid "output commands that would be run to stdout."
-msgstr "imprimeix les ordres que s'executen per la sortida estàndard."
+msgstr "вывести в stdout команды, которые будут запущены."
 
 #: ../plugins/debug.py:186
 msgid "Install the latest version of recorded packages."
-msgstr "Instal·la l'última versió dels paquets registrats."
+msgstr "Установить последнюю версию записанных пакетов."
 
 #: ../plugins/debug.py:189
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
 msgstr ""
-"No facis cas de l'arquitectura i instal·la els paquets que facin falta que "
-"coincideixin amb el nom, l'època, la versió i el llançament."
+"Игнорировать архитектуру и установить недостающие пакеты по имени, времени, "
+"версии и выпуску."
 
 #: ../plugins/debug.py:194
 msgid "limit to specified type"
-msgstr "limita-ho al tipus especificat"
+msgstr "ограничить указанным типом"
 
 #: ../plugins/debug.py:196
 msgid "name of dump file"
-msgstr "nom del fitxer del blocat"
+msgstr "имя файла для выгрузки"
 
 #: ../plugins/debug.py:264
 #, python-format
 msgid "Package %s is not available"
-msgstr "El paquet %s no està disponible"
+msgstr "Пакета %s нет"
 
 #: ../plugins/debug.py:274
 #, python-format
 msgid "Bad dnf debug file: %s"
-msgstr "Fitxer incorrecte de depuració dnf: %s"
+msgstr "Плохой отладочный файл dnf: %s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
 msgstr ""
-"Llista els paquets instal·lats que no es requereixin per cap altre paquet"
+"Показать список установленных пакетов, не требующихся для других пакетов"
 
 #: ../plugins/local.py:117
 msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "No es pot crear un directori '{}' a causa de '{}'"
+msgstr "Не удается создать каталог '{}' из-за '{}'"
 
 #: ../plugins/local.py:121
 msgid "'{}' is not a directory"
-msgstr "'{}' no és un directori"
+msgstr "'{}' не является каталогом"
 
 #: ../plugins/local.py:130
 msgid "Copying '{}' to local repo"
-msgstr "Es copia '{}' al dipòsit local"
+msgstr "Копирование '{}' в локальный репозиторий"
 
 #: ../plugins/local.py:136
 msgid "Can't write file '{}'"
-msgstr "No es pot escriure el fitxer '{}'"
+msgstr "Ошибка записи файла '{}'"
 
 #: ../plugins/local.py:151
 msgid "Rebuilding local repo"
-msgstr "Es reconstrueix el dipòsit local"
+msgstr "Пересборка локального репозитория"
 
 #: ../plugins/migrate.py:55
 #, python-format
 msgid "failed to parse package NEVRA from: %s"
-msgstr "ha fallat l'anàlisi sintàctica NEVRA del paquet: %s"
+msgstr "не удалось разобрать пакет NEVRA из: %s"
 
 #: ../plugins/migrate.py:76
 msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "migra l'històric, els grups, i les dades de la yumdb, del yum al dnf"
+msgstr "перенести данные истории yum, групп и yumdb в dnf"
 
 #: ../plugins/migrate.py:93
 msgid "which kind of yum data migrate."
-msgstr "el tipus de dades del yum que han de migrar-se."
+msgstr "какой вид данных yum переносить."
 
 #: ../plugins/migrate.py:109
 msgid "Migrating history data..."
-msgstr "Es migren les dades de l'històric..."
+msgstr "Перенос данных истории..."
 
 #: ../plugins/migrate.py:220
 msgid "Migrating groups data..."
-msgstr "Es migren les dades dels grups..."
+msgstr "Перенос данных групп..."
 
 #: ../plugins/migrate.py:225
 msgid "Execution of Yum failed. Could not retrieve installed groups."
 msgstr ""
-"Ha fallat l'execució de Yum. No s'han pogut recuperar els grups instal·lats."
+"Ошибка при выполнении Yum. Не удалось извлечь данные об установленных "
+"группах."
 
 #: ../plugins/migrate.py:229
 msgid "No groups to migrate from Yum"
-msgstr "No hi ha grups a migrar del Yum"
+msgstr "Нет групп для переноса из Yum"
 
 #. skips not found groups, i.e. after fedup
 #. when the group name changes / disappears in new distro
 #: ../plugins/migrate.py:241
 msgid "skipping."
-msgstr "s'ignora."
+msgstr "пропускается."
 
 #: ../plugins/migrate.py:261
 msgid "Migrating YUMDB data..."
-msgstr "Es migren les dades de la YUMDB..."
+msgstr "Перенос данных YUMDB..."
 
 #: ../plugins/migrate.py:280
 #, python-format
 msgid "%s of %s not found"
-msgstr "%s de %s no trobats"
+msgstr "не найдено %s из %s"
 
 #: ../plugins/migrate.py:287
 #, python-format
 msgid "replacing unknown characters in %s of %s"
-msgstr "s'estan substituint els caràcters desconeguts en %s de %s"
+msgstr "замена неизвестных символов в %s из %s"
 
 #: ../plugins/migrate.py:292
 msgid "DNFDB access denied"
-msgstr "S'ha denegat l'accés a la DNFDB"
+msgstr "доступ к DNFDB запрещен"
 
 #: ../plugins/migrate.py:294
 #, python-format
 msgid "%s of %s migrated"
-msgstr "%s de %s migrats"
+msgstr "перенесено %s из %s"
 
 #: ../plugins/migrate.py:298
 #, python-format
 msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
-msgstr "%d registres trobats de la YUMDB, %d migrats, %d ignorats/preservats"
+msgstr "%d записей YUMDB найдено, %d перенесено, %d пропущено/сохранено"
 
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
-msgstr ""
-"Sortida d'un gràfic de totes les dependències del paquet en format dot"
+msgstr "Вывести полную диаграмму зависимостей пакета в точечном формате"
 
 #: ../plugins/repograph.py:110
 #, python-format
 msgid "Nothing provides: '%s'"
-msgstr "No hi ha res que proporcioni: '%s'"
+msgstr "Ни один пакет не содержит: «%s»"
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
-msgstr "Gestiona un directori de paquets rpm"
+msgstr "Управление каталогом пакетов rpm"
 
 #: ../plugins/repomanage.py:55
 msgid "Pass either --old or --new, not both!"
-msgstr "Passeu --old o --new, però no ambdós!"
+msgstr "Передавайте либо --old, либо --new, но не оба!"
 
 #: ../plugins/repomanage.py:65
 msgid "No files to process"
-msgstr "Sense fitxers per processar"
+msgstr "Нет файлов для обработки"
 
 #: ../plugins/repomanage.py:70
 msgid "Could not open {}"
-msgstr "No es pot obrir {}"
+msgstr "Не удалось открыть {}"
 
 #: ../plugins/repomanage.py:127
 msgid "Print the older packages"
-msgstr "Imprimeix els paquets més antics"
+msgstr "Вывести более старые пакеты"
 
 #: ../plugins/repomanage.py:129
 msgid "Print the newest packages"
-msgstr "Imprimeix els paquets més nous"
+msgstr "Вывести самые новые пакеты"
 
 #: ../plugins/repomanage.py:131
 msgid "Space separated output, not newline"
-msgstr "Sortida separada amb espais, no línies noves"
+msgstr "Вывод с разделением пробелами, а не новой строкой"
 
 #: ../plugins/repomanage.py:133
 msgid "Newest N packages to keep - defaults to 1"
-msgstr "Els N paquets més recents a conservar - per defecte 1"
+msgstr "Сохранять N самых новых пакетов - 1 по умолчанию"
 
 #: ../plugins/repomanage.py:136
 msgid "Path to directory"
-msgstr "Camí al directori"
+msgstr "Путь к каталогу"
 
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
-msgstr "Nous abandonaments:"
+msgstr "Новые пакеты - \"листья\":"
 
 #: ../plugins/copr.py:37
 msgid "yes"
-msgstr "sí"
+msgstr "да"
 
 #: ../plugins/copr.py:37
 msgid "y"
-msgstr "s"
+msgstr "д"
 
 #: ../plugins/copr.py:38
 msgid "no"
-msgstr "no"
+msgstr "нет"
 
 #: ../plugins/copr.py:38
 msgid "n"
-msgstr "n"
+msgstr "н"
 
 #: ../plugins/copr.py:58
 msgid "Interact with Copr repositories."
-msgstr "Interactua amb els dipòsits Copr."
+msgstr "Взаимодействие с репозиториями Copr."
 
 #: ../plugins/copr.py:59
 msgid ""
@@ -382,13 +379,13 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"  enable nom/projecte [chroot]\n"
-"  disable nom/projecte\n"
-"  remove nom/projecte\n"
-"  list nom\n"
-"  search projecte\n"
+"  enable имя/проект [chroot]\n"
+"  disable имя/проект\n"
+"  remove имя/проект\n"
+"  list имя\n"
+"  search проект\n"
 "\n"
-"  Exemples:\n"
+"  Примеры:\n"
 "  copr enable rhscl/perl516 epel-6-x86_64\n"
 "  copr enable ignatenkobrain/ocltoys\n"
 "  copr disable rhscl/perl516\n"
@@ -399,176 +396,172 @@ msgstr ""
 
 #: ../plugins/copr.py:91
 msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Advertència: estem utilitzant l'URL de Copr no estàndard '{}'."
+msgstr "Предупреждение: мы используем нестандартный Copr URL '{}'."
 
 #: ../plugins/copr.py:120 ../plugins/copr.py:144
 msgid "Error: "
-msgstr "Error: "
+msgstr "Ошибка:"
 
 #: ../plugins/copr.py:121 ../plugins/copr.py:125
 msgid "exactly two additional parameters to copr command are required"
-msgstr "l'ordre copr requereix dos paràmetres addicionals"
+msgstr "требуются точно два дополнительных параметра к команде copr"
 
 #: ../plugins/copr.py:145
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
-"utilitzeu el format `usuari_copr/projecte_copr` per referenciar el projecte "
-"copr"
+"для ссылки на проект copr используйте формат "
+"`copr_username/copr_projectname`"
 
 #: ../plugins/copr.py:147
 msgid "bad copr project format"
-msgstr "format dolent de projecte copr"
+msgstr "неверный формат проекта copr"
 
 #: ../plugins/copr.py:167
 msgid "Repository successfully enabled."
-msgstr "S'ha habilitat correctament el dipòsit."
+msgstr "Репозиторий успешно подключен."
 
 #: ../plugins/copr.py:171
 msgid "Repository successfully disabled."
-msgstr "S'ha inhabilitat correctament el dipòsit."
+msgstr "Репозиторий успешно отключен."
 
 #: ../plugins/copr.py:175
 msgid "Repository successfully removed."
-msgstr "S'ha eliminat correctament el dipòsit."
+msgstr "Репозиторий успешно удален."
 
 #: ../plugins/copr.py:179 ../plugins/copr.py:423
 msgid "Unknown subcommand {}."
-msgstr "Subordre desconeguda {}."
+msgstr "Неизвестная подкоманда {}."
 
 #: ../plugins/copr.py:189
 msgid "Can't parse repositories for username '{}'."
-msgstr ""
-"No es poden analitzar sintàcticament els dipòsits per a l'usuari '{}'."
+msgstr "Не удается обработать репозитории для имени пользователя «{}»."
 
 #: ../plugins/copr.py:192
 msgid "List of {} coprs"
-msgstr "Llista dels copr {}"
+msgstr "Список copr {}"
 
 #: ../plugins/copr.py:200
 msgid "No description given"
-msgstr "No s'ha proporcionat cap descripció"
+msgstr "Нет описания"
 
 #: ../plugins/copr.py:212
 msgid "Can't parse search for '{}'."
-msgstr "No es pot analitzar sintàcticament la cerca '{}'."
+msgstr "Ошибка обработки поиска для «{}»."
 
 #: ../plugins/copr.py:215
 msgid "Matched: {}"
-msgstr "Coincidència: {}"
+msgstr "Совпадений: {}"
 
 #: ../plugins/copr.py:223
 msgid "No description given."
-msgstr "No s'ha proporcionat cap descripció."
+msgstr "Нет описания."
 
 #: ../plugins/copr.py:236 ../plugins/copr.py:245
 msgid "Safe and good answer. Exiting."
-msgstr "Resposta bona i segura. Se surt."
+msgstr "Верный и хороший ответ. Выход."
 
 #: ../plugins/copr.py:252
 msgid "This command has to be run under the root user."
-msgstr "Aquesta ordre s'ha d'executar com a root."
+msgstr "Эта команда должны быть выполнена от имени пользователя root."
 
 #: ../plugins/copr.py:304
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
-"Aquest dipòsit encara no té cap construcció, per aquest motiu no el podeu "
-"habilitar ara."
+"В этом репозитории еще нет собранных пакетов, так что сейчас его нельзя "
+"подключить."
 
 #: ../plugins/copr.py:307
 msgid "Such repository does not exist."
-msgstr "No existeix aquest dipòsit."
+msgstr "Такой репозиторий не существует."
 
 #: ../plugins/copr.py:328
 msgid "Failed to disable copr repo {}/{}"
-msgstr "No s'ha pogut inhabilitar el dipòsit copr {}/{}"
+msgstr "Не удалось отключить репозиторий copr {}/{}"
 
 #: ../plugins/copr.py:341 ../plugins/copr.py:378
 msgid "Unknown response from server."
-msgstr "Resposta desconeguda del servidor."
+msgstr "Неизвестный ответ сервера."
 
 #: ../plugins/copr.py:363
 msgid "Interact with Playground repository."
-msgstr "Interactua amb el dipòsit Playground."
+msgstr "Взаимодействие с репозиторием Playground."
 
 #: ../plugins/copr.py:413
 msgid "Playground repositories successfully enabled."
-msgstr "S'han habilitat correctament els dipòsits Playground."
+msgstr "Репозитории Playground успешно подключены."
 
 #: ../plugins/copr.py:416
 msgid "Playground repositories successfully disabled."
-msgstr "S'han inhabilitat correctament els dipòsits Playground."
+msgstr "Репозитории Playground успешно отключены."
 
 #: ../plugins/copr.py:420
 msgid "Playground repositories successfully updated."
-msgstr "S'han actualitzat correctament els dipòsits Playground."
+msgstr "Репозитории Playground успешно обновлены."
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
-msgstr "Baixa el paquet al directori actual"
+msgstr "Загрузить пакет в текущий каталог"
 
 #: ../plugins/download.py:51
 msgid "packages to download"
-msgstr "paquets a baixar"
+msgstr "пакеты для загрузки"
 
 #: ../plugins/download.py:54
 msgid "download the src.rpm instead"
-msgstr "en lloc seu baixa el src.rpm"
+msgstr "вместо этого загрузить src.rpm"
 
 #: ../plugins/download.py:56
 msgid "download the -debuginfo package instead"
-msgstr "en lloc seu baixa el paquet -debuginfo"
+msgstr "вместо этого загрузить пакет -debuginfo"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
-"limita la consulta als paquets instal·lats amb dependències sense satisfer"
+msgstr "ограничить запрос пакетами с данной архитектурой."
 
 #: ../plugins/download.py:61
 msgid "download path, default is current dir"
-msgstr "el camí de la baixada, el predeterminat és el directori actual"
+msgstr "путь загрузки, текущий каталог по умолчанию"
 
 #: ../plugins/download.py:63
 msgid "resolve and download needed dependencies"
-msgstr "resol i baixa les dependències necessàries"
+msgstr "разрешить требующиеся зависимости и загрузить"
 
 #: ../plugins/download.py:65
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"imprimeix la llista d'adreces URL on es poden baixar els rpm en lloc de "
-"baixar-ho"
+msgstr "вместо загрузки вывести список URL, откуда можно загрузить пакеты rpm"
 
 #: ../plugins/download.py:70
 msgid "when running with --url, limit to specific protocols"
-msgstr "quan s'executa amb --url, ho limita als protocols específics"
+msgstr "ограничить указанными протоколами при работе с --url"
 
 #: ../plugins/download.py:102
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr "No s'ha pogut obtenir la rèplica per al paquet: %s"
+msgstr "Не удалось получить зеркало для пакета: %s"
 
 #: ../plugins/download.py:184
 msgid "Exiting due to strict setting."
-msgstr "Sortint a causa de l'ajust estricte."
+msgstr "Выход вследствие жестких настроек."
 
 #: ../plugins/download.py:204
 msgid "Error in resolve"
-msgstr "Error en la resolució"
+msgstr "Ошибка при разрешении"
 
 #: ../plugins/download.py:219
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr "rpm de les fonts sense definir per %s"
+msgstr "Не заданы пакеты с исходными текстами для %s"
 
 #: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
-msgstr "No hi ha cap paquet %s disponible."
+msgstr "Нет пакета %s."
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Mostra un llistat de les dependències sense resoldre per als dipòsits"
+msgstr "Показать список неразрешенных зависимостей для репозиториев"
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
@@ -577,46 +570,45 @@ msgstr ""
 #: ../plugins/repoclosure.py:116
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
-"comprova els paquets de les arquitectures indicades, es pot especificar "
-"diverses vegades"
+"проверить пакеты указанных архитектур, могут быть заданы несколько раз"
 
 #: ../plugins/repoclosure.py:119
 msgid "Specify repositories to check"
-msgstr "Especifica els dipòsits a comprovar"
+msgstr "Указать репозитории для проверки"
 
 #: ../plugins/repoclosure.py:121
 msgid "Check only the newest packages in the repos"
-msgstr "Comprova únicament els paquets més nous als dipòsits"
+msgstr "Проверять только самые новые пакеты в репозиториях"
 
 #: ../plugins/repoclosure.py:124
 msgid "Check closure for this package only"
-msgstr "Comprova la conclusió per tan sols aquest paquet"
+msgstr "Проверить завершение только для этого пакета"
 
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr "No es pot llegir la configuració del bloqueig de versió: %s"
+msgstr "Не удается прочитать конфигурацию блокировки версий: %s"
 
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr "Llista de bloqueig sense establir"
+msgstr "Не задан список блокировок"
 
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr "S'afegeix el bloqueig de versió:"
+msgstr "Добавление блокирования версии на:"
 
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr "S'afegeix l'exclusió:"
+msgstr "Добавление исключения на:"
 
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr "S'elimina el bloqueig de versió per:"
+msgstr "Удаление блокирования версии для:"
 
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr "No s'ha trobat el paquet de:"
+msgstr "Нет пакетов для:"
 
 #: ../plugins/versionlock.py:94
 msgid "control package version locks"
-msgstr "control del bloqueig de versió del paquet"
+msgstr "управление блокированием версии пакетов"

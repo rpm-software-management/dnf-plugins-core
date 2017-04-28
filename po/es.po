@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-07 14:37+0200\n"
-"PO-Revision-Date: 2017-03-12 11:49-0400\n"
+"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"PO-Revision-Date: 2017-04-08 02:53-0400\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../plugins/builddep.py:62
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAQUETE|PAQUETEspec]"
 
 #: ../plugins/builddep.py:73
 #, python-format
@@ -84,16 +84,15 @@ msgstr "repositorio a modificar"
 
 #: ../plugins/config_manager.py:44
 msgid "save the current options (useful with --setopt)"
-msgstr "guardar las opciones actuales (util en conjunto con --setopt)"
+msgstr "guardar las opciones actuales (útil con --setopt)"
 
 #: ../plugins/config_manager.py:47
 msgid "enable the specified repos (automatically saves)"
-msgstr "habilitar los repositorios especificados (se guarda automaticamente)"
+msgstr "habilitar los repositorios especificados (se guarda automáticamente)"
 
 #: ../plugins/config_manager.py:50
 msgid "disable the specified repos (automatically saves)"
-msgstr ""
-"deshabilitar los repositorios especificados (se guarda automaticamente)"
+msgstr "desactivar los repositorios especificados (se guarda automáticamente)"
 
 #: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
@@ -130,6 +129,282 @@ msgstr "Agregando repositorio de: %s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "No se puede guardar repositorio al repofile %s: %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "instalar paquetes con información debug"
+
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "determinar binarios actualizados que se necesitan reiniciar"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "sólo considerar los procesos de este usuario"
+
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "descargar todos los paquetes del repositorio remoto"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "donde guardar paquetes descargados"
+
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "vuelca en archivo información sobre los paquetes instalados"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "no intentar volcar el contenido del repositorio."
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "nombre opcional del archivo de volcado"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Salida escrita en: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "restaurar paquetes grabados en el archivo de volcado"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "mostrar los comandos que se ejecutarían."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "instalar la última versión de los paquetes grabados."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"No tener en cuenta la arquitectura, e instalar los paquetes faltantes que "
+"concuerden con el nombre, epoch, versión y lanzamiento."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "limitar al tipo especificado"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "nombre del archivo de volcado"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "El paquete %s no está disponible"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Archivo de depuración de dnf incorrecto: %s"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr "Muestra los paquetes instalados que no son requeridos por ningún otro"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/local.py:117
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "No se pudo crear el directorio '{}' debido a '{}'"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/local.py:121
+msgid "'{}' is not a directory"
+msgstr "'{}' no es un directorio"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/local.py:130
+msgid "Copying '{}' to local repo"
+msgstr "Copiando '{}' al repositorio local"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/local.py:136
+msgid "Can't write file '{}'"
+msgstr "No es posible escribir el archivo '{}'"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/local.py:151
+msgid "Rebuilding local repo"
+msgstr "Reconstruyendo repositorio local"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:55
+#, python-format
+msgid "failed to parse package NEVRA from: %s"
+msgstr "no se pudo interpretar NEVRA del paquete para: %s"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:76
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "migra el historial, grupos y datos de yumdb desde yum a dnf"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:93
+msgid "which kind of yum data migrate."
+msgstr "qué tipo de datos de yum desea migrar."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:109
+msgid "Migrating history data..."
+msgstr "Migrando datos del historial..."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:220
+msgid "Migrating groups data..."
+msgstr "Migrando datos de grupos..."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:225
+msgid "Execution of Yum failed. Could not retrieve installed groups."
+msgstr ""
+"La ejecución de Yum falló. No se pudo obtener la lista de grupos instalados."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:229
+msgid "No groups to migrate from Yum"
+msgstr "No hay grupos para migrar desde Yum"
+
+#. skips not found groups, i.e. after fedup
+#. when the group name changes / disappears in new distro
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:241
+msgid "skipping."
+msgstr "omitiendo."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:261
+msgid "Migrating YUMDB data..."
+msgstr "Migrando datos de YUMDB..."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:280
+#, python-format
+msgid "%s of %s not found"
+msgstr "%s de %s no encontrado"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:287
+#, python-format
+msgid "replacing unknown characters in %s of %s"
+msgstr "reemplazando caracteres desconocidos en %s de %s"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:292
+msgid "DNFDB access denied"
+msgstr "acceso a DNFDB denegado"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:294
+#, python-format
+msgid "%s of %s migrated"
+msgstr "%s de %s migrados"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/migrate.py:298
+#, python-format
+msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
+msgstr "Encontrados %d registros YUMDB, %d migrados, %d omitidos/preservados"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Genera una gráfica completa de las dependencias en formato dot"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Nada proporciona: '%s'"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "Administra un directorio de paquetes rpm."
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:55
+msgid "Pass either --old or --new, not both!"
+msgstr "Pase --old o --new, ¡no ambos!"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:65
+msgid "No files to process"
+msgstr "No hay archivos para procesar"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:70
+msgid "Could not open {}"
+msgstr "No se puede abrir {}"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:127
+msgid "Print the older packages"
+msgstr "Mostrar los paquetes antiguos"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:129
+msgid "Print the newest packages"
+msgstr "Mostrar los paquetes más nuevos"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:131
+msgid "Space separated output, not newline"
+msgstr "Salida separada por espacios, sin salto de línea"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:133
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "Los N paquetes más recientes a conservar, 1 si no se indica"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repomanage.py:136
+msgid "Path to directory"
+msgstr "Ruta al directorio"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Nuevos paquetes de los que no dependen otros:"
 
 #: ../plugins/copr.py:37
 msgid "yes"
@@ -290,79 +565,6 @@ msgstr "Repositorios Playground deshabilitados exitosamente."
 msgid "Playground repositories successfully updated."
 msgstr "Repositorios Playground actualizados exitosamente."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "instalar paquetes con información debug"
-
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "determinar binarios actualizados que se necesitan reiniciar"
-
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "sólo considerar los procesos de este usuario"
-
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "descargar todos los paquetes del repositorio remoto"
-
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "donde guardar paquetes descargados"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr ""
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr ""
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr ""
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr ""
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr ""
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr ""
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr ""
-
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
 msgstr "Descargar paquete al directorio actual"
@@ -373,15 +575,15 @@ msgstr "paquetes para descargar"
 
 #: ../plugins/download.py:54
 msgid "download the src.rpm instead"
-msgstr "Descargrando el src.rpm en su lugar"
+msgstr "descargar el src.rpm"
 
 #: ../plugins/download.py:56
 msgid "download the -debuginfo package instead"
-msgstr "Descargando el paquete -debuginfo en su lugar"
+msgstr "descargar el paquete -debuginfo"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "limitar la consulta a los paquetes de esas arquitecturas."
 
 #: ../plugins/download.py:61
 msgid "download path, default is current dir"
@@ -406,205 +608,100 @@ msgstr "limitar a protocolos concretos cuando se ejecuta con --url"
 msgid "Failed to get mirror for package: %s"
 msgstr "No se puedo obtener un espejo para el paquete: %s"
 
-#: ../plugins/download.py:182
+#: ../plugins/download.py:184
 msgid "Exiting due to strict setting."
 msgstr "Saliendo debido a configuraciones estrictas."
 
-#: ../plugins/download.py:202
+#: ../plugins/download.py:204
 msgid "Error in resolve"
 msgstr "Error al resolver"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:219
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "No hay fuente de rpm definido para %s"
 
-#: ../plugins/download.py:233 ../plugins/download.py:247
+#: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
 msgstr "No hay ningún paquete %s disponible."
 
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-
-#: ../plugins/local.py:117
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
-
-#: ../plugins/local.py:121
-msgid "'{}' is not a directory"
-msgstr ""
-
-#: ../plugins/local.py:130
-msgid "Copying '{}' to local repo"
-msgstr ""
-
-#: ../plugins/local.py:136
-msgid "Can't write file '{}'"
-msgstr ""
-
-#: ../plugins/local.py:151
-msgid "Rebuilding local repo"
-msgstr ""
-
-#: ../plugins/migrate.py:55
-#, python-format
-msgid "failed to parse package NEVRA from: %s"
-msgstr ""
-
-#: ../plugins/migrate.py:76
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
-
-#: ../plugins/migrate.py:93
-msgid "which kind of yum data migrate."
-msgstr ""
-
-#: ../plugins/migrate.py:109
-msgid "Migrating history data..."
-msgstr ""
-
-#: ../plugins/migrate.py:220
-msgid "Migrating groups data..."
-msgstr ""
-
-#: ../plugins/migrate.py:225
-msgid "Execution of Yum failed. Could not retrieve installed groups."
-msgstr ""
-
-#: ../plugins/migrate.py:229
-msgid "No groups to migrate from Yum"
-msgstr ""
-
-#. skips not found groups, i.e. after fedup
-#. when the group name changes / disappears in new distro
-#: ../plugins/migrate.py:241
-msgid "skipping."
-msgstr ""
-
-#: ../plugins/migrate.py:261
-msgid "Migrating YUMDB data..."
-msgstr ""
-
-#: ../plugins/migrate.py:280
-#, python-format
-msgid "%s of %s not found"
-msgstr ""
-
-#: ../plugins/migrate.py:287
-#, python-format
-msgid "replacing unknown characters in %s of %s"
-msgstr ""
-
-#: ../plugins/migrate.py:292
-msgid "DNFDB access denied"
-msgstr ""
-
-#: ../plugins/migrate.py:294
-#, python-format
-msgid "%s of %s migrated"
-msgstr ""
-
-#: ../plugins/migrate.py:298
-#, python-format
-msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
-msgstr ""
-
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
 msgstr ""
+"Muestra una lista de las dependencias no resueltas para los repositorios"
 
-#: ../plugins/repoclosure.py:113
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr ""
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repoclosure.py:116
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
+"comprobar paquetes de las arquitecturas indicadas, se puede poner varias "
+"veces"
 
-#: ../plugins/repoclosure.py:116
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repoclosure.py:119
 msgid "Specify repositories to check"
-msgstr ""
+msgstr "Especificar repositorios para comprobar"
 
-#: ../plugins/repoclosure.py:118
-msgid "Check only the newest packages in the repos"
-msgstr ""
-
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Comprobar sólo los paquetes más recientes de los repositorios"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/repoclosure.py:124
 msgid "Check closure for this package only"
-msgstr ""
+msgstr "Comprobar este paquete solamente"
 
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr ""
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr ""
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:55
-msgid "Pass either --old or --new, not both!"
-msgstr ""
-
-#: ../plugins/repomanage.py:65
-msgid "No files to process"
-msgstr ""
-
-#: ../plugins/repomanage.py:70
-msgid "Could not open {}"
-msgstr ""
-
-#: ../plugins/repomanage.py:127
-msgid "Print the older packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:129
-msgid "Print the newest packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:131
-msgid "Space separated output, not newline"
-msgstr ""
-
-#: ../plugins/repomanage.py:133
-msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
-
-#: ../plugins/repomanage.py:136
-msgid "Path to directory"
-msgstr ""
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr ""
-
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr ""
+msgstr "No es posible leer la configuración de bloqueo de versión: %s"
 
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr ""
+msgstr "No se ha establecido lista de bloqueos"
 
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr ""
+msgstr "Agregando bloqueo de versión en:"
 
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr ""
+msgstr "Agregando exclusión en:"
 
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr ""
+msgstr "Eliminando bloqueo de versión para:"
 
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr ""
+msgstr "No se encontró paquete para:"
 
-#: ../plugins/versionlock.py:92
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock.py:94
 msgid "control package version locks"
-msgstr ""
+msgstr "controla bloqueos de la versión del paquete"

@@ -1,13 +1,15 @@
 # Charles-Antoine Couret <renault@fedoraproject.org>, 2016. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2016. #zanata
-# Jérôme Fenal <jfenal@gmail.com>, 2016. #zanata
+# Edouard Duliege <edouard.duliege@gmail.com>, 2017. #zanata
+# Emmanuel Nedelec <nednet@wanadoo.fr>, 2017. #zanata
+# José Fournier <jaaf64@zoraldia.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-07 14:37+0200\n"
-"PO-Revision-Date: 2016-05-23 05:09-0400\n"
-"Last-Translator: Jérôme Fenal <jfenal@gmail.com>\n"
+"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"PO-Revision-Date: 2017-04-20 02:43-0400\n"
+"Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +25,7 @@ msgstr "[PAQUET|PAQUET.spec]"
 #: ../plugins/builddep.py:73
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "« %s » n'est pas du format « MACRO EXPR »"
+msgstr "« %s » n’est pas du format « MACRO EXPR »"
 
 #: ../plugins/builddep.py:78
 msgid "packages with builddeps to install"
@@ -43,7 +45,7 @@ msgstr "traite les arguments en ligne de commande comme des sources rpm"
 
 #: ../plugins/builddep.py:132
 msgid "Some packages could not be found."
-msgstr "Certains paquets n'ont pu être trouvés."
+msgstr "Certains paquets n’ont pu être trouvés."
 
 #. No provides, no files
 #: ../plugins/builddep.py:151
@@ -54,7 +56,7 @@ msgstr "Aucun paquet correspondant à installer : « %s »"
 #: ../plugins/builddep.py:168
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Échec d'ouverture : « %s », n'est pas un fichier source rpm valide."
+msgstr "Échec d’ouverture : « %s », n'est pas un fichier source rpm valide."
 
 #: ../plugins/builddep.py:181 ../plugins/builddep.py:197
 #: ../plugins/builddep.py:214
@@ -64,7 +66,7 @@ msgstr "Toutes les dépendances ne sont pas satisfaites"
 #: ../plugins/builddep.py:188
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
+msgstr "Échec d’ouverture :  « %s », n'est pas un fichier  spec valide. %s"
 
 #: ../plugins/builddep.py:207
 #, python-format
@@ -98,11 +100,11 @@ msgstr "ajoute (et active) le dépôt à partir du fichier ou de l'url indiqué"
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
 msgstr ""
-"affiche les valeurs de la configuration actuelle sur la sortie strandard"
+"affiche les valeurs de la configuration actuelle sur la sortie standard"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr ""
+msgstr "affiche les valeurs de la variable sur la sortie standard"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
@@ -127,6 +129,222 @@ msgstr "Ajout du dépôt depuis : %s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Sauvegarde impossible du dépôt dans le fichier du dépôt %s : %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "installe les paquets debuginfo"
+
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "détermine les binaires mis à jour qui nécessitent un redémarrage"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "considère uniquement les processus de cet utilisateur"
+
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "télécharge tous les paquets depuis le dépôt distant"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "là où stocker les dépôts téléchargés"
+
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "déverse les informations des paquets rpm installés dans le fichier "
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "ne tente pas de déverser les contenus du dépôt"
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "nom optionnel du fichier de déversement"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Sortie écrite dans : %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr ""
+"restaure les paquets enregistrés dans le fichier de déversement de débuggage"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr ""
+"liste les commandes qui devraient être exécutées vers la sortie standard."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Installer la dernière version des paquets enregistrés."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Ignorer l’architecture et installe les paquets manquants correspondant aux "
+"nom, époque, version et révision."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "limiter au type spécifié"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "nom du fichier de l’instantané"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Le paquet %s n’est pas disponible"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Erreur du fichier debug : %s"
+
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr ""
+"Lister les paquets installés qui ne sont pas requis par un autre paquet"
+
+#: ../plugins/local.py:117
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "Impossible de créer le dossier '{}' à cause de '{}'"
+
+#: ../plugins/local.py:121
+msgid "'{}' is not a directory"
+msgstr "'{}' n'est pas un dossier"
+
+#: ../plugins/local.py:130
+msgid "Copying '{}' to local repo"
+msgstr "Copie de '{}' vers le dépôt local en cours"
+
+#: ../plugins/local.py:136
+msgid "Can't write file '{}'"
+msgstr "Impossible d'écrire le fichier '{}'"
+
+#: ../plugins/local.py:151
+msgid "Rebuilding local repo"
+msgstr "Reconstruction du dépôt local"
+
+#: ../plugins/migrate.py:55
+#, python-format
+msgid "failed to parse package NEVRA from: %s"
+msgstr "impossible de parcourir le paquet NEVRA depuis : %s"
+
+#: ../plugins/migrate.py:76
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "migrer les données d’historique, de groupe et de yumdb, vers dnf"
+
+#: ../plugins/migrate.py:93
+msgid "which kind of yum data migrate."
+msgstr "type de données yum à migrer."
+
+#: ../plugins/migrate.py:109
+msgid "Migrating history data..."
+msgstr "Migration des données d’historique …"
+
+#: ../plugins/migrate.py:220
+msgid "Migrating groups data..."
+msgstr "Migration des données de groupes …"
+
+#: ../plugins/migrate.py:225
+msgid "Execution of Yum failed. Could not retrieve installed groups."
+msgstr ""
+"L’exécution de Yum a échoué. Impossible de retrouver les groupes installés."
+
+#: ../plugins/migrate.py:229
+msgid "No groups to migrate from Yum"
+msgstr "Aucun groupe à migrer depuis Yum"
+
+#. skips not found groups, i.e. after fedup
+#. when the group name changes / disappears in new distro
+#: ../plugins/migrate.py:241
+msgid "skipping."
+msgstr "ignoré."
+
+#: ../plugins/migrate.py:261
+msgid "Migrating YUMDB data..."
+msgstr "Migration des données YUMDB …"
+
+#: ../plugins/migrate.py:280
+#, python-format
+msgid "%s of %s not found"
+msgstr "%s de %s introuvable"
+
+#: ../plugins/migrate.py:287
+#, python-format
+msgid "replacing unknown characters in %s of %s"
+msgstr "remplacement de caractères inconnus dans %s de %s"
+
+#: ../plugins/migrate.py:292
+msgid "DNFDB access denied"
+msgstr "L'accès à DNFDB a été refusé"
+
+#: ../plugins/migrate.py:294
+#, python-format
+msgid "%s of %s migrated"
+msgstr "%s de %s migré"
+
+#: ../plugins/migrate.py:298
+#, python-format
+msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
+msgstr ""
+"%d enregistrements YUMDB trouvé(s), %d migré(s), %d ignoré(s) / préservé(s)"
+
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Sortie d’un graphe de dépendance des paquets complet au format dot"
+
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Aucun paquet ne fournit : '%s'"
+
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "Gère un dossier de paquets rpm"
+
+#: ../plugins/repomanage.py:55
+msgid "Pass either --old or --new, not both!"
+msgstr "Passez soit --old, soit --news, mais pas les deux !"
+
+#: ../plugins/repomanage.py:65
+msgid "No files to process"
+msgstr "Aucun fichier à gérer"
+
+#: ../plugins/repomanage.py:70
+msgid "Could not open {}"
+msgstr "Ouverture de {} impossible"
+
+#: ../plugins/repomanage.py:127
+msgid "Print the older packages"
+msgstr "Afficher les paquets plus anciens"
+
+#: ../plugins/repomanage.py:129
+msgid "Print the newest packages"
+msgstr "Afficher les paquets les plus récents"
+
+#: ../plugins/repomanage.py:131
+msgid "Space separated output, not newline"
+msgstr "Sorties séparées par des espaces plutôt que des retours à la ligne"
+
+#: ../plugins/repomanage.py:133
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "N paquets les plus récents à conserver  — par défaut 1"
+
+#: ../plugins/repomanage.py:136
+msgid "Path to directory"
+msgstr "Chemin vers le dossier"
+
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Nouvelles feuilles :"
 
 #: ../plugins/copr.py:37
 msgid "yes"
@@ -262,7 +480,7 @@ msgstr ""
 
 #: ../plugins/copr.py:307
 msgid "Such repository does not exist."
-msgstr "Ce dépôt n'existe pas."
+msgstr "Ce dépôt n’existe pas."
 
 #: ../plugins/copr.py:328
 msgid "Failed to disable copr repo {}/{}"
@@ -288,79 +506,6 @@ msgstr "Désactivation des dépôts Playground réussie."
 msgid "Playground repositories successfully updated."
 msgstr "Mise à jour des dépôts Playground réussie."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "installe les paquets debuginfo"
-
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "détermine les binaires mis à jour qui nécessitent un redémarrage"
-
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "considère uniquement les processus de cet utilisateur"
-
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "télécharge tous les paquets depuis le dépôt distant"
-
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "là où stocker les dépôts téléchargés"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr ""
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr ""
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr ""
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr ""
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr ""
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr ""
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr ""
-
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
 msgstr "Téléchargement du paquet dans le répertoire courant"
@@ -379,7 +524,7 @@ msgstr "télécharge plutôt le paquet -debuginfo"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "limite les requêtes de paquets aux architectures spécifiées"
 
 #: ../plugins/download.py:61
 msgid "download path, default is current dir"
@@ -393,215 +538,87 @@ msgstr "résout et télécharge les dépendances nécessaires"
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
+"affiche la list des urls o* les rpms peuvent être téléchargés, plutôt que "
+"les télécharger"
 
 #: ../plugins/download.py:70
 msgid "when running with --url, limit to specific protocols"
-msgstr ""
+msgstr "si --url est renseigné, limite aux protocoles spécifiés"
 
 #: ../plugins/download.py:102
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr ""
+msgstr "Échec de l'obtention du miroir pour le paquet : %s"
 
-#: ../plugins/download.py:182
+#: ../plugins/download.py:184
 msgid "Exiting due to strict setting."
 msgstr "Fin du programme suite au paramétrage stricte."
 
-#: ../plugins/download.py:202
+#: ../plugins/download.py:204
 msgid "Error in resolve"
 msgstr "Erreur dans la résolution"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:219
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Aucune source définie pour %s"
 
-#: ../plugins/download.py:233 ../plugins/download.py:247
+#: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
-msgstr ""
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-
-#: ../plugins/local.py:117
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
-
-#: ../plugins/local.py:121
-msgid "'{}' is not a directory"
-msgstr ""
-
-#: ../plugins/local.py:130
-msgid "Copying '{}' to local repo"
-msgstr ""
-
-#: ../plugins/local.py:136
-msgid "Can't write file '{}'"
-msgstr ""
-
-#: ../plugins/local.py:151
-msgid "Rebuilding local repo"
-msgstr ""
-
-#: ../plugins/migrate.py:55
-#, python-format
-msgid "failed to parse package NEVRA from: %s"
-msgstr ""
-
-#: ../plugins/migrate.py:76
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
-
-#: ../plugins/migrate.py:93
-msgid "which kind of yum data migrate."
-msgstr ""
-
-#: ../plugins/migrate.py:109
-msgid "Migrating history data..."
-msgstr ""
-
-#: ../plugins/migrate.py:220
-msgid "Migrating groups data..."
-msgstr ""
-
-#: ../plugins/migrate.py:225
-msgid "Execution of Yum failed. Could not retrieve installed groups."
-msgstr ""
-
-#: ../plugins/migrate.py:229
-msgid "No groups to migrate from Yum"
-msgstr ""
-
-#. skips not found groups, i.e. after fedup
-#. when the group name changes / disappears in new distro
-#: ../plugins/migrate.py:241
-msgid "skipping."
-msgstr ""
-
-#: ../plugins/migrate.py:261
-msgid "Migrating YUMDB data..."
-msgstr ""
-
-#: ../plugins/migrate.py:280
-#, python-format
-msgid "%s of %s not found"
-msgstr ""
-
-#: ../plugins/migrate.py:287
-#, python-format
-msgid "replacing unknown characters in %s of %s"
-msgstr ""
-
-#: ../plugins/migrate.py:292
-msgid "DNFDB access denied"
-msgstr ""
-
-#: ../plugins/migrate.py:294
-#, python-format
-msgid "%s of %s migrated"
-msgstr ""
-
-#: ../plugins/migrate.py:298
-#, python-format
-msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
-msgstr ""
+msgstr "Le paquet %s n'est pas disponible"
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr ""
+msgstr "Affiche une liste de dépendances non résolues pour les dépôts"
 
-#: ../plugins/repoclosure.py:113
-msgid "check packages of the given archs, can be specified multiple times"
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
 msgstr ""
 
 #: ../plugins/repoclosure.py:116
-msgid "Specify repositories to check"
+msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
+"vérifie les paquets pour les architectures spécifiées, peut être utilisé "
+"plusieurs fois"
 
-#: ../plugins/repoclosure.py:118
-msgid "Check only the newest packages in the repos"
-msgstr ""
+#: ../plugins/repoclosure.py:119
+msgid "Specify repositories to check"
+msgstr "Spécifie les dépôts à vérifier"
 
 #: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Vérifier uniquement les paquets les plus récents dans les dépôts"
+
+#: ../plugins/repoclosure.py:124
 msgid "Check closure for this package only"
-msgstr ""
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr ""
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr ""
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:55
-msgid "Pass either --old or --new, not both!"
-msgstr ""
-
-#: ../plugins/repomanage.py:65
-msgid "No files to process"
-msgstr ""
-
-#: ../plugins/repomanage.py:70
-msgid "Could not open {}"
-msgstr ""
-
-#: ../plugins/repomanage.py:127
-msgid "Print the older packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:129
-msgid "Print the newest packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:131
-msgid "Space separated output, not newline"
-msgstr ""
-
-#: ../plugins/repomanage.py:133
-msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
-
-#: ../plugins/repomanage.py:136
-msgid "Path to directory"
-msgstr ""
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr ""
+msgstr "Vérifie la connexité pour ce paquet seulement"
 
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr ""
+msgstr "Ne peut lire la configuration du verrouillage de version : %s"
 
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr ""
+msgstr "Liste des verrouillages non établie."
 
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr ""
+msgstr "Verrouille la version de :"
 
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr ""
+msgstr "Exclusion de :"
 
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr ""
+msgstr "Déverrouille la version de :"
 
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr ""
+msgstr "Aucun paquet trouvé pour :"
 
-#: ../plugins/versionlock.py:92
+#: ../plugins/versionlock.py:94
 msgid "control package version locks"
-msgstr ""
+msgstr "contrôle le verrouillage de version des paquets"

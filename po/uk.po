@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-07 14:37+0200\n"
-"PO-Revision-Date: 2017-03-10 01:26-0500\n"
+"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"PO-Revision-Date: 2017-04-07 10:59-0400\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -126,6 +126,221 @@ msgstr "Додаємо сховище з %s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не вдалося зберегти дані сховища до файла сховищ %s: %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "встановити пакунки debuginfo"
+
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "визначити оновлені виконувані файли, які потребують перезапуску"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "брати до уваги лише процеси цього користувача"
+
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "отримати усі пакунки із віддаленого сховища"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "місце, де слід зберігати отримані сховища"
+
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "створити дамп даних щодо встановлених пакунків rpm у файлі"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "не намагатися створити дамп вмісту сховища."
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "необов’язкова назва файла дампу"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Результат записано до %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "відновити пакунки, записані до файла debug-dump"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "вивести команди, які буде віддано, до stdout."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Встановити найсвіжішу версію записаних пакунків."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Ігнорувати архітектуру і встановити усі пакунки, яких не вистачає, за "
+"відповідністю назви, епохи, версії та випуску."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "обмежитися вказаним типом"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "назва файла дампу"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Пакунок %s недоступний"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Помилковий файл діагностики dnf: %s"
+
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr ""
+"Вивести список пакунків, які не потрібні для роботи будь-яких інших пакунків"
+
+#: ../plugins/local.py:117
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "Не вдалося створити каталог «{}» через те, що «{}»"
+
+#: ../plugins/local.py:121
+msgid "'{}' is not a directory"
+msgstr "«{}» не є каталогом"
+
+#: ../plugins/local.py:130
+msgid "Copying '{}' to local repo"
+msgstr "Копіюємо «{}» до локального сховища"
+
+#: ../plugins/local.py:136
+msgid "Can't write file '{}'"
+msgstr "Не вдалося записати файл «{}»"
+
+#: ../plugins/local.py:151
+msgid "Rebuilding local repo"
+msgstr "Перезбираємо локальне сховище"
+
+#: ../plugins/migrate.py:55
+#, python-format
+msgid "failed to parse package NEVRA from: %s"
+msgstr "не вдалося обробити NEVRA пакунка з %s"
+
+#: ../plugins/migrate.py:76
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "перенести журнал yum, дані щодо груп та yumdb до dnf"
+
+#: ../plugins/migrate.py:93
+msgid "which kind of yum data migrate."
+msgstr "тип даних yum, які слід перенести."
+
+#: ../plugins/migrate.py:109
+msgid "Migrating history data..."
+msgstr "Переносимо дані журналу…"
+
+#: ../plugins/migrate.py:220
+msgid "Migrating groups data..."
+msgstr "Переносимо дані щодо груп…"
+
+#: ../plugins/migrate.py:225
+msgid "Execution of Yum failed. Could not retrieve installed groups."
+msgstr ""
+"Не вдалося виконати Yum. Не вдалося отримати список встановлених груп."
+
+#: ../plugins/migrate.py:229
+msgid "No groups to migrate from Yum"
+msgstr "Немає записів груп для перенесення з Yum"
+
+#. skips not found groups, i.e. after fedup
+#. when the group name changes / disappears in new distro
+#: ../plugins/migrate.py:241
+msgid "skipping."
+msgstr "пропускаємо."
+
+#: ../plugins/migrate.py:261
+msgid "Migrating YUMDB data..."
+msgstr "Переносимо дані YUMDB…"
+
+#: ../plugins/migrate.py:280
+#, python-format
+msgid "%s of %s not found"
+msgstr "%s з %s не знайдено"
+
+#: ../plugins/migrate.py:287
+#, python-format
+msgid "replacing unknown characters in %s of %s"
+msgstr "замінюємо невідомі символи у %s з %s"
+
+#: ../plugins/migrate.py:292
+msgid "DNFDB access denied"
+msgstr "Доступ до DNFDB заборонено"
+
+#: ../plugins/migrate.py:294
+#, python-format
+msgid "%s of %s migrated"
+msgstr "перенесено %s з %s"
+
+#: ../plugins/migrate.py:298
+#, python-format
+msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
+msgstr "Знайдено %d записів YUMDB, перенесено %d, пропущено/збережено %d"
+
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Вивести повний граф залежностей пакунків у форматі dot"
+
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Нічого не надає: «%s»"
+
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "Керування каталогом пакунків rpm"
+
+#: ../plugins/repomanage.py:55
+msgid "Pass either --old or --new, not both!"
+msgstr "Слід передавати --old або --new, не обидва одразу!"
+
+#: ../plugins/repomanage.py:65
+msgid "No files to process"
+msgstr "Немає файлів для обробки"
+
+#: ../plugins/repomanage.py:70
+msgid "Could not open {}"
+msgstr "Не вдалося відкрити {}"
+
+#: ../plugins/repomanage.py:127
+msgid "Print the older packages"
+msgstr "Вивести старіші пакунки"
+
+#: ../plugins/repomanage.py:129
+msgid "Print the newest packages"
+msgstr "Вивести найновіші пакунки"
+
+#: ../plugins/repomanage.py:131
+msgid "Space separated output, not newline"
+msgstr ""
+"Відокремлювати записи у виведених даних пробілами, а не символами розриву "
+"рядка"
+
+#: ../plugins/repomanage.py:133
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "Зберігати N найновіших пакунків. Типове значення — 1"
+
+#: ../plugins/repomanage.py:136
+msgid "Path to directory"
+msgstr "Шлях до каталогу"
+
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Нові листки:"
 
 #: ../plugins/copr.py:37
 msgid "yes"
@@ -286,79 +501,6 @@ msgstr "Сховища playground успішно вимкнено."
 msgid "Playground repositories successfully updated."
 msgstr "Сховища playground успішно оновлено."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "встановити пакунки debuginfo"
-
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "визначити оновлені виконувані файли, які потребують перезапуску"
-
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "брати до уваги лише процеси цього користувача"
-
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "отримати усі пакунки із віддаленого сховища"
-
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "місце, де слід зберігати отримані сховища"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr ""
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr ""
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr ""
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr ""
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr ""
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr ""
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr ""
-
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
 msgstr "Отримати пакунок до поточного каталогу"
@@ -377,7 +519,7 @@ msgstr "отримати замість цього пакунок -debuginfo"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "обмежити пошук пакунків вказаними архітектурами."
 
 #: ../plugins/download.py:61
 msgid "download path, default is current dir"
@@ -403,205 +545,75 @@ msgstr "якщо запущено з --url, обмежитися вказани�
 msgid "Failed to get mirror for package: %s"
 msgstr "Не вдалося отримати дзеркало для пакунка: %s"
 
-#: ../plugins/download.py:182
+#: ../plugins/download.py:184
 msgid "Exiting due to strict setting."
 msgstr "Завершуємо роботу через строгі обмеження."
 
-#: ../plugins/download.py:202
+#: ../plugins/download.py:204
 msgid "Error in resolve"
 msgstr "Помилка у визначенні"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:219
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Не визначено rpm із початковим кодом для %s"
 
-#: ../plugins/download.py:233 ../plugins/download.py:247
+#: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
 msgstr "Немає доступного пакунка %s."
 
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-
-#: ../plugins/local.py:117
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
-
-#: ../plugins/local.py:121
-msgid "'{}' is not a directory"
-msgstr ""
-
-#: ../plugins/local.py:130
-msgid "Copying '{}' to local repo"
-msgstr ""
-
-#: ../plugins/local.py:136
-msgid "Can't write file '{}'"
-msgstr ""
-
-#: ../plugins/local.py:151
-msgid "Rebuilding local repo"
-msgstr ""
-
-#: ../plugins/migrate.py:55
-#, python-format
-msgid "failed to parse package NEVRA from: %s"
-msgstr ""
-
-#: ../plugins/migrate.py:76
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
-
-#: ../plugins/migrate.py:93
-msgid "which kind of yum data migrate."
-msgstr ""
-
-#: ../plugins/migrate.py:109
-msgid "Migrating history data..."
-msgstr ""
-
-#: ../plugins/migrate.py:220
-msgid "Migrating groups data..."
-msgstr ""
-
-#: ../plugins/migrate.py:225
-msgid "Execution of Yum failed. Could not retrieve installed groups."
-msgstr ""
-
-#: ../plugins/migrate.py:229
-msgid "No groups to migrate from Yum"
-msgstr ""
-
-#. skips not found groups, i.e. after fedup
-#. when the group name changes / disappears in new distro
-#: ../plugins/migrate.py:241
-msgid "skipping."
-msgstr ""
-
-#: ../plugins/migrate.py:261
-msgid "Migrating YUMDB data..."
-msgstr ""
-
-#: ../plugins/migrate.py:280
-#, python-format
-msgid "%s of %s not found"
-msgstr ""
-
-#: ../plugins/migrate.py:287
-#, python-format
-msgid "replacing unknown characters in %s of %s"
-msgstr ""
-
-#: ../plugins/migrate.py:292
-msgid "DNFDB access denied"
-msgstr ""
-
-#: ../plugins/migrate.py:294
-#, python-format
-msgid "%s of %s migrated"
-msgstr ""
-
-#: ../plugins/migrate.py:298
-#, python-format
-msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
-msgstr ""
-
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr ""
+msgstr "Показати список нерозв’язаних залежностей для сховищ"
 
-#: ../plugins/repoclosure.py:113
-msgid "check packages of the given archs, can be specified multiple times"
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
 msgstr ""
 
 #: ../plugins/repoclosure.py:116
-msgid "Specify repositories to check"
+msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
+"перевірити пакунки вказаної архітектури, можна використовувати декілька "
+"разів"
 
-#: ../plugins/repoclosure.py:118
-msgid "Check only the newest packages in the repos"
-msgstr ""
+#: ../plugins/repoclosure.py:119
+msgid "Specify repositories to check"
+msgstr "Вказати сховища для перевірки"
 
 #: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Перевірити лише найновіші пакунки у сховищах"
+
+#: ../plugins/repoclosure.py:124
 msgid "Check closure for this package only"
-msgstr ""
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr ""
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr ""
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:55
-msgid "Pass either --old or --new, not both!"
-msgstr ""
-
-#: ../plugins/repomanage.py:65
-msgid "No files to process"
-msgstr ""
-
-#: ../plugins/repomanage.py:70
-msgid "Could not open {}"
-msgstr ""
-
-#: ../plugins/repomanage.py:127
-msgid "Print the older packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:129
-msgid "Print the newest packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:131
-msgid "Space separated output, not newline"
-msgstr ""
-
-#: ../plugins/repomanage.py:133
-msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
-
-#: ../plugins/repomanage.py:136
-msgid "Path to directory"
-msgstr ""
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr ""
+msgstr "Перевірити замкненість лише для цього пакунка"
 
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr ""
+msgstr "Не вдалося прочитати налаштування блокування версії: %s"
 
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr ""
+msgstr "Список блокування не встановлено"
 
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr ""
+msgstr "Додаємо блокування версії для:"
 
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr ""
+msgstr "Додаємо виключення для:"
 
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr ""
+msgstr "Вилучаємо блокування версії для:"
 
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr ""
+msgstr "Не знайдено пакунка для:"
 
-#: ../plugins/versionlock.py:92
+#: ../plugins/versionlock.py:94
 msgid "control package version locks"
-msgstr ""
+msgstr "керування блокуванням версій пакунків"

@@ -1,11 +1,13 @@
 # Meskó Balázs <meskobalazs@gmail.com>, 2016. #zanata
+# Meskó Balázs <meskobalazs@gmail.com>, 2017. #zanata
+# Zoltan Hoppar <zoltanh721@fedoraproject.org>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-07 14:37+0200\n"
-"PO-Revision-Date: 2016-12-26 05:32-0500\n"
-"Last-Translator: Bendegúz Gyönki <gyonkibendeguz@gmail.com>\n"
+"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"PO-Revision-Date: 2017-04-12 05:04-0400\n"
+"Last-Translator: Zoltan Hoppar <zoltanh721@fedoraproject.org>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,6 +65,7 @@ msgstr "Nincs minden függőség kielégítve"
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr ""
+"A(z) „%s” megnyitása sikertelen, nem egy érvényes specifikációs fájl: %s"
 
 #: ../plugins/builddep.py:207
 #, python-format
@@ -99,7 +102,7 @@ msgstr "kiírja a jelenlegi konfigurációs értékeket a sztenderd kimenetre"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr ""
+msgstr "kiírja a változó értékeket a sztenderd kimenetre"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
@@ -123,6 +126,218 @@ msgstr "Tároló hozzáadása innen: %s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "A tároló nem menthető a(z) %s tárolófájlba: %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "debuginfo csomagok telepítése"
+
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "határozza meg az újraindítást igénylő frissített binárisokat"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "csak ezen felhasználó folyamatait vegye figyelembe"
+
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "minden csomag letöltése a távoli tárolóból"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "hol tárolja a letöltött tárolókat"
+
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "telepített rpm csomagok információinak összegyűjtése egy fájlba"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "ne próbálja meg összegyűjteni a tároló tartalmát."
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "opcionális neve a dump fájlnak"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Kimenet kiírva ide: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "csomagok helyreállítása a debug-dump fájl bejegyzései alapján"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "kimeneti parancsok amelyek az stdout-on jelennének meg"
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "telepítse a legutolsó verzióját a rögzített csomagoknak."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"hagyja figyelmen kívül az architektúrát és telepítse a hiányzó csomagokat "
+"amelyeknél egyezik a név, az azonosító, verzió, és a kiadás."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "limitálja a meghatározott típusokat"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "a dump fájl neve"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "A(z) %s csomag nem érhető el"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Hibás dnf hibakeresési fájl: %s"
+
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr "Listázza azokat a csomagokat amelyek nem szükségesek más csomag által"
+
+#: ../plugins/local.py:117
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "A(z) „{}” könyvtár nem hozható létre, mert: „{}”"
+
+#: ../plugins/local.py:121
+msgid "'{}' is not a directory"
+msgstr "A(z) „{}” nem könyvtár"
+
+#: ../plugins/local.py:130
+msgid "Copying '{}' to local repo"
+msgstr "A(z) „{}” másolása helyi tárolóba"
+
+#: ../plugins/local.py:136
+msgid "Can't write file '{}'"
+msgstr "A(z) „{}” fájl nem írható"
+
+#: ../plugins/local.py:151
+msgid "Rebuilding local repo"
+msgstr "Helyi tároló újraépítése"
+
+#: ../plugins/migrate.py:55
+#, python-format
+msgid "failed to parse package NEVRA from: %s"
+msgstr "sikertelen a NEVRA csomag értelmezése innen: %s"
+
+#: ../plugins/migrate.py:76
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "migrálja yum előzményeit, csoportjait, és yumdb adatokat a dnf-be"
+
+#: ../plugins/migrate.py:93
+msgid "which kind of yum data migrate."
+msgstr "melyik típusú yum adat migráljon"
+
+#: ../plugins/migrate.py:109
+msgid "Migrating history data..."
+msgstr "Előzményadatok migrálása…"
+
+#: ../plugins/migrate.py:220
+msgid "Migrating groups data..."
+msgstr "Csoportadatok migrálása…"
+
+#: ../plugins/migrate.py:225
+msgid "Execution of Yum failed. Could not retrieve installed groups."
+msgstr ""
+"A Yum végrehajtása sikertelen. A telepített csoportok nem kérhetőek le."
+
+#: ../plugins/migrate.py:229
+msgid "No groups to migrate from Yum"
+msgstr "Nincsenek Yumból migrált csoportok"
+
+#. skips not found groups, i.e. after fedup
+#. when the group name changes / disappears in new distro
+#: ../plugins/migrate.py:241
+msgid "skipping."
+msgstr "kihagyás."
+
+#: ../plugins/migrate.py:261
+msgid "Migrating YUMDB data..."
+msgstr "YUMDB adatok migrálása…"
+
+#: ../plugins/migrate.py:280
+#, python-format
+msgid "%s of %s not found"
+msgstr "%s / %s nem található"
+
+#: ../plugins/migrate.py:287
+#, python-format
+msgid "replacing unknown characters in %s of %s"
+msgstr "ismeretlen karakterek kicserélése: %s / %s"
+
+#: ../plugins/migrate.py:292
+msgid "DNFDB access denied"
+msgstr "DNFDB hozzáférés megtagadva"
+
+#: ../plugins/migrate.py:294
+#, python-format
+msgid "%s of %s migrated"
+msgstr "%s / %s migrálva"
+
+#: ../plugins/migrate.py:298
+#, python-format
+msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
+msgstr "%d YUMDB rekord található, %d migrálva, %d kihagyva/megőrizve"
+
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Jelenítse meg a teljes függőségi rajzot pontozott formában"
+
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Semmi sem biztosítja: „%s”"
+
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "Egy rpm csomagokkal teli könyvtár kezelése"
+
+#: ../plugins/repomanage.py:55
+msgid "Pass either --old or --new, not both!"
+msgstr "Csak az --old, vagy a --new paraméter, de ne mindkettőt!"
+
+#: ../plugins/repomanage.py:65
+msgid "No files to process"
+msgstr "Nincsenek feldolgozandó fájlok"
+
+#: ../plugins/repomanage.py:70
+msgid "Could not open {}"
+msgstr "A(z) {} nem nyitható meg"
+
+#: ../plugins/repomanage.py:127
+msgid "Print the older packages"
+msgstr "Régebbi csomagok kiírása"
+
+#: ../plugins/repomanage.py:129
+msgid "Print the newest packages"
+msgstr "Legújabb csomagok kiírása"
+
+#: ../plugins/repomanage.py:131
+msgid "Space separated output, not newline"
+msgstr "Szóközzel, és nem újsorral elválasztott kimenet"
+
+#: ../plugins/repomanage.py:133
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "Megtartandó legfrissebb N csomag – alapértelmezésben 1"
+
+#: ../plugins/repomanage.py:136
+msgid "Path to directory"
+msgstr "Útvonal a könyvtárhoz"
+
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Új levelek:"
 
 #: ../plugins/copr.py:37
 msgid "yes"
@@ -181,7 +396,7 @@ msgstr ""
 #: ../plugins/copr.py:91
 msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr ""
-"Figyelmeztetés: a következő nem szabványos Copr URL-t használjuk: „{}”."
+"Figyelmeztetés: a következő nem szabványos Copr URL-t használjuk: '{}'."
 
 #: ../plugins/copr.py:120 ../plugins/copr.py:144
 msgid "Error: "
@@ -219,7 +434,7 @@ msgstr "Ismeretlen alparancs: {}."
 
 #: ../plugins/copr.py:189
 msgid "Can't parse repositories for username '{}'."
-msgstr "A tárolók nem értelmezhetőek a(z) „{}” felhasználónévhez."
+msgstr "A tárolók nem értelmezhetőek a(z) '{}' felhasználónévhez."
 
 #: ../plugins/copr.py:192
 msgid "List of {} coprs"
@@ -231,7 +446,7 @@ msgstr "Nincs leírás adva"
 
 #: ../plugins/copr.py:212
 msgid "Can't parse search for '{}'."
-msgstr "Nem értelmezhető a keresés erre: „{}”."
+msgstr "Nem értelmezhető a keresés erre: '{}'."
 
 #: ../plugins/copr.py:215
 msgid "Matched: {}"
@@ -283,79 +498,6 @@ msgstr "Playground tárolók sikeresen letiltva."
 msgid "Playground repositories successfully updated."
 msgstr "Playground tárolók sikeresen frissítve."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "debuginfo csomagok telepítése"
-
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "határozza meg az újraindítást igénylő frissített binárisokat"
-
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "csak ezen felhasználó folyamatait vegye figyelembe"
-
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "minden csomag letöltése a távoli tárolóból"
-
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "hol tárolja a letöltött tárolókat"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr ""
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr ""
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr ""
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr ""
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr ""
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr ""
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr ""
-
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
 msgstr "Csomag letöltése a jelenlegi könyvtárba"
@@ -374,7 +516,7 @@ msgstr "a -debuginfo csomag letöltése helyette"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "behatárolja a csomag lekérdezéseket a megadott architektúráknál."
 
 #: ../plugins/download.py:61
 msgid "download path, default is current dir"
@@ -388,215 +530,85 @@ msgstr "a szükséges függőségek feloldása és letöltése"
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
+"írja ki az URL listáját hogy honnan tölthetőek le, a letöltésük helyett"
 
 #: ../plugins/download.py:70
 msgid "when running with --url, limit to specific protocols"
 msgstr ""
+"amikor --url paraméterrel fut, csak a specifikus protokollokra korlátozza"
 
 #: ../plugins/download.py:102
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr ""
+msgstr "Tükörszerver nem található a csomaghoz: %s"
 
-#: ../plugins/download.py:182
+#: ../plugins/download.py:184
 msgid "Exiting due to strict setting."
 msgstr "Kilépés a szigorú beállítás miatt."
 
-#: ../plugins/download.py:202
+#: ../plugins/download.py:204
 msgid "Error in resolve"
 msgstr "Hiba a feloldáskor"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:219
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Nincs forrás rpm megadva ehhez: %s"
 
-#: ../plugins/download.py:233 ../plugins/download.py:247
+#: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
-msgstr ""
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-
-#: ../plugins/local.py:117
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
-
-#: ../plugins/local.py:121
-msgid "'{}' is not a directory"
-msgstr ""
-
-#: ../plugins/local.py:130
-msgid "Copying '{}' to local repo"
-msgstr ""
-
-#: ../plugins/local.py:136
-msgid "Can't write file '{}'"
-msgstr ""
-
-#: ../plugins/local.py:151
-msgid "Rebuilding local repo"
-msgstr ""
-
-#: ../plugins/migrate.py:55
-#, python-format
-msgid "failed to parse package NEVRA from: %s"
-msgstr ""
-
-#: ../plugins/migrate.py:76
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
-
-#: ../plugins/migrate.py:93
-msgid "which kind of yum data migrate."
-msgstr ""
-
-#: ../plugins/migrate.py:109
-msgid "Migrating history data..."
-msgstr ""
-
-#: ../plugins/migrate.py:220
-msgid "Migrating groups data..."
-msgstr ""
-
-#: ../plugins/migrate.py:225
-msgid "Execution of Yum failed. Could not retrieve installed groups."
-msgstr ""
-
-#: ../plugins/migrate.py:229
-msgid "No groups to migrate from Yum"
-msgstr ""
-
-#. skips not found groups, i.e. after fedup
-#. when the group name changes / disappears in new distro
-#: ../plugins/migrate.py:241
-msgid "skipping."
-msgstr ""
-
-#: ../plugins/migrate.py:261
-msgid "Migrating YUMDB data..."
-msgstr ""
-
-#: ../plugins/migrate.py:280
-#, python-format
-msgid "%s of %s not found"
-msgstr ""
-
-#: ../plugins/migrate.py:287
-#, python-format
-msgid "replacing unknown characters in %s of %s"
-msgstr ""
-
-#: ../plugins/migrate.py:292
-msgid "DNFDB access denied"
-msgstr ""
-
-#: ../plugins/migrate.py:294
-#, python-format
-msgid "%s of %s migrated"
-msgstr ""
-
-#: ../plugins/migrate.py:298
-#, python-format
-msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
-msgstr ""
+msgstr "A(z) %s csomag nem érhető el."
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr ""
+msgstr "Jelenítse meg a feloldatlan függőségeit a tárolónak"
 
-#: ../plugins/repoclosure.py:113
-msgid "check packages of the given archs, can be specified multiple times"
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
 msgstr ""
 
 #: ../plugins/repoclosure.py:116
-msgid "Specify repositories to check"
-msgstr ""
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr "megadott architektúrájú csomagok ellenőrzése, többször is megadható"
 
-#: ../plugins/repoclosure.py:118
-msgid "Check only the newest packages in the repos"
-msgstr ""
+#: ../plugins/repoclosure.py:119
+msgid "Specify repositories to check"
+msgstr "Adja meg az ellenőrizendő tárolókat"
 
 #: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Csak a legújabb csomagokat ellenőrizze a tárolókban"
+
+#: ../plugins/repoclosure.py:124
 msgid "Check closure for this package only"
-msgstr ""
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr ""
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr ""
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:55
-msgid "Pass either --old or --new, not both!"
-msgstr ""
-
-#: ../plugins/repomanage.py:65
-msgid "No files to process"
-msgstr ""
-
-#: ../plugins/repomanage.py:70
-msgid "Could not open {}"
-msgstr ""
-
-#: ../plugins/repomanage.py:127
-msgid "Print the older packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:129
-msgid "Print the newest packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:131
-msgid "Space separated output, not newline"
-msgstr ""
-
-#: ../plugins/repomanage.py:133
-msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
-
-#: ../plugins/repomanage.py:136
-msgid "Path to directory"
-msgstr ""
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr ""
+msgstr "Ellenőrizze a zárást csak ehhez a csomaghoz"
 
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr ""
+msgstr "A verziózár beállítások nem olvashatóak: %s"
 
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr ""
+msgstr "Zárolási lista nincs beállítva"
 
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr ""
+msgstr "Verziózár hozzáadása erre:"
 
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr ""
+msgstr "Kizárás hozzáadása erre:"
 
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr ""
+msgstr "Verziózár törlése erről:"
 
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr ""
+msgstr "Nem található csomag ehhez:"
 
-#: ../plugins/versionlock.py:92
+#: ../plugins/versionlock.py:94
 msgid "control package version locks"
-msgstr ""
+msgstr "kontroll csomag verizó zárolása"
