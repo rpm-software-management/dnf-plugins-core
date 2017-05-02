@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 12:34+0200\n"
-"PO-Revision-Date: 2017-04-08 02:53-0400\n"
+"PO-Revision-Date: 2017-04-28 04:03-0400\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../plugins/builddep.py:62
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PAQUETE|PAQUETEspec]"
+msgstr "[PAQUETE|PAQUETE.spec]"
 
 #: ../plugins/builddep.py:73
 #, python-format
@@ -88,7 +88,7 @@ msgstr "guardar las opciones actuales (útil con --setopt)"
 
 #: ../plugins/config_manager.py:47
 msgid "enable the specified repos (automatically saves)"
-msgstr "habilitar los repositorios especificados (se guarda automáticamente)"
+msgstr "activar los repositorios especificados (se guarda automáticamente)"
 
 #: ../plugins/config_manager.py:50
 msgid "disable the specified repos (automatically saves)"
@@ -97,7 +97,7 @@ msgstr "desactivar los repositorios especificados (se guarda automáticamente)"
 #: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
 msgstr ""
-"agregar (y habilitar) el repo desde el archivo o la dirección especificada"
+"agregar (y activar) el repo desde el archivo o la dirección especificada"
 
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
@@ -484,11 +484,11 @@ msgstr "formato de proyecto de copr incorrecto"
 
 #: ../plugins/copr.py:167
 msgid "Repository successfully enabled."
-msgstr "Repositorio habilitado exitosamente"
+msgstr "Repositorio activado."
 
 #: ../plugins/copr.py:171
 msgid "Repository successfully disabled."
-msgstr "Repositorio deshabilitado exitosamente."
+msgstr "Repositorio desactivado."
 
 #: ../plugins/copr.py:175
 msgid "Repository successfully removed."
@@ -535,7 +535,7 @@ msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Este repositorio no tiene construcciones todavía así que no lo puede "
-"habilitar."
+"activar."
 
 #: ../plugins/copr.py:307
 msgid "Such repository does not exist."
@@ -543,7 +543,7 @@ msgstr "Tal repositorio no existe."
 
 #: ../plugins/copr.py:328
 msgid "Failed to disable copr repo {}/{}"
-msgstr "Falló la habilitación del repo copr {}/{}"
+msgstr "Falló la activación del repo copr {}/{}"
 
 #: ../plugins/copr.py:341 ../plugins/copr.py:378
 msgid "Unknown response from server."
@@ -555,11 +555,11 @@ msgstr "Interactuar con el repositorio Playground."
 
 #: ../plugins/copr.py:413
 msgid "Playground repositories successfully enabled."
-msgstr "Los repositorios Playground han sido habilitados exitosamente."
+msgstr "Se han activado los repositorios Playground."
 
 #: ../plugins/copr.py:416
 msgid "Playground repositories successfully disabled."
-msgstr "Repositorios Playground deshabilitados exitosamente."
+msgstr "Se desactivaron los repositorios Playground."
 
 #: ../plugins/copr.py:420
 msgid "Playground repositories successfully updated."
@@ -635,7 +635,7 @@ msgstr ""
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
+msgstr "Repoclosure finalizó con dependencias sin resolver."
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras

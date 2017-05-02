@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 12:34+0200\n"
-"PO-Revision-Date: 2017-04-20 01:45-0400\n"
+"PO-Revision-Date: 2017-04-28 03:07-0400\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -561,7 +561,7 @@ msgstr "Visa en lista över olösta beroenden för förråd"
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
+msgstr "Förrådshöljet slutade med olösta beroenden"
 
 #: ../plugins/repoclosure.py:116
 msgid "check packages of the given archs, can be specified multiple times"
