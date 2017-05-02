@@ -1,0 +1,5 @@
+if (${PYTHON_DESIRED} STREQUAL "2")
+    INSTALL (PROGRAMS "repoquery-2" DESTINATION bin)
+else()
+    INSTALL (PROGRAMS "repoquery-3" DESTINATION bin)
+endif()
