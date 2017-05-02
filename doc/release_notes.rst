@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+2.0.0 Release Notes
+===================
+
+* Added ``DEBUG`` plugin from dnf-plugins-extras
+* Added ``LEAVES`` plugin from dnf-plugins-extras
+* Added ``LOCAL`` plugin from dnf-plugins-extras
+* Added ``MIGRATE`` plugin from dnf-plugins-extras
+* Added ``NEEDS RESTARTING`` plugin from dnf-plugins-extras
+* Added ``REPOCLOSURE`` plugin from dnf-plugins-extras
+* Added ``REPOGRAPH`` plugin from dnf-plugins-extras
+* Added ``REPOMANAGE`` plugin from dnf-plugins-extras
+* Added ``SHOW LEAVES`` plugin from dnf-plugins-extras
+* Added ``VERSIONLOCK`` plugin from dnf-plugins-extras
+
+===================
 1.1.0 Release Notes
 ===================
 

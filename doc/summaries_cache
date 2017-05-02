@@ -294,5 +294,21 @@
     [
         1250115, 
         "RFE: dnf download --url"
+    ], 
+    [
+        1429087, 
+        "Outdated translations"
+    ], 
+    [
+        1431486, 
+        "dnf wants to check gpg key on builddep from src.rpm"
+    ], 
+    [
+        1332830, 
+        "DNF builddep is not consistently installing packages providing capabilities properly"
+    ], 
+    [
+        1276611, 
+        "dnf dowload --resolve should download everytime requested packages"
     ]
 ]
