@@ -436,6 +436,45 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue May 02 2017 Jaroslav Mracek <jmracek@redhat.com> 2.0.0-1
+- update release notes (Jaroslav Mracek)
+- po: Update translations (Igor Gnatenko)
+- Fix incorrect exclude of locked version in versionlock (Jaroslav Mracek)
+- po: Update translations (Igor Gnatenko)
+- Setup selectively provides for python2 packages (Jaroslav Mracek)
+- Build python3 packages only if with_python3 (Jaroslav Mracek)
+- Search only according nevra in versionlock (Jaroslav Mracek)
+- Solve a problem in performance of versionlock (RhBug:1431493) (Jaroslav
+  Mracek)
+- Repoclosure exit with 1 if unsatisfied dependencies (RhBug:1416782) (Jaroslav
+  Rohel)
+- Not raise an Error if strict=False and --url for download command (Jaroslav
+  Mracek)
+- Check argument if it is a file ending with .rpm (RhBug:1436570) (Jaroslav
+  Mracek)
+- update link to "What I can build in Copr? documentation page (clime)
+- po: Update translations (Igor Gnatenko)
+- Create dir for local plugin if path not exist (Jaroslav Mracek)
+- Correct some PEP8 violations after plugin import (Jaroslav Mracek)
+- Add debug into dnf-plugins-core (Jaroslav Mracek)
+- Added latest doc changes from plugins-extras upstream (Jaroslav Mracek)
+- bump version to 2.0.0 (Jaroslav Mracek)
+- Add migrate plugin into dnf-plugins-core (Jaroslav Mracek)
+- Add man pages for transfered plugins (Jaroslav Mracek)
+- Add provide dnf-plugin-* for each plugin (Jaroslav Mracek)
+- Correct some PEP8 violations (Jaroslav Mracek)
+- Add local into dnf-plugins-core (Jaroslav Mracek)
+- Add leaves and show-leaves into dnf-plugins-core (Jaroslav Mracek)
+- Add versionlock into dnf-plugins-core (Jaroslav Mracek)
+- Add repograph into dnf-plugins-core (Jaroslav Mracek)
+- Add repoclosure into dnf-plugins-core (Jaroslav Mracek)
+- Add repomanage into dnf-plugins-core (Jaroslav Mracek)
+- Add --archlist option for dnf download command (Jaroslav Mracek)
+- Change code that provides package location for download command (Jaroslav
+  Mracek)
+- po: update translations (Igor Gnatenko)
+- po: add sv translations (Igor Gnatenko)
+
 * Tue Mar 21 2017 Igor Gnatenko <ignatenko@redhat.com> 1.1.0-1
 - dnf dowload --resolve should download everytime requested packages
   (RhBug:1276611) (stepasm)
