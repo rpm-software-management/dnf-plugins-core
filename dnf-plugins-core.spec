@@ -330,6 +330,8 @@ mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
 %else
 mv %{buildroot}%{_libexecdir}/dnf-utils-2 %{buildroot}%{_libexecdir}/dnf-utils
 %endif
+rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
+
 mkdir -p %{buildroot}%{_bindir}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
@@ -345,7 +347,6 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
-rm -vf %{_libexecdir}/dnf-utils-*
 
 %check
 PYTHONPATH=./plugins nosetests-%{python2_version} -s tests/
