@@ -330,6 +330,7 @@ mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
 %else
 mv %{buildroot}%{_libexecdir}/dnf-utils-2 %{buildroot}%{_libexecdir}/dnf-utils
 %endif
+mkdir -p %{buildroot}%{_bindir}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
