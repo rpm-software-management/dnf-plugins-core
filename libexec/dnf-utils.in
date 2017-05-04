@@ -34,7 +34,7 @@ MAPPING = {'debuginfo-install': ['debuginfo-install'],
            'yum-builddep': ['builddep'],
            'yum-config-manager': ['config-manager'],
            'yum-debug-dump': ['debug-dump'],
-           'yum-debug-restore': ['debug-dump'],
+           'yum-debug-restore': ['debug-restore'],
            'yumdownloader': ['download']
            }
 
