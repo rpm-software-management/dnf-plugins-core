@@ -53,6 +53,7 @@ class BashCompletionCache(dnf.Plugin):
             try:
                 with sqlite3.connect(self.cache_file) as conn:
                     self._out('Generating completion cache...')
+                    logger.info('Generating completion cache for available packages.')
                     cur = conn.cursor()
                     cur.execute(
                         "create table if not exists available (pkg TEXT)")
@@ -73,6 +74,7 @@ class BashCompletionCache(dnf.Plugin):
         try:
             with sqlite3.connect(self.cache_file) as conn:
                 self._out('Generating completion cache...')
+                logger.info('Generating completion cache for installed packages.')
                 cur = conn.cursor()
                 cur.execute("create table if not exists installed (pkg TEXT)")
                 cur.execute(
