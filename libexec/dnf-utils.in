@@ -97,7 +97,7 @@ if command == 'package-cleanup':
         args[args.ingex('--oldkernels')] = '--oldinstallonly'
         MAPPING[command] = ['remove']
     else:
-        sys.stderr.write('package-cleanup has to be executed with on of the options: --dupes, '
+        sys.stderr.write('package-cleanup has to be executed with one of the options: --dupes, '
                          '--leaves, --orphans, --oldkernels, --problems, --cleandupes, '
                          'or --oldkernels')
         sys.exit(1)
