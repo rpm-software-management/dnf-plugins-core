@@ -109,7 +109,7 @@ class DebugDumpCommand(dnf.cli.Command):
 
     def dump_dnf_config_info(self):
         var = self.base.conf.substitutions
-        plugins = ",".join([p.name for p in self.base.plugins.plugins])
+        plugins = ",".join([p.name for p in self.base._plugins.plugins])
         self.write("%%%%DNF INFO\n")
         self.write("  arch: %s\n" % var["arch"])
         self.write("  basearch: %s\n" % var["basearch"])
@@ -161,7 +161,7 @@ class DebugDumpCommand(dnf.cli.Command):
 
     def dump_rpmdb_versions(self):
         self.write("%%%%RPMDB VERSIONS\n")
-        version = self.base.sack._rpmdb_version(self.base.yumdb)
+        version = self.base.sack._rpmdb_version(self.base._yumdb)
         self.write("  all: %s\n" % version)
         return
 
