@@ -57,8 +57,6 @@ class DownloadCommand(dnf.cli.Command):
         parser.add_argument("--arch", '--archlist', dest='arch', default=[],
                             action=OptionParser._SplitCallback, metavar='[arch]',
                             help=_("limit  the  query to packages of given architectures."))
-        parser.add_argument('--destdir',
-                            help=_('download path, default is current dir'))
         parser.add_argument('--resolve', action='store_true',
                             help=_('resolve and download needed dependencies'))
         parser.add_argument('--url', '--urls', action='store_true', dest='url',
@@ -92,6 +90,11 @@ class DownloadCommand(dnf.cli.Command):
         else:
             pkgs = self._get_pkg_objs_rpms(self.opts.packages)
 
+        if self.opts.destdir:
+            self.base.conf.destdir = self.opts.destdir
+        else:
+            self.base.conf.destdir = dnf.i18n.ucd(os.getcwd())
+
         # If user asked for just urls then print them and we're done
         if self.opts.url:
             for pkg in pkgs:
@@ -104,15 +107,8 @@ class DownloadCommand(dnf.cli.Command):
                         raise dnf.exceptions.Error(msg)
                     logger.warning(msg)
             return
-        else: 
-            locations = self._do_downloads(pkgs)  # download rpms
-
-        if self.opts.destdir:
-            dest = self.opts.destdir
         else:
-            dest = dnf.i18n.ucd(os.getcwd())
-
-        self._copy_packages(dest, locations)
+            self._do_downloads(pkgs)  # download rpms
 
     def _do_downloads(self, pkgs):
         """
@@ -249,15 +245,3 @@ class DownloadCommand(dnf.cli.Command):
             msg = _("No package %s available.") % (pkg_spec)
             raise dnf.exceptions.PackageNotFoundError(msg)
         return q
-
-    @staticmethod
-    def _copy_packages(target, locations):
-        """Copy the downloaded package to target, not move.
-           If package is from local repo it must not be deleted there
-           and download routines will remove them from cache automatically.
-        """
-        if not os.path.exists(target):
-            os.makedirs(target)
-        for pkg in locations:
-            shutil.copy(pkg, target)
-        return target
