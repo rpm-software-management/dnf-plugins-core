@@ -99,7 +99,7 @@ if command == 'package-cleanup':
     else:
         sys.stderr.write('package-cleanup has to be executed with one of the options: --dupes, '
                          '--leaves, --orphans, --oldkernels, --problems, --cleandupes, '
-                         'or --oldkernels')
+                         'or --oldkernels\n')
         sys.exit(1)
 
 main.user_main(MAPPING[command] + args, exit_code=True)
