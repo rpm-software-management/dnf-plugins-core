@@ -122,7 +122,7 @@ reposync commands. Additionally provides generate_completion_cache passive plugi
 %endif
 
 %package -n dnf-utils
-Conflicts:      yum-utils < 1.1.32
+Conflicts:      yum-utils < 1.1.31-513
 Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       %{name} = %{version}-%{release}
 %if %{with python3}
@@ -135,8 +135,10 @@ Requires:       python2-dnf < %{dnf_not_compatible}
 Summary:        Yum-utils CLI compatibility layer
 
 %description -n dnf-utils
-As a Yum-utils CLI compatibility layer, supplies in /usr/bin/ builddep, repoquery, repoclosure,
-download, debuginfo-install, and config-manager and redirecting to DNF.
+As a Yum-utils CLI compatibility layer, supplies in CLI shims for
+debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
+repoquery, reposync, repotrack, builddep, config-manager, debug, and
+download that use new implementations using DNF.
 
 %package -n python2-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
