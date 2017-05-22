@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+2.1.0 Release Notes
+===================
+
+Additional subpackage in 2.1.0:
+
+* Added new subpackage ``dnf-utils`` that provides binaries originaly provided by ``yum-utils``.
+
+Bugs fixed in 2.1.0:
+
+* :rhbug:`1381917`
+
+===================
 2.0.0 Release Notes
 ===================
 

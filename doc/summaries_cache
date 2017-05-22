@@ -310,5 +310,9 @@
     [
         1276611, 
         "dnf dowload --resolve should download everytime requested packages"
+    ], 
+    [
+        1381917, 
+        "add aliases for each of yum-utils binaries"
     ]
 ]
