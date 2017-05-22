@@ -494,6 +494,12 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon May 22 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.0-1
+- bump version to 2.1.0 + update release notes (Jaroslav Mracek)
+- Adjust the dnf-utils subpackage to be more accurate (Neal Gompa)
+- Add new sub-package dnf-utils (RhBug:1381917) (Jaroslav Mracek)
+- Fix two renamed functions by dnf privatization (Jaroslav Mracek)
+
 * Tue May 02 2017 Jaroslav Mracek <jmracek@redhat.com> 2.0.0-1
 - update release notes (Jaroslav Mracek)
 - po: Update translations (Igor Gnatenko)
