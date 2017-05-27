@@ -37,7 +37,8 @@ the same as doing an exclude for the package name itself (as you cannot exclude
 installed packages), but dnf will still see the versions you have
 installed/versionlocked as available so that `dnf reinstall` will still
 work, etc. It can also work in the opposite way, like a fast exclude,
-by prefixing a '!' character to the version.
+by prefixing a '!' character to the version. Versionlock plugin does not apply any
+excludes in non-transactional operations like `repoquery`, `list`, `info`, etc.
 
 --------
 Synopsis
