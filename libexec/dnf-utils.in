@@ -76,25 +76,25 @@ args = sys.argv[1:]
 
 if command == 'package-cleanup':
     if '--dupes' in args:
-        args[args.ingex('--dupes')] = '--duplicates'
+        args[args.index('--dupes')] = '--duplicates'
         MAPPING[command] = ['repoquery']
     elif '--leaves' in args:
-        args[args.ingex('--leaves')] = '--unneeded'
+        args[args.index('--leaves')] = '--unneeded'
         MAPPING[command] = ['repoquery']
     elif '--orphans' in args:
-        args[args.ingex('--orphans')] = '--extras'
+        args[args.index('--orphans')] = '--extras'
         MAPPING[command] = ['repoquery']
     elif '--oldkernels' in args:
-        args[args.ingex('--oldkernels')] = '--installonly'
+        args[args.index('--oldkernels')] = '--installonly'
         MAPPING[command] = ['repoquery']
     elif '--problems' in args:
-        args[args.ingex('--problems')] = '--unsatisfied'
+        args[args.index('--problems')] = '--unsatisfied'
         MAPPING[command] = ['repoquery']
     elif '--cleandupes' in args:
-        args[args.ingex('--cleandupes')] = '--duplicates'
+        args[args.index('--cleandupes')] = '--duplicates'
         MAPPING[command] = ['remove']
     elif '--oldkernels' in args:
-        args[args.ingex('--oldkernels')] = '--oldinstallonly'
+        args[args.index('--oldkernels')] = '--oldinstallonly'
         MAPPING[command] = ['remove']
     else:
         sys.stderr.write('package-cleanup has to be executed with one of the options: --dupes, '
