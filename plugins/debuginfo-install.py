@@ -58,10 +58,8 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     summary = _('install debuginfo packages')
 
     dbgdone = []
-    reqdone = []
     packages = None
     packages_available = None
-    packages_installed = None
 
     @staticmethod
     def set_argparser(parser):
@@ -78,7 +76,6 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     def run(self):
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
-        self.packages_installed = self.packages.installed()
 
         for pkgspec in self.opts.package:
             for pkg in sorted(dnf.subject.Subject(pkgspec).get_best_query(
@@ -117,20 +114,3 @@ class DebuginfoInstallCommand(dnf.cli.Command):
                 continue
             self.dbgdone.append(dbgname)
             break
-
-        if package.name in self.reqdone:
-            return
-        self.reqdone.append(package.name)
-        for req in package.requires:
-            if str(req).startswith("rpmlib("):
-                continue
-            elif str(req) in self.reqdone:
-                continue
-            elif str(req).find(".so") != -1:
-                provides = self.packages_available.filter(provides=req)
-                for p in provides:
-                    if p.name in self.reqdone:
-                        continue
-                    pkgs = self.packages_installed.filter(name=p.name)
-                    for dep in pkgs:
-                        self._di_install(dep)
