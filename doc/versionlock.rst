@@ -53,18 +53,19 @@ Arguments
 ``<package-spec>``
     Package spec to lock or exclude.
 
--------
+-----------
 Subcommands
--------
+-----------
 
 ``dnf versionlock add <package-spec>``
-    Add a versionlock for all available packages matching the spec.
+    Add a versionlock for all available packages matching the spec. It means that only versions of
+    packages represented by <package-spec> will be available for transaction operations.
 
 ``dnf versionlock exclude <package-spec>``
-    Add an exclude (within  versionlock) for the available packages matching the spec.
+    Add an exclude (within  versionlock) for the available packages matching the spec. It means that
+    packages represented by <package-spec> will be excluded from transaction operations.
 
-``dnf versionlock list``
-``dnf versionlock``
+``dnf versionlock list`` or ``dnf versionlock``
     List the current versionlock entries.
 
 ``dnf versionlock delete <package-spec>``
