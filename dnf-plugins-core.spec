@@ -494,6 +494,12 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Jun 12 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.1-1
+- bump version to 2.1.1 + update release notes (Jaroslav Mracek)
+- Enhance versionlock documentation (Jaroslav Mracek)
+- Fix typos in args.ingex to args.index (RhBug:1458446) (Jaroslav Mracek)
+- dont run versionlock on non-transactional operations (Jan Silhan)
+
 * Mon May 22 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.0-1
 - bump version to 2.1.0 + update release notes (Jaroslav Mracek)
 - Adjust the dnf-utils subpackage to be more accurate (Neal Gompa)
