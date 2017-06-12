@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+2.1.1 Release Notes
+===================
+
+It introduces new behavior of Versionlock plugin where it doesn't apply any excludes in non-transactional operations like `repoquery`, `list`, `info`, etc.
+
+Bugs fixed in 2.1.1:
+
+* :rhbug:`1458446`
+
+===================
 2.1.0 Release Notes
 ===================
 
