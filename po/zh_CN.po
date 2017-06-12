@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
 "PO-Revision-Date: 2017-04-11 10:03-0400\n"
 "Last-Translator: Jerry Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -146,59 +146,6 @@ msgstr "下载远程仓库中的全部软件包"
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "在何处保存已下载的仓库"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "转储已安装的 RPM 软件包信息至文件"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "不要尝试转储仓库内容。"
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "可选的转储文件名称"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "输出文件写入至：%s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "恢复调试用转储文件中的软件包记录"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "输出将要在标准输出运行的命令。"
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "安装被记录的软件包中的最新版本。"
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr "忽略架构并安装当前丢失但匹配名称、世代、版本和发行版的软件包。"
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "限制到指定类型"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "转储文件名称"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "软件包 %s 不可用。"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "损坏的 dnf 调试文件：%s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -575,6 +522,59 @@ msgstr "只检查仓库中最新的软件包"
 msgid "Check closure for this package only"
 msgstr "仅为该软件包检查依赖闭合性"
 
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "转储已安装的 RPM 软件包信息至文件"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "不要尝试转储仓库内容。"
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "可选的转储文件名称"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "输出文件写入至：%s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "恢复调试用转储文件中的软件包记录"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "输出将要在标准输出运行的命令。"
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "安装被记录的软件包中的最新版本。"
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr "忽略架构并安装当前丢失但匹配名称、世代、版本和发行版的软件包。"
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "限制到指定类型"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "转储文件名称"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "软件包 %s 不可用。"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "损坏的 dnf 调试文件：%s"
+
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
@@ -600,6 +600,10 @@ msgstr "正在删除版本锁："
 msgid "No package found for:"
 msgstr "未找到软件包："
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "控制软件包版本锁"

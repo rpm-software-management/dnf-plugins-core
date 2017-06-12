@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
 "PO-Revision-Date: 2017-04-29 04:08-0400\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -146,61 +146,6 @@ msgstr "отримати усі пакунки із віддаленого сх�
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "місце, де слід зберігати отримані сховища"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "створити дамп даних щодо встановлених пакунків rpm у файлі"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "не намагатися створити дамп вмісту сховища."
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "необов’язкова назва файла дампу"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Результат записано до %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "відновити пакунки, записані до файла debug-dump"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "вивести команди, які буде віддано, до stdout."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Встановити найсвіжішу версію записаних пакунків."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Ігнорувати архітектуру і встановити усі пакунки, яких не вистачає, за "
-"відповідністю назви, епохи, версії та випуску."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "обмежитися вказаним типом"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "назва файла дампу"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Пакунок %s недоступний"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Помилковий файл діагностики dnf: %s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -589,6 +534,61 @@ msgstr "Перевірити лише найновіші пакунки у сх�
 msgid "Check closure for this package only"
 msgstr "Перевірити замкненість лише для цього пакунка"
 
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "створити дамп даних щодо встановлених пакунків rpm у файлі"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "не намагатися створити дамп вмісту сховища."
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "необов’язкова назва файла дампу"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Результат записано до %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "відновити пакунки, записані до файла debug-dump"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "вивести команди, які буде віддано, до stdout."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Встановити найсвіжішу версію записаних пакунків."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Ігнорувати архітектуру і встановити усі пакунки, яких не вистачає, за "
+"відповідністю назви, епохи, версії та випуску."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "обмежитися вказаним типом"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "назва файла дампу"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Пакунок %s недоступний"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Помилковий файл діагностики dnf: %s"
+
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
@@ -614,6 +614,10 @@ msgstr "Вилучаємо блокування версії для:"
 msgid "No package found for:"
 msgstr "Не знайдено пакунка для:"
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "керування блокуванням версій пакунків"

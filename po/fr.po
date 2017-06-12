@@ -2,13 +2,14 @@
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2016. #zanata
 # Edouard Duliege <edouard.duliege@gmail.com>, 2017. #zanata
 # Emmanuel Nedelec <nednet@wanadoo.fr>, 2017. #zanata
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2017. #zanata
 # José Fournier <jaaf64@zoraldia.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
-"PO-Revision-Date: 2017-04-20 02:43-0400\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
+"PO-Revision-Date: 2017-05-02 05:52-0400\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -149,63 +150,6 @@ msgstr "télécharge tous les paquets depuis le dépôt distant"
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "là où stocker les dépôts téléchargés"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "déverse les informations des paquets rpm installés dans le fichier "
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "ne tente pas de déverser les contenus du dépôt"
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "nom optionnel du fichier de déversement"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Sortie écrite dans : %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
-"restaure les paquets enregistrés dans le fichier de déversement de débuggage"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
-"liste les commandes qui devraient être exécutées vers la sortie standard."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Installer la dernière version des paquets enregistrés."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Ignorer l’architecture et installe les paquets manquants correspondant aux "
-"nom, époque, version et révision."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "limiter au type spécifié"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "nom du fichier de l’instantané"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Le paquet %s n’est pas disponible"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Erreur du fichier debug : %s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -574,7 +518,7 @@ msgstr "Affiche une liste de dépendances non résolues pour les dépôts"
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
+msgstr "Repoclosure a terminé avec des dépendances non-résolues"
 
 #: ../plugins/repoclosure.py:116
 msgid "check packages of the given archs, can be specified multiple times"
@@ -593,6 +537,63 @@ msgstr "Vérifier uniquement les paquets les plus récents dans les dépôts"
 #: ../plugins/repoclosure.py:124
 msgid "Check closure for this package only"
 msgstr "Vérifie la connexité pour ce paquet seulement"
+
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "déverse les informations des paquets rpm installés dans le fichier "
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "ne tente pas de déverser les contenus du dépôt"
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "nom optionnel du fichier de déversement"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Sortie écrite dans : %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr ""
+"restaure les paquets enregistrés dans le fichier de déversement de débuggage"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr ""
+"liste les commandes qui devraient être exécutées vers la sortie standard."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Installer la dernière version des paquets enregistrés."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Ignorer l’architecture et installe les paquets manquants correspondant aux "
+"nom, époque, version et révision."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "limiter au type spécifié"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "nom du fichier de l’instantané"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Le paquet %s n’est pas disponible"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Erreur du fichier debug : %s"
 
 #: ../plugins/versionlock.py:32
 #, python-format
@@ -619,6 +620,10 @@ msgstr "Déverrouille la version de :"
 msgid "No package found for:"
 msgstr "Aucun paquet trouvé pour :"
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "contrôle le verrouillage de version des paquets"

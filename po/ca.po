@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
 "PO-Revision-Date: 2017-04-12 03:53-0400\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan\n"
@@ -148,61 +148,6 @@ msgstr "baixa tots els paquets del dipòsit remot"
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "on emmagatzemar els dipòsits que s'han baixat"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "bolca al fitxer la informació quant als paquets rpm instal·lats"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "no provis de bolcar el contingut dels dipòsits."
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "nom opcional del fitxer del blocat"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "La sortida es va escriure a: %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "restaura els paquets registrats al fitxer de depuració de bolcat"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "imprimeix les ordres que s'executen per la sortida estàndard."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Instal·la l'última versió dels paquets registrats."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"No facis cas de l'arquitectura i instal·la els paquets que facin falta que "
-"coincideixin amb el nom, l'època, la versió i el llançament."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "limita-ho al tipus especificat"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "nom del fitxer del blocat"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "El paquet %s no està disponible"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Fitxer incorrecte de depuració dnf: %s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -592,6 +537,61 @@ msgstr "Comprova únicament els paquets més nous als dipòsits"
 msgid "Check closure for this package only"
 msgstr "Comprova la conclusió per tan sols aquest paquet"
 
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "bolca al fitxer la informació quant als paquets rpm instal·lats"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "no provis de bolcar el contingut dels dipòsits."
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "nom opcional del fitxer del blocat"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "La sortida es va escriure a: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "restaura els paquets registrats al fitxer de depuració de bolcat"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "imprimeix les ordres que s'executen per la sortida estàndard."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Instal·la l'última versió dels paquets registrats."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"No facis cas de l'arquitectura i instal·la els paquets que facin falta que "
+"coincideixin amb el nom, l'època, la versió i el llançament."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "limita-ho al tipus especificat"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "nom del fitxer del blocat"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "El paquet %s no està disponible"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Fitxer incorrecte de depuració dnf: %s"
+
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
@@ -617,6 +617,10 @@ msgstr "S'elimina el bloqueig de versió per:"
 msgid "No package found for:"
 msgstr "No s'ha trobat el paquet de:"
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "control del bloqueig de versió del paquet"

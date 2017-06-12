@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
 "PO-Revision-Date: 2017-04-13 11:35-0400\n"
 "Last-Translator: Florian H. <postfuerflo@gmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -152,61 +152,6 @@ msgstr "Alle Pakete aus der fernen Paketquelle herunterladen"
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "Speicherort für Paketquellen zum Herunterladen"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "Informationen über installiertes RPM in einer Datei speichern"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "Nicht versuchen, den Paketquellen-Inhalt zu speichern"
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "Optionaler Name der dump-Datei"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Ausgabe wurde geschrieben nach: %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "In der Debug-Speicherdatei aufgezeichnete Pakete wiederherstellen"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "Auszuführende Befehle in die Standardausgabe leiten"
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Die neueste Version der gespeicherten Pakete installieren"
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Architektur ignorieren und fehlende Pakete anhand Name, Epoche, Version und "
-"Release installieren"
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "Auf angegebenen Typ begrenzen"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "Name der Speicherdatei"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Paket %s ist nicht verfügbar"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Fehlerhafte dnf-Debug-Datei: %s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -597,6 +542,61 @@ msgstr ""
 msgid "Check closure for this package only"
 msgstr "Unaufgelöste Abhängigkeiten nur für dieses Paket prüfen"
 
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "Informationen über installiertes RPM in einer Datei speichern"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "Nicht versuchen, den Paketquellen-Inhalt zu speichern"
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "Optionaler Name der dump-Datei"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Ausgabe wurde geschrieben nach: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "In der Debug-Speicherdatei aufgezeichnete Pakete wiederherstellen"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "Auszuführende Befehle in die Standardausgabe leiten"
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Die neueste Version der gespeicherten Pakete installieren"
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Architektur ignorieren und fehlende Pakete anhand Name, Epoche, Version und "
+"Release installieren"
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "Auf angegebenen Typ begrenzen"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "Name der Speicherdatei"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Paket %s ist nicht verfügbar"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Fehlerhafte dnf-Debug-Datei: %s"
+
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
@@ -622,6 +622,10 @@ msgstr "Versionssperre wird gelöscht für:"
 msgid "No package found for:"
 msgstr "Kein Paket gefunden für:"
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "Sperrungen für Paketversionen steuern"

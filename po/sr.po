@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
 "PO-Revision-Date: 2015-06-23 11:46-0400\n"
 "Last-Translator: Momcilo Medic <medicmomcilo@gmail.com>\n"
 "Language-Team: Serbian\n"
@@ -143,59 +143,6 @@ msgstr "преузми све пакете из удаљене ризнице"
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "где да се чувају преузете ризнице"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr ""
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr ""
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr ""
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr ""
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr ""
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr ""
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr ""
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr ""
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -557,6 +504,59 @@ msgstr ""
 msgid "Check closure for this package only"
 msgstr ""
 
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr ""
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr ""
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr ""
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr ""
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr ""
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr ""
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr ""
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr ""
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr ""
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr ""
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr ""
+
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
@@ -582,6 +582,10 @@ msgstr ""
 msgid "No package found for:"
 msgstr ""
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr ""

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:34+0200\n"
+"POT-Creation-Date: 2017-06-12 15:03+0200\n"
 "PO-Revision-Date: 2017-04-15 03:11-0400\n"
 "Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -145,61 +145,6 @@ msgstr "загрузить все пакеты из удаленного реп�
 #: ../plugins/reposync.py:45
 msgid "where to store downloaded repositories "
 msgstr "где хранить загруженные репозитории"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "вывести информацию об установленных rpm-пакетах в файл"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "не пытаться выгрузить содержимое репозитория."
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "дополнительно имя файла для выгрузки"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Вывод записан в: %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "восстановить пакеты, записанные в файл debug-dump"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "вывести в stdout команды, которые будут запущены."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Установить последнюю версию записанных пакетов."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Игнорировать архитектуру и установить недостающие пакеты по имени, времени, "
-"версии и выпуску."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "ограничить указанным типом"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "имя файла для выгрузки"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Пакета %s нет"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Плохой отладочный файл dnf: %s"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -584,6 +529,61 @@ msgstr "Проверять только самые новые пакеты в р
 msgid "Check closure for this package only"
 msgstr "Проверить завершение только для этого пакета"
 
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "вывести информацию об установленных rpm-пакетах в файл"
+
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "не пытаться выгрузить содержимое репозитория."
+
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "дополнительно имя файла для выгрузки"
+
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Вывод записан в: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "восстановить пакеты, записанные в файл debug-dump"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "вывести в stdout команды, которые будут запущены."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Установить последнюю версию записанных пакетов."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Игнорировать архитектуру и установить недостающие пакеты по имени, времени, "
+"версии и выпуску."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "ограничить указанным типом"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "имя файла для выгрузки"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Пакета %s нет"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Плохой отладочный файл dnf: %s"
+
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
@@ -609,6 +609,10 @@ msgstr "Удаление блокирования версии для:"
 msgid "No package found for:"
 msgstr "Нет пакетов для:"
 
-#: ../plugins/versionlock.py:94
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "управление блокированием версии пакетов"
