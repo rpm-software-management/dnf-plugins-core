@@ -37,11 +37,6 @@ PLUGIN_CONF = 'copr'
 YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
-# compatibility with Py2 and Py3 - rename raw_input() to input() on Py2
-try:
-    input = raw_input
-except NameError:
-    pass
 if PY3:
     from configparser import ConfigParser
 else:
@@ -150,7 +145,7 @@ class CoprCommand(dnf.cli.Command):
                         .format(self.base.conf.get_reposdir, copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
-            self._ask_user("""
+            msg = _("""
 You are about to enable a Copr repository. Please note that this
 repository is not part of the main distribution, and quality may vary.
 
@@ -162,7 +157,8 @@ and packages are not held to any quality or security level.
 Please do not file bug reports about these packages in Fedora
 Bugzilla. In case of problems, contact the owner of this repository.
 
-Do you want to continue? [y/N]: """)
+Do you want to continue?""")
+            self._ask_user(msg)
             self._download_repo(project_name, repo_filename, chroot)
             logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
@@ -229,20 +225,11 @@ Do you want to continue? [y/N]: """)
         formatted = self.base.output.fmtSection(text)
         print(formatted)
 
-    def _ask_user(self, question):
-        if self.base.conf.assumeyes and not self.base.conf.assumeno:
-            return
-        elif self.base.conf.assumeno and not self.base.conf.assumeyes:
-            raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
-
-        answer = None
-        while not ((answer in YES) or (answer in NO)):
-            answer = ucd(input(question)).lower()
-            answer = _(answer)
-        if answer in YES:
-            return
-        else:
-            raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
+    def _ask_user(self, msg):
+        if self.base._promptWanted():
+            if self.base.conf.assumeno or not self.base.output.userconfirm(
+                    msg='{} [y/N]: '.format(msg), defaultyes_msg='{} [Y/n]: '.format(msg)):
+                raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
 
     @classmethod
     def _need_root(cls):
@@ -365,10 +352,11 @@ class PlaygroundCommand(CoprCommand):
 
     def _cmd_enable(self, chroot):
         self._need_root()
-        self._ask_user("""
+        msg = _("""
 You are about to enable a Playground repository.
 
-Do you want to continue? [y/N]: """)
+Do you want to continue?""")
+        self._ask_user(msg)
         api_url = "{0}/api/playground/list/".format(
             self.copr_url)
         f = self.base.urlopen(api_url, mode="w+")
