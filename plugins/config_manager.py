@@ -156,6 +156,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                     os.chmod(destname, 0o644)
                     f.close()
                 except IOError as e:
+                    self.cli.demands.success_exit_status = 1
                     logger.error(e)
                     continue
             else:
