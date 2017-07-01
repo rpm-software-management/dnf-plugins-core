@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 15:03+0200\n"
-"PO-Revision-Date: 2017-04-28 07:36-0400\n"
+"POT-Creation-Date: 2017-07-01 14:04+0200\n"
+"PO-Revision-Date: 2017-06-12 03:32-0400\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -132,10 +132,6 @@ msgstr "Dodawanie repozytorium z: %s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Nie można zapisać repozytorium do pliku %s: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "instaluje pakiety debuginfo"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
@@ -294,165 +290,6 @@ msgstr "Ścieżka do katalogu"
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Nowe pozostałości:"
-
-#: ../plugins/copr.py:37
-msgid "yes"
-msgstr "tak"
-
-#: ../plugins/copr.py:37
-msgid "y"
-msgstr "t"
-
-#: ../plugins/copr.py:38
-msgid "no"
-msgstr "nie"
-
-#: ../plugins/copr.py:38
-msgid "n"
-msgstr "n"
-
-#: ../plugins/copr.py:58
-msgid "Interact with Copr repositories."
-msgstr "używa repozytoriów copr"
-
-#: ../plugins/copr.py:59
-msgid ""
-"\n"
-"  enable name/project [chroot]\n"
-"  disable name/project\n"
-"  remove name/project\n"
-"  list name\n"
-"  search project\n"
-"\n"
-"  Examples:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-msgstr ""
-"\n"
-"  enable nazwa/projekt [chroot]\n"
-"  disable nazwa/projekt\n"
-"  remove nazwa/projekt\n"
-"  list nazwa\n"
-"  search projekt\n"
-"\n"
-"  Przykłady:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-
-#: ../plugins/copr.py:91
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Ostrzeżenie: używany jest niestandardowy adres URL copr „{}”."
-
-#: ../plugins/copr.py:120 ../plugins/copr.py:144
-msgid "Error: "
-msgstr "Błąd: "
-
-#: ../plugins/copr.py:121 ../plugins/copr.py:125
-msgid "exactly two additional parameters to copr command are required"
-msgstr "wymagane są dokładnie dwa dodatkowe parametry dla polecenia copr"
-
-#: ../plugins/copr.py:145
-msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr ""
-"należy użyć formatu „copr_nazwaużytkownika/copr_nazwaprojektu”, aby odnieść "
-"się do projektu copr"
-
-#: ../plugins/copr.py:147
-msgid "bad copr project format"
-msgstr "błędny format projektu copr"
-
-#: ../plugins/copr.py:167
-msgid "Repository successfully enabled."
-msgstr "Pomyślnie włączono repozytorium."
-
-#: ../plugins/copr.py:171
-msgid "Repository successfully disabled."
-msgstr "Pomyślnie wyłączono repozytorium."
-
-#: ../plugins/copr.py:175
-msgid "Repository successfully removed."
-msgstr "Pomyślnie usunięto repozytorium."
-
-#: ../plugins/copr.py:179 ../plugins/copr.py:423
-msgid "Unknown subcommand {}."
-msgstr "Nieznane podpolecenie {}."
-
-#: ../plugins/copr.py:189
-msgid "Can't parse repositories for username '{}'."
-msgstr "Nie można przetworzyć repozytoriów dla nazwy użytkownika „{}”."
-
-#: ../plugins/copr.py:192
-msgid "List of {} coprs"
-msgstr "Lista repozytoriów copr {}"
-
-#: ../plugins/copr.py:200
-msgid "No description given"
-msgstr "Nie podano opisu"
-
-#: ../plugins/copr.py:212
-msgid "Can't parse search for '{}'."
-msgstr "Nie można przetworzyć wyszukiwania dla „{}”."
-
-#: ../plugins/copr.py:215
-msgid "Matched: {}"
-msgstr "Pasujące: {}"
-
-#: ../plugins/copr.py:223
-msgid "No description given."
-msgstr "Nie podano opisu."
-
-#: ../plugins/copr.py:236 ../plugins/copr.py:245
-msgid "Safe and good answer. Exiting."
-msgstr "Bezpieczna i dobra odpowiedź. Kończenie działania."
-
-#: ../plugins/copr.py:252
-msgid "This command has to be run under the root user."
-msgstr "To polecenie może być wykonywane tylko przez użytkownika root."
-
-#: ../plugins/copr.py:304
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
-msgstr ""
-"To repozytorium nie posiada jeszcze żadnych pakietów, więc nie można go "
-"teraz włączyć."
-
-#: ../plugins/copr.py:307
-msgid "Such repository does not exist."
-msgstr "Repozytorium nie istnieje."
-
-#: ../plugins/copr.py:328
-msgid "Failed to disable copr repo {}/{}"
-msgstr "Wyłączenie repozytorium copr {}/{} się nie powiodło"
-
-#: ../plugins/copr.py:341 ../plugins/copr.py:378
-msgid "Unknown response from server."
-msgstr "Nieznana odpowiedź serwera."
-
-#: ../plugins/copr.py:363
-msgid "Interact with Playground repository."
-msgstr "używa repozytorium Playground"
-
-#: ../plugins/copr.py:413
-msgid "Playground repositories successfully enabled."
-msgstr "Pomyślnie włączono repozytoria Playground."
-
-#: ../plugins/copr.py:416
-msgid "Playground repositories successfully disabled."
-msgstr "Pomyślnie wyłączono repozytoria Playground."
-
-#: ../plugins/copr.py:420
-msgid "Playground repositories successfully updated."
-msgstr "Pomyślnie zaktualizowano repozytoria Playground."
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
@@ -625,8 +462,196 @@ msgstr "Nie odnaleziono pakietu dla:"
 
 #: ../plugins/versionlock.py:38
 msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
+msgstr "Wykluczenia z wtyczki blokady wersji nie zostały zastosowane"
 
 #: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "kontroluje blokady wersji pakietów"
+
+#: ../plugins/copr.py:37
+msgid "yes"
+msgstr "tak"
+
+#: ../plugins/copr.py:37
+msgid "y"
+msgstr "t"
+
+#: ../plugins/copr.py:38
+msgid "no"
+msgstr "nie"
+
+#: ../plugins/copr.py:38
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:53
+msgid "Interact with Copr repositories."
+msgstr "używa repozytoriów copr"
+
+#: ../plugins/copr.py:54
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list name\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+"\n"
+"  enable nazwa/projekt [chroot]\n"
+"  disable nazwa/projekt\n"
+"  remove nazwa/projekt\n"
+"  list nazwa\n"
+"  search projekt\n"
+"\n"
+"  Przykłady:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+
+#: ../plugins/copr.py:86
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr "Ostrzeżenie: używany jest niestandardowy adres URL copr „{}”."
+
+#: ../plugins/copr.py:115 ../plugins/copr.py:139
+msgid "Error: "
+msgstr "Błąd: "
+
+#: ../plugins/copr.py:116 ../plugins/copr.py:120
+msgid "exactly two additional parameters to copr command are required"
+msgstr "wymagane są dokładnie dwa dodatkowe parametry dla polecenia copr"
+
+#: ../plugins/copr.py:140
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr ""
+"należy użyć formatu „copr_nazwaużytkownika/copr_nazwaprojektu”, aby odnieść "
+"się do projektu copr"
+
+#: ../plugins/copr.py:142
+msgid "bad copr project format"
+msgstr "błędny format projektu copr"
+
+#: ../plugins/copr.py:148
+msgid ""
+"\n"
+"You are about to enable a Copr repository. Please note that this\n"
+"repository is not part of the main distribution, and quality may vary.\n"
+"\n"
+"The Fedora Project does not exercise any power over the contents of\n"
+"this repository beyond the rules outlined in the Copr FAQ at\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"and packages are not held to any quality or security level.\n"
+"\n"
+"Please do not file bug reports about these packages in Fedora\n"
+"Bugzilla. In case of problems, contact the owner of this repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:163
+msgid "Repository successfully enabled."
+msgstr "Pomyślnie włączono repozytorium."
+
+#: ../plugins/copr.py:167
+msgid "Repository successfully disabled."
+msgstr "Pomyślnie wyłączono repozytorium."
+
+#: ../plugins/copr.py:171
+msgid "Repository successfully removed."
+msgstr "Pomyślnie usunięto repozytorium."
+
+#: ../plugins/copr.py:175 ../plugins/copr.py:411
+msgid "Unknown subcommand {}."
+msgstr "Nieznane podpolecenie {}."
+
+#: ../plugins/copr.py:185
+msgid "Can't parse repositories for username '{}'."
+msgstr "Nie można przetworzyć repozytoriów dla nazwy użytkownika „{}”."
+
+#: ../plugins/copr.py:188
+msgid "List of {} coprs"
+msgstr "Lista repozytoriów copr {}"
+
+#: ../plugins/copr.py:196
+msgid "No description given"
+msgstr "Nie podano opisu"
+
+#: ../plugins/copr.py:208
+msgid "Can't parse search for '{}'."
+msgstr "Nie można przetworzyć wyszukiwania dla „{}”."
+
+#: ../plugins/copr.py:211
+msgid "Matched: {}"
+msgstr "Pasujące: {}"
+
+#: ../plugins/copr.py:219
+msgid "No description given."
+msgstr "Nie podano opisu."
+
+#: ../plugins/copr.py:232
+msgid "Safe and good answer. Exiting."
+msgstr "Bezpieczna i dobra odpowiedź. Kończenie działania."
+
+#: ../plugins/copr.py:239
+msgid "This command has to be run under the root user."
+msgstr "To polecenie może być wykonywane tylko przez użytkownika root."
+
+#: ../plugins/copr.py:291
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr ""
+"To repozytorium nie posiada jeszcze żadnych pakietów, więc nie można go "
+"teraz włączyć."
+
+#: ../plugins/copr.py:294
+msgid "Such repository does not exist."
+msgstr "Repozytorium nie istnieje."
+
+#: ../plugins/copr.py:315
+msgid "Failed to disable copr repo {}/{}"
+msgstr "Wyłączenie repozytorium copr {}/{} się nie powiodło"
+
+#: ../plugins/copr.py:328 ../plugins/copr.py:366
+msgid "Unknown response from server."
+msgstr "Nieznana odpowiedź serwera."
+
+#: ../plugins/copr.py:350
+msgid "Interact with Playground repository."
+msgstr "używa repozytorium Playground"
+
+#: ../plugins/copr.py:355
+msgid ""
+"\n"
+"You are about to enable a Playground repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:401
+msgid "Playground repositories successfully enabled."
+msgstr "Pomyślnie włączono repozytoria Playground."
+
+#: ../plugins/copr.py:404
+msgid "Playground repositories successfully disabled."
+msgstr "Pomyślnie wyłączono repozytoria Playground."
+
+#: ../plugins/copr.py:408
+msgid "Playground repositories successfully updated."
+msgstr "Pomyślnie zaktualizowano repozytoria Playground."
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "instaluje pakiety debuginfo"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 15:03+0200\n"
+"POT-Creation-Date: 2017-07-01 14:04+0200\n"
 "PO-Revision-Date: 2017-04-12 03:53-0400\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan\n"
@@ -128,10 +128,6 @@ msgstr "Afegiment del dipòsit: %s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "No es pot desar el dipòsit al repofile %s: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "instal·la els paquets debuginfo"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
@@ -287,166 +283,6 @@ msgstr "Camí al directori"
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Nous abandonaments:"
-
-#: ../plugins/copr.py:37
-msgid "yes"
-msgstr "sí"
-
-#: ../plugins/copr.py:37
-msgid "y"
-msgstr "s"
-
-#: ../plugins/copr.py:38
-msgid "no"
-msgstr "no"
-
-#: ../plugins/copr.py:38
-msgid "n"
-msgstr "n"
-
-#: ../plugins/copr.py:58
-msgid "Interact with Copr repositories."
-msgstr "Interactua amb els dipòsits Copr."
-
-#: ../plugins/copr.py:59
-msgid ""
-"\n"
-"  enable name/project [chroot]\n"
-"  disable name/project\n"
-"  remove name/project\n"
-"  list name\n"
-"  search project\n"
-"\n"
-"  Examples:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-msgstr ""
-"\n"
-"  enable nom/projecte [chroot]\n"
-"  disable nom/projecte\n"
-"  remove nom/projecte\n"
-"  list nom\n"
-"  search projecte\n"
-"\n"
-"  Exemples:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-
-#: ../plugins/copr.py:91
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Advertència: estem utilitzant l'URL de Copr no estàndard '{}'."
-
-#: ../plugins/copr.py:120 ../plugins/copr.py:144
-msgid "Error: "
-msgstr "Error: "
-
-#: ../plugins/copr.py:121 ../plugins/copr.py:125
-msgid "exactly two additional parameters to copr command are required"
-msgstr "l'ordre copr requereix dos paràmetres addicionals"
-
-#: ../plugins/copr.py:145
-msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr ""
-"utilitzeu el format `usuari_copr/projecte_copr` per referenciar el projecte "
-"copr"
-
-#: ../plugins/copr.py:147
-msgid "bad copr project format"
-msgstr "format dolent de projecte copr"
-
-#: ../plugins/copr.py:167
-msgid "Repository successfully enabled."
-msgstr "S'ha habilitat correctament el dipòsit."
-
-#: ../plugins/copr.py:171
-msgid "Repository successfully disabled."
-msgstr "S'ha inhabilitat correctament el dipòsit."
-
-#: ../plugins/copr.py:175
-msgid "Repository successfully removed."
-msgstr "S'ha eliminat correctament el dipòsit."
-
-#: ../plugins/copr.py:179 ../plugins/copr.py:423
-msgid "Unknown subcommand {}."
-msgstr "Subordre desconeguda {}."
-
-#: ../plugins/copr.py:189
-msgid "Can't parse repositories for username '{}'."
-msgstr ""
-"No es poden analitzar sintàcticament els dipòsits per a l'usuari '{}'."
-
-#: ../plugins/copr.py:192
-msgid "List of {} coprs"
-msgstr "Llista dels copr {}"
-
-#: ../plugins/copr.py:200
-msgid "No description given"
-msgstr "No s'ha proporcionat cap descripció"
-
-#: ../plugins/copr.py:212
-msgid "Can't parse search for '{}'."
-msgstr "No es pot analitzar sintàcticament la cerca '{}'."
-
-#: ../plugins/copr.py:215
-msgid "Matched: {}"
-msgstr "Coincidència: {}"
-
-#: ../plugins/copr.py:223
-msgid "No description given."
-msgstr "No s'ha proporcionat cap descripció."
-
-#: ../plugins/copr.py:236 ../plugins/copr.py:245
-msgid "Safe and good answer. Exiting."
-msgstr "Resposta bona i segura. Se surt."
-
-#: ../plugins/copr.py:252
-msgid "This command has to be run under the root user."
-msgstr "Aquesta ordre s'ha d'executar com a root."
-
-#: ../plugins/copr.py:304
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
-msgstr ""
-"Aquest dipòsit encara no té cap construcció, per aquest motiu no el podeu "
-"habilitar ara."
-
-#: ../plugins/copr.py:307
-msgid "Such repository does not exist."
-msgstr "No existeix aquest dipòsit."
-
-#: ../plugins/copr.py:328
-msgid "Failed to disable copr repo {}/{}"
-msgstr "No s'ha pogut inhabilitar el dipòsit copr {}/{}"
-
-#: ../plugins/copr.py:341 ../plugins/copr.py:378
-msgid "Unknown response from server."
-msgstr "Resposta desconeguda del servidor."
-
-#: ../plugins/copr.py:363
-msgid "Interact with Playground repository."
-msgstr "Interactua amb el dipòsit Playground."
-
-#: ../plugins/copr.py:413
-msgid "Playground repositories successfully enabled."
-msgstr "S'han habilitat correctament els dipòsits Playground."
-
-#: ../plugins/copr.py:416
-msgid "Playground repositories successfully disabled."
-msgstr "S'han inhabilitat correctament els dipòsits Playground."
-
-#: ../plugins/copr.py:420
-msgid "Playground repositories successfully updated."
-msgstr "S'han actualitzat correctament els dipòsits Playground."
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
@@ -624,3 +460,192 @@ msgstr ""
 #: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "control del bloqueig de versió del paquet"
+
+#: ../plugins/copr.py:37
+msgid "yes"
+msgstr "sí"
+
+#: ../plugins/copr.py:37
+msgid "y"
+msgstr "s"
+
+#: ../plugins/copr.py:38
+msgid "no"
+msgstr "no"
+
+#: ../plugins/copr.py:38
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:53
+msgid "Interact with Copr repositories."
+msgstr "Interactua amb els dipòsits Copr."
+
+#: ../plugins/copr.py:54
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list name\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+"\n"
+"  enable nom/projecte [chroot]\n"
+"  disable nom/projecte\n"
+"  remove nom/projecte\n"
+"  list nom\n"
+"  search projecte\n"
+"\n"
+"  Exemples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+
+#: ../plugins/copr.py:86
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr "Advertència: estem utilitzant l'URL de Copr no estàndard '{}'."
+
+#: ../plugins/copr.py:115 ../plugins/copr.py:139
+msgid "Error: "
+msgstr "Error: "
+
+#: ../plugins/copr.py:116 ../plugins/copr.py:120
+msgid "exactly two additional parameters to copr command are required"
+msgstr "l'ordre copr requereix dos paràmetres addicionals"
+
+#: ../plugins/copr.py:140
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr ""
+"utilitzeu el format `usuari_copr/projecte_copr` per referenciar el projecte "
+"copr"
+
+#: ../plugins/copr.py:142
+msgid "bad copr project format"
+msgstr "format dolent de projecte copr"
+
+#: ../plugins/copr.py:148
+msgid ""
+"\n"
+"You are about to enable a Copr repository. Please note that this\n"
+"repository is not part of the main distribution, and quality may vary.\n"
+"\n"
+"The Fedora Project does not exercise any power over the contents of\n"
+"this repository beyond the rules outlined in the Copr FAQ at\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"and packages are not held to any quality or security level.\n"
+"\n"
+"Please do not file bug reports about these packages in Fedora\n"
+"Bugzilla. In case of problems, contact the owner of this repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:163
+msgid "Repository successfully enabled."
+msgstr "S'ha habilitat correctament el dipòsit."
+
+#: ../plugins/copr.py:167
+msgid "Repository successfully disabled."
+msgstr "S'ha inhabilitat correctament el dipòsit."
+
+#: ../plugins/copr.py:171
+msgid "Repository successfully removed."
+msgstr "S'ha eliminat correctament el dipòsit."
+
+#: ../plugins/copr.py:175 ../plugins/copr.py:411
+msgid "Unknown subcommand {}."
+msgstr "Subordre desconeguda {}."
+
+#: ../plugins/copr.py:185
+msgid "Can't parse repositories for username '{}'."
+msgstr ""
+"No es poden analitzar sintàcticament els dipòsits per a l'usuari '{}'."
+
+#: ../plugins/copr.py:188
+msgid "List of {} coprs"
+msgstr "Llista dels copr {}"
+
+#: ../plugins/copr.py:196
+msgid "No description given"
+msgstr "No s'ha proporcionat cap descripció"
+
+#: ../plugins/copr.py:208
+msgid "Can't parse search for '{}'."
+msgstr "No es pot analitzar sintàcticament la cerca '{}'."
+
+#: ../plugins/copr.py:211
+msgid "Matched: {}"
+msgstr "Coincidència: {}"
+
+#: ../plugins/copr.py:219
+msgid "No description given."
+msgstr "No s'ha proporcionat cap descripció."
+
+#: ../plugins/copr.py:232
+msgid "Safe and good answer. Exiting."
+msgstr "Resposta bona i segura. Se surt."
+
+#: ../plugins/copr.py:239
+msgid "This command has to be run under the root user."
+msgstr "Aquesta ordre s'ha d'executar com a root."
+
+#: ../plugins/copr.py:291
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr ""
+"Aquest dipòsit encara no té cap construcció, per aquest motiu no el podeu "
+"habilitar ara."
+
+#: ../plugins/copr.py:294
+msgid "Such repository does not exist."
+msgstr "No existeix aquest dipòsit."
+
+#: ../plugins/copr.py:315
+msgid "Failed to disable copr repo {}/{}"
+msgstr "No s'ha pogut inhabilitar el dipòsit copr {}/{}"
+
+#: ../plugins/copr.py:328 ../plugins/copr.py:366
+msgid "Unknown response from server."
+msgstr "Resposta desconeguda del servidor."
+
+#: ../plugins/copr.py:350
+msgid "Interact with Playground repository."
+msgstr "Interactua amb el dipòsit Playground."
+
+#: ../plugins/copr.py:355
+msgid ""
+"\n"
+"You are about to enable a Playground repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:401
+msgid "Playground repositories successfully enabled."
+msgstr "S'han habilitat correctament els dipòsits Playground."
+
+#: ../plugins/copr.py:404
+msgid "Playground repositories successfully disabled."
+msgstr "S'han inhabilitat correctament els dipòsits Playground."
+
+#: ../plugins/copr.py:408
+msgid "Playground repositories successfully updated."
+msgstr "S'han actualitzat correctament els dipòsits Playground."
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "instal·la els paquets debuginfo"

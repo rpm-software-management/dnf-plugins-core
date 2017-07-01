@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 15:03+0200\n"
+"POT-Creation-Date: 2017-07-01 14:04+0200\n"
 "PO-Revision-Date: 2017-04-11 10:03-0400\n"
 "Last-Translator: Jerry Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -126,10 +126,6 @@ msgstr "添加仓库自：%s"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "无法保存仓库至仓库文件 %s：%s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "安装调试信息软件包"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
@@ -282,161 +278,6 @@ msgstr "指向目录的路径"
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "新增保留项："
-
-#: ../plugins/copr.py:37
-msgid "yes"
-msgstr "确定"
-
-#: ../plugins/copr.py:37
-msgid "y"
-msgstr "y"
-
-#: ../plugins/copr.py:38
-msgid "no"
-msgstr "取消"
-
-#: ../plugins/copr.py:38
-msgid "n"
-msgstr "n"
-
-#: ../plugins/copr.py:58
-msgid "Interact with Copr repositories."
-msgstr "与 Copr 仓库交互"
-
-#: ../plugins/copr.py:59
-msgid ""
-"\n"
-"  enable name/project [chroot]\n"
-"  disable name/project\n"
-"  remove name/project\n"
-"  list name\n"
-"  search project\n"
-"\n"
-"  Examples:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-msgstr ""
-"\n"
-"  enable 名称/项目 [chroot]\n"
-"  disable 名称/项目\n"
-"  remove 名称/项目\n"
-"  list 名称\n"
-"  search 项目\n"
-"\n"
-"  示例：\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-
-#: ../plugins/copr.py:91
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "警告：我们使用非标准的 Copr URL '{}'。"
-
-#: ../plugins/copr.py:120 ../plugins/copr.py:144
-msgid "Error: "
-msgstr "错误："
-
-#: ../plugins/copr.py:121 ../plugins/copr.py:125
-msgid "exactly two additional parameters to copr command are required"
-msgstr "Copr 命令要求有且仅有两个额外参数"
-
-#: ../plugins/copr.py:145
-msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr "使用格式 `copr_username/copr_projectname` 来引用 Copr 项目"
-
-#: ../plugins/copr.py:147
-msgid "bad copr project format"
-msgstr "错误的 Copr 项目格式"
-
-#: ../plugins/copr.py:167
-msgid "Repository successfully enabled."
-msgstr "启用软件仓库成功。"
-
-#: ../plugins/copr.py:171
-msgid "Repository successfully disabled."
-msgstr "禁用软件仓库成功。"
-
-#: ../plugins/copr.py:175
-msgid "Repository successfully removed."
-msgstr "软件仓库已成功删除。"
-
-#: ../plugins/copr.py:179 ../plugins/copr.py:423
-msgid "Unknown subcommand {}."
-msgstr "未知的子命令 {}。"
-
-#: ../plugins/copr.py:189
-msgid "Can't parse repositories for username '{}'."
-msgstr "无法为用户名 username '{}' 解析仓库。"
-
-#: ../plugins/copr.py:192
-msgid "List of {} coprs"
-msgstr "{} Coprs 列表"
-
-#: ../plugins/copr.py:200
-msgid "No description given"
-msgstr "没有给出描述"
-
-#: ../plugins/copr.py:212
-msgid "Can't parse search for '{}'."
-msgstr "无法解析针对 '{}' 的搜索。"
-
-#: ../plugins/copr.py:215
-msgid "Matched: {}"
-msgstr "匹配：{}"
-
-#: ../plugins/copr.py:223
-msgid "No description given."
-msgstr "没有给出描述。"
-
-#: ../plugins/copr.py:236 ../plugins/copr.py:245
-msgid "Safe and good answer. Exiting."
-msgstr "安全及明智的答案。退出。"
-
-#: ../plugins/copr.py:252
-msgid "This command has to be run under the root user."
-msgstr "该命令必须以 root 用户运行"
-
-#: ../plugins/copr.py:304
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
-msgstr "该仓库尚未包含任何构建所以您现在无法启用它。"
-
-#: ../plugins/copr.py:307
-msgid "Such repository does not exist."
-msgstr "该软件仓库不存在。"
-
-#: ../plugins/copr.py:328
-msgid "Failed to disable copr repo {}/{}"
-msgstr "无法禁用 Copr 软件仓库 {}/{}"
-
-#: ../plugins/copr.py:341 ../plugins/copr.py:378
-msgid "Unknown response from server."
-msgstr "来自服务器的未知响应。"
-
-#: ../plugins/copr.py:363
-msgid "Interact with Playground repository."
-msgstr "与 Playground 仓库交互。"
-
-#: ../plugins/copr.py:413
-msgid "Playground repositories successfully enabled."
-msgstr "启用 Playground 仓库成功。"
-
-#: ../plugins/copr.py:416
-msgid "Playground repositories successfully disabled."
-msgstr "禁用 Playground 仓库成功。"
-
-#: ../plugins/copr.py:420
-msgid "Playground repositories successfully updated."
-msgstr "更新 Playground 仓库成功。"
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
@@ -607,3 +448,187 @@ msgstr ""
 #: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "控制软件包版本锁"
+
+#: ../plugins/copr.py:37
+msgid "yes"
+msgstr "确定"
+
+#: ../plugins/copr.py:37
+msgid "y"
+msgstr "y"
+
+#: ../plugins/copr.py:38
+msgid "no"
+msgstr "取消"
+
+#: ../plugins/copr.py:38
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:53
+msgid "Interact with Copr repositories."
+msgstr "与 Copr 仓库交互"
+
+#: ../plugins/copr.py:54
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list name\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+"\n"
+"  enable 名称/项目 [chroot]\n"
+"  disable 名称/项目\n"
+"  remove 名称/项目\n"
+"  list 名称\n"
+"  search 项目\n"
+"\n"
+"  示例：\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+
+#: ../plugins/copr.py:86
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr "警告：我们使用非标准的 Copr URL '{}'。"
+
+#: ../plugins/copr.py:115 ../plugins/copr.py:139
+msgid "Error: "
+msgstr "错误："
+
+#: ../plugins/copr.py:116 ../plugins/copr.py:120
+msgid "exactly two additional parameters to copr command are required"
+msgstr "Copr 命令要求有且仅有两个额外参数"
+
+#: ../plugins/copr.py:140
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr "使用格式 `copr_username/copr_projectname` 来引用 Copr 项目"
+
+#: ../plugins/copr.py:142
+msgid "bad copr project format"
+msgstr "错误的 Copr 项目格式"
+
+#: ../plugins/copr.py:148
+msgid ""
+"\n"
+"You are about to enable a Copr repository. Please note that this\n"
+"repository is not part of the main distribution, and quality may vary.\n"
+"\n"
+"The Fedora Project does not exercise any power over the contents of\n"
+"this repository beyond the rules outlined in the Copr FAQ at\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"and packages are not held to any quality or security level.\n"
+"\n"
+"Please do not file bug reports about these packages in Fedora\n"
+"Bugzilla. In case of problems, contact the owner of this repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:163
+msgid "Repository successfully enabled."
+msgstr "启用软件仓库成功。"
+
+#: ../plugins/copr.py:167
+msgid "Repository successfully disabled."
+msgstr "禁用软件仓库成功。"
+
+#: ../plugins/copr.py:171
+msgid "Repository successfully removed."
+msgstr "软件仓库已成功删除。"
+
+#: ../plugins/copr.py:175 ../plugins/copr.py:411
+msgid "Unknown subcommand {}."
+msgstr "未知的子命令 {}。"
+
+#: ../plugins/copr.py:185
+msgid "Can't parse repositories for username '{}'."
+msgstr "无法为用户名 username '{}' 解析仓库。"
+
+#: ../plugins/copr.py:188
+msgid "List of {} coprs"
+msgstr "{} Coprs 列表"
+
+#: ../plugins/copr.py:196
+msgid "No description given"
+msgstr "没有给出描述"
+
+#: ../plugins/copr.py:208
+msgid "Can't parse search for '{}'."
+msgstr "无法解析针对 '{}' 的搜索。"
+
+#: ../plugins/copr.py:211
+msgid "Matched: {}"
+msgstr "匹配：{}"
+
+#: ../plugins/copr.py:219
+msgid "No description given."
+msgstr "没有给出描述。"
+
+#: ../plugins/copr.py:232
+msgid "Safe and good answer. Exiting."
+msgstr "安全及明智的答案。退出。"
+
+#: ../plugins/copr.py:239
+msgid "This command has to be run under the root user."
+msgstr "该命令必须以 root 用户运行"
+
+#: ../plugins/copr.py:291
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr "该仓库尚未包含任何构建所以您现在无法启用它。"
+
+#: ../plugins/copr.py:294
+msgid "Such repository does not exist."
+msgstr "该软件仓库不存在。"
+
+#: ../plugins/copr.py:315
+msgid "Failed to disable copr repo {}/{}"
+msgstr "无法禁用 Copr 软件仓库 {}/{}"
+
+#: ../plugins/copr.py:328 ../plugins/copr.py:366
+msgid "Unknown response from server."
+msgstr "来自服务器的未知响应。"
+
+#: ../plugins/copr.py:350
+msgid "Interact with Playground repository."
+msgstr "与 Playground 仓库交互。"
+
+#: ../plugins/copr.py:355
+msgid ""
+"\n"
+"You are about to enable a Playground repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:401
+msgid "Playground repositories successfully enabled."
+msgstr "启用 Playground 仓库成功。"
+
+#: ../plugins/copr.py:404
+msgid "Playground repositories successfully disabled."
+msgstr "禁用 Playground 仓库成功。"
+
+#: ../plugins/copr.py:408
+msgid "Playground repositories successfully updated."
+msgstr "更新 Playground 仓库成功。"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "安装调试信息软件包"

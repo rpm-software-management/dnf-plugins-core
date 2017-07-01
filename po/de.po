@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 15:03+0200\n"
+"POT-Creation-Date: 2017-07-01 14:04+0200\n"
 "PO-Revision-Date: 2017-04-13 11:35-0400\n"
 "Last-Translator: Florian H. <postfuerflo@gmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -132,10 +132,6 @@ msgstr "Paketquelle von %s wird hinzugefügt"
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Paketquelle konnte nicht in repo-Datei % gespeichert werden: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "Debuginfo-Pakete installieren"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
@@ -296,166 +292,6 @@ msgstr "Pfad zum Verzeichnis"
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Neue Leaf-Pakete:"
-
-#: ../plugins/copr.py:37
-msgid "yes"
-msgstr "ja"
-
-#: ../plugins/copr.py:37
-msgid "y"
-msgstr "j"
-
-#: ../plugins/copr.py:38
-msgid "no"
-msgstr "nein"
-
-#: ../plugins/copr.py:38
-msgid "n"
-msgstr "n"
-
-#: ../plugins/copr.py:58
-msgid "Interact with Copr repositories."
-msgstr "Interaktion mit Copr-Paketquellen"
-
-#: ../plugins/copr.py:59
-msgid ""
-"\n"
-"  enable name/project [chroot]\n"
-"  disable name/project\n"
-"  remove name/project\n"
-"  list name\n"
-"  search project\n"
-"\n"
-"  Examples:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-msgstr ""
-"\n"
-"  enable Name/Projekt [Chroot]\n"
-"  disable Name/Projekt\n"
-"  remove Name/Projekt\n"
-"  list Name\n"
-"  search Projekt\n"
-"\n"
-"  Beispiele:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-
-#: ../plugins/copr.py:91
-#, fuzzy
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Warnung: Eine nicht standardisierte COPR Adresse '{}' wird benuzt."
-
-#: ../plugins/copr.py:120 ../plugins/copr.py:144
-msgid "Error: "
-msgstr "Fehler: "
-
-#: ../plugins/copr.py:121 ../plugins/copr.py:125
-msgid "exactly two additional parameters to copr command are required"
-msgstr "Der copr-Befehl benötigt genau zwei zusätzliche Parameter."
-
-#: ../plugins/copr.py:145
-msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr ""
-"Benutzen Sie `copr_Benutzername/copr_Projektname` um auf ein copr Projekt zu"
-" verweisen."
-
-#: ../plugins/copr.py:147
-msgid "bad copr project format"
-msgstr "unzulässiges COPR Projekt-Format"
-
-#: ../plugins/copr.py:167
-msgid "Repository successfully enabled."
-msgstr "Die Paketquelle wurde erfolgreich aktiviert."
-
-#: ../plugins/copr.py:171
-msgid "Repository successfully disabled."
-msgstr "Die Paketquelle wurde erfolgreich deaktiviert."
-
-#: ../plugins/copr.py:175
-msgid "Repository successfully removed."
-msgstr "Paketquelle wurde erfolgreich entfernt."
-
-#: ../plugins/copr.py:179 ../plugins/copr.py:423
-msgid "Unknown subcommand {}."
-msgstr "Unbekannter Unterbefehl {}."
-
-#: ../plugins/copr.py:189
-msgid "Can't parse repositories for username '{}'."
-msgstr "Paketquellen können nicht nach Benutzername »{}« durchsucht werden."
-
-#: ../plugins/copr.py:192
-msgid "List of {} coprs"
-msgstr "Liste von {}-Coprs"
-
-#: ../plugins/copr.py:200
-msgid "No description given"
-msgstr "Keine Beschreibung angegeben"
-
-#: ../plugins/copr.py:212
-msgid "Can't parse search for '{}'."
-msgstr "Suche nach »{}« kann nicht ausgewertet werden."
-
-#: ../plugins/copr.py:215
-msgid "Matched: {}"
-msgstr "Gefunden: {}"
-
-#: ../plugins/copr.py:223
-msgid "No description given."
-msgstr "Keine Beschreibung angegeben."
-
-#: ../plugins/copr.py:236 ../plugins/copr.py:245
-msgid "Safe and good answer. Exiting."
-msgstr "Sichere und gute Antwort. Abbruch."
-
-#: ../plugins/copr.py:252
-msgid "This command has to be run under the root user."
-msgstr "Dieses Programm muss mit Root-Rechten ausgeführt werden."
-
-#: ../plugins/copr.py:304
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
-msgstr ""
-"Diese Paketquelle enthält derzeit keine erstellten Pakete und kann daher "
-"nicht aktiviert werden."
-
-#: ../plugins/copr.py:307
-msgid "Such repository does not exist."
-msgstr "Solch eine Paketquelle existiert nicht."
-
-#: ../plugins/copr.py:328
-msgid "Failed to disable copr repo {}/{}"
-msgstr "Copr-Paketquelle {}/{} konnte nicht deaktiviert werden"
-
-#: ../plugins/copr.py:341 ../plugins/copr.py:378
-msgid "Unknown response from server."
-msgstr "Unbekannte Antwort vom Server."
-
-#: ../plugins/copr.py:363
-msgid "Interact with Playground repository."
-msgstr "Interaktion mit Playground-Paketquellen"
-
-#: ../plugins/copr.py:413
-msgid "Playground repositories successfully enabled."
-msgstr "Playground-Paketquellen wurden erfolgreich aktiviert."
-
-#: ../plugins/copr.py:416
-msgid "Playground repositories successfully disabled."
-msgstr "Playground-Paketquellen wurden erfolgreich deaktiviert."
-
-#: ../plugins/copr.py:420
-msgid "Playground repositories successfully updated."
-msgstr "Playground-Paketquellen wurden erfolgreich aktualisiert."
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
@@ -629,3 +465,192 @@ msgstr ""
 #: ../plugins/versionlock.py:102
 msgid "control package version locks"
 msgstr "Sperrungen für Paketversionen steuern"
+
+#: ../plugins/copr.py:37
+msgid "yes"
+msgstr "ja"
+
+#: ../plugins/copr.py:37
+msgid "y"
+msgstr "j"
+
+#: ../plugins/copr.py:38
+msgid "no"
+msgstr "nein"
+
+#: ../plugins/copr.py:38
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:53
+msgid "Interact with Copr repositories."
+msgstr "Interaktion mit Copr-Paketquellen"
+
+#: ../plugins/copr.py:54
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list name\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+"\n"
+"  enable Name/Projekt [Chroot]\n"
+"  disable Name/Projekt\n"
+"  remove Name/Projekt\n"
+"  list Name\n"
+"  search Projekt\n"
+"\n"
+"  Beispiele:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+
+#: ../plugins/copr.py:86
+#, fuzzy
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr "Warnung: Eine nicht standardisierte COPR Adresse '{}' wird benuzt."
+
+#: ../plugins/copr.py:115 ../plugins/copr.py:139
+msgid "Error: "
+msgstr "Fehler: "
+
+#: ../plugins/copr.py:116 ../plugins/copr.py:120
+msgid "exactly two additional parameters to copr command are required"
+msgstr "Der copr-Befehl benötigt genau zwei zusätzliche Parameter."
+
+#: ../plugins/copr.py:140
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr ""
+"Benutzen Sie `copr_Benutzername/copr_Projektname` um auf ein copr Projekt zu"
+" verweisen."
+
+#: ../plugins/copr.py:142
+msgid "bad copr project format"
+msgstr "unzulässiges COPR Projekt-Format"
+
+#: ../plugins/copr.py:148
+msgid ""
+"\n"
+"You are about to enable a Copr repository. Please note that this\n"
+"repository is not part of the main distribution, and quality may vary.\n"
+"\n"
+"The Fedora Project does not exercise any power over the contents of\n"
+"this repository beyond the rules outlined in the Copr FAQ at\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"and packages are not held to any quality or security level.\n"
+"\n"
+"Please do not file bug reports about these packages in Fedora\n"
+"Bugzilla. In case of problems, contact the owner of this repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:163
+msgid "Repository successfully enabled."
+msgstr "Die Paketquelle wurde erfolgreich aktiviert."
+
+#: ../plugins/copr.py:167
+msgid "Repository successfully disabled."
+msgstr "Die Paketquelle wurde erfolgreich deaktiviert."
+
+#: ../plugins/copr.py:171
+msgid "Repository successfully removed."
+msgstr "Paketquelle wurde erfolgreich entfernt."
+
+#: ../plugins/copr.py:175 ../plugins/copr.py:411
+msgid "Unknown subcommand {}."
+msgstr "Unbekannter Unterbefehl {}."
+
+#: ../plugins/copr.py:185
+msgid "Can't parse repositories for username '{}'."
+msgstr "Paketquellen können nicht nach Benutzername »{}« durchsucht werden."
+
+#: ../plugins/copr.py:188
+msgid "List of {} coprs"
+msgstr "Liste von {}-Coprs"
+
+#: ../plugins/copr.py:196
+msgid "No description given"
+msgstr "Keine Beschreibung angegeben"
+
+#: ../plugins/copr.py:208
+msgid "Can't parse search for '{}'."
+msgstr "Suche nach »{}« kann nicht ausgewertet werden."
+
+#: ../plugins/copr.py:211
+msgid "Matched: {}"
+msgstr "Gefunden: {}"
+
+#: ../plugins/copr.py:219
+msgid "No description given."
+msgstr "Keine Beschreibung angegeben."
+
+#: ../plugins/copr.py:232
+msgid "Safe and good answer. Exiting."
+msgstr "Sichere und gute Antwort. Abbruch."
+
+#: ../plugins/copr.py:239
+msgid "This command has to be run under the root user."
+msgstr "Dieses Programm muss mit Root-Rechten ausgeführt werden."
+
+#: ../plugins/copr.py:291
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr ""
+"Diese Paketquelle enthält derzeit keine erstellten Pakete und kann daher "
+"nicht aktiviert werden."
+
+#: ../plugins/copr.py:294
+msgid "Such repository does not exist."
+msgstr "Solch eine Paketquelle existiert nicht."
+
+#: ../plugins/copr.py:315
+msgid "Failed to disable copr repo {}/{}"
+msgstr "Copr-Paketquelle {}/{} konnte nicht deaktiviert werden"
+
+#: ../plugins/copr.py:328 ../plugins/copr.py:366
+msgid "Unknown response from server."
+msgstr "Unbekannte Antwort vom Server."
+
+#: ../plugins/copr.py:350
+msgid "Interact with Playground repository."
+msgstr "Interaktion mit Playground-Paketquellen"
+
+#: ../plugins/copr.py:355
+msgid ""
+"\n"
+"You are about to enable a Playground repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#: ../plugins/copr.py:401
+msgid "Playground repositories successfully enabled."
+msgstr "Playground-Paketquellen wurden erfolgreich aktiviert."
+
+#: ../plugins/copr.py:404
+msgid "Playground repositories successfully disabled."
+msgstr "Playground-Paketquellen wurden erfolgreich deaktiviert."
+
+#: ../plugins/copr.py:408
+msgid "Playground repositories successfully updated."
+msgstr "Playground-Paketquellen wurden erfolgreich aktualisiert."
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "Debuginfo-Pakete installieren"
