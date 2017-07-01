@@ -19,6 +19,8 @@ Source0:        %{url}/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
+# Documentation
+BuildRequires:  %{_bindir}/sphinx-build
 %if %{with python3}
 Requires:       python3-%{name} = %{version}-%{release}
 %else
@@ -66,7 +68,6 @@ BuildRequires:  python-nose
 %else
 BuildRequires:  python2-nose
 %endif
-BuildRequires:  python-sphinx
 BuildRequires:  python2-devel
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-dnf < %{dnf_not_compatible}
@@ -98,7 +99,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-dnf < %{dnf_not_compatible}
 BuildRequires:  python3-nose
-BuildRequires:  python3-sphinx
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-dnf < %{dnf_not_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
