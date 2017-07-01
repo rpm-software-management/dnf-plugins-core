@@ -71,7 +71,7 @@ BuildRequires:  python2-nose
 BuildRequires:  python2-devel
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-dnf < %{dnf_not_compatible}
-Requires:       python-hawkey >= %{hawkey_version}
+Requires:       python2-hawkey >= %{hawkey_version}
 Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repograph = %{version}-%{release}
