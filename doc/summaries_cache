@@ -1,322 +1,326 @@
 [
     [
-        1045078, 
+        1045078,
         "[rfe] repoquery"
-    ], 
+    ],
     [
-        1103906, 
+        1103906,
         "dnf builddep command not working"
-    ], 
+    ],
     [
-        1049310, 
+        1049310,
         "Keep running kernel"
-    ], 
+    ],
     [
-        1104088, 
+        1104088,
         "Failed loading plugin: copr / ImportError: No module named requests"
-    ], 
+    ],
     [
-        1111855, 
+        1111855,
         "DNF needs to protect the basesystem"
-    ], 
+    ],
     [
-        1108321, 
+        1108321,
         "debuginfo-install can't install anything if debuginfo with version as installed not found"
-    ], 
+    ],
     [
-        1116389, 
+        1116389,
         "dnf copr enable - 404 for repo without builds"
-    ], 
+    ],
     [
-        1118809, 
+        1118809,
         "[abrt] dnf: generate_completion_cache.py:55:sack:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 22: ordinal not in range(128)"
-    ], 
+    ],
     [
-        1135984, 
+        1135984,
         "rfe: add repoquery -i support"
-    ], 
+    ],
     [
-        1134378, 
+        1134378,
         "[abrt] dnf: copr.py:147:run:KeyError: 'repos'"
-    ], 
+    ],
     [
-        1123886, 
+        1123886,
         "[abrt] dnf: i18n.py:138:_exact_width_char:TypeError: must be unicode, not str"
-    ], 
+    ],
     [
-        1139738, 
+        1139738,
         "[rfe] reposync"
-    ], 
+    ],
     [
-        1144003, 
+        1144003,
         "[abrt] dnf: download.py:181:_get_query_source:TypeError: 'NoneType' object has no attribute '__getitem__'"
-    ], 
+    ],
     [
-        1187773, 
+        1187773,
         "[abrt] dnf: copr.py:230:_download_repo:NameError: global name 'e' is not defined"
-    ], 
+    ],
     [
-        1178239, 
+        1178239,
         "[abrt] dnf: posixpath.py:80:join:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc5 in position 23: ordinal not in range(128)"
-    ], 
+    ],
     [
-        1166126, 
+        1166126,
         "dnf builddep does not recognize nosrc.rpm packages"
-    ], 
+    ],
     [
-        1155211, 
+        1155211,
         "dnf builddep: print what's missing when package not found"
-    ], 
+    ],
     [
-        1208399, 
+        1208399,
         "dnf-3 copr enable plautrba/selinux: NameError: name 'raw_input' is not defined"
-    ], 
+    ],
     [
-        1194725, 
+        1194725,
         "Every dnf-3 transaction returns \"Failed loading plugin: copr\""
-    ], 
+    ],
     [
-        1198442, 
+        1198442,
         "dnf-plugins-core package does not work with dnf package in rawhide"
-    ], 
+    ],
     [
-        1193047, 
+        1193047,
         "[abrt] python3-dnf: copr.py:146:run:AttributeError: 'module' object has no attribute 'FancyURLopener'"
-    ], 
+    ],
     [
-        1196952, 
+        1196952,
         "dnf repoquery does not provide -f like yum-utils"
-    ], 
+    ],
     [
-        1171046, 
+        1171046,
         "dnf debuginfo-install can't install packages when given exact NVR"
-    ], 
+    ],
     [
-        1179366, 
+        1179366,
         "repoquery --whatprovides does not accept wildchars as *"
-    ], 
+    ],
     [
-        1215154, 
+        1215154,
         "[PATCH] dnf debuginfo-install: AttributeError: 'NoneType' object has no attribute 'replace'"
-    ], 
+    ],
     [
-        1074585, 
+        1074585,
         "[RFE] 'dnf builddep' should be able to take just the package name as argument rather than SPEC or SRPM"
-    ], 
+    ],
     [
-        1156487, 
+        1156487,
         "RFE: Add support for repoquery --resolve"
-    ], 
+    ],
     [
-        1208773, 
+        1208773,
         "[RFE] Define virtual provides for DNF commands and suggest installing the appropriate one if a command was not found"
-    ], 
+    ],
     [
-        1186948, 
+        1186948,
         "[download] data loss: dnf download should not delete files from local repositories"
-    ], 
+    ],
     [
-        1228693, 
+        1228693,
         "dnf config-manager --add-repo sets permission to 600"
-    ], 
+    ],
     [
-        1186689, 
+        1186689,
         "RFE: make dnf repoquery --whatrequires behave like yum based repoquery (add --alldeps support)"
-    ], 
+    ],
     [
-        1227190, 
+        1227190,
         "error enable copr"
-    ], 
+    ],
     [
-        1186382, 
+        1186382,
         "[rfe] Please provide an equivalent of repoquery --srpm"
-    ], 
+    ],
     [
-        1128425, 
+        1128425,
         "RFE: Missing recursive dependency resolution in repoquery"
-    ], 
+    ],
     [
-        1226663, 
+        1226663,
         "dnf bash completion: show version of packages"
-    ], 
+    ],
     [
-        1184930, 
+        1184930,
         "[rfe] repoquery: implement weak deps flag options"
-    ], 
+    ],
     [
-        1234099, 
+        1234099,
         "reposync unicode error"
-    ], 
+    ],
     [
-        1241126, 
+        1241126,
         "builddep: empty run or run on unknown package name doesn't fail"
-    ], 
+    ],
     [
-        1218299, 
+        1218299,
         "TypeError: 'error' object does not support indexing"
-    ], 
+    ],
     [
-        1241135, 
+        1241135,
         "allow builddep to process file regardless of filename"
-    ], 
+    ],
     [
-        1244125, 
+        1244125,
         "[abrt] dnf: gettext.py:222:ugettext:UnicodeDecodeError: 'ascii' codec can't decode byte 0xe6 in position 0: ordinal not in range(128)"
-    ], 
+    ],
     [
-        1250114, 
+        1250114,
         "dnf download appears to write the destination twice"
-    ], 
+    ],
     [
-        1186381, 
+        1186381,
         "[rfe] Please provide an equivalent of repoquery --archlist"
-    ], 
+    ],
     [
-        1225784, 
+        1225784,
         "dnf download should print message when it does not find requested packages"
-    ], 
+    ],
     [
-        1233728, 
+        1233728,
         "dnf repoquery doesn't support multi args"
-    ], 
+    ],
     [
-        1199601, 
+        1199601,
         "RFE: repoquery support for --pkgnarrow"
-    ], 
+    ],
     [
-        1156778, 
+        1156778,
         "dnf repoquery: sort the output alphabetically"
-    ], 
+    ],
     [
-        1249073, 
+        1249073,
         "dnf repoquery does not support wildcards in --whatrequires"
-    ], 
+    ],
     [
-        1267808, 
+        1267808,
         "dnf playground enable doesn't work"
-    ], 
+    ],
     [
-        1264125, 
+        1264125,
         "UnicodeEncodeError running dnf repoquery"
-    ], 
+    ],
     [
-        1265622, 
+        1265622,
         "'dnf builddep' is not always as 'clever' as yum-builddep or dnf download --source"
-    ], 
+    ],
     [
-        1159614, 
+        1159614,
         "dnf debuginfo-install kernel-PAE picks wrong debuginfo package"
-    ], 
+    ],
     [
-        1231572, 
+        1231572,
         "dnf repoquery --duplicated report is different than package-cleanup --dupes"
-    ], 
+    ],
     [
-        1265210, 
+        1265210,
         "[abrt] dnf: needs_restarting.py:101:print_cmd:UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 108: ordinal not in range(128)"
-    ], 
+    ],
     [
-        1280416, 
+        1280416,
         "Copr inserts @ in the id of the repo, causing it not to work"
-    ], 
+    ],
     [
-        1270091, 
+        1270091,
         "man dnf.plugin.config-manager does not mention --dump in examples"
-    ], 
+    ],
     [
-        1272936, 
+        1272936,
         "[abrt] dnf: lib.py:170:package_source_name:AttributeError: 'NoneType' object has no attribute 'rstrip'"
-    ], 
+    ],
     [
-        1283448, 
+        1283448,
         "python3-dnf-plugins-core update fails with file conflicts"
-    ], 
+    ],
     [
-        1253237, 
+        1253237,
         "dnf config-manager --setopt options are not saved to repo (--save does not work)"
-    ], 
+    ],
     [
-        1024701, 
+        1024701,
         "[rfe] debuginfo-install plugin: add passive feature to keep debuginfo packages in sync"
-    ], 
+    ],
     [
-        1302214, 
+        1302214,
         "Translation incomplete of the download plugin"
-    ], 
+    ],
     [
-        1297511, 
+        1297511,
         "noroot configure causes a traceback when plugins are loaded without a cli"
-    ], 
+    ],
     [
-        1292475, 
+        1292475,
         "RFE: dnf repoquery options \"--queryformat\" and \"--latest-limit\" should be usable together"
-    ], 
+    ],
     [
-        1335959, 
+        1335959,
         "dnf repoquery --srpm does not work"
-    ], 
+    ],
     [
-        1279538, 
+        1279538,
         "[perf] dnf repoquery --resolve  is extremely slow"
-    ], 
+    ],
     [
-        1303311, 
+        1303311,
         "[weakdeps] --whatsupplements not working"
-    ], 
+    ],
     [
-        1361003, 
+        1361003,
         "dnf.plugin.copr (copr.py) cls.config_chroot returns None (affects setting dist in /etc/dnf/plugins/copr.conf)"
-    ], 
+    ],
     [
-        1360752, 
+        1360752,
         "[rfe] provide a way to read out $basearch"
-    ], 
+    ],
     [
-        1350604, 
+        1350604,
         "RFE: Add 'build-dep' and 'distrosync' aliases to 'builddep' and 'distro-sync'"
-    ], 
+    ],
     [
-        1325350, 
+        1325350,
         "DNF Reposync does complete sync/download but doesn't save any packages"
-    ], 
+    ],
     [
-        1303117, 
+        1303117,
         "hy_package_get_requires should return also \"Requires(pre)\""
-    ], 
+    ],
     [
-        1193823, 
+        1193823,
         "[RFE] Plugins  can't be disabled in config files"
-    ], 
+    ],
     [
-        1260986, 
+        1260986,
         "dnf reposync lists repo as wrong argument"
-    ], 
+    ],
     [
-        1250115, 
+        1250115,
         "RFE: dnf download --url"
-    ], 
+    ],
     [
-        1429087, 
+        1429087,
         "Outdated translations"
-    ], 
+    ],
     [
-        1431486, 
+        1431486,
         "dnf wants to check gpg key on builddep from src.rpm"
-    ], 
+    ],
     [
-        1332830, 
+        1332830,
         "DNF builddep is not consistently installing packages providing capabilities properly"
-    ], 
+    ],
     [
-        1276611, 
+        1276611,
         "dnf dowload --resolve should download everytime requested packages"
-    ], 
+    ],
     [
-        1381917, 
+        1381917,
         "add aliases for each of yum-utils binaries"
-    ], 
+    ],
     [
-        1458446, 
+        1458446,
         "Probably a Type-0 in package-cleanup that is inside dnf-utils."
+    ],
+    [
+        1322599,
+        "debuginfo-install installs needless packages"
     ]
 ]

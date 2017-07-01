@@ -22,6 +22,19 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+2.1.2 Release notes
+===================
+
+* :doc:`copr` doesn't crash anymore in some circumstances.
+* :doc:`debuginfo-install` doesn't install any additional subpackages anymore,
+  previously it was trying to get all dependent packages recursively and install
+  debuginfo packages for them.
+
+Bugs fixed in 2.1.2:
+
+* :rhbug:`1322599`
+
+===================
 2.1.1 Release Notes
 ===================
 
