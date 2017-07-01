@@ -10,7 +10,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        2.1.1
+Version:        2.1.2
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -494,6 +494,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Sat Jul 01 2017 Igor Gnatenko <ignatenko@redhat.com> - 2.1.2-1
+- debuginfo-install: install only requested packages
+- Unify user confirmation in copr with dnf itself
+
 * Mon Jun 12 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.1-1
 - bump version to 2.1.1 + update release notes (Jaroslav Mracek)
 - Enhance versionlock documentation (Jaroslav Mracek)
