@@ -116,7 +116,7 @@ Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
 
 %description -n python3-%{name}
-Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, config-manager, 
+Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, config-manager,
 copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
