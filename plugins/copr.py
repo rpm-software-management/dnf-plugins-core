@@ -31,6 +31,7 @@ import platform
 import shutil
 import stat
 import rpm
+import re
 
 PLUGIN_CONF = 'copr'
 
@@ -55,7 +56,8 @@ class CoprCommand(dnf.cli.Command):
   enable name/project [chroot]
   disable name/project
   remove name/project
-  list name
+  list
+  list-user name
   search project
 
   Examples:
@@ -63,7 +65,8 @@ class CoprCommand(dnf.cli.Command):
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr remove rhscl/perl516
-  copr list ignatenkobrain
+  copr list
+  copr list-user ignatenkobrain
   copr search tests
     """)
 
@@ -71,7 +74,7 @@ class CoprCommand(dnf.cli.Command):
     def set_argparser(parser):
         parser.add_argument('subcommand', nargs=1,
                             choices=['help', 'enable', 'disable',
-                                     'remove', 'list', 'search'])
+                                     'remove', 'list', 'list-user', 'search'])
         parser.add_argument('arg', nargs='*')
 
     def configure(self):
@@ -108,6 +111,9 @@ class CoprCommand(dnf.cli.Command):
         if subcommand == "help":
             self.cli.optparser.print_help(self)
             return 0
+        if subcommand == "list":
+            self._list_installed_repositories()
+            return
         try:
             project_name = self.opts.arg[0]
         except (ValueError, IndexError):
@@ -125,7 +131,7 @@ class CoprCommand(dnf.cli.Command):
             chroot = self._guess_chroot(self.chroot_config)
 
         # commands without defined copr_username/copr_projectname
-        if subcommand == "list":
+        if subcommand == "list-user":
             self._list_user_projects(project_name)
             return
         if subcommand == "search":
@@ -173,6 +179,21 @@ Do you want to continue?""")
         else:
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
+
+    def _list_installed_repositories(self):
+        self._list_repos_from_directory("/etc/yum.repos.d")
+        self._list_repos_from_directory("/etc/dnf.repos.d")
+
+    def _list_repos_from_directory(self, directory):
+        for root, dir, files in os.walk(directory):
+            for file_name in files:
+                if re.match("^_copr_", file_name):
+                    repo_file = open(directory + "/" + file_name, "r").read()
+                    copr_repo = re.search("^\[(.*?)-(.*)\]", repo_file)
+                    msg = copr_repo.group(1) + "/" + copr_repo.group(2)
+                    if re.search("enabled=0", repo_file):
+                        msg = msg + " (disabled)"
+                    print(msg)
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
