@@ -18,7 +18,7 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from dnfpluginscore import _, logger
+from dnfpluginscore import _, logger, P_
 
 import dnf
 import dnf.cli
@@ -141,6 +141,7 @@ class ConfigManagerCommand(dnf.cli.Command):
 
         # Get the reposdir location
         myrepodir = self.base.conf.get_reposdir
+        errors_count = 0
 
         for url in self.opts.add_repo:
             if dnf.pycomp.urlparse.urlparse(url).scheme == '':
@@ -156,7 +157,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                     os.chmod(destname, 0o644)
                     f.close()
                 except IOError as e:
-                    self.cli.demands.success_exit_status = 1
+                    errors_count += 1
                     logger.error(e)
                     continue
             else:
@@ -168,6 +169,9 @@ class ConfigManagerCommand(dnf.cli.Command):
                                                 (repoid, reponame, url)
                 if not save_to_file(destname, content):
                     continue
+        if errors_count:
+            raise dnf.exceptions.Error(P_("Configuration of repo failed",
+                                          "Configuration of repos failed", errors_count))
 
 
 def save_to_file(filename, content):
