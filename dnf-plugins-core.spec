@@ -218,6 +218,7 @@ Provides:       dnf-command(migrate)
 Provides:       dnf-plugins-extras-migrate = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
+Obsoletes:      python-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
 
 %description -n python2-dnf-plugin-migrate
 Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data from yum to dnf.
