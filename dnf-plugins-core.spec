@@ -495,6 +495,14 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Jul 24 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.3-1
+- Solve conflict with migrate plugin (RhBug:1470843) (Jaroslav Mracek)
+- Move copying to dnf (RhBug:1279001) (Ondřej Sojka)
+- Return 1 if dnf config-manager --add-repo fails (RhBug:1439514) (Jaroslav
+  Mracek)
+- bump minimal dnf version to 2.6.0 (Igor Gnatenko)
+- trivial: remove whitespace at end of line (Igor Gnatenko)
+
 * Sat Jul 01 2017 Igor Gnatenko <ignatenko@redhat.com> - 2.1.2-1
 - debuginfo-install: install only requested packages
 - Unify user confirmation in copr with dnf itself
