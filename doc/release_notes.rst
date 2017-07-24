@@ -22,7 +22,17 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
-2.1.2 Release notes
+2.1.3 Release Notes
+===================
+
+Bugs fixed in 2.1.3:
+
+* :rhbug:`1470843`
+* :rhbug:`1279001`
+* :rhbug:`1439514`
+
+===================
+2.1.2 Release Notes
 ===================
 
 * :doc:`copr` doesn't crash anymore in some circumstances.
