@@ -49,7 +49,7 @@ Options
 ``--debuginfo``
     Download the debuginfo rpm. Enables debuginfo repositories of all enabled binary repositories.
 
-``--destdir``
+``--downloaddir``
     Download directory, default is the current directory (the directory must exist).
 
 ``--url``
