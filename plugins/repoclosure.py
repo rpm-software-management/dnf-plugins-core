@@ -94,6 +94,9 @@ class RepoClosureCommand(dnf.cli.Command):
                 for pkgs_filtered in available.filter(reponame=repo):
                     checkpkgs.add(pkgs_filtered)
             pkgs.intersection_update(checkpkgs)
+            # --best not applied earlier due to --check, so do it now
+            if self.base.conf.best:
+                available = available.latest()
 
         for pkg in pkgs:
             unresolved[pkg] = set()
