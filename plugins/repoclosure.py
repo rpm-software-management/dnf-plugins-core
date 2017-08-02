@@ -53,8 +53,8 @@ class RepoClosureCommand(dnf.cli.Command):
                     repo.enable()
 
     def run(self):
-        if self.opts.arch:
-            unresolved = self._get_unresolved(self.opts.arch)
+        if self.opts.arches:
+            unresolved = self._get_unresolved(self.opts.arches)
         else:
             unresolved = self._get_unresolved()
         for pkg in sorted(unresolved.keys()):
@@ -112,7 +112,7 @@ class RepoClosureCommand(dnf.cli.Command):
 
     @staticmethod
     def set_argparser(parser):
-        parser.add_argument("--arch", default=[], action="append",
+        parser.add_argument("--arch", default=[], action="append", dest='arches',
                             help=_("check packages of the given archs, can be "
                                    "specified multiple times"))
         parser.add_argument("--check", default=[], action="append",
