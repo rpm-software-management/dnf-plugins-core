@@ -56,8 +56,8 @@ class CoprCommand(dnf.cli.Command):
   enable name/project [chroot]
   disable name/project
   remove name/project
-  list
-  list-user name
+  list --installed/enabled/disabled
+  list --available-by-user=NAME
   search project
 
   Examples:
@@ -65,8 +65,8 @@ class CoprCommand(dnf.cli.Command):
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr remove rhscl/perl516
-  copr list
-  copr list-user ignatenkobrain
+  copr list --enabled
+  copr list --available-by-user=ignatenkobrain
   copr search tests
     """)
 
@@ -74,7 +74,18 @@ class CoprCommand(dnf.cli.Command):
     def set_argparser(parser):
         parser.add_argument('subcommand', nargs=1,
                             choices=['help', 'enable', 'disable',
-                                     'remove', 'list', 'list-user', 'search'])
+                                     'remove', 'list', 'search'])
+
+        list_option = parser.add_mutually_exclusive_group()
+        list_option.add_argument('--installed', action='store_true',
+                                 help=_('List all installed Copr repositories (default)'))
+        list_option.add_argument('--enabled', action='store_true',
+                                 help=_('List enabled Copr repositories'))
+        list_option.add_argument('--disabled', action='store_true',
+                                 help=_('List disabled Copr repositories'))
+        list_option.add_argument('--available-by-user', metavar='NAME',
+                                 help=_('List available Copr repositories by user NAME'))
+
         parser.add_argument('arg', nargs='*')
 
     def configure(self):
@@ -108,12 +119,19 @@ class CoprCommand(dnf.cli.Command):
 
     def run(self):
         subcommand = self.opts.subcommand[0]
+
         if subcommand == "help":
             self.cli.optparser.print_help(self)
             return 0
         if subcommand == "list":
-            self._list_installed_repositories()
-            return
+            if self.opts.available_by_user:
+                self._list_user_projects(self.opts.available_by_user)
+                return
+            else:
+                self._list_installed_repositories(self.base.conf.reposdir[0],
+                    self.opts.enabled, self.opts.disabled)
+                return
+
         try:
             project_name = self.opts.arg[0]
         except (ValueError, IndexError):
@@ -131,9 +149,6 @@ class CoprCommand(dnf.cli.Command):
             chroot = self._guess_chroot(self.chroot_config)
 
         # commands without defined copr_username/copr_projectname
-        if subcommand == "list-user":
-            self._list_user_projects(project_name)
-            return
         if subcommand == "search":
             self._search(project_name)
             return
@@ -180,20 +195,31 @@ Do you want to continue?""")
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
 
-    def _list_installed_repositories(self):
-        self._list_repos_from_directory("/etc/yum.repos.d")
-        self._list_repos_from_directory("/etc/dnf.repos.d")
 
-    def _list_repos_from_directory(self, directory):
+    def _list_installed_repositories(self, directory, enabled_only, disabled_only):
+        parser = ConfigParser()
+
         for root, dir, files in os.walk(directory):
             for file_name in files:
                 if re.match("^_copr_", file_name):
-                    repo_file = open(directory + "/" + file_name, "r").read()
-                    copr_repo = re.search("^\[(.*?)-(.*)\]", repo_file)
-                    msg = copr_repo.group(1) + "/" + copr_repo.group(2)
-                    if re.search("enabled=0", repo_file):
-                        msg = msg + " (disabled)"
+                    parser.read(directory + '/' + file_name)
+
+        for copr in parser.sections():
+            if parser.getboolean(copr, "enabled"):
+                if disabled_only:
+                    pass
+                else:
+                    copr_name = copr.split('-', 1)
+                    msg = copr_name[0] + '/' + copr_name[1]
                     print(msg)
+            elif not parser.getboolean(copr, "enabled"):
+                if enabled_only:
+                    pass
+                else:
+                    copr_name = copr.split('-', 1)
+                    msg = copr_name[0] + '/' + copr_name[1] + " (disabled)"
+                    print(msg)
+
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/

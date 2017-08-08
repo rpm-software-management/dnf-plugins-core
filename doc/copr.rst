@@ -28,7 +28,7 @@ Work with Copr & Playground repositories on the local system.
 Synopsis
 --------
 
-``dnf copr [enable|disable|remove|list|list-user|search] <parameters>``
+``dnf copr [enable|disable|remove|list|search] <parameters>``
 
 ``dnf playground [enable|disable|upgrade]``
 
@@ -45,10 +45,16 @@ Arguments (copr)
 ``remove name/project``
     Remove the ``name/project`` Copr repository.
 
-``list``
+``list --installed``
+    List installed Copr repositories (default).
+
+``list --enabled``
     List enabled Copr repositories.
 
-``list-user name``
+``list --disabled``
+    List disabled Copr repositories.
+
+``list --available-by-user=name``
     List available Copr repositories for a given ``name``.
 
 ``search project``
@@ -77,7 +83,7 @@ Examples
 ``copr disable rhscl/perl516``
     Disable the ``rhscl/perl516`` Copr repository
 
-``copr list-user rita``
+``copr list --available-by-user=rita``
     List available Copr projects for user ``rita``.
 
 ``copr search tests``
