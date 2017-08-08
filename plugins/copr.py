@@ -129,7 +129,7 @@ class CoprCommand(dnf.cli.Command):
                 return
             else:
                 self._list_installed_repositories(self.base.conf.reposdir[0],
-                    self.opts.enabled, self.opts.disabled)
+                                                  self.opts.enabled, self.opts.disabled)
                 return
 
         try:
@@ -195,7 +195,6 @@ Do you want to continue?""")
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
 
-
     def _list_installed_repositories(self, directory, enabled_only, disabled_only):
         parser = ConfigParser()
 
@@ -219,7 +218,6 @@ Do you want to continue?""")
                     copr_name = copr.split('-', 1)
                     msg = copr_name[0] + '/' + copr_name[1] + " (disabled)"
                     print(msg)
-
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
