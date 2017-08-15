@@ -206,7 +206,7 @@ Do you want to continue?""")
         for copr in parser.sections():
             enabled = parser.getboolean(copr, "enabled")
             if (enabled and disabled_only) or (not enabled and enabled_only):
-               continue
+                continue
 
             copr_name = copr.split('-', 1)
             msg = copr_name[0] + '/' + copr_name[1]
