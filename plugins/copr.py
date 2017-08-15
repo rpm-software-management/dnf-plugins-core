@@ -204,20 +204,15 @@ Do you want to continue?""")
                     parser.read(directory + '/' + file_name)
 
         for copr in parser.sections():
-            if parser.getboolean(copr, "enabled"):
-                if disabled_only:
-                    pass
-                else:
-                    copr_name = copr.split('-', 1)
-                    msg = copr_name[0] + '/' + copr_name[1]
-                    print(msg)
-            elif not parser.getboolean(copr, "enabled"):
-                if enabled_only:
-                    pass
-                else:
-                    copr_name = copr.split('-', 1)
-                    msg = copr_name[0] + '/' + copr_name[1] + " (disabled)"
-                    print(msg)
+            enabled = parser.getboolean(copr, "enabled")
+            if (enabled and disabled_only) or (not enabled and enabled_only):
+               continue
+
+            copr_name = copr.split('-', 1)
+            msg = copr_name[0] + '/' + copr_name[1]
+            if not enabled:
+                msg += " (disabled)"
+            print(msg)
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
