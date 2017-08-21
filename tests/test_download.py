@@ -274,7 +274,7 @@ class DownloadCommandTest(unittest.TestCase):
 
         self.cmd.opts = mock.Mock()
         self.cmd.opts.resolve = False
-        self.cmd.opts.arch = []
+        self.cmd.opts.arches = []
         repo = RepoStub('foo')
         repo.enable()
         self.cmd.base.repos.add(repo)
