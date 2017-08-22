@@ -31,6 +31,7 @@ import platform
 import shutil
 import stat
 import rpm
+import re
 
 PLUGIN_CONF = 'copr'
 
@@ -55,7 +56,8 @@ class CoprCommand(dnf.cli.Command):
   enable name/project [chroot]
   disable name/project
   remove name/project
-  list name
+  list --installed/enabled/disabled
+  list --available-by-user=NAME
   search project
 
   Examples:
@@ -63,7 +65,8 @@ class CoprCommand(dnf.cli.Command):
   copr enable ignatenkobrain/ocltoys
   copr disable rhscl/perl516
   copr remove rhscl/perl516
-  copr list ignatenkobrain
+  copr list --enabled
+  copr list --available-by-user=ignatenkobrain
   copr search tests
     """)
 
@@ -72,6 +75,17 @@ class CoprCommand(dnf.cli.Command):
         parser.add_argument('subcommand', nargs=1,
                             choices=['help', 'enable', 'disable',
                                      'remove', 'list', 'search'])
+
+        list_option = parser.add_mutually_exclusive_group()
+        list_option.add_argument('--installed', action='store_true',
+                                 help=_('List all installed Copr repositories (default)'))
+        list_option.add_argument('--enabled', action='store_true',
+                                 help=_('List enabled Copr repositories'))
+        list_option.add_argument('--disabled', action='store_true',
+                                 help=_('List disabled Copr repositories'))
+        list_option.add_argument('--available-by-user', metavar='NAME',
+                                 help=_('List available Copr repositories by user NAME'))
+
         parser.add_argument('arg', nargs='*')
 
     def configure(self):
@@ -105,9 +119,19 @@ class CoprCommand(dnf.cli.Command):
 
     def run(self):
         subcommand = self.opts.subcommand[0]
+
         if subcommand == "help":
             self.cli.optparser.print_help(self)
             return 0
+        if subcommand == "list":
+            if self.opts.available_by_user:
+                self._list_user_projects(self.opts.available_by_user)
+                return
+            else:
+                self._list_installed_repositories(self.base.conf.reposdir[0],
+                                                  self.opts.enabled, self.opts.disabled)
+                return
+
         try:
             project_name = self.opts.arg[0]
         except (ValueError, IndexError):
@@ -125,9 +149,6 @@ class CoprCommand(dnf.cli.Command):
             chroot = self._guess_chroot(self.chroot_config)
 
         # commands without defined copr_username/copr_projectname
-        if subcommand == "list":
-            self._list_user_projects(project_name)
-            return
         if subcommand == "search":
             self._search(project_name)
             return
@@ -173,6 +194,25 @@ Do you want to continue?""")
         else:
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
+
+    def _list_installed_repositories(self, directory, enabled_only, disabled_only):
+        parser = ConfigParser()
+
+        for root, dir, files in os.walk(directory):
+            for file_name in files:
+                if re.match("^_copr_", file_name):
+                    parser.read(directory + '/' + file_name)
+
+        for copr in parser.sections():
+            enabled = parser.getboolean(copr, "enabled")
+            if (enabled and disabled_only) or (not enabled and enabled_only):
+                continue
+
+            copr_name = copr.split('-', 1)
+            msg = copr_name[0] + '/' + copr_name[1]
+            if not enabled:
+                msg += " (disabled)"
+            print(msg)
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
