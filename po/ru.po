@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 14:04+0200\n"
+"POT-Creation-Date: 2017-08-30 08:42+0200\n"
 "PO-Revision-Date: 2017-04-15 03:11-0400\n"
 "Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -116,31 +116,79 @@ msgstr "Ошибка: попытка подключения уже подклю�
 msgid "No matching repo to modify: %s."
 msgstr "Нет подходящего репозиторий для изменения: %s."
 
-#: ../plugins/config_manager.py:148
+#: ../plugins/config_manager.py:149
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Добавление репозитория из: %s"
 
-#: ../plugins/config_manager.py:178
+#: ../plugins/config_manager.py:173
+msgid "Configuration of repo failed"
+msgid_plural "Configuration of repos failed"
+msgstr[0] ""
+
+#: ../plugins/config_manager.py:183
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не удалось сохранить репозиторий в repofile %s: %s"
 
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "определить обновленные двоичные файлы, требующие перезапуска"
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "вывести информацию об установленных rpm-пакетах в файл"
 
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "рассматривать только процессы этого пользователя"
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "не пытаться выгрузить содержимое репозитория."
 
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "загрузить все пакеты из удаленного репозитория"
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "дополнительно имя файла для выгрузки"
 
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "где хранить загруженные репозитории"
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Вывод записан в: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "восстановить пакеты, записанные в файл debug-dump"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "вывести в stdout команды, которые будут запущены."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Установить последнюю версию записанных пакетов."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Игнорировать архитектуру и установить недостающие пакеты по имени, времени, "
+"версии и выпуску."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "ограничить указанным типом"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "имя файла для выгрузки"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Пакета %s нет"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Плохой отладочный файл dnf: %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "установить пакеты debuginfo"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -232,6 +280,14 @@ msgstr "перенесено %s из %s"
 msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
 msgstr "%d записей YUMDB найдено, %d перенесено, %d пропущено/сохранено"
 
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "определить обновленные двоичные файлы, требующие перезапуска"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "рассматривать только процессы этого пользователя"
+
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
 msgstr "Вывести полную диаграмму зависимостей пакета в точечном формате"
@@ -277,149 +333,17 @@ msgstr "Сохранять N самых новых пакетов - 1 по ум�
 msgid "Path to directory"
 msgstr "Путь к каталогу"
 
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "загрузить все пакеты из удаленного репозитория"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "где хранить загруженные репозитории"
+
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Новые пакеты - \"листья\":"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "Загрузить пакет в текущий каталог"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "пакеты для загрузки"
-
-#: ../plugins/download.py:54
-msgid "download the src.rpm instead"
-msgstr "вместо этого загрузить src.rpm"
-
-#: ../plugins/download.py:56
-msgid "download the -debuginfo package instead"
-msgstr "вместо этого загрузить пакет -debuginfo"
-
-#: ../plugins/download.py:59
-msgid "limit  the  query to packages of given architectures."
-msgstr "ограничить запрос пакетами с данной архитектурой."
-
-#: ../plugins/download.py:61
-msgid "download path, default is current dir"
-msgstr "путь загрузки, текущий каталог по умолчанию"
-
-#: ../plugins/download.py:63
-msgid "resolve and download needed dependencies"
-msgstr "разрешить требующиеся зависимости и загрузить"
-
-#: ../plugins/download.py:65
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr "вместо загрузки вывести список URL, откуда можно загрузить пакеты rpm"
-
-#: ../plugins/download.py:70
-msgid "when running with --url, limit to specific protocols"
-msgstr "ограничить указанными протоколами при работе с --url"
-
-#: ../plugins/download.py:102
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "Не удалось получить зеркало для пакета: %s"
-
-#: ../plugins/download.py:184
-msgid "Exiting due to strict setting."
-msgstr "Выход вследствие жестких настроек."
-
-#: ../plugins/download.py:204
-msgid "Error in resolve"
-msgstr "Ошибка при разрешении"
-
-#: ../plugins/download.py:219
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "Не заданы пакеты с исходными текстами для %s"
-
-#: ../plugins/download.py:235 ../plugins/download.py:249
-#, python-format
-msgid "No package %s available."
-msgstr "Нет пакета %s."
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Показать список неразрешенных зависимостей для репозиториев"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
-
-#: ../plugins/repoclosure.py:116
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
-"проверить пакеты указанных архитектур, могут быть заданы несколько раз"
-
-#: ../plugins/repoclosure.py:119
-msgid "Specify repositories to check"
-msgstr "Указать репозитории для проверки"
-
-#: ../plugins/repoclosure.py:121
-msgid "Check only the newest packages in the repos"
-msgstr "Проверять только самые новые пакеты в репозиториях"
-
-#: ../plugins/repoclosure.py:124
-msgid "Check closure for this package only"
-msgstr "Проверить завершение только для этого пакета"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "вывести информацию об установленных rpm-пакетах в файл"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "не пытаться выгрузить содержимое репозитория."
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "дополнительно имя файла для выгрузки"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Вывод записан в: %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "восстановить пакеты, записанные в файл debug-dump"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "вывести в stdout команды, которые будут запущены."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Установить последнюю версию записанных пакетов."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Игнорировать архитектуру и установить недостающие пакеты по имени, времени, "
-"версии и выпуску."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "ограничить указанным типом"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "имя файла для выгрузки"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Пакета %s нет"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Плохой отладочный файл dnf: %s"
 
 #: ../plugins/versionlock.py:32
 #, python-format
@@ -454,33 +378,34 @@ msgstr ""
 msgid "control package version locks"
 msgstr "управление блокированием версии пакетов"
 
-#: ../plugins/copr.py:37
+#: ../plugins/copr.py:38
 msgid "yes"
 msgstr "да"
 
-#: ../plugins/copr.py:37
+#: ../plugins/copr.py:38
 msgid "y"
 msgstr "д"
 
-#: ../plugins/copr.py:38
+#: ../plugins/copr.py:39
 msgid "no"
 msgstr "нет"
 
-#: ../plugins/copr.py:38
+#: ../plugins/copr.py:39
 msgid "n"
 msgstr "н"
 
-#: ../plugins/copr.py:53
+#: ../plugins/copr.py:54
 msgid "Interact with Copr repositories."
 msgstr "Взаимодействие с репозиториями Copr."
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:55
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
 "  disable name/project\n"
 "  remove name/project\n"
-"  list name\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
 "  search project\n"
 "\n"
 "  Examples:\n"
@@ -488,49 +413,51 @@ msgid ""
 "  copr enable ignatenkobrain/ocltoys\n"
 "  copr disable rhscl/perl516\n"
 "  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
 "  copr search tests\n"
 "    "
 msgstr ""
-"\n"
-"  enable имя/проект [chroot]\n"
-"  disable имя/проект\n"
-"  remove имя/проект\n"
-"  list имя\n"
-"  search проект\n"
-"\n"
-"  Примеры:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
 
-#: ../plugins/copr.py:86
+#: ../plugins/copr.py:81
+msgid "List all installed Copr repositories (default)"
+msgstr ""
+
+#: ../plugins/copr.py:83
+msgid "List enabled Copr repositories"
+msgstr ""
+
+#: ../plugins/copr.py:85
+msgid "List disabled Copr repositories"
+msgstr ""
+
+#: ../plugins/copr.py:87
+msgid "List available Copr repositories by user NAME"
+msgstr ""
+
+#: ../plugins/copr.py:100
 msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr "Предупреждение: мы используем нестандартный Copr URL '{}'."
 
-#: ../plugins/copr.py:115 ../plugins/copr.py:139
+#: ../plugins/copr.py:139 ../plugins/copr.py:160
 msgid "Error: "
 msgstr "Ошибка:"
 
-#: ../plugins/copr.py:116 ../plugins/copr.py:120
+#: ../plugins/copr.py:140 ../plugins/copr.py:144
 msgid "exactly two additional parameters to copr command are required"
 msgstr "требуются точно два дополнительных параметра к команде copr"
 
-#: ../plugins/copr.py:140
+#: ../plugins/copr.py:161
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "для ссылки на проект copr используйте формат "
 "`copr_username/copr_projectname`"
 
-#: ../plugins/copr.py:142
+#: ../plugins/copr.py:163
 msgid "bad copr project format"
 msgstr "неверный формат проекта copr"
 
-#: ../plugins/copr.py:148
+#: ../plugins/copr.py:169
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -547,78 +474,78 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../plugins/copr.py:163
+#: ../plugins/copr.py:184
 msgid "Repository successfully enabled."
 msgstr "Репозиторий успешно подключен."
 
-#: ../plugins/copr.py:167
+#: ../plugins/copr.py:188
 msgid "Repository successfully disabled."
 msgstr "Репозиторий успешно отключен."
 
-#: ../plugins/copr.py:171
+#: ../plugins/copr.py:192
 msgid "Repository successfully removed."
 msgstr "Репозиторий успешно удален."
 
-#: ../plugins/copr.py:175 ../plugins/copr.py:411
+#: ../plugins/copr.py:196 ../plugins/copr.py:451
 msgid "Unknown subcommand {}."
 msgstr "Неизвестная подкоманда {}."
 
-#: ../plugins/copr.py:185
+#: ../plugins/copr.py:225
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не удается обработать репозитории для имени пользователя «{}»."
 
-#: ../plugins/copr.py:188
+#: ../plugins/copr.py:228
 msgid "List of {} coprs"
 msgstr "Список copr {}"
 
-#: ../plugins/copr.py:196
+#: ../plugins/copr.py:236
 msgid "No description given"
 msgstr "Нет описания"
 
-#: ../plugins/copr.py:208
+#: ../plugins/copr.py:248
 msgid "Can't parse search for '{}'."
 msgstr "Ошибка обработки поиска для «{}»."
 
-#: ../plugins/copr.py:211
+#: ../plugins/copr.py:251
 msgid "Matched: {}"
 msgstr "Совпадений: {}"
 
-#: ../plugins/copr.py:219
+#: ../plugins/copr.py:259
 msgid "No description given."
 msgstr "Нет описания."
 
-#: ../plugins/copr.py:232
+#: ../plugins/copr.py:272
 msgid "Safe and good answer. Exiting."
 msgstr "Верный и хороший ответ. Выход."
 
-#: ../plugins/copr.py:239
+#: ../plugins/copr.py:279
 msgid "This command has to be run under the root user."
 msgstr "Эта команда должны быть выполнена от имени пользователя root."
 
-#: ../plugins/copr.py:291
+#: ../plugins/copr.py:331
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "В этом репозитории еще нет собранных пакетов, так что сейчас его нельзя "
 "подключить."
 
-#: ../plugins/copr.py:294
+#: ../plugins/copr.py:334
 msgid "Such repository does not exist."
 msgstr "Такой репозиторий не существует."
 
-#: ../plugins/copr.py:315
+#: ../plugins/copr.py:355
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Не удалось отключить репозиторий copr {}/{}"
 
-#: ../plugins/copr.py:328 ../plugins/copr.py:366
+#: ../plugins/copr.py:368 ../plugins/copr.py:406
 msgid "Unknown response from server."
 msgstr "Неизвестный ответ сервера."
 
-#: ../plugins/copr.py:350
+#: ../plugins/copr.py:390
 msgid "Interact with Playground repository."
 msgstr "Взаимодействие с репозиторием Playground."
 
-#: ../plugins/copr.py:355
+#: ../plugins/copr.py:395
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -626,18 +553,95 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../plugins/copr.py:401
+#: ../plugins/copr.py:441
 msgid "Playground repositories successfully enabled."
 msgstr "Репозитории Playground успешно подключены."
 
-#: ../plugins/copr.py:404
+#: ../plugins/copr.py:444
 msgid "Playground repositories successfully disabled."
 msgstr "Репозитории Playground успешно отключены."
 
-#: ../plugins/copr.py:408
+#: ../plugins/copr.py:448
 msgid "Playground repositories successfully updated."
 msgstr "Репозитории Playground успешно обновлены."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "установить пакеты debuginfo"
+#: ../plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "Загрузить пакет в текущий каталог"
+
+#: ../plugins/download.py:51
+msgid "packages to download"
+msgstr "пакеты для загрузки"
+
+#: ../plugins/download.py:54
+msgid "download the src.rpm instead"
+msgstr "вместо этого загрузить src.rpm"
+
+#: ../plugins/download.py:56
+msgid "download the -debuginfo package instead"
+msgstr "вместо этого загрузить пакет -debuginfo"
+
+#: ../plugins/download.py:59
+msgid "limit  the  query to packages of given architectures."
+msgstr "ограничить запрос пакетами с данной архитектурой."
+
+#: ../plugins/download.py:61
+msgid "resolve and download needed dependencies"
+msgstr "разрешить требующиеся зависимости и загрузить"
+
+#: ../plugins/download.py:63
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr "вместо загрузки вывести список URL, откуда можно загрузить пакеты rpm"
+
+#: ../plugins/download.py:68
+msgid "when running with --url, limit to specific protocols"
+msgstr "ограничить указанными протоколами при работе с --url"
+
+#: ../plugins/download.py:105
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Не удалось получить зеркало для пакета: %s"
+
+#: ../plugins/download.py:180
+msgid "Exiting due to strict setting."
+msgstr "Выход вследствие жестких настроек."
+
+#: ../plugins/download.py:200
+msgid "Error in resolve"
+msgstr "Ошибка при разрешении"
+
+#: ../plugins/download.py:215
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Не заданы пакеты с исходными текстами для %s"
+
+#: ../plugins/download.py:231 ../plugins/download.py:245
+#, python-format
+msgid "No package %s available."
+msgstr "Нет пакета %s."
+
+#: ../plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Показать список неразрешенных зависимостей для репозиториев"
+
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr ""
+
+#: ../plugins/repoclosure.py:116
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr ""
+"проверить пакеты указанных архитектур, могут быть заданы несколько раз"
+
+#: ../plugins/repoclosure.py:119
+msgid "Specify repositories to check"
+msgstr "Указать репозитории для проверки"
+
+#: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Проверять только самые новые пакеты в репозиториях"
+
+#: ../plugins/repoclosure.py:124
+msgid "Check closure for this package only"
+msgstr "Проверить завершение только для этого пакета"

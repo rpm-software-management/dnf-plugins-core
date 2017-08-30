@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 14:04+0200\n"
-"PO-Revision-Date: 2017-06-16 04:26-0400\n"
+"POT-Creation-Date: 2017-08-30 08:42+0200\n"
+"PO-Revision-Date: 2017-08-07 02:18-0400\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -114,31 +114,79 @@ msgstr "Fel: försöker aktivera redan aktiverade förråd."
 msgid "No matching repo to modify: %s."
 msgstr "Inget matchande förråd att ändra: %s."
 
-#: ../plugins/config_manager.py:148
+#: ../plugins/config_manager.py:149
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Lägger till förråd från: %s"
 
-#: ../plugins/config_manager.py:178
+#: ../plugins/config_manager.py:173
+msgid "Configuration of repo failed"
+msgid_plural "Configuration of repos failed"
+msgstr[0] ""
+
+#: ../plugins/config_manager.py:183
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Kunde inte spara förrådet till förrådsfilen %s: %s"
 
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "avgör vilka uppdaterade binärer som behöver startas om"
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "skriv ut information om installerade rpm-paket till en fil"
 
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "betrakta endast denna användares processer"
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "försök inte skriva ut förrådets innehåll."
 
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "hämta alla paket från fjärrförrådet"
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "frivilligt namn på utskriftsfilen"
 
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "var hämtade förråd skall sparas "
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Utdata skriven till: %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "återställ paket uppskrivna i en felsökningsutskriftsfil"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "skriv ut kommandon som skulle körts till standard ut."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Installera den senaste versionen av de uppskrivna paketen."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Ignorera arkitektur och installera saknade paket som matchar namnet, epoken,"
+" versionen och utgåvan."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "begränsa till viss typ"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "namn på utskriftsfilen"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Paketet %s är inte tillgängligt"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Felaktig dnf-felsökningsfil: %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "installera debuginfo-paket"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -227,6 +275,14 @@ msgstr "%s av %s migrerat"
 msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
 msgstr "%d YUMDB-poster hittade, %d migrerade, %d överhoppade/bevarade"
 
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "avgör vilka uppdaterade binärer som behöver startas om"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "betrakta endast denna användares processer"
+
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
 msgstr "Mata ut en fullständig paketberoendegraf i dot-format"
@@ -272,150 +328,17 @@ msgstr "N nyaste paket att behålla, 1 som standard"
 msgid "Path to directory"
 msgstr "Sökväg till katalogen"
 
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "hämta alla paket från fjärrförrådet"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "var hämtade förråd skall sparas "
+
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Nya löv:"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "Hämta ett paket till aktuell katalog"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "paket att hämta"
-
-#: ../plugins/download.py:54
-msgid "download the src.rpm instead"
-msgstr "hämta källkods-rpm:en istället"
-
-#: ../plugins/download.py:56
-msgid "download the -debuginfo package instead"
-msgstr "hämta debuginfo-paketet istället"
-
-#: ../plugins/download.py:59
-msgid "limit  the  query to packages of given architectures."
-msgstr "begränsa frågan till paket av den angivna arkitekturen."
-
-#: ../plugins/download.py:61
-msgid "download path, default is current dir"
-msgstr "sökväg att hämta till, standard är aktuell katalog"
-
-#: ../plugins/download.py:63
-msgid "resolve and download needed dependencies"
-msgstr "lös upp och hämta de nödvändiga beroendena"
-
-#: ../plugins/download.py:65
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"skriv en lista på url:ar rpm:erna kan hämtas ifrån istället för att hämta "
-"dem"
-
-#: ../plugins/download.py:70
-msgid "when running with --url, limit to specific protocols"
-msgstr "när använt med --url, begränsa till specifika protokoll"
-
-#: ../plugins/download.py:102
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "Misslyckades att få tag i spegeln för paket: %s"
-
-#: ../plugins/download.py:184
-msgid "Exiting due to strict setting."
-msgstr "Avslutar på grund av strict-inställning."
-
-#: ../plugins/download.py:204
-msgid "Error in resolve"
-msgstr "Fel i upplösningen"
-
-#: ../plugins/download.py:219
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "Ingen källkods-rpm definierad för %s"
-
-#: ../plugins/download.py:235 ../plugins/download.py:249
-#, python-format
-msgid "No package %s available."
-msgstr "Inget paket %s tillgängligt."
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Visa en lista över olösta beroenden för förråd"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "Förrådshöljet slutade med olösta beroenden"
-
-#: ../plugins/repoclosure.py:116
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr "kontrollera paket på den givna arkitekturen, kan anges flera gånger"
-
-#: ../plugins/repoclosure.py:119
-msgid "Specify repositories to check"
-msgstr "Ange förråd att kontrollera"
-
-#: ../plugins/repoclosure.py:121
-msgid "Check only the newest packages in the repos"
-msgstr "Kontrollera endast de nyaste paketen i förrådet"
-
-#: ../plugins/repoclosure.py:124
-msgid "Check closure for this package only"
-msgstr "Kontrollera endast höljet för detta paket"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "skriv ut information om installerade rpm-paket till en fil"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "försök inte skriva ut förrådets innehåll."
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "frivilligt namn på utskriftsfilen"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Utdata skriven till: %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "återställ paket uppskrivna i en felsökningsutskriftsfil"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "skriv ut kommandon som skulle körts till standard ut."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Installera den senaste versionen av de uppskrivna paketen."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Ignorera arkitektur och installera saknade paket som matchar namnet, epoken,"
-" versionen och utgåvan."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "begränsa till viss typ"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "namn på utskriftsfilen"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Paketet %s är inte tillgängligt"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Felaktig dnf-felsökningsfil: %s"
 
 #: ../plugins/versionlock.py:32
 #, python-format
@@ -450,33 +373,34 @@ msgstr "Uteslutanden från versionslås tillämpades inte"
 msgid "control package version locks"
 msgstr "styr paketversionslås"
 
-#: ../plugins/copr.py:37
+#: ../plugins/copr.py:38
 msgid "yes"
 msgstr "ja"
 
-#: ../plugins/copr.py:37
+#: ../plugins/copr.py:38
 msgid "y"
 msgstr "j"
 
-#: ../plugins/copr.py:38
+#: ../plugins/copr.py:39
 msgid "no"
 msgstr "nej"
 
-#: ../plugins/copr.py:38
+#: ../plugins/copr.py:39
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:53
+#: ../plugins/copr.py:54
 msgid "Interact with Copr repositories."
 msgstr "Interagera med Copr-förråd."
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:55
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
 "  disable name/project\n"
 "  remove name/project\n"
-"  list name\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
 "  search project\n"
 "\n"
 "  Examples:\n"
@@ -484,49 +408,51 @@ msgid ""
 "  copr enable ignatenkobrain/ocltoys\n"
 "  copr disable rhscl/perl516\n"
 "  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
 "  copr search tests\n"
 "    "
 msgstr ""
-"\n"
-"  enable namn/projekt [bytrot]\n"
-"  disable namn/projekt\n"
-"  remove namn/projekt\n"
-"  list namn\n"
-"  search projekt\n"
-"\n"
-"  Exempel:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
 
-#: ../plugins/copr.py:86
+#: ../plugins/copr.py:81
+msgid "List all installed Copr repositories (default)"
+msgstr ""
+
+#: ../plugins/copr.py:83
+msgid "List enabled Copr repositories"
+msgstr ""
+
+#: ../plugins/copr.py:85
+msgid "List disabled Copr repositories"
+msgstr ""
+
+#: ../plugins/copr.py:87
+msgid "List available Copr repositories by user NAME"
+msgstr ""
+
+#: ../plugins/copr.py:100
 msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr "Varning: vi använder icke-standard Copr URL ”{}”."
 
-#: ../plugins/copr.py:115 ../plugins/copr.py:139
+#: ../plugins/copr.py:139 ../plugins/copr.py:160
 msgid "Error: "
 msgstr "Fel: "
 
-#: ../plugins/copr.py:116 ../plugins/copr.py:120
+#: ../plugins/copr.py:140 ../plugins/copr.py:144
 msgid "exactly two additional parameters to copr command are required"
 msgstr "exakt två ytterligare parametrar till kommandot copr behövs"
 
-#: ../plugins/copr.py:140
+#: ../plugins/copr.py:161
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "använd formatet ”copr_användarnamn/copr_projektnamn” för att referera copr-"
 "projekt"
 
-#: ../plugins/copr.py:142
+#: ../plugins/copr.py:163
 msgid "bad copr project format"
 msgstr "felaktigt copr-projektformat"
 
-#: ../plugins/copr.py:148
+#: ../plugins/copr.py:169
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -542,97 +468,192 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Du står i begrepp att aktivera ett Copr-förråd.  Observera att detta förråd\n"
+"inte är en del av huvuddistributionen, och kvaliteten kan variera.\n"
+"\n"
+"Fedoraprojektet har ingen makt över innehållet i detta förråd\n"
+"utöver reglerna i Copr FAQ:n på\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"och upprätthåller inte någon viss kvalitet eller säkerhetsnivå på paketen.\n"
+"\n"
+"Rapportera inte fel på dessa paket i Fedoras Bugzilla.  Kontakta vid problem\n"
+"förrådets ägare.\n"
+"\n"
+"Vill du fortsätta?"
 
-#: ../plugins/copr.py:163
+#: ../plugins/copr.py:184
 msgid "Repository successfully enabled."
 msgstr "Förrådet aktiverat."
 
-#: ../plugins/copr.py:167
+#: ../plugins/copr.py:188
 msgid "Repository successfully disabled."
 msgstr "Förrådet avaktiverat."
 
-#: ../plugins/copr.py:171
+#: ../plugins/copr.py:192
 msgid "Repository successfully removed."
 msgstr "Förrådet borttaget."
 
-#: ../plugins/copr.py:175 ../plugins/copr.py:411
+#: ../plugins/copr.py:196 ../plugins/copr.py:451
 msgid "Unknown subcommand {}."
 msgstr "Okänt underkommando {}."
 
-#: ../plugins/copr.py:185
+#: ../plugins/copr.py:225
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan inte tolka förråd för användarnamnet ”{}”."
 
-#: ../plugins/copr.py:188
+#: ../plugins/copr.py:228
 msgid "List of {} coprs"
 msgstr "lista över {} copr"
 
-#: ../plugins/copr.py:196
+#: ../plugins/copr.py:236
 msgid "No description given"
 msgstr "Ingen beskrivning angiven"
 
-#: ../plugins/copr.py:208
+#: ../plugins/copr.py:248
 msgid "Can't parse search for '{}'."
 msgstr "Kan inte tolka sökningen efter ”{}”."
 
-#: ../plugins/copr.py:211
+#: ../plugins/copr.py:251
 msgid "Matched: {}"
 msgstr "Matchade: {}"
 
-#: ../plugins/copr.py:219
+#: ../plugins/copr.py:259
 msgid "No description given."
 msgstr "Ingen beskrivning angiven."
 
-#: ../plugins/copr.py:232
+#: ../plugins/copr.py:272
 msgid "Safe and good answer. Exiting."
 msgstr "Säkert och bra svar.  Avslutar."
 
-#: ../plugins/copr.py:239
+#: ../plugins/copr.py:279
 msgid "This command has to be run under the root user."
 msgstr "Detta kommando måste köras som användaren root."
 
-#: ../plugins/copr.py:291
+#: ../plugins/copr.py:331
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Detta förråd har inte några byggen ännu så du kan inte aktivera det nu."
 
-#: ../plugins/copr.py:294
+#: ../plugins/copr.py:334
 msgid "Such repository does not exist."
 msgstr "Något sådant förråd finns inte."
 
-#: ../plugins/copr.py:315
+#: ../plugins/copr.py:355
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Misslyckades att avaktivera copr-förrådet {}/{}"
 
-#: ../plugins/copr.py:328 ../plugins/copr.py:366
+#: ../plugins/copr.py:368 ../plugins/copr.py:406
 msgid "Unknown response from server."
 msgstr "Okänt svar från servern."
 
-#: ../plugins/copr.py:350
+#: ../plugins/copr.py:390
 msgid "Interact with Playground repository."
 msgstr "Interagera med Playground-förrådet."
 
-#: ../plugins/copr.py:355
+#: ../plugins/copr.py:395
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Du står i begrepp att aktivera ett Playground-förråd.\n"
+"\n"
+"Vill du fortsätta?"
 
-#: ../plugins/copr.py:401
+#: ../plugins/copr.py:441
 msgid "Playground repositories successfully enabled."
 msgstr "Playground-förråden aktiverades."
 
-#: ../plugins/copr.py:404
+#: ../plugins/copr.py:444
 msgid "Playground repositories successfully disabled."
 msgstr "Playground-förråden avaktiverades."
 
-#: ../plugins/copr.py:408
+#: ../plugins/copr.py:448
 msgid "Playground repositories successfully updated."
 msgstr "Playground-förråden uppdaterades."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "installera debuginfo-paket"
+#: ../plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "Hämta ett paket till aktuell katalog"
+
+#: ../plugins/download.py:51
+msgid "packages to download"
+msgstr "paket att hämta"
+
+#: ../plugins/download.py:54
+msgid "download the src.rpm instead"
+msgstr "hämta källkods-rpm:en istället"
+
+#: ../plugins/download.py:56
+msgid "download the -debuginfo package instead"
+msgstr "hämta debuginfo-paketet istället"
+
+#: ../plugins/download.py:59
+msgid "limit  the  query to packages of given architectures."
+msgstr "begränsa frågan till paket av den angivna arkitekturen."
+
+#: ../plugins/download.py:61
+msgid "resolve and download needed dependencies"
+msgstr "lös upp och hämta de nödvändiga beroendena"
+
+#: ../plugins/download.py:63
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr ""
+"skriv en lista på url:ar rpm:erna kan hämtas ifrån istället för att hämta "
+"dem"
+
+#: ../plugins/download.py:68
+msgid "when running with --url, limit to specific protocols"
+msgstr "när använt med --url, begränsa till specifika protokoll"
+
+#: ../plugins/download.py:105
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Misslyckades att få tag i spegeln för paket: %s"
+
+#: ../plugins/download.py:180
+msgid "Exiting due to strict setting."
+msgstr "Avslutar på grund av strict-inställning."
+
+#: ../plugins/download.py:200
+msgid "Error in resolve"
+msgstr "Fel i upplösningen"
+
+#: ../plugins/download.py:215
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Ingen källkods-rpm definierad för %s"
+
+#: ../plugins/download.py:231 ../plugins/download.py:245
+#, python-format
+msgid "No package %s available."
+msgstr "Inget paket %s tillgängligt."
+
+#: ../plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Visa en lista över olösta beroenden för förråd"
+
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "Förrådshöljet slutade med olösta beroenden"
+
+#: ../plugins/repoclosure.py:116
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr "kontrollera paket på den givna arkitekturen, kan anges flera gånger"
+
+#: ../plugins/repoclosure.py:119
+msgid "Specify repositories to check"
+msgstr "Ange förråd att kontrollera"
+
+#: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Kontrollera endast de nyaste paketen i förrådet"
+
+#: ../plugins/repoclosure.py:124
+msgid "Check closure for this package only"
+msgstr "Kontrollera endast höljet för detta paket"

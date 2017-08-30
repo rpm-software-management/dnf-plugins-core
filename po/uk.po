@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 14:04+0200\n"
-"PO-Revision-Date: 2017-06-13 01:24-0400\n"
+"POT-Creation-Date: 2017-08-30 08:42+0200\n"
+"PO-Revision-Date: 2017-07-02 06:33-0400\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -117,31 +117,79 @@ msgstr "Помилка: спроба увімкнути уже увімкнен�
 msgid "No matching repo to modify: %s."
 msgstr "Немає відповідного сховища для внесення змін: %s."
 
-#: ../plugins/config_manager.py:148
+#: ../plugins/config_manager.py:149
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Додаємо сховище з %s"
 
-#: ../plugins/config_manager.py:178
+#: ../plugins/config_manager.py:173
+msgid "Configuration of repo failed"
+msgid_plural "Configuration of repos failed"
+msgstr[0] ""
+
+#: ../plugins/config_manager.py:183
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не вдалося зберегти дані сховища до файла сховищ %s: %s"
 
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr "визначити оновлені виконувані файли, які потребують перезапуску"
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "створити дамп даних щодо встановлених пакунків rpm у файлі"
 
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "брати до уваги лише процеси цього користувача"
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "не намагатися створити дамп вмісту сховища."
 
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "отримати усі пакунки із віддаленого сховища"
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "необов’язкова назва файла дампу"
 
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "місце, де слід зберігати отримані сховища"
+#: ../plugins/debug.py:95
+#, python-format
+msgid "Output written to: %s"
+msgstr "Результат записано до %s"
+
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "відновити пакунки, записані до файла debug-dump"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "вивести команди, які буде віддано, до stdout."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Встановити найсвіжішу версію записаних пакунків."
+
+#: ../plugins/debug.py:189
+msgid ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr ""
+"Ігнорувати архітектуру і встановити усі пакунки, яких не вистачає, за "
+"відповідністю назви, епохи, версії та випуску."
+
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "обмежитися вказаним типом"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "назва файла дампу"
+
+#: ../plugins/debug.py:264
+#, python-format
+msgid "Package %s is not available"
+msgstr "Пакунок %s недоступний"
+
+#: ../plugins/debug.py:274
+#, python-format
+msgid "Bad dnf debug file: %s"
+msgstr "Помилковий файл діагностики dnf: %s"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "встановити пакунки debuginfo"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -232,6 +280,14 @@ msgstr "перенесено %s з %s"
 msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
 msgstr "Знайдено %d записів YUMDB, перенесено %d, пропущено/збережено %d"
 
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr "визначити оновлені виконувані файли, які потребують перезапуску"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "брати до уваги лише процеси цього користувача"
+
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
 msgstr "Вивести повний граф залежностей пакунків у форматі dot"
@@ -279,152 +335,17 @@ msgstr "Зберігати N найновіших пакунків. Типове
 msgid "Path to directory"
 msgstr "Шлях до каталогу"
 
+#: ../plugins/reposync.py:40
+msgid "download all packages from remote repo"
+msgstr "отримати усі пакунки із віддаленого сховища"
+
+#: ../plugins/reposync.py:45
+msgid "where to store downloaded repositories "
+msgstr "місце, де слід зберігати отримані сховища"
+
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Нові листки:"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "Отримати пакунок до поточного каталогу"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "пакунки для отримання"
-
-#: ../plugins/download.py:54
-msgid "download the src.rpm instead"
-msgstr "отримати замість того src.rpm"
-
-#: ../plugins/download.py:56
-msgid "download the -debuginfo package instead"
-msgstr "отримати замість цього пакунок -debuginfo"
-
-#: ../plugins/download.py:59
-msgid "limit  the  query to packages of given architectures."
-msgstr "обмежити пошук пакунків вказаними архітектурами."
-
-#: ../plugins/download.py:61
-msgid "download path, default is current dir"
-msgstr "шлях для отримання даних, типовим є поточний каталог"
-
-#: ../plugins/download.py:63
-msgid "resolve and download needed dependencies"
-msgstr "визначити і отримати потрібні залежності"
-
-#: ../plugins/download.py:65
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"вивести список адрес, звідки можна отримати пакунки rpm, замість отримання "
-"пакунків"
-
-#: ../plugins/download.py:70
-msgid "when running with --url, limit to specific protocols"
-msgstr "якщо запущено з --url, обмежитися вказаними протоколами"
-
-#: ../plugins/download.py:102
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "Не вдалося отримати дзеркало для пакунка: %s"
-
-#: ../plugins/download.py:184
-msgid "Exiting due to strict setting."
-msgstr "Завершуємо роботу через строгі обмеження."
-
-#: ../plugins/download.py:204
-msgid "Error in resolve"
-msgstr "Помилка у визначенні"
-
-#: ../plugins/download.py:219
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "Не визначено rpm із початковим кодом для %s"
-
-#: ../plugins/download.py:235 ../plugins/download.py:249
-#, python-format
-msgid "No package %s available."
-msgstr "Немає доступного пакунка %s."
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Показати список нерозв’язаних залежностей для сховищ"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "Виконання repoclosure завершилося із нерозв’язаними залежностями."
-
-#: ../plugins/repoclosure.py:116
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
-"перевірити пакунки вказаної архітектури, можна використовувати декілька "
-"разів"
-
-#: ../plugins/repoclosure.py:119
-msgid "Specify repositories to check"
-msgstr "Вказати сховища для перевірки"
-
-#: ../plugins/repoclosure.py:121
-msgid "Check only the newest packages in the repos"
-msgstr "Перевірити лише найновіші пакунки у сховищах"
-
-#: ../plugins/repoclosure.py:124
-msgid "Check closure for this package only"
-msgstr "Перевірити замкненість лише для цього пакунка"
-
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "створити дамп даних щодо встановлених пакунків rpm у файлі"
-
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "не намагатися створити дамп вмісту сховища."
-
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "необов’язкова назва файла дампу"
-
-#: ../plugins/debug.py:95
-#, python-format
-msgid "Output written to: %s"
-msgstr "Результат записано до %s"
-
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "відновити пакунки, записані до файла debug-dump"
-
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "вивести команди, які буде віддано, до stdout."
-
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "Встановити найсвіжішу версію записаних пакунків."
-
-#: ../plugins/debug.py:189
-msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr ""
-"Ігнорувати архітектуру і встановити усі пакунки, яких не вистачає, за "
-"відповідністю назви, епохи, версії та випуску."
-
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "обмежитися вказаним типом"
-
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "назва файла дампу"
-
-#: ../plugins/debug.py:264
-#, python-format
-msgid "Package %s is not available"
-msgstr "Пакунок %s недоступний"
-
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "Помилковий файл діагностики dnf: %s"
 
 #: ../plugins/versionlock.py:32
 #, python-format
@@ -459,33 +380,34 @@ msgstr "Виключення з додатка versionlock не було зас�
 msgid "control package version locks"
 msgstr "керування блокуванням версій пакунків"
 
-#: ../plugins/copr.py:37
+#: ../plugins/copr.py:38
 msgid "yes"
 msgstr "так"
 
-#: ../plugins/copr.py:37
+#: ../plugins/copr.py:38
 msgid "y"
 msgstr "т"
 
-#: ../plugins/copr.py:38
+#: ../plugins/copr.py:39
 msgid "no"
 msgstr "ні"
 
-#: ../plugins/copr.py:38
+#: ../plugins/copr.py:39
 msgid "n"
 msgstr "н"
 
-#: ../plugins/copr.py:53
+#: ../plugins/copr.py:54
 msgid "Interact with Copr repositories."
 msgstr "Працювати зі сховищами Copr."
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:55
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
 "  disable name/project\n"
 "  remove name/project\n"
-"  list name\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
 "  search project\n"
 "\n"
 "  Examples:\n"
@@ -493,49 +415,51 @@ msgid ""
 "  copr enable ignatenkobrain/ocltoys\n"
 "  copr disable rhscl/perl516\n"
 "  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
 "  copr search tests\n"
 "    "
 msgstr ""
-"\n"
-"  enable назва/проект [chroot]\n"
-"  disable назва/проект\n"
-"  remove назва/проект\n"
-"  list назва\n"
-"  search проект\n"
-"\n"
-"  Приклади:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list ignatenkobrain\n"
-"  copr search tests\n"
-"    "
 
-#: ../plugins/copr.py:86
+#: ../plugins/copr.py:81
+msgid "List all installed Copr repositories (default)"
+msgstr ""
+
+#: ../plugins/copr.py:83
+msgid "List enabled Copr repositories"
+msgstr ""
+
+#: ../plugins/copr.py:85
+msgid "List disabled Copr repositories"
+msgstr ""
+
+#: ../plugins/copr.py:87
+msgid "List available Copr repositories by user NAME"
+msgstr ""
+
+#: ../plugins/copr.py:100
 msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr "Попередження: ми використовуємо нестандартну адресу Copr «{}»."
 
-#: ../plugins/copr.py:115 ../plugins/copr.py:139
+#: ../plugins/copr.py:139 ../plugins/copr.py:160
 msgid "Error: "
 msgstr "Помилка:"
 
-#: ../plugins/copr.py:116 ../plugins/copr.py:120
+#: ../plugins/copr.py:140 ../plugins/copr.py:144
 msgid "exactly two additional parameters to copr command are required"
 msgstr "команді copr слід передавати точно два додаткові параметри"
 
-#: ../plugins/copr.py:140
+#: ../plugins/copr.py:161
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "для використання проект copr скористайтеся форматом "
 "«copr_користувач/copr_назва_проекту»"
 
-#: ../plugins/copr.py:142
+#: ../plugins/copr.py:163
 msgid "bad copr project format"
 msgstr "помилкове форматування проекту copr"
 
-#: ../plugins/copr.py:148
+#: ../plugins/copr.py:169
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -551,98 +475,197 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Ви наказали системі увімкнути сховище Copr. Будь ласка, зауважте,\n"
+"що це сховище не є частиною основного дистрибутива, тому може\n"
+"містити пакунки неналежної якості.\n"
+"\n"
+"Проект Fedora ніяким чином не впливає на вміст цього\n"
+"сховища, окрім правил, які визначено у списку питань щодо Copr тут:\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"а пакунки не проходять жодних рівнів забезпечення якості чи захищеності.\n"
+"\n"
+"Будь ласка, не повідомляйте про виявлені у цих пакунках вади до\n"
+"системи стеження за вадами Fedora. Якщо виникнуть якісь проблеми,\n"
+"зв’яжіться із власником цього сховища пакунків.\n"
+"\n"
+"Ви справді хочете продовжити виконання цієї дії?"
 
-#: ../plugins/copr.py:163
+#: ../plugins/copr.py:184
 msgid "Repository successfully enabled."
 msgstr "Сховище успішно увімкнено."
 
-#: ../plugins/copr.py:167
+#: ../plugins/copr.py:188
 msgid "Repository successfully disabled."
 msgstr "Сховище успішно вимкнено."
 
-#: ../plugins/copr.py:171
+#: ../plugins/copr.py:192
 msgid "Repository successfully removed."
 msgstr "Сховище успішно вилучено."
 
-#: ../plugins/copr.py:175 ../plugins/copr.py:411
+#: ../plugins/copr.py:196 ../plugins/copr.py:451
 msgid "Unknown subcommand {}."
 msgstr "Невідома підкоманда {}."
 
-#: ../plugins/copr.py:185
+#: ../plugins/copr.py:225
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не вдалося обробити сховища для користувача '{}'."
 
-#: ../plugins/copr.py:188
+#: ../plugins/copr.py:228
 msgid "List of {} coprs"
 msgstr "Список copr {}"
 
-#: ../plugins/copr.py:196
+#: ../plugins/copr.py:236
 msgid "No description given"
 msgstr "Опис не надано"
 
-#: ../plugins/copr.py:208
+#: ../plugins/copr.py:248
 msgid "Can't parse search for '{}'."
 msgstr "Не вдалося обробити пошук для '{}'."
 
-#: ../plugins/copr.py:211
+#: ../plugins/copr.py:251
 msgid "Matched: {}"
 msgstr "Відповідник: {}"
 
-#: ../plugins/copr.py:219
+#: ../plugins/copr.py:259
 msgid "No description given."
 msgstr "Опис не надано."
 
-#: ../plugins/copr.py:232
+#: ../plugins/copr.py:272
 msgid "Safe and good answer. Exiting."
 msgstr "Безпечна і добра відповідь. Завершуємо роботу."
 
-#: ../plugins/copr.py:239
+#: ../plugins/copr.py:279
 msgid "This command has to be run under the root user."
 msgstr "Команду слід віддавати від імені користувача root."
 
-#: ../plugins/copr.py:291
+#: ../plugins/copr.py:331
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "У цьому сховищі ще немає нічого зібраного, отже ви не можете його зараз "
 "увімкнути."
 
-#: ../plugins/copr.py:294
+#: ../plugins/copr.py:334
 msgid "Such repository does not exist."
 msgstr "Такого сховища не існує."
 
-#: ../plugins/copr.py:315
+#: ../plugins/copr.py:355
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Не вдалося вилучити сховище copr {}/{}"
 
-#: ../plugins/copr.py:328 ../plugins/copr.py:366
+#: ../plugins/copr.py:368 ../plugins/copr.py:406
 msgid "Unknown response from server."
 msgstr "Невідома відповідь від сервера."
 
-#: ../plugins/copr.py:350
+#: ../plugins/copr.py:390
 msgid "Interact with Playground repository."
 msgstr "Працювати зі сховищем Playground."
 
-#: ../plugins/copr.py:355
+#: ../plugins/copr.py:395
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Ви наказали системі увімкнути сховище Playground.\n"
+"\n"
+"Ви справді хочете продовжити виконання цієї дії?"
 
-#: ../plugins/copr.py:401
+#: ../plugins/copr.py:441
 msgid "Playground repositories successfully enabled."
 msgstr "Сховища playground успішно увімкнено."
 
-#: ../plugins/copr.py:404
+#: ../plugins/copr.py:444
 msgid "Playground repositories successfully disabled."
 msgstr "Сховища playground успішно вимкнено."
 
-#: ../plugins/copr.py:408
+#: ../plugins/copr.py:448
 msgid "Playground repositories successfully updated."
 msgstr "Сховища playground успішно оновлено."
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "встановити пакунки debuginfo"
+#: ../plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "Отримати пакунок до поточного каталогу"
+
+#: ../plugins/download.py:51
+msgid "packages to download"
+msgstr "пакунки для отримання"
+
+#: ../plugins/download.py:54
+msgid "download the src.rpm instead"
+msgstr "отримати замість того src.rpm"
+
+#: ../plugins/download.py:56
+msgid "download the -debuginfo package instead"
+msgstr "отримати замість цього пакунок -debuginfo"
+
+#: ../plugins/download.py:59
+msgid "limit  the  query to packages of given architectures."
+msgstr "обмежити пошук пакунків вказаними архітектурами."
+
+#: ../plugins/download.py:61
+msgid "resolve and download needed dependencies"
+msgstr "визначити і отримати потрібні залежності"
+
+#: ../plugins/download.py:63
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr ""
+"вивести список адрес, звідки можна отримати пакунки rpm, замість отримання "
+"пакунків"
+
+#: ../plugins/download.py:68
+msgid "when running with --url, limit to specific protocols"
+msgstr "якщо запущено з --url, обмежитися вказаними протоколами"
+
+#: ../plugins/download.py:105
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Не вдалося отримати дзеркало для пакунка: %s"
+
+#: ../plugins/download.py:180
+msgid "Exiting due to strict setting."
+msgstr "Завершуємо роботу через строгі обмеження."
+
+#: ../plugins/download.py:200
+msgid "Error in resolve"
+msgstr "Помилка у визначенні"
+
+#: ../plugins/download.py:215
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Не визначено rpm із початковим кодом для %s"
+
+#: ../plugins/download.py:231 ../plugins/download.py:245
+#, python-format
+msgid "No package %s available."
+msgstr "Немає доступного пакунка %s."
+
+#: ../plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Показати список нерозв’язаних залежностей для сховищ"
+
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "Виконання repoclosure завершилося із нерозв’язаними залежностями."
+
+#: ../plugins/repoclosure.py:116
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr ""
+"перевірити пакунки вказаної архітектури, можна використовувати декілька "
+"разів"
+
+#: ../plugins/repoclosure.py:119
+msgid "Specify repositories to check"
+msgstr "Вказати сховища для перевірки"
+
+#: ../plugins/repoclosure.py:121
+msgid "Check only the newest packages in the repos"
+msgstr "Перевірити лише найновіші пакунки у сховищах"
+
+#: ../plugins/repoclosure.py:124
+msgid "Check closure for this package only"
+msgstr "Перевірити замкненість лише для цього пакунка"
