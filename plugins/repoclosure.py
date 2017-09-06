@@ -72,13 +72,14 @@ class RepoClosureCommand(dnf.cli.Command):
         deps = set()
         available = self.base.sack.query().available()
         if self.base.conf.best and not self.opts.check:
-            available.latest()
+            available = available.latest()
         elif self.opts.newest or self.base.conf.best:
-            available.filter(latest=True)
+            available = available.filter(latest=True)
         if arch is not None:
             available = available.filter(arch=arch)
         pkgs = set()
         if self.opts.pkglist:
+            available.apply()
             for pkg in self.opts.pkglist:
                 for pkgs_filtered in available.filter(name=pkg):
                     pkgs.add(pkgs_filtered)
@@ -88,6 +89,7 @@ class RepoClosureCommand(dnf.cli.Command):
 
         if self.opts.check:
             checkpkgs = set()
+            available.apply()
             for repo in self.opts.check:
                 for pkgs_filtered in available.filter(reponame=repo):
                     checkpkgs.add(pkgs_filtered)
@@ -104,6 +106,7 @@ class RepoClosureCommand(dnf.cli.Command):
                 deps.add(req)
                 unresolved[pkg].add(req)
 
+        available.apply()
         unresolved_deps = set(x for x in deps if not available.filter(provides=x))
 
         unresolved_transition = {k: set(x for x in v if x in unresolved_deps)
