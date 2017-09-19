@@ -87,7 +87,7 @@ class Local(dnf.Plugin):
         self.crepo = {}
         self.logger = logger
 
-    def config(self):
+    def pre_config(self):
         conf = self.read_config(self.base.conf)
 
         parser = LocalConfParse(conf)
