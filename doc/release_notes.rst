@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+2.1.4 Release Notes
+===================
+
+* Added four new options for ``list`` subcommand of ``copr`` plugin
+
+Bugs fixed in 2.1.4:
+
+* :rhbug:`1476834`
+
+===================
 2.1.3 Release Notes
 ===================
 

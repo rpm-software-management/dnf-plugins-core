@@ -10,7 +10,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        2.1.3
+Version:        2.1.4
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -495,6 +495,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Oct 02 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.4-1
+- Added four new options for ``list`` subcommand of ``copr`` plugin
+- Resolves: rhbz#1476834 - [abrt] dnf: arch(): config.py:908:arch:TypeError: unhashable type: 'list'
+
 * Mon Jul 24 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.3-1
 - Solve conflict with migrate plugin (RhBug:1470843) (Jaroslav Mracek)
 - Move copying to dnf (RhBug:1279001) (Ondřej Sojka)
