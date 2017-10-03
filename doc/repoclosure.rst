@@ -38,7 +38,9 @@ Options
 -------
 
 ``--arch <arch>``
-    Query only packages for specified architecture, can be specified multiple times (default is all architectures).
+    Query only packages for specified architecture, can be specified multiple times (default is all
+    compatible architectures with your system). To run repoclosure for arch incompatible with your
+    system use ``--forcearch=<arch>`` option to change basearch.
 
 ``--best``
     Check only the newest packages per arch.
