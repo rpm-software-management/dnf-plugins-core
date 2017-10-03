@@ -43,6 +43,11 @@ Options
 ``--help-cmd``
     Show this help.
 
+``--arch <arch>[,<arch>...]``
+    Limit the query to packages of given architectures (default is all compatible architectures with
+    your system). To download packages with arch incompatible with your system use
+    ``--forcearch=<arch>`` option to change basearch.
+
 ``--source``
     Download the source rpm. Enables source repositories of all enabled binary repositories.
 
