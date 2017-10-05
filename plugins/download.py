@@ -80,6 +80,11 @@ class DownloadCommand(dnf.cli.Command):
         if self.opts.debuginfo:
             self.base.repos.enable_debug_repos()
 
+        if self.opts.destdir:
+            self.base.conf.destdir = self.opts.destdir
+        else:
+            self.base.conf.destdir = dnf.i18n.ucd(os.getcwd())
+
     def run(self):
         """Execute the util action here."""
 
@@ -89,11 +94,6 @@ class DownloadCommand(dnf.cli.Command):
             pkgs = self._get_pkg_objs_debuginfo(self.opts.packages)
         else:
             pkgs = self._get_pkg_objs_rpms(self.opts.packages)
-
-        if self.opts.destdir:
-            self.base.conf.destdir = self.opts.destdir
-        else:
-            self.base.conf.destdir = dnf.i18n.ucd(os.getcwd())
 
         # If user asked for just urls then print them and we're done
         if self.opts.url:
