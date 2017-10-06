@@ -10,7 +10,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        2.1.4
+Version:        2.1.5
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -495,6 +495,9 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Fri Oct 06 2017 Igor Gnatenko <ignatenko@redhat.com> - 2.1.5-1
+- Fix download command (RHBZ #1498426)
+
 * Mon Oct 02 2017 Jaroslav Mracek <jmracek@redhat.com> 2.1.4-1
 - Added four new options for ``list`` subcommand of ``copr`` plugin
 - Resolves: rhbz#1476834 - [abrt] dnf: arch(): config.py:908:arch:TypeError: unhashable type: 'list'
