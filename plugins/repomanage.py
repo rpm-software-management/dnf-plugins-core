@@ -43,12 +43,13 @@ class RepoManageCommand(dnf.cli.Command):
     aliases = ("repomanage",)
     summary = _("Manage a directory of rpm packages")
 
+    def pre_configure(self):
+        if not self.opts.verbose and not self.opts.quiet:
+            self.cli.redirect_logger(stdout=logging.WARNING, stderr=logging.INFO)
+
     def configure(self):
         demands = self.cli.demands
         demands.sack_activation = True
-
-        if not self.opts.verbose and not self.opts.quiet:
-            self.cli.redirect_logger(stdout=logging.WARNING, stderr=logging.INFO)
 
     def run(self):
         if self.opts.new and self.opts.old:
