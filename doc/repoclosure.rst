@@ -57,6 +57,9 @@ Options
 ``--repo <repoid>``
     Specify repo ids to query, can be specified multiple times (default is all enabled).
 
+``--json-output``
+    Outputs the list of unresolved package dependencies as JSON for use in scripts
+
 
 --------
 Examples

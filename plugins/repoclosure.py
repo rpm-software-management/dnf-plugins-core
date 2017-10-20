@@ -24,6 +24,7 @@ from __future__ import unicode_literals
 from dnfpluginscore import _
 
 import dnf.cli
+import json
 
 
 class RepoClosure(dnf.Plugin):
@@ -57,12 +58,24 @@ class RepoClosureCommand(dnf.cli.Command):
             unresolved = self._get_unresolved(self.opts.arches)
         else:
             unresolved = self._get_unresolved()
+        unresolved_packages = {}
         for pkg in sorted(unresolved.keys()):
-            print("package: {} from {}".format(str(pkg), pkg.reponame))
-            print("  unresolved deps:")
+            package_name = str(pkg)
+            if self.opts.json_output:
+                unresolved_packages[package_name] = {}
+                unresolved_packages[package_name]['reponame'] = pkg.reponame
+                unresolved_packages[package_name]['unresolved'] = []
+            else:
+                print("package: {} from {}".format(package_name, pkg.reponame))
+                print("  unresolved deps:")
             for dep in unresolved[pkg]:
-                print("    {}".format(dep))
-        if len(unresolved) > 0:
+                if self.opts.json_output:
+                    unresolved_packages[package_name]['unresolved'].append(str(dep))
+                else:
+                    print("    {}".format(dep))
+        if self.opts.json_output:
+            print(json.dumps(unresolved_packages))
+        elif len(unresolved) > 0:
             msg = _("Repoclosure ended with unresolved dependencies.")
             raise dnf.exceptions.Error(msg)
 
@@ -129,3 +142,5 @@ class RepoClosureCommand(dnf.cli.Command):
         parser.add_argument("--pkg", default=[], action="append",
                             help=_("Check closure for this package only"),
                             dest="pkglist")
+        parser.add_argument("--json-output", action="store_true",
+                            help=_("Output dependency issues in JSON format"))
