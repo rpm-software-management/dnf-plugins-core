@@ -21,12 +21,14 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+from dnfpluginscore import _, logger
+from dnf.cli.option_parser import OptionParser
 import dnf
 import dnf.cli
-import dnfpluginscore
+import dnf.i18n
+import dnf.yum.misc
 import os
-
-_ = dnfpluginscore._
+import sys
 
 
 def _pkgdir(intermediate, target):
@@ -41,8 +43,19 @@ class RepoSyncCommand(dnf.cli.Command):
 
     @staticmethod
     def set_argparser(parser):
+        parser.add_argument('-a', '--arch', dest='arches', default=[],
+                            action=OptionParser._SplitCallback, metavar='[arch]',
+                            help=_('download only packages for this ARCH'))
+        parser.add_argument('--delete', default=False, action='store_true',
+                            help=_('delete local packages no longer present in repository'))
+        parser.add_argument('-m', '--downloadcomps', default=False, action='store_true',
+                            help=_('also download comps.xml'))
+        parser.add_argument('-n', '--newest-only', default=False, action='store_true',
+                            help=_('download only newest packages per-repo'))
         parser.add_argument('-p', '--download-path', default='./',
-                            help=_('where to store downloaded repositories '), )
+                            help=_('where to store downloaded repositories '))
+        parser.add_argument('--source', default=False, action='store_true',
+                            help=_('operate on source packages'))
 
     def configure(self):
         demands = self.cli.demands
@@ -59,11 +72,60 @@ class RepoSyncCommand(dnf.cli.Command):
                 except KeyError:
                     raise dnf.cli.CliError("Unknown repo: '%s'." % repoid)
                 repo.enable()
+
+        if self.opts.source:
+            repos.enable_source_repos()
+
         for repo in repos.iter_enabled():
             repo.pkgdir = _pkgdir(self.opts.download_path, repo.id)
+
+    def delete_old_local_packages(self, packages_to_download):
+        download_map = dict()
+        for pkg in packages_to_download:
+            download_map[(pkg.repo.id, os.path.basename(pkg.location))] = 1
+        # delete any *.rpm file, that is not going to be downloaded from repository
+        for repo in self.base.repos.iter_enabled():
+            if os.path.exists(repo.pkgdir):
+                for filename in os.listdir(repo.pkgdir):
+                    path = os.path.join(repo.pkgdir, filename)
+                    if filename.endswith('.rpm') and os.path.isfile(path):
+                        if not (repo.id, filename) in download_map:
+                            try:
+                                os.unlink(path)
+                                logger.info(_("[DELETED] %s"), path)
+                            except OSError:
+                                logger.error(_("failed to delete file %s"), path)
+
+    def getcomps(self):
+        for repo in self.base.repos.iter_enabled():
+            comps_fn = repo.metadata._comps_fn
+            if comps_fn:
+                if not os.path.exists(repo.pkgdir):
+                    try:
+                        os.makedirs(repo.pkgdir)
+                    except IOError:
+                        logger.error(_("Could not make repository directory: %s"), repo.pkgdir)
+                        sys.exit(1)
+                dest = os.path.join(repo.pkgdir, 'comps.xml')
+                dnf.yum.misc.decompress(comps_fn, dest=dest)
+                logger.info(_("comps.xml for repository %s saved"), repo.id)
 
     def run(self):
         base = self.base
         base.conf.keepcache = True
-        pkgs = base.sack.query().available()
-        base.download_packages(pkgs, self.base.output.progress)
+
+        query = base.sack.query().available()
+        if self.opts.newest_only:
+            query = query.latest()
+        if self.opts.source:
+            query = query.filter(arch='src')
+        elif self.opts.arches:
+            query = query.filter(arch=self.opts.arches)
+
+        if self.opts.delete:
+            self.delete_old_local_packages(query)
+
+        if self.opts.downloadcomps:
+            self.getcomps()
+
+        base.download_packages(query, self.base.output.progress)
