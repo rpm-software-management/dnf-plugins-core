@@ -36,6 +36,9 @@ EXCLUDING_SPEC = _('Adding exclude on:')
 DELETING_SPEC = _('Deleting versionlock for:')
 NOTFOUND_SPEC = _('No package found for:')
 NO_VERSIONLOCK = _('Excludes from versionlock plugin were not applied')
+APPLY_LOCK = _('Versionlock plugin: number of lock rules from file "{}" applied: {}')
+APPLY_EXCLUDE = _('Versionlock plugin: number of exclude rules from file "{}" applied: {}')
+NEVRA_ERROR = _('Versionlock plugin: could not parse pattern:')
 
 locklist_fn = None
 
@@ -66,8 +69,10 @@ class VersionLock(dnf.Plugin):
             raise dnf.exceptions.Error(NO_LOCKLIST)
 
         excludes_query = self.base.sack.query().filter(empty=True)
+        excluded_count = 0
         locked_query = self.base.sack.query().filter(empty=True)
         locked_names = set()
+        locked_count = 0
         for pat in _read_locklist():
             excl = False
             if pat and pat[0] == '!':
@@ -75,15 +80,27 @@ class VersionLock(dnf.Plugin):
                 excl = True
 
             subj = dnf.subject.Subject(pat)
-            solution = subj._get_nevra_solution(self.base.sack, with_nevra=True,
-                                                with_provides=False, with_filenames=False)
+            possible_nevras = list(subj.get_nevra_possibilities(forms=[hawkey.FORM_NEVRA]))
+            if not possible_nevras:
+                logger.error("%s %s", NEVRA_ERROR, pat)
+                continue
+            nevra = possible_nevras[0]
+            pat_query = nevra.to_query(self.base.sack)
 
             if excl:
-                excludes_query = excludes_query.union(solution['query'])
-            elif solution['nevra'] is not None and solution['nevra'].name is not None:
-                locked_names.add(solution['nevra'].name)
-                locked_query = locked_query.union(solution['query'])
-        if locked_query:
+                excluded_count += 1
+                excludes_query = excludes_query.union(pat_query)
+            else:
+                locked_count += 1
+                locked_names.add(nevra.name)
+                locked_query = locked_query.union(pat_query)
+
+        if excluded_count:
+            logger.debug(APPLY_EXCLUDE.format(locklist_fn, excluded_count))
+        if locked_count:
+            logger.debug(APPLY_LOCK.format(locklist_fn, locked_count))
+
+        if locked_names:
             all_versions = self.base.sack.query().filter(name=list(locked_names))
             other_versions = all_versions.difference(locked_query)
             excludes_query = excludes_query.union(other_versions)
