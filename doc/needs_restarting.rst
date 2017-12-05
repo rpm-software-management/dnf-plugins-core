@@ -33,7 +33,7 @@ Description
 
 `needs-restarting` looks through running processes and tries to detect those that use files from packages that have been updated after the given process started. Such processes are reported by this tool.
 
-Note that in most cases a process should survive update of its binary and libraries it is using without requiring to be restarted for proper operation. There are however specific cases when this does not apply.
+Note that in most cases a process should survive update of its binary and libraries it is using without requiring to be restarted for proper operation. There are however specific cases when this does not apply. Separately, processes often need to be restarted to reflect security updates.
 
 -------
 Options
