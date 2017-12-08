@@ -19,7 +19,7 @@
 # Red Hat, Inc.
 #
 
-from dnfpluginscore import _
+from dnfpluginscore import _, logger
 
 import dnf
 import dnf.cli
@@ -76,11 +76,21 @@ class DebuginfoInstallCommand(dnf.cli.Command):
     def run(self):
         self.packages = self.base.sack.query()
         self.packages_available = self.packages.available()
+        errors_spec = []
 
         for pkgspec in self.opts.package:
-            for pkg in sorted(dnf.subject.Subject(pkgspec).get_best_query(
-                    self.cli.base.sack).filter(arch__neq='src'), reverse=True):
+            package_query = sorted(dnf.subject.Subject(pkgspec).get_best_query(
+                self.cli.base.sack).filter(arch__neq='src'), reverse=True)
+            if not package_query:
+                msg = _('No match for argument: %s')
+                logger.info(msg, self.base.output.term.bold(pkgspec))
+                errors_spec.append(pkgspec)
+            for pkg in package_query:
                 self._di_install(pkg)
+
+        if errors_spec and self.base.conf.strict:
+            raise dnf.exceptions.PackagesNotAvailableError(_("Unable to find a match"),
+                                                           pkg_spec=' '.join(errors_spec))
 
     def _dbg_available(self, dbgname, package, match_evra):
         if match_evra:
