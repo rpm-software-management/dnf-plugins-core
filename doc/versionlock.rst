@@ -23,22 +23,29 @@ DNF versionlock Plugin
 Description
 -----------
 
-`versionlock` is a plugin that takes a set of names / versions for packages and
+`versionlock` is a plugin that takes a set of names and versions for packages and
 excludes all other versions of those packages. This allows you to protect
-packages from being updated by newer versions.
+packages from being updated by newer versions. Alternately, it accepts a specific
+package version to exclude from updates, e.g. for when it's necessary to skip a
+specific release of a package that has known issues.
 
 The plugin provides a command `versionlock` which allows you to view and edit the
 list of locked packages easily.
 
-The plugin will walk each line of the versionlock file, parse out the name and
+The plugin will walk each line of the versionlock file, and parse out the name and
 version of the package. It will then exclude any package by that name that
 doesn't match one of the versions listed within the file. This is basically
 the same as doing an exclude for the package name itself (as you cannot exclude
 installed packages), but dnf will still see the versions you have
 installed/versionlocked as available so that `dnf reinstall` will still
-work, etc. It can also work in the opposite way, like a fast exclude,
-by prefixing a '!' character to the version. Versionlock plugin does not apply any
-excludes in non-transactional operations like `repoquery`, `list`, `info`, etc.
+work, etc.
+
+It can also work in the opposite way, like a fast exclude,
+by prefixing a '!' character to the version. This specifically excludes a package
+that matches the version exactly.
+
+Note the versionlock plugin does not apply any excludes in non-transactional
+operations like `repoquery`, `list`, `info`, etc.
 
 --------
 Synopsis
@@ -81,13 +88,13 @@ Configuration
 ``/etc/dnf/plugins/versionlock.conf``
 
 The minimal content of conf file should contain ``main`` sections with ``enabled`` and
-``locklist`` parameter.
+``locklist`` parameters.
 
 
 ``locklist``
-      This option is a string with points to the file which will have the versionlock
+      This option is a string that points to the file which has the versionlock
       information in it. Note that the file has to exist (or the versionlock plugin
-      will make dnf exit).However it can be empty.
+      will make dnf exit). However, it can be empty.
 
       The file takes entries in the format of ``package-spec`` (optionally prefixed with '!' for
       excludes).
