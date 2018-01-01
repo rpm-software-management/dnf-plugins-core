@@ -74,7 +74,7 @@ class RepoClosureCommand(dnf.cli.Command):
         if self.base.conf.best and not self.opts.check:
             available = available.latest()
         elif self.opts.newest or self.base.conf.best:
-            available = available.filter(latest=True)
+            available = available.filter(latest_per_arch=True)
         if arch is not None:
             available = available.filter(arch=arch)
         pkgs = set()
