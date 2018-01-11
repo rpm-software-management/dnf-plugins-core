@@ -99,3 +99,12 @@ The minimal content of conf file should contain ``main`` sections with ``enabled
       The file takes entries in the format of ``package-spec`` (optionally prefixed with '!' for
       excludes).
       See :ref:`\specifying_packages-label`.
+
+-----
+Notes
+-----
+
+A specified package does not have to exist within the available cache of repository data
+to be considered valid for locking or exclusion. This is by design, to accommodate use
+cases such as local custom packages, or those intentionally retained from a prior release
+or a presently disabled repository.
