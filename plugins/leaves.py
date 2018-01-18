@@ -37,7 +37,7 @@ class LeavesCommand(dnf.cli.Command):
         hawkey, and build the dependency graph and the graph of reverse
         dependencies.
         """
-        query = dnf.sack._rpmdb_sack(self.base).query()
+        query = dnf.sack._rpmdb_sack(self.base).query().apply()
         pkgmap = dict()
         packages = []
         depends = []
@@ -51,11 +51,15 @@ class LeavesCommand(dnf.cli.Command):
             rdepends.append([])
 
         for i, pkg in enumerate(packages):
+            req_list = []
             for req in pkg.requires:
                 sreq = str(req)
                 if sreq.startswith('rpmlib(') or sreq == 'solvable:prereqmarker':
                     continue
-                for dpkg in query.filter(provides=req):
+                req_list.append(req)
+
+            if req_list:
+                for dpkg in query.filter(provides=req_list):
                     providers.add(pkgmap[dpkg])
                 if i not in providers:
                     deps.update(providers)
