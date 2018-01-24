@@ -164,6 +164,8 @@ class CoprCommand(dnf.cli.Command):
 
         repo_filename = "{}/_copr_{}-{}.repo" \
                         .format(self.base.conf.get_reposdir, copr_username, copr_projectname)
+        modules_repo_filename = "{}/_copr_modules_{}-{}.repo"\
+                                .format(self.base.conf.get_reposdir, copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             msg = _("""
@@ -181,19 +183,31 @@ Bugzilla. In case of problems, contact the owner of this repository.
 Do you want to continue?""")
             self._ask_user(msg)
             self._download_repo(project_name, repo_filename, chroot)
+            self._add_modules_repofile(project_name, modules_repo_filename)
             logger.info(_("Repository successfully enabled."))
         elif subcommand == "disable":
             self._need_root()
             self._disable_repo(copr_username, copr_projectname)
+            self._remove_repo(modules_repo_filename)
             logger.info(_("Repository successfully disabled."))
         elif subcommand == "remove":
             self._need_root()
             self._remove_repo(repo_filename)
+            self._remove_repo(modules_repo_filename)
             logger.info(_("Repository successfully removed."))
-
         else:
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
+
+    def _add_modules_repofile(self, project_name, repo_filename):
+        uri_path = "/coprs/{0}/repo/modules/".format(project_name)
+        try:
+            f = self.base.urlopen(self.copr_url+uri_path, mode='w+')
+        except IOError as e:
+            raise dnf.exceptions.Error(_("Could not download module repository file."))
+        os.makedirs(os.path.dirname(repo_filename), mode=0o644, exist_ok=True)
+        shutil.copy2(f.name, repo_filename)
+        os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
     def _list_installed_repositories(self, directory, enabled_only, disabled_only):
         parser = ConfigParser()
