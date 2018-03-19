@@ -197,7 +197,9 @@ class DownloadCommand(dnf.cli.Command):
                     new_pkgs += [pkg]
             return new_pkgs
         else:
-            logger.debug(_('Error in resolve'))
+            msg = [_('Error in resolve of packages:')]
+            logger.warning("\n    ".join(msg + [str(pkg) for pkg in pkgs]))
+            logger.warning(dnf.util._format_resolve_problems(goal.problem_rules()))
             return []
 
     @staticmethod
