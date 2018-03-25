@@ -106,5 +106,5 @@ Notes
 
 A specified package does not have to exist within the available cache of repository data
 to be considered valid for locking or exclusion. This is by design, to accommodate use
-cases such as local custom packages, or those intentionally retained from a prior release
-or a presently disabled repository.
+cases such as a presently disabled repository. However, a package must exist in the
+repository cache when the ``add`` or ``exclude`` subcommands are invoked for it.
