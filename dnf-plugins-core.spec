@@ -1,5 +1,4 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 2.8.1}
-%{?!dnf_not_compatible: %global dnf_not_compatible 4.0}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 3.0.0}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.7.0
 
@@ -62,7 +61,6 @@ commands. Additionally provides generate_completion_cache passive plugin.
 Summary:        Core Plugins for DNF
 %{?python_provide:%python_provide python2-%{name}}
 BuildRequires:  python2-dnf >= %{dnf_lowest_compatible}
-BuildRequires:  python2-dnf < %{dnf_not_compatible}
 %if 0%{?rhel} && 0%{?rhel} <= 7
 BuildRequires:  python-nose
 %else
@@ -70,7 +68,6 @@ BuildRequires:  python2-nose
 %endif
 BuildRequires:  python2-devel
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
-Requires:       python2-dnf < %{dnf_not_compatible}
 Requires:       python2-hawkey >= %{hawkey_version}
 Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
@@ -97,10 +94,8 @@ Summary:    Core Plugins for DNF
 %{?python_provide:%python_provide python3-%{name}}
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
-BuildRequires:  python3-dnf < %{dnf_not_compatible}
 BuildRequires:  python3-nose
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
-Requires:       python3-dnf < %{dnf_not_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
 Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
@@ -127,10 +122,8 @@ Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       %{name} = %{version}-%{release}
 %if %{with python3}
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
-Requires:       python3-dnf < %{dnf_not_compatible}
 %else
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
-Requires:       python2-dnf < %{dnf_not_compatible}
 %endif
 Summary:        Yum-utils CLI compatibility layer
 
