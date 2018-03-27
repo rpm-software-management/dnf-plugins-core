@@ -52,6 +52,7 @@ class MigrateCommand(dnf.cli.Command):
 
     def run(self):
         logger.info(_("Migrating history data..."))
-        path = os.path.join(self.base.conf.persistdir + "/history")
-        swdb = SwdbInterface(path)
-        swdb.transform(input_dir='/var/lib/yum/')
+        input_dir = os.path.join(self.base.conf.installroot, '/var/lib/yum/')
+        persist_dir = os.path.join(self.base.conf.installroot, self.base.conf.persistdir)
+        swdb = SwdbInterface(persist_dir)
+        swdb.transform(input_dir)
