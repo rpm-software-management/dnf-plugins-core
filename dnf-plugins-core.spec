@@ -9,9 +9,15 @@
 %bcond_without python3
 %endif
 
+%if 0%{?rhel} > 7 || 0%{?fedora} > 28
+%bcond_with python2
+%else
+%bcond_without python2
+%endif
+
 Name:           dnf-plugins-core
 Version:        2.1.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/dnf-plugins-core
@@ -58,6 +64,7 @@ Core Plugins for DNF. This package enhances DNF with builddep, config-manager, c
 debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and reposync
 commands. Additionally provides generate_completion_cache passive plugin.
 
+%if %{with python2}
 %package -n python2-%{name}
 Summary:        Core Plugins for DNF
 %{?python_provide:%python_provide python2-%{name}}
@@ -90,6 +97,7 @@ Conflicts:      python-%{name} < %{version}-%{release}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, config-manager,
 copr, degug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
 reposync commands. Additionally provides generate_completion_cache passive plugin.
+%endif
 
 %if %{with python3}
 %package -n python3-%{name}
@@ -140,6 +148,7 @@ debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
 repoquery, reposync, repotrack, builddep, config-manager, debug, and
 download that use new implementations using DNF.
 
+%if %{with python2}
 %package -n python2-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -156,6 +165,7 @@ Obsoletes:      python2-dnf-plugins-extras-leaves < %{dnf_plugins_extra}
 %description -n python2-dnf-plugin-leaves
 Leaves Plugin for DNF, Python 2 version. List all installed packages
 not required by any other installed package.
+%endif
 
 %if %{with python3}
 %package -n python3-dnf-plugin-leaves
@@ -174,7 +184,7 @@ Leaves Plugin for DNF, Python 3 version. List all installed packages
 not required by any other installed package.
 %endif
 
-%if 0%{?rhel} == 0
+%if 0%{?rhel} == 0 && %{with python2}
 %package -n python2-dnf-plugin-local
 Summary:        Local Plugin for DNF
 Requires:       %{_bindir}/createrepo_c
@@ -210,6 +220,7 @@ Local Plugin for DNF, Python 3 version. Automatically copy all downloaded
 packages to a repository on the local filesystem and generating repo metadata.
 %endif
 
+%if %{with python2}
 %package -n python2-dnf-plugin-migrate
 Summary:        Migrate Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -224,7 +235,9 @@ Obsoletes:      python-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
 
 %description -n python2-dnf-plugin-migrate
 Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data from yum to dnf.
+%endif
 
+%if %{with python2}
 %package -n python2-dnf-plugin-show-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -243,6 +256,7 @@ Obsoletes:      python2-dnf-plugins-extras-show-leaves < %{dnf_plugins_extra}
 Show-leaves Plugin for DNF, Python 2 version. List all installed
 packages that are no longer required by any other installed package
 after a transaction.
+%endif
 
 %if %{with python3}
 %package -n python3-dnf-plugin-show-leaves
@@ -263,6 +277,7 @@ packages that are no longer required by any other installed package
 after a transaction.
 %endif
 
+%if %{with python2}
 %package -n python2-dnf-plugin-versionlock
 Summary:        Version Lock Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -280,6 +295,7 @@ Obsoletes:      python2-dnf-plugins-extras-versionlock < %{dnf_plugins_extra}
 Version lock plugin takes a set of name/versions for packages and excludes all other
 versions of those packages. This allows you to e.g. protect packages from being
 updated by newer versions.
+%endif
 
 %if %{with python3}
 %package -n python3-dnf-plugin-versionlock
@@ -301,17 +317,21 @@ updated by newer versions.
 
 %prep
 %autosetup
+%if %{with python2}
 mkdir build-py2
+%endif
 %if %{with python3}
 mkdir build-py3
 %endif
 
 %build
+%if %{with python2}
 pushd build-py2
   %cmake ../ -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd
+%endif
 %if %{with python3}
 pushd build-py3
   %cmake ../ -DPYTHON_DESIRED:str=3 -DWITHOUT_LOCAL:str=0%{?rhel}
@@ -321,9 +341,11 @@ popd
 %endif
 
 %install
+%if %{with python2}
 pushd build-py2
   %make_install
 popd
+%endif
 %if %{with python3}
 pushd build-py3
   %make_install
@@ -354,7 +376,9 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 
 %check
+%if %{with python2}
 PYTHONPATH=./plugins nosetests-%{python2_version} -s tests/
+%endif
 %if %{with python3}
 PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
@@ -373,6 +397,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.repomanage.*
 %{_mandir}/man8/dnf.plugin.reposync.*
 
+%if %{with python2}
 %files -n python2-%{name} -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.rst
@@ -391,6 +416,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python2_sitelib}/dnf-plugins/repomanage.*
 %{python2_sitelib}/dnf-plugins/reposync.*
 %{python2_sitelib}/dnfpluginscore/
+%endif
 
 %if %{with python3}
 %files -n python3-%{name} -f %{name}.lang
@@ -442,9 +468,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
 
+%if %{with python2}
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
 %{_mandir}/man8/dnf.plugin.leaves.*
+%endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-leaves
@@ -453,7 +481,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.leaves.*
 %endif
 
-%if 0%{?rhel} == 0
+%if 0%{?rhel} == 0 && %{with python2}
 %files -n python2-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python2_sitelib}/dnf-plugins/local.*
@@ -468,13 +496,17 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.local.*
 %endif
 
+%if %{with python2}
 %files -n python2-dnf-plugin-migrate
 %{python2_sitelib}/dnf-plugins/migrate.*
 %{_mandir}/man8/dnf.plugin.migrate.*
+%endif
 
+%if %{with python2}
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
 %{_mandir}/man8/dnf.plugin.show-leaves.*
+%endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-show-leaves
@@ -483,11 +515,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.show-leaves.*
 %endif
 
+%if %{with python2}
 %files -n python2-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python2_sitelib}/dnf-plugins/versionlock.*
 %{_mandir}/man8/dnf.plugin.versionlock.*
+%endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-versionlock
