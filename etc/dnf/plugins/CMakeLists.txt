@@ -1,4 +1,6 @@
 INSTALL (FILES debuginfo-install.conf DESTINATION ${SYSCONFDIR}/dnf/plugins)
+if (${WITHOUT_LOCAL} STREQUAL "0")
 INSTALL (FILES local.conf DESTINATION ${SYSCONFDIR}/dnf/plugins)
+endif()
 INSTALL (FILES versionlock.conf DESTINATION ${SYSCONFDIR}/dnf/plugins)
 INSTALL (FILES versionlock.list DESTINATION ${SYSCONFDIR}/dnf/plugins)
