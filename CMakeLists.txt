@@ -5,6 +5,10 @@ if (NOT PYTHON_DESIRED)
     set (PYTHON_DESIRED "2")
 endif()
 
+if (NOT WITHOUT_LOCAL)
+    set (WITHOUT_LOCAL "0")
+endif()
+
 if (${PYTHON_DESIRED} STREQUAL "2")
 	FIND_PACKAGE (PythonInterp REQUIRED)
 else()

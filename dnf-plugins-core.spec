@@ -174,6 +174,7 @@ Leaves Plugin for DNF, Python 3 version. List all installed packages
 not required by any other installed package.
 %endif
 
+%if 0%{?rhel} == 0
 %package -n python2-dnf-plugin-local
 Summary:        Local Plugin for DNF
 Requires:       %{_bindir}/createrepo_c
@@ -190,8 +191,9 @@ Obsoletes:      python2-dnf-plugins-extras-local < %{dnf_plugins_extra}
 %description -n python2-dnf-plugin-local
 Local Plugin for DNF, Python 2 version. Automatically copy all downloaded packages to a
 repository on the local filesystem and generating repo metadata.
+%endif
 
-%if %{with python3}
+%if %{with python3} && 0%{?rhel} == 0
 %package -n python3-dnf-plugin-local
 Summary:        Local Plugin for DNF
 Requires:       %{_bindir}/createrepo_c
@@ -306,13 +308,13 @@ mkdir build-py3
 
 %build
 pushd build-py2
-  %cmake ../
+  %cmake ../ -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd
 %if %{with python3}
 pushd build-py3
-  %cmake ../ -DPYTHON_DESIRED:str=3
+  %cmake ../ -DPYTHON_DESIRED:str=3 -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd
@@ -451,12 +453,14 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.leaves.*
 %endif
 
+%if 0%{?rhel} == 0
 %files -n python2-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python2_sitelib}/dnf-plugins/local.*
 %{_mandir}/man8/dnf.plugin.local.*
+%endif
 
-%if %{with python3}
+%if %{with python3} && 0%{?rhel} == 0
 %files -n python3-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python3_sitelib}/dnf-plugins/local.*

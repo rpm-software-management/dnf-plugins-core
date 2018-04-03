@@ -11,5 +11,26 @@ ADD_CUSTOM_TARGET (doc-man
 ADD_CUSTOM_TARGET (doc)
 ADD_DEPENDENCIES (doc doc-html doc-man)
 
-INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/ DESTINATION share/man/man8
-	FILES_MATCHING PATTERN dnf.plugin.*.8)
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.builddep.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.config_manager.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.copr.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.debug.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.debuginfo-install.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.download.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.generate_completion_cache.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.migrate.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.needs_restarting.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repoclosure.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repograph.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repomanage.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.reposync.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.show-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.versionlock.8
+	DESTINATION share/man/man8)
+
+
+if (${WITHOUT_LOCAL} STREQUAL "0")
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.local.8
+	DESTINATION share/man/man8)
+endif()
