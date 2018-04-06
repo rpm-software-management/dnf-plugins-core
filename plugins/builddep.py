@@ -21,7 +21,7 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from dnfpluginscore import _, logger
+from dnfpluginscore import _, logger, rpm_logger
 
 import argparse
 import dnf
@@ -29,12 +29,12 @@ import dnf.cli
 import dnf.exceptions
 import dnf.rpm.transaction
 import functools
+import logging
 import os
 import rpm
 
 
-
-class sink_rpm_logging(object):
+class redirect_rpm_logging(object):
     def __init__(self):
         self.sink = None
 
@@ -46,11 +46,17 @@ class sink_rpm_logging(object):
         return inner
 
     def __enter__(self):
-        self.sink = open('/dev/null', 'w')
-        rpm.setLogFile(self.sink)
+        for handler in rpm_logger.handlers:
+            if isinstance(handler, logging.FileHandler):
+                rpm.setLogFile(handler.stream)
+                break
+        else:
+            self.sink = open('/dev/null', 'w')
+            rpm.setLogFile(self.sink)
 
     def __exit__(self, exc_type, exc, exc_tb):
-        self.sink.close()
+        if self.sink:
+            self.sink.close()
 
 
 @dnf.plugin.register_command
@@ -101,7 +107,7 @@ class BuildDepCommand(dnf.cli.Command):
                     self.base.repos.enable_source_repos()
                     break
 
-    @sink_rpm_logging()
+    @redirect_rpm_logging()
     def run(self):
         # Push user-supplied macro definitions for spec parsing
         for macro in self.opts.define:
