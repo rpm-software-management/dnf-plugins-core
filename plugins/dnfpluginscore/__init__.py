@@ -24,5 +24,6 @@ import logging
 
 _, P_ = dnf.i18n.translation('dnf-plugins-core')
 logger = logging.getLogger('dnf.plugin')
+rpm_logger = logging.getLogger('dnf.rpm')
 
 
