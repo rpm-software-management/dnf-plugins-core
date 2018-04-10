@@ -68,37 +68,55 @@ class RepoClosureCommand(dnf.cli.Command):
 
     def _get_unresolved(self, arch=None):
         unresolved = {}
-
         deps = set()
-        available = self.base.sack.query().available()
-        if self.base.conf.best and not self.opts.check:
-            available = available.latest()
-        elif self.opts.newest or self.base.conf.best:
-            available = available.filter(latest=True)
-        if arch is not None:
-            available = available.filter(arch=arch)
-        pkgs = set()
-        if self.opts.pkglist:
-            available.apply()
-            for pkg in self.opts.pkglist:
-                for pkgs_filtered in available.filter(name=pkg):
-                    pkgs.add(pkgs_filtered)
+
+        # We have two sets of packages, available and to_check:
+        # * available is the set of packages used to satisfy dependencies
+        # * to_check is the set of packages we are checking the dependencies of
+        #
+        # to_check can be a subset of available if the --arch, --best, --check,
+        # --newest, or --pkg options are used
+        #
+        # --arch:   only packages matching arch are checked
+        # --best:   available only contains the latest packages per arch across all repos
+        # --check:  only check packages in the specified repo(s)
+        # --newest: only consider the latest versions of a package from each repo
+        # --pkg:    only check the specified packages
+        #
+        # Relationship of --best and --newest:
+        #
+        # Pkg Set   | Neither |  --best             | --newest        | --best and --newest |
+        # available | all     | latest in all repos | latest per repo | latest in all repos |
+        # to_check  | all     | all                 | latest per repo | latest per repo     |
+
+        if self.opts.newest:
+            available = self.base.sack.query().filter(empty=True)
+            to_check = self.base.sack.query().filter(empty=True)
+            for repo in self.base.repos.iter_enabled():
+                available = \
+                    available.union(self.base.sack.query().filter(reponame=repo.id).latest())
+                to_check = \
+                    to_check.union(self.base.sack.query().filter(reponame=repo.id).latest())
         else:
-            for pkgs_filtered in available:
-                pkgs.add(pkgs_filtered)
+            available = self.base.sack.query().available()
+            to_check = self.base.sack.query().available()
+
+        if self.opts.pkglist:
+            to_check = to_check.filter(name=self.opts.pkglist)
 
         if self.opts.check:
-            checkpkgs = set()
-            available.apply()
-            for repo in self.opts.check:
-                for pkgs_filtered in available.filter(reponame=repo):
-                    checkpkgs.add(pkgs_filtered)
-            pkgs.intersection_update(checkpkgs)
-            # --best not applied earlier due to --check, so do it now
-            if self.base.conf.best:
-                available = available.latest()
+            to_check = to_check.filter(reponame=self.opts.check)
 
-        for pkg in pkgs:
+        if arch is not None:
+            to_check = to_check.filter(arch=arch)
+
+        if self.base.conf.best:
+            available = available.filter(latest_per_arch=True)
+
+        available.apply()
+        to_check.apply()
+
+        for pkg in to_check:
             unresolved[pkg] = set()
             for req in pkg.requires:
                 reqname = str(req)
@@ -109,7 +127,6 @@ class RepoClosureCommand(dnf.cli.Command):
                 deps.add(req)
                 unresolved[pkg].add(req)
 
-        available.apply()
         unresolved_deps = set(x for x in deps if not available.filter(provides=x))
 
         unresolved_transition = {k: set(x for x in v if x in unresolved_deps)
