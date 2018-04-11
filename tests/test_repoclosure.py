@@ -32,7 +32,7 @@ class TestRepoClosureFunctions(support.TestCase):
             support.CliStub(support.BaseStub()))
         self.path = os.path.join(os.path.dirname(__file__), "resources/repoclosure/")
 
-    def test_repoid_option(self):
+    def test_repoid_set_option(self):
         args = ["--repo", "main"]
         self.cmd.base.repos.add(support.RepoStub("main"))
         self.cmd.base.repos.add(support.RepoStub("main_fail"))
@@ -40,8 +40,8 @@ class TestRepoClosureFunctions(support.TestCase):
         repos = [repo.id for repo in self.cmd.base.repos.iter_enabled()]
         self.assertEqual(["main"], repos)
 
-    def test_check_option(self):
-        args = ["--check", "@commandline"]
+    def test_repoid_option(self):
+        args = ["--repo", "@commandline"]
         self.cmd.base.repos.add(support.RepoStub("main"))
         self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/foo-4-6.noarch.rpm")])
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
@@ -55,7 +55,7 @@ class TestRepoClosureFunctions(support.TestCase):
                             "  unresolved deps:",
                             "    bar = 4-6"]
             self.assertEqual(stdout.getvalue()[:-1], "\n".join(expected_out))
-        args = ["--check", "main"]
+        args = ["--repo", "main"]
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
             support.command_run(self.cmd, args)
             self.assertEmpty(stdout.getvalue())
