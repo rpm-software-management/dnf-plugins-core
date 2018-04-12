@@ -21,9 +21,12 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from dnfpluginscore import _
+
+import json
+import logging
 
 import dnf.cli
+from dnfpluginscore import _
 
 
 class RepoClosure(dnf.Plugin):
@@ -41,6 +44,10 @@ class RepoClosureCommand(dnf.cli.Command):
     aliases = ("repoclosure",)
     summary = _("Display a list of unresolved dependencies for repositories")
 
+    def pre_configure(self):
+        if self.opts.json_output:
+            self.cli.redirect_logger(stdout=logging.CRITICAL, stderr=logging.INFO)
+
     def configure(self):
         demands = self.cli.demands
         demands.sack_activation = True
@@ -54,19 +61,45 @@ class RepoClosureCommand(dnf.cli.Command):
 
     def run(self):
         unresolved = self._get_unresolved()
+        if self.opts.json_output:
+            has_unresolved = self._json_output(unresolved)
+        else:
+            has_unresolved = self._text_output(unresolved)
+        if has_unresolved:
+            msg = _("Repoclosure ended with unresolved dependencies.")
+            raise dnf.exceptions.Error(msg)
+
+    def _text_output(self, unresolved):
+        has_unresolved = False
         for pkg in sorted(unresolved.keys()):
+            if not unresolved[pkg]:
+                continue
+            has_unresolved = True
             print("package: {} from {}".format(str(pkg), pkg.reponame))
             print("  unresolved deps:")
             for dep in unresolved[pkg]:
                 print("    {}".format(dep))
-        if len(unresolved) > 0:
-            msg = _("Repoclosure ended with unresolved dependencies.")
-            raise dnf.exceptions.Error(msg)
+        return has_unresolved
+
+    def _json_output(self, unresolved):
+        has_unresolved = False
+        if self.opts.repo:
+            checked = self.opts.repo
+        else:
+            checked = [r.id for r in self.base.repos.iter_enabled()]
+        repos = dict(checked=checked, lookaside=self.opts.lookaside)
+        packages = []
+        for pkg in sorted(unresolved.keys()):
+            if unresolved[pkg]:
+                has_unresolved = True
+            packages.append(dict(pkg=str(pkg),
+                                 repo=pkg.reponame,
+                                 unresolved=[str(p) for p in unresolved[pkg]]))
+        output = dict(repos=repos, packages=packages)
+        print(json.dumps(output, indent=2))
+        return has_unresolved
 
     def _get_unresolved(self):
-        unresolved = {}
-        deps = set()
-
         # We have two sets of packages, available and to_check:
         # * available is the set of packages used to satisfy dependencies
         # * to_check is the set of packages we are checking the dependencies of
@@ -74,9 +107,10 @@ class RepoClosureCommand(dnf.cli.Command):
         # to_check can be a subset of available if the --arch, --best, --lookaside,
         # --newest, or --pkg options are used
         #
+        # --repo:   only packages from this repos are checked
         # --arch:   only packages matching arch are checked
         # --best:   available only contains the latest packages per arch across all repos
-        # --lookaside: do not check packages in this repo, but use them form depsolving
+        # --lookaside: do not check packages in this repos, but use them for depsolving
         # --newest: only consider the latest versions of a package from each repo
         # --pkg:    only check the specified packages
         #
@@ -115,6 +149,8 @@ class RepoClosureCommand(dnf.cli.Command):
         available.apply()
         to_check.apply()
 
+        unresolved = {}
+        deps = set()
         for pkg in to_check:
             unresolved[pkg] = set()
             for req in pkg.requires:
@@ -130,7 +166,7 @@ class RepoClosureCommand(dnf.cli.Command):
 
         unresolved_transition = {k: set(x for x in v if x in unresolved_deps)
                                  for k, v in unresolved.items()}
-        return {k: v for k, v in unresolved_transition.items() if v}
+        return unresolved_transition
 
     @staticmethod
     def set_argparser(parser):
@@ -147,3 +183,5 @@ class RepoClosureCommand(dnf.cli.Command):
         parser.add_argument("--pkg", default=[], action="append",
                             help=_("Check closure for this package only"),
                             dest="pkglist")
+        parser.add_argument("--json", action="store_true", dest="json_output",
+                            help=_("Report output in json format"))
