@@ -302,7 +302,7 @@ Do you want to continue?""")
                 chroot = ("mageia-{0}-{1}".format(dist[1], distarch))
         elif "openSUSE" in dist:
             # Get distribution architecture (openSUSE does not use $basearch)
-            distarch = rpm.expandMacro("%{target_cpu}")
+            distarch = rpm.expandMacro("%{_target_cpu}")
             # Set the chroot
             if "Tumbleweed" in dist:
                 chroot = ("opensuse-tumbleweed-{}".format(distarch))
