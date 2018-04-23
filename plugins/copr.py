@@ -27,11 +27,28 @@ import dnf
 import glob
 import json
 import os
-import platform
 import shutil
 import stat
 import rpm
 import re
+
+# Attempt importing the linux_distribution function from distro
+# If that fails, attempt to import the deprecated implementation
+# from the platform module.
+try:
+    from distro import linux_distribution as __linux_distro
+except ImportError:
+    try:
+        from platform import linux_distribution as __linux_distro
+    except ImportError:
+        # Simple fallback for distributions that lack an implementation
+        def __linux_distro():
+            with open('/etc/os-release') as os_release_file:
+                os_release_data = {}
+                for line in os_release_file:
+                    os_release_key, os_release_value = line.rstrip.split('=')
+                    os_release_data[os_release_key] = os_release_value.strip('"')
+                return (os_release_data['NAME'], os_release_data['VERSION_ID'], None)
 
 PLUGIN_CONF = 'copr'
 
@@ -284,7 +301,7 @@ Do you want to continue?""")
         # FIXME Copr should generate non-specific arch repo
         dist = chroot_config
         if dist is None or (dist[0] is False) or (dist[1] is False):
-            dist = platform.linux_distribution()
+            dist = __linux_distro()
         if "Fedora" in dist:
             # x86_64 because repo-file is same for all arch
             # ($basearch is used)
