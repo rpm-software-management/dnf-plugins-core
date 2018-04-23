@@ -76,6 +76,9 @@ BuildRequires:  python-nose
 BuildRequires:  python2-nose
 %endif
 BuildRequires:  python2-devel
+%if 0%{?fedora}
+Requires:       python2-distro
+%endif
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-dnf < %{dnf_not_compatible}
 Requires:       python2-hawkey >= %{hawkey_version}
@@ -107,13 +110,12 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-dnf < %{dnf_not_compatible}
 BuildRequires:  python3-nose
+%if 0%{?fedora}
+Requires:       python3-distro
+%endif
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-dnf < %{dnf_not_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
-Conflicts:      %{name} <= 0.1.5
-# let the both python plugin versions be updated simultaneously
-Conflicts:      python2-%{name} < %{version}-%{release}
-Conflicts:      python-%{name} < %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
@@ -122,6 +124,11 @@ Obsoletes:      python3-dnf-plugins-extras-debug < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
+
+Conflicts:      %{name} <= 0.1.5
+# let the both python plugin versions be updated simultaneously
+Conflicts:      python2-%{name} < %{version}-%{release}
+Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, config-manager,
