@@ -103,6 +103,9 @@ class RepoClosureCommand(dnf.cli.Command):
 
         if self.opts.pkglist:
             to_check = to_check.filter(name=self.opts.pkglist)
+            if not to_check:
+                raise dnf.exceptions.Error(
+                    _('no package matched: %s') % ', '.join(self.opts.pkglist))
 
         if self.opts.check:
             to_check = to_check.filter(reponame=self.opts.check)
