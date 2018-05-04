@@ -134,7 +134,7 @@ class DownloadCommand(dnf.cli.Command):
         Return a list of dnf.Package objects that represent the source
         rpms to download.
         """
-        pkgs = self._get_packages(pkg_specs)
+        pkgs = self._get_pkg_objs_rpms(pkg_specs)
         source_pkgs = self._get_source_packages(pkgs)
         pkgs = set(self._get_packages(source_pkgs, source=True))
         return pkgs
