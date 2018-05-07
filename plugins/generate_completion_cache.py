@@ -79,7 +79,7 @@ class BashCompletionCache(dnf.Plugin):
                     "create unique index if not exists "
                     "pkg_installed ON installed(pkg)")
                 cur.execute("delete from installed")
-                inst_pkgs = self.base.sack.query().installed()
+                inst_pkgs = dnf.sack._rpmdb_sack(self.base).query().installed()
                 inst_pkgs_insert = [[str(x)] for x in inst_pkgs if x.arch != "src"]
                 cur.executemany("insert or ignore into installed values (?)",
                                 inst_pkgs_insert)
