@@ -36,13 +36,13 @@ import re
 # If that fails, attempt to import the deprecated implementation
 # from the platform module.
 try:
-    from distro import linux_distribution as linux_distro
+    from distro import linux_distribution
 except ImportError:
     try:
-        from platform import linux_distribution as linux_distro
+        from platform import linux_distribution
     except ImportError:
         # Simple fallback for distributions that lack an implementation
-        def linux_distro():
+        def linux_distribution():
             with open('/etc/os-release') as os_release_file:
                 os_release_data = {}
                 for line in os_release_file:
@@ -301,7 +301,7 @@ Do you want to continue?""")
         # FIXME Copr should generate non-specific arch repo
         dist = chroot_config
         if dist is None or (dist[0] is False) or (dist[1] is False):
-            dist = linux_distro()
+            dist = linux_distribution()
         if "Fedora" in dist:
             # x86_64 because repo-file is same for all arch
             # ($basearch is used)
