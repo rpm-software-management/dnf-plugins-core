@@ -138,6 +138,9 @@ reposync commands. Additionally provides generate_completion_cache passive plugi
 
 %package -n dnf-utils
 Conflicts:      yum-utils < 1.1.31-513
+%if 0%{?rhel} != 7
+Provides:       yum-utils = %{version}-%{release}
+%endif
 Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       %{name} = %{version}-%{release}
 %if %{with python3}
