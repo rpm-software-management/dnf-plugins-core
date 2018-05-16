@@ -171,7 +171,7 @@ repoquery, reposync, repotrack, builddep, config-manager, debug, and
 download that use new implementations using DNF.
 %endif
 
-%if %{with python2}
+%if 0%{?rhel} == 0 && %{with python2}
 %package -n python2-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -190,7 +190,7 @@ Leaves Plugin for DNF, Python 2 version. List all installed packages
 not required by any other installed package.
 %endif
 
-%if %{with python3}
+%if 0%{?rhel} == 0 && %{with python3}
 %package -n python3-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -260,7 +260,7 @@ Obsoletes:      python-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
 Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data from yum to dnf.
 %endif
 
-%if %{with python2}
+%if 0%{?rhel} == 0 && %{with python2}
 %package -n python2-dnf-plugin-show-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -281,7 +281,7 @@ packages that are no longer required by any other installed package
 after a transaction.
 %endif
 
-%if %{with python3}
+%if 0%{?rhel} == 0 && %{with python3}
 %package -n python3-dnf-plugin-show-leaves
 Summary:        Show-leaves Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -528,6 +528,8 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yumdownloader
 %endif
 
+%if 0%{?rhel} == 0
+
 %if %{with python2}
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
@@ -540,6 +542,17 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
 %{_mandir}/man8/dnf.plugin.leaves.*
 %endif
+
+%else
+%exclude %{_mandir}/man8/dnf.plugin.leaves.*
+%if %{with python2}
+%exclude %{python2_sitelib}/dnf-plugins/leaves.*
+%endif
+%if %{with python3}
+%exclude %{python3_sitelib}/dnf-plugins/leaves.*
+%exclude %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
+%endif
+%endif # 0%{?rhel} == 0
 
 %if 0%{?rhel} == 0 && %{with python2}
 %files -n python2-dnf-plugin-local
@@ -562,6 +575,8 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.migrate.*
 %endif
 
+%if 0%{?rhel} == 0
+
 %if %{with python2}
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
@@ -574,6 +589,17 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
 %{_mandir}/man8/dnf.plugin.show-leaves.*
 %endif
+
+%else
+%exclude %{_mandir}/man8/dnf.plugin.show-leaves.*
+%if %{with python2}
+%exclude %{python2_sitelib}/dnf-plugins/show_leaves.*
+%endif
+%if %{with python3}
+%exclude %{python3_sitelib}/dnf-plugins/show_leaves.*
+%exclude %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
+%endif
+%endif # 0%{?rhel} == 0
 
 %if %{with python2}
 %files -n python2-dnf-plugin-versionlock
