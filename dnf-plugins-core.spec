@@ -16,8 +16,8 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        2.1.5
-Release:        2%{?dist}
+Version:        3.0.0
+Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
 URL:            https://github.com/rpm-software-management/dnf-plugins-core
