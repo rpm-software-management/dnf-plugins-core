@@ -50,6 +50,7 @@ Provides:       dnf-command(repoclosure)
 Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
+Provides:       dnf-command(repodiff)
 Provides:       dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
@@ -61,6 +62,7 @@ Provides:       dnf-plugin-download = %{version}-%{release}
 Provides:       dnf-plugin-generate_completion_cache = %{version}-%{release}
 Provides:       dnf-plugin-needs_restarting = %{version}-%{release}
 Provides:       dnf-plugin-repoclosure = %{version}-%{release}
+Provides:       dnf-plugin-repodiff = %{version}-%{release}
 Provides:       dnf-plugin-repograph = %{version}-%{release}
 Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
@@ -72,8 +74,8 @@ Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager, copr, debug,
-debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and reposync
-commands. Additionally provides generate_completion_cache passive plugin.
+debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage, reposync
+and repodiff commands. Additionally provides generate_completion_cache passive plugin.
 
 %if %{with python2}
 %package -n python2-%{name}
@@ -107,8 +109,8 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, config-manager,
-copr, degug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
-reposync commands. Additionally provides generate_completion_cache passive plugin.
+copr, degug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage,
+reposync and repodiff commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
 %if %{with python3}
@@ -139,8 +141,8 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, config-manager,
-copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage and
-reposync commands. Additionally provides generate_completion_cache passive plugin.
+copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage,
+reposync and repodiff commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
 %if %{with dnfutils}
@@ -161,9 +163,8 @@ Summary:        Yum-utils CLI compatibility layer
 %description -n dnf-utils
 As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
-repoquery, reposync, repotrack, builddep, config-manager, debug, and
-download that use new implementations using DNF.
-%endif
+repoquery, reposync, repotrack, repodiff, builddep, config-manager, debug
+and download that use new implementations using DNF.
 
 %if 0%{?rhel} == 0 && %{with python2}
 %package -n python2-dnf-plugin-leaves
@@ -391,6 +392,7 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoclosure
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repodiff
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repomanage
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoquery
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
@@ -426,6 +428,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.generate_completion_cache.*
 %{_mandir}/man8/dnf.plugin.needs_restarting.*
 %{_mandir}/man8/dnf.plugin.repoclosure.*
+%{_mandir}/man8/dnf.plugin.repodiff.*
 %{_mandir}/man8/dnf.plugin.repograph.*
 %{_mandir}/man8/dnf.plugin.repomanage.*
 %{_mandir}/man8/dnf.plugin.reposync.*
@@ -447,6 +450,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python2_sitelib}/dnf-plugins/generate_completion_cache.*
 %{python2_sitelib}/dnf-plugins/needs_restarting.*
 %{python2_sitelib}/dnf-plugins/repoclosure.*
+%{python2_sitelib}/dnf-plugins/repodiff.*
 %{python2_sitelib}/dnf-plugins/repograph.*
 %{python2_sitelib}/dnf-plugins/repomanage.*
 %{python2_sitelib}/dnf-plugins/reposync.*
@@ -470,6 +474,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
 %{python3_sitelib}/dnf-plugins/needs_restarting.py
 %{python3_sitelib}/dnf-plugins/repoclosure.py
+%{python3_sitelib}/dnf-plugins/repodiff.py
 %{python3_sitelib}/dnf-plugins/repograph.py
 %{python3_sitelib}/dnf-plugins/repomanage.py
 %{python3_sitelib}/dnf-plugins/reposync.py
@@ -482,6 +487,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
 %{python3_sitelib}/dnf-plugins/__pycache__/needs_restarting.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repoclosure.*
+%{python3_sitelib}/dnf-plugins/__pycache__/repodiff.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repograph.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repomanage.*
 %{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
@@ -496,6 +502,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/package-cleanup
 %{_bindir}/repo-graph
 %{_bindir}/repoclosure
+%{_bindir}/repodiff
 %{_bindir}/repomanage
 %{_bindir}/repoquery
 %{_bindir}/reposync
