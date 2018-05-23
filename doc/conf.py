@@ -258,6 +258,7 @@ man_pages = [
     ('migrate', 'dnf.plugin.migrate', u'DNF migrate Plugin', AUTHORS, 8),
     ('needs_restarting', 'dnf.plugin.needs_restarting', u'DNF needs_restarting Plugin', AUTHORS, 8),
     ('repoclosure', 'dnf.plugin.repoclosure', u'DNF repoclosure Plugin', AUTHORS, 8),
+    ('repodiff', 'dnf.plugin.repodiff', u'DNF repodiff Plugin', AUTHORS, 8),
     ('repograph', 'dnf.plugin.repograph', u'DNF repograph Plugin', AUTHORS, 8),
     ('repomanage', 'dnf.plugin.repomanage', u'DNF repomanage Plugin', AUTHORS, 8),
     ('reposync', 'dnf.plugin.reposync', u'DNF reposync Plugin', AUTHORS, 8),
