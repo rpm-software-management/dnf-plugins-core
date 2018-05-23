@@ -22,6 +22,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.migrate.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.needs_restarting.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repoclosure.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repodiff.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repograph.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repomanage.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.reposync.8

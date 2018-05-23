@@ -37,6 +37,7 @@ This documents core plugins of DNF:
    migrate
    needs_restarting
    repoclosure
+   repodiff
    repograph
    repomanage
    reposync
