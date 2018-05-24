@@ -139,14 +139,11 @@ class RepoDiffCommand(dnf.cli.Command):
             if self.opts.simple:
                 print("%s: %s -> %s" % (pkg_new.name, pkgstr(pkg_old), pkgstr(pkg_new)))
             else:
-                print()
-                msg = pkgstr(pkg_new)
-                print(msg)
-                print("-" * len(msg))
+                print(pkgstr(pkg_new))
                 # TODO report changelogs
                 # changelogs are not available in the Package object at the moment
                 if self.opts.size:
-                    print(_("Size change: {} bytes").format(pkg_new.size - pkg_old.size))
+                    print(_("  Size change: {} bytes").format(pkg_new.size - pkg_old.size))
 
         sizes = dict(added=0, removed=0, upgraded=0, downgraded=0)
         for pkg in sorted(repodiff['added']):
