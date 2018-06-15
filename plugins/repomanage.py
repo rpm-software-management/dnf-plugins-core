@@ -66,7 +66,7 @@ class RepoManageCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(_("No files to process"))
 
         try:
-            self.base.add_remote_rpms(rpm_list)
+            self.base.add_remote_rpms(rpm_list, progress=self.base.output.progress)
         except IOError:
             logger.warning(_("Could not open {}").format(', '.join(rpm_list)))
 

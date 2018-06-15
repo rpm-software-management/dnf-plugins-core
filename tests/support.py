@@ -52,8 +52,10 @@ class BaseStub(object):
         self.sack = dnf.sack.Sack()
         self.repos = dnf.repodict.RepoDict()
         self.conf = FakeConf()
+        self.output = dnf.cli.output.Output(self, self.conf)
+        self.output.progress = dnf.callback.NullDownloadProgress()
 
-    def add_remote_rpms(self, path_list):
+    def add_remote_rpms(self, path_list, progress=None):
         self.sack.create_cmdline_repo()
         pkgs = []
         for path in path_list:

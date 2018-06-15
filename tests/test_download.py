@@ -341,7 +341,7 @@ class DownloadCommandTest(unittest.TestCase):
             # it is expected to hit this exception
             with self.assertRaises(dnf.exceptions.PackageNotFoundError):
                 self.cmd._get_query(rpm_path)
-            self.cmd.cli.base.add_remote_rpms.assert_called_with([rpm_path])
+            self.cmd.cli.base.add_remote_rpms.assert_called_with([rpm_path], progress=None)
         finally:
             os.remove(rpm_path)
 
