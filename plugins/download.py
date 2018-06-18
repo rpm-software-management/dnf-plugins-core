@@ -219,8 +219,10 @@ class DownloadCommand(dnf.cli.Command):
 
     def _get_query(self, pkg_spec):
         """Return a query to match a pkg_spec."""
-        if pkg_spec.endswith('.rpm') and os.path.isfile(pkg_spec):
-            pkgs = self.base.add_remote_rpms([pkg_spec])
+        schemes = dnf.pycomp.urlparse.urlparse(pkg_spec)[0]
+        is_url = schemes and schemes in ('http', 'ftp', 'file', 'https')
+        if is_url or (pkg_spec.endswith('.rpm') and os.path.isfile(pkg_spec)):
+            pkgs = self.base.add_remote_rpms([pkg_spec], progress=self.base.output.progress)
             pkg_spec = "{0.name}-{0.epoch}:{0.version}-{0.release}.{0.arch}".format(pkgs[0])
 
         subj = dnf.subject.Subject(pkg_spec)
