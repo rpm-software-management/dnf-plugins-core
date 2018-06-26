@@ -543,6 +543,17 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Jun 26 2018 Jaroslav Mracek <jmracek@redhat.com> 3.0.1-1
+- Enhanced documentation
+- Resolves: rhbz#1576594
+- Resolves: rhbz#1530081
+- Resolves: rhbz#1547897
+- Resolves: rhbz#1550006
+- Resolves: rhbz#1431491
+- Resolves: rhbz#1516857
+- Resolves: rhbz#1499623
+- Resolves: rhbz#1489724
+
 * Fri Oct 06 2017 Igor Gnatenko <ignatenko@redhat.com> - 2.1.5-1
 - Fix download command (RHBZ #1498426)
 
