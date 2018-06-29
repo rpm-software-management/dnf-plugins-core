@@ -51,15 +51,11 @@ class LeavesCommand(dnf.cli.Command):
             rdepends.append([])
 
         for i, pkg in enumerate(packages):
-            req_list = []
             for req in pkg.requires:
                 sreq = str(req)
                 if sreq.startswith('rpmlib(') or sreq == 'solvable:prereqmarker':
                     continue
-                req_list.append(req)
-
-            if req_list:
-                for dpkg in query.filter(provides=req_list):
+                for dpkg in query.filter(provides=req):
                     providers.add(pkgmap[dpkg])
                 if i not in providers:
                     deps.update(providers)
