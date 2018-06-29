@@ -57,7 +57,7 @@ class LeavesCommand(dnf.cli.Command):
                     continue
                 for dpkg in query.filter(provides=req):
                     providers.add(pkgmap[dpkg])
-                if i not in providers:
+                if len(providers) == 1 and i not in providers:
                     deps.update(providers)
                 providers.clear()
 
