@@ -25,7 +25,7 @@ Synchronize packages of a remote Yum repository to a local directory.
 Synopsis
 --------
 
-``dnf reposync [-p <download-path>] ...``
+``dnf reposync [options]``
 
 -----------
 Description
@@ -39,4 +39,22 @@ Options
 
 ``-p <download-path>, --download-path=<download-path>``
     Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
+
+``--download-metadata``
+    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it
+
+``-a <architecture>, --arch=<architecture>``
+    Download only packages of given architectures (default is all architectures). Can be used multiple times.
+
+``--source``
+    Operate on source packages.
+
+``-m, --downloadcomps``
+    Also download comps.xml.
+
+``-n, --newest-only``
+    Download only newest packages per-repo.
+
+``--delete``
+    Delete local packages no longer present in repository
 
