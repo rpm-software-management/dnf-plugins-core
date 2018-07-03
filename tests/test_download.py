@@ -17,7 +17,7 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from tests.support import mock
+from tests.support import mock, PkgStub
 
 import dnf.cli
 import dnf.repo
@@ -29,86 +29,6 @@ import unittest
 import hawkey
 import tempfile
 import os
-
-
-class PkgStub:
-    def __init__(self, n, e, v, r, a, repo_id, src_name=""):
-        """Mocking dnf.package.Package."""
-        self.name = n
-        self.version = v
-        self.release = r
-        self.arch = a
-        self.epoch = e
-        self.reponame = repo_id
-        self.src_name = src_name
-
-    def __str__(self):
-        return '%s : %s' % (self.fullname, self.reponame)
-
-    @property
-    def evr(self):
-        if self.epoch != '0':
-            return '%s:%s-%s' % (self.epoch, self.version, self.release)
-        else:
-            return '%s-%s' % (self.version, self.release)
-
-    @property
-    def source_debug_name(self):
-        """
-        returns name of debuginfo package for source package of given package
-        e.g. krb5-libs -> krb5-debuginfo
-        """
-        return "{}-debuginfo".format(self.source_name)
-
-    @property
-    def source_name(self):
-        """
-        returns name of source package
-        e.g. krb5-libs -> krb5
-        """
-        if self.sourcerpm is not None:
-            # trim suffix first
-            srcname = dnf.util.rtrim(self.sourcerpm, ".src.rpm")
-            # source package filenames may not contain epoch, handle both cases
-            srcname = dnf.util.rtrim(srcname, "-{}".format(self.evr))
-            srcname = dnf.util.rtrim(srcname, "-{0.version}-{0.release}".format(self))
-        else:
-            srcname = None
-        return srcname
-
-    @property
-    def sourcerpm(self):
-        name = self.src_name or self.name
-
-        # special cases for debuginfo tests
-        if name == "kernel-PAE":
-            name = "kernel"
-        elif name == "krb5-libs":
-            name = "krb5"
-
-        if self.arch != 'src':
-            return '%s-%s.src.rpm' % (name, self.evr)
-        else:
-            return '%s-%s.%s.rpm' % (name, self.evr, self.arch)
-
-    @property
-    def fullname(self):
-        return '%s-%s.%s' % (self.name, self.evr, self.arch)
-
-    def localPkg(self):
-        return '/tmp/dnf/%s-%s.%s.rpm' % (self.name, self.evr, self.arch)
-
-    @property
-    def from_cmdline(self):
-        return True
-
-    @property
-    def debug_name(self):
-        """
-        returns name of debuginfo package for given package
-        e.g. kernel-PAE -> kernel-PAE-debuginfo
-        """
-        return "{}-debuginfo".format(self.name)
 
 
 class NoSrcStub(PkgStub):

@@ -18,21 +18,39 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 from tests import support
+import dnf.exceptions
 import reposync
 
 import dnf.repo
 
 class TestReposyncFunctions(support.TestCase):
-    def test_parse_args(self):
+
+    def setUp(self):
         cli = support.CliStub(support.BaseCliStub())
-        cli.base.repos.add(dnf.repo.Repo(name='silver'))
-        cli.base.repos.add(dnf.repo.Repo(name='screen'))
-        cmd = reposync.RepoSyncCommand(cli)
+        self.cmd = reposync.RepoSyncCommand(cli)
+
+    def test_parse_args(self):
         args = '-p /become/legend --repo=silver --repo=screen'.split()
-        support.command_configure(cmd, args)
-        self.assertEqual(cmd.opts.repo, ['silver', 'screen'])
-        self.assertEqual(cmd.opts.download_path, '/become/legend')
+        self.cmd.base.repos.add(dnf.repo.Repo('silver'))
+        self.cmd.base.repos.add(dnf.repo.Repo('screen'))
+        support.command_configure(self.cmd, args)
+        self.assertEqual(self.cmd.opts.repo, ['silver', 'screen'])
+        self.assertEqual(self.cmd.opts.download_path, '/become/legend')
 
     def test_pkgdir(self):
         self.assertEqual(reposync._pkgdir('/honey/../pie', 'crazy'),
                          '/pie/crazy')
+
+    def test_pkg_download_path(self):
+        args = '-p /become/legend'.split()
+        repo = support.RepoStub('silver')
+        support.command_configure(self.cmd, args)
+        pkg = support.PkgStub('foo', '0', '1.0', '1', 'noarch', 'silver',
+                              repo=repo, location="foo-0-1.0-1.noarch.rpm")
+
+        pkgpath = self.cmd.pkg_download_path(pkg)
+        self.assertEqual(pkgpath, '/become/legend/silver/foo-0-1.0-1.noarch.rpm')
+
+        pkg.location = "../pool/foo-0-1.0-1.noarch.rpm"
+        with self.assertRaises(dnf.exceptions.Error) as ctx:
+            self.cmd.pkg_download_path(pkg)

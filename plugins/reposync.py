@@ -21,14 +21,13 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import os
+import shutil
+
 from dnfpluginscore import _, logger
 from dnf.cli.option_parser import OptionParser
 import dnf
 import dnf.cli
-import dnf.i18n
-import dnf.yum.misc
-import os
-import sys
 
 
 def _pkgdir(intermediate, target):
@@ -36,10 +35,25 @@ def _pkgdir(intermediate, target):
     return os.path.normpath(os.path.join(cwd, intermediate, target))
 
 
+class RPMPayloadLocation(dnf.repo.RPMPayload):
+    def __init__(self, pkg, progress, pkg_location):
+        super(RPMPayloadLocation, self).__init__(pkg, progress)
+        self.package_dir = os.path.dirname(pkg_location)
+
+    def _target_params(self):
+        tp = super(RPMPayloadLocation, self)._target_params()
+        dnf.util.ensure_dir(self.package_dir)
+        tp['dest'] = self.package_dir
+        return tp
+
 @dnf.plugin.register_command
 class RepoSyncCommand(dnf.cli.Command):
     aliases = ('reposync',)
     summary = _('download all packages from remote repo')
+
+    def __init__(self, cli):
+        super(RepoSyncCommand, self).__init__(cli)
+        self._repo_target = dict()
 
     @staticmethod
     def set_argparser(parser):
@@ -50,6 +64,8 @@ class RepoSyncCommand(dnf.cli.Command):
                             help=_('delete local packages no longer present in repository'))
         parser.add_argument('-m', '--downloadcomps', default=False, action='store_true',
                             help=_('also download comps.xml'))
+        parser.add_argument('--download-metadata', default=False, action='store_true',
+                            help=_('download all the metadata.'))
         parser.add_argument('-n', '--newest-only', default=False, action='store_true',
                             help=_('download only newest packages per-repo'))
         parser.add_argument('-p', '--download-path', default='./',
@@ -76,12 +92,35 @@ class RepoSyncCommand(dnf.cli.Command):
         if self.opts.source:
             repos.enable_source_repos()
 
-        self.base.conf.destdir = self.opts.destdir or self.opts.download_path
-        self._repo_base_path = dict()
         for repo in repos.iter_enabled():
-            path = _pkgdir(self.base.conf.destdir, repo.id)
-            self._repo_base_path[repo.id] = path
-            repo.pkgdir = os.path.join(path, 'Packages')
+            repo._repo.expire()
+            repo.deltarpm = False
+
+    def run(self):
+        self.base.conf.keepcache = True
+        for repo in self.base.repos.iter_enabled():
+            if self.opts.download_metadata:
+                self.download_metadata(repo)
+            if self.opts.downloadcomps:
+                self.getcomps(repo)
+            self.download_packages(repo)
+
+    def repo_target(self, repo):
+        target = self._repo_target.get(repo.id)
+        if not target:
+            target = _pkgdir(self.opts.destdir or self.opts.download_path, repo.id)
+            self._repo_target[repo.id] = target
+        return target
+
+    def pkg_download_path(self, pkg):
+        repo_target = self.repo_target(pkg.repo)
+        pkg_download_path = os.path.normpath(
+            os.path.join(repo_target, pkg.location))
+        if not pkg_download_path.startswith(repo_target):
+            raise dnf.exceptions.Error(
+                _("Download target '{}' is outside of download path '{}'.").format(
+                    pkg_download_path, repo_target))
+        return pkg_download_path
 
     def delete_old_local_packages(self, packages_to_download):
         download_map = dict()
@@ -89,9 +128,10 @@ class RepoSyncCommand(dnf.cli.Command):
             download_map[(pkg.repo.id, os.path.basename(pkg.location))] = 1
         # delete any *.rpm file, that is not going to be downloaded from repository
         for repo in self.base.repos.iter_enabled():
-            if os.path.exists(repo.pkgdir):
-                for filename in os.listdir(repo.pkgdir):
-                    path = os.path.join(repo.pkgdir, filename)
+            repo_target = self.repo_target(repo)
+            if os.path.exists(repo_target):
+                for filename in os.listdir(repo_target):
+                    path = os.path.join(repo_target, filename)
                     if filename.endswith('.rpm') and os.path.isfile(path):
                         if not (repo.id, filename) in download_map:
                             try:
@@ -100,36 +140,44 @@ class RepoSyncCommand(dnf.cli.Command):
                             except OSError:
                                 logger.error(_("failed to delete file %s"), path)
 
-    def getcomps(self):
-        for repo in self.base.repos.iter_enabled():
-            comps_fn = repo.metadata._comps_fn
-            if comps_fn:
-                if not os.path.exists(repo.pkgdir):
-                    try:
-                        os.makedirs(repo.pkgdir)
-                    except IOError:
-                        logger.error(_("Could not make repository directory: %s"), repo.pkgdir)
-                        sys.exit(1)
-                dest = os.path.join(self._repo_base_path[repo.id], 'comps.xml')
-                dnf.yum.misc.decompress(comps_fn, dest=dest)
-                logger.info(_("comps.xml for repository %s saved"), repo.id)
+    def getcomps(self, repo):
+        comps_fn = repo.metadata._comps_fn
+        if comps_fn:
+            dest = os.path.join(self.repo_target(repo), 'comps.xml')
+            dnf.yum.misc.decompress(comps_fn, dest=dest)
+            logger.info(_("comps.xml for repository %s saved"), repo.id)
 
-    def run(self):
-        base = self.base
-        base.conf.keepcache = True
+    def download_metadata(self, repo):
+        repo_target = self.repo_target(repo)
+        repo._repo.downloadMetadata(repo_target)
+        return True
 
-        query = base.sack.query().available()
+    def get_pkglist(self, repo):
+        query = self.base.sack.query().available().filterm(reponame=repo.id)
         if self.opts.newest_only:
             query = query.latest()
         if self.opts.source:
-            query = query.filter(arch='src')
+            query.filterm(arch='src')
         elif self.opts.arches:
-            query = query.filter(arch=self.opts.arches)
+            query.filterm(arch=self.opts.arches)
+        return query
 
+    def download_packages(self, repo):
+        base = self.base
+        pkglist = self.get_pkglist(repo)
+        progress = base.output.progress
+        remote_pkgs, local_repository_pkgs = base._select_remote_pkgs(pkglist)
+        if remote_pkgs:
+            drpm = dnf.drpm.DeltaInfo(base.sack.query().installed(), progress, 0)
+            payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
+                        for pkg in remote_pkgs]
+            base._download_remote_payloads(payloads, drpm, progress, None)
+        if local_repository_pkgs:
+            for pkg in local_repository_pkgs:
+                pkg_path = os.path.join(pkg.repo.pkgdir, pkg.location.lstrip("/"))
+                target_dir = os.path.dirname(self.pkg_download_path(pkg))
+                dnf.util.ensure_dir(target_dir)
+                shutil.copy(pkg_path, target_dir)
         if self.opts.delete:
-            self.delete_old_local_packages(query)
+            self.delete_old_local_packages(pkglist)
 
-        if self.opts.downloadcomps:
-            self.getcomps()
-
-        base.download_packages(query, self.base.output.progress)
