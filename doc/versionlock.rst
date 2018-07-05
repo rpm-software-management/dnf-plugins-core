@@ -35,7 +35,7 @@ list of locked packages easily.
 The plugin will walk each line of the versionlock file, and parse out the name and
 version of the package. It will then exclude any package by that name that
 doesn't match one of the versions listed within the file. This is basically
-the same as doing an exclude for the package name itself (as you cannot exclude
+the same as using `dnf --exclude` for the package name itself (as you cannot exclude
 installed packages), but dnf will still see the versions you have
 installed/versionlocked as available so that `dnf reinstall` will still
 work, etc.
