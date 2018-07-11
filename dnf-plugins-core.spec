@@ -15,6 +15,12 @@
 %bcond_without python2
 %endif
 
+%if ! 0%{?rhel} || 0%{?rhel} > 7
+%bcond_without dnfutils
+%else
+%bcond_with dnfutils
+%endif
+
 Name:           dnf-plugins-core
 Version:        3.0.1
 Release:        1%{?dist}
@@ -136,6 +142,7 @@ copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repogra
 reposync commands. Additionally provides generate_completion_cache passive plugin.
 %endif
 
+%if %{with dnfutils}
 %package -n dnf-utils
 Conflicts:      yum-utils < 1.1.31-513
 %if 0%{?rhel} != 7
@@ -157,6 +164,7 @@ As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
 repoquery, reposync, repotrack, builddep, config-manager, debug, and
 download that use new implementations using DNF.
+%endif
 
 %if %{with python2}
 %package -n python2-dnf-plugin-leaves
@@ -362,13 +370,16 @@ pushd build-py3
 popd
 %endif
 %find_lang %{name}
-%if %{with python3}
-mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
-%else
-mv %{buildroot}%{_libexecdir}/dnf-utils-2 %{buildroot}%{_libexecdir}/dnf-utils
+%if %{with dnfutils}
+  %if %{with python3}
+  mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
+  %else
+  mv %{buildroot}%{_libexecdir}/dnf-utils-2 %{buildroot}%{_libexecdir}/dnf-utils
+  %endif
 %endif
 rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
 
+%if %{with dnfutils}
 mkdir -p %{buildroot}%{_bindir}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
@@ -384,6 +395,7 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
+%endif
 
 %check
 %if %{with python2}
@@ -461,6 +473,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnfpluginscore/
 %endif
 
+%if %{with dnfutils}
 %files -n dnf-utils
 %{_libexecdir}/dnf-utils
 %{_bindir}/debuginfo-install
@@ -477,6 +490,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
+%endif
 
 %if %{with python2}
 %files -n python2-dnf-plugin-leaves
