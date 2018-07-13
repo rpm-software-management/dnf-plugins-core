@@ -337,14 +337,14 @@ mkdir build-py3
 %build
 %if %{with python2}
 pushd build-py2
-  %cmake ../ -DWITHOUT_LOCAL:str=0%{?rhel}
+  %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python2} -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd
 %endif
 %if %{with python3}
 pushd build-py3
-  %cmake ../ -DPYTHON_DESIRED:str=3 -DWITHOUT_LOCAL:str=0%{?rhel}
+  %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python3} -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd

@@ -1,5 +1,1 @@
-if (${PYTHON_DESIRED} STREQUAL "2")
-    INSTALL (PROGRAMS "dnf-utils-2" DESTINATION libexec)
-else()
-    INSTALL (PROGRAMS "dnf-utils-3" DESTINATION libexec)
-endif()
+INSTALL (PROGRAMS "dnf-utils-${PYTHON_VERSION_MAJOR}" DESTINATION libexec)
