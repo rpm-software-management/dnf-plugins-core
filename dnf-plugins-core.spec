@@ -543,6 +543,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Jul 23 2018 Marek Blaha <mblaha@redhat.com> 3.0.2-1
+- Resolves: rhbz#1603805
+- Resolves: rhbz#1571251
+
 * Tue Jun 26 2018 Jaroslav Mracek <jmracek@redhat.com> 3.0.1-1
 - Enhanced documentation
 - Resolves: rhbz#1576594
