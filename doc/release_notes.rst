@@ -22,6 +22,15 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+3.0.2 Release Notes
+===================
+
+Bugs fixed in 3.0.2:
+
+* :rhbug:`1603805`
+* :rhbug:`1571251`
+
+===================
 3.0.1 Release Notes
 ===================
 

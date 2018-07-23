@@ -374,5 +374,13 @@
     [
         1489724,
         "[abrt] dnf: arch(): config.py:907:arch:TypeError: unhashable type: 'list'"
+    ],
+    [
+        1603805,
+        "dnf-plugins-core: FTBFS in Fedora rawhide"
+    ],
+    [
+        1571251,
+        "dnf download --source --resolve does not work"
     ]
 ]
