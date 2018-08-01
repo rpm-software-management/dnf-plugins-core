@@ -56,9 +56,9 @@ YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
 if PY3:
-    from configparser import ConfigParser
+    from configparser import ConfigParser, NoOptionError
 else:
-    from ConfigParser import ConfigParser
+    from ConfigParser import ConfigParser, NoOptionError
 
 @dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
@@ -66,8 +66,11 @@ class CoprCommand(dnf.cli.Command):
 
     chroot_config = None
 
-    default_url = "https://copr.fedorainfracloud.org"
+    default_hostname = "copr.fedorainfracloud.org"
     default_hub = "fedora"
+    default_protocol = "https"
+    default_port = 443
+    default_url = default_protocol + "://" + default_hostname
     aliases = ("copr",)
     summary = _("Interact with Copr repositories.")
     usage = _("""
@@ -111,29 +114,31 @@ class CoprCommand(dnf.cli.Command):
     def configure(self):
         copr_plugin_config = ConfigParser()
         config_files = []
-        for path in self.base.conf.pluginconfpath:
-            for filename in os.listdir('{0}/{1}.d'.format(path, PLUGIN_CONF)):
-                if filename.endswith('.conf'):
-                    config_file = os.path.join(path, PLUGIN_CONF + ".d", filename)
-                    config_files.append(config_file)
+        config_path = self.base.conf.pluginconfpath[0]
 
-            test_config_file = os.path.join(path, PLUGIN_CONF + ".conf")
-            if os.path.isfile(test_config_file):
-                config_files.append(test_config_file)
+        default_config_file = os.path.join(config_path, PLUGIN_CONF + ".conf")
+        if os.path.isfile(default_config_file):
+            config_files.append(default_config_file)
+
+            copr_plugin_config.read(default_config_file)
+            if copr_plugin_config.has_option('main', 'distribution') and\
+                    copr_plugin_config.has_option('main', 'releasever'):
+                distribution = copr_plugin_config.get('main', 'distribution')
+                releasever = copr_plugin_config.get('main', 'releasever')
+                self.chroot_config = [distribution, releasever]
+            else:
+                self.chroot_config = [False, False]
+
+        for filename in os.listdir('{0}/{1}.d'.format(config_path, PLUGIN_CONF)):
+            if filename.endswith('.conf'):
+                config_file = os.path.join(config_path, PLUGIN_CONF + ".d", filename)
+                config_files.append(config_file)
 
         project = []
-        try:
-            project = self.opts.arg[0]
-            project = project.split("/")
-        except (ValueError, IndexError):
-            pass
+        if len(self.opts.arg):
+            project = self.opts.arg[0].split("/")
 
-        # Copr hub was not specified, using default hub `fedora`
-        if not self.opts.hub and len(project) != 3:
-            copr_hub = self.default_hub
-            self.copr_url = self.default_url
-
-        elif len(project) == 3 and self.opts.hub:
+        if len(project) == 3 and self.opts.hub:
             logger.critical(
                 _('Error: ') +
                 _('specify Copr hub either with `--hub` or using '
@@ -141,51 +146,48 @@ class CoprCommand(dnf.cli.Command):
             )
             raise dnf.cli.CliError(_('multiple hubs specified'))
 
+        # Copr hub hostname specified with hub/user/project format
+        elif len(project) == 3:
+            self.copr_hostname = project[0]
+            self.copr_url = self.default_protocol + "://" + project[0]
+
         elif not config_files and self.opts.hub:
-            print(_("Warning: No configiguration file found, using the default instance of Copr."))
-            copr_hub = self.default_hub
+            print(_("Warning: No configiguration file found, using the default hub of Copr."))
+            self.copr_hostname = self.default_hostname
+            self.copr_url = self.default_url
+
+        # Copr hub was not specified, using default hub `fedora`
+        if not self.opts.hub and len(project) != 3:
+            self.copr_hostname = self.default_hostname
+            self.copr_url = self.default_url
 
         # Copr hub URL should be specified in config file
         elif self.opts.hub:
             copr_hub = self.opts.hub
+            copr_plugin_config.read(sorted(config_files, reverse=True))
+            if copr_hub in copr_plugin_config.sections():
+                hostname = protocol = port = None
+                try:
+                    hostname = copr_plugin_config.get(copr_hub, 'hostname')
+                    protocol = copr_plugin_config.get(copr_hub, 'protocol')
+                    port = copr_plugin_config.get(copr_hub, 'port')
+                except NoOptionError:
+                    pass
 
-        # Copr hub specified with hub/user/project format
-        elif len(project) == 3:
-            copr_hub = project[0]  # try to find hub in config files
-            self.copr_url = "https://" + project[0]  # otherwise use it directly as URL
+                if hostname:
+                    self.copr_hostname = self.copr_url = hostname
+                    if protocol:
+                        self.copr_url = protocol + "://" + self.copr_url
+                    else:
+                        self.copr_url = self.default_protocol + "://" + self.copr_url
+                    if port and port != self.default_port:
+                        self.copr_url += ":" + port
 
-        if config_files:
-            hub_found = False
-            for config_file in config_files:
-                copr_plugin_config.read(config_file)
-                if copr_hub is not None and copr_plugin_config.has_option(copr_hub, 'url'):
-                    if hub_found and self.copr_url != copr_plugin_config.get(copr_hub, 'url'):
-                        logger.critical(
-                            _('Error: ') +
-                            _('configuration files contain multiple hub definitions '
-                              'with the same name')
-                        )
-                        raise dnf.cli.CliError(_('multiple hub definitions'))
-                    self.copr_url = copr_plugin_config.get(copr_hub, 'url')
-                    hub_found = True
-                if (copr_plugin_config.has_option('main', 'distribution') and
-                        copr_plugin_config.has_option('main', 'releasever')):
-                    distribution = copr_plugin_config.get('main', 'distribution')
-                    releasever = copr_plugin_config.get('main', 'releasever')
-                    self.chroot_config = [distribution, releasever]
-                else:
-                    self.chroot_config = [False, False]
-
-            if self.opts.hub and not hub_found:
+            if not self.copr_url:
+                self.copr_hostname = self.default_hostname
                 self.copr_url = self.default_url
                 print(_("Warning: No such instance '{}' in configuration file. "
                         "Using the default one instead '{}'.").format(copr_hub, self.copr_url))
-
-        self.copr_short_url = self.copr_url
-        for prefix in ["https://", "http://"]:
-            if self.copr_short_url.startswith(prefix):
-                self.copr_short_url = self.copr_short_url[len(prefix):]
-                break
 
     def run(self):
         subcommand = self.opts.subcommand[0]
@@ -239,7 +241,7 @@ class CoprCommand(dnf.cli.Command):
             project_name = copr_username + "/" + copr_projectname
 
         repo_filename = "{0}/copr:{1}:{2}:{3}.repo".format(
-            self.base.conf.get_reposdir, self.copr_short_url, copr_username, copr_projectname)
+            self.base.conf.get_reposdir, self.copr_hostname, copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
             msg = _("""
@@ -276,7 +278,7 @@ Do you want to continue?""")
 
         for root, dir, files in os.walk(directory):
             for file_name in files:
-                if (re.match("^copr:" + self.copr_short_url, file_name) or
+                if (re.match("^copr:" + self.copr_hostname, file_name) or
                         (self.copr_url == self.default_url and re.match("^_copr_", file_name))):
                     parser.read(directory + '/' + file_name)
 
@@ -285,14 +287,13 @@ Do you want to continue?""")
             if (enabled and disabled_only) or (not enabled and enabled_only):
                 continue
 
-            if re.match("copr:" + self.copr_short_url, copr):
-                copr_name = copr.split(':', 3)
+            if re.match("copr:" + self.copr_hostname, copr):
+                copr_name = copr.rsplit(':', 3)
                 msg = copr_name[2] + '/' + copr_name[3]
             else:
                 copr_name = copr.split('-', 1)
                 msg = copr_name[0] + '/' + copr_name[1]
-            if self.opts.hub:
-                msg = self.copr_short_url + ": " + msg
+            msg = self.copr_hostname + "/" + msg
             if not enabled:
                 msg += " (disabled)"
             print(msg)
@@ -405,7 +406,7 @@ Do you want to continue?""")
         if self.copr_url == self.default_url or self.opts.hub == self.default_hub:
             # copr:hub:user:project.repo => _copr_user_project.repo
             old_repo_filename = repo_filename.replace("copr:", "_copr")\
-                .replace(self.copr_short_url, "").replace(":", "_", 1).replace(":", "-")
+                .replace(self.copr_hostname, "").replace(":", "_", 1).replace(":", "-")
 
             if os.path.exists(old_repo_filename):
                 os.remove(old_repo_filename)
@@ -447,7 +448,7 @@ Do you want to continue?""")
     def _disable_repo(self, copr_username, copr_projectname):
         exit_code = call(["dnf", "config-manager", "--set-disabled",
                           "copr:{0}:{1}:{2}".format(
-                              self.copr_short_url,
+                              self.copr_hostname,
                               self._sanitize_username(copr_username),
                               copr_projectname)])
         if exit_code != 0 and (not self.opts.hub or self.opts.hub == self.default_hub):
