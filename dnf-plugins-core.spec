@@ -17,10 +17,10 @@
 %bcond_with yumcompatibility
 %endif
 
-%if ! 0%{?rhel} || 0%{?rhel} > 7
-%bcond_without dnfutils
-%else
+%if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with dnfutils
+%else
+%bcond_without dnfutils
 %endif
 
 Name:           dnf-plugins-core
