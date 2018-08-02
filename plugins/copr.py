@@ -405,7 +405,7 @@ Do you want to continue?""")
 
         if self.copr_url == self.default_url or self.opts.hub == self.default_hub:
             # copr:hub:user:project.repo => _copr_user_project.repo
-            old_repo_filename = repo_filename.replace("copr:", "_copr")\
+            old_repo_filename = repo_filename.replace("copr:", "_copr", 1)\
                 .replace(self.copr_hostname, "").replace(":", "_", 1).replace(":", "-")
 
             if os.path.exists(old_repo_filename):
