@@ -163,6 +163,7 @@ class CoprCommand(dnf.cli.Command):
 
         # Copr hub URL should be specified in config file
         elif self.opts.hub:
+            self.copr_url = None
             copr_hub = self.opts.hub
             copr_plugin_config.read(sorted(config_files, reverse=True))
             if copr_hub in copr_plugin_config.sections():
@@ -180,7 +181,7 @@ class CoprCommand(dnf.cli.Command):
                         self.copr_url = protocol + "://" + self.copr_url
                     else:
                         self.copr_url = self.default_protocol + "://" + self.copr_url
-                    if port and port != self.default_port:
+                    if port and int(port) != self.default_port:
                         self.copr_url += ":" + port
 
             if not self.copr_url:
