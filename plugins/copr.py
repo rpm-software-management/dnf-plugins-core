@@ -279,8 +279,11 @@ Do you want to continue?""")
 
         for root, dir, files in os.walk(directory):
             for file_name in files:
-                if (re.match("^copr:" + self.copr_hostname, file_name) or
-                        (self.copr_url == self.default_url and re.match("^_copr_", file_name))):
+                match_new = re.match("^copr:" + self.copr_hostname, file_name)
+                match_old = self.copr_url == self.default_url and re.match("^_copr_", file_name)
+                match_any = re.match("^copr:|^_copr_", file_name)
+
+                if self.opts.hub and (match_new or match_old) or not self.opts.hub and match_any:
                     parser.read(directory + '/' + file_name)
 
         for copr in parser.sections():
@@ -288,13 +291,13 @@ Do you want to continue?""")
             if (enabled and disabled_only) or (not enabled and enabled_only):
                 continue
 
-            if re.match("copr:" + self.copr_hostname, copr):
-                copr_name = copr.rsplit(':', 3)
-                msg = copr_name[2] + '/' + copr_name[3]
+            if re.match("^copr:", copr):
+                copr_name = copr.rsplit(':', 2)
+                copr_hostname = copr_name[0].split(':', 1)[1]
+                msg = copr_hostname + '/' + copr_name[1] + '/' + copr_name[2]
             else:
                 copr_name = copr.split('-', 1)
-                msg = copr_name[0] + '/' + copr_name[1]
-            msg = self.copr_hostname + "/" + msg
+                msg = self.default_hostname + '/' + copr_name[0] + '/' + copr_name[1]
             if not enabled:
                 msg += " (disabled)"
             print(msg)
