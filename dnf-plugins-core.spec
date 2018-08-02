@@ -413,7 +413,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
-%config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d/*.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
 %{python2_sitelib}/dnf-plugins/builddep.*
 %{python2_sitelib}/dnf-plugins/config_manager.*
@@ -436,7 +436,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %doc AUTHORS README.rst
 %ghost %{_var}/cache/dnf/packages.db
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
-%config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d/*.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
 %{python3_sitelib}/dnf-plugins/builddep.py
 %{python3_sitelib}/dnf-plugins/config_manager.py
