@@ -257,7 +257,8 @@ and packages are not held to any quality or security level.
 Please do not file bug reports about these packages in Fedora
 Bugzilla. In case of problems, contact the owner of this repository.
 
-Do you want to continue?""")
+Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
+                                                      copr_username, copr_projectname])))
             self._ask_user(msg)
             self._download_repo(project_name, repo_filename, chroot)
             logger.info(_("Repository successfully enabled."))
