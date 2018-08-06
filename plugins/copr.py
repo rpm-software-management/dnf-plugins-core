@@ -455,7 +455,8 @@ Do you want to continue?""")
                               self.copr_hostname,
                               self._sanitize_username(copr_username),
                               copr_projectname)])
-        if exit_code != 0 and (not self.opts.hub or self.opts.hub == self.default_hub):
+        if exit_code != 0 and (self.opts.hub == self.default_hub or
+                               self.copr_url == self.default_url):
             exit_code = call(["dnf", "config-manager", "--set-disabled",
                               "{0}-{1}".format(
                                   self._sanitize_username(copr_username),
