@@ -439,6 +439,12 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
                 else:
                     raise dnf.exceptions.Error(_("Such repository does not exist."))
             raise
+
+        for line in f:
+            if re.match("^\[copr:", line):
+                repo_filename = self.base.conf.get_reposdir + "/" + line[1:-2] + ".repo"
+            break
+
         shutil.copy2(f.name, repo_filename)
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
