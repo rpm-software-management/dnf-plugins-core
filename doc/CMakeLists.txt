@@ -27,10 +27,27 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.reposync.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.show-leaves.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.versionlock.8
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-copr.8
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.8
 	DESTINATION share/man/man8)
-
 
 if (${WITHOUT_LOCAL} STREQUAL "0")
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.local.8
 	DESTINATION share/man/man8)
 endif()
+
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
+    ${CMAKE_CURRENT_BINARY_DIR}/needs-restarting.1
+    ${CMAKE_CURRENT_BINARY_DIR}/repo-graph.1
+    ${CMAKE_CURRENT_BINARY_DIR}/repoclosure.1
+    ${CMAKE_CURRENT_BINARY_DIR}/repomanage.1
+    ${CMAKE_CURRENT_BINARY_DIR}/reposync.1
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-builddep.1
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-config-manager.1
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-debug-dump.1
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-debug-restore.1
+	DESTINATION share/man/man1)
+
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.conf.5
+	DESTINATION share/man/man5)
+
