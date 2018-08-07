@@ -244,8 +244,7 @@ man_pages = [
      AUTHORS, 8),
     ('config_manager', 'dnf.plugin.config_manager',
      u'DNF config-manager Plugin', AUTHORS, 8),
-    ('copr', 'dnf.plugin.copr', u'DNF copr Plugin',
-     AUTHORS, 8),
+    ('copr', 'dnf.plugin.copr', u'DNF copr Plugin', AUTHORS, 8),
     ('debug', 'dnf.plugin.debug', u'DNF debug Plugin', AUTHORS, 8),
     ('debuginfo-install', 'dnf.plugin.debuginfo-install',
      u'DNF debuginfo-install Plugin',
@@ -264,6 +263,26 @@ man_pages = [
     ('reposync', 'dnf.plugin.reposync', u'DNF reposync Plugin', AUTHORS, 8),
     ('show-leaves', 'dnf.plugin.show-leaves', u'DNF show-leaves Plugin', AUTHORS, 8),
     ('versionlock', 'dnf.plugin.versionlock', u'DNF versionlock Plugin', AUTHORS, 8),
+
+    # yum3 compatible layer for manpages
+    ('copr', 'yum-copr', u'redirecting to DNF copr Plugin', AUTHORS, 8),
+    ('debuginfo-install', 'debuginfo-install', u'redirecting to DNF debuginfo-install Plugin',
+     AUTHORS, 1),
+    ('needs_restarting', 'needs-restarting', u'redirecting to DNF needs_restarting Plugin',
+     AUTHORS, 1),
+    ('repoclosure', 'repoclosure', u'redirecting to DNF repoclosure Plugin', AUTHORS, 1),
+    ('repograph', 'repo-graph', u'redirecting to DNF repograph Plugin', AUTHORS, 1),
+    ('repomanage', 'repomanage', u'redirecting to DNF repomanage Plugin', AUTHORS, 1),
+    ('reposync', 'reposync', u'redirecting to DNF reposync Plugin', AUTHORS, 1),
+    ('versionlock', 'yum-versionlock', u'redirecting to DNF versionlock Plugin',
+     AUTHORS, 8),
+    ('versionlock', 'yum-versionlock.conf', u'redirecting to DNF versionlock Plugin',
+     AUTHORS, 5),
+    ('builddep', 'yum-builddep', u'redirecting to DNF builddep Plugin', AUTHORS, 1),
+    ('config_manager', 'yum-config-manager', u'redirecting to DNF config-manager Plugin',
+     AUTHORS, 1),
+    ('debug', 'yum-debug-dump', u'redirecting to DNF debug Plugin', AUTHORS, 1),
+    ('debug', 'yum-debug-restore', u'redirecting to DNF debug Plugin', AUTHORS, 1),
 ]
 
 # If true, show URL addresses after external links.

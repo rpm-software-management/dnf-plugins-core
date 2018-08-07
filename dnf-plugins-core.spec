@@ -11,8 +11,10 @@
 
 %if 0%{?rhel} > 7
 %bcond_with python2
+%bcond_without yumcompatibility
 %else
 %bcond_without python2
+%bcond_with yumcompatibility
 %endif
 
 Name:           dnf-plugins-core
@@ -57,6 +59,9 @@ Provides:       dnf-plugin-repoclosure = %{version}-%{release}
 Provides:       dnf-plugin-repograph = %{version}-%{release}
 Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
+%if %{with yumcompatibility}
+Provides:       yum-plugin-copr
+%endif
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
@@ -295,6 +300,9 @@ Requires:       python2-%{name} = %{version}-%{release}
 Provides:       dnf-plugin-versionlock =  %{version}-%{release}
 Provides:       dnf-command(versionlock)
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
+%if %{with yumcompatibility}
+Provides:       yum-plugin-versionlock
+%endif
 %endif
 Provides:       python2-dnf-plugins-extras-versionlock = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
@@ -314,6 +322,9 @@ Requires:       python3-%{name} = %{version}-%{release}
 Provides:       dnf-plugin-versionlock =  %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-versionlock = %{version}-%{release}
 Provides:       dnf-command(versionlock)
+%if %{with yumcompatibility}
+Provides:       yum-plugin-versionlock
+%endif
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 Conflicts:      python2-dnf-plugin-versionlock < %{version}-%{release}
@@ -406,6 +417,31 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.repograph.*
 %{_mandir}/man8/dnf.plugin.repomanage.*
 %{_mandir}/man8/dnf.plugin.reposync.*
+%if %{with yumcompatibility}
+%{_mandir}/man8/yum-copr.*
+%{_mandir}/man1/debuginfo-install.*
+%{_mandir}/man1/needs-restarting.*
+%{_mandir}/man1/repo-graph.*
+%{_mandir}/man1/repoclosure.*
+%{_mandir}/man1/repomanage.*
+%{_mandir}/man1/reposync.*
+%{_mandir}/man1/yum-builddep.*
+%{_mandir}/man1/yum-config-manager.*
+%{_mandir}/man1/yum-debug-dump.*
+%{_mandir}/man1/yum-debug-restore.*
+%else
+%exclude %{_mandir}/man8/yum-copr.*
+%exclude %{_mandir}/man1/debuginfo-install.*
+%exclude %{_mandir}/man1/needs-restarting.*
+%exclude %{_mandir}/man1/repo-graph.*
+%exclude %{_mandir}/man1/repoclosure.*
+%exclude %{_mandir}/man1/repomanage.*
+%exclude %{_mandir}/man1/reposync.*
+%exclude %{_mandir}/man1/yum-builddep.*
+%exclude %{_mandir}/man1/yum-config-manager.*
+%exclude %{_mandir}/man1/yum-debug-dump.*
+%exclude %{_mandir}/man1/yum-debug-restore.*
+%endif
 
 %if %{with python2}
 %files -n python2-%{name} -f %{name}.lang
@@ -531,6 +567,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python2_sitelib}/dnf-plugins/versionlock.*
 %{_mandir}/man8/dnf.plugin.versionlock.*
+%if %{with yumcompatibility}
+%{_mandir}/man8/yum-versionlock.*
+%{_mandir}/man5/yum-versionlock.*
+%else
+%exclude %{_mandir}/man8/yum-versionlock.*
+%exclude %{_mandir}/man5/yum-versionlock.*
+%endif
 %endif
 
 %if %{with python3}
@@ -540,6 +583,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
 %{_mandir}/man8/dnf.plugin.versionlock.*
+%if %{with yumcompatibility}
+%{_mandir}/man8/yum-versionlock.*
+%{_mandir}/man5/yum-versionlock.*
+%else
+%exclude %{_mandir}/man8/yum-versionlock.*
+%exclude %{_mandir}/man5/yum-versionlock.*
+%endif
 %endif
 
 %changelog
