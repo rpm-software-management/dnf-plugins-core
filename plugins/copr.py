@@ -56,9 +56,9 @@ YES = set([_('yes'), _('y')])
 NO = set([_('no'), _('n'), ''])
 
 if PY3:
-    from configparser import ConfigParser, NoOptionError
+    from configparser import ConfigParser, NoOptionError, NoSectionError
 else:
-    from ConfigParser import ConfigParser, NoOptionError
+    from ConfigParser import ConfigParser, NoOptionError, NoSectionError
 
 @dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
@@ -112,6 +112,7 @@ class CoprCommand(dnf.cli.Command):
         parser.add_argument('arg', nargs='*')
 
     def configure(self):
+        copr_hub = None
         copr_plugin_config = ConfigParser()
         config_files = []
         config_path = self.base.conf.pluginconfpath[0]
@@ -146,49 +147,45 @@ class CoprCommand(dnf.cli.Command):
             )
             raise dnf.cli.CliError(_('multiple hubs specified'))
 
-        # Copr hub hostname specified with hub/user/project format
-        elif len(project) == 3:
-            self.copr_hostname = project[0]
-            self.copr_url = self.default_protocol + "://" + project[0]
-
-        elif not config_files and self.opts.hub:
-            print(_("Warning: No configiguration file found, using the default hub of Copr."))
-            self.copr_hostname = self.default_hostname
-            self.copr_url = self.default_url
-
         # Copr hub was not specified, using default hub `fedora`
-        if not self.opts.hub and len(project) != 3:
+        elif not self.opts.hub and len(project) != 3:
             self.copr_hostname = self.default_hostname
             self.copr_url = self.default_url
 
-        # Copr hub URL should be specified in config file
-        elif self.opts.hub:
-            self.copr_url = None
+        # Copr hub specified with hub/user/project format
+        elif len(project) == 3:
+            copr_hub = project[0]
+
+        else:
             copr_hub = self.opts.hub
+
+        # Try to find hub in a config file
+        if config_files and copr_hub:
+            self.copr_url = None
             copr_plugin_config.read(sorted(config_files, reverse=True))
-            if copr_hub in copr_plugin_config.sections():
-                hostname = protocol = port = None
-                try:
-                    hostname = copr_plugin_config.get(copr_hub, 'hostname')
-                    protocol = copr_plugin_config.get(copr_hub, 'protocol')
-                    port = copr_plugin_config.get(copr_hub, 'port')
-                except NoOptionError:
-                    pass
+            hostname = self._read_config_item(copr_plugin_config, copr_hub, 'hostname', None)
 
-                if hostname:
-                    self.copr_hostname = self.copr_url = hostname
-                    if protocol:
-                        self.copr_url = protocol + "://" + self.copr_url
-                    else:
-                        self.copr_url = self.default_protocol + "://" + self.copr_url
-                    if port and int(port) != self.default_port:
-                        self.copr_url += ":" + port
+            if hostname:
+                protocol = self._read_config_item(copr_plugin_config, copr_hub, 'protocol',
+                                                  self.default_protocol)
+                port = self._read_config_item(copr_plugin_config, copr_hub, 'port',
+                                              self.default_port)
 
-            if not self.copr_url:
-                self.copr_hostname = self.default_hostname
-                self.copr_url = self.default_url
-                print(_("Warning: No such instance '{}' in configuration file. "
-                        "Using the default one instead '{}'.").format(copr_hub, self.copr_url))
+                self.copr_hostname = hostname
+                self.copr_url = protocol + "://" + hostname
+                if int(port) != self.default_port:
+                    self.copr_url += ":" + port
+                    self.copr_hostname += ":" + port
+
+        if not self.copr_url:
+            self.copr_hostname = copr_hub
+            self.copr_url = self.default_protocol + "://" + copr_hub
+
+    def _read_config_item(self, config, hub, section, default):
+        try:
+            return config.get(hub, section)
+        except (NoOptionError, NoSectionError):
+            return default
 
     def run(self):
         subcommand = self.opts.subcommand[0]
