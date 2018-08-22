@@ -238,7 +238,7 @@ class CoprCommand(dnf.cli.Command):
             copr_projectname = project[2]
             project_name = copr_username + "/" + copr_projectname
 
-        repo_filename = "{0}/copr:{1}:{2}:{3}.repo".format(
+        repo_filename = "{0}/_copr:{1}:{2}:{3}.repo".format(
             self.base.conf.get_reposdir, self.copr_hostname, copr_username, copr_projectname)
         if subcommand == "enable":
             self._need_root()
@@ -275,9 +275,9 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
     def _list_repo_file(self, repo_id, repo, enabled_only, disabled_only):
         file_name = repo.repofile.split('/')[-1]
 
-        match_new = re.match("^copr:" + self.copr_hostname, file_name)
-        match_old = self.copr_url == self.default_url and re.match("^_copr_", file_name)
-        match_any = re.match("^copr:|^_copr_", file_name)
+        match_new = re.match("_copr:" + self.copr_hostname, file_name)
+        match_old = self.copr_url == self.default_url and re.match("_copr_", file_name)
+        match_any = re.match("_copr:|^_copr_", file_name)
 
         if self.opts.hub:
             if not match_new and not match_old:
@@ -290,12 +290,12 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             return
 
         # repo ID has copr:<hub>:<user>:<project> format
-        if re.match("^copr:", repo_id):
+        if re.match("copr:", repo_id):
             copr_name = repo_id.rsplit(':', 2)
             copr_hostname = copr_name[0].split(':', 1)[1]
             msg = copr_hostname + '/' + copr_name[1] + '/' + copr_name[2]
         # repo ID has <user>-<project> format, try to get hub from file name
-        elif re.match("copr:" + self.copr_hostname, file_name):
+        elif re.match("_copr:", file_name):
             copr_name = repo_id.split('-', 1)
             copr_hostname = file_name.rsplit(':', 2)[0].split(':', 1)[1]
             msg = copr_hostname + '/' + copr_name[0] + '/' + copr_name[1]
@@ -417,14 +417,6 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         #http://copr.fedorainfracloud.org/coprs/larsks/rcm/repo/epel-7-x86_64/
         api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
 
-        if self.copr_url == self.default_url or self.opts.hub == self.default_hub:
-            # copr:hub:user:project.repo => _copr_user_project.repo
-            old_repo_filename = repo_filename.replace("copr:", "_copr", 1)\
-                .replace(self.copr_hostname, "").replace(":", "_", 1).replace(":", "-")
-
-            if os.path.exists(old_repo_filename):
-                os.remove(old_repo_filename)
-
         try:
             f = self.base.urlopen(self.copr_url + api_path, mode='w+')
         except IOError as e:
@@ -450,8 +442,15 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             raise
 
         for line in f:
-            if re.match("^\[copr:", line):
-                repo_filename = self.base.conf.get_reposdir + "/" + line[1:-2] + ".repo"
+            if re.match("\[copr:", line):
+                repo_filename = os.path.join(self.base.conf.get_reposdir,
+                                             "_" + line[1:-2] + ".repo")
+                if self.copr_url == self.default_url or self.opts.hub == self.default_hub:
+                    # copr:hub:user:project.repo => _copr_user_project.repo
+                    old_repo_filename = repo_filename.replace("_copr:", "_copr", 1)\
+                        .replace(self.copr_hostname, "").replace(":", "_", 1).replace(":", "-")
+                    if os.path.exists(old_repo_filename):
+                        os.remove(old_repo_filename)
             break
 
         shutil.copy2(f.name, repo_filename)
