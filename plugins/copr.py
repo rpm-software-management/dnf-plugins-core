@@ -19,7 +19,6 @@
 
 from __future__ import print_function
 from dnf.pycomp import PY3
-from subprocess import call
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
 
@@ -456,6 +455,24 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         shutil.copy2(f.name, repo_filename)
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
+    def _get_copr_repo(self, copr_username, copr_projectname):
+        repo_id = "copr:{0}:{1}:{2}".format(self.copr_hostname,
+                                            self._sanitize_username(copr_username),
+                                            copr_projectname)
+        if repo_id not in self.base.repos:
+            # check if there is a repo with old ID format
+            repo_id = repo_id = "{0}-{1}".format(self._sanitize_username(copr_username),
+                                                 copr_projectname)
+            if repo_id in self.base.repos and "_copr" in self.base.repos[repo_id].repofile:
+                file_name = self.base.repos[repo_id].repofile.split('/')[-1]
+                copr_hostname = file_name.rsplit(':', 2)[0].split(':', 1)[1]
+                if copr_hostname != self.copr_hostname:
+                    return None
+            else:
+                return None
+
+        return self.base.repos[repo_id]
+
     @classmethod
     def _remove_repo(cls, repo_filename):
         # FIXME is it Copr repo ?
@@ -465,22 +482,14 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             raise dnf.exceptions.Error(str(e))
 
     def _disable_repo(self, copr_username, copr_projectname):
-        exit_code = call(["dnf", "config-manager", "--set-disabled",
-                          "copr:{0}:{1}:{2}".format(
-                              self.copr_hostname,
-                              self._sanitize_username(copr_username),
-                              copr_projectname)])
-        if exit_code != 0 and (self.opts.hub == self.default_hub or
-                               self.copr_url == self.default_url):
-            exit_code = call(["dnf", "config-manager", "--set-disabled",
-                              "{0}-{1}".format(
-                                  self._sanitize_username(copr_username),
-                                  copr_projectname)])
-
-        if exit_code != 0:
+        repo = self._get_copr_repo(copr_username, copr_projectname)
+        if repo is None:
             raise dnf.exceptions.Error(
                 _("Failed to disable copr repo {}/{}"
                   .format(copr_username, copr_projectname)))
+
+        self.base.conf.write_raw_configfile(repo.repofile, repo.id,
+                                            self.base.conf.substitutions, {"enabled": 0})
 
     @classmethod
     def _get_data(cls, f):
