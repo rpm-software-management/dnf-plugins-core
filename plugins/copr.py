@@ -272,7 +272,9 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             raise dnf.exceptions.Error(
                 _('Unknown subcommand {}.').format(subcommand))
 
-    def _list_repo_file(self, directory, file_name, enabled_only, disabled_only):
+    def _list_repo_file(self, repo_id, repo, enabled_only, disabled_only):
+        file_name = repo.repofile.split('/')[-1]
+
         match_new = re.match("^copr:" + self.copr_hostname, file_name)
         match_old = self.copr_url == self.default_url and re.match("^_copr_", file_name)
         match_any = re.match("^copr:|^_copr_", file_name)
@@ -283,36 +285,32 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         elif not match_any:
             return
 
-        parser = ConfigParser()
-        parser.read(directory + '/' + file_name)
+        enabled = repo.enabled
+        if (enabled and disabled_only) or (not enabled and enabled_only):
+            return
 
-        for copr in parser.sections():
-            enabled = parser.getboolean(copr, "enabled")
-            if (enabled and disabled_only) or (not enabled and enabled_only):
-                continue
+        # repo ID has copr:<hub>:<user>:<project> format
+        if re.match("^copr:", repo_id):
+            copr_name = repo_id.rsplit(':', 2)
+            copr_hostname = copr_name[0].split(':', 1)[1]
+            msg = copr_hostname + '/' + copr_name[1] + '/' + copr_name[2]
+        # repo ID has <user>-<project> format, try to get hub from file name
+        elif re.match("copr:" + self.copr_hostname, file_name):
+            copr_name = repo_id.split('-', 1)
+            copr_hostname = file_name.rsplit(':', 2)[0].split(':', 1)[1]
+            msg = copr_hostname + '/' + copr_name[0] + '/' + copr_name[1]
+        # no information about hub, assume the default one
+        else:
+            copr_name = repo_id.split('-', 1)
+            msg = self.default_hostname + '/' + copr_name[0] + '/' + copr_name[1]
+        if not enabled:
+            msg += " (disabled)"
 
-            # repo ID has copr:<hub>:<user>:<project> format
-            if re.match("^copr:", copr):
-                copr_name = copr.rsplit(':', 2)
-                copr_hostname = copr_name[0].split(':', 1)[1]
-                msg = copr_hostname + '/' + copr_name[1] + '/' + copr_name[2]
-            # repo ID has <user>-<project> format, try to get hub from file name
-            elif re.match("^copr:", file_name):
-                copr_name = copr.split('-', 1)
-                copr_hostname = file_name.rsplit(':', 2)[0].split(':', 1)[1]
-                msg = copr_hostname + '/' + copr_name[0] + '/' + copr_name[1]
-            # no information about hub, assume the default one
-            else:
-                copr_name = copr.split('-', 1)
-                msg = self.default_hostname + '/' + copr_name[0] + '/' + copr_name[1]
-            if not enabled:
-                msg += " (disabled)"
-            print(msg)
+        print(msg)
 
     def _list_installed_repositories(self, directory, enabled_only, disabled_only):
-        for root, dir, files in os.walk(directory):
-            for file_name in files:
-                self._list_repo_file(directory, file_name, enabled_only, disabled_only)
+        for repo_id, repo in self.base.repos.items():
+            self._list_repo_file(repo_id, repo, enabled_only, disabled_only)
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
