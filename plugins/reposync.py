@@ -76,9 +76,10 @@ class RepoSyncCommand(dnf.cli.Command):
         if self.opts.source:
             repos.enable_source_repos()
 
+        self.base.conf.destdir = self.opts.destdir or self.opts.download_path
         self._repo_base_path = dict()
         for repo in repos.iter_enabled():
-            path = _pkgdir(self.opts.download_path, repo.id)
+            path = _pkgdir(self.base.conf.destdir, repo.id)
             self._repo_base_path[repo.id] = path
             repo.pkgdir = os.path.join(path, 'Packages')
 
