@@ -17,9 +17,10 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from tests.support import mock, RepoStub
+from tests.support import mock
 
 import dnf.cli
+import dnf.repo
 import dnf.repodict
 import dnf.sack
 import dnf.subject
@@ -275,19 +276,19 @@ class DownloadCommandTest(unittest.TestCase):
         self.cmd.opts = mock.Mock()
         self.cmd.opts.resolve = False
         self.cmd.opts.arches = []
-        repo = RepoStub('foo')
+        repo = dnf.repo.Repo(name='foo')
         repo.enable()
         self.cmd.base.repos.add(repo)
-        repo = RepoStub('foo-source')
+        repo = dnf.repo.Repo(name='foo-source')
         repo.disable()
         self.cmd.base.repos.add(repo)
-        repo = RepoStub('bar')
+        repo = dnf.repo.Repo(name='bar')
         repo.enable()
         self.cmd.base.repos.add(repo)
-        repo = RepoStub('foobar-source')
+        repo = dnf.repo.Repo(name='foobar-source')
         repo.disable()
         self.cmd.base.repos.add(repo)
-        repo = RepoStub('foo-debuginfo')
+        repo = dnf.repo.Repo(name='foo-debuginfo')
         repo.disable()
         self.cmd.base.repos.add(repo)
 

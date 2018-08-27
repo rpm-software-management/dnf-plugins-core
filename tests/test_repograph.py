@@ -20,6 +20,7 @@ from __future__ import unicode_literals
 from tests.support import mock
 
 import dnf.pycomp
+import dnf.repo
 import os
 import repograph
 import tests.support as support
@@ -34,8 +35,8 @@ class TestRepoGraphFunctions(support.TestCase):
 
     def test_repoid_option(self):
         args = ["--repo", "main"]
-        self.cmd.base.repos.add(support.RepoStub("main"))
-        self.cmd.base.repos.add(support.RepoStub("main_fail"))
+        self.cmd.base.repos.add(dnf.repo.Repo(name="main"))
+        self.cmd.base.repos.add(dnf.repo.Repo(name="main_fail"))
         support.command_configure(self.cmd, args)
         repos = [repo.id for repo in self.cmd.base.repos.iter_enabled()]
         self.assertEqual(["main"], repos)
