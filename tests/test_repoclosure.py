@@ -20,6 +20,7 @@ from __future__ import unicode_literals
 from tests.support import mock
 
 import dnf.pycomp
+import dnf.repo
 import os
 import repoclosure
 import tests.support as support
@@ -34,15 +35,15 @@ class TestRepoClosureFunctions(support.TestCase):
 
     def test_repoid_option(self):
         args = ["--repo", "main"]
-        self.cmd.base.repos.add(support.RepoStub("main"))
-        self.cmd.base.repos.add(support.RepoStub("main_fail"))
+        self.cmd.base.repos.add(dnf.repo.Repo(name="main"))
+        self.cmd.base.repos.add(dnf.repo.Repo(name="main_fail"))
         support.command_configure(self.cmd, args)
         repos = [repo.id for repo in self.cmd.base.repos.iter_enabled()]
         self.assertEqual(["main"], repos)
 
     def test_check_option(self):
         args = ["--check", "@commandline"]
-        self.cmd.base.repos.add(support.RepoStub("main"))
+        self.cmd.base.repos.add(dnf.repo.Repo(name="main"))
         self.cmd.base.add_remote_rpms([os.path.join(self.path, "noarch/foo-4-6.noarch.rpm")])
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
             with self.assertRaises(dnf.exceptions.Error) as context:

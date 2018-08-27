@@ -17,7 +17,7 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from tests.support import command_run, mock, RepoStub
+from tests.support import command_run, mock
 
 import config_manager
 import dnf

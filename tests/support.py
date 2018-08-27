@@ -91,7 +91,7 @@ class BaseCliStub(object):
 
     def read_all_repos(self):
         """Read repositories information."""
-        self.repos.add(RepoStub('main'))
+        self.repos.add(dnf.repo.Repo(name='main'))
 
     def read_comps(self):
         """Read groups information."""
@@ -171,28 +171,6 @@ class FakeConf(dnf.conf.Conf):
     def releasever(self):
         return self.substitutions['releasever']
 
-
-class RepoStub(object):
-    """A class mocking `dnf.repo.Repo`"""
-
-    enabled = True
-
-    def __init__(self, id_):
-        """Initialize the repository."""
-        self.id = id_
-        self.priority = 99
-        self.cost = 1000
-
-    def _valid(self):
-        """Return a message if the repository is not valid."""
-
-    def enable(self):
-        """Enable the repo"""
-        self.enabled = True
-
-    def disable(self):
-        """Disable the repo"""
-        self.enabled = False
 
 class TestCase(unittest.TestCase):
     def assertEmpty(self, collection):

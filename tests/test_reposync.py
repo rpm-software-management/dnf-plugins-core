@@ -20,11 +20,13 @@ from __future__ import unicode_literals
 from tests import support
 import reposync
 
+import dnf.repo
+
 class TestReposyncFunctions(support.TestCase):
     def test_parse_args(self):
         cli = support.CliStub(support.BaseCliStub())
-        cli.base.repos.add(support.RepoStub('silver'))
-        cli.base.repos.add(support.RepoStub('screen'))
+        cli.base.repos.add(dnf.repo.Repo(name='silver'))
+        cli.base.repos.add(dnf.repo.Repo(name='screen'))
         cmd = reposync.RepoSyncCommand(cli)
         args = '-p /become/legend --repo=silver --repo=screen'.split()
         support.command_configure(cmd, args)
