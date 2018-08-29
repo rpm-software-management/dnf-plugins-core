@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 08:42+0200\n"
-"PO-Revision-Date: 2017-07-01 11:07-0400\n"
+"POT-Creation-Date: 2018-08-29 12:24+0200\n"
+"PO-Revision-Date: 2017-08-30 09:37+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -20,60 +20,183 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/builddep.py:62
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:42
+msgid "download all packages from remote repo"
+msgstr "pobiera wszystkie pakiety ze zdalnego repozytorium"
+
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
+msgid "download only packages for this ARCH"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
+msgid "delete local packages no longer present in repository"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
+msgid "also download comps.xml"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
+msgid "download only newest packages per-repo"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
+msgid "where to store downloaded repositories "
+msgstr "gdzie przechowywać pobrane repozytoria "
+
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
+msgid "operate on source packages"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
+#, python-format
+msgid "[DELETED] %s"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
+#, python-format
+msgid "failed to delete file %s"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
+#, python-format
+msgid "Could not make repository directory: %s"
+msgstr ""
+
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "instaluje pakiety debuginfo"
+
+#: ../plugins/debuginfo-install.py:85
+#, python-format
+msgid "No match for argument: %s"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:92
+msgid "Unable to find a match"
+msgstr ""
+
+#: ../plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "migruje historię, grupy i dane yumdb programu yum do programu dnf"
+
+#: ../plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "Migrowanie danych historii…"
+
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Wyświetla pełny wykres zależności pakietu w formacie programu dot"
+
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Nic nie dostarcza: „%s”"
+
+#: ../plugins/versionlock.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Nie można odczytać konfiguracji blokady wersji: %s"
+
+#: ../plugins/versionlock.py:33
+msgid "Locklist not set"
+msgstr "Nie ustawiono listy blokad"
+
+#: ../plugins/versionlock.py:34
+msgid "Adding versionlock on:"
+msgstr "Dodawanie blokady wersji na:"
+
+#: ../plugins/versionlock.py:35
+msgid "Adding exclude on:"
+msgstr "Dodawanie wykluczenia na:"
+
+#: ../plugins/versionlock.py:36
+msgid "Deleting versionlock for:"
+msgstr "Usuwanie blokady wersji dla:"
+
+#: ../plugins/versionlock.py:37
+msgid "No package found for:"
+msgstr "Nie odnaleziono pakietu dla:"
+
+#: ../plugins/versionlock.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Wykluczenia z wtyczki blokady wersji nie zostały zastosowane"
+
+#: ../plugins/versionlock.py:39
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr ""
+
+#: ../plugins/versionlock.py:40
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr ""
+
+#: ../plugins/versionlock.py:41
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr ""
+
+#: ../plugins/versionlock.py:119
+msgid "control package version locks"
+msgstr "kontroluje blokady wersji pakietów"
+
+#: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
 msgstr "[PAKIET|PAKIET.spec]"
 
-#: ../plugins/builddep.py:73
+#: ../plugins/builddep.py:79
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
 msgstr "„%s” nie jest w formacie „MAKRO WYRAŻENIE”"
 
-#: ../plugins/builddep.py:78
+#: ../plugins/builddep.py:84
 msgid "packages with builddeps to install"
 msgstr "pakiety z zależnościami budowania do zainstalowania"
 
-#: ../plugins/builddep.py:81
+#: ../plugins/builddep.py:87
 msgid "define a macro for spec file parsing"
 msgstr "określa makro do przetwarzania plików spec"
 
-#: ../plugins/builddep.py:84
+#: ../plugins/builddep.py:90
 msgid "treat commandline arguments as spec files"
 msgstr "traktuje parametry wiersza poleceń jako pliki spec"
 
-#: ../plugins/builddep.py:86
+#: ../plugins/builddep.py:92
 msgid "treat commandline arguments as source rpm"
 msgstr "traktuje parametry wiersza poleceń jako źródłowe pliki RPM"
 
-#: ../plugins/builddep.py:132
+#: ../plugins/builddep.py:138
 msgid "Some packages could not be found."
 msgstr "Nie można odnaleźć niektórych pakietów."
 
 #. No provides, no files
-#: ../plugins/builddep.py:151
+#: ../plugins/builddep.py:157
 #, python-format
 msgid "No matching package to install: '%s'"
 msgstr "Brak pasujących pakietów do zainstalowania: „%s”"
 
-#: ../plugins/builddep.py:168
+#: ../plugins/builddep.py:174
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr ""
 "Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
 
-#: ../plugins/builddep.py:181 ../plugins/builddep.py:197
-#: ../plugins/builddep.py:214
+#: ../plugins/builddep.py:187 ../plugins/builddep.py:203
+#: ../plugins/builddep.py:220
 msgid "Not all dependencies satisfied"
 msgstr "Nie spełniono wszystkich zależności"
 
-#: ../plugins/builddep.py:188
+#: ../plugins/builddep.py:194
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
 
-#: ../plugins/builddep.py:207
+#: ../plugins/builddep.py:213
 #, python-format
 msgid "no package matched: %s"
 msgstr "żaden pakiet nie pasuje: %s"
@@ -131,12 +254,397 @@ msgstr "Dodawanie repozytorium z: %s"
 #: ../plugins/config_manager.py:173
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
-msgstr[0] ""
+msgstr[0] "Utworzenie repozytorium się nie powiodło"
+msgstr[1] "Utworzenie repozytoriów się nie powiodło"
+msgstr[2] "Utworzenie repozytoriów się nie powiodło"
 
 #: ../plugins/config_manager.py:183
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Nie można zapisać repozytorium do pliku %s: %s"
+
+#: ../plugins/local.py:117
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "Nie można utworzyć katalogu „{}” z powodu „{}”"
+
+#: ../plugins/local.py:121
+msgid "'{}' is not a directory"
+msgstr "„{}” nie jest katalogiem"
+
+#: ../plugins/local.py:130
+msgid "Copying '{}' to local repo"
+msgstr "Kopiowanie „{}” do lokalnego repozytorium"
+
+#: ../plugins/local.py:136
+msgid "Can't write file '{}'"
+msgstr "Nie można zapisać pliku „{}”"
+
+#: ../plugins/local.py:151
+msgid "Rebuilding local repo"
+msgstr "Ponowne budowanie lokalnego repozytorium"
+
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr ""
+"wyświetla listę zainstalowanych pakietów, które nie są wymagane przez inne "
+"pakiety"
+
+#: ../plugins/needs_restarting.py:167
+msgid "determine updated binaries that need restarting"
+msgstr ""
+"określa, które zaktualizowane pliki binarne wymagają ponownego uruchomienia"
+
+#: ../plugins/needs_restarting.py:172
+msgid "only consider this user's processes"
+msgstr "uznaje tylko procesy tego użytkownika"
+
+#: ../plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Wyświetla listę nierozwiązanych zależności dla repozytoriów"
+
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr ""
+"Zamknięcie repozytorium zakończyło się z nierozwiązanymi zależnościami."
+
+#: ../plugins/repoclosure.py:139
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr ""
+"sprawdza pakiety o podanych architekturach, może być podawane wielokrotnie"
+
+#: ../plugins/repoclosure.py:142
+msgid "Specify repositories to check"
+msgstr "Podaje repozytoria do sprawdzenia"
+
+#: ../plugins/repoclosure.py:144
+msgid "Check only the newest packages in the repos"
+msgstr "Sprawdza tylko najnowsze pakiety w repozytoriach"
+
+#: ../plugins/repoclosure.py:147
+msgid "Check closure for this package only"
+msgstr "Sprawdza domknięcie tylko tego pakietu"
+
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "Zarządza katalogiem pakietów RPM"
+
+#: ../plugins/repomanage.py:56
+msgid "Pass either --old or --new, not both!"
+msgstr "Należy podać --old lub --new."
+
+#: ../plugins/repomanage.py:66
+msgid "No files to process"
+msgstr "Brak plików do przetworzenia"
+
+#: ../plugins/repomanage.py:71
+msgid "Could not open {}"
+msgstr "Nie można otworzyć {}"
+
+#: ../plugins/repomanage.py:128
+msgid "Print the older packages"
+msgstr "Wyświetla listę poprzednich pakietów"
+
+#: ../plugins/repomanage.py:130
+msgid "Print the newest packages"
+msgstr "Wyświetla listę najnowszych pakietów"
+
+#: ../plugins/repomanage.py:132
+msgid "Space separated output, not newline"
+msgstr "Wyjście powinno być rozdzielane spacjami, a nie nowymi wierszami"
+
+#: ../plugins/repomanage.py:134
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "N najnowszych pakietów do zatrzymania — domyślnie 1"
+
+#: ../plugins/repomanage.py:137
+msgid "Path to directory"
+msgstr "Ścieżka do katalogu"
+
+#: ../plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "pobiera pakiet do bieżącego katalogu"
+
+#: ../plugins/download.py:51
+msgid "packages to download"
+msgstr "pakiety do pobrania"
+
+#: ../plugins/download.py:54
+msgid "download the src.rpm instead"
+msgstr "pobiera pakiet src.rpm zamiast tego"
+
+#: ../plugins/download.py:56
+msgid "download the -debuginfo package instead"
+msgstr "pobiera pakiet -debuginfo zamiast tego"
+
+#: ../plugins/download.py:59
+msgid "limit  the  query to packages of given architectures."
+msgstr "ogranicza zapytanie do pakietów podanych architektur."
+
+#: ../plugins/download.py:61
+msgid "resolve and download needed dependencies"
+msgstr "rozwiązuje i pobiera wymagane zależności"
+
+#: ../plugins/download.py:63
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr ""
+"zamiast pobierać, wyświetla listę adresów URL, z których można pobrać "
+"pakiety RPM"
+
+#: ../plugins/download.py:68
+msgid "when running with --url, limit to specific protocols"
+msgstr "podczas działania z opcją --url, ogranicza do podanych protokołów"
+
+#: ../plugins/download.py:105
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Uzyskanie serwera lustrzanego dla pakietu się nie powiodło: %s"
+
+#: ../plugins/download.py:180
+msgid "Exiting due to strict setting."
+msgstr "Kończenie działania z powodu ścisłego ustawienia."
+
+#: ../plugins/download.py:200
+msgid "Error in resolve of packages:"
+msgstr ""
+
+#: ../plugins/download.py:217
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Nie określono źródłowego pakietu RPM dla %s"
+
+#: ../plugins/download.py:235 ../plugins/download.py:249
+#, python-format
+msgid "No package %s available."
+msgstr "Pakiet %s jest niedostępny."
+
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Nowe pozostałości:"
+
+#: ../plugins/copr.py:55
+msgid "yes"
+msgstr "tak"
+
+#: ../plugins/copr.py:55
+msgid "y"
+msgstr "t"
+
+#: ../plugins/copr.py:56
+msgid "no"
+msgstr "nie"
+
+#: ../plugins/copr.py:56
+msgid "n"
+msgstr "n"
+
+#: ../plugins/copr.py:71
+msgid "Interact with Copr repositories."
+msgstr "używa repozytoriów Copr"
+
+#: ../plugins/copr.py:72
+msgid ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+msgstr ""
+"\n"
+"  enable nazwa/projekt [chroot]\n"
+"  disable nazwa/projekt\n"
+"  remove nazwa/projekt\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAZWA\n"
+"  search projekt\n"
+"\n"
+"  Przykłady:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
+"  copr search tests\n"
+"    "
+
+#: ../plugins/copr.py:98
+msgid "List all installed Copr repositories (default)"
+msgstr ""
+"wyświetla listę wszystkich zainstalowanych repozytoriów Copr (domyślnie)"
+
+#: ../plugins/copr.py:100
+msgid "List enabled Copr repositories"
+msgstr "wyświetla listę włączonych repozytoriów Copr"
+
+#: ../plugins/copr.py:102
+msgid "List disabled Copr repositories"
+msgstr "wyświetla listę wyłączonych repozytoriów Copr"
+
+#: ../plugins/copr.py:104
+msgid "List available Copr repositories by user NAME"
+msgstr "wyświetla listę dostępnych repozytoriów Copr według NAZWY użytkownika"
+
+#: ../plugins/copr.py:117
+msgid "Warning: we are using non-standard Copr URL '{}'."
+msgstr "Ostrzeżenie: używany jest niestandardowy adres URL Copr „{}”."
+
+#: ../plugins/copr.py:156 ../plugins/copr.py:177
+msgid "Error: "
+msgstr "Błąd: "
+
+#: ../plugins/copr.py:157 ../plugins/copr.py:161
+msgid "exactly two additional parameters to copr command are required"
+msgstr "wymagane są dokładnie dwa dodatkowe parametry dla polecenia copr"
+
+#: ../plugins/copr.py:178
+msgid "use format `copr_username/copr_projectname` to reference copr project"
+msgstr ""
+"należy użyć formatu „copr_nazwaużytkownika/copr_nazwaprojektu”, aby odnieść "
+"się do projektu Copr"
+
+#: ../plugins/copr.py:180
+msgid "bad copr project format"
+msgstr "błędny format projektu Copr"
+
+#: ../plugins/copr.py:186
+msgid ""
+"\n"
+"You are about to enable a Copr repository. Please note that this\n"
+"repository is not part of the main distribution, and quality may vary.\n"
+"\n"
+"The Fedora Project does not exercise any power over the contents of\n"
+"this repository beyond the rules outlined in the Copr FAQ at\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"and packages are not held to any quality or security level.\n"
+"\n"
+"Please do not file bug reports about these packages in Fedora\n"
+"Bugzilla. In case of problems, contact the owner of this repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"\n"
+"Zostanie włączone repozytorium Copr. Proszę zauważyć, że to\n"
+"repozytorium nie jest częścią głównej dystrybucji i jego jakość\n"
+"może się różnić.\n"
+"\n"
+"Projekt Fedora nie sprawuje żadnej władzy nad zawartością tego\n"
+"repozytorium poza zasadami wytyczonymi w dokumencie FAQ\n"
+"(<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>),\n"
+"a jakość i bezpieczeństwo pakietów nie jest zapewniane.\n"
+"\n"
+"Prosimy nie zgłaszać błędów na temat tych pakietów w systemie\n"
+"Bugzilla Fedory. W przypadku problemów prosimy kontaktować się\n"
+"z właścicielem danego repozytorium.\n"
+"\n"
+"Kontynuować?"
+
+#: ../plugins/copr.py:201
+msgid "Repository successfully enabled."
+msgstr "Pomyślnie włączono repozytorium."
+
+#: ../plugins/copr.py:205
+msgid "Repository successfully disabled."
+msgstr "Pomyślnie wyłączono repozytorium."
+
+#: ../plugins/copr.py:209
+msgid "Repository successfully removed."
+msgstr "Pomyślnie usunięto repozytorium."
+
+#: ../plugins/copr.py:213 ../plugins/copr.py:476
+msgid "Unknown subcommand {}."
+msgstr "Nieznane podpolecenie {}."
+
+#: ../plugins/copr.py:242
+msgid "Can't parse repositories for username '{}'."
+msgstr "Nie można przetworzyć repozytoriów dla nazwy użytkownika „{}”."
+
+#: ../plugins/copr.py:245
+msgid "List of {} coprs"
+msgstr "Lista repozytoriów Copr {}"
+
+#: ../plugins/copr.py:253
+msgid "No description given"
+msgstr "Nie podano opisu"
+
+#: ../plugins/copr.py:265
+msgid "Can't parse search for '{}'."
+msgstr "Nie można przetworzyć wyszukiwania dla „{}”."
+
+#: ../plugins/copr.py:268
+msgid "Matched: {}"
+msgstr "Pasujące: {}"
+
+#: ../plugins/copr.py:276
+msgid "No description given."
+msgstr "Nie podano opisu."
+
+#: ../plugins/copr.py:289
+msgid "Safe and good answer. Exiting."
+msgstr "Bezpieczna i dobra odpowiedź. Kończenie działania."
+
+#: ../plugins/copr.py:296
+msgid "This command has to be run under the root user."
+msgstr "To polecenie może być wykonywane tylko przez użytkownika root."
+
+#: ../plugins/copr.py:356
+msgid ""
+"This repository does not have any builds yet so you cannot enable it now."
+msgstr ""
+"To repozytorium nie posiada jeszcze żadnych pakietów, więc nie można go "
+"teraz włączyć."
+
+#: ../plugins/copr.py:359
+msgid "Such repository does not exist."
+msgstr "Repozytorium nie istnieje."
+
+#: ../plugins/copr.py:380
+msgid "Failed to disable copr repo {}/{}"
+msgstr "Wyłączenie repozytorium Copr {}/{} się nie powiodło"
+
+#: ../plugins/copr.py:393 ../plugins/copr.py:431
+msgid "Unknown response from server."
+msgstr "Nieznana odpowiedź serwera."
+
+#: ../plugins/copr.py:415
+msgid "Interact with Playground repository."
+msgstr "używa repozytorium Playground"
+
+#: ../plugins/copr.py:420
+msgid ""
+"\n"
+"You are about to enable a Playground repository.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"\n"
+"Zostanie włączone repozytorium Playground.\n"
+"\n"
+"Kontynuować?"
+
+#: ../plugins/copr.py:466
+msgid "Playground repositories successfully enabled."
+msgstr "Pomyślnie włączono repozytoria Playground."
+
+#: ../plugins/copr.py:469
+msgid "Playground repositories successfully disabled."
+msgstr "Pomyślnie wyłączono repozytoria Playground."
+
+#: ../plugins/copr.py:473
+msgid "Playground repositories successfully updated."
+msgstr "Pomyślnie zaktualizowano repozytoria Playground."
 
 #: ../plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
@@ -193,488 +701,3 @@ msgstr "Pakiet %s jest niedostępny"
 #, python-format
 msgid "Bad dnf debug file: %s"
 msgstr "Błędny plik debugowania programu dnf: %s"
-
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "instaluje pakiety debuginfo"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-"wyświetla listę zainstalowanych pakietów, które nie są wymagane przez inne "
-"pakiety"
-
-#: ../plugins/local.py:117
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "Nie można utworzyć katalogu „{}” z powodu „{}”"
-
-#: ../plugins/local.py:121
-msgid "'{}' is not a directory"
-msgstr "„{}” nie jest katalogiem"
-
-#: ../plugins/local.py:130
-msgid "Copying '{}' to local repo"
-msgstr "Kopiowanie „{}” do lokalnego repozytorium"
-
-#: ../plugins/local.py:136
-msgid "Can't write file '{}'"
-msgstr "Nie można zapisać pliku „{}”"
-
-#: ../plugins/local.py:151
-msgid "Rebuilding local repo"
-msgstr "Ponowne budowanie lokalnego repozytorium"
-
-#: ../plugins/migrate.py:55
-#, python-format
-msgid "failed to parse package NEVRA from: %s"
-msgstr "nie powiodło się przetworzenie NEVRA pakietu z: %s"
-
-#: ../plugins/migrate.py:76
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "migruje historię, grupy i dane yumdb programu yum do programu dnf"
-
-#: ../plugins/migrate.py:93
-msgid "which kind of yum data migrate."
-msgstr "który rodzaj danych programu yum migrować."
-
-#: ../plugins/migrate.py:109
-msgid "Migrating history data..."
-msgstr "Migrowanie danych historii…"
-
-#: ../plugins/migrate.py:220
-msgid "Migrating groups data..."
-msgstr "Migrowanie danych grup…"
-
-#: ../plugins/migrate.py:225
-msgid "Execution of Yum failed. Could not retrieve installed groups."
-msgstr ""
-"Wykonanie polecenia yum się nie powiodło. Nie można pobrać zainstalowanych "
-"grup."
-
-#: ../plugins/migrate.py:229
-msgid "No groups to migrate from Yum"
-msgstr "Brak grup do migrowania z programu yum"
-
-#. skips not found groups, i.e. after fedup
-#. when the group name changes / disappears in new distro
-#: ../plugins/migrate.py:241
-msgid "skipping."
-msgstr "pomijanie."
-
-#: ../plugins/migrate.py:261
-msgid "Migrating YUMDB data..."
-msgstr "Migrowanie danych bazy YUMDB…"
-
-#: ../plugins/migrate.py:280
-#, python-format
-msgid "%s of %s not found"
-msgstr "Nie odnaleziono %s z %s"
-
-#: ../plugins/migrate.py:287
-#, python-format
-msgid "replacing unknown characters in %s of %s"
-msgstr "zastępowanie nieznanych znaków w %s z %s"
-
-#: ../plugins/migrate.py:292
-msgid "DNFDB access denied"
-msgstr "Odmowa dostępu do bazy DNFDB"
-
-#: ../plugins/migrate.py:294
-#, python-format
-msgid "%s of %s migrated"
-msgstr "Migrowano %s z %s"
-
-#: ../plugins/migrate.py:298
-#, python-format
-msgid "%d YUMDB records found, %d migrated, %d skipped/preserved"
-msgstr ""
-"Odnalezione wpisy bazy YUMDB: %d, migrowano: %d, pominięto/zachowano: %d"
-
-#: ../plugins/needs_restarting.py:167
-msgid "determine updated binaries that need restarting"
-msgstr ""
-"określa, które zaktualizowane pliki binarne wymagają ponownego uruchomienia"
-
-#: ../plugins/needs_restarting.py:172
-msgid "only consider this user's processes"
-msgstr "uznaje tylko procesy tego użytkownika"
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr "Wyświetla pełny wykres zależności pakietu w formacie programu dot"
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr "Nic nie dostarcza: „%s”"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr "Zarządza katalogiem pakietów RPM"
-
-#: ../plugins/repomanage.py:55
-msgid "Pass either --old or --new, not both!"
-msgstr "Należy podać --old lub --new."
-
-#: ../plugins/repomanage.py:65
-msgid "No files to process"
-msgstr "Brak plików do przetworzenia"
-
-#: ../plugins/repomanage.py:70
-msgid "Could not open {}"
-msgstr "Nie można otworzyć {}"
-
-#: ../plugins/repomanage.py:127
-msgid "Print the older packages"
-msgstr "Wyświetla listę poprzednich pakietów"
-
-#: ../plugins/repomanage.py:129
-msgid "Print the newest packages"
-msgstr "Wyświetla listę najnowszych pakietów"
-
-#: ../plugins/repomanage.py:131
-msgid "Space separated output, not newline"
-msgstr "Wyjście powinno być rozdzielane spacjami, a nie nowymi wierszami"
-
-#: ../plugins/repomanage.py:133
-msgid "Newest N packages to keep - defaults to 1"
-msgstr "N najnowszych pakietów do zatrzymania — domyślnie 1"
-
-#: ../plugins/repomanage.py:136
-msgid "Path to directory"
-msgstr "Ścieżka do katalogu"
-
-#: ../plugins/reposync.py:40
-msgid "download all packages from remote repo"
-msgstr "pobiera wszystkie pakiety ze zdalnego repozytorium"
-
-#: ../plugins/reposync.py:45
-msgid "where to store downloaded repositories "
-msgstr "gdzie przechowywać pobrane repozytoria "
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "Nowe pozostałości:"
-
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Nie można odczytać konfiguracji blokady wersji: %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "Nie ustawiono listy blokad"
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr "Dodawanie blokady wersji na:"
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr "Dodawanie wykluczenia na:"
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr "Usuwanie blokady wersji dla:"
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "Nie odnaleziono pakietu dla:"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "Wykluczenia z wtyczki blokady wersji nie zostały zastosowane"
-
-#: ../plugins/versionlock.py:102
-msgid "control package version locks"
-msgstr "kontroluje blokady wersji pakietów"
-
-#: ../plugins/copr.py:38
-msgid "yes"
-msgstr "tak"
-
-#: ../plugins/copr.py:38
-msgid "y"
-msgstr "t"
-
-#: ../plugins/copr.py:39
-msgid "no"
-msgstr "nie"
-
-#: ../plugins/copr.py:39
-msgid "n"
-msgstr "n"
-
-#: ../plugins/copr.py:54
-msgid "Interact with Copr repositories."
-msgstr "używa repozytoriów Copr"
-
-#: ../plugins/copr.py:55
-msgid ""
-"\n"
-"  enable name/project [chroot]\n"
-"  disable name/project\n"
-"  remove name/project\n"
-"  list --installed/enabled/disabled\n"
-"  list --available-by-user=NAME\n"
-"  search project\n"
-"\n"
-"  Examples:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list --enabled\n"
-"  copr list --available-by-user=ignatenkobrain\n"
-"  copr search tests\n"
-"    "
-msgstr ""
-
-#: ../plugins/copr.py:81
-msgid "List all installed Copr repositories (default)"
-msgstr ""
-
-#: ../plugins/copr.py:83
-msgid "List enabled Copr repositories"
-msgstr ""
-
-#: ../plugins/copr.py:85
-msgid "List disabled Copr repositories"
-msgstr ""
-
-#: ../plugins/copr.py:87
-msgid "List available Copr repositories by user NAME"
-msgstr ""
-
-#: ../plugins/copr.py:100
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Ostrzeżenie: używany jest niestandardowy adres URL Copr „{}”."
-
-#: ../plugins/copr.py:139 ../plugins/copr.py:160
-msgid "Error: "
-msgstr "Błąd: "
-
-#: ../plugins/copr.py:140 ../plugins/copr.py:144
-msgid "exactly two additional parameters to copr command are required"
-msgstr "wymagane są dokładnie dwa dodatkowe parametry dla polecenia copr"
-
-#: ../plugins/copr.py:161
-msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr ""
-"należy użyć formatu „copr_nazwaużytkownika/copr_nazwaprojektu”, aby odnieść "
-"się do projektu Copr"
-
-#: ../plugins/copr.py:163
-msgid "bad copr project format"
-msgstr "błędny format projektu Copr"
-
-#: ../plugins/copr.py:169
-msgid ""
-"\n"
-"You are about to enable a Copr repository. Please note that this\n"
-"repository is not part of the main distribution, and quality may vary.\n"
-"\n"
-"The Fedora Project does not exercise any power over the contents of\n"
-"this repository beyond the rules outlined in the Copr FAQ at\n"
-"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-"and packages are not held to any quality or security level.\n"
-"\n"
-"Please do not file bug reports about these packages in Fedora\n"
-"Bugzilla. In case of problems, contact the owner of this repository.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"\n"
-"Zostanie włączone repozytorium Copr. Proszę zauważyć, że to\n"
-"repozytorium nie jest częścią głównej dystrybucji i jego jakość\n"
-"może się różnić.\n"
-"\n"
-"Projekt Fedora nie sprawuje żadnej władzy nad zawartością tego\n"
-"repozytorium poza zasadami wytyczonymi w dokumencie FAQ\n"
-"(<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>),\n"
-"a jakość i bezpieczeństwo pakietów nie jest zapewniane.\n"
-"\n"
-"Prosimy nie zgłaszać błędów na temat tych pakietów w systemie\n"
-"Bugzilla Fedory. W przypadku problemów prosimy kontaktować się\n"
-"z właścicielem danego repozytorium.\n"
-"\n"
-"Kontynuować?"
-
-#: ../plugins/copr.py:184
-msgid "Repository successfully enabled."
-msgstr "Pomyślnie włączono repozytorium."
-
-#: ../plugins/copr.py:188
-msgid "Repository successfully disabled."
-msgstr "Pomyślnie wyłączono repozytorium."
-
-#: ../plugins/copr.py:192
-msgid "Repository successfully removed."
-msgstr "Pomyślnie usunięto repozytorium."
-
-#: ../plugins/copr.py:196 ../plugins/copr.py:451
-msgid "Unknown subcommand {}."
-msgstr "Nieznane podpolecenie {}."
-
-#: ../plugins/copr.py:225
-msgid "Can't parse repositories for username '{}'."
-msgstr "Nie można przetworzyć repozytoriów dla nazwy użytkownika „{}”."
-
-#: ../plugins/copr.py:228
-msgid "List of {} coprs"
-msgstr "Lista repozytoriów Copr {}"
-
-#: ../plugins/copr.py:236
-msgid "No description given"
-msgstr "Nie podano opisu"
-
-#: ../plugins/copr.py:248
-msgid "Can't parse search for '{}'."
-msgstr "Nie można przetworzyć wyszukiwania dla „{}”."
-
-#: ../plugins/copr.py:251
-msgid "Matched: {}"
-msgstr "Pasujące: {}"
-
-#: ../plugins/copr.py:259
-msgid "No description given."
-msgstr "Nie podano opisu."
-
-#: ../plugins/copr.py:272
-msgid "Safe and good answer. Exiting."
-msgstr "Bezpieczna i dobra odpowiedź. Kończenie działania."
-
-#: ../plugins/copr.py:279
-msgid "This command has to be run under the root user."
-msgstr "To polecenie może być wykonywane tylko przez użytkownika root."
-
-#: ../plugins/copr.py:331
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
-msgstr ""
-"To repozytorium nie posiada jeszcze żadnych pakietów, więc nie można go "
-"teraz włączyć."
-
-#: ../plugins/copr.py:334
-msgid "Such repository does not exist."
-msgstr "Repozytorium nie istnieje."
-
-#: ../plugins/copr.py:355
-msgid "Failed to disable copr repo {}/{}"
-msgstr "Wyłączenie repozytorium Copr {}/{} się nie powiodło"
-
-#: ../plugins/copr.py:368 ../plugins/copr.py:406
-msgid "Unknown response from server."
-msgstr "Nieznana odpowiedź serwera."
-
-#: ../plugins/copr.py:390
-msgid "Interact with Playground repository."
-msgstr "używa repozytorium Playground"
-
-#: ../plugins/copr.py:395
-msgid ""
-"\n"
-"You are about to enable a Playground repository.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"\n"
-"Zostanie włączone repozytorium Playground.\n"
-"\n"
-"Kontynuować?"
-
-#: ../plugins/copr.py:441
-msgid "Playground repositories successfully enabled."
-msgstr "Pomyślnie włączono repozytoria Playground."
-
-#: ../plugins/copr.py:444
-msgid "Playground repositories successfully disabled."
-msgstr "Pomyślnie wyłączono repozytoria Playground."
-
-#: ../plugins/copr.py:448
-msgid "Playground repositories successfully updated."
-msgstr "Pomyślnie zaktualizowano repozytoria Playground."
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "pobiera pakiet do bieżącego katalogu"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "pakiety do pobrania"
-
-#: ../plugins/download.py:54
-msgid "download the src.rpm instead"
-msgstr "pobiera pakiet src.rpm zamiast tego"
-
-#: ../plugins/download.py:56
-msgid "download the -debuginfo package instead"
-msgstr "pobiera pakiet -debuginfo zamiast tego"
-
-#: ../plugins/download.py:59
-msgid "limit  the  query to packages of given architectures."
-msgstr "ogranicza zapytanie do pakietów podanych architektur."
-
-#: ../plugins/download.py:61
-msgid "resolve and download needed dependencies"
-msgstr "rozwiązuje i pobiera wymagane zależności"
-
-#: ../plugins/download.py:63
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"zamiast pobierać, wyświetla listę adresów URL, z których można pobrać "
-"pakiety RPM"
-
-#: ../plugins/download.py:68
-msgid "when running with --url, limit to specific protocols"
-msgstr "podczas działania z opcją --url, ogranicza do podanych protokołów"
-
-#: ../plugins/download.py:105
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "Uzyskanie serwera lustrzanego dla pakietu się nie powiodło: %s"
-
-#: ../plugins/download.py:180
-msgid "Exiting due to strict setting."
-msgstr "Kończenie działania z powodu ścisłego ustawienia."
-
-#: ../plugins/download.py:200
-msgid "Error in resolve"
-msgstr "Błąd podczas rozwiązywania"
-
-#: ../plugins/download.py:215
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "Nie określono źródłowego pakietu RPM dla %s"
-
-#: ../plugins/download.py:231 ../plugins/download.py:245
-#, python-format
-msgid "No package %s available."
-msgstr "Pakiet %s jest niedostępny."
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Wyświetla listę nierozwiązanych zależności dla repozytoriów"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
-"Zamknięcie repozytorium zakończyło się z nierozwiązanymi zależnościami."
-
-#: ../plugins/repoclosure.py:116
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
-"sprawdza pakiety o podanych architekturach, może być podawane wielokrotnie"
-
-#: ../plugins/repoclosure.py:119
-msgid "Specify repositories to check"
-msgstr "Podaje repozytoria do sprawdzenia"
-
-#: ../plugins/repoclosure.py:121
-msgid "Check only the newest packages in the repos"
-msgstr "Sprawdza tylko najnowsze pakiety w repozytoriach"
-
-#: ../plugins/repoclosure.py:124
-msgid "Check closure for this package only"
-msgstr "Sprawdza domknięcie tylko tego pakietu"
