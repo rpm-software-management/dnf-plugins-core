@@ -58,8 +58,9 @@ class RepoDiffCommand(dnf.cli.Command):
                             help=_("Specify new repository, can be used multiple times"))
         parser.add_argument("--arch", "--archlist", "-a", default=[],
                             action=OptionParser._SplitCallback, dest="arches",
-                            help=_("Specify architectures to compare, "
-                                   "can be used multiple times"))
+                            help=_("Specify architectures to compare, can be used "
+                                   "multiple times. By default, only source rpms are "
+                                   "compared."))
         parser.add_argument("--size", "-s", action="store_true",
                             help=_("Output additional data about the size of the changes."))
         parser.add_argument("--compare-arch", action="store_true",
@@ -75,6 +76,7 @@ class RepoDiffCommand(dnf.cli.Command):
         demands = self.cli.demands
         demands.sack_activation = True
         demands.available_repos = True
+        demands.changelogs = True
         self.base.conf.disable_excludes = ["all"]
         # TODO yum was able to handle mirrorlist in --new/--old arguments
         # Can be resolved by improving --repofrompath option
@@ -136,14 +138,33 @@ class RepoDiffCommand(dnf.cli.Command):
             return msg
 
         def report_modified(pkg_old, pkg_new):
+            msgs = []
             if self.opts.simple:
-                print("%s: %s -> %s" % (pkg_new.name, pkgstr(pkg_old), pkgstr(pkg_new)))
+                msgs.append("%s: %s -> %s" % (pkg_new.name, pkgstr(pkg_old), pkgstr(pkg_new)))
             else:
-                print(pkgstr(pkg_new))
-                # TODO report changelogs
-                # changelogs are not available in the Package object at the moment
+                msgs.append('')
+                msgs.append(pkgstr(pkg_new))
+                msgs.append('-' * len(msgs[-1]))
+                if pkg_old.changelogs:
+                    old_chlog = pkg_old.changelogs[0]
+                else:
+                    old_chlog = None
+                for chlog in pkg_new.changelogs:
+                    if old_chlog:
+                        if chlog['timestamp'] < old_chlog['timestamp']:
+                            break
+                        elif (chlog['timestamp'] == old_chlog['timestamp'] and
+                              chlog['author'] == old_chlog['author'] and
+                              chlog['text'] == old_chlog['text']):
+                            break
+                    msgs.append('* %s %s\n%s\n' % (
+                        chlog['timestamp'].strftime("%a %b %d %Y"),
+                        dnf.i18n.ucd(chlog['author']),
+                        dnf.i18n.ucd(chlog['text'])))
                 if self.opts.size:
-                    print(_("  Size change: {} bytes").format(pkg_new.size - pkg_old.size))
+                    msgs.append(_("Size change: {} bytes").format(
+                        pkg_new.size - pkg_old.size))
+            print('\n'.join(msgs))
 
         sizes = dict(added=0, removed=0, upgraded=0, downgraded=0)
         for pkg in sorted(repodiff['added']):
@@ -156,9 +177,8 @@ class RepoDiffCommand(dnf.cli.Command):
                 print(_("Obsoleted by   : {}").format(pkgstr(obsoletedby)))
             sizes['removed'] += pkg.size
         downgraded = []
+        upgraded = []
         if repodiff['modified']:
-            print()
-            print(_("Upgraded packages"))
             evr_cmp = self.base.sack.evr_cmp
             for (pkg_old, pkg_new) in sorted(repodiff['modified']):
                 if evr_cmp(pkg_old.evr, pkg_new.evr) > 0:
@@ -168,15 +188,21 @@ class RepoDiffCommand(dnf.cli.Command):
                         continue
                 else:
                     sizes['upgraded'] += (pkg_new.size - pkg_old.size)
-                report_modified(pkg_old, pkg_new)
+                upgraded.append((pkg_old, pkg_new))
+            if upgraded:
+                if self.opts.downgrade:
+                    print(_("\nUpgraded packages"))
+                else:
+                    print(_("\nModified packages"))
+                for (pkg_old, pkg_new) in upgraded:
+                    report_modified(pkg_old, pkg_new)
         if self.opts.downgrade and downgraded:
             print()
             print(_("Downgraded packages"))
             for (pkg_old, pkg_new) in downgraded:
                 report_modified(pkg_old, pkg_new)
 
-        print()
-        print(_("Summary"))
+        print(_("\nSummary"))
         print(_("Added packages: {}").format(len(repodiff['added'])))
         print(_("Removed packages: {}").format(len(repodiff['removed'])))
         modified_count = len(repodiff['modified'])
