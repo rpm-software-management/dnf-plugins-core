@@ -59,6 +59,9 @@ class DownloadCommand(dnf.cli.Command):
                             help=_("limit  the  query to packages of given architectures."))
         parser.add_argument('--resolve', action='store_true',
                             help=_('resolve and download needed dependencies'))
+        parser.add_argument('--alldeps', action='store_true',
+                            help=_('when running with --resolve, download all dependencies '
+                                   '(do not exclude already installed ones)'))
         parser.add_argument('--url', '--urls', action='store_true', dest='url',
                             help=_('print list of urls where the rpms '
                                    'can be downloaded instead of downloading'))
@@ -73,6 +76,8 @@ class DownloadCommand(dnf.cli.Command):
         demands = self.cli.demands
         demands.sack_activation = True
         demands.available_repos = True
+        if self.opts.resolve and self.opts.alldeps:
+            demands.load_system_repo = False
 
         if self.opts.source:
             self.base.repos.enable_source_repos()
