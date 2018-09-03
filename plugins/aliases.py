@@ -23,7 +23,7 @@ from __future__ import unicode_literals
 
 import dnf.cli
 from dnf.cli.aliases import ALIASES_PATH
-from dnfpluginscore import _
+from dnfpluginscore import _, logger
 import json
 import os
 
@@ -55,7 +55,24 @@ class AliasCommand(dnf.cli.Command):
         ensure_aliases_file()
 
 
+def backup_aliases_file():
+    if not os.path.isfile(ALIASES_PATH):
+        return
+    dirname, basename = os.path.split(ALIASES_PATH)
+    new_aliases_path = os.path.join(dirname, basename + '.corrupt')
+    if os.path.isfile(new_aliases_path):
+        return
+    try:
+        os.rename(ALIASES_PATH, new_aliases_path)
+    except OSError:
+        logger.error(_("Corrupt aliases file %s cannot be saved as %s") %
+                     (ALIASES_PATH, new_aliases_path))
+
+
 def create_aliases_file():
+    """Backup old file and create new."""
+    if os.path.isfile(ALIASES_PATH):
+        backup_aliases_file()
     dnf.cli.aliases.store_aliases_data(INIT_ALIASES_DATA)
 
 
