@@ -22,7 +22,16 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import dnf.cli
+from dnf.cli.aliases import ALIASES_PATH
 from dnfpluginscore import _
+import json
+import os
+
+INIT_ALIASES_DATA = {
+    'enabled': True,
+    'recursive': True,
+    'aliases': {},
+}
 
 
 class Aliases(dnf.Plugin):
@@ -43,4 +52,27 @@ class AliasCommand(dnf.cli.Command):
         demands.root_user = True
 
     def run(self):
-        pass
+        ensure_aliases_file()
+
+
+def create_aliases_file():
+    dnf.cli.aliases.store_aliases_data(INIT_ALIASES_DATA)
+
+
+def ensure_aliases_file():
+    if not os.path.isfile(ALIASES_PATH):  # No file -> create new
+        create_aliases_file()
+        return
+    try:
+        with open(ALIASES_PATH) as aliases_file:
+            aliases_data = json.load(aliases_file)
+    except (IOError, OSError):  # Cannot open -> error
+        err = _("Can't open aliases file: %s") % ALIASES_PATH
+        raise dnf.exceptions.Error(err)
+    except json.JSONDecodeError:  # Corrupt -> create new
+        create_aliases_file()
+        return
+    if ('enabled' not in aliases_data or
+            'recursive' not in aliases_data or
+            'aliases' not in aliases_data):  # Corrupt -> create new
+        create_aliases_file()
