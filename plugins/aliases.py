@@ -22,6 +22,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import dnf.cli
+import dnf.cli.aliases
 from dnf.cli.aliases import ALIASES_PATH
 from dnfpluginscore import _, logger
 import json
@@ -53,6 +54,9 @@ class AliasCommand(dnf.cli.Command):
 
     def run(self):
         ensure_aliases_file()
+        self.aliases_data = dnf.cli.aliases.load_aliases_data()
+        self.aliases_dict = self.aliases_data['aliases']
+        self.recursive = self.aliases_data['recursive']
 
 
 def backup_aliases_file():
