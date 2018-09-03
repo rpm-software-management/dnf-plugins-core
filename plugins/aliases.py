@@ -38,5 +38,9 @@ class AliasCommand(dnf.cli.Command):
     aliases = ('alias',)
     summary = _('List or create command aliases')
 
+    def configure(self):
+        demands = self.cli.demands
+        demands.root_user = True
+
     def run(self):
         pass
