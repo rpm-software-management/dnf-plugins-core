@@ -144,9 +144,22 @@ class AliasCommand(dnf.cli.Command):
             return
 
         if cmd is None:  # List all aliases
-            pass
+            if not self.aliases_dict:
+                print(_("No aliases defined."))
+                return
+            for cmd in sorted(self.aliases_dict):
+                args = self.aliases_dict[cmd][:]
+                dnf.cli.aliases.resolve_aliases(args, self.aliases_dict,
+                                                self.recursive)
+                print(_("Alias %s='%s'") % (cmd, " ".join(args)))
         else:  # List alias by key
-            pass
+            if cmd not in self.aliases_dict:
+                print(_("No match for alias: %s") % cmd)
+                return
+            args = [cmd]
+            dnf.cli.aliases.resolve_aliases(args, self.aliases_dict,
+                                            self.recursive)
+            print(_("Alias %s='%s'") % (cmd, " ".join(args)))
 
 
 def backup_aliases_file():
