@@ -107,6 +107,15 @@ class AliasCommand(dnf.cli.Command):
         dnf.cli.aliases.store_aliases_data(self.aliases_data)
         logger.info(_("Alias added: %s='%s'" % (key, " ".join(value))))
 
+    def delete_alias(self, key):
+        try:
+            del self.aliases_dict[key]
+        except KeyError:
+            logger.info(_("No alias deleted."))
+            return
+        dnf.cli.aliases.store_aliases_data(self.aliases_data)
+        logger.info(_("Alias deleted: %s" % key))
+
     def run(self):
         ensure_aliases_file()
         self.aliases_data = dnf.cli.aliases.load_aliases_data()
@@ -128,7 +137,11 @@ class AliasCommand(dnf.cli.Command):
             return
 
         if self.opts.subcommand == 'delete':  # Delete alias by key
-            pass
+            if cmd is None:
+                err = _("No alias specified.")
+                raise dnf.exceptions.Error(err)
+            self.delete_alias(cmd)
+            return
 
         if cmd is None:  # List all aliases
             pass
