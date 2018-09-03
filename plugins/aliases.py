@@ -58,6 +58,43 @@ class AliasCommand(dnf.cli.Command):
                             choices=['add', 'list', 'delete'])
         parser.add_argument("alias", nargs="?",
                             metavar="command[=result]")
+        parser.add_argument(
+            '--set-enabled', default=False, action='store_true',
+            help=_('enable aliases resolving)'))
+        parser.add_argument(
+            '--set-disabled', default=False, action='store_true',
+            help=_('disable aliases resolving'))
+        parser.add_argument(
+            '--set-recursive', default=False, action='store_true',
+            help=_('set recursive aliases resolving)'))
+        parser.add_argument(
+            '--set-nonrecursive', default=False, action='store_true',
+            help=_('set non-recursive aliases resolving'))
+
+    def _update_config(self):
+        if self.opts.set_enabled and self.opts.set_disabled:
+            logger.error(_("Error: Trying to enable and disable aliases "
+                           "at the same time."))
+            self.opts.set_enabled = self.opts.set_disabled = False
+        if self.opts.set_enabled:
+            self.aliases_data['enabled'] = True
+            logger.info(_("Aliases are now enabled"))
+        if self.opts.set_disabled:
+            self.aliases_data['enabled'] = False
+            logger.info(_("Aliases are now disabled"))
+
+        if self.opts.set_recursive and self.opts.set_nonrecursive:
+            logger.error(_("Error: Trying to set recursive and nonrecursive "
+                           "aliases resolving at the same time."))
+            self.opts.set_recursive = self.opts.set_nonrecursive = False
+        if self.opts.set_recursive:
+            self.aliases_data['recursive'] = True
+            logger.info(_("Aliases use recursive resolving from now on."))
+        if self.opts.set_nonrecursive:
+            self.aliases_data['recursive'] = False
+            logger.info(_("Aliases use non-recursive resolving from now on."))
+
+        dnf.cli.aliases.store_aliases_data(self.aliases_data)
 
     def _parse_alias_arg(self):
         alias = self.opts.alias.split('=', 1)
@@ -70,6 +107,8 @@ class AliasCommand(dnf.cli.Command):
         self.aliases_data = dnf.cli.aliases.load_aliases_data()
         self.aliases_dict = self.aliases_data['aliases']
         self.recursive = self.aliases_data['recursive']
+
+        self._update_config()
 
         cmd = None
         result = None
