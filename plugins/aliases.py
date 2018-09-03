@@ -102,6 +102,11 @@ class AliasCommand(dnf.cli.Command):
             return alias[0].strip(), None
         return alias[0].strip(), alias[1].split()
 
+    def update_alias(self, key, value):
+        self.aliases_dict.update({key: value})
+        dnf.cli.aliases.store_aliases_data(self.aliases_data)
+        logger.info(_("Alias added: %s='%s'" % (key, " ".join(value))))
+
     def run(self):
         ensure_aliases_file()
         self.aliases_data = dnf.cli.aliases.load_aliases_data()
@@ -116,7 +121,11 @@ class AliasCommand(dnf.cli.Command):
             cmd, result = self._parse_alias_arg()
 
         if self.opts.subcommand == 'add':  # Add new alias
-            pass
+            if result is None or cmd is None:
+                err = _("No alias specified.")
+                raise dnf.exceptions.Error(err)
+            self.update_alias(cmd, result)
+            return
 
         if self.opts.subcommand == 'delete':  # Delete alias by key
             pass
