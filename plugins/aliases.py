@@ -52,11 +52,40 @@ class AliasCommand(dnf.cli.Command):
         demands = self.cli.demands
         demands.root_user = True
 
+    @staticmethod
+    def set_argparser(parser):
+        parser.add_argument("subcommand", nargs='?', default='list',
+                            choices=['add', 'list', 'delete'])
+        parser.add_argument("alias", nargs="?",
+                            metavar="command[=result]")
+
+    def _parse_alias_arg(self):
+        alias = self.opts.alias.split('=', 1)
+        if len(alias) == 1:
+            return alias[0].strip(), None
+        return alias[0].strip(), alias[1].split()
+
     def run(self):
         ensure_aliases_file()
         self.aliases_data = dnf.cli.aliases.load_aliases_data()
         self.aliases_dict = self.aliases_data['aliases']
         self.recursive = self.aliases_data['recursive']
+
+        cmd = None
+        result = None
+        if self.opts.alias:
+            cmd, result = self._parse_alias_arg()
+
+        if self.opts.subcommand == 'add':  # Add new alias
+            pass
+
+        if self.opts.subcommand == 'delete':  # Delete alias by key
+            pass
+
+        if cmd is None:  # List all aliases
+            pass
+        else:  # List alias by key
+            pass
 
 
 def backup_aliases_file():
