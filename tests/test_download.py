@@ -62,7 +62,7 @@ class PkgStub:
 
     @property
     def source_name(self):
-        """"
+        """
         returns name of source package
         e.g. krb5-libs -> krb5
         """
@@ -277,18 +277,23 @@ class DownloadCommandTest(unittest.TestCase):
         self.cmd.opts.resolve = False
         self.cmd.opts.arches = []
         repo = dnf.repo.Repo(name='foo')
+        repo.baseurl = ["file:///dev/null"]
         repo.enable()
         self.cmd.base.repos.add(repo)
         repo = dnf.repo.Repo(name='foo-source')
+        repo.baseurl = ["file:///dev/null"]
         repo.disable()
         self.cmd.base.repos.add(repo)
         repo = dnf.repo.Repo(name='bar')
+        repo.baseurl = ["file:///dev/null"]
         repo.enable()
         self.cmd.base.repos.add(repo)
         repo = dnf.repo.Repo(name='foobar-source')
+        repo.baseurl = ["file:///dev/null"]
         repo.disable()
         self.cmd.base.repos.add(repo)
         repo = dnf.repo.Repo(name='foo-debuginfo')
+        repo.baseurl = ["file:///dev/null"]
         repo.disable()
         self.cmd.base.repos.add(repo)
 

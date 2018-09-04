@@ -73,6 +73,7 @@ class BaseCliStub(object):
         self.installed_groups = set()
         self.installed_pkgs = set()
         self.repos = dnf.repodict.RepoDict()
+        self.conf = dnf.conf.BaseConfig()
 
     def install_grouplist(self, names):
         """Install given groups."""
