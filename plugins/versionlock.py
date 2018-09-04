@@ -208,11 +208,12 @@ def _write_locklist(base, args, try_installed, comment, info, prefix):
         for pkg in pkgs:
             specs.add(pkgtup2spec(*pkg.pkgtup))
 
-    with open(locklist_fn, 'a') as f:
-        f.write(comment)
-        for spec in specs:
-            logger.info("%s %s", info, spec)
-            f.write("%s%s\n" % (prefix, spec))
+    if specs:
+        with open(locklist_fn, 'a') as f:
+            f.write(comment)
+            for spec in specs:
+                logger.info("%s %s", info, spec)
+                f.write("%s%s\n" % (prefix, spec))
 
 
 def _match(ent, patterns):
