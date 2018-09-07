@@ -22,6 +22,12 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+3.0.3 Release Notes
+===================
+
+* [download] new option --alldeps to download all requirements
+
+===================
 3.0.2 Release Notes
 ===================
 
