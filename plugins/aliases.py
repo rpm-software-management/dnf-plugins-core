@@ -55,7 +55,7 @@ class AliasCommand(dnf.cli.Command):
     @staticmethod
     def set_argparser(parser):
         parser.add_argument("subcommand", nargs='?', default='list',
-                            choices=['add', 'list', 'delete'])
+                            choices=['add', 'list', 'delete', 'clear'])
         parser.add_argument("alias", nargs="?",
                             metavar="command[=result]")
         parser.add_argument(
@@ -117,6 +117,10 @@ class AliasCommand(dnf.cli.Command):
         logger.info(_("Alias deleted: %s" % key))
 
     def run(self):
+        if self.opts.subcommand == 'clear':  # Initialize aliases data
+            create_aliases_file()
+            return
+
         ensure_aliases_file()
         self.aliases_data = dnf.cli.aliases.load_aliases_data()
         self.aliases_dict = self.aliases_data['aliases']
