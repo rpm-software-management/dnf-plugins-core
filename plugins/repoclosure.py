@@ -102,19 +102,27 @@ class RepoClosureCommand(dnf.cli.Command):
             to_check = self.base.sack.query().available()
 
         if self.opts.pkglist:
-            to_check = to_check.filter(name=self.opts.pkglist)
-            if not to_check:
+            pkglist_q = self.base.sack.query().filter(empty=True)
+            errors = []
+            for pkg in self.opts.pkglist:
+                pkg_q = to_check.filter(name=pkg)
+                if pkg_q:
+                    pkglist_q = pkglist_q.union(pkg_q)
+                else:
+                    errors.append(pkg)
+            if errors:
                 raise dnf.exceptions.Error(
-                    _('no package matched: %s') % ', '.join(self.opts.pkglist))
+                    _('no package matched: %s') % ', '.join(errors))
+            to_check = pkglist_q
 
         if self.opts.check:
-            to_check = to_check.filter(reponame=self.opts.check)
+            to_check.filterm(reponame=self.opts.check)
 
         if arch is not None:
-            to_check = to_check.filter(arch=arch)
+            to_check.filterm(arch=arch)
 
         if self.base.conf.best:
-            available = available.filter(latest_per_arch=True)
+            available.filterm(latest_per_arch=True)
 
         available.apply()
         to_check.apply()
