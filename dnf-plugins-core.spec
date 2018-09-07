@@ -66,7 +66,7 @@ Provides:       dnf-plugin-repograph = %{version}-%{release}
 Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
 %if %{with yumcompatibility}
-Provides:       yum-plugin-copr
+Provides:       yum-plugin-copr = %{version}-%{release}
 %endif
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
@@ -309,7 +309,7 @@ Provides:       dnf-plugin-versionlock =  %{version}-%{release}
 Provides:       dnf-command(versionlock)
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
 %if %{with yumcompatibility}
-Provides:       yum-plugin-versionlock
+Provides:       yum-plugin-versionlock = %{version}-%{release}
 %endif
 %endif
 Provides:       python2-dnf-plugins-extras-versionlock = %{version}-%{release}
@@ -331,7 +331,7 @@ Provides:       dnf-plugin-versionlock =  %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-versionlock = %{version}-%{release}
 Provides:       dnf-command(versionlock)
 %if %{with yumcompatibility}
-Provides:       yum-plugin-versionlock
+Provides:       yum-plugin-versionlock = %{version}-%{release}
 %endif
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
