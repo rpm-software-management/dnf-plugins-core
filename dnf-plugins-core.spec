@@ -1,4 +1,4 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 3.4.1}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 3.5.0}
 %{?!dnf_not_compatible: %global dnf_not_compatible 4.0}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.7.0
@@ -633,6 +633,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Fri Sep 07 2018 Jaroslav Mracek <jmracek@redhat.com> - 3.0.3-1
+- Resolves: rhbz#1582152
+- Resolves: rhbz#1581117
+- Resolves: rhbz#1579737
+
 * Mon Jul 23 2018 Marek Blaha <mblaha@redhat.com> 3.0.2-1
 - Resolves: rhbz#1603805
 - Resolves: rhbz#1571251
