@@ -23,10 +23,7 @@ from __future__ import unicode_literals
 
 import dnf.cli
 import dnf.cli.aliases
-from dnf.cli.aliases import ALIASES_PATH
 from dnfpluginscore import _, logger
-import json
-import os
 
 INIT_ALIASES_DATA = {
     'enabled': True,
@@ -118,11 +115,14 @@ class AliasCommand(dnf.cli.Command):
 
     def run(self):
         if self.opts.subcommand == 'clear':  # Initialize aliases data
-            create_aliases_file()
+            dnf.cli.aliases.store_aliases_data(INIT_ALIASES_DATA)
             return
 
-        ensure_aliases_file()
         self.aliases_data = dnf.cli.aliases.load_aliases_data()
+        if self.aliases_data is None:
+            logger.info(_("Cannot load aliases data. To clear the aliases "
+                          "file (delete all aliases), run 'dnf alias clear'."))
+            return
         self.aliases_dict = self.aliases_data['aliases']
         self.recursive = self.aliases_data['recursive']
 
@@ -164,43 +164,3 @@ class AliasCommand(dnf.cli.Command):
             dnf.cli.aliases.resolve_aliases(args, self.aliases_dict,
                                             self.recursive)
             print(_("Alias %s='%s'") % (cmd, " ".join(args)))
-
-
-def backup_aliases_file():
-    if not os.path.isfile(ALIASES_PATH):
-        return
-    dirname, basename = os.path.split(ALIASES_PATH)
-    new_aliases_path = os.path.join(dirname, basename + '.corrupt')
-    if os.path.isfile(new_aliases_path):
-        return
-    try:
-        os.rename(ALIASES_PATH, new_aliases_path)
-    except OSError:
-        logger.error(_("Corrupt aliases file %s cannot be saved as %s") %
-                     (ALIASES_PATH, new_aliases_path))
-
-
-def create_aliases_file():
-    """Backup old file and create new."""
-    if os.path.isfile(ALIASES_PATH):
-        backup_aliases_file()
-    dnf.cli.aliases.store_aliases_data(INIT_ALIASES_DATA)
-
-
-def ensure_aliases_file():
-    if not os.path.isfile(ALIASES_PATH):  # No file -> create new
-        create_aliases_file()
-        return
-    try:
-        with open(ALIASES_PATH) as aliases_file:
-            aliases_data = json.load(aliases_file)
-    except (IOError, OSError):  # Cannot open -> error
-        err = _("Can't open aliases file: %s") % ALIASES_PATH
-        raise dnf.exceptions.Error(err)
-    except json.JSONDecodeError:  # Corrupt -> create new
-        create_aliases_file()
-        return
-    if ('enabled' not in aliases_data or
-            'recursive' not in aliases_data or
-            'aliases' not in aliases_data):  # Corrupt -> create new
-        create_aliases_file()
