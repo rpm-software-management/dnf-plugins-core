@@ -187,12 +187,12 @@ def save_to_file(filename, content):
 
 # Regular expressions to sanitise cache filenames
 RE_SCHEME = re.compile(r'^\w+:/*(\w+:|www\.)?')
-RE_SLASH = re.compile(r'[?/:&#|~]+')
+RE_SLASH = re.compile(r'[?/:&#|~\*\[\]\(\)\'\\]+')
 RE_BEGIN = re.compile(r'^[,.]*')
 RE_FINAL = re.compile(r'[,.]*$')
 
 def sanitize_url_to_fs(url):
-    """Return a filename suitable for the filesystem
+    """Return a filename suitable for the filesystem and for repo id
 
     Strips dangerous and common characters to create a filename we
     can use to store the cache in.
