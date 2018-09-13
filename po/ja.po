@@ -1,11 +1,11 @@
 # Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2015. #zanata
-# Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2016. #zanata
+# Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-29 12:24+0200\n"
-"PO-Revision-Date: 2016-05-01 05:29+0000\n"
+"PO-Revision-Date: 2018-09-11 12:23+0000\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -16,400 +16,394 @@ msgstr ""
 "X-Generator: Zanata 4.6.2\n"
 
 #: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:42
-#, fuzzy
 msgid "download all packages from remote repo"
-msgstr "remote repo から全てのパッケージをダウンロード"
+msgstr "リモート repo からすべてのパッケージをダウンロードします"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "この ARCH 向けのパッケージのみをダウンロード"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "リポジトリーにもはや存在しないローカルパッケージを削除"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
 msgid "also download comps.xml"
-msgstr ""
+msgstr "comps.xml もダウンロード"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
 msgid "download only newest packages per-repo"
-msgstr ""
+msgstr "最新のパッケージ per-repo のみをダウンロード"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
 msgid "where to store downloaded repositories "
-msgstr ""
+msgstr "ダウンロード済みリポジトリーの保管場所 "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
 msgid "operate on source packages"
-msgstr ""
+msgstr "ソースパッケージでの操作"
 
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[DELETED] %s"
 
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "ファイル %s の削除に失敗しました"
 
 #: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr ""
+msgstr "リポジトリーディレクトリーを作成できませんでした: %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "リポジトリー %s の comps.xml が保存されました"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
-msgstr ""
+msgstr "debuginfo パッケージのインストール"
 
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "一致した引数がありません: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "Unable to find a match"
-msgstr ""
+msgstr "一致するものが見つかりません"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
+msgstr "yum の履歴、グループ、および yumdb データを dnf へ移行"
 
 #: ../plugins/migrate.py:54
 msgid "Migrating history data..."
-msgstr ""
+msgstr "履歴データを移行中..."
 
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
-msgstr ""
+msgstr "ドット形式でパッケージの依存関係グラフ全体を出力"
 
 #: ../plugins/repograph.py:110
 #, python-format
 msgid "Nothing provides: '%s'"
-msgstr ""
+msgstr "何も提供しません: '%s'"
 
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr ""
+msgstr "バージョンロック設定の読み込みができません: %s"
 
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr ""
+msgstr "ロックリストが設定されていません"
 
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr ""
+msgstr "versionlock を追加:"
 
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr ""
+msgstr "除外を追加:"
 
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr ""
+msgstr "versionlock を削除:"
 
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr ""
+msgstr "パッケージが見つかりませんでした:"
 
 #: ../plugins/versionlock.py:38
 msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
+msgstr "versionlock プラグインからの除外は適用されませんでした"
 
 #: ../plugins/versionlock.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr ""
+msgstr "versionlock プラグイン: ファイル \"{}\" のロックルールの数を適用: {}"
 
 #: ../plugins/versionlock.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr ""
+msgstr "versionlock プラグイン: ファイル \"{}\" の除外ルールの数を適用: {}"
 
 #: ../plugins/versionlock.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
+msgstr "versionlock プラグイン: パターンを解析できませんでした:"
 
 #: ../plugins/versionlock.py:119
 msgid "control package version locks"
-msgstr ""
+msgstr "パッケージバージョンロックの制御"
 
 #: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr ""
+msgstr "[PACKAGE|PACKAGE.spec]"
 
 #: ../plugins/builddep.py:79
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr ""
+msgstr "'%s' は、'MACRO EXPR' の形式ではありません"
 
 #: ../plugins/builddep.py:84
 msgid "packages with builddeps to install"
-msgstr ""
+msgstr "インストールする builddeps パッケージ"
 
 #: ../plugins/builddep.py:87
 msgid "define a macro for spec file parsing"
-msgstr ""
+msgstr "スペックファイルの解析にマクロを定義"
 
 #: ../plugins/builddep.py:90
 msgid "treat commandline arguments as spec files"
-msgstr ""
+msgstr "コマンドラインの引数をスペックファイルとして処理"
 
 #: ../plugins/builddep.py:92
 msgid "treat commandline arguments as source rpm"
-msgstr ""
+msgstr "コマンドラインの引数をソース rpm として処理"
 
 #: ../plugins/builddep.py:138
 msgid "Some packages could not be found."
-msgstr ""
+msgstr "一部のパッケージは見つかりませんでした。"
 
 #. No provides, no files
 #: ../plugins/builddep.py:157
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr ""
+msgstr "インストール用の一致するパッケージがありません: '%s'"
 
 #: ../plugins/builddep.py:174
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
+msgstr "開くことに失敗しました: '%s'、有効なソース rpm ファイルではありません。"
 
 #: ../plugins/builddep.py:187 ../plugins/builddep.py:203
 #: ../plugins/builddep.py:220
 msgid "Not all dependencies satisfied"
-msgstr "すべての依存関係が満たされていません"
+msgstr "すべての依存関係が満たされているわけではない"
 
 #: ../plugins/builddep.py:194
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
+msgstr "開くことに失敗しました: '%s'、有効なスペックファイルではありません: %s"
 
 #: ../plugins/builddep.py:213
 #, python-format
 msgid "no package matched: %s"
-msgstr ""
+msgstr "一致するパッケージはありません: %s"
 
 #: ../plugins/config_manager.py:35
-#, fuzzy
 msgid "manage dnf configuration options and repositories"
-msgstr "dnf 設定オプションおよびリポジトリの管理"
+msgstr "dnf 設定オプションおよびリポジトリーの管理"
 
 #: ../plugins/config_manager.py:41
 msgid "repo to modify"
-msgstr ""
+msgstr "修正する repo"
 
 #: ../plugins/config_manager.py:44
 msgid "save the current options (useful with --setopt)"
-msgstr ""
+msgstr "現在のオプションを保存 (--setopt で有用)"
 
 #: ../plugins/config_manager.py:47
-#, fuzzy
 msgid "enable the specified repos (automatically saves)"
-msgstr "指定された repos を有効化 (自動的に保存)"
+msgstr "指定された repo を有効化 (自動的に保存)"
 
 #: ../plugins/config_manager.py:50
-#, fuzzy
 msgid "disable the specified repos (automatically saves)"
-msgstr "指定された repos を無効化 (自動的に保存)"
+msgstr "指定された repo を無効化 (自動的に保存)"
 
 #: ../plugins/config_manager.py:53
-#, fuzzy
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "指定されたファイルまたは url から repo を追加 (および有効化)"
 
 #: ../plugins/config_manager.py:56
-#, fuzzy
 msgid "print current configuration values to stdout"
-msgstr "stdout に現在の設定値をプリント"
+msgstr "stdout に現在の設定値を印刷"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr ""
+msgstr "stdout に変数値を印刷"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
-msgstr ""
+msgstr "エラー: repo の有効化と無効化を同時に実行します。"
 
 #: ../plugins/config_manager.py:79
 msgid "Error: Trying to enable already enabled repos."
-msgstr ""
+msgstr "エラー: すでに有効化された repo を有効化します。"
 
 #: ../plugins/config_manager.py:118
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr ""
+msgstr "修正用の一致する repo はありません: %s."
 
 #: ../plugins/config_manager.py:149
 #, python-format
 msgid "Adding repo from: %s"
-msgstr ""
+msgstr "repo の追加: %s"
 
 #: ../plugins/config_manager.py:173
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
-msgstr[0] ""
+msgstr[0] "repo の設定に失敗しました"
 
 #: ../plugins/config_manager.py:183
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr ""
+msgstr "repofile %s に repo を保存できませんでした: %s"
 
 #: ../plugins/local.py:117
 msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
+msgstr "'{}' のため、ディレクトリー '{}' を作成できませんでした"
 
 #: ../plugins/local.py:121
 msgid "'{}' is not a directory"
-msgstr ""
+msgstr "'{}' はディレクトリーではありません"
 
 #: ../plugins/local.py:130
 msgid "Copying '{}' to local repo"
-msgstr ""
+msgstr "ローカル repo に '{}' をコピー中"
 
 #: ../plugins/local.py:136
 msgid "Can't write file '{}'"
-msgstr ""
+msgstr "ファイル '{}' を書き込みできません"
 
 #: ../plugins/local.py:151
 msgid "Rebuilding local repo"
-msgstr ""
+msgstr "ローカル repo を再ビルド中"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
-msgstr ""
+msgstr "他のパッケージから必要とされないインスール済みパッケージを一覧表示します"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
-msgstr ""
+msgstr "再起動が必要な更新済みバイナリーを決定します"
 
 #: ../plugins/needs_restarting.py:172
 msgid "only consider this user's processes"
-msgstr ""
+msgstr "このユーザーのプロセスのみを検討します"
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr ""
+msgstr "リポジトリーの未解決の依存関係の一覧を表示します"
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
+msgstr "repoclosure は未解決の依存関係で終了しました。"
 
 #: ../plugins/repoclosure.py:139
 msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
+msgstr "特定の arch のパッケージを確認します。複数回指定することができます"
 
 #: ../plugins/repoclosure.py:142
 msgid "Specify repositories to check"
-msgstr ""
+msgstr "確認するリポジトリーを指定します"
 
 #: ../plugins/repoclosure.py:144
 msgid "Check only the newest packages in the repos"
-msgstr ""
+msgstr "repo の最新パッケージのみを確認します"
 
 #: ../plugins/repoclosure.py:147
 msgid "Check closure for this package only"
-msgstr ""
+msgstr "このパッケージのみのクロージャーを確認します"
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
-msgstr ""
+msgstr "rpm パッケージのディレクトリーを管理します"
 
 #: ../plugins/repomanage.py:56
 msgid "Pass either --old or --new, not both!"
-msgstr ""
+msgstr "--old または --new のいずれかを渡します。両方ではありません。"
 
 #: ../plugins/repomanage.py:66
 msgid "No files to process"
-msgstr ""
+msgstr "処理するファイルはありません"
 
 #: ../plugins/repomanage.py:71
 msgid "Could not open {}"
-msgstr ""
+msgstr "{} を開くことができません"
 
 #: ../plugins/repomanage.py:128
 msgid "Print the older packages"
-msgstr ""
+msgstr "古いパッケージを印刷します"
 
 #: ../plugins/repomanage.py:130
 msgid "Print the newest packages"
-msgstr ""
+msgstr "最新のパッケージを印刷します"
 
 #: ../plugins/repomanage.py:132
 msgid "Space separated output, not newline"
-msgstr ""
+msgstr "スペースで区切られた出力で、改行ではありません"
 
 #: ../plugins/repomanage.py:134
 msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
+msgstr "維持する最新の N パッケージ - デフォルトは 1 に設定されます"
 
 #: ../plugins/repomanage.py:137
 msgid "Path to directory"
-msgstr ""
+msgstr "ディレクトリーへのパス"
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
-msgstr "現在のディレクトリにパッケージをダウンロードする"
+msgstr "現在のディレクトリーにパッケージをダウンロードします"
 
 #: ../plugins/download.py:51
 msgid "packages to download"
-msgstr ""
+msgstr "ダウンロードするパッケージ"
 
 #: ../plugins/download.py:54
 msgid "download the src.rpm instead"
-msgstr ""
+msgstr "代わりに src.rpm をダウンロードします"
 
 #: ../plugins/download.py:56
 msgid "download the -debuginfo package instead"
-msgstr ""
+msgstr "代わりに -debuginfo パッケージをダウンロードします"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "特定のアーキテクチャーのパッケージへのクエリーを制限します。"
 
 #: ../plugins/download.py:61
 msgid "resolve and download needed dependencies"
-msgstr ""
+msgstr "必要な依存関係を解決し、ダウンロードします"
 
 #: ../plugins/download.py:63
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
+msgstr "ダウンロードする代わりに、rpm をダウンロードできる url の一覧を印刷します"
 
 #: ../plugins/download.py:68
 msgid "when running with --url, limit to specific protocols"
-msgstr ""
+msgstr "--url で実行中の際は、特定のプロトコルに限定します"
 
 #: ../plugins/download.py:105
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr ""
+msgstr "パッケージのミラー取得に失敗しました: %s"
 
 #: ../plugins/download.py:180
 msgid "Exiting due to strict setting."
-msgstr ""
+msgstr "厳密な設定により終了中です。"
 
 #: ../plugins/download.py:200
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "パッケージの解決でエラー:"
 
 #: ../plugins/download.py:217
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr ""
+msgstr "%s に対して定義されているソース rpm はありません"
 
 #: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
-msgstr ""
+msgstr "利用可能なパッケージ %s はありません。"
 
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
-msgstr ""
+msgstr "新規のリーフパッケージ (他のパッケージから依存されていないパッケージ) :"
 
 #: ../plugins/copr.py:55
 msgid "yes"
@@ -417,7 +411,7 @@ msgstr "はい"
 
 #: ../plugins/copr.py:55
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #: ../plugins/copr.py:56
 msgid "no"
@@ -425,11 +419,11 @@ msgstr "いいえ"
 
 #: ../plugins/copr.py:56
 msgid "n"
-msgstr ""
+msgstr "n"
 
 #: ../plugins/copr.py:71
 msgid "Interact with Copr repositories."
-msgstr ""
+msgstr "Copr リポジトリーとの対話。"
 
 #: ../plugins/copr.py:72
 msgid ""
@@ -451,26 +445,43 @@ msgid ""
 "  copr search tests\n"
 "    "
 msgstr ""
+"\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
+"  copr search tests\n"
+"    "
 
 #: ../plugins/copr.py:98
 msgid "List all installed Copr repositories (default)"
-msgstr ""
+msgstr "インストール済みのすべての Copr リポジトリーを一覧表示します (デフォルト)"
 
 #: ../plugins/copr.py:100
 msgid "List enabled Copr repositories"
-msgstr ""
+msgstr "有効化された Copr リポジトリーを一覧表示します"
 
 #: ../plugins/copr.py:102
 msgid "List disabled Copr repositories"
-msgstr ""
+msgstr "無効化された Copr リポジトリーを一覧表示します"
 
 #: ../plugins/copr.py:104
 msgid "List available Copr repositories by user NAME"
-msgstr ""
+msgstr "利用可能な Copr リポジトリーをユーザー NAME ごとに一覧表示します"
 
 #: ../plugins/copr.py:117
 msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr ""
+msgstr "警告: 非標準の Copr URL '{}' を使用しています。"
 
 #: ../plugins/copr.py:156 ../plugins/copr.py:177
 msgid "Error: "
@@ -478,15 +489,15 @@ msgstr "エラー: "
 
 #: ../plugins/copr.py:157 ../plugins/copr.py:161
 msgid "exactly two additional parameters to copr command are required"
-msgstr ""
+msgstr "copr コマンドに厳密に 2 つの追加パラメーターが必要です"
 
 #: ../plugins/copr.py:178
 msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr ""
+msgstr "copr プロジェクトを参照するには `copr_username/copr_projectname` 形式を使用します"
 
 #: ../plugins/copr.py:180
 msgid "bad copr project format"
-msgstr ""
+msgstr "不正な copr プロジェクト形式"
 
 #: ../plugins/copr.py:186
 msgid ""
@@ -504,6 +515,18 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Copr リポジトリーを有効化しようとしています。このリポジトリーは\n"
+"主要ディストリビューションの一部ではないため、品質が一定していない点に注意してください。\n"
+"\n"
+"Fedora Project は、このリポジトリーのコンテンツに関して、<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr> の \n"
+"Copr FAQ で示されたルールを超えて権利を行使することは\n"
+"ありません。また、パッケージは、任意の品質またはセキュリ\n"
+"ティーレベルを固守していません。\n"
+"\n"
+"Fedora Bugzilla でこれらのパッケージに関するバグ報告をしないでください。問題が発生した場合は、このリポジトリーのオーナーに連絡してください。\n"
+"\n"
+"続行しますか?"
 
 #: ../plugins/copr.py:201
 msgid "Repository successfully enabled."
@@ -515,32 +538,31 @@ msgstr "リポジトリが正常に無効化されました。"
 
 #: ../plugins/copr.py:209
 msgid "Repository successfully removed."
-msgstr ""
+msgstr "リポジトリーが正常に削除されました。"
 
 #: ../plugins/copr.py:213 ../plugins/copr.py:476
 msgid "Unknown subcommand {}."
-msgstr ""
+msgstr "不明なサブコマンド {}。"
 
 #: ../plugins/copr.py:242
 msgid "Can't parse repositories for username '{}'."
-msgstr ""
+msgstr "ユーザー名 '{}' のリポジトリーを解析できません。"
 
 #: ../plugins/copr.py:245
 msgid "List of {} coprs"
-msgstr ""
+msgstr "{} coprs の一覧"
 
 #: ../plugins/copr.py:253
-#, fuzzy
 msgid "No description given"
-msgstr "説明が与えられていません。"
+msgstr "説明がありません"
 
 #: ../plugins/copr.py:265
 msgid "Can't parse search for '{}'."
-msgstr ""
+msgstr "'{}' の検索を解析できません。"
 
 #: ../plugins/copr.py:268
 msgid "Matched: {}"
-msgstr ""
+msgstr "一致: {}"
 
 #: ../plugins/copr.py:276
 msgid "No description given."
@@ -548,7 +570,7 @@ msgstr "説明が与えられていません。"
 
 #: ../plugins/copr.py:289
 msgid "Safe and good answer. Exiting."
-msgstr ""
+msgstr "安全で優れた回答。終了中。"
 
 #: ../plugins/copr.py:296
 msgid "This command has to be run under the root user."
@@ -557,15 +579,15 @@ msgstr "このコマンドは root ユーザーの下で実行する必要があ
 #: ../plugins/copr.py:356
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
-msgstr ""
+msgstr "このリポジトリーにはまだビルドがありませんので、今すぐ有効化できません。"
 
 #: ../plugins/copr.py:359
 msgid "Such repository does not exist."
-msgstr ""
+msgstr "そのようなリポジトリーは存在しません。"
 
 #: ../plugins/copr.py:380
 msgid "Failed to disable copr repo {}/{}"
-msgstr ""
+msgstr "copr repo {}/{} の無効化に失敗しました。"
 
 #: ../plugins/copr.py:393 ../plugins/copr.py:431
 msgid "Unknown response from server."
@@ -573,7 +595,7 @@ msgstr "サーバーからの不明な応答です。"
 
 #: ../plugins/copr.py:415
 msgid "Interact with Playground repository."
-msgstr ""
+msgstr "Playground リポジトリーとの対話。"
 
 #: ../plugins/copr.py:420
 msgid ""
@@ -582,68 +604,72 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Playground リポジトリーを有効化しようとしています。\n"
+"\n"
+"続行しますか?"
 
 #: ../plugins/copr.py:466
 msgid "Playground repositories successfully enabled."
-msgstr ""
+msgstr "Playground リポジトリーが正常に有効化されました。"
 
 #: ../plugins/copr.py:469
 msgid "Playground repositories successfully disabled."
-msgstr ""
+msgstr "Playground リポジトリーが正常に無効化されました。"
 
 #: ../plugins/copr.py:473
 msgid "Playground repositories successfully updated."
-msgstr ""
+msgstr "Playground リポジトリーが正常に更新されました。"
 
 #: ../plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr ""
+msgstr "ファイルにインストール済みの rpm パッケージに関するダンプ情報"
 
 #: ../plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
-msgstr ""
+msgstr "リポジトリーコンテンツのダンプは試みないでください。"
 
 #: ../plugins/debug.py:70
 msgid "optional name of dump file"
-msgstr ""
+msgstr "ダンプファイルの名前のオプション"
 
 #: ../plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
-msgstr ""
+msgstr "書き込まれた出力: %s"
 
 #: ../plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
-msgstr ""
+msgstr "debug-dump ファイルに記録されたパッケージを復元します"
 
 #: ../plugins/debug.py:183
 msgid "output commands that would be run to stdout."
-msgstr ""
+msgstr "stdout に実行するコマンドを出力します。"
 
 #: ../plugins/debug.py:186
 msgid "Install the latest version of recorded packages."
-msgstr ""
+msgstr "記録されたパッケージの最新バージョンをインストールします。"
 
 #: ../plugins/debug.py:189
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
-msgstr ""
+msgstr "アーキテクチャーを無視し、名前、エポック、バージョン、およびリリースと一致する不足のパッケージをインストールします。"
 
 #: ../plugins/debug.py:194
 msgid "limit to specified type"
-msgstr ""
+msgstr "指定したタイプに限定します"
 
 #: ../plugins/debug.py:196
 msgid "name of dump file"
-msgstr ""
+msgstr "ダンプファイルの名前"
 
 #: ../plugins/debug.py:264
 #, python-format
 msgid "Package %s is not available"
-msgstr ""
+msgstr "パッケージ %s は利用できません"
 
 #: ../plugins/debug.py:274
 #, python-format
 msgid "Bad dnf debug file: %s"
-msgstr ""
+msgstr "不正な dnf デバッグファイル: %s"

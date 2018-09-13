@@ -1,12 +1,13 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2015. #zanata
 # Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata
 # Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata
+# Yuri Chornoivan <yurchor@ukr.net>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-29 12:24+0200\n"
-"PO-Revision-Date: 2017-08-30 02:28+0000\n"
+"PO-Revision-Date: 2018-08-30 04:31+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +23,19 @@ msgstr "отримати усі пакунки із віддаленого сх�
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "отримати лише пакунки для вказаної архітектури"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "вилучити локальні пакунки, яких більше немає у сховищі пакунків"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
 msgid "also download comps.xml"
-msgstr ""
+msgstr "також отримати comps.xml"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
 msgid "download only newest packages per-repo"
-msgstr ""
+msgstr "отримувати лише найновіші пакунки у кожному зі сховищ"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
 msgid "where to store downloaded repositories "
@@ -42,27 +43,27 @@ msgstr "місце, де слід зберігати отримані схови
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
 msgid "operate on source packages"
-msgstr ""
+msgstr "працювати із пакунками початкових кодів"
 
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[ВИЛУЧЕНО] %s"
 
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "не вдалося вилучити файл %s"
 
 #: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr ""
+msgstr "Не вдалося створити каталог сховища: %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "Збережено comps.xml для сховища %s"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
@@ -71,11 +72,11 @@ msgstr "встановити пакунки debuginfo"
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "Немає відповідника для аргумента: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "Unable to find a match"
-msgstr ""
+msgstr "Не вдалося знайти відповідник"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -126,14 +127,18 @@ msgstr "Виключення з додатка versionlock не було зас�
 #: ../plugins/versionlock.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
+"Додаток фіксування версій: застосовано значення кількості правил фіксування "
+"з файла «{}»: {}"
 
 #: ../plugins/versionlock.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
+"Додаток фіксування версій: застосовано значення кількості правил виключення "
+"з файла «{}»: {}"
 
 #: ../plugins/versionlock.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
+msgstr "Додаток фіксування версій: не вдалося обробити взірець:"
 
 #: ../plugins/versionlock.py:119
 msgid "control package version locks"
@@ -400,7 +405,7 @@ msgstr "Завершуємо роботу через строгі обмежен
 
 #: ../plugins/download.py:200
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Помилка під час спроби розв'язати залежності таких пакунків:"
 
 #: ../plugins/download.py:217
 #, python-format

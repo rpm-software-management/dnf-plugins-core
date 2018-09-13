@@ -1,10 +1,11 @@
 # Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata
+# Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-29 12:24+0200\n"
-"PO-Revision-Date: 2017-11-17 03:04+0000\n"
+"PO-Revision-Date: 2018-08-30 06:58+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -20,19 +21,19 @@ msgstr "hämta alla paket från fjärrförrådet"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "hämta endast paket för denna ARK"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "ta bort lokala paket som inte finns i förrådet längre"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
 msgid "also download comps.xml"
-msgstr ""
+msgstr "hämta även comps.xml"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
 msgid "download only newest packages per-repo"
-msgstr ""
+msgstr "hämta endast de nyaste paketen per förråd"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
 msgid "where to store downloaded repositories "
@@ -40,27 +41,27 @@ msgstr "var hämtade förråd skall sparas "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
 msgid "operate on source packages"
-msgstr ""
+msgstr "arbeta på källpaket"
 
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[BORTTAGEN] %s"
 
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "kunde inte ta bort filen %s"
 
 #: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr ""
+msgstr "Kunde inte skapa förrådskatalogen: %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "comps.xml för förrådet %s sparad"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
@@ -69,11 +70,11 @@ msgstr "installera debuginfo-paket"
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "Ingen match för argumentet: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "Unable to find a match"
-msgstr ""
+msgstr "Kan inte hitta någon matchning"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -124,14 +125,18 @@ msgstr "Uteslutanden från versionslås tillämpades inte"
 #: ../plugins/versionlock.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
+"Insticksmodul för versionslås: antal låsregler från filen ”{}” verkställda: "
+"{}"
 
 #: ../plugins/versionlock.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
+"Insticksmodul för versionslås: antal uteslutningsregler från filen ”{}” "
+"verkställda: {}"
 
 #: ../plugins/versionlock.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
+msgstr "Insticksmodul för versionslås: kunde inte tolka mönstret:"
 
 #: ../plugins/versionlock.py:119
 msgid "control package version locks"
@@ -391,7 +396,7 @@ msgstr "Avslutar på grund av strict-inställning."
 
 #: ../plugins/download.py:200
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Fel i upplösningen av paket:"
 
 #: ../plugins/download.py:217
 #, python-format

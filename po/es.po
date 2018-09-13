@@ -4,12 +4,13 @@
 # Neville A. Cross <yn1v@fedoraproject.org>, 2016. #zanata
 # William  Moreno Reyes <williamjmorenor@gmail.com>, 2016. #zanata
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017. #zanata
+# Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-29 12:24+0200\n"
-"PO-Revision-Date: 2017-09-05 05:36+0000\n"
+"PO-Revision-Date: 2018-09-12 06:23+0000\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -25,19 +26,19 @@ msgstr "descargar todos los paquetes del repositorio remoto"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "descargar sólo los paquetes para esta ARQUITECTURA"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "borrar los paquetes locales que ya no existen en el repositorio"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
 msgid "also download comps.xml"
-msgstr ""
+msgstr "descargar también comps.xml"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
 msgid "download only newest packages per-repo"
-msgstr ""
+msgstr "descargar sólo los paquetes más nuevos por repositorio"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
 msgid "where to store downloaded repositories "
@@ -45,27 +46,27 @@ msgstr "donde guardar paquetes descargados "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
 msgid "operate on source packages"
-msgstr ""
+msgstr "operar con los paquetes fuente"
 
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[BORRADO] %s"
 
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "no se pudo borrar %s"
 
 #: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr ""
+msgstr "No se pudo crear el directorio de repositorio: %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "guardado comps.xml para el repositorio %s"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
@@ -74,11 +75,11 @@ msgstr "instalar paquetes con información debug"
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "No hay coincidencias para el argumento: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "Unable to find a match"
-msgstr ""
+msgstr "No se pudo encontrar ningún resultado"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
@@ -150,14 +151,18 @@ msgstr ""
 #: ../plugins/versionlock.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
+"Versionlock plugin: número de reglas de bloqueo aplicadas del archivo "
+"\"{}\": {}"
 
 #: ../plugins/versionlock.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
+"Versionlock plugin: número de reglas de exclusión aplicadas del archivo "
+"\"{}\": {}"
 
 #: ../plugins/versionlock.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
+msgstr "Versionlock plugin: no se pudo interpretar el patrón:"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
@@ -462,7 +467,7 @@ msgstr "Saliendo debido a configuraciones estrictas."
 
 #: ../plugins/download.py:200
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Error en la resolución de paquetes:"
 
 #: ../plugins/download.py:217
 #, python-format
