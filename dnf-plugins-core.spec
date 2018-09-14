@@ -533,9 +533,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
+%{_mandir}/man1/package-cleanup.*
 %{_mandir}/man1/dnf-utils.*
 %{_mandir}/man1/yum-utils.*
 %else
+%exclude %{_mandir}/man1/package-cleanup.*
 %exclude %{_mandir}/man1/dnf-utils.*
 %endif
 
