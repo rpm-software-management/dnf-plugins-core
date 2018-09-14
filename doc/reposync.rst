@@ -19,7 +19,7 @@
 DNF reposync Plugin
 ====================
 
-Synchronize packages of a remote Yum repository to a local directory.
+Synchronize packages of a remote DNF repository to a local directory.
 
 --------
 Synopsis
