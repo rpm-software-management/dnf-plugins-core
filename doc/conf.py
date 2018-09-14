@@ -283,6 +283,8 @@ man_pages = [
      AUTHORS, 1),
     ('debug', 'yum-debug-dump', u'redirecting to DNF debug Plugin', AUTHORS, 1),
     ('debug', 'yum-debug-restore', u'redirecting to DNF debug Plugin', AUTHORS, 1),
+    ('dnf-utils', 'dnf-utils', u'classic YUM utilities implemented as CLI shims on top of DNF',
+     AUTHORS, 1),
 ]
 
 # If true, show URL addresses after external links.

@@ -406,6 +406,7 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
+ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/yum-utils.1.gz
 %endif
 
 %check
@@ -530,6 +531,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
+%{_mandir}/man1/dnf-utils.*
+%{_mandir}/man1/yum-utils.*
+%else
+%exclude %{_mandir}/man1/dnf-utils.*
 %endif
 
 %if 0%{?rhel} == 0
