@@ -40,6 +40,7 @@ Shell Commands
 ``repotrack``
     Track packages and its dependencies and download them.
     Maps to ``yumdownloader --resolve --alldeps``.
+    See :manpage:`yumdownloader(1)` for details.
 :manpage:`yum-builddep(1)`
     Install whatever is needed to build the given .src.rpm, .nosrc.rpm or .spec
     file.
@@ -54,6 +55,6 @@ Shell Commands
 :manpage:`yum-debug-restore(1)`
     Restores system RPM configuration from a dump file.
     Maps to ``dnf debug-restore``.
-``yumdownloader``
+:manpage:`yumdownloader(1)`
     Download binary or source packages.
     Maps to ``dnf download``.
