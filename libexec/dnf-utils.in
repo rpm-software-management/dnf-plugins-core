@@ -84,22 +84,15 @@ if command == 'package-cleanup':
     elif '--orphans' in args:
         args[args.index('--orphans')] = '--extras'
         MAPPING[command] = ['repoquery']
-    elif '--oldkernels' in args:
-        args[args.index('--oldkernels')] = '--installonly'
-        MAPPING[command] = ['repoquery']
     elif '--problems' in args:
         args[args.index('--problems')] = '--unsatisfied'
         MAPPING[command] = ['repoquery']
     elif '--cleandupes' in args:
         args[args.index('--cleandupes')] = '--duplicates'
         MAPPING[command] = ['remove']
-    elif '--oldkernels' in args:
-        args[args.index('--oldkernels')] = '--oldinstallonly'
-        MAPPING[command] = ['remove']
     else:
         sys.stderr.write('package-cleanup has to be executed with one of the options: --dupes, '
-                         '--leaves, --orphans, --oldkernels, --problems, --cleandupes, '
-                         'or --oldkernels\n')
+                         '--leaves, --orphans, --problems or --cleandupes\n')
         sys.exit(1)
 
 main.user_main(MAPPING[command] + args, exit_code=True)
