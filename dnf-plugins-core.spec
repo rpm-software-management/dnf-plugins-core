@@ -443,6 +443,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man1/yum-config-manager.*
 %{_mandir}/man1/yum-debug-dump.*
 %{_mandir}/man1/yum-debug-restore.*
+%{_mandir}/man1/yumdownloader.*
 %else
 %exclude %{_mandir}/man8/yum-copr.*
 %exclude %{_mandir}/man1/debuginfo-install.*
@@ -455,6 +456,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %exclude %{_mandir}/man1/yum-config-manager.*
 %exclude %{_mandir}/man1/yum-debug-dump.*
 %exclude %{_mandir}/man1/yum-debug-restore.*
+%exclude %{_mandir}/man1/yumdownloader.*
 %endif
 
 %if %{with python2}
