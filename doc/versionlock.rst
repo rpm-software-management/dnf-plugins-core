@@ -51,31 +51,31 @@ operations like `repoquery`, `list`, `info`, etc.
 Synopsis
 --------
 
-``dnf versionlock [add|exclude|list|delete|clear] [<package-spec>]``
+``dnf versionlock [add|exclude|list|delete|clear] [<pkg-spec>]``
 
 ---------
 Arguments
 ---------
 
-``<package-spec>``
+``<pkg-spec>``
     Package spec to lock or exclude.
 
 -----------
 Subcommands
 -----------
 
-``dnf versionlock add <package-spec>``
+``dnf versionlock add <pkg-spec>``
     Add a versionlock for all available packages matching the spec. It means that only versions of
-    packages represented by <package-spec> will be available for transaction operations.
+    packages represented by ``<pkg-spec>`` will be available for transaction operations.
 
-``dnf versionlock exclude <package-spec>``
+``dnf versionlock exclude <pkg-spec>``
     Add an exclude (within  versionlock) for the available packages matching the spec. It means that
-    packages represented by <package-spec> will be excluded from transaction operations.
+    packages represented by ``<pkg-spec>`` will be excluded from transaction operations.
 
 ``dnf versionlock list`` or ``dnf versionlock``
     List the current versionlock entries.
 
-``dnf versionlock delete <package-spec>``
+``dnf versionlock delete <pkg-spec>``
     Remove any matching versionlock entries.
 
 ``dnf versionlock clear``
@@ -96,7 +96,7 @@ The minimal content of conf file should contain ``main`` sections with ``enabled
       information in it. Note that the file has to exist (or the versionlock plugin
       will make dnf exit). However, it can be empty.
 
-      The file takes entries in the format of ``package-spec`` (optionally prefixed with '!' for
+      The file takes entries in the format of ``<pkg-spec>`` (optionally prefixed with '!' for
       excludes).
       See :ref:`\specifying_packages-label`.
 
