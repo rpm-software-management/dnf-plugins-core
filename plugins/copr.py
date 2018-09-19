@@ -238,7 +238,8 @@ class CoprCommand(dnf.cli.Command):
             project_name = copr_username + "/" + copr_projectname
 
         repo_filename = "{0}/_copr:{1}:{2}:{3}.repo".format(
-            self.base.conf.get_reposdir, self.copr_hostname, copr_username, copr_projectname)
+            self.base.conf.get_reposdir, self.copr_hostname,
+            self._sanitize_username(copr_username), copr_projectname)
         if subcommand == "enable":
             self._need_root()
             msg = _("""
@@ -444,13 +445,16 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             if re.match("\[copr:", line):
                 repo_filename = os.path.join(self.base.conf.get_reposdir,
                                              "_" + line[1:-2] + ".repo")
-                if self.copr_url == self.default_url or self.opts.hub == self.default_hub:
-                    # copr:hub:user:project.repo => _copr_user_project.repo
-                    old_repo_filename = repo_filename.replace("_copr:", "_copr", 1)\
-                        .replace(self.copr_hostname, "").replace(":", "_", 1).replace(":", "-")
-                    if os.path.exists(old_repo_filename):
-                        os.remove(old_repo_filename)
             break
+
+        # if using default hub, remove possible old repofile
+        if self.copr_url == self.default_url:
+            # copr:hub:user:project.repo => _copr_user_project.repo
+            old_repo_filename = repo_filename.replace("_copr:", "_copr", 1)\
+                .replace(self.copr_hostname, "").replace(":", "_", 1).replace(":", "-")\
+                .replace("group_", "@")
+            if os.path.exists(old_repo_filename):
+                os.remove(old_repo_filename)
 
         shutil.copy2(f.name, repo_filename)
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
