@@ -289,6 +289,7 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         if (enabled and disabled_only) or (not enabled and enabled_only):
             return
 
+        old_repo = False
         # repo ID has copr:<hub>:<user>:<project> format
         if re.match("copr:", repo_id):
             copr_name = repo_id.rsplit(':', 2)
@@ -303,14 +304,24 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         else:
             copr_name = repo_id.split('-', 1)
             msg = self.default_hostname + '/' + copr_name[0] + '/' + copr_name[1]
+            old_repo = True
         if not enabled:
             msg += " (disabled)"
+        if old_repo:
+            msg += " *"
 
         print(msg)
+        return old_repo
 
     def _list_installed_repositories(self, directory, enabled_only, disabled_only):
+        old_repo = False
         for repo_id, repo in self.base.repos.items():
-            self._list_repo_file(repo_id, repo, enabled_only, disabled_only)
+            if self._list_repo_file(repo_id, repo, enabled_only, disabled_only):
+                old_repo = True
+        if old_repo:
+            print(_("* These coprs have repo file with an old format that contains "
+                    "no information about Copr hub - the default one was assumed. "
+                    "Re-enable the project to fix this."))
 
     def _list_user_projects(self, user_name):
         # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
