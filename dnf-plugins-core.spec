@@ -573,6 +573,8 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python2-dnf-plugin-migrate
 %{python2_sitelib}/dnf-plugins/migrate.*
 %{_mandir}/man8/dnf.plugin.migrate.*
+%else
+%exclude %{_mandir}/man8/dnf.plugin.migrate.*
 %endif
 
 %if 0%{?rhel} == 0
