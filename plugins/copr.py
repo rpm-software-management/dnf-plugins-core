@@ -265,7 +265,7 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             logger.info(_("Repository successfully disabled."))
         elif subcommand == "remove":
             self._need_root()
-            self._remove_repo(repo_filename)
+            self._remove_repo(copr_username, copr_projectname)
             logger.info(_("Repository successfully removed."))
 
         else:
@@ -488,11 +488,15 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
 
         return self.base.repos[repo_id]
 
-    @classmethod
-    def _remove_repo(cls, repo_filename):
+    def _remove_repo(self, copr_username, copr_projectname):
         # FIXME is it Copr repo ?
+        repo = self._get_copr_repo(copr_username, copr_projectname)
+        if not repo:
+            raise dnf.exceptions.Error(
+                _("Failed to remove copr repo {0}/{1}/{2}"
+                  .format(self.copr_hostname, copr_username, copr_projectname)))
         try:
-            os.remove(repo_filename)
+            os.remove(repo.repofile)
         except OSError as e:
             raise dnf.exceptions.Error(str(e))
 
