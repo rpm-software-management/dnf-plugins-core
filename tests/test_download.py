@@ -109,23 +109,23 @@ class QueryStub(object):
         return self.run()[key]
 
 PACKAGES_AVAIL = [
-PkgStub('foo', '0', '1.0', '1', 'noarch', 'test-repo'),
-PkgStub('foo', '0', '2.0', '1', 'noarch', 'test-repo'),
-PkgStub('bar', '0', '1.0', '1', 'noarch', 'test-repo'),
-PkgStub('bar', '0', '2.0', '1', 'noarch', 'test-repo'),
-PkgStub('foobar', '0', '1.0', '1', 'noarch', 'test-repo'),
-PkgStub('foobar', '0', '2.0', '1', 'noarch', 'test-repo'),
-PkgStub('kernel-PAE', '0', '4.0', '1', 'x86_64', 'test-repo'),
-PkgStub('krb5-libs', '0', '1.12', '1', 'x86_64', 'test-repo'),
+PkgStub('foo', '0', '1.0', '1', 'noarch', 'test-repo', repo=mock.Mock()),
+PkgStub('foo', '0', '2.0', '1', 'noarch', 'test-repo', repo=mock.Mock()),
+PkgStub('bar', '0', '1.0', '1', 'noarch', 'test-repo', repo=mock.Mock()),
+PkgStub('bar', '0', '2.0', '1', 'noarch', 'test-repo', repo=mock.Mock()),
+PkgStub('foobar', '0', '1.0', '1', 'noarch', 'test-repo', repo=mock.Mock()),
+PkgStub('foobar', '0', '2.0', '1', 'noarch', 'test-repo', repo=mock.Mock()),
+PkgStub('kernel-PAE', '0', '4.0', '1', 'x86_64', 'test-repo', repo=mock.Mock()),
+PkgStub('krb5-libs', '0', '1.12', '1', 'x86_64', 'test-repo', repo=mock.Mock()),
 ]
 
 PACKAGES_DEBUGINFO = [
-PkgStub('foo-debuginfo', '0', '1.0', '1', 'noarch', 'test-repo-debuginfo'),
-PkgStub('foo-debuginfo', '0', '2.0', '1', 'noarch', 'test-repo-debuginfo'),
-PkgStub('bar-debuginfo', '0', '1.0', '1', 'noarch', 'test-repo-debuginfo'),
-PkgStub('bar-debuginfo', '0', '2.0', '1', 'noarch', 'test-repo-debuginfo'),
-PkgStub('kernel-PAE-debuginfo', '0', '4.0', '1', 'x86_64', 'test-repo-debuginfo'),
-PkgStub('krb5-debuginfo', '0', '1.12', '1', 'x86_64', 'test-repo-debuginfo'),
+PkgStub('foo-debuginfo', '0', '1.0', '1', 'noarch', 'test-repo-debuginfo', repo=mock.Mock()),
+PkgStub('foo-debuginfo', '0', '2.0', '1', 'noarch', 'test-repo-debuginfo', repo=mock.Mock()),
+PkgStub('bar-debuginfo', '0', '1.0', '1', 'noarch', 'test-repo-debuginfo', repo=mock.Mock()),
+PkgStub('bar-debuginfo', '0', '2.0', '1', 'noarch', 'test-repo-debuginfo', repo=mock.Mock()),
+PkgStub('kernel-PAE-debuginfo', '0', '4.0', '1', 'x86_64', 'test-repo-debuginfo', repo=mock.Mock()),
+PkgStub('krb5-debuginfo', '0', '1.12', '1', 'x86_64', 'test-repo-debuginfo', repo=mock.Mock()),
 ]
 
 PACKAGES_LASTEST = [
@@ -141,19 +141,19 @@ PACKAGES_DEBUGINFO[5],
 ]
 
 PACKAGES_INST = [
-PkgStub('foo', '0', '1.0', '1', 'noarch', '@System'),
-PkgStub('foobar', '0', '1.0', '1', 'noarch', '@System')
+PkgStub('foo', '0', '1.0', '1', 'noarch', '@System', repo=mock.Mock()),
+PkgStub('foobar', '0', '1.0', '1', 'noarch', '@System', repo=mock.Mock())
 ]
 
 PACKAGES_SOURCE = [
-PkgStub('foo', '0', '1.0', '1', 'src', 'test-repo-source'),
-PkgStub('foo', '0', '2.0', '1', 'src', 'test-repo-source'),
-PkgStub('bar', '0', '1.0', '1', 'src', 'test-repo-source'),
-PkgStub('bar', '0', '2.0', '1', 'src', 'test-repo-source'),
-PkgStub('foobar', '0', '1.0', '1', 'src', 'test-repo-source'),
-PkgStub('foobar', '0', '2.0', '1', 'src', 'test-repo-source'),
-PkgStub('kernel', '0', '4.0', '1', 'src', 'test-repo-source'),
-PkgStub('krb5', '0', '1.12', '1', 'src', 'test-repo-source'),
+PkgStub('foo', '0', '1.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('foo', '0', '2.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('bar', '0', '1.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('bar', '0', '2.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('foobar', '0', '1.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('foobar', '0', '2.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('kernel', '0', '4.0', '1', 'src', 'test-repo-source', repo=mock.Mock()),
+PkgStub('krb5', '0', '1.12', '1', 'src', 'test-repo-source', repo=mock.Mock()),
 ]
 
 

@@ -119,8 +119,16 @@ class DownloadCommand(dnf.cli.Command):
         """
         Perform the download for a list of packages
         """
-        self.base.download_packages(pkgs, self.base.output.progress)
-        locations = sorted([pkg.localPkg() for pkg in pkgs])
+        pkg_dict = {}
+        for pkg in pkgs:
+            pkg_dict.setdefault(str(pkg), []).append(pkg)
+
+        to_download = []
+        for pkg_list in pkg_dict.values():
+            pkg_list.sort(key=lambda x: (x.repo.priority, x.repo.cost))
+            to_download.append(pkg_list[0])
+        self.base.download_packages(to_download, self.base.output.progress)
+        locations = sorted([pkg.localPkg() for pkg in to_download])
         return locations
 
     def _get_pkg_objs_rpms(self, pkg_specs):
