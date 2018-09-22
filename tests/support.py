@@ -118,6 +118,9 @@ class CliStub(object):
     def redirect_logger(self, stdout=None, stderr=None):
         return
 
+    def redirect_repo_progress(self, fo=sys.stderr):
+        return
+
 
 class DemandsStub(object):
     pass
