@@ -62,23 +62,24 @@ Arguments (copr)
 
 ``enable hub/name/project``
     Enable the ``name/project`` Copr repository from the specified Copr ``hub``,
-    Hub is be specified by its hostname (eg. `copr.fedoraproject.org`).
+    Hub is be specified either by its hostname (eg. `copr.fedorainfracloud.org`)
+    or by an ID that's defined in a configuration file.
 
 ``--hub Copr``
-    Specify a Copr hub to use. Default is the Fedora Copr: ``https://copr.fedoraproject.org``.
+    Specify a Copr hub to use. Default is the Fedora Copr: ``https://copr.fedorainfracloud.org``.
 
 --------------------
 Configuration (copr)
 --------------------
 
 ``/etc/dnf/plugins/copr.conf``
-``/etc/dnf/plugins/copr/*.conf``
+``/etc/dnf/plugins/copr.d/``
 
 Configuration file should contain a section for each hub, each section having ``hostname``
  (mandatory), ``protocol`` (default ``https``) and ``port`` (default ``443``) parameters.::
 
   [fedora]
-  hostname = copr.fedoraproject.org
+  hostname = copr.fedorainfracloud.org
   protocol = https
   port = 443
 
