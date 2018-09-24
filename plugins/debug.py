@@ -116,7 +116,7 @@ class DebugDumpCommand(dnf.cli.Command):
         self.write("  releasever: %s\n" % var["releasever"])
         self.write("  dnf ver: %s\n" % dnf.const.VERSION)
         self.write("  enabled plugins: %s\n" % plugins)
-        self.write("  global excludes: %s\n" % ",".join(self.base.conf.exclude))
+        self.write("  global excludes: %s\n" % ",".join(self.base.conf.excludepkgs))
         return
 
     def dump_rpm_problems(self):
@@ -150,7 +150,7 @@ class DebugDumpCommand(dnf.cli.Command):
                 elif len(repo.baseurl) > 0:
                     url = repo.baseurl[0]
                 self.write("%%%s - %s\n" % (repo.id, url))
-                self.write("  excludes: %s\n" % ",".join(repo.exclude))
+                self.write("  excludes: %s\n" % ",".join(repo.excludepkgs))
                 for po in sorted(available.filter(reponame=repo.id)):
                     self.write("  %s\n" % pkgspec(po))
 
