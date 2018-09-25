@@ -67,6 +67,7 @@ Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
 %if %{with yumcompatibility}
 Provides:       yum-plugin-copr = %{version}-%{release}
+Provides:       yum-plugin-auto-update-debug-info = %{version}-%{release}
 %endif
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
