@@ -223,5 +223,6 @@ def sanitize_url_to_fs(url):
         csum = dnf.yum.misc.Checksums(['sha256'])
         csum.update(url[lastindex:])
         url = url[:lastindex] + '_' + csum.hexdigest()
-
-    return url
+    # remove all not allowed characters
+    allowed_regex = "[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.:-]"
+    return re.sub(allowed_regex, '', url)
