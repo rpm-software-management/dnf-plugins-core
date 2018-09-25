@@ -382,5 +382,13 @@
     [
         1571251,
         "dnf download --source --resolve does not work"
+    ],
+    [
+        1626011,
+        "Don't print progress bar to stdout, and when there's no tty (dnf repoquery)"
+    ],
+    [
+        1478208,
+        "[rfe] Support for multiple copr instances"
     ]
 ]

@@ -639,6 +639,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Sep 25 2018 Jaroslav Mracek <jmracek@redhat.com> - 3.0.4-1
+- [copr] Huge upgrade of copr plugin
+- [spec] Disable building python2 modules on Fedora 30+
+- Add characters into repo URL sanitization (RhBug:1615416)
+- copr: add support for multiple copr instances (RhBug:1478208)
+- Redirect repo progress to std error (RhBug:1626011)
+
 * Fri Sep 07 2018 Jaroslav Mracek <jmracek@redhat.com> - 3.0.3-1
 - Resolves: rhbz#1582152
 - Resolves: rhbz#1581117

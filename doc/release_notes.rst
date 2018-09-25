@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+3.0.4 Release Notes
+===================
+
+* [copr] Huge upgrade of copr plugin
+* [spec] Disable building python2 modules on Fedora 30+
+
+Bugs fixed in 3.0.4:
+
+* :rhbug:`1626011`
+* :rhbug:`1478208`
+
+===================
 3.0.3 Release Notes
 ===================
 
