@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 12:24+0200\n"
+"POT-Creation-Date: 2018-09-25 07:53+0200\n"
 "PO-Revision-Date: 2018-09-11 12:23+0000\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
@@ -43,22 +43,22 @@ msgstr "ダウンロード済みリポジトリーの保管場所 "
 msgid "operate on source packages"
 msgstr "ソースパッケージでの操作"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
 #, python-format
 msgid "failed to delete file %s"
 msgstr "ファイル %s の削除に失敗しました"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "リポジトリーディレクトリーを作成できませんでした: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "リポジトリー %s の comps.xml が保存されました"
@@ -313,35 +313,35 @@ msgstr "このパッケージのみのクロージャーを確認します"
 msgid "Manage a directory of rpm packages"
 msgstr "rpm パッケージのディレクトリーを管理します"
 
-#: ../plugins/repomanage.py:56
+#: ../plugins/repomanage.py:58
 msgid "Pass either --old or --new, not both!"
 msgstr "--old または --new のいずれかを渡します。両方ではありません。"
 
-#: ../plugins/repomanage.py:66
+#: ../plugins/repomanage.py:68
 msgid "No files to process"
 msgstr "処理するファイルはありません"
 
-#: ../plugins/repomanage.py:71
+#: ../plugins/repomanage.py:73
 msgid "Could not open {}"
 msgstr "{} を開くことができません"
 
-#: ../plugins/repomanage.py:128
+#: ../plugins/repomanage.py:130
 msgid "Print the older packages"
 msgstr "古いパッケージを印刷します"
 
-#: ../plugins/repomanage.py:130
+#: ../plugins/repomanage.py:132
 msgid "Print the newest packages"
 msgstr "最新のパッケージを印刷します"
 
-#: ../plugins/repomanage.py:132
+#: ../plugins/repomanage.py:134
 msgid "Space separated output, not newline"
 msgstr "スペースで区切られた出力で、改行ではありません"
 
-#: ../plugins/repomanage.py:134
+#: ../plugins/repomanage.py:136
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "維持する最新の N パッケージ - デフォルトは 1 に設定されます"
 
-#: ../plugins/repomanage.py:137
+#: ../plugins/repomanage.py:139
 msgid "Path to directory"
 msgstr "ディレクトリーへのパス"
 
@@ -371,32 +371,38 @@ msgstr "必要な依存関係を解決し、ダウンロードします"
 
 #: ../plugins/download.py:63
 msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+
+#: ../plugins/download.py:66
+msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr "ダウンロードする代わりに、rpm をダウンロードできる url の一覧を印刷します"
 
-#: ../plugins/download.py:68
+#: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
 msgstr "--url で実行中の際は、特定のプロトコルに限定します"
 
-#: ../plugins/download.py:105
+#: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "パッケージのミラー取得に失敗しました: %s"
 
-#: ../plugins/download.py:180
+#: ../plugins/download.py:185
 msgid "Exiting due to strict setting."
 msgstr "厳密な設定により終了中です。"
 
-#: ../plugins/download.py:200
+#: ../plugins/download.py:205
 msgid "Error in resolve of packages:"
 msgstr "パッケージの解決でエラー:"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:222
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "%s に対して定義されているソース rpm はありません"
 
-#: ../plugins/download.py:235 ../plugins/download.py:249
+#: ../plugins/download.py:240 ../plugins/download.py:254
 #, python-format
 msgid "No package %s available."
 msgstr "利用可能なパッケージ %s はありません。"
@@ -405,27 +411,27 @@ msgstr "利用可能なパッケージ %s はありません。"
 msgid "New leaves:"
 msgstr "新規のリーフパッケージ (他のパッケージから依存されていないパッケージ) :"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "yes"
 msgstr "はい"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "y"
 msgstr "y"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "no"
 msgstr "いいえ"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:71
+#: ../plugins/copr.py:74
 msgid "Interact with Copr repositories."
 msgstr "Copr リポジトリーとの対話。"
 
-#: ../plugins/copr.py:72
+#: ../plugins/copr.py:75
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -463,43 +469,54 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:98
+#: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
 msgstr "インストール済みのすべての Copr リポジトリーを一覧表示します (デフォルト)"
 
-#: ../plugins/copr.py:100
+#: ../plugins/copr.py:103
 msgid "List enabled Copr repositories"
 msgstr "有効化された Copr リポジトリーを一覧表示します"
 
-#: ../plugins/copr.py:102
+#: ../plugins/copr.py:105
 msgid "List disabled Copr repositories"
 msgstr "無効化された Copr リポジトリーを一覧表示します"
 
-#: ../plugins/copr.py:104
+#: ../plugins/copr.py:107
 msgid "List available Copr repositories by user NAME"
 msgstr "利用可能な Copr リポジトリーをユーザー NAME ごとに一覧表示します"
 
-#: ../plugins/copr.py:117
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "警告: 非標準の Copr URL '{}' を使用しています。"
+#: ../plugins/copr.py:109
+msgid "Specify an instance of Copr to work with"
+msgstr ""
 
-#: ../plugins/copr.py:156 ../plugins/copr.py:177
+#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
 msgstr "エラー: "
 
-#: ../plugins/copr.py:157 ../plugins/copr.py:161
+#: ../plugins/copr.py:144
+msgid ""
+"specify Copr hub either with `--hub` or using "
+"`copr_hub/copr_username/copr_projectname` format"
+msgstr ""
+
+#: ../plugins/copr.py:147
+msgid "multiple hubs specified"
+msgstr ""
+
+#: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
 msgstr "copr コマンドに厳密に 2 つの追加パラメーターが必要です"
 
-#: ../plugins/copr.py:178
+#: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr "copr プロジェクトを参照するには `copr_username/copr_projectname` 形式を使用します"
 
-#: ../plugins/copr.py:180
+#: ../plugins/copr.py:231
 msgid "bad copr project format"
 msgstr "不正な copr プロジェクト形式"
 
-#: ../plugins/copr.py:186
+#: ../plugins/copr.py:245
+#, python-brace-format
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -513,91 +530,91 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 "\n"
-"Do you want to continue?"
+"Do you really want to enable {0}?"
 msgstr ""
-"\n"
-"Copr リポジトリーを有効化しようとしています。このリポジトリーは\n"
-"主要ディストリビューションの一部ではないため、品質が一定していない点に注意してください。\n"
-"\n"
-"Fedora Project は、このリポジトリーのコンテンツに関して、<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr> の \n"
-"Copr FAQ で示されたルールを超えて権利を行使することは\n"
-"ありません。また、パッケージは、任意の品質またはセキュリ\n"
-"ティーレベルを固守していません。\n"
-"\n"
-"Fedora Bugzilla でこれらのパッケージに関するバグ報告をしないでください。問題が発生した場合は、このリポジトリーのオーナーに連絡してください。\n"
-"\n"
-"続行しますか?"
 
-#: ../plugins/copr.py:201
+#: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
 msgstr "リポジトリが正常に有効化されました。"
 
-#: ../plugins/copr.py:205
+#: ../plugins/copr.py:265
 msgid "Repository successfully disabled."
 msgstr "リポジトリが正常に無効化されました。"
 
-#: ../plugins/copr.py:209
+#: ../plugins/copr.py:269
 msgid "Repository successfully removed."
 msgstr "リポジトリーが正常に削除されました。"
 
-#: ../plugins/copr.py:213 ../plugins/copr.py:476
+#: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
 msgstr "不明なサブコマンド {}。"
 
-#: ../plugins/copr.py:242
+#: ../plugins/copr.py:322
+msgid ""
+"* These coprs have repo file with an old format that contains no information"
+" about Copr hub - the default one was assumed. Re-enable the project to fix "
+"this."
+msgstr ""
+
+#: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
 msgstr "ユーザー名 '{}' のリポジトリーを解析できません。"
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:337
 msgid "List of {} coprs"
 msgstr "{} coprs の一覧"
 
-#: ../plugins/copr.py:253
+#: ../plugins/copr.py:345
 msgid "No description given"
 msgstr "説明がありません"
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:357
 msgid "Can't parse search for '{}'."
 msgstr "'{}' の検索を解析できません。"
 
-#: ../plugins/copr.py:268
+#: ../plugins/copr.py:360
 msgid "Matched: {}"
 msgstr "一致: {}"
 
-#: ../plugins/copr.py:276
+#: ../plugins/copr.py:368
 msgid "No description given."
 msgstr "説明が与えられていません。"
 
-#: ../plugins/copr.py:289
+#: ../plugins/copr.py:381
 msgid "Safe and good answer. Exiting."
 msgstr "安全で優れた回答。終了中。"
 
-#: ../plugins/copr.py:296
+#: ../plugins/copr.py:388
 msgid "This command has to be run under the root user."
 msgstr "このコマンドは root ユーザーの下で実行する必要があります。"
 
-#: ../plugins/copr.py:356
+#: ../plugins/copr.py:449
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr "このリポジトリーにはまだビルドがありませんので、今すぐ有効化できません。"
 
-#: ../plugins/copr.py:359
+#: ../plugins/copr.py:452
 msgid "Such repository does not exist."
 msgstr "そのようなリポジトリーは存在しません。"
 
-#: ../plugins/copr.py:380
+#: ../plugins/copr.py:496
+#, python-brace-format
+msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgstr ""
+
+#: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"
 msgstr "copr repo {}/{} の無効化に失敗しました。"
 
-#: ../plugins/copr.py:393 ../plugins/copr.py:431
+#: ../plugins/copr.py:523 ../plugins/copr.py:561
 msgid "Unknown response from server."
 msgstr "サーバーからの不明な応答です。"
 
-#: ../plugins/copr.py:415
+#: ../plugins/copr.py:545
 msgid "Interact with Playground repository."
 msgstr "Playground リポジトリーとの対話。"
 
-#: ../plugins/copr.py:420
+#: ../plugins/copr.py:550
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -609,15 +626,15 @@ msgstr ""
 "\n"
 "続行しますか?"
 
-#: ../plugins/copr.py:466
+#: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
 msgstr "Playground リポジトリーが正常に有効化されました。"
 
-#: ../plugins/copr.py:469
+#: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."
 msgstr "Playground リポジトリーが正常に無効化されました。"
 
-#: ../plugins/copr.py:473
+#: ../plugins/copr.py:603
 msgid "Playground repositories successfully updated."
 msgstr "Playground リポジトリーが正常に更新されました。"
 

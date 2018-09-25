@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 12:24+0200\n"
+"POT-Creation-Date: 2018-09-25 07:53+0200\n"
 "PO-Revision-Date: 2018-09-12 06:23+0000\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -48,22 +48,22 @@ msgstr "donde guardar paquetes descargados "
 msgid "operate on source packages"
 msgstr "operar con los paquetes fuente"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[BORRADO] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
 #, python-format
 msgid "failed to delete file %s"
 msgstr "no se pudo borrar %s"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "No se pudo crear el directorio de repositorio: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "guardado comps.xml para el repositorio %s"
@@ -376,49 +376,49 @@ msgstr "Administra un directorio de paquetes rpm."
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:56
+#: ../plugins/repomanage.py:58
 msgid "Pass either --old or --new, not both!"
 msgstr "Pase --old o --new, ¡no ambos!"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:66
+#: ../plugins/repomanage.py:68
 msgid "No files to process"
 msgstr "No hay archivos para procesar"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:71
+#: ../plugins/repomanage.py:73
 msgid "Could not open {}"
 msgstr "No se puede abrir {}"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:128
+#: ../plugins/repomanage.py:130
 msgid "Print the older packages"
 msgstr "Mostrar los paquetes antiguos"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:130
+#: ../plugins/repomanage.py:132
 msgid "Print the newest packages"
 msgstr "Mostrar los paquetes más nuevos"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:132
+#: ../plugins/repomanage.py:134
 msgid "Space separated output, not newline"
 msgstr "Salida separada por espacios, sin salto de línea"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:134
+#: ../plugins/repomanage.py:136
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Los N paquetes más recientes a conservar, 1 si no se indica"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/repomanage.py:137
+#: ../plugins/repomanage.py:139
 msgid "Path to directory"
 msgstr "Ruta al directorio"
 
@@ -448,33 +448,39 @@ msgstr "resolver y descargar las dependencias necesarias"
 
 #: ../plugins/download.py:63
 msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+
+#: ../plugins/download.py:66
+msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
 "mostrar lista de urls desde las que descargar rpms, en lugar de descargarlos"
 
-#: ../plugins/download.py:68
+#: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
 msgstr "limitar a protocolos concretos cuando se ejecuta con --url"
 
-#: ../plugins/download.py:105
+#: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "No se puedo obtener un espejo para el paquete: %s"
 
-#: ../plugins/download.py:180
+#: ../plugins/download.py:185
 msgid "Exiting due to strict setting."
 msgstr "Saliendo debido a configuraciones estrictas."
 
-#: ../plugins/download.py:200
+#: ../plugins/download.py:205
 msgid "Error in resolve of packages:"
 msgstr "Error en la resolución de paquetes:"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:222
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "No hay fuente de rpm definido para %s"
 
-#: ../plugins/download.py:235 ../plugins/download.py:249
+#: ../plugins/download.py:240 ../plugins/download.py:254
 #, python-format
 msgid "No package %s available."
 msgstr "No hay ningún paquete %s disponible."
@@ -485,27 +491,27 @@ msgstr "No hay ningún paquete %s disponible."
 msgid "New leaves:"
 msgstr "Nuevos paquetes de los que no dependen otros:"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "yes"
 msgstr "si"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "y"
 msgstr "s"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "no"
 msgstr "no"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:71
+#: ../plugins/copr.py:74
 msgid "Interact with Copr repositories."
 msgstr "Interactuar con repositorios Copr."
 
-#: ../plugins/copr.py:72
+#: ../plugins/copr.py:75
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -543,47 +549,58 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:98
+#: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
 msgstr ""
 "Mostrar todos los repositorios Copr instalados (opción predeterminada)"
 
-#: ../plugins/copr.py:100
+#: ../plugins/copr.py:103
 msgid "List enabled Copr repositories"
 msgstr "Mostrar los repositorios Copr activos"
 
-#: ../plugins/copr.py:102
+#: ../plugins/copr.py:105
 msgid "List disabled Copr repositories"
 msgstr "Mostrar los repositorios Copr desactivados"
 
-#: ../plugins/copr.py:104
+#: ../plugins/copr.py:107
 msgid "List available Copr repositories by user NAME"
 msgstr "Mostrar los repositorios Copr disponibles por NOMBRE de usuario"
 
-#: ../plugins/copr.py:117
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Advertencia: estamos usando un URL no estandar de CORP '{}'."
+#: ../plugins/copr.py:109
+msgid "Specify an instance of Copr to work with"
+msgstr ""
 
-#: ../plugins/copr.py:156 ../plugins/copr.py:177
+#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
 msgstr "Error: "
 
-#: ../plugins/copr.py:157 ../plugins/copr.py:161
+#: ../plugins/copr.py:144
+msgid ""
+"specify Copr hub either with `--hub` or using "
+"`copr_hub/copr_username/copr_projectname` format"
+msgstr ""
+
+#: ../plugins/copr.py:147
+msgid "multiple hubs specified"
+msgstr ""
+
+#: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 "exactamente dos parámetros adicionales son requeridos para comandos copr"
 
-#: ../plugins/copr.py:178
+#: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "use el formato \"nombreusuario_copr/proyecto_corp\" para referirse al "
 "proyecto copr"
 
-#: ../plugins/copr.py:180
+#: ../plugins/copr.py:231
 msgid "bad copr project format"
 msgstr "formato de proyecto de copr incorrecto"
 
-#: ../plugins/copr.py:186
+#: ../plugins/copr.py:245
+#, python-brace-format
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -597,94 +614,93 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 "\n"
-"Do you want to continue?"
+"Do you really want to enable {0}?"
 msgstr ""
-"\n"
-"Va a activar un repositorio Copr. Tenga en cuenta que no es parte de la\n"
-"distribución, y que no hay garantías de calidad.\n"
-"\n"
-"El Proyecto Fedora no ejerce ningún control sobre el contenido de este\n"
-"repositorio, más allá de las reglas publicadas en el P+F de Copr\n"
-"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-"y no se comprueba la calidad ni la seguridad de los paquetes.\n"
-"\n"
-"No envíe informes de errores sobre estos paquetes al Bugzilla de Fedora. Si\n"
-"observa problemas, contacte directamente con el propietario de este repositorio.\n"
-"\n"
-"¿Realmente quiere continuar?"
 
-#: ../plugins/copr.py:201
+#: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
 msgstr "Repositorio activado."
 
-#: ../plugins/copr.py:205
+#: ../plugins/copr.py:265
 msgid "Repository successfully disabled."
 msgstr "Repositorio desactivado."
 
-#: ../plugins/copr.py:209
+#: ../plugins/copr.py:269
 msgid "Repository successfully removed."
 msgstr "Repositorio eliminado exitosamente."
 
-#: ../plugins/copr.py:213 ../plugins/copr.py:476
+#: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
 msgstr "Subcomando {} desconocido."
 
-#: ../plugins/copr.py:242
+#: ../plugins/copr.py:322
+msgid ""
+"* These coprs have repo file with an old format that contains no information"
+" about Copr hub - the default one was assumed. Re-enable the project to fix "
+"this."
+msgstr ""
+
+#: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
 msgstr "No se puede procesar repositorios para el usuario '{}'."
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:337
 msgid "List of {} coprs"
 msgstr "Lista de {} coprs"
 
-#: ../plugins/copr.py:253
+#: ../plugins/copr.py:345
 msgid "No description given"
 msgstr "No se dio una descripción"
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:357
 msgid "Can't parse search for '{}'."
 msgstr "No se puede procesar búsqueda por '{}'."
 
-#: ../plugins/copr.py:268
+#: ../plugins/copr.py:360
 msgid "Matched: {}"
 msgstr "Coincidencias: {}"
 
-#: ../plugins/copr.py:276
+#: ../plugins/copr.py:368
 msgid "No description given."
 msgstr "No se dio una descripción."
 
-#: ../plugins/copr.py:289
+#: ../plugins/copr.py:381
 msgid "Safe and good answer. Exiting."
 msgstr "Respuesta buena y segura. Saliendo."
 
-#: ../plugins/copr.py:296
+#: ../plugins/copr.py:388
 msgid "This command has to be run under the root user."
 msgstr "Este comando debe ejecutarse como usuario root."
 
-#: ../plugins/copr.py:356
+#: ../plugins/copr.py:449
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Este repositorio no tiene construcciones todavía así que no lo puede "
 "activar."
 
-#: ../plugins/copr.py:359
+#: ../plugins/copr.py:452
 msgid "Such repository does not exist."
 msgstr "Tal repositorio no existe."
 
-#: ../plugins/copr.py:380
+#: ../plugins/copr.py:496
+#, python-brace-format
+msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgstr ""
+
+#: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Falló la activación del repo copr {}/{}"
 
-#: ../plugins/copr.py:393 ../plugins/copr.py:431
+#: ../plugins/copr.py:523 ../plugins/copr.py:561
 msgid "Unknown response from server."
 msgstr "Respuesta desconocida del servidor."
 
-#: ../plugins/copr.py:415
+#: ../plugins/copr.py:545
 msgid "Interact with Playground repository."
 msgstr "Interactuar con el repositorio Playground."
 
-#: ../plugins/copr.py:420
+#: ../plugins/copr.py:550
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -696,15 +712,15 @@ msgstr ""
 "\n"
 "¿Seguro que quiere hacerlo?"
 
-#: ../plugins/copr.py:466
+#: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
 msgstr "Se han activado los repositorios Playground."
 
-#: ../plugins/copr.py:469
+#: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."
 msgstr "Se desactivaron los repositorios Playground."
 
-#: ../plugins/copr.py:473
+#: ../plugins/copr.py:603
 msgid "Playground repositories successfully updated."
 msgstr "Repositorios Playground actualizados exitosamente."
 

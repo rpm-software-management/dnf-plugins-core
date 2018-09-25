@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 12:24+0200\n"
+"POT-Creation-Date: 2018-09-25 07:53+0200\n"
 "PO-Revision-Date: 2018-08-30 04:31+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -45,22 +45,22 @@ msgstr "місце, де слід зберігати отримані схови
 msgid "operate on source packages"
 msgstr "працювати із пакунками початкових кодів"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[ВИЛУЧЕНО] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
 #, python-format
 msgid "failed to delete file %s"
 msgstr "не вдалося вилучити файл %s"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "Не вдалося створити каталог сховища: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "Збережено comps.xml для сховища %s"
@@ -325,37 +325,37 @@ msgstr "Перевірити замкненість лише для цього �
 msgid "Manage a directory of rpm packages"
 msgstr "Керування каталогом пакунків rpm"
 
-#: ../plugins/repomanage.py:56
+#: ../plugins/repomanage.py:58
 msgid "Pass either --old or --new, not both!"
 msgstr "Слід передавати --old або --new, не обидва одразу!"
 
-#: ../plugins/repomanage.py:66
+#: ../plugins/repomanage.py:68
 msgid "No files to process"
 msgstr "Немає файлів для обробки"
 
-#: ../plugins/repomanage.py:71
+#: ../plugins/repomanage.py:73
 msgid "Could not open {}"
 msgstr "Не вдалося відкрити {}"
 
-#: ../plugins/repomanage.py:128
+#: ../plugins/repomanage.py:130
 msgid "Print the older packages"
 msgstr "Вивести старіші пакунки"
 
-#: ../plugins/repomanage.py:130
+#: ../plugins/repomanage.py:132
 msgid "Print the newest packages"
 msgstr "Вивести найновіші пакунки"
 
-#: ../plugins/repomanage.py:132
+#: ../plugins/repomanage.py:134
 msgid "Space separated output, not newline"
 msgstr ""
 "Відокремлювати записи у виведених даних пробілами, а не символами розриву "
 "рядка"
 
-#: ../plugins/repomanage.py:134
+#: ../plugins/repomanage.py:136
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Зберігати N найновіших пакунків. Типове значення — 1"
 
-#: ../plugins/repomanage.py:137
+#: ../plugins/repomanage.py:139
 msgid "Path to directory"
 msgstr "Шлях до каталогу"
 
@@ -385,34 +385,40 @@ msgstr "визначити і отримати потрібні залежнос
 
 #: ../plugins/download.py:63
 msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+
+#: ../plugins/download.py:66
+msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
 "вивести список адрес, звідки можна отримати пакунки rpm, замість отримання "
 "пакунків"
 
-#: ../plugins/download.py:68
+#: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
 msgstr "якщо запущено з --url, обмежитися вказаними протоколами"
 
-#: ../plugins/download.py:105
+#: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Не вдалося отримати дзеркало для пакунка: %s"
 
-#: ../plugins/download.py:180
+#: ../plugins/download.py:185
 msgid "Exiting due to strict setting."
 msgstr "Завершуємо роботу через строгі обмеження."
 
-#: ../plugins/download.py:200
+#: ../plugins/download.py:205
 msgid "Error in resolve of packages:"
 msgstr "Помилка під час спроби розв'язати залежності таких пакунків:"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:222
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Не визначено rpm із початковим кодом для %s"
 
-#: ../plugins/download.py:235 ../plugins/download.py:249
+#: ../plugins/download.py:240 ../plugins/download.py:254
 #, python-format
 msgid "No package %s available."
 msgstr "Немає доступного пакунка %s."
@@ -421,27 +427,27 @@ msgstr "Немає доступного пакунка %s."
 msgid "New leaves:"
 msgstr "Нові листки:"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "yes"
 msgstr "так"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "y"
 msgstr "т"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "no"
 msgstr "ні"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "n"
 msgstr "н"
 
-#: ../plugins/copr.py:71
+#: ../plugins/copr.py:74
 msgid "Interact with Copr repositories."
 msgstr "Працювати зі сховищами Copr."
 
-#: ../plugins/copr.py:72
+#: ../plugins/copr.py:75
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -479,46 +485,57 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:98
+#: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
 msgstr "Список усіх встановлених сховищ Copr (типово)"
 
-#: ../plugins/copr.py:100
+#: ../plugins/copr.py:103
 msgid "List enabled Copr repositories"
 msgstr "Список увімкнених сховищ Copr"
 
-#: ../plugins/copr.py:102
+#: ../plugins/copr.py:105
 msgid "List disabled Copr repositories"
 msgstr "Список вимкнених сховищ Copr"
 
-#: ../plugins/copr.py:104
+#: ../plugins/copr.py:107
 msgid "List available Copr repositories by user NAME"
 msgstr ""
 "Список доступних сховищ Copr, які належать користувачу із вказаним ім'ям"
 
-#: ../plugins/copr.py:117
-msgid "Warning: we are using non-standard Copr URL '{}'."
-msgstr "Попередження: ми використовуємо нестандартну адресу Copr «{}»."
+#: ../plugins/copr.py:109
+msgid "Specify an instance of Copr to work with"
+msgstr ""
 
-#: ../plugins/copr.py:156 ../plugins/copr.py:177
+#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
 msgstr "Помилка: "
 
-#: ../plugins/copr.py:157 ../plugins/copr.py:161
+#: ../plugins/copr.py:144
+msgid ""
+"specify Copr hub either with `--hub` or using "
+"`copr_hub/copr_username/copr_projectname` format"
+msgstr ""
+
+#: ../plugins/copr.py:147
+msgid "multiple hubs specified"
+msgstr ""
+
+#: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
 msgstr "команді copr слід передавати точно два додаткові параметри"
 
-#: ../plugins/copr.py:178
+#: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "для використання проект copr скористайтеся форматом "
 "«copr_користувач/copr_назва_проекту»"
 
-#: ../plugins/copr.py:180
+#: ../plugins/copr.py:231
 msgid "bad copr project format"
 msgstr "помилкове форматування проекту copr"
 
-#: ../plugins/copr.py:186
+#: ../plugins/copr.py:245
+#, python-brace-format
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -532,96 +549,93 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 "\n"
-"Do you want to continue?"
+"Do you really want to enable {0}?"
 msgstr ""
-"\n"
-"Ви наказали системі увімкнути сховище Copr. Будь ласка, зауважте,\n"
-"що це сховище не є частиною основного дистрибутива, тому може\n"
-"містити пакунки неналежної якості.\n"
-"\n"
-"Проект Fedora ніяким чином не впливає на вміст цього\n"
-"сховища, окрім правил, які визначено у списку питань щодо Copr тут:\n"
-"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-"а пакунки не проходять жодних рівнів забезпечення якості чи захищеності.\n"
-"\n"
-"Будь ласка, не повідомляйте про виявлені у цих пакунках вади до\n"
-"системи стеження за вадами Fedora. Якщо виникнуть якісь проблеми,\n"
-"зв’яжіться із власником цього сховища пакунків.\n"
-"\n"
-"Ви справді хочете продовжити виконання цієї дії?"
 
-#: ../plugins/copr.py:201
+#: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
 msgstr "Сховище успішно увімкнено."
 
-#: ../plugins/copr.py:205
+#: ../plugins/copr.py:265
 msgid "Repository successfully disabled."
 msgstr "Сховище успішно вимкнено."
 
-#: ../plugins/copr.py:209
+#: ../plugins/copr.py:269
 msgid "Repository successfully removed."
 msgstr "Сховище успішно вилучено."
 
-#: ../plugins/copr.py:213 ../plugins/copr.py:476
+#: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
 msgstr "Невідома підкоманда {}."
 
-#: ../plugins/copr.py:242
+#: ../plugins/copr.py:322
+msgid ""
+"* These coprs have repo file with an old format that contains no information"
+" about Copr hub - the default one was assumed. Re-enable the project to fix "
+"this."
+msgstr ""
+
+#: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не вдалося обробити сховища для користувача '{}'."
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:337
 msgid "List of {} coprs"
 msgstr "Список copr {}"
 
-#: ../plugins/copr.py:253
+#: ../plugins/copr.py:345
 msgid "No description given"
 msgstr "Опис не надано"
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:357
 msgid "Can't parse search for '{}'."
 msgstr "Не вдалося обробити пошук для '{}'."
 
-#: ../plugins/copr.py:268
+#: ../plugins/copr.py:360
 msgid "Matched: {}"
 msgstr "Відповідник: {}"
 
-#: ../plugins/copr.py:276
+#: ../plugins/copr.py:368
 msgid "No description given."
 msgstr "Опис не надано."
 
-#: ../plugins/copr.py:289
+#: ../plugins/copr.py:381
 msgid "Safe and good answer. Exiting."
 msgstr "Безпечна і добра відповідь. Завершуємо роботу."
 
-#: ../plugins/copr.py:296
+#: ../plugins/copr.py:388
 msgid "This command has to be run under the root user."
 msgstr "Команду слід віддавати від імені користувача root."
 
-#: ../plugins/copr.py:356
+#: ../plugins/copr.py:449
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "У цьому сховищі ще немає нічого зібраного, отже ви не можете його зараз "
 "увімкнути."
 
-#: ../plugins/copr.py:359
+#: ../plugins/copr.py:452
 msgid "Such repository does not exist."
 msgstr "Такого сховища не існує."
 
-#: ../plugins/copr.py:380
+#: ../plugins/copr.py:496
+#, python-brace-format
+msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgstr ""
+
+#: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Не вдалося вилучити сховище copr {}/{}"
 
-#: ../plugins/copr.py:393 ../plugins/copr.py:431
+#: ../plugins/copr.py:523 ../plugins/copr.py:561
 msgid "Unknown response from server."
 msgstr "Невідома відповідь від сервера."
 
-#: ../plugins/copr.py:415
+#: ../plugins/copr.py:545
 msgid "Interact with Playground repository."
 msgstr "Працювати зі сховищем Playground."
 
-#: ../plugins/copr.py:420
+#: ../plugins/copr.py:550
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -633,15 +647,15 @@ msgstr ""
 "\n"
 "Ви справді хочете продовжити виконання цієї дії?"
 
-#: ../plugins/copr.py:466
+#: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
 msgstr "Сховища playground успішно увімкнено."
 
-#: ../plugins/copr.py:469
+#: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."
 msgstr "Сховища playground успішно вимкнено."
 
-#: ../plugins/copr.py:473
+#: ../plugins/copr.py:603
 msgid "Playground repositories successfully updated."
 msgstr "Сховища playground успішно оновлено."
 

@@ -1,13 +1,14 @@
 # Meskó Balázs <meskobalazs@gmail.com>, 2016. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2017. #zanata
 # Zoltan Hoppar <zoltanh721@fedoraproject.org>, 2017. #zanata
+# Meskó Balázs <meskobalazs@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 12:24+0200\n"
-"PO-Revision-Date: 2017-09-14 12:04+0000\n"
-"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
+"POT-Creation-Date: 2018-09-25 07:53+0200\n"
+"PO-Revision-Date: 2018-09-18 02:00+0000\n"
+"Last-Translator: Zoltan Hoppar <zoltanh721@fedoraproject.org>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,19 +23,19 @@ msgstr "minden csomag letöltése a távoli tárolóból"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "csak az ezen ARCHITEKTÚRÁhoz tartozó csomagok letöltése"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "a tárolóban már nem található helyi csomagok törlése"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
 msgid "also download comps.xml"
-msgstr ""
+msgstr "a comps.xml is kerüljön letöltésre"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
 msgid "download only newest packages per-repo"
-msgstr ""
+msgstr "csak a tárolókban lévő legújabb csomagok letöltése"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
 msgid "where to store downloaded repositories "
@@ -42,27 +43,27 @@ msgstr "hol tárolja a letöltött tárolókat "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
 msgid "operate on source packages"
-msgstr ""
+msgstr "műveletek elvégzése a forráscsomagokon"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[TÖRÖLVE] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "nem sikerült törölni a(z) %s fájlt"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr ""
+msgstr "Nem hozható létre a tároló könyvtár: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "a(z) %s tárolóhoz tartozó comps.xml mentve"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
@@ -71,11 +72,11 @@ msgstr "debuginfo csomagok telepítése"
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "Nem található egyezés az argumentumhoz: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "Unable to find a match"
-msgstr ""
+msgstr "Nem található egyezés"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -127,14 +128,18 @@ msgstr "A verziózás bővítmény kizárásai nem lettek alkalmazva"
 #: ../plugins/versionlock.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
+"Versionlock bővítmény:  a(z) „{}” fájlból alkalmazott zárolási szabályok "
+"száma: {}"
 
 #: ../plugins/versionlock.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
+"Versionlock bővítmény:  a(z) „{}” fájlból alkalmazott kizárási szabályok "
+"száma: {}"
 
 #: ../plugins/versionlock.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
+msgstr "Versionlock bővítmény:  a minta nem dolgozható fel:"
 
 #: ../plugins/versionlock.py:119
 msgid "control package version locks"
@@ -317,35 +322,35 @@ msgstr "Csak ehhez a csomaghoz ellenőrizze a zárást"
 msgid "Manage a directory of rpm packages"
 msgstr "Egy rpm csomagokkal teli könyvtár kezelése"
 
-#: ../plugins/repomanage.py:56
+#: ../plugins/repomanage.py:58
 msgid "Pass either --old or --new, not both!"
 msgstr "Csak az --old, vagy a --new kapcsolót használja, de ne mindkettőt!"
 
-#: ../plugins/repomanage.py:66
+#: ../plugins/repomanage.py:68
 msgid "No files to process"
 msgstr "Nincsenek feldolgozandó fájlok"
 
-#: ../plugins/repomanage.py:71
+#: ../plugins/repomanage.py:73
 msgid "Could not open {}"
 msgstr "A(z) {} nem nyitható meg"
 
-#: ../plugins/repomanage.py:128
+#: ../plugins/repomanage.py:130
 msgid "Print the older packages"
 msgstr "Régebbi csomagok kiírása"
 
-#: ../plugins/repomanage.py:130
+#: ../plugins/repomanage.py:132
 msgid "Print the newest packages"
 msgstr "Legújabb csomagok kiírása"
 
-#: ../plugins/repomanage.py:132
+#: ../plugins/repomanage.py:134
 msgid "Space separated output, not newline"
 msgstr "Szóközzel, és nem újsorral elválasztott kimenet"
 
-#: ../plugins/repomanage.py:134
+#: ../plugins/repomanage.py:136
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Megtartandó legfrissebb N csomag – alapértelmezésben 1"
 
-#: ../plugins/repomanage.py:137
+#: ../plugins/repomanage.py:139
 msgid "Path to directory"
 msgstr "Útvonal a könyvtárhoz"
 
@@ -375,35 +380,41 @@ msgstr "a szükséges függőségek feloldása és letöltése"
 
 #: ../plugins/download.py:63
 msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+
+#: ../plugins/download.py:66
+msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
 "a letöltés helyett csak írja ki az URL-ek listáját, hogy honnan tölthetőek "
 "le"
 
-#: ../plugins/download.py:68
+#: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
 msgstr ""
 "amikor az --url kapcsolóval fut, akkor korlátozza bizonyos protokollokra"
 
-#: ../plugins/download.py:105
+#: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Nem található tükör a csomaghoz: %s"
 
-#: ../plugins/download.py:180
+#: ../plugins/download.py:185
 msgid "Exiting due to strict setting."
 msgstr "Kilépés a szigorú beállítás miatt."
 
-#: ../plugins/download.py:200
+#: ../plugins/download.py:205
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Hiba a csomagok feloldásakor:"
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:222
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Nincs forrás rpm megadva ehhez: %s"
 
-#: ../plugins/download.py:235 ../plugins/download.py:249
+#: ../plugins/download.py:240 ../plugins/download.py:254
 #, python-format
 msgid "No package %s available."
 msgstr "A(z) %s csomag nem érhető el."
@@ -412,27 +423,27 @@ msgstr "A(z) %s csomag nem érhető el."
 msgid "New leaves:"
 msgstr "Új levelek:"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "yes"
 msgstr "igen"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "y"
 msgstr "i"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "no"
 msgstr "nem"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:71
+#: ../plugins/copr.py:74
 msgid "Interact with Copr repositories."
 msgstr "Együttműködés a Copr tárolókkal."
 
-#: ../plugins/copr.py:72
+#: ../plugins/copr.py:75
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -470,46 +481,56 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:98
+#: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
 msgstr "Az összes telepített Copr tároló (alapértelmezett)"
 
-#: ../plugins/copr.py:100
+#: ../plugins/copr.py:103
 msgid "List enabled Copr repositories"
 msgstr "Engedélyezett Copr tárolók"
 
-#: ../plugins/copr.py:102
+#: ../plugins/copr.py:105
 msgid "List disabled Copr repositories"
 msgstr "Letiltott Copr tárolók"
 
-#: ../plugins/copr.py:104
+#: ../plugins/copr.py:107
 msgid "List available Copr repositories by user NAME"
 msgstr "A NÉV felhasználó számára elérhető Copr tárolók"
 
-#: ../plugins/copr.py:117
-msgid "Warning: we are using non-standard Copr URL '{}'."
+#: ../plugins/copr.py:109
+msgid "Specify an instance of Copr to work with"
 msgstr ""
-"Figyelmeztetés: a következő nem szabványos Copr URL-t használjuk: '{}'."
 
-#: ../plugins/copr.py:156 ../plugins/copr.py:177
+#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
 msgstr "Hiba: "
 
-#: ../plugins/copr.py:157 ../plugins/copr.py:161
+#: ../plugins/copr.py:144
+msgid ""
+"specify Copr hub either with `--hub` or using "
+"`copr_hub/copr_username/copr_projectname` format"
+msgstr ""
+
+#: ../plugins/copr.py:147
+msgid "multiple hubs specified"
+msgstr ""
+
+#: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
 msgstr "pontosan két további paraméter szükséges a copr parancshoz"
 
-#: ../plugins/copr.py:178
+#: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "használja a `copr_felhasználónév/copr_projektnév` formátumot a copr "
 "projektre való hivatkozáshoz"
 
-#: ../plugins/copr.py:180
+#: ../plugins/copr.py:231
 msgid "bad copr project format"
 msgstr "hibás copr projektformátum"
 
-#: ../plugins/copr.py:186
+#: ../plugins/copr.py:245
+#, python-brace-format
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -523,93 +544,92 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 "\n"
-"Do you want to continue?"
+"Do you really want to enable {0}?"
 msgstr ""
-"\n"
-"Egy Copr tároló engedélyezésére készül. Ne feledje, hogy ez a\n"
-"tároló nem része a fő disztribúciónak, és a minősége változó lehet.\n"
-"\n"
-"A Fedora Projektnek nincs beleszólása a tároló tartalmában, azon\n"
-"szabályokon felül, amelyek a Copr GyIK-ban találhatóak:\n"
-"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-"valamint a csomagok minősége és biztonsági szintje sem kötött.\n"
-"\n"
-"Kérjük ne jelentsen be hibákat ezekhez a csomagokhoz a Fedora Bugzillába.\n"
-"Problémák esetén lépjen kapcsolatba a tároló tulajdonosával.\n"
-"\n"
-"Szeretné folytatni?"
 
-#: ../plugins/copr.py:201
+#: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
 msgstr "Tároló sikeresen engedélyezve."
 
-#: ../plugins/copr.py:205
+#: ../plugins/copr.py:265
 msgid "Repository successfully disabled."
 msgstr "Tároló sikeresen letiltva."
 
-#: ../plugins/copr.py:209
+#: ../plugins/copr.py:269
 msgid "Repository successfully removed."
 msgstr "Tároló sikeresen eltávolítva."
 
-#: ../plugins/copr.py:213 ../plugins/copr.py:476
+#: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
 msgstr "Ismeretlen alparancs: {}."
 
-#: ../plugins/copr.py:242
-msgid "Can't parse repositories for username '{}'."
-msgstr "A tárolók nem értelmezhetőek a(z) '{}' felhasználónévhez."
+#: ../plugins/copr.py:322
+msgid ""
+"* These coprs have repo file with an old format that contains no information"
+" about Copr hub - the default one was assumed. Re-enable the project to fix "
+"this."
+msgstr ""
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:334
+msgid "Can't parse repositories for username '{}'."
+msgstr "A tárolók nem értelmezhetőek a(z) „{}” felhasználónévhez."
+
+#: ../plugins/copr.py:337
 msgid "List of {} coprs"
 msgstr "{} copr tárolók listája"
 
-#: ../plugins/copr.py:253
+#: ../plugins/copr.py:345
 msgid "No description given"
 msgstr "Nincs leírás adva"
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:357
 msgid "Can't parse search for '{}'."
-msgstr "Nem értelmezhető a keresés erre: '{}'."
+msgstr "Nem értelmezhető a keresés erre: „{}”."
 
-#: ../plugins/copr.py:268
+#: ../plugins/copr.py:360
 msgid "Matched: {}"
 msgstr "Találat: {}"
 
-#: ../plugins/copr.py:276
+#: ../plugins/copr.py:368
 msgid "No description given."
 msgstr "Nincs leírás adva."
 
-#: ../plugins/copr.py:289
+#: ../plugins/copr.py:381
 msgid "Safe and good answer. Exiting."
 msgstr "Biztonságos és jó válasz. Kilépés."
 
-#: ../plugins/copr.py:296
+#: ../plugins/copr.py:388
 msgid "This command has to be run under the root user."
 msgstr "Ezt a parancsot root felhasználóként kell futtatni."
 
-#: ../plugins/copr.py:356
+#: ../plugins/copr.py:449
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Ez a tároló még nem tartalmaz építéseket, így most nem engedélyezheti."
 
-#: ../plugins/copr.py:359
+#: ../plugins/copr.py:452
 msgid "Such repository does not exist."
 msgstr "Nem létezik ilyen tároló."
 
-#: ../plugins/copr.py:380
+#: ../plugins/copr.py:496
+#, python-brace-format
+msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgstr ""
+
+#: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Nem sikerült a(z) {}/{} copr tároló letiltása"
 
-#: ../plugins/copr.py:393 ../plugins/copr.py:431
+#: ../plugins/copr.py:523 ../plugins/copr.py:561
 msgid "Unknown response from server."
 msgstr "Ismeretlen válasz a kiszolgálótól."
 
-#: ../plugins/copr.py:415
+#: ../plugins/copr.py:545
 msgid "Interact with Playground repository."
 msgstr "Együttműködés a Playground tárolóval."
 
-#: ../plugins/copr.py:420
+#: ../plugins/copr.py:550
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -621,15 +641,15 @@ msgstr ""
 "\n"
 "Szeretné folytatni?"
 
-#: ../plugins/copr.py:466
+#: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
 msgstr "Playground tárolók sikeresen engedélyezve."
 
-#: ../plugins/copr.py:469
+#: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."
 msgstr "Playground tárolók sikeresen letiltva."
 
-#: ../plugins/copr.py:473
+#: ../plugins/copr.py:603
 msgid "Playground repositories successfully updated."
 msgstr "Playground tárolók sikeresen frissítve."
 

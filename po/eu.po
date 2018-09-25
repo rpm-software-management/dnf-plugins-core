@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 12:24+0200\n"
+"POT-Creation-Date: 2018-09-25 07:53+0200\n"
 "PO-Revision-Date: 2017-04-11 06:25+0000\n"
 "Last-Translator: Mikel Olasagasti Uranga <mikel@olasagasti.info>\n"
 "Language-Team: Basque\n"
@@ -42,22 +42,22 @@ msgstr ""
 msgid "operate on source packages"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
 #, python-format
 msgid "[DELETED] %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
 #, python-format
 msgid "failed to delete file %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr ""
@@ -312,35 +312,35 @@ msgstr ""
 msgid "Manage a directory of rpm packages"
 msgstr ""
 
-#: ../plugins/repomanage.py:56
+#: ../plugins/repomanage.py:58
 msgid "Pass either --old or --new, not both!"
 msgstr ""
 
-#: ../plugins/repomanage.py:66
+#: ../plugins/repomanage.py:68
 msgid "No files to process"
 msgstr ""
 
-#: ../plugins/repomanage.py:71
+#: ../plugins/repomanage.py:73
 msgid "Could not open {}"
 msgstr ""
 
-#: ../plugins/repomanage.py:128
+#: ../plugins/repomanage.py:130
 msgid "Print the older packages"
 msgstr ""
 
-#: ../plugins/repomanage.py:130
+#: ../plugins/repomanage.py:132
 msgid "Print the newest packages"
 msgstr ""
 
-#: ../plugins/repomanage.py:132
+#: ../plugins/repomanage.py:134
 msgid "Space separated output, not newline"
 msgstr ""
 
-#: ../plugins/repomanage.py:134
+#: ../plugins/repomanage.py:136
 msgid "Newest N packages to keep - defaults to 1"
 msgstr ""
 
-#: ../plugins/repomanage.py:137
+#: ../plugins/repomanage.py:139
 msgid "Path to directory"
 msgstr ""
 
@@ -370,32 +370,38 @@ msgstr ""
 
 #: ../plugins/download.py:63
 msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+
+#: ../plugins/download.py:66
+msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
 
-#: ../plugins/download.py:68
+#: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
 msgstr ""
 
-#: ../plugins/download.py:105
+#: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr ""
 
-#: ../plugins/download.py:180
+#: ../plugins/download.py:185
 msgid "Exiting due to strict setting."
 msgstr ""
 
-#: ../plugins/download.py:200
+#: ../plugins/download.py:205
 msgid "Error in resolve of packages:"
 msgstr ""
 
-#: ../plugins/download.py:217
+#: ../plugins/download.py:222
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr ""
 
-#: ../plugins/download.py:235 ../plugins/download.py:249
+#: ../plugins/download.py:240 ../plugins/download.py:254
 #, python-format
 msgid "No package %s available."
 msgstr ""
@@ -404,27 +410,27 @@ msgstr ""
 msgid "New leaves:"
 msgstr ""
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "yes"
 msgstr "bai"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:54
 msgid "y"
 msgstr "b"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "no"
 msgstr "ez"
 
-#: ../plugins/copr.py:56
+#: ../plugins/copr.py:55
 msgid "n"
 msgstr "e"
 
-#: ../plugins/copr.py:71
+#: ../plugins/copr.py:74
 msgid "Interact with Copr repositories."
 msgstr ""
 
-#: ../plugins/copr.py:72
+#: ../plugins/copr.py:75
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -445,43 +451,54 @@ msgid ""
 "    "
 msgstr ""
 
-#: ../plugins/copr.py:98
+#: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
 msgstr ""
 
-#: ../plugins/copr.py:100
+#: ../plugins/copr.py:103
 msgid "List enabled Copr repositories"
 msgstr ""
 
-#: ../plugins/copr.py:102
+#: ../plugins/copr.py:105
 msgid "List disabled Copr repositories"
 msgstr ""
 
-#: ../plugins/copr.py:104
+#: ../plugins/copr.py:107
 msgid "List available Copr repositories by user NAME"
 msgstr ""
 
-#: ../plugins/copr.py:117
-msgid "Warning: we are using non-standard Copr URL '{}'."
+#: ../plugins/copr.py:109
+msgid "Specify an instance of Copr to work with"
 msgstr ""
 
-#: ../plugins/copr.py:156 ../plugins/copr.py:177
+#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
 msgstr "Errorea: "
 
-#: ../plugins/copr.py:157 ../plugins/copr.py:161
+#: ../plugins/copr.py:144
+msgid ""
+"specify Copr hub either with `--hub` or using "
+"`copr_hub/copr_username/copr_projectname` format"
+msgstr ""
+
+#: ../plugins/copr.py:147
+msgid "multiple hubs specified"
+msgstr ""
+
+#: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 
-#: ../plugins/copr.py:178
+#: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 
-#: ../plugins/copr.py:180
+#: ../plugins/copr.py:231
 msgid "bad copr project format"
 msgstr ""
 
-#: ../plugins/copr.py:186
+#: ../plugins/copr.py:245
+#, python-brace-format
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -495,79 +512,91 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 "\n"
-"Do you want to continue?"
+"Do you really want to enable {0}?"
 msgstr ""
 
-#: ../plugins/copr.py:201
+#: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:205
+#: ../plugins/copr.py:265
 msgid "Repository successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:209
+#: ../plugins/copr.py:269
 msgid "Repository successfully removed."
 msgstr ""
 
-#: ../plugins/copr.py:213 ../plugins/copr.py:476
+#: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
 msgstr ""
 
-#: ../plugins/copr.py:242
+#: ../plugins/copr.py:322
+msgid ""
+"* These coprs have repo file with an old format that contains no information"
+" about Copr hub - the default one was assumed. Re-enable the project to fix "
+"this."
+msgstr ""
+
+#: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:337
 msgid "List of {} coprs"
 msgstr ""
 
-#: ../plugins/copr.py:253
+#: ../plugins/copr.py:345
 msgid "No description given"
 msgstr ""
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:357
 msgid "Can't parse search for '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:268
+#: ../plugins/copr.py:360
 msgid "Matched: {}"
 msgstr ""
 
-#: ../plugins/copr.py:276
+#: ../plugins/copr.py:368
 msgid "No description given."
 msgstr ""
 
-#: ../plugins/copr.py:289
+#: ../plugins/copr.py:381
 msgid "Safe and good answer. Exiting."
 msgstr ""
 
-#: ../plugins/copr.py:296
+#: ../plugins/copr.py:388
 msgid "This command has to be run under the root user."
 msgstr ""
 
-#: ../plugins/copr.py:356
+#: ../plugins/copr.py:449
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 
-#: ../plugins/copr.py:359
+#: ../plugins/copr.py:452
 msgid "Such repository does not exist."
 msgstr ""
 
-#: ../plugins/copr.py:380
+#: ../plugins/copr.py:496
+#, python-brace-format
+msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgstr ""
+
+#: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"
 msgstr ""
 
-#: ../plugins/copr.py:393 ../plugins/copr.py:431
+#: ../plugins/copr.py:523 ../plugins/copr.py:561
 msgid "Unknown response from server."
 msgstr ""
 
-#: ../plugins/copr.py:415
+#: ../plugins/copr.py:545
 msgid "Interact with Playground repository."
 msgstr ""
 
-#: ../plugins/copr.py:420
+#: ../plugins/copr.py:550
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -575,15 +604,15 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../plugins/copr.py:466
+#: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
 msgstr ""
 
-#: ../plugins/copr.py:469
+#: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."
 msgstr ""
 
-#: ../plugins/copr.py:473
+#: ../plugins/copr.py:603
 msgid "Playground repositories successfully updated."
 msgstr ""
 
