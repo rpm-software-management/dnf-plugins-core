@@ -2,7 +2,18 @@
  Core DNF Plugins
 ##################
 
-Experimental plugins to use with `DNF package manager <https://github.com/rpm-software-management/dnf>`_.
+Core plugins to use with `DNF package manager <https://github.com/rpm-software-management/dnf>`_.
+
+==============
+ Installation
+==============
+
+RPM packages are available in official Fedora repositories::
+
+   dnf install dnf-plugins-core
+
+Nigthly builds can be installed from `copr repository <https://copr.fedorainfracloud.org/coprs/rpmsoftwaremanagement/dnf-nightly/>`_.
+
 
 ======================
  Building from source
