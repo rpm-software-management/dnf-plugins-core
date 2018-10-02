@@ -435,33 +435,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.repograph.*
 %{_mandir}/man8/dnf.plugin.repomanage.*
 %{_mandir}/man8/dnf.plugin.reposync.*
-%if %{with yumcompatibility}
-%{_mandir}/man8/yum-copr.*
-%{_mandir}/man1/debuginfo-install.*
-%{_mandir}/man1/needs-restarting.*
-%{_mandir}/man1/repo-graph.*
-%{_mandir}/man1/repoclosure.*
-%{_mandir}/man1/repomanage.*
-%{_mandir}/man1/reposync.*
-%{_mandir}/man1/yum-builddep.*
-%{_mandir}/man1/yum-config-manager.*
-%{_mandir}/man1/yum-debug-dump.*
-%{_mandir}/man1/yum-debug-restore.*
-%{_mandir}/man1/yumdownloader.*
-%else
-%exclude %{_mandir}/man8/yum-copr.*
-%exclude %{_mandir}/man1/debuginfo-install.*
-%exclude %{_mandir}/man1/needs-restarting.*
-%exclude %{_mandir}/man1/repo-graph.*
-%exclude %{_mandir}/man1/repoclosure.*
-%exclude %{_mandir}/man1/repomanage.*
-%exclude %{_mandir}/man1/reposync.*
-%exclude %{_mandir}/man1/yum-builddep.*
-%exclude %{_mandir}/man1/yum-config-manager.*
-%exclude %{_mandir}/man1/yum-debug-dump.*
-%exclude %{_mandir}/man1/yum-debug-restore.*
-%exclude %{_mandir}/man1/yumdownloader.*
-%endif
 
 %if %{with python2}
 %files -n python2-%{name} -f %{name}.lang
@@ -538,13 +511,39 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
+%{_mandir}/man8/yum-copr.*
+%{_mandir}/man1/debuginfo-install.*
+%{_mandir}/man1/needs-restarting.*
+%{_mandir}/man1/repo-graph.*
+%{_mandir}/man1/repoclosure.*
+%{_mandir}/man1/repomanage.*
+%{_mandir}/man1/reposync.*
+%{_mandir}/man1/yum-builddep.*
+%{_mandir}/man1/yum-config-manager.*
+%{_mandir}/man1/yum-debug-dump.*
+%{_mandir}/man1/yum-debug-restore.*
+%{_mandir}/man1/yumdownloader.*
 %{_mandir}/man1/package-cleanup.*
+%{_mandir}/man1/dnf-utils.*
+# These are only built with dnfutils bcond.
 %{_mandir}/man1/find-repos-of-install.*
 %{_mandir}/man1/repoquery.*
 %{_mandir}/man1/repotrack.*
-%{_mandir}/man1/dnf-utils.*
 %{_mandir}/man1/yum-utils.*
 %else
+# These are built regardless of dnfutils bcond so we need to exclude them.
+%exclude %{_mandir}/man8/yum-copr.*
+%exclude %{_mandir}/man1/debuginfo-install.*
+%exclude %{_mandir}/man1/needs-restarting.*
+%exclude %{_mandir}/man1/repo-graph.*
+%exclude %{_mandir}/man1/repoclosure.*
+%exclude %{_mandir}/man1/repomanage.*
+%exclude %{_mandir}/man1/reposync.*
+%exclude %{_mandir}/man1/yum-builddep.*
+%exclude %{_mandir}/man1/yum-config-manager.*
+%exclude %{_mandir}/man1/yum-debug-dump.*
+%exclude %{_mandir}/man1/yum-debug-restore.*
+%exclude %{_mandir}/man1/yumdownloader.*
 %exclude %{_mandir}/man1/package-cleanup.*
 %exclude %{_mandir}/man1/dnf-utils.*
 %endif
