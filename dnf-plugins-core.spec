@@ -1,4 +1,4 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 3.6.1}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 3.7.0}
 %{?!dnf_not_compatible: %global dnf_not_compatible 4.0}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.7.0
@@ -24,7 +24,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        3.0.4
+Version:        3.1
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -406,6 +406,11 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
+# These commands don't have a dedicated man page, so let's just point them to
+# dnf-utils(1) which contains the descriptions.
+ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/find-repos-of-install.1.gz
+ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/repoquery.1.gz
+ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/repotrack.1.gz
 ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/yum-utils.1.gz
 %endif
 
@@ -534,6 +539,9 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
 %{_mandir}/man1/package-cleanup.*
+%{_mandir}/man1/find-repos-of-install.*
+%{_mandir}/man1/repoquery.*
+%{_mandir}/man1/repotrack.*
 %{_mandir}/man1/dnf-utils.*
 %{_mandir}/man1/yum-utils.*
 %else
