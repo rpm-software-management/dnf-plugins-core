@@ -105,7 +105,10 @@ class RepoClosureCommand(dnf.cli.Command):
             pkglist_q = self.base.sack.query().filter(empty=True)
             errors = []
             for pkg in self.opts.pkglist:
-                pkg_q = to_check.filter(name=pkg)
+                subj = dnf.subject.Subject(pkg)
+                pkg_q = to_check.intersection(
+                    subj.get_best_query(self.base.sack, with_nevra=True,
+                                        with_provides=False, with_filenames=False))
                 if pkg_q:
                     pkglist_q = pkglist_q.union(pkg_q)
                 else:
