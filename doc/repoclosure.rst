@@ -51,7 +51,7 @@ Options
 ``--newest``
     Check only the newest packages in the repos.
 
-``--pkg <pkg``
+``--pkg <pkg-spec>``
     Check closure for this package only.
 
 ``--repo <repoid>``
