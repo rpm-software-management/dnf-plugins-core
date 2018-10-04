@@ -52,5 +52,5 @@ class TestReposyncFunctions(support.TestCase):
         self.assertEqual(pkgpath, '/become/legend/silver/foo-0-1.0-1.noarch.rpm')
 
         pkg.location = "../pool/foo-0-1.0-1.noarch.rpm"
-        with self.assertRaises(dnf.exceptions.Error) as ctx:
+        with self.assertRaises(dnf.exceptions.Error):
             self.cmd.pkg_download_path(pkg)
