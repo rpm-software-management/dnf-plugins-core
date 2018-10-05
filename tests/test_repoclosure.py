@@ -77,8 +77,9 @@ class TestRepoClosureFunctions(support.TestCase):
             self.assertEqual(stdout.getvalue()[:-1], "\n".join(expected_out))
         args = ["--pkg", "bar"]
         with mock.patch("sys.stdout", new_callable=dnf.pycomp.StringIO) as stdout:
-            support.command_run(self.cmd, args)
-            self.assertEmpty(stdout.getvalue())
+            with self.assertRaises(dnf.exceptions.Error) as context:
+                support.command_run(self.cmd, args)
+            self.assertEqual(context.exception.value, "no package matched: bar")
 
     def test_base(self):
         args = []
