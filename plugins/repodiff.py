@@ -21,10 +21,12 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from dnfpluginscore import _
 
 import dnf.cli
 from dnf.cli.option_parser import OptionParser
+import hawkey
+
+from dnfpluginscore import _
 
 
 class RepoDiff(dnf.Plugin):
@@ -228,8 +230,10 @@ class RepoDiffCommand(dnf.cli.Command):
 
     def run(self):
         # prepare old and new packagesets based by given arguments
-        q_new = self.base.sack.query().filter(reponame=self.opts.new)
-        q_old = self.base.sack.query().filter(reponame=self.opts.old)
+        q_new = self.base.sack.query(hawkey.IGNORE_EXCLUDES).filter(
+            reponame=self.opts.new)
+        q_old = self.base.sack.query(hawkey.IGNORE_EXCLUDES).filter(
+            reponame=self.opts.old)
         if self.opts.arches and '*' not in self.opts.arches:
             q_new.filterm(arch=self.opts.arches)
             q_old.filterm(arch=self.opts.arches)
