@@ -390,5 +390,17 @@
     [
         1478208,
         "[rfe] Support for multiple copr instances"
+    ],
+    [
+        1550063,
+        "dnf reposync doesn't download repodata"
+    ],
+    [
+        1505035,
+        "dnf autocompletion wrong (seems to lag behind by one dnf transaction)"
+    ],
+    [
+        1571622,
+        "dnf repoclosure with --pkg option set to non-existing package doesn't show any warning"
     ]
 ]

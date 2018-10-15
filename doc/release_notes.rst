@@ -22,6 +22,23 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.0 Release Notes
+===================
+
+* Enhance documentation
+* [repoclosure] check every --pkg attribute separately
+* [repoclosure] Now accepts nevra as a argument of --pkg option
+* [reposync] enhancements (RhBug:1550063,1582152,1550064,1405789,1598068)
+* package-cleanup: remove --oldkernels
+* Download only packages with unique NEVRAs (RhBug:1612874)
+
+Bugs fixed in 4.0.0:
+
+* :rhbug:`1550063`
+* :rhbug:`1505035`
+* :rhbug:`1571622`
+
+===================
 3.0.4 Release Notes
 ===================
 

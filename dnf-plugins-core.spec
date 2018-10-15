@@ -18,7 +18,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        3.1
+Version:        4.0.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -650,6 +650,15 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Oct 15 2018 Jaroslav Mracek <jmracek@redhat.com> - 4.0.0-1
+- Update to 4.0.0
+- Enhance documentation
+- [repoclosure] check every --pkg attribute separately
+- [repoclosure] Now accepts nevra as a argument of --pkg option
+- [reposync] enhancements (RhBug:1550063,1582152,1550064,1405789,1598068)
+- package-cleanup: remove --oldkernels
+- Download only packages with unique NEVRAs (RhBug:1612874)
+
 * Tue Sep 25 2018 Jaroslav Mracek <jmracek@redhat.com> - 3.0.4-1
 - [copr] Huge upgrade of copr plugin
 - [spec] Disable building python2 modules on Fedora 30+
