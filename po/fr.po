@@ -2,14 +2,15 @@
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2016. #zanata
 # José Fournier <jaaf64@zoraldia.com>, 2017. #zanata
 # Jérôme Fenal <jfenal@gmail.com>, 2017. #zanata
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018. #zanata
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 07:53+0200\n"
-"PO-Revision-Date: 2018-09-18 02:17+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"POT-Creation-Date: 2018-10-15 09:48+0200\n"
+"PO-Revision-Date: 2018-10-06 08:58+0000\n"
+"Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,50 +19,50 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:42
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
 msgid "download all packages from remote repo"
 msgstr "télécharger tous les paquets depuis le dépôt distant"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
 msgid "download only packages for this ARCH"
 msgstr "télécharger seulement les paquets s'appliquant à cette ARCH"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
 msgid "delete local packages no longer present in repository"
 msgstr "supprimer les packages locaux qui ne sont plus présents dans le dépôt"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
 msgid "also download comps.xml"
 msgstr "télécharger comps.xml également"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
 msgid "download only newest packages per-repo"
 msgstr "ne télécharger que les nouveaux paquets per-rep"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
 msgstr "là où stocker les dépôts téléchargés "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
 msgstr "opère sur les paquets source"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
 #, python-format
 msgid "failed to delete file %s"
 msgstr "n'a pas pu supprimer le fichier %s"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
+#: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "N'a pas pu créer le répertoire de dépôt : %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "comps.xml pour le dépôt %s sauvegardé"
@@ -76,8 +77,17 @@ msgid "No match for argument: %s"
 msgstr "Aucune correspondance pour l’argument : %s"
 
 #: ../plugins/debuginfo-install.py:92
+msgid "No debuginfo packages available to install"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
 msgstr "Impossible de trouver une correspondance"
+
+#: ../plugins/debuginfo-install.py:132
+#, python-format
+msgid "Could not find debuginfo for package: %s"
+msgstr ""
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -195,7 +205,7 @@ msgstr "Toutes les dépendances ne sont pas satisfaites"
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Échec à l'ouverture de « %s », %s n'est pas un fichier  spec valide"
 
-#: ../plugins/builddep.py:213
+#: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
 #, python-format
 msgid "no package matched: %s"
 msgstr "aucun paquet ne correspond à : %s"
@@ -304,23 +314,31 @@ msgstr "Affiche une liste de dépendances non résolues pour les dépôts"
 msgid "Repoclosure ended with unresolved dependencies."
 msgstr "Repoclosure a terminé avec des dépendances non-résolues"
 
-#: ../plugins/repoclosure.py:139
+#: ../plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
 "vérifie les paquets pour les architectures spécifiées, peut être utilisé "
 "plusieurs fois"
 
-#: ../plugins/repoclosure.py:142
+#: ../plugins/repoclosure.py:156
 msgid "Specify repositories to check"
 msgstr "Spécifie les dépôts à vérifier"
 
-#: ../plugins/repoclosure.py:144
+#: ../plugins/repoclosure.py:158
 msgid "Check only the newest packages in the repos"
 msgstr "Vérifier uniquement les paquets les plus récents dans les dépôts"
 
-#: ../plugins/repoclosure.py:147
+#: ../plugins/repoclosure.py:161
 msgid "Check closure for this package only"
 msgstr "Vérifie la clôture pour ce paquet seulement"
+
+#: ../plugins/reposync.py:68
+msgid "download all the metadata."
+msgstr ""
+
+#: ../plugins/reposync.py:121
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr ""
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
@@ -387,6 +405,8 @@ msgid ""
 "when running with --resolve, download all dependencies (do not exclude "
 "already installed ones)"
 msgstr ""
+"quand utilisé avec --resolve, téléchargez toutes les dépendances (sans "
+"exclure celles déjà installées)"
 
 #: ../plugins/download.py:66
 msgid ""
@@ -404,20 +424,20 @@ msgstr "si --url est renseigné, limite aux protocoles spécifiés"
 msgid "Failed to get mirror for package: %s"
 msgstr "Échec de l'obtention du miroir pour le paquet : %s"
 
-#: ../plugins/download.py:185
+#: ../plugins/download.py:193
 msgid "Exiting due to strict setting."
 msgstr "Fin du programme suite au paramétrage stricte."
 
-#: ../plugins/download.py:205
+#: ../plugins/download.py:213
 msgid "Error in resolve of packages:"
 msgstr "Erreur de résolution des paquets :"
 
-#: ../plugins/download.py:222
+#: ../plugins/download.py:230
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Aucune source définie pour %s"
 
-#: ../plugins/download.py:240 ../plugins/download.py:254
+#: ../plugins/download.py:248 ../plugins/download.py:262
 #, python-format
 msgid "No package %s available."
 msgstr "Aucun paquet %s n'est disponible"
@@ -502,7 +522,7 @@ msgstr "Lister les dépôts Copr disponibles par NOM d’utilisateur"
 
 #: ../plugins/copr.py:109
 msgid "Specify an instance of Copr to work with"
-msgstr ""
+msgstr "Précisez une instance Copr avec laquelle travailler"
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
@@ -513,10 +533,12 @@ msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"précisez un hub Copr soit via `--hub` ou en utilisant le format "
+"`hub_copr/utilisateur_copr/projet_copr`"
 
 #: ../plugins/copr.py:147
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "de multiples hubs ont été renseignés"
 
 #: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
@@ -549,6 +571,18 @@ msgid ""
 "\n"
 "Do you really want to enable {0}?"
 msgstr ""
+"\n"
+"Vous êtes sur le point d’activer un dépôt Copr. Veuillez remarquer que ce dépôt\n"
+"n’est pas partie intégrante de la distribution, et que la qualité pourrait varier.\n"
+"\n"
+"Le projet Fedora n’exerce aucun pouvoir sur le contenu de ce dépôt au delà\n"
+"des règles précisées dans la FAQ Copr <https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>\n"
+"et les paquets ne sont tenus à aucun niveau de qualité ou de sécurité.\n"
+"\n"
+"Veuillez ne pas signaler de bugs à propos de ces paquets dans le Bugzilla de Fedora.\n"
+"En cas de problèmes, contactez le propriétaire de ce dépôt.\n"
+"\n"
+"Voulez-vous vraiment activer {0} ?"
 
 #: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
@@ -572,6 +606,9 @@ msgid ""
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* Ces Copr ont des fichiers de dépôts avec un ancien format qui ne contient "
+"aucune information à propos de Copr hub - celui par défaut a été utilisé. "
+"Réactivez le projet pour résoudre le problème."
 
 #: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
@@ -620,7 +657,7 @@ msgstr "Ce dépôt n’existe pas."
 #: ../plugins/copr.py:496
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
+msgstr "Échec de la suppression du dépôt Copr {0}/{1}/{2}"
 
 #: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"

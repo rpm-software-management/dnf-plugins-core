@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 07:53+0200\n"
-"PO-Revision-Date: 2018-08-30 04:31+0000\n"
+"POT-Creation-Date: 2018-10-15 09:48+0200\n"
+"PO-Revision-Date: 2018-09-30 04:52+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,50 +17,50 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:42
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
 msgid "download all packages from remote repo"
 msgstr "отримати усі пакунки із віддаленого сховища"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
 msgid "download only packages for this ARCH"
 msgstr "отримати лише пакунки для вказаної архітектури"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
 msgid "delete local packages no longer present in repository"
 msgstr "вилучити локальні пакунки, яких більше немає у сховищі пакунків"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
 msgid "also download comps.xml"
 msgstr "також отримати comps.xml"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
 msgid "download only newest packages per-repo"
 msgstr "отримувати лише найновіші пакунки у кожному зі сховищ"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
 msgstr "місце, де слід зберігати отримані сховища "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
 msgstr "працювати із пакунками початкових кодів"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[ВИЛУЧЕНО] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
 #, python-format
 msgid "failed to delete file %s"
 msgstr "не вдалося вилучити файл %s"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
+#: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "Не вдалося створити каталог сховища: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "Збережено comps.xml для сховища %s"
@@ -75,8 +75,17 @@ msgid "No match for argument: %s"
 msgstr "Немає відповідника для аргумента: %s"
 
 #: ../plugins/debuginfo-install.py:92
+msgid "No debuginfo packages available to install"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
 msgstr "Не вдалося знайти відповідник"
+
+#: ../plugins/debuginfo-install.py:132
+#, python-format
+msgid "Could not find debuginfo for package: %s"
+msgstr ""
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -194,7 +203,7 @@ msgstr "Задоволено не усі залежності"
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Не вдалося відкрити «%s» — файл не є коректним файлом spec: %s"
 
-#: ../plugins/builddep.py:213
+#: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
 #, python-format
 msgid "no package matched: %s"
 msgstr "немає відповідного пакунка: %s"
@@ -303,23 +312,31 @@ msgstr "Показати список нерозв’язаних залежно
 msgid "Repoclosure ended with unresolved dependencies."
 msgstr "Виконання repoclosure завершилося із нерозв’язаними залежностями."
 
-#: ../plugins/repoclosure.py:139
+#: ../plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
 "перевірити пакунки вказаної архітектури, можна використовувати декілька "
 "разів"
 
-#: ../plugins/repoclosure.py:142
+#: ../plugins/repoclosure.py:156
 msgid "Specify repositories to check"
 msgstr "Вказати сховища для перевірки"
 
-#: ../plugins/repoclosure.py:144
+#: ../plugins/repoclosure.py:158
 msgid "Check only the newest packages in the repos"
 msgstr "Перевірити лише найновіші пакунки у сховищах"
 
-#: ../plugins/repoclosure.py:147
+#: ../plugins/repoclosure.py:161
 msgid "Check closure for this package only"
 msgstr "Перевірити замкненість лише для цього пакунка"
+
+#: ../plugins/reposync.py:68
+msgid "download all the metadata."
+msgstr ""
+
+#: ../plugins/reposync.py:121
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr ""
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
@@ -388,6 +405,8 @@ msgid ""
 "when running with --resolve, download all dependencies (do not exclude "
 "already installed ones)"
 msgstr ""
+"при запуску з --resolve отримувати усі залежності (не виключати вже "
+"встановлені)"
 
 #: ../plugins/download.py:66
 msgid ""
@@ -405,20 +424,20 @@ msgstr "якщо запущено з --url, обмежитися вказани�
 msgid "Failed to get mirror for package: %s"
 msgstr "Не вдалося отримати дзеркало для пакунка: %s"
 
-#: ../plugins/download.py:185
+#: ../plugins/download.py:193
 msgid "Exiting due to strict setting."
 msgstr "Завершуємо роботу через строгі обмеження."
 
-#: ../plugins/download.py:205
+#: ../plugins/download.py:213
 msgid "Error in resolve of packages:"
 msgstr "Помилка під час спроби розв'язати залежності таких пакунків:"
 
-#: ../plugins/download.py:222
+#: ../plugins/download.py:230
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Не визначено rpm із початковим кодом для %s"
 
-#: ../plugins/download.py:240 ../plugins/download.py:254
+#: ../plugins/download.py:248 ../plugins/download.py:262
 #, python-format
 msgid "No package %s available."
 msgstr "Немає доступного пакунка %s."
@@ -504,7 +523,7 @@ msgstr ""
 
 #: ../plugins/copr.py:109
 msgid "Specify an instance of Copr to work with"
-msgstr ""
+msgstr "Вказати екземпляр Copr для роботи"
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
@@ -515,10 +534,12 @@ msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"вкажіть концентратор Copr за допомогою «--hub» або за допомогою формату "
+"«концентратор_copr/користувач_copr/назва_проекту_copr»"
 
 #: ../plugins/copr.py:147
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "вказано декілька концентраторів"
 
 #: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
@@ -551,6 +572,21 @@ msgid ""
 "\n"
 "Do you really want to enable {0}?"
 msgstr ""
+"\n"
+"Ви наказали системі увімкнути сховище Copr. Будь ласка, зауважте,\n"
+"що це сховище не є частиною основного дистрибутива, тому може\n"
+"містити пакунки неналежної якості.\n"
+"\n"
+"Проект Fedora ніяким чином не впливає на вміст цього\n"
+"сховища, окрім правил, які визначено у списку питань щодо Copr тут:\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"а пакунки не проходять жодних рівнів забезпечення якості чи захищеності.\n"
+"\n"
+"Будь ласка, не повідомляйте про виявлені у цих пакунках вади до\n"
+"системи стеження за вадами Fedora. Якщо виникнуть якісь проблеми,\n"
+"зв’яжіться із власником цього сховища пакунків.\n"
+"\n"
+"Ви справді хочете увімкнути {0}?"
 
 #: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
@@ -574,6 +610,9 @@ msgid ""
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* Ці copr-и містять файл сховища у застарілому форматі, який не містить "
+"даних щодо концентратора Copr — припускаємо типовий. Знову увімкніть проект "
+"для виправлення."
 
 #: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
@@ -621,7 +660,7 @@ msgstr "Такого сховища не існує."
 #: ../plugins/copr.py:496
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
+msgstr "Не вдалося вилучити сховище copr {0}/{1}/{2}"
 
 #: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"

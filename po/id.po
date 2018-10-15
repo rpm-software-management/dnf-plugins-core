@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 07:53+0200\n"
+"POT-Creation-Date: 2018-10-15 09:48+0200\n"
 "PO-Revision-Date: 2018-02-23 07:42+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian\n"
@@ -14,50 +14,50 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:42
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
 msgid "download all packages from remote repo"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
 msgid "download only packages for this ARCH"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
 msgid "delete local packages no longer present in repository"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
 msgid "also download comps.xml"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
 msgid "download only newest packages per-repo"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
 msgstr ""
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:99
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
 #, python-format
 msgid "[DELETED] %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:101
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
 #, python-format
 msgid "failed to delete file %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:111
+#: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:115
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr ""
@@ -72,7 +72,16 @@ msgid "No match for argument: %s"
 msgstr ""
 
 #: ../plugins/debuginfo-install.py:92
+msgid "No debuginfo packages available to install"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:132
+#, python-format
+msgid "Could not find debuginfo for package: %s"
 msgstr ""
 
 #: ../plugins/migrate.py:45
@@ -187,7 +196,7 @@ msgstr "Tidak semua kebergantungan terpenuhi"
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Gagal membuka: '%s', bukan suatu berkas spec yang valid: %s"
 
-#: ../plugins/builddep.py:213
+#: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
 #, python-format
 msgid "no package matched: %s"
 msgstr "tidak ada paket yang cocok: %s"
@@ -293,20 +302,28 @@ msgstr ""
 msgid "Repoclosure ended with unresolved dependencies."
 msgstr ""
 
-#: ../plugins/repoclosure.py:139
+#: ../plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
 
-#: ../plugins/repoclosure.py:142
+#: ../plugins/repoclosure.py:156
 msgid "Specify repositories to check"
 msgstr ""
 
-#: ../plugins/repoclosure.py:144
+#: ../plugins/repoclosure.py:158
 msgid "Check only the newest packages in the repos"
 msgstr ""
 
-#: ../plugins/repoclosure.py:147
+#: ../plugins/repoclosure.py:161
 msgid "Check closure for this package only"
+msgstr ""
+
+#: ../plugins/reposync.py:68
+msgid "download all the metadata."
+msgstr ""
+
+#: ../plugins/reposync.py:121
+msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 
 #: ../plugins/repomanage.py:44
@@ -389,20 +406,20 @@ msgstr "ketika menjalankan dengan --url, batasi ke protokol tertentu"
 msgid "Failed to get mirror for package: %s"
 msgstr "Gagal mendapat cermin untuk paket: %s"
 
-#: ../plugins/download.py:185
+#: ../plugins/download.py:193
 msgid "Exiting due to strict setting."
 msgstr "Keluar karena pengaturan ketat."
 
-#: ../plugins/download.py:205
+#: ../plugins/download.py:213
 msgid "Error in resolve of packages:"
 msgstr ""
 
-#: ../plugins/download.py:222
+#: ../plugins/download.py:230
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Tidak ada rpm sumber yang didefinisikan bagi %s"
 
-#: ../plugins/download.py:240 ../plugins/download.py:254
+#: ../plugins/download.py:248 ../plugins/download.py:262
 #, python-format
 msgid "No package %s available."
 msgstr "Tidak ada paket %s yang tersedia."
