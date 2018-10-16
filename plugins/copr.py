@@ -35,8 +35,10 @@ import re
 # If that fails, attempt to import the deprecated implementation
 # from the platform module.
 try:
-    from distro import linux_distribution
+    from distro import linux_distribution, os_release_attr
 except ImportError:
+    def os_release_attr(_):
+        return ""
     try:
         from platform import linux_distribution
     except ImportError:
@@ -398,6 +400,10 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             # x86_64 because repo-file is same for all arch
             # ($basearch is used)
             if "Rawhide" in dist:
+                chroot = ("fedora-rawhide-x86_64")
+            # workaround for enabling repos in Rawhide when VERSION in os-release
+            # contains a name other than Rawhide
+            elif "rawhide" in os_release_attr("redhat_support_product_version"):
                 chroot = ("fedora-rawhide-x86_64")
             else:
                 chroot = ("fedora-{}-x86_64".format(dist[1]))
