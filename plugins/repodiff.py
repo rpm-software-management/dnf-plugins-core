@@ -102,7 +102,8 @@ class RepoDiffCommand(dnf.cli.Command):
         '''compares packagesets old and new, returns dictionary with packages:
         added: only in new set
         removed: only in old set
-        modified: in both old and new, but with different evr
+        upgraded: in both old and new, new has bigger evr
+        downgraded: in both old and new, new has lower evr
         obsoletes: dictionary of which old package is obsoleted by which new
         '''
         old_d = dict([(self._pkgkey(p), p) for p in old])
@@ -116,14 +117,25 @@ class RepoDiffCommand(dnf.cli.Command):
             for obsoleted in old.filter(provides=obsoleter.obsoletes):
                 obsoletes[self._pkgkey(obsoleted)] = obsoleter
 
-        return dict(
+        evr_cmp = self.base.sack.evr_cmp
+        repodiff = dict(
             added=[new_d[k] for k in new_keys - old_keys],
             removed=[old_d[k] for k in old_keys - new_keys],
-            modified=[
-                (old_d[k], new_d[k])
-                for k in old_keys.intersection(new_keys)
-                if old_d[k].evr != new_d[k].evr],
-            obsoletes=obsoletes)
+            obsoletes=obsoletes,
+            upgraded=[],
+            downgraded=[])
+        for k in old_keys.intersection(new_keys):
+            pkg_old = old_d[k]
+            pkg_new = new_d[k]
+            if pkg_old.evr == pkg_new.evr:
+                continue
+            if evr_cmp(pkg_old.evr, pkg_new.evr) > 0:
+                repodiff['downgraded'].append((pkg_old, pkg_new))
+            else:
+                repodiff['upgraded'].append((pkg_old, pkg_new))
+
+        return repodiff
+
 
     def _report(self, repodiff):
         def pkgstr(pkg):
@@ -142,10 +154,10 @@ class RepoDiffCommand(dnf.cli.Command):
         def report_modified(pkg_old, pkg_new):
             msgs = []
             if self.opts.simple:
-                msgs.append("%s: %s -> %s" % (pkg_new.name, pkgstr(pkg_old), pkgstr(pkg_new)))
+                msgs.append("%s -> %s" % (pkgstr(pkg_old), pkgstr(pkg_new)))
             else:
                 msgs.append('')
-                msgs.append(pkgstr(pkg_new))
+                msgs.append("%s -> %s" % (pkgstr(pkg_old), pkgstr(pkg_new)))
                 msgs.append('-' * len(msgs[-1]))
                 if pkg_old.changelogs:
                     old_chlog = pkg_old.changelogs[0]
@@ -159,7 +171,7 @@ class RepoDiffCommand(dnf.cli.Command):
                               chlog['author'] == old_chlog['author'] and
                               chlog['text'] == old_chlog['text']):
                             break
-                    msgs.append('* %s %s\n%s\n' % (
+                    msgs.append('* %s %s\n%s' % (
                         chlog['timestamp'].strftime("%a %b %d %Y"),
                         dnf.i18n.ucd(chlog['author']),
                         dnf.i18n.ucd(chlog['text'])))
@@ -178,41 +190,35 @@ class RepoDiffCommand(dnf.cli.Command):
             if obsoletedby:
                 print(_("Obsoleted by   : {}").format(pkgstr(obsoletedby)))
             sizes['removed'] += pkg.size
-        downgraded = []
-        upgraded = []
-        if repodiff['modified']:
-            evr_cmp = self.base.sack.evr_cmp
-            for (pkg_old, pkg_new) in sorted(repodiff['modified']):
-                if evr_cmp(pkg_old.evr, pkg_new.evr) > 0:
-                    sizes['downgraded'] += (pkg_new.size - pkg_old.size)
-                    if self.opts.downgrade:
-                        downgraded.append((pkg_old, pkg_new))
-                        continue
-                else:
+
+        if self.opts.downgrade:
+            if repodiff['upgraded']:
+                print(_("\nUpgraded packages"))
+                for (pkg_old, pkg_new) in sorted(repodiff['upgraded']):
                     sizes['upgraded'] += (pkg_new.size - pkg_old.size)
-                upgraded.append((pkg_old, pkg_new))
-            if upgraded:
-                if self.opts.downgrade:
-                    print(_("\nUpgraded packages"))
-                else:
-                    print(_("\nModified packages"))
-                for (pkg_old, pkg_new) in upgraded:
                     report_modified(pkg_old, pkg_new)
-        if self.opts.downgrade and downgraded:
-            print()
-            print(_("Downgraded packages"))
-            for (pkg_old, pkg_new) in downgraded:
-                report_modified(pkg_old, pkg_new)
+            if repodiff['downgraded']:
+                print(_("\nDowngraded packages"))
+                for (pkg_old, pkg_new) in sorted(repodiff['downgraded']):
+                    sizes['downgraded'] += (pkg_new.size - pkg_old.size)
+                    report_modified(pkg_old, pkg_new)
+        else:
+            modified = repodiff['upgraded'] + repodiff['downgraded']
+            if modified:
+                print(_("\nModified packages"))
+                for (pkg_old, pkg_new) in sorted(modified):
+                    sizes['upgraded'] += (pkg_new.size - pkg_old.size)
+                    report_modified(pkg_old, pkg_new)
 
         print(_("\nSummary"))
         print(_("Added packages: {}").format(len(repodiff['added'])))
         print(_("Removed packages: {}").format(len(repodiff['removed'])))
-        modified_count = len(repodiff['modified'])
-        if not self.opts.downgrade:
-            print(_("Modified packages: {}").format(modified_count))
+        if self.opts.downgrade:
+            print(_("Upgraded packages: {}").format(len(repodiff['upgraded'])))
+            print(_("Downgraded packages: {}").format(len(repodiff['downgraded'])))
         else:
-            print(_("Upgraded packages: {}").format(modified_count - len(downgraded)))
-            print(_("Downgraded packages: {}").format(len(downgraded)))
+            print(_("Modified packages: {}").format(
+                len(repodiff['upgraded']) + len(repodiff['downgraded'])))
         if self.opts.size:
             print(_("Size of added packages: {}").format(sizestr(sizes['added'])))
             print(_("Size of removed packages: {}").format(sizestr(sizes['removed'])))
