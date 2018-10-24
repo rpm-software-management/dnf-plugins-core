@@ -50,10 +50,10 @@ Options
 ``--dump``
     Print dump of current configuration values to stdout.
 
-``--set-disabled``
+``--set-disabled``, ``--disable``
     Disable the specified repos (automatically saves).
 
-``--set-enabled``
+``--set-enabled``, ``--enable``
     Enable the specified repos (automatically saves).
 
 ``--save``
