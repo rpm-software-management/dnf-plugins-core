@@ -136,7 +136,6 @@ class RepoDiffCommand(dnf.cli.Command):
 
         return repodiff
 
-
     def _report(self, repodiff):
         def pkgstr(pkg):
             if self.opts.compare_arch:
