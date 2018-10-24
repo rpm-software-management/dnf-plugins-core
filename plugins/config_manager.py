@@ -43,12 +43,6 @@ class ConfigManagerCommand(dnf.cli.Command):
             '--save', default=False, action='store_true',
             help=_('save the current options (useful with --setopt)'))
         parser.add_argument(
-            '--set-enabled', default=False, action='store_true',
-            help=_('enable the specified repos (automatically saves)'))
-        parser.add_argument(
-            '--set-disabled', default=False, action='store_true',
-            help=_('disable the specified repos (automatically saves)'))
-        parser.add_argument(
             '--add-repo', default=[], action='append', metavar='URL',
             help=_('add (and enable) the repo from the specified file or url'))
         parser.add_argument(
@@ -71,10 +65,6 @@ class ConfigManagerCommand(dnf.cli.Command):
     def run(self):
         """Execute the util action here."""
 
-        if self.opts.set_enabled and self.opts.set_disabled:
-            logger.error(
-                _("Error: Trying to enable and disable repos at the same time."))
-            self.opts.set_enabled = self.opts.set_disabled = False
         if self.opts.set_enabled and not self.opts.crepo:
             logger.error(_("Error: Trying to enable already enabled repos."))
             self.opts.set_enabled = False
