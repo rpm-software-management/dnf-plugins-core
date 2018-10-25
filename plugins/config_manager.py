@@ -80,7 +80,7 @@ class ConfigManagerCommand(dnf.cli.Command):
         sbc = self.base.conf
         modify = {}
         if hasattr(self.opts, 'main_setopts') and self.opts.main_setopts:
-            modify = dict(self.opts.main_setopts._get_kwargs())
+            modify = self.opts.main_setopts
         if self.opts.dump_variables:
             for name, val in self.base.conf.substitutions.items():
                 print("%s = %s" % (name, val))
@@ -115,7 +115,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                 repo_modify['enabled'] = 0
             if (hasattr(self.opts, 'repo_setopts')
                     and repo.id in self.opts.repo_setopts):
-                repo_modify.update(self.opts.repo_setopts[repo.id]._get_kwargs())
+                repo_modify.update(self.opts.repo_setopts[repo.id])
             if self.opts.save and repo_modify:
                 self.base.conf.write_raw_configfile(repo.repofile, repo.id, sbc.substitutions, repo_modify)
             if self.opts.dump:
