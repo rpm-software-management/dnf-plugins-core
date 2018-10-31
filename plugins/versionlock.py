@@ -69,39 +69,37 @@ class VersionLock(dnf.Plugin):
             raise dnf.exceptions.Error(NO_LOCKLIST)
 
         excludes_query = self.base.sack.query().filter(empty=True)
-        excluded_count = 0
         locked_query = self.base.sack.query().filter(empty=True)
         locked_names = set()
-        locked_count = 0
+        # counter of applied rules [locked_count, excluded_count]
+        count = [0, 0]
         for pat in _read_locklist():
-            excl = False
+            excl = 0
             if pat and pat[0] == '!':
                 pat = pat[1:]
-                excl = True
+                excl = 1
 
-            subj = dnf.subject.Subject(pat)
-            possible_nevras = list(subj.get_nevra_possibilities(forms=[hawkey.FORM_NEVRA]))
-            if not possible_nevras:
+            possible_nevras = dnf.subject.Subject(pat).get_nevra_possibilities()
+            if possible_nevras:
+                count[excl] += 1
+            else:
                 logger.error("%s %s", NEVRA_ERROR, pat)
                 continue
-            nevra = possible_nevras[0]
-            pat_query = nevra.to_query(self.base.sack)
+            for nevra in possible_nevras:
+                pat_query = nevra.to_query(self.base.sack)
+                if excl:
+                    excludes_query = excludes_query.union(pat_query)
+                else:
+                    locked_names.add(nevra.name)
+                    locked_query = locked_query.union(pat_query)
 
-            if excl:
-                excluded_count += 1
-                excludes_query = excludes_query.union(pat_query)
-            else:
-                locked_count += 1
-                locked_names.add(nevra.name)
-                locked_query = locked_query.union(pat_query)
-
-        if excluded_count:
-            logger.debug(APPLY_EXCLUDE.format(locklist_fn, excluded_count))
-        if locked_count:
-            logger.debug(APPLY_LOCK.format(locklist_fn, locked_count))
+        if count[1]:
+            logger.debug(APPLY_EXCLUDE.format(locklist_fn, count[1]))
+        if count[0]:
+            logger.debug(APPLY_LOCK.format(locklist_fn, count[0]))
 
         if locked_names:
-            all_versions = self.base.sack.query().filter(name=list(locked_names))
+            all_versions = self.base.sack.query().filter(name__glob=list(locked_names))
             other_versions = all_versions.difference(locked_query)
             excludes_query = excludes_query.union(other_versions)
 
