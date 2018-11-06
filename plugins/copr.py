@@ -486,9 +486,13 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
                                                  copr_projectname)
             if repo_id in self.base.repos and "_copr" in self.base.repos[repo_id].repofile:
                 file_name = self.base.repos[repo_id].repofile.split('/')[-1]
-                copr_hostname = file_name.rsplit(':', 2)[0].split(':', 1)[1]
-                if copr_hostname != self.copr_hostname:
-                    return None
+                try:
+                    copr_hostname = file_name.rsplit(':', 2)[0].split(':', 1)[1]
+                    if copr_hostname != self.copr_hostname:
+                        return None
+                except IndexError:
+                    # old filename format without hostname
+                    pass
             else:
                 return None
 
