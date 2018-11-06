@@ -243,7 +243,8 @@ class DownloadCommand(dnf.cli.Command):
         q = q.available()
         q = q.latest()
         if self.opts.arches:
-            q = q.filter(arch=self.opts.arches)
+            q.filterm(arch=self.opts.arches)
+        q.filterm(reponame__neq=hawkey.CMDLINE_REPO_NAME)
         if len(q.run()) == 0:
             msg = _("No package %s available.") % (pkg_spec)
             raise dnf.exceptions.PackageNotFoundError(msg)
@@ -256,8 +257,9 @@ class DownloadCommand(dnf.cli.Command):
         q = self.base.sack.query()
         q = q.available()
         q = q.latest()
-        q = q.filter(name=nevra.name, version=nevra.version,
-                     release=nevra.release, arch=nevra.arch)
+        q.filterm(reponame__neq=hawkey.CMDLINE_REPO_NAME)
+        q.filterm(name=nevra.name, version=nevra.version,
+                  release=nevra.release, arch=nevra.arch)
         if len(q.run()) == 0:
             msg = _("No package %s available.") % (pkg_spec)
             raise dnf.exceptions.PackageNotFoundError(msg)
