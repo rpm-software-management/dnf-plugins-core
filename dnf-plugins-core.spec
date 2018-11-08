@@ -165,6 +165,7 @@ As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
 repoquery, reposync, repotrack, repodiff, builddep, config-manager, debug
 and download that use new implementations using DNF.
+%endif
 
 %if 0%{?rhel} == 0 && %{with python2}
 %package -n python2-dnf-plugin-leaves
