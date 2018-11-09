@@ -93,7 +93,7 @@ class RepodiffCommandTest(unittest.TestCase):
 
     def test_obsoletes(self):
         self.assertEqual(
-            [(k, v.fullname) for k, v in self.repodiff['obsoletes'].iteritems()],
+            [(k, v.fullname) for k, v in self.repodiff['obsoletes'].items()],
             [('tobeobsoleted', 'obsoleter-1.0-1.noarch')])
 
     def test_upgraded(self):
