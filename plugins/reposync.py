@@ -165,9 +165,12 @@ class RepoSyncCommand(dnf.cli.Command):
     def download_packages(self, repo):
         base = self.base
         pkglist = self.get_pkglist(repo)
-        progress = base.output.progress
+
         remote_pkgs, local_repository_pkgs = base._select_remote_pkgs(pkglist)
         if remote_pkgs:
+            progress = base.output.progress
+            if progress is None:
+                progress = dnf.callback.NullDownloadProgress()
             drpm = dnf.drpm.DeltaInfo(base.sack.query().installed(), progress, 0)
             payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
                         for pkg in remote_pkgs]
