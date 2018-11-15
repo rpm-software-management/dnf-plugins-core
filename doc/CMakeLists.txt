@@ -42,6 +42,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
     ${CMAKE_CURRENT_BINARY_DIR}/repo-graph.1
     ${CMAKE_CURRENT_BINARY_DIR}/repoclosure.1
     ${CMAKE_CURRENT_BINARY_DIR}/repomanage.1
+    ${CMAKE_CURRENT_BINARY_DIR}/repodiff.1
     ${CMAKE_CURRENT_BINARY_DIR}/reposync.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-builddep.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-config-manager.1

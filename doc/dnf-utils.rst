@@ -25,6 +25,9 @@ Shell Commands
 :manpage:`repoclosure(1)`
     Display a list of unresolved dependencies for repositories.
     Maps to ``dnf repoclosure``.
+:manpage:`repodiff(1)`
+    Display a list of differences between two or more repositories.
+    Maps to ``dnf repodiff``.
 :manpage:`repomanage(1)`
     Manage a directory of rpm packages.
     Maps to ``dnf repomanage``.
