@@ -389,6 +389,7 @@ rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
 %if %{with dnfutils}
 mkdir -p %{buildroot}%{_bindir}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
+ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
@@ -499,6 +500,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n dnf-utils
 %{_libexecdir}/dnf-utils
 %{_bindir}/debuginfo-install
+%{_bindir}/needs-restarting
 %{_bindir}/find-repos-of-install
 %{_bindir}/package-cleanup
 %{_bindir}/repo-graph
