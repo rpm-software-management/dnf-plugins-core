@@ -272,6 +272,7 @@ man_pages = [
     ('needs_restarting', 'needs-restarting', u'redirecting to DNF needs_restarting Plugin',
      AUTHORS, 1),
     ('repoclosure', 'repoclosure', u'redirecting to DNF repoclosure Plugin', AUTHORS, 1),
+    ('repodiff', 'repodiff', u'redirecting to DNF repodiff Plugin', AUTHORS, 1),
     ('repograph', 'repo-graph', u'redirecting to DNF repograph Plugin', AUTHORS, 1),
     ('repomanage', 'repomanage', u'redirecting to DNF repomanage Plugin', AUTHORS, 1),
     ('reposync', 'reposync', u'redirecting to DNF reposync Plugin', AUTHORS, 1),

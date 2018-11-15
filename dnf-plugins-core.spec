@@ -518,6 +518,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man1/needs-restarting.*
 %{_mandir}/man1/repo-graph.*
 %{_mandir}/man1/repoclosure.*
+%{_mandir}/man1/repodiff.*
 %{_mandir}/man1/repomanage.*
 %{_mandir}/man1/reposync.*
 %{_mandir}/man1/yum-builddep.*
@@ -539,6 +540,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %exclude %{_mandir}/man1/needs-restarting.*
 %exclude %{_mandir}/man1/repo-graph.*
 %exclude %{_mandir}/man1/repoclosure.*
+%exclude %{_mandir}/man1/repodiff.*
 %exclude %{_mandir}/man1/repomanage.*
 %exclude %{_mandir}/man1/reposync.*
 %exclude %{_mandir}/man1/yum-builddep.*
