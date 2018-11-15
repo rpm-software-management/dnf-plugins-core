@@ -12,6 +12,9 @@ Shell Commands
     Install the associated debuginfo packages for a given package
     specification.
     Maps to ``dnf debuginfo-install``.
+:manpage:`needs-restarting(1)`
+    Check for running processes that should be restarted.
+    Maps to ``dnf needs-restarting``.
 ``find-repos-of-install``
     Report which repository the package was installed from.
     Part of core DNF functionality.
