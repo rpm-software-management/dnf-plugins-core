@@ -146,7 +146,7 @@ class RepoSyncCommand(dnf.cli.Command):
                                 logger.error(_("failed to delete file %s"), path)
 
     def getcomps(self, repo):
-        comps_fn = repo.metadata._comps_fn
+        comps_fn = repo._repo.getCompsFn()
         if comps_fn:
             dest = os.path.join(self.metadata_target(repo), 'comps.xml')
             dnf.yum.misc.decompress(comps_fn, dest=dest)
