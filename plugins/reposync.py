@@ -53,7 +53,6 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def __init__(self, cli):
         super(RepoSyncCommand, self).__init__(cli)
-        self._repo_target = dict()
 
     @staticmethod
     def set_argparser(parser):
@@ -69,7 +68,10 @@ class RepoSyncCommand(dnf.cli.Command):
         parser.add_argument('-n', '--newest-only', default=False, action='store_true',
                             help=_('download only newest packages per-repo'))
         parser.add_argument('-p', '--download-path', default='./',
-                            help=_('where to store downloaded repositories '))
+                            help=_('where to store downloaded repositories'))
+        parser.add_argument('--metadata-path',
+                            help=_('where to store downloaded repository metadata. '
+                                   'Defaults to the value of --download-path.'))
         parser.add_argument('--source', default=False, action='store_true',
                             help=_('operate on source packages'))
 
@@ -106,11 +108,14 @@ class RepoSyncCommand(dnf.cli.Command):
             self.download_packages(repo)
 
     def repo_target(self, repo):
-        target = self._repo_target.get(repo.id)
-        if not target:
-            target = _pkgdir(self.opts.destdir or self.opts.download_path, repo.id)
-            self._repo_target[repo.id] = target
-        return target
+        return _pkgdir(self.opts.destdir or self.opts.download_path, repo.id)
+
+    def metadata_target(self, repo):
+        if self.opts.metadata_path:
+            return _pkgdir(self.opts.metadata_path, repo.id)
+        else:
+            return self.repo_target(repo)
+
 
     def pkg_download_path(self, pkg):
         repo_target = self.repo_target(pkg.repo)
@@ -143,12 +148,12 @@ class RepoSyncCommand(dnf.cli.Command):
     def getcomps(self, repo):
         comps_fn = repo.metadata._comps_fn
         if comps_fn:
-            dest = os.path.join(self.repo_target(repo), 'comps.xml')
+            dest = os.path.join(self.metadata_target(repo), 'comps.xml')
             dnf.yum.misc.decompress(comps_fn, dest=dest)
             logger.info(_("comps.xml for repository %s saved"), repo.id)
 
     def download_metadata(self, repo):
-        repo_target = self.repo_target(repo)
+        repo_target = self.metadata_target(repo)
         repo._repo.downloadMetadata(repo_target)
         return True
 
