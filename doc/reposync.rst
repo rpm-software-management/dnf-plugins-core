@@ -58,3 +58,5 @@ Options
 ``--delete``
     Delete local packages no longer present in repository
 
+``--metadata-path``
+    Root path under which the downloaded metadata are stored. It defaults to ``--download-path`` value if not given.
