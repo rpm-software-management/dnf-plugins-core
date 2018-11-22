@@ -66,7 +66,6 @@ Examples
 Compare source pkgs in two local repos::
 
     dnf repodiff --repofrompath=o,/tmp/repo-old --repofrompath=n,/tmp/repo-new --repo-old=o --repo-new=n
-     
 
 Compare x86_64 compat. binary pkgs in two remote repos, and two local one::
 
