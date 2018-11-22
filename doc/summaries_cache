@@ -402,5 +402,25 @@
     [
         1571622,
         "dnf repoclosure with --pkg option set to non-existing package doesn't show any warning"
+    ],
+    [
+        1643676,
+        "dnf-plugin-versionlock not accept package-spec string from versionlock.list"
+    ],
+    [
+        1648649,
+        "dnf reposync with --quiet crashes"
+    ],
+    [
+        1644563,
+        "backtrace when trying to disable old style Copr repo filename"
+    ],
+    [
+        1557340,
+        "config-manager --add-repo created a non-valid repo id"
+    ],
+    [
+        1628888,
+        "can't enable copr repository using Rawhide"
     ]
 ]

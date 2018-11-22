@@ -22,6 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.2 Release Notes
+===================
+
+* Added repodif command
+* copr: fix enabling Rawhide repository
+* Add needs-restarting CLI shim
+* [reposync] Fix traceback with --quiet option
+* [versionlock] Accept more pkgspec forms
+
+Bugs fixed in 4.0.2:
+
+* :rhbug:`1643676`
+* :rhbug:`1648649`
+* :rhbug:`1644563`
+* :rhbug:`1557340`
+* :rhbug:`1628888`
+
+===================
 4.0.0 Release Notes
 ===================
 

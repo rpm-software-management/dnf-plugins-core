@@ -661,6 +661,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+Thu Nov 22 2018 Jaroslav Mracek <jmracek@redhat.com> - 4.0.2-1
+- Added repodif command
+- copr: fix enabling Rawhide repository
+- Add needs-restarting CLI shim
+- [reposync] Fix traceback with --quiet option
+- [versionlock] Accept more pkgspec forms
+
 * Mon Oct 15 2018 Jaroslav Mracek <jmracek@redhat.com> - 4.0.0-1
 - Update to 4.0.0
 - Enhance documentation
