@@ -116,7 +116,6 @@ class RepoSyncCommand(dnf.cli.Command):
         else:
             return self.repo_target(repo)
 
-
     def pkg_download_path(self, pkg):
         repo_target = self.repo_target(pkg.repo)
         pkg_download_path = os.path.normpath(

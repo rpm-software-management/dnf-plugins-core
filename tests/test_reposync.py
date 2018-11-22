@@ -54,3 +54,17 @@ class TestReposyncFunctions(support.TestCase):
         pkg.location = "../pool/foo-0-1.0-1.noarch.rpm"
         with self.assertRaises(dnf.exceptions.Error):
             self.cmd.pkg_download_path(pkg)
+
+    def test_metadata_target_default(self):
+        args = '-p /become/legend'.split()
+        repo = support.RepoStub('silver')
+        support.command_configure(self.cmd, args)
+        metadata_path = self.cmd.metadata_target(repo)
+        self.assertEqual(metadata_path, '/become/legend/silver')
+
+    def test_metadata_target_given(self):
+        args = '-p /become/legend --metadata-path=/the/president'.split()
+        repo = support.RepoStub('silver')
+        support.command_configure(self.cmd, args)
+        metadata_path = self.cmd.metadata_target(repo)
+        self.assertEqual(metadata_path, '/the/president/silver')
