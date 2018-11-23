@@ -26,6 +26,7 @@ This documents core plugins of DNF:
 
    release_notes
    builddep
+   changelog
    config_manager
    copr
    debug

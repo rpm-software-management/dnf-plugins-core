@@ -12,6 +12,7 @@ ADD_CUSTOM_TARGET (doc)
 ADD_DEPENDENCIES (doc doc-html doc-man)
 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.builddep.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.changelog.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.config_manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.copr.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.debug.8
@@ -45,6 +46,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
     ${CMAKE_CURRENT_BINARY_DIR}/repodiff.1
     ${CMAKE_CURRENT_BINARY_DIR}/reposync.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-builddep.1
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-changelog.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-config-manager.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-debug-dump.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-debug-restore.1
@@ -53,6 +55,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-utils.1
 	DESTINATION share/man/man1)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.conf.5
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/yum-changelog.conf.5
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.conf.5
 	DESTINATION share/man/man5)
 
