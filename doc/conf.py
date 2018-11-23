@@ -242,6 +242,8 @@ AUTHORS=[u'See AUTHORS in your Core DNF Plugins distribution']
 man_pages = [
     ('builddep', 'dnf.plugin.builddep', u'DNF builddep Plugin',
      AUTHORS, 8),
+    ('changelog', 'dnf.plugin.changelog', u'DNF changelog Plugin',
+     AUTHORS, 8),
     ('config_manager', 'dnf.plugin.config_manager',
      u'DNF config-manager Plugin', AUTHORS, 8),
     ('copr', 'dnf.plugin.copr', u'DNF copr Plugin', AUTHORS, 8),
@@ -281,6 +283,9 @@ man_pages = [
     ('versionlock', 'yum-versionlock.conf', u'redirecting to DNF versionlock Plugin',
      AUTHORS, 5),
     ('builddep', 'yum-builddep', u'redirecting to DNF builddep Plugin', AUTHORS, 1),
+    ('changelog', 'yum-changelog', u'redirecting to DNF changelog Plugin', AUTHORS, 1),
+    ('changelog', 'yum-changelog.conf', u'redirecting to DNF changelog Plugin',
+     AUTHORS, 5),
     ('config_manager', 'yum-config-manager', u'redirecting to DNF config-manager Plugin',
      AUTHORS, 1),
     ('debug', 'yum-debug-dump', u'redirecting to DNF debug Plugin', AUTHORS, 1),
