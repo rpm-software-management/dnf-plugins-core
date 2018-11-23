@@ -23,7 +23,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.2
+Version:        4.0.3
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -40,6 +40,7 @@ Requires:       python3-%{name} = %{version}-%{release}
 Requires:       python2-%{name} = %{version}-%{release}
 %endif
 Provides:       dnf-command(builddep)
+Provides:       dnf-command(changelog)
 Provides:       dnf-command(config-manager)
 Provides:       dnf-command(copr)
 Provides:       dnf-command(debug-dump)
@@ -56,6 +57,7 @@ Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       dnf-plugins-extras-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-builddep = %{version}-%{release}
+Provides:       dnf-plugin-changelog = %{version}-%{release}
 Provides:       dnf-plugin-config-manager = %{version}-%{release}
 Provides:       dnf-plugin-debuginfo-install = %{version}-%{release}
 Provides:       dnf-plugin-download = %{version}-%{release}
@@ -68,14 +70,16 @@ Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
 %if %{with yumcompatibility}
 Provides:       yum-plugin-copr = %{version}-%{release}
+Provides:       yum-plugin-changelog = %{version}-%{release}
 Provides:       yum-plugin-auto-update-debug-info = %{version}-%{release}
 %endif
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
-Core Plugins for DNF. This package enhances DNF with builddep, config-manager, copr, debug,
-debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage, reposync
-and repodiff commands. Additionally provides generate_completion_cache passive plugin.
+Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
+copr, debug, debuginfo-install, download, needs-restarting, repoclosure,
+repograph, repomanage, reposync, changelog and repodiff commands. Additionally
+provides generate_completion_cache passive plugin.
 
 %if %{with python2}
 %package -n python2-%{name}
@@ -93,6 +97,7 @@ Requires:       python2-distro
 %endif
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-hawkey >= %{hawkey_version}
+Requires:       python2-dateutil
 Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repograph = %{version}-%{release}
@@ -108,9 +113,10 @@ Conflicts:      python3-%{name} < %{version}-%{release}
 Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
-Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep, config-manager,
-copr, degug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage,
-reposync and repodiff commands. Additionally provides generate_completion_cache passive plugin.
+Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep,
+config-manager, copr, degug, debuginfo-install, download, needs-restarting,
+repoclosure, repograph, repomanage, reposync, changelog and repodiff commands.
+Additionally provides generate_completion_cache passive plugin.
 %endif
 
 %if %{with python3}
@@ -125,6 +131,7 @@ Requires:       python3-distro
 %endif
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
+Requires:       python3-dateutil
 Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
@@ -140,9 +147,10 @@ Conflicts:      python2-%{name} < %{version}-%{release}
 Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
-Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep, config-manager,
-copr, debug, debuginfo-install, download, needs-restarting, repoclosure, repograph, repomanage,
-reposync and repodiff commands. Additionally provides generate_completion_cache passive plugin.
+Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep,
+config-manager, copr, debug, debuginfo-install, download, needs-restarting,
+repoclosure, repograph, repomanage, reposync, changelog and repodiff commands.
+Additionally provides generate_completion_cache passive plugin.
 %endif
 
 %if %{with dnfutils}
@@ -422,6 +430,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 
 %files
 %{_mandir}/man8/dnf.plugin.builddep.*
+%{_mandir}/man8/dnf.plugin.changelog.*
 %{_mandir}/man8/dnf.plugin.config_manager.*
 %{_mandir}/man8/dnf.plugin.copr.*
 %{_mandir}/man8/dnf.plugin.debug.*
@@ -434,6 +443,15 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.repograph.*
 %{_mandir}/man8/dnf.plugin.repomanage.*
 %{_mandir}/man8/dnf.plugin.reposync.*
+%if %{with yumcompatibility}
+%{_mandir}/man1/yum-changelog.*
+%{_mandir}/man5/yum-changelog.conf.*
+%{_mandir}/man8/yum-changelog.*
+%else
+%exclude %{_mandir}/man1/yum-changelog.*
+%exclude %{_mandir}/man5/yum-changelog.conf.*
+%exclude %{_mandir}/man8/yum-changelog.*
+%endif
 
 %if %{with python2}
 %files -n python2-%{name} -f %{name}.lang
@@ -444,6 +462,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
 %{python2_sitelib}/dnf-plugins/builddep.*
+%{python2_sitelib}/dnf-plugins/changelog.*
 %{python2_sitelib}/dnf-plugins/config_manager.*
 %{python2_sitelib}/dnf-plugins/copr.*
 %{python2_sitelib}/dnf-plugins/debug.*
@@ -468,6 +487,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
 %{python3_sitelib}/dnf-plugins/builddep.py
+%{python3_sitelib}/dnf-plugins/changelog.py
 %{python3_sitelib}/dnf-plugins/config_manager.py
 %{python3_sitelib}/dnf-plugins/copr.py
 %{python3_sitelib}/dnf-plugins/debug.py
@@ -481,6 +501,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnf-plugins/repomanage.py
 %{python3_sitelib}/dnf-plugins/reposync.py
 %{python3_sitelib}/dnf-plugins/__pycache__/builddep.*
+%{python3_sitelib}/dnf-plugins/__pycache__/changelog.*
 %{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*
 %{python3_sitelib}/dnf-plugins/__pycache__/copr.*
 %{python3_sitelib}/dnf-plugins/__pycache__/debug.*
