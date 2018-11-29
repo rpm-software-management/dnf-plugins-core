@@ -224,7 +224,9 @@ def _match(ent, patterns):
         '%s.%s' % (n.name, n.arch),
         '%s-%s' % (n.name, n.version),
         '%s-%s-%s' % (n.name, n.version, n.release),
+        '%s-%s:%s' % (n.name, n.epoch, n.version),
         '%s-%s-%s.%s' % (n.name, n.version, n.release, n.arch),
+        '%s-%s:%s-%s' % (n.name, n.epoch, n.version, n.release),
         '%s:%s-%s-%s.%s' % (n.epoch, n.name, n.version, n.release, n.arch),
         '%s-%s:%s-%s.%s' % (n.name, n.epoch, n.version, n.release, n.arch),
     ):
