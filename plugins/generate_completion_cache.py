@@ -70,6 +70,9 @@ class BashCompletionCache(dnf.Plugin):
 
     def transaction(self):
         ''' Generate cache of installed packages '''
+        if not self.transaction:
+            return
+
         try:
             with sqlite3.connect(self.cache_file) as conn:
                 self._out('Generating completion cache...')

@@ -105,7 +105,7 @@ class Local(dnf.Plugin):
     def transaction(self):
         main, crepo = self.main, self.crepo
 
-        if not main["enabled"]:
+        if not main["enabled"] or not self.transaction:
             return
 
         repodir = main["repodir"]
