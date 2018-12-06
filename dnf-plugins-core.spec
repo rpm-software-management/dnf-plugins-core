@@ -97,7 +97,11 @@ Requires:       python2-distro
 %endif
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-hawkey >= %{hawkey_version}
+%if 0%{?rhel} && 0%{?rhel} <= 7
+Requires:       python-dateutil
+%else
 Requires:       python2-dateutil
+%endif
 Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repograph = %{version}-%{release}
