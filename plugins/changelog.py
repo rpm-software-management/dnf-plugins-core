@@ -42,9 +42,6 @@ class ChangelogCommand(dnf.cli.Command):
     aliases = ('changelog',)
     summary = _('Show changelog data of packages')
 
-    def __init__(self, cli):
-        super(ChangelogCommand, self).__init__(cli)
-
     @staticmethod
     def set_argparser(parser):
         filter_group = parser.add_mutually_exclusive_group()
