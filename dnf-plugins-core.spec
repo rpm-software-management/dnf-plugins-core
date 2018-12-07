@@ -57,7 +57,6 @@ Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       dnf-plugins-extras-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-builddep = %{version}-%{release}
-Provides:       dnf-plugin-changelog = %{version}-%{release}
 Provides:       dnf-plugin-config-manager = %{version}-%{release}
 Provides:       dnf-plugin-debuginfo-install = %{version}-%{release}
 Provides:       dnf-plugin-download = %{version}-%{release}
