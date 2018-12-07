@@ -73,23 +73,24 @@ class ChangelogCommand(dnf.cli.Command):
                 pkg_q = dnf.subject.Subject(pkg, ignore_case=True).get_best_query(
                     self.base.sack, with_nevra=True,
                     with_provides=False, with_filenames=False)
+                if self.opts.repo:
+                    pkg_q.filterm(reponame=self.opts.repo)
                 if pkg_q:
-                    q = q.union(pkg_q)
+                    q = q.union(pkg_q.latest())
                 else:
                     logger.info(_('No match for argument: %s') % pkg)
-        if self.opts.repo:
+        elif self.opts.repo:
             q.filterm(reponame=self.opts.repo)
         if self.opts.upgrades:
             q = q.upgrades()
         else:
             q = q.available()
-        q = q.latest()
         return q
 
     def by_srpm(self, packages):
         by_srpm = collections.OrderedDict()
         for pkg in sorted(packages):
-            by_srpm.setdefault(pkg.source_name or pkg.name, []).append(pkg)
+            by_srpm.setdefault((pkg.source_name or pkg.name, pkg.evr), []).append(pkg)
         return by_srpm
 
     def filter_changelogs(self, package):
@@ -110,12 +111,15 @@ class ChangelogCommand(dnf.cli.Command):
             logger.info(P_('Listing only latest changelog',
                            'Listing {} latest changelogs',
                            self.opts.count).format(self.opts.count))
+        elif self.opts.upgrades:
+            logger.info(
+                _('Listing only new changelogs since installed version of the package'))
         else:
             logger.info(_('Listing all changelogs'))
 
         by_srpm = self.by_srpm(self.query())
         for name in by_srpm:
             print(_('Changelogs for {}').format(
-                ', '.join([str(pkg) for pkg in by_srpm[name]])))
+                ', '.join(sorted({str(pkg) for pkg in by_srpm[name]}))))
             for chlog in self.filter_changelogs(by_srpm[name][0]):
                 print(self.base.format_changelog(chlog))
