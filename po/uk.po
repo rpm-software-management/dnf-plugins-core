@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-09-30 04:52+0000\n"
+"PO-Revision-Date: 2018-10-18 05:59+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgstr "Немає відповідника для аргумента: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
-msgstr ""
+msgstr "Немає пакунків debuginfo, які можна було б встановити"
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
@@ -85,7 +85,7 @@ msgstr "Не вдалося знайти відповідник"
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
-msgstr ""
+msgstr "Не вдалося знайти debuginfo для цього пакунка: %s"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -332,11 +332,13 @@ msgstr "Перевірити замкненість лише для цього �
 
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "отримати усі метадані."
 
 #: ../plugins/reposync.py:121
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
+"Ціль отримання даних «{}» перебуває поза межами шляху для отримання даних "
+"«{}»."
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"

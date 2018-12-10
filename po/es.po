@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-10-06 04:02+0000\n"
+"PO-Revision-Date: 2018-11-22 04:12+0000\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "No hay coincidencias para el argumento: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
-msgstr ""
+msgstr "No hay paquetes para instalar con información de depuración"
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
@@ -88,7 +88,7 @@ msgstr "No se pudo encontrar ningún resultado"
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
-msgstr ""
+msgstr "No se pudo encontrar la información de depuración para el paquete: %s"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
@@ -379,7 +379,7 @@ msgstr "Comprobar este paquete solamente"
 
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "descargar todos los metadatos."
 
 #: ../plugins/reposync.py:121
 msgid "Download target '{}' is outside of download path '{}'."

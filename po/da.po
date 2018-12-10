@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-10-02 10:02+0000\n"
+"PO-Revision-Date: 2018-10-16 04:44+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "Intet match for argument: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
-msgstr ""
+msgstr "Ingen debuginfo-pakker tilgængelige for installation"
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
@@ -84,7 +84,7 @@ msgstr "Kan ikke finde et match"
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
-msgstr ""
+msgstr "Kunne ikke finde debuginfo til pakken: %s"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -322,11 +322,11 @@ msgstr "Tjek kun lukningen af pakken"
 
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "download metadataene."
 
 #: ../plugins/reposync.py:121
 msgid "Download target '{}' is outside of download path '{}'."
-msgstr ""
+msgstr "Downloadmålet '{}' er udenfor downloadstien '{}'."
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"

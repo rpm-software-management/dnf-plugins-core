@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-08-30 06:58+0000\n"
+"PO-Revision-Date: 2018-11-12 11:31+0000\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "installera debuginfo-paket"
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr "Ingen match för argumentet: %s"
+msgstr "Ingen matchning för argumentet: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"

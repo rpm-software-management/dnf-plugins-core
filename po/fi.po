@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-05-12 02:00+0000\n"
+"PO-Revision-Date: 2018-11-29 07:03+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr ""
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[POISTETTU] %s"
 
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
 #, python-format

@@ -1,8 +1,3 @@
-# Daniel Lara <danniel@fedoraproject.org>, 2016. #zanata
-# Daniel Lara <danniel@fedoraproject.org>, 2017. #zanata
-# Frederico Henrique Gonçalves Lima <fred@fredericolima.com.br>, 2017. #zanata
-# Mateus de Melo Santos <mateusms@tutanota.com>, 2017. #zanata
-# Adriano de Souza Xavier <adrianosoxav@gmail.com>, 2018. #zanata
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
@@ -11,41 +6,41 @@ msgstr ""
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
 "PO-Revision-Date: 2018-11-02 04:31+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Portuguese (Brazil)\n"
+"Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
 #: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
 msgid "download all packages from remote repo"
-msgstr "baixar todos os pacotes do repositório remoto"
+msgstr "원격 저장소에서 모든 패키지를 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
 msgid "download only packages for this ARCH"
-msgstr "baixar apenas pacotes para este ARCH"
+msgstr "이 ARCH 용 패키지 만 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
 msgid "delete local packages no longer present in repository"
-msgstr "excluir pacotes locais que não estão mais presentes no repositório"
+msgstr "저장소에 더 이상 존재하지 않는 로컬 패키지 삭제"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
 msgid "also download comps.xml"
-msgstr "faça o download de comps.xml"
+msgstr "comps.xml도 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
 msgid "download only newest packages per-repo"
-msgstr "baixe apenas os pacotes mais novos por repo"
+msgstr "repo 당 최신 패키지 만 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "aonde armazenar os repositórios baixados "
+msgstr "다운로드 한 저장소를 저장할 위치 "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
-msgstr "operar em pacotes fonte"
+msgstr "소스 패키지를 조작한다."
 
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
 #, python-format
@@ -55,26 +50,26 @@ msgstr "[DELETED] %s"
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
 #, python-format
 msgid "failed to delete file %s"
-msgstr "não foi possível excluir o arquivo %s"
+msgstr "파일을 삭제하지 못했습니다. %s"
 
 #: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr "Não foi possível criar o diretório do repositório: %s"
+msgstr "저장소 디렉토리를 만들지 못했습니다 : %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr "comps.xml para repositório %s salvou"
+msgstr "저장소에 대한 comps.xml %s 저장된"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
-msgstr "Instalar pacotes debuginfo"
+msgstr "debuginfo 패키지 설치"
 
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr "Não há correspondência para o argumento: %s"
+msgstr "인수와 일치하는 항목 없음 : %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
@@ -82,7 +77,7 @@ msgstr ""
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
-msgstr "Não é possível encontrar uma correspondência"
+msgstr "경기를 찾을 수 없습니다."
 
 #: ../plugins/debuginfo-install.py:132
 #, python-format
@@ -91,50 +86,49 @@ msgstr ""
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "migrar o histórico, grupo e dados yumdb do yum para dnf"
+msgstr "yum의 히스토리, 그룹 및 yumdb 데이터를 dnf로 마이그레이션합니다."
 
 #: ../plugins/migrate.py:54
 msgid "Migrating history data..."
-msgstr "Migrando dados de histórico..."
+msgstr "기록 데이터 마이그레이션 중 ..."
 
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
-msgstr ""
-"Saída em um gráfico de dependência completa dos pacotes no formato de ponto"
+msgstr "도트 형식의 전체 패키지 종속성 그래프 출력"
 
 #: ../plugins/repograph.py:110
 #, python-format
 msgid "Nothing provides: '%s'"
-msgstr "Nada fornece: '%s'"
+msgstr "아무것도 제공하지 않습니다 : '%s'"
 
 #: ../plugins/versionlock.py:32
 #, python-format
 msgid "Unable to read version lock configuration: %s"
-msgstr "Não foi possível ler a configuração de bloqueio de versão: %s"
+msgstr "버전 잠금 설정을 읽을 수 없습니다 : %s"
 
 #: ../plugins/versionlock.py:33
 msgid "Locklist not set"
-msgstr "Lista de bloqueio não definida"
+msgstr "잠금 목록이 설정되지 않았습니다."
 
 #: ../plugins/versionlock.py:34
 msgid "Adding versionlock on:"
-msgstr "Adicionando bloqueio de versão em:"
+msgstr ""
 
 #: ../plugins/versionlock.py:35
 msgid "Adding exclude on:"
-msgstr "Adicionando exclusão em:"
+msgstr ""
 
 #: ../plugins/versionlock.py:36
 msgid "Deleting versionlock for:"
-msgstr "Removendo bloqueio de versão para:"
+msgstr ""
 
 #: ../plugins/versionlock.py:37
 msgid "No package found for:"
-msgstr "Nenhum pacote encontrado para:"
+msgstr ""
 
 #: ../plugins/versionlock.py:38
 msgid "Excludes from versionlock plugin were not applied"
-msgstr "A exclusão de plugins de bloqueio de versão não foram aplicadas."
+msgstr ""
 
 #: ../plugins/versionlock.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
@@ -150,181 +144,178 @@ msgstr ""
 
 #: ../plugins/versionlock.py:119
 msgid "control package version locks"
-msgstr "controlar bloqueios de versão de pacotes"
+msgstr ""
 
 #: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PACOTE|PACOTE.spec]"
+msgstr ""
 
 #: ../plugins/builddep.py:79
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' não é o formato de 'MACRO_EXPR'"
+msgstr ""
 
 #: ../plugins/builddep.py:84
 msgid "packages with builddeps to install"
-msgstr "pacotes com dependências para instalar"
+msgstr ""
 
 #: ../plugins/builddep.py:87
 msgid "define a macro for spec file parsing"
-msgstr "define uma macro para especificações por file parsing"
+msgstr ""
 
 #: ../plugins/builddep.py:90
 msgid "treat commandline arguments as spec files"
-msgstr "tratar argumentos de linha de comando como especificação de arquivos"
+msgstr ""
 
 #: ../plugins/builddep.py:92
 msgid "treat commandline arguments as source rpm"
-msgstr "tratar argumentos de linha de comando como origem rpm"
+msgstr ""
 
 #: ../plugins/builddep.py:138
 msgid "Some packages could not be found."
-msgstr "Alguns pacotes não puderam ser encontrados."
+msgstr ""
 
 #. No provides, no files
 #: ../plugins/builddep.py:157
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr "Nenhum pacote correspondente para instalar: '%s'"
+msgstr ""
 
 #: ../plugins/builddep.py:174
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Falha ao abrir: '%s', não é um pacote rpm válido."
+msgstr ""
 
 #: ../plugins/builddep.py:187 ../plugins/builddep.py:203
 #: ../plugins/builddep.py:220
 msgid "Not all dependencies satisfied"
-msgstr "Nem todas as dependências satisfeitas"
+msgstr ""
 
 #: ../plugins/builddep.py:194
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Falha ao abrir: '%s', arquivo spec inválido: %s."
+msgstr ""
 
 #: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
 #, python-format
 msgid "no package matched: %s"
-msgstr "nenhum pacote corresponde: %s"
+msgstr "일치하는 패키지 없음 : %s"
 
 #: ../plugins/config_manager.py:35
 msgid "manage dnf configuration options and repositories"
-msgstr "gerencia as opções de configuração e repositórios do dnf"
+msgstr "dnf 구성 옵션 및 저장소 관리"
 
 #: ../plugins/config_manager.py:41
 msgid "repo to modify"
-msgstr "repositório para modificação"
+msgstr "수정할 repo"
 
 #: ../plugins/config_manager.py:44
 msgid "save the current options (useful with --setopt)"
-msgstr "salva as opções correntes (útil com a opção --setopt)"
+msgstr "현재 옵션 저장 (--setopt와 함께 유용함)"
 
 #: ../plugins/config_manager.py:47
 msgid "enable the specified repos (automatically saves)"
-msgstr "habilita o repositórios especificado (salva automaticamente)"
+msgstr "지정된 저장소를 사용하도록 설정 (자동 저장)"
 
 #: ../plugins/config_manager.py:50
 msgid "disable the specified repos (automatically saves)"
-msgstr "desabilita o repositório especificado (salva automaticamente)"
+msgstr "지정된 저장소를 사용하지 않도록 설정 (자동 저장)"
 
 #: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
-msgstr "adiciona (e habilita) o repositório especificado por arquivo ou url"
+msgstr "지정된 파일 또는 URL에서 repo를 추가 (및 활성화)"
 
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
-msgstr "exibe a configuração para o stdout"
+msgstr "현재 구성 값을 표준 출력으로 인쇄"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr "imprime valores das variáveis para a saída padrão"
+msgstr "변수 값을 표준 출력으로 출력"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
-msgstr "Erro: Tentando habilitar e desabilitar o repositório ao mesmo tempo."
+msgstr "오류 : 같은 시간에 repos를 사용 또는 사용 중지하려고합니다."
 
 #: ../plugins/config_manager.py:79
 msgid "Error: Trying to enable already enabled repos."
-msgstr "Erro: Tentando habilitar um repositório que já esta habilitado."
+msgstr "오류 : 이미 활성화 된 repos를 활성화하려고합니다."
 
 #: ../plugins/config_manager.py:118
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr "Nenhum repositório correspondente para modificar: %s."
+msgstr "수정할 일치하는 Repo가 없습니다. %s."
 
 #: ../plugins/config_manager.py:149
 #, python-format
 msgid "Adding repo from: %s"
-msgstr "Adicionando repositório de: %s"
+msgstr "다음 위치에서 레포 추가 : %s"
 
 #: ../plugins/config_manager.py:173
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
-msgstr[0] "A configuração do repositório falhou."
-msgstr[1] "A configuração dos repositórios falharam."
+msgstr[0] "저장소 구성에 실패했습니다."
 
 #: ../plugins/config_manager.py:183
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr "Não pode salvar o repositório para o repofile %s: %s"
+msgstr "repofile에 repo를 저장할 수 없습니다. %s: %s"
 
 #: ../plugins/local.py:117
 msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "Impossível criar um diretório '{}' devido a '{}'"
+msgstr "'{}'(으)로 인해 '{}'디렉토리를 만들 수 없습니다."
 
 #: ../plugins/local.py:121
 msgid "'{}' is not a directory"
-msgstr "'{}' não é um diretório"
+msgstr "'{}'은 (는) 디렉토리가 아닙니다."
 
 #: ../plugins/local.py:130
 msgid "Copying '{}' to local repo"
-msgstr "Copiando '{}' para o repo local"
+msgstr "'{}'을 (를) 로컬 저장소로 복사 중입니다."
 
 #: ../plugins/local.py:136
 msgid "Can't write file '{}'"
-msgstr "Impossível escrever arquivo '{}'"
+msgstr "'{}'파일을 쓸 수 없습니다."
 
 #: ../plugins/local.py:151
 msgid "Rebuilding local repo"
-msgstr "Reconstruindo repo local"
+msgstr "지역 레포 복구"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
-msgstr "Lista pacotes instalados não exigidos por nenhum outro pacote"
+msgstr "다른 패키지에서 필요하지 않은 설치된 패키지 나열"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
-msgstr "determinar se os binários atualizados necessitam de restart"
+msgstr "다시 시작해야하는 업데이트 된 바이너리 결정"
 
 #: ../plugins/needs_restarting.py:172
 msgid "only consider this user's processes"
-msgstr "somente considera os processos deste usuário"
+msgstr "이 사용자의 프로세스 만 고려하십시오."
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Exibir uma lista de dependências não resolvidas para os repositórios"
+msgstr "저장소에 대한 확인되지 않은 종속성 목록 표시"
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr "O reparo terminou com dependências não resolvidas."
+msgstr "재구 축은 해결되지 않은 종속성으로 종료되었습니다."
 
 #: ../plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
-"verificar pacotes das arquiteturas informadas, pode ser definido diversas "
-"vezes"
+msgstr "지정된 아치의 패키지를 검사하고 여러 번 지정할 수 있습니다."
 
 #: ../plugins/repoclosure.py:156
 msgid "Specify repositories to check"
-msgstr "Especificar repositórios para checagem"
+msgstr "확인할 저장소를 지정하십시오."
 
 #: ../plugins/repoclosure.py:158
 msgid "Check only the newest packages in the repos"
-msgstr "Verifique apenas os pacotes mais recentes nos repositórios"
+msgstr "리포지토리의 최신 패키지 만 확인하십시오."
 
 #: ../plugins/repoclosure.py:161
 msgid "Check closure for this package only"
-msgstr "Verificar o encerramento somente para este pacote"
+msgstr "이 패키지의 폐쇄 만 확인하십시오."
 
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
@@ -336,63 +327,63 @@ msgstr ""
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
-msgstr "Gerenciar um diretório de pacotes rpm"
+msgstr "rpm 패키지 디렉토리 관리"
 
 #: ../plugins/repomanage.py:58
 msgid "Pass either --old or --new, not both!"
-msgstr "Passe --old ou --new, não ambos!"
+msgstr "--old 또는 --new 중 하나를 전달하십시오."
 
 #: ../plugins/repomanage.py:68
 msgid "No files to process"
-msgstr "Nenhum arquivo para processar"
+msgstr "처리 할 파일이 없습니다."
 
 #: ../plugins/repomanage.py:73
 msgid "Could not open {}"
-msgstr "Impossível abrir {}"
+msgstr "{}을 (를) 열 수 없습니다."
 
 #: ../plugins/repomanage.py:130
 msgid "Print the older packages"
-msgstr "Imprimir os pacotes mais antigos"
+msgstr "이전 패키지 인쇄"
 
 #: ../plugins/repomanage.py:132
 msgid "Print the newest packages"
-msgstr "Imprimir os pacotes mais novos"
+msgstr "최신 패키지 인쇄"
 
 #: ../plugins/repomanage.py:134
 msgid "Space separated output, not newline"
-msgstr "Saída separada por espaço, não por nova linha"
+msgstr "공백으로 구분 된 출력이 아닌 개행 문자"
 
 #: ../plugins/repomanage.py:136
 msgid "Newest N packages to keep - defaults to 1"
-msgstr "Manter N pacotes mais novos - padrão para 1"
+msgstr "보관할 최신 N 패키지 - 기본값은 1입니다."
 
 #: ../plugins/repomanage.py:139
 msgid "Path to directory"
-msgstr "Caminho para o diretório"
+msgstr "디렉토리 경로"
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
-msgstr "Baixar o pacote para o diretório corrente"
+msgstr "현재 디렉토리에 패키지 다운로드"
 
 #: ../plugins/download.py:51
 msgid "packages to download"
-msgstr "pacotes para baixar"
+msgstr "다운로드 할 패키지"
 
 #: ../plugins/download.py:54
 msgid "download the src.rpm instead"
-msgstr "baixe o src.rpm como alternativa"
+msgstr "대신 src.rpm을 다운로드하십시오."
 
 #: ../plugins/download.py:56
 msgid "download the -debuginfo package instead"
-msgstr "baixe com o pacote -debuginfo como alternativa"
+msgstr "대신 -debuginfo 패키지를 다운로드하십시오."
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr "limitar a consulta aos pacotes das arquiteturas informadas."
+msgstr "쿼리를 주어진 아키텍처의 패키지로 제한하십시오."
 
 #: ../plugins/download.py:61
 msgid "resolve and download needed dependencies"
-msgstr "resolva e baixe as dependências necessarias"
+msgstr "필요한 종속성을 해결하고 다운로드하십시오."
 
 #: ../plugins/download.py:63
 msgid ""
@@ -403,51 +394,50 @@ msgstr ""
 #: ../plugins/download.py:66
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"imprime lista de urls aonde os rpms podem ser baixados ao invés de baixar"
+msgstr "다운로드 대신 rpms를 다운로드 할 수있는 URL 목록 인쇄"
 
 #: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
-msgstr "executado em conjunto com --url, limita aos protocolos definidos"
+msgstr "--url을 사용하여 실행하면 특정 프로토콜로 제한됩니다."
 
 #: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr "Falhou em obter espelho para o pacote: %s"
+msgstr "패키지 미러링에 실패했습니다. %s"
 
 #: ../plugins/download.py:193
 msgid "Exiting due to strict setting."
-msgstr "Saindo devido a uma opção rigorosa."
+msgstr "엄격한 설정으로 인해 종료됩니다."
 
 #: ../plugins/download.py:213
 msgid "Error in resolve of packages:"
-msgstr "Erro na resolução de pacotes:"
+msgstr "패키지 해결 오류 :"
 
 #: ../plugins/download.py:230
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr "Nenhuma origem definida para %s"
+msgstr "소스 rpm이 정의되지 않았습니다. %s"
 
 #: ../plugins/download.py:248 ../plugins/download.py:262
 #, python-format
 msgid "No package %s available."
-msgstr "Nenhum pacote %s disponível."
+msgstr "패키지 없음 %s 유효한."
 
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
-msgstr "Novas folhas:"
+msgstr "새 잎 :"
 
 #: ../plugins/copr.py:54
 msgid "yes"
-msgstr "sim"
+msgstr "예"
 
 #: ../plugins/copr.py:54
 msgid "y"
-msgstr "s"
+msgstr "y"
 
 #: ../plugins/copr.py:55
 msgid "no"
-msgstr "não"
+msgstr "아니"
 
 #: ../plugins/copr.py:55
 msgid "n"
@@ -455,7 +445,7 @@ msgstr "n"
 
 #: ../plugins/copr.py:74
 msgid "Interact with Copr repositories."
-msgstr "Interagir com repositórios COPR."
+msgstr "Copr 저장소와 상호 작용하십시오."
 
 #: ../plugins/copr.py:75
 msgid ""
@@ -478,38 +468,24 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"  enable name/project [chroot]\n"
-"  disable name/project\n"
-"  remove name/project\n"
-"  list --installed/enabled/disabled\n"
-"  list --available-by-user=NAME\n"
-"  search project\n"
-"\n"
-"  Exemplo:\n"
-"  copr enable rhscl/perl516 epel-6-x86_64\n"
-"  copr enable ignatenkobrain/ocltoys\n"
-"  copr disable rhscl/perl516\n"
-"  copr remove rhscl/perl516\n"
-"  copr list --enabled\n"
-"  copr list --available-by-user=ignatenkobrain\n"
-"  copr search tests\n"
+"  프로젝트 이름 / 프로젝트 제거 - 설치 / 사용 / 사용 안 함 목록 - 사용 가능 사용자 = NAME 검색 프로젝트 예 : copr enable rhscl / perl516 epel-6-x86_64 copr enable ignatenkobrain / ocltoys copr 비활성화 rhscl / perl516 copr 제거 rhscl / perl516 copr 목록 - 사용 가능 목록 - 사용 가능 사용자 = ignatenkobrain copr 검색 테스트\n"
 "    "
 
 #: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
-msgstr "Listar todos os repositórios Copr instalados (padrão)."
+msgstr "설치된 모든 Copr 저장소 나열 (기본값)"
 
 #: ../plugins/copr.py:103
 msgid "List enabled Copr repositories"
-msgstr "Listar respositórios Copr habilitados."
+msgstr "사용 가능한 Copr 저장소 목록"
 
 #: ../plugins/copr.py:105
 msgid "List disabled Copr repositories"
-msgstr "Listar repositórios Copr desabilitados."
+msgstr "비활성화 된 Copr 저장소 목록"
 
 #: ../plugins/copr.py:107
 msgid "List available Copr repositories by user NAME"
-msgstr "Listar, pelo nome de usuário, os respositórios Copr disponíveis."
+msgstr "사용자가 사용할 수있는 Copr 저장소를 나열합니다. NAME"
 
 #: ../plugins/copr.py:109
 msgid "Specify an instance of Copr to work with"
@@ -517,7 +493,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Erro: "
+msgstr "오류: "
 
 #: ../plugins/copr.py:144
 msgid ""
@@ -531,18 +507,15 @@ msgstr ""
 
 #: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
-msgstr ""
-"são necessários exatamente dois parâmetros adicionais para o comando copr"
+msgstr "copr 명령에 정확히 두 개의 추가 매개 변수가 필요합니다."
 
 #: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr ""
-"use o formato `copr_nomeusuario/copr_nomeprojeto` para referenciar o projeto"
-" copr"
+msgstr "copr 프로젝트를 참조하기 위해`copr_username / copr_projectname` 형식을 사용하십시오"
 
 #: ../plugins/copr.py:231
 msgid "bad copr project format"
-msgstr "formato inválido de projeto copr"
+msgstr "나쁜 copr 프로젝트 형식"
 
 #: ../plugins/copr.py:245
 #, python-brace-format
@@ -564,19 +537,19 @@ msgstr ""
 
 #: ../plugins/copr.py:261
 msgid "Repository successfully enabled."
-msgstr "Repositório ativado com êxito."
+msgstr "저장소가 사용 설정되었습니다."
 
 #: ../plugins/copr.py:265
 msgid "Repository successfully disabled."
-msgstr "Repositório desativado com êxito."
+msgstr "저장소가 사용 중지되었습니다."
 
 #: ../plugins/copr.py:269
 msgid "Repository successfully removed."
-msgstr "Repositório removido com sucesso."
+msgstr "저장소가 제거되었습니다."
 
 #: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
-msgstr "subcomando desconhecido {}."
+msgstr "알 수없는 부속 명령 {}."
 
 #: ../plugins/copr.py:322
 msgid ""
@@ -587,46 +560,44 @@ msgstr ""
 
 #: ../plugins/copr.py:334
 msgid "Can't parse repositories for username '{}'."
-msgstr "Não é possível analisar repositórios para o username '{}'."
+msgstr "사용자 이름 '{}'에 대한 리포지토리를 구문 분석 할 수 없습니다."
 
 #: ../plugins/copr.py:337
 msgid "List of {} coprs"
-msgstr "Lista de {} coprs"
+msgstr "{} 명의 경찰 목록"
 
 #: ../plugins/copr.py:345
 msgid "No description given"
-msgstr "Nenhuma descrição dada"
+msgstr "설명이 없습니다."
 
 #: ../plugins/copr.py:357
 msgid "Can't parse search for '{}'."
-msgstr "Impossível analisar pesquisa por '{}'."
+msgstr "'{}'에 대한 검색을 구문 분석 할 수 없습니다."
 
 #: ../plugins/copr.py:360
 msgid "Matched: {}"
-msgstr "Encontrado: {}"
+msgstr "일치하는 항목 : {}"
 
 #: ../plugins/copr.py:368
 msgid "No description given."
-msgstr "Nenhuma descrição dada."
+msgstr "설명이 없습니다."
 
 #: ../plugins/copr.py:381
 msgid "Safe and good answer. Exiting."
-msgstr "Resposta boa e segura. Saindo."
+msgstr "안전하고 좋은 대답. 나가기."
 
 #: ../plugins/copr.py:388
 msgid "This command has to be run under the root user."
-msgstr "Este comando deve ser executado sobre o usuário root."
+msgstr "이 명령은 루트 사용자로 실행해야합니다."
 
 #: ../plugins/copr.py:449
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
-msgstr ""
-"Este repositório ainda não possui nenhuma compilação, logo, você não poderá "
-"habilitá-lo agora."
+msgstr "이 저장소에는 빌드가 아직 없으므로 지금 사용할 수 없습니다."
 
 #: ../plugins/copr.py:452
 msgid "Such repository does not exist."
-msgstr "Esse repositório não existe."
+msgstr "이러한 저장소는 존재하지 않습니다."
 
 #: ../plugins/copr.py:496
 #, python-brace-format
@@ -635,15 +606,15 @@ msgstr ""
 
 #: ../plugins/copr.py:507
 msgid "Failed to disable copr repo {}/{}"
-msgstr "Falha ao desabilitar o repo copr {}/{}"
+msgstr "copr repo {} / {}를 사용 중지하지 못했습니다."
 
 #: ../plugins/copr.py:523 ../plugins/copr.py:561
 msgid "Unknown response from server."
-msgstr "Resposta desconhecida do servidor."
+msgstr "서버에서 알 수없는 응답."
 
 #: ../plugins/copr.py:545
 msgid "Interact with Playground repository."
-msgstr "Interagir com o repositório Playground."
+msgstr "놀이터 저장소와 상호 작용하십시오."
 
 #: ../plugins/copr.py:550
 msgid ""
@@ -653,73 +624,69 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 "\n"
-"Você está prestes a habilitar um repositório Playground.\n"
-"\n"
-"Deseja continuar?"
+"놀이터 저장소를 사용하려고합니다. 계속 하시겠습니까?"
 
 #: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
-msgstr "Repositórios playground habilitados com sucesso."
+msgstr "놀이터 저장소를 사용하도록 설정했습니다."
 
 #: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."
-msgstr "Repositórios playground desabilitados com sucesso."
+msgstr "놀이터 저장소가 사용 중지되었습니다."
 
 #: ../plugins/copr.py:603
 msgid "Playground repositories successfully updated."
-msgstr "Repositórios playground atualizados com sucesso."
+msgstr "놀이터 저장소가 성공적으로 업데이트되었습니다."
 
 #: ../plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr "descarregar para arquivo as informações sobre pacotes rpm instalados"
+msgstr "설치된 rpm 패키지에 대한 정보를 파일에 덤프하십시오."
 
 #: ../plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
-msgstr "não tentar descarregar o conteúdo dos repositórios."
+msgstr "저장소 내용을 덤프하지 마십시오."
 
 #: ../plugins/debug.py:70
 msgid "optional name of dump file"
-msgstr "nome opcional do arquivo de descarregamento"
+msgstr "덤프 파일의 선택적 이름"
 
 #: ../plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
-msgstr "Saída escrita para: %s"
+msgstr "작성된 출력 : %s"
 
 #: ../plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
-msgstr "restaurar pacotes gravados no arquivo de depuração-descarregamento"
+msgstr "디버그 덤프 파일에 기록 된 패키지 복원"
 
 #: ../plugins/debug.py:183
 msgid "output commands that would be run to stdout."
-msgstr "imprimir comandos que deveriam ser executados para a saída padrão."
+msgstr "stdout으로 실행될 출력 명령."
 
 #: ../plugins/debug.py:186
 msgid "Install the latest version of recorded packages."
-msgstr "Instalar as versão mais recente dos pacotes gravados."
+msgstr "기록 된 패키지의 최신 버전을 설치하십시오."
 
 #: ../plugins/debug.py:189
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
-msgstr ""
-"Ignore a arquitetura e instale os pacotes ausentes coincidindo com o nome, "
-"período, versão e lançamento."
+msgstr "아키텍처를 무시하고 이름, 기원, 버전 및 릴리스와 일치하는 누락 된 패키지를 설치하십시오."
 
 #: ../plugins/debug.py:194
 msgid "limit to specified type"
-msgstr "limitar para o tipo especificado"
+msgstr "특정 유형으로 제한"
 
 #: ../plugins/debug.py:196
 msgid "name of dump file"
-msgstr "nome do arquivo de descarregamento"
+msgstr "덤프 파일의 이름"
 
 #: ../plugins/debug.py:264
 #, python-format
 msgid "Package %s is not available"
-msgstr "Pacote %s indisponível"
+msgstr "꾸러미 %s 사용할 수 없습니다"
 
 #: ../plugins/debug.py:274
 #, python-format
 msgid "Bad dnf debug file: %s"
-msgstr "Arquivo depuração do dnf inválido: %s"
+msgstr "잘못된 dnf 디버그 파일 : %s"

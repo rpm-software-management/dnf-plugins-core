@@ -4,13 +4,14 @@
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2016. #zanata
 # Florian H. <postfuerflo@gmail.com>, 2017. #zanata
 # Thomas Eichhorn <tomislav@posteo.de>, 2017. #zanata
+# Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2017-11-12 08:09+0000\n"
-"Last-Translator: Thomas Eichhorn <tomislav@posteo.de>\n"
+"PO-Revision-Date: 2018-11-02 04:31+0000\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,19 +26,19 @@ msgstr "Alle Pakete aus der fernen Paketquelle herunterladen"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "Laden Sie nur Pakete für diesen ARCH herunter"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "lokale Pakete löschen, die nicht mehr im Repository vorhanden sind"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
 msgid "also download comps.xml"
-msgstr ""
+msgstr "Laden Sie auch comps.xml herunter"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
 msgid "download only newest packages per-repo"
-msgstr ""
+msgstr "Laden Sie nur die neuesten Pakete pro Repo herunter"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
@@ -45,27 +46,27 @@ msgstr "Speicherort für Paketquellen zum Herunterladen "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
-msgstr ""
+msgstr "mit Quellpaketen arbeiten"
 
 #: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
 #, python-format
 msgid "[DELETED] %s"
-msgstr ""
+msgstr "[DELETED] %s"
 
 #: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "Datei konnte nicht gelöscht werden %s"
 
 #: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr ""
+msgstr "Repository-Verzeichnis konnte nicht erstellt werden: %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "comps.xml für das Repository %s Gerettet"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
@@ -74,7 +75,7 @@ msgstr "Debuginfo-Pakete installieren"
 #: ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "Keine Übereinstimmung für Argument: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
@@ -82,7 +83,7 @@ msgstr ""
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
-msgstr ""
+msgstr "Kann keine Übereinstimmung finden"
 
 #: ../plugins/debuginfo-install.py:132
 #, python-format
@@ -237,7 +238,7 @@ msgstr "Aktuelle Konfigurationswerte in die Standardausgabe leiten"
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
-msgstr ""
+msgstr "variable Werte in stdout ausgeben"
 
 #: ../plugins/config_manager.py:76
 msgid "Error: Trying to enable and disable repos at the same time."
@@ -273,7 +274,7 @@ msgstr "Paketquelle konnte nicht in repo-Datei % gespeichert werden: %s"
 
 #: ../plugins/local.py:117
 msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
+msgstr "Ein Verzeichnis '{}' kann aufgrund von '{}' nicht erstellt werden"
 
 #: ../plugins/local.py:121
 msgid "'{}' is not a directory"
@@ -312,11 +313,11 @@ msgstr ""
 
 #: ../plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
+msgstr "Die Wiedereinstellung endete mit ungelösten Abhängigkeiten."
 
 #: ../plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
+msgstr "Pakete der angegebenen Bögen prüfen, können mehrfach angegeben werden"
 
 #: ../plugins/repoclosure.py:156
 msgid "Specify repositories to check"
@@ -324,7 +325,7 @@ msgstr "Zu überprüfende Paketquellen angeben"
 
 #: ../plugins/repoclosure.py:158
 msgid "Check only the newest packages in the repos"
-msgstr ""
+msgstr "Überprüfen Sie nur die neuesten Pakete in den Repos"
 
 #: ../plugins/repoclosure.py:161
 msgid "Check closure for this package only"
@@ -392,7 +393,7 @@ msgstr "stattdessen das -debuginfo-Paket herunterladen"
 
 #: ../plugins/download.py:59
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "Begrenzen Sie die Abfrage auf Pakete gegebener Architekturen."
 
 #: ../plugins/download.py:61
 msgid "resolve and download needed dependencies"
@@ -408,15 +409,18 @@ msgstr ""
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
+"Liste der URLs ausgeben, bei denen die RPMS anstelle des Downloads "
+"heruntergeladen werden können"
 
 #: ../plugins/download.py:71
 msgid "when running with --url, limit to specific protocols"
 msgstr ""
+"Wenn Sie mit --url arbeiten, beschränken Sie sich auf bestimmte Protokolle"
 
 #: ../plugins/download.py:110
 #, python-format
 msgid "Failed to get mirror for package: %s"
-msgstr ""
+msgstr "Spiegel für Paket konnte nicht abgerufen werden: %s"
 
 #: ../plugins/download.py:193
 msgid "Exiting due to strict setting."
@@ -424,7 +428,7 @@ msgstr "Abbruch wegen strikter Einstellungen."
 
 #: ../plugins/download.py:213
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Fehler bei der Auflösung von Paketen:"
 
 #: ../plugins/download.py:230
 #, python-format

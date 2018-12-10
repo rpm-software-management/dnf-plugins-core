@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-09-26 08:57+0000\n"
+"PO-Revision-Date: 2018-10-15 02:59+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "Brak wyników dla parametru: %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
-msgstr ""
+msgstr "Brak pakietów debuginfo dostępnych do instalacji"
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
@@ -91,7 +91,7 @@ msgstr "Brak wyników"
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
-msgstr ""
+msgstr "Nie można odnaleźć debuginfo dla pakietu: %s"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -340,11 +340,11 @@ msgstr "Sprawdza domknięcie tylko tego pakietu"
 
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "pobiera wszystkie metadane."
 
 #: ../plugins/reposync.py:121
 msgid "Download target '{}' is outside of download path '{}'."
-msgstr ""
+msgstr "Cel pobierania „{}” jest poza ścieżką pobierania „{}”."
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"

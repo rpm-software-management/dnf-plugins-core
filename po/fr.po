@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-10-06 08:58+0000\n"
+"PO-Revision-Date: 2018-10-17 11:36+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr "Aucune correspondance pour l’argument : %s"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
-msgstr ""
+msgstr "Aucun paquet debuginfo de disponible pour installation"
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
@@ -87,7 +87,7 @@ msgstr "Impossible de trouver une correspondance"
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
-msgstr ""
+msgstr "Impossible de trouver de debuginfo pour le paquet : %s"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -334,11 +334,13 @@ msgstr "Vérifie la clôture pour ce paquet seulement"
 
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "télécharger toutes les métadonnées."
 
 #: ../plugins/reposync.py:121
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
+"La cible de téléchargement '{}' est en dehors du chemin de téléchargement  "
+"'{}'."
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
