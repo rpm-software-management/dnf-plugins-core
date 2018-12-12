@@ -449,11 +449,9 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %if %{with yumcompatibility}
 %{_mandir}/man1/yum-changelog.*
 %{_mandir}/man5/yum-changelog.conf.*
-%{_mandir}/man8/yum-changelog.*
 %else
 %exclude %{_mandir}/man1/yum-changelog.*
 %exclude %{_mandir}/man5/yum-changelog.conf.*
-%exclude %{_mandir}/man8/yum-changelog.*
 %endif
 
 %if %{with python2}
