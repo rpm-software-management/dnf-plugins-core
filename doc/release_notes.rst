@@ -22,6 +22,17 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.3 Release Notes
+===================
+
+* Add ``changelog`` plugin that is used for viewing package changelogs
+* New option ``--metadata-path`` option for reposync plugin
+
+Bugs fixed in 4.0.3:
+
+* :rhbug:`1654529`
+
+===================
 4.0.2 Release Notes
 ===================
 

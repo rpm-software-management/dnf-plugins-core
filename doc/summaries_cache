@@ -422,5 +422,9 @@
     [
         1628888,
         "can't enable copr repository using Rawhide"
+    ],
+    [
+        1654529,
+        "dnf versionlock will accept NEVRA forms for additions which it then cannot match when deleting"
     ]
 ]

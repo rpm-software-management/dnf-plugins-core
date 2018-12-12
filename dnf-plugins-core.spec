@@ -685,6 +685,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Wed Dec 12 2018 Jaroslav Mracek <jmracek@redhat.com> - 4.0.3-1
+- Add ``changelog`` plugin that is used for viewing package changelogs
+- New option ``--metadata-path`` option for reposync plugin
+
 * Thu Nov 22 2018 Jaroslav Mracek <jmracek@redhat.com> - 4.0.2-1
 - Added repodif command
 - copr: fix enabling Rawhide repository
