@@ -70,6 +70,10 @@ class QueryStub(object):
         self._filter = kwargs
         return self
 
+    def filterm(self, **kwargs):
+        self._filter = kwargs
+        return self
+
     def _stub_filter(self, **kwargs):
         results = self._all
 
@@ -262,11 +266,7 @@ class DownloadCommandTest(unittest.TestCase):
     def test_get_query_with_local_rpm(self):
         try:
             (fs, rpm_path) = tempfile.mkstemp('foobar-99.99-1.x86_64.rpm')
-            # b/c self.cmd.cli.base.add_remote_rpms is a mock object it
-            # will not update the available packages while testing.
-            # it is expected to hit this exception
-            with self.assertRaises(dnf.exceptions.PackageNotFoundError):
-                self.cmd._get_query(rpm_path)
+            self.cmd._get_query(rpm_path)
             self.cmd.cli.base.add_remote_rpms.assert_called_with([rpm_path], progress=None)
         finally:
             os.remove(rpm_path)

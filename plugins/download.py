@@ -103,14 +103,16 @@ class DownloadCommand(dnf.cli.Command):
         # If user asked for just urls then print them and we're done
         if self.opts.url:
             for pkg in pkgs:
-                url = pkg.remote_location(schemes=self.opts.urlprotocols)
-                if url:
-                    print(url)
-                else:
-                    msg = _("Failed to get mirror for package: %s") % pkg.name
-                    if self.base.conf.strict:
-                        raise dnf.exceptions.Error(msg)
-                    logger.warning(msg)
+                # command line repo packages do not have .remote_location
+                if pkg.repoid != hawkey.CMDLINE_REPO_NAME:
+                    url = pkg.remote_location(schemes=self.opts.urlprotocols)
+                    if url:
+                        print(url)
+                    else:
+                        msg = _("Failed to get mirror for package: %s") % pkg.name
+                        if self.base.conf.strict:
+                            raise dnf.exceptions.Error(msg)
+                        logger.warning(msg)
             return
         else:
             self._do_downloads(pkgs)  # download rpms
@@ -124,11 +126,28 @@ class DownloadCommand(dnf.cli.Command):
             pkg_dict.setdefault(str(pkg), []).append(pkg)
 
         to_download = []
+        cmdline = []
         for pkg_list in pkg_dict.values():
+            pkgs_cmdline = [pkg for pkg in pkg_list
+                            if pkg.repoid == hawkey.CMDLINE_REPO_NAME]
+            if pkgs_cmdline:
+                cmdline.append(pkgs_cmdline[0])
+                continue
             pkg_list.sort(key=lambda x: (x.repo.priority, x.repo.cost))
             to_download.append(pkg_list[0])
-        self.base.download_packages(to_download, self.base.output.progress)
-        locations = sorted([pkg.localPkg() for pkg in to_download])
+        if to_download:
+            self.base.download_packages(to_download, self.base.output.progress)
+        if cmdline:
+            # command line repo packages are either local files or already downloaded urls
+            # just copy them to the destination
+            for pkg in cmdline:
+                # python<3.4 shutil module does not raise SameFileError, check manually
+                src = pkg.localPkg()
+                dst = os.path.join(self.base.conf.destdir, os.path.basename(src))
+                if os.path.samefile(src, dst):
+                    continue
+                shutil.copy(src, self.base.conf.destdir)
+        locations = sorted([pkg.localPkg() for pkg in to_download + cmdline])
         return locations
 
     def _get_pkg_objs_rpms(self, pkg_specs):
@@ -236,8 +255,7 @@ class DownloadCommand(dnf.cli.Command):
         is_url = schemes and schemes in ('http', 'ftp', 'file', 'https')
         if is_url or (pkg_spec.endswith('.rpm') and os.path.isfile(pkg_spec)):
             pkgs = self.base.add_remote_rpms([pkg_spec], progress=self.base.output.progress)
-            pkg_spec = "{0.name}-{0.epoch}:{0.version}-{0.release}.{0.arch}".format(pkgs[0])
-
+            return self.base.sack.query().filterm(pkg=pkgs)
         subj = dnf.subject.Subject(pkg_spec)
         q = subj.get_best_query(self.base.sack)
         q = q.available()

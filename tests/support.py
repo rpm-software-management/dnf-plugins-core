@@ -211,6 +211,7 @@ class PkgStub:
         self.release = r
         self.arch = a
         self.epoch = e
+        self.repoid = repo_id
         self.reponame = repo_id
         self.src_name = src_name
         self.repo = repo
