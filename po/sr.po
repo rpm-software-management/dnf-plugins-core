@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 09:48+0200\n"
+"POT-Creation-Date: 2018-08-29 12:24+0200\n"
 "PO-Revision-Date: 2015-06-23 11:46+0000\n"
 "Last-Translator: Momcilo Medic <medicmomcilo@gmail.com>\n"
 "Language-Team: Serbian\n"
@@ -14,50 +14,50 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:42
 msgid "download all packages from remote repo"
 msgstr "преузми све пакете из удаљене ризнице"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:48
 msgid "download only packages for this ARCH"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:50
 msgid "delete local packages no longer present in repository"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:52
 msgid "also download comps.xml"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:54
 msgid "download only newest packages per-repo"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:56
 msgid "where to store downloaded repositories "
 msgstr "где да се чувају преузете ризнице "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:58
 msgid "operate on source packages"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:98
 #, python-format
 msgid "[DELETED] %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:100
 #, python-format
 msgid "failed to delete file %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr ""
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:114
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr ""
@@ -72,16 +72,7 @@ msgid "No match for argument: %s"
 msgstr ""
 
 #: ../plugins/debuginfo-install.py:92
-msgid "No debuginfo packages available to install"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:132
-#, python-format
-msgid "Could not find debuginfo for package: %s"
 msgstr ""
 
 #: ../plugins/migrate.py:45
@@ -196,7 +187,7 @@ msgstr "Нису све програмске зависности задовољ
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr ""
 
-#: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
+#: ../plugins/builddep.py:213
 #, python-format
 msgid "no package matched: %s"
 msgstr ""
@@ -301,63 +292,55 @@ msgstr ""
 msgid "Repoclosure ended with unresolved dependencies."
 msgstr ""
 
-#: ../plugins/repoclosure.py:153
+#: ../plugins/repoclosure.py:139
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
 
-#: ../plugins/repoclosure.py:156
+#: ../plugins/repoclosure.py:142
 msgid "Specify repositories to check"
 msgstr ""
 
-#: ../plugins/repoclosure.py:158
+#: ../plugins/repoclosure.py:144
 msgid "Check only the newest packages in the repos"
 msgstr ""
 
-#: ../plugins/repoclosure.py:161
+#: ../plugins/repoclosure.py:147
 msgid "Check closure for this package only"
-msgstr ""
-
-#: ../plugins/reposync.py:68
-msgid "download all the metadata."
-msgstr ""
-
-#: ../plugins/reposync.py:121
-msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
 msgstr ""
 
-#: ../plugins/repomanage.py:58
+#: ../plugins/repomanage.py:56
 msgid "Pass either --old or --new, not both!"
 msgstr ""
 
-#: ../plugins/repomanage.py:68
+#: ../plugins/repomanage.py:66
 msgid "No files to process"
 msgstr ""
 
-#: ../plugins/repomanage.py:73
+#: ../plugins/repomanage.py:71
 msgid "Could not open {}"
 msgstr ""
 
-#: ../plugins/repomanage.py:130
+#: ../plugins/repomanage.py:128
 msgid "Print the older packages"
 msgstr ""
 
-#: ../plugins/repomanage.py:132
+#: ../plugins/repomanage.py:130
 msgid "Print the newest packages"
 msgstr ""
 
-#: ../plugins/repomanage.py:134
+#: ../plugins/repomanage.py:132
 msgid "Space separated output, not newline"
 msgstr ""
 
-#: ../plugins/repomanage.py:136
+#: ../plugins/repomanage.py:134
 msgid "Newest N packages to keep - defaults to 1"
 msgstr ""
 
-#: ../plugins/repomanage.py:139
+#: ../plugins/repomanage.py:137
 msgid "Path to directory"
 msgstr ""
 
@@ -387,38 +370,32 @@ msgstr "разреши и преузми неопходне програмске
 
 #: ../plugins/download.py:63
 msgid ""
-"when running with --resolve, download all dependencies (do not exclude "
-"already installed ones)"
-msgstr ""
-
-#: ../plugins/download.py:66
-msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
 
-#: ../plugins/download.py:71
+#: ../plugins/download.py:68
 msgid "when running with --url, limit to specific protocols"
 msgstr ""
 
-#: ../plugins/download.py:110
+#: ../plugins/download.py:105
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr ""
 
-#: ../plugins/download.py:193
+#: ../plugins/download.py:180
 msgid "Exiting due to strict setting."
 msgstr ""
 
-#: ../plugins/download.py:213
+#: ../plugins/download.py:200
 msgid "Error in resolve of packages:"
 msgstr ""
 
-#: ../plugins/download.py:230
+#: ../plugins/download.py:217
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Није дефинисан изворни rpm за %s"
 
-#: ../plugins/download.py:248 ../plugins/download.py:262
+#: ../plugins/download.py:235 ../plugins/download.py:249
 #, python-format
 msgid "No package %s available."
 msgstr "Нема доступног пакета %s."
@@ -427,27 +404,27 @@ msgstr "Нема доступног пакета %s."
 msgid "New leaves:"
 msgstr ""
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:55
 msgid "yes"
 msgstr "да"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:55
 msgid "y"
 msgstr "д"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:56
 msgid "no"
 msgstr "не"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:56
 msgid "n"
 msgstr "н"
 
-#: ../plugins/copr.py:74
+#: ../plugins/copr.py:71
 msgid "Interact with Copr repositories."
 msgstr "Интеракција са Copr ризницама."
 
-#: ../plugins/copr.py:75
+#: ../plugins/copr.py:72
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -468,54 +445,43 @@ msgid ""
 "    "
 msgstr ""
 
-#: ../plugins/copr.py:101
+#: ../plugins/copr.py:98
 msgid "List all installed Copr repositories (default)"
 msgstr ""
 
-#: ../plugins/copr.py:103
+#: ../plugins/copr.py:100
 msgid "List enabled Copr repositories"
 msgstr ""
 
-#: ../plugins/copr.py:105
+#: ../plugins/copr.py:102
 msgid "List disabled Copr repositories"
 msgstr ""
 
-#: ../plugins/copr.py:107
+#: ../plugins/copr.py:104
 msgid "List available Copr repositories by user NAME"
 msgstr ""
 
-#: ../plugins/copr.py:109
-msgid "Specify an instance of Copr to work with"
+#: ../plugins/copr.py:117
+msgid "Warning: we are using non-standard Copr URL '{}'."
 msgstr ""
 
-#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
+#: ../plugins/copr.py:156 ../plugins/copr.py:177
 msgid "Error: "
 msgstr "Грешка: "
 
-#: ../plugins/copr.py:144
-msgid ""
-"specify Copr hub either with `--hub` or using "
-"`copr_hub/copr_username/copr_projectname` format"
-msgstr ""
-
-#: ../plugins/copr.py:147
-msgid "multiple hubs specified"
-msgstr ""
-
-#: ../plugins/copr.py:209 ../plugins/copr.py:213
+#: ../plugins/copr.py:157 ../plugins/copr.py:161
 msgid "exactly two additional parameters to copr command are required"
 msgstr "тачно два додатна параметра copr команде су неопходна"
 
-#: ../plugins/copr.py:229
+#: ../plugins/copr.py:178
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 
-#: ../plugins/copr.py:231
+#: ../plugins/copr.py:180
 msgid "bad copr project format"
 msgstr ""
 
-#: ../plugins/copr.py:245
-#, python-brace-format
+#: ../plugins/copr.py:186
 msgid ""
 "\n"
 "You are about to enable a Copr repository. Please note that this\n"
@@ -529,91 +495,79 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 "\n"
-"Do you really want to enable {0}?"
+"Do you want to continue?"
 msgstr ""
 
-#: ../plugins/copr.py:261
+#: ../plugins/copr.py:201
 msgid "Repository successfully enabled."
 msgstr "Ризница успешно омогућена."
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:205
 msgid "Repository successfully disabled."
 msgstr "Ризница успешно онемогућена."
 
-#: ../plugins/copr.py:269
+#: ../plugins/copr.py:209
 msgid "Repository successfully removed."
 msgstr ""
 
-#: ../plugins/copr.py:273 ../plugins/copr.py:606
+#: ../plugins/copr.py:213 ../plugins/copr.py:476
 msgid "Unknown subcommand {}."
 msgstr "Непозната подкоманда {}."
 
-#: ../plugins/copr.py:322
-msgid ""
-"* These coprs have repo file with an old format that contains no information"
-" about Copr hub - the default one was assumed. Re-enable the project to fix "
-"this."
-msgstr ""
-
-#: ../plugins/copr.py:334
+#: ../plugins/copr.py:242
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не могу да обрадим ризницу за корисничко име '{}'."
 
-#: ../plugins/copr.py:337
+#: ../plugins/copr.py:245
 msgid "List of {} coprs"
 msgstr "Списак {} copr-а"
 
-#: ../plugins/copr.py:345
+#: ../plugins/copr.py:253
 msgid "No description given"
 msgstr "Опис није дат"
 
-#: ../plugins/copr.py:357
+#: ../plugins/copr.py:265
 msgid "Can't parse search for '{}'."
 msgstr "Не могу да обрадим претрагу за '{}'."
 
-#: ../plugins/copr.py:360
+#: ../plugins/copr.py:268
 msgid "Matched: {}"
 msgstr "Пронађено: {}"
 
-#: ../plugins/copr.py:368
+#: ../plugins/copr.py:276
 msgid "No description given."
 msgstr "Опис није дат."
 
-#: ../plugins/copr.py:381
+#: ../plugins/copr.py:289
 msgid "Safe and good answer. Exiting."
 msgstr "Безбедан и добар одговор. Излазим."
 
-#: ../plugins/copr.py:388
+#: ../plugins/copr.py:296
 msgid "This command has to be run under the root user."
 msgstr "Ова команда мора бити извршена под root налогом."
 
-#: ../plugins/copr.py:449
+#: ../plugins/copr.py:356
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr "Ова ризница још нема изградњи тако да не можете да је омогућите сада."
 
-#: ../plugins/copr.py:452
+#: ../plugins/copr.py:359
 msgid "Such repository does not exist."
 msgstr ""
 
-#: ../plugins/copr.py:496
-#, python-brace-format
-msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
-
-#: ../plugins/copr.py:507
+#: ../plugins/copr.py:380
 msgid "Failed to disable copr repo {}/{}"
 msgstr ""
 
-#: ../plugins/copr.py:523 ../plugins/copr.py:561
+#: ../plugins/copr.py:393 ../plugins/copr.py:431
 msgid "Unknown response from server."
 msgstr "Непознат одговор од сервера."
 
-#: ../plugins/copr.py:545
+#: ../plugins/copr.py:415
 msgid "Interact with Playground repository."
 msgstr "Интеракција са Playground ризницом."
 
-#: ../plugins/copr.py:550
+#: ../plugins/copr.py:420
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -621,15 +575,15 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../plugins/copr.py:596
+#: ../plugins/copr.py:466
 msgid "Playground repositories successfully enabled."
 msgstr "Playground ризнице успешно омогућене."
 
-#: ../plugins/copr.py:599
+#: ../plugins/copr.py:469
 msgid "Playground repositories successfully disabled."
 msgstr "Playground ризнице успешно онемогућене."
 
-#: ../plugins/copr.py:603
+#: ../plugins/copr.py:473
 msgid "Playground repositories successfully updated."
 msgstr "Playground ризнице успешно ажуриране."
 
