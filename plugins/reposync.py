@@ -32,7 +32,7 @@ import dnf.cli
 
 def _pkgdir(intermediate, target):
     cwd = dnf.i18n.ucd(os.getcwd())
-    return os.path.normpath(os.path.join(cwd, intermediate, target))
+    return os.path.realpath(os.path.join(cwd, intermediate, target))
 
 
 class RPMPayloadLocation(dnf.repo.RPMPayload):
@@ -118,9 +118,12 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def pkg_download_path(self, pkg):
         repo_target = self.repo_target(pkg.repo)
-        pkg_download_path = os.path.normpath(
+        pkg_download_path = os.path.realpath(
             os.path.join(repo_target, pkg.location))
-        if not pkg_download_path.startswith(repo_target):
+        # join() ensures repo_target ends with a path separator (otherwise the
+        # check would pass if pkg_download_path was a "sibling" path component
+        # of repo_target that has the same prefix).
+        if not pkg_download_path.startswith(os.path.join(repo_target, '')):
             raise dnf.exceptions.Error(
                 _("Download target '{}' is outside of download path '{}'.").format(
                     pkg_download_path, repo_target))
