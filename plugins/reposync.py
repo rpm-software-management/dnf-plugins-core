@@ -46,6 +46,7 @@ class RPMPayloadLocation(dnf.repo.RPMPayload):
         tp['dest'] = self.package_dir
         return tp
 
+
 @dnf.plugin.register_command
 class RepoSyncCommand(dnf.cli.Command):
     aliases = ('reposync',)
@@ -190,4 +191,3 @@ class RepoSyncCommand(dnf.cli.Command):
                 shutil.copy(pkg_path, target_dir)
         if self.opts.delete:
             self.delete_old_local_packages(pkglist)
-
