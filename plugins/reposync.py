@@ -137,12 +137,12 @@ class RepoSyncCommand(dnf.cli.Command):
         # delete any *.rpm file, that is not going to be downloaded from repository
         for repo in self.base.repos.iter_enabled():
             repo_target = self.repo_target(repo)
-            for dirpath,dirnames,filenames in os.walk(repo_target):
+            for dirpath, dirnames, filenames in os.walk(repo_target):
                 for filename in filenames:
                     path = os.path.join(dirpath, filename)
                     if filename.endswith('.rpm') and os.path.isfile(path):
                         location = download_map.get((repo.id, filename))
-                        if location == None or os.path.join(repo_target, location) != path:
+                        if location is None or os.path.join(repo_target, location) != path:
                             # Delete disappeared or relocated file
                             try:
                                 os.unlink(path)
