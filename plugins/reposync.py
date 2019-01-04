@@ -133,15 +133,17 @@ class RepoSyncCommand(dnf.cli.Command):
     def delete_old_local_packages(self, packages_to_download):
         download_map = dict()
         for pkg in packages_to_download:
-            download_map[(pkg.repo.id, os.path.basename(pkg.location))] = 1
+            download_map[(pkg.repo.id, os.path.basename(pkg.location))] = pkg.location
         # delete any *.rpm file, that is not going to be downloaded from repository
         for repo in self.base.repos.iter_enabled():
             repo_target = self.repo_target(repo)
-            if os.path.exists(repo_target):
-                for filename in os.listdir(repo_target):
-                    path = os.path.join(repo_target, filename)
+            for dirpath,dirnames,filenames in os.walk(repo_target):
+                for filename in filenames:
+                    path = os.path.join(dirpath, filename)
                     if filename.endswith('.rpm') and os.path.isfile(path):
-                        if not (repo.id, filename) in download_map:
+                        location = download_map.get((repo.id, filename))
+                        if location == None or os.path.join(repo_target, location) != path:
+                            # Delete disappeared or relocated file
                             try:
                                 os.unlink(path)
                                 logger.info(_("[DELETED] %s"), path)
