@@ -23,7 +23,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.3
+Version:        4.0.2.2
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
