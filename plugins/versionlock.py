@@ -61,6 +61,8 @@ class VersionLock(dnf.Plugin):
                        and cp.get('main', 'locklist'))
 
     def sack(self):
+        if self.cli == None:
+            pass # loaded via the api, not called by cli
         if not self.cli.demands.resolving:
             logger.debug(NO_VERSIONLOCK)
             return
