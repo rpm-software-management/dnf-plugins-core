@@ -33,10 +33,11 @@ BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
 # Documentation
-BuildRequires:  %{_bindir}/sphinx-build
 %if %{with python3}
+BuildRequires:  %{_bindir}/sphinx-build-3
 Requires:       python3-%{name} = %{version}-%{release}
 %else
+BuildRequires:  %{_bindir}/sphinx-build
 Requires:       python2-%{name} = %{version}-%{release}
 %endif
 Provides:       dnf-command(builddep)
