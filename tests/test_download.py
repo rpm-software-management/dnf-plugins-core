@@ -173,7 +173,7 @@ class SubjectStub(dnf.subject.Subject):
         super(self.__class__, self).__init__(pkg_spec, ignore_case)
         self.pkg_spec = pkg_spec
 
-    def get_best_query(self, sack, with_provides=True, forms=None):
+    def get_best_query(self, sack, with_provides=True, forms=None, with_src=True):
         Q = QueryStub(PACKAGES_INST, PACKAGES_AVAIL,
                   PACKAGES_LASTEST, PACKAGES_SOURCE,
                   PACKAGES_DEBUGINFO)
