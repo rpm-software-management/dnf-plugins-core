@@ -63,7 +63,7 @@ class VersionLock(dnf.Plugin):
     def sack(self):
         if self.cli is None:
             pass  # loaded via the api, not called by cli
-        if not self.cli.demands.resolving:
+        elif not self.cli.demands.resolving:
             logger.debug(NO_VERSIONLOCK)
             return
 
