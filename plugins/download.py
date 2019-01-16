@@ -257,7 +257,7 @@ class DownloadCommand(dnf.cli.Command):
             pkgs = self.base.add_remote_rpms([pkg_spec], progress=self.base.output.progress)
             return self.base.sack.query().filterm(pkg=pkgs)
         subj = dnf.subject.Subject(pkg_spec)
-        q = subj.get_best_query(self.base.sack)
+        q = subj.get_best_query(self.base.sack, with_src=False)
         q = q.available()
         q = q.latest()
         if self.opts.arches:
