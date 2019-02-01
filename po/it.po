@@ -11,10 +11,10 @@ msgstr ""
 "PO-Revision-Date: 2018-11-02 04:31+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Italian\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
@@ -40,7 +40,7 @@ msgstr "scarica solo i pacchetti più recenti per-repo"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "dove memorizzare i repository scaricati "
+msgstr "dove memorizzare i repository scaricati"
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -90,7 +90,7 @@ msgstr ""
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "converte per dnf la cronologia, i gruppi e i dati di yumdb da yum"
+msgstr "converte per dnf la cronologia, i gruppi e i dati di yumdb da yum "
 
 #: ../plugins/migrate.py:54
 msgid "Migrating history data..."
@@ -232,7 +232,7 @@ msgstr "aggiunge (e abilita) il repository dal file o URL specificati"
 
 #: ../plugins/config_manager.py:56
 msgid "print current configuration values to stdout"
-msgstr "stampa su stdout i valori della configurazione attuale"
+msgstr "stampa su stdout i valori della configurazione attuale "
 
 #: ../plugins/config_manager.py:59
 msgid "print variable values to stdout"
@@ -506,7 +506,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Errore: "
+msgstr "Errore:"
 
 #: ../plugins/copr.py:144
 msgid ""

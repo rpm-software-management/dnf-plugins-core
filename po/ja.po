@@ -8,10 +8,10 @@ msgstr ""
 "PO-Revision-Date: 2018-09-11 12:23+0000\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
@@ -37,7 +37,7 @@ msgstr "最新のパッケージ per-repo のみをダウンロード"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "ダウンロード済みリポジトリーの保管場所 "
+msgstr "ダウンロード済みリポジトリーの保管場所"
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -56,7 +56,7 @@ msgstr "ファイル %s の削除に失敗しました"
 #: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr "リポジトリーディレクトリーを作成できませんでした: %s"
+msgstr "リポジトリーディレクトリーを作成できませんでした: %s "
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format

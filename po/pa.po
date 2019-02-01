@@ -7,10 +7,10 @@ msgstr ""
 "PO-Revision-Date: 2017-08-18 07:05+0000\n"
 "Last-Translator: A S Alam <aalam@fedoraproject.org>\n"
 "Language-Team: Punjabi\n"
+"Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pa\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤੀਆਂ ਰਿਪੋਜ਼ਟਰੀਆਂ ਨੂੰ ਕਿੱਥੇ ਸਟੋਰ ਕਰਨਾ ਹੈ "
+msgstr "ਡਾਊਨਲੋਡ ਕੀਤੀਆਂ ਰਿਪੋਜ਼ਟਰੀਆਂ ਨੂੰ ਕਿੱਥੇ ਸਟੋਰ ਕਰਨਾ ਹੈ"
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"

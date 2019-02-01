@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2018-11-22 04:12+0000\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
@@ -42,7 +42,7 @@ msgstr "descargar sólo los paquetes más nuevos por repositorio"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "donde guardar paquetes descargados "
+msgstr "donde guardar paquetes descargados"
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -565,8 +565,7 @@ msgstr ""
 "  copr remove rhscl/perl516\n"
 "  copr list --enabled\n"
 "  copr list --available-by-user=ignatenkobrain\n"
-"  copr search tests\n"
-"    "
+"  copr search tests"
 
 #: ../plugins/copr.py:101
 msgid "List all installed Copr repositories (default)"
@@ -591,7 +590,7 @@ msgstr "Instancia de Copr con la que trabajar"
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Error: "
+msgstr "Error:"
 
 #: ../plugins/copr.py:144
 msgid ""
@@ -606,7 +605,7 @@ msgstr ""
 #: ../plugins/copr.py:209 ../plugins/copr.py:213
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
-"exactamente dos parámetros adicionales son requeridos para comandos copr"
+"exactamente dos parámetros adicionales son requeridos para comandos copr "
 
 #: ../plugins/copr.py:229
 msgid "use format `copr_username/copr_projectname` to reference copr project"
