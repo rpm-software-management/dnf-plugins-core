@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "Místo pro ukládání stažených repozitářů"
+msgstr "Místo pro ukládání stažených repozitářů "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -513,7 +513,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Chyba:"
+msgstr "Chyba: "
 
 #: ../plugins/copr.py:144
 msgid ""
@@ -586,7 +586,7 @@ msgstr "Nelze analyzovat repozitáře pro uživatelské jméno '{}'."
 
 #: ../plugins/copr.py:337
 msgid "List of {} coprs"
-msgstr " Seznam {} copr repozitářů"
+msgstr "Seznam {} copr repozitářů"
 
 #: ../plugins/copr.py:345
 msgid "No description given"

@@ -39,7 +39,7 @@ msgstr "загружать только самые новые пакеты за 
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "где хранить загруженные репозитории"
+msgstr "где хранить загруженные репозитории "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -516,7 +516,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Ошибка:"
+msgstr "Ошибка: "
 
 #: ../plugins/copr.py:144
 msgid ""

@@ -40,7 +40,7 @@ msgstr "每次只下載最新的軟件包"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "儲存下載軟體庫的地方"
+msgstr "儲存下載軟體庫的地方 "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -68,7 +68,7 @@ msgstr "comps.xml for repository %s 保存"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
-msgstr "安裝 debuginfo 軟體包 "
+msgstr "安裝 debuginfo 軟體包"
 
 #: ../plugins/debuginfo-install.py:85
 #, python-format
@@ -511,7 +511,7 @@ msgstr "指定 Copr 的作業實例："
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "錯誤："
+msgstr "錯誤： "
 
 #: ../plugins/copr.py:144
 msgid ""

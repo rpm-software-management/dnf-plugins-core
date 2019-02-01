@@ -490,7 +490,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Errorea:"
+msgstr "Errorea: "
 
 #: ../plugins/copr.py:144
 msgid ""

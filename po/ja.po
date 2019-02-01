@@ -37,7 +37,7 @@ msgstr "最新のパッケージ per-repo のみをダウンロード"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "ダウンロード済みリポジトリーの保管場所"
+msgstr "ダウンロード済みリポジトリーの保管場所 "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -56,7 +56,7 @@ msgstr "ファイル %s の削除に失敗しました"
 #: ../plugins/reposync.orig.py:110
 #, python-format
 msgid "Could not make repository directory: %s"
-msgstr "リポジトリーディレクトリーを作成できませんでした: %s "
+msgstr "リポジトリーディレクトリーを作成できませんでした: %s"
 
 #: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
 #, python-format

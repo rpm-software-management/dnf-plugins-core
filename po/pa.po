@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤੀਆਂ ਰਿਪੋਜ਼ਟਰੀਆਂ ਨੂੰ ਕਿੱਥੇ ਸਟੋਰ ਕਰਨਾ ਹੈ"
+msgstr "ਡਾਊਨਲੋਡ ਕੀਤੀਆਂ ਰਿਪੋਜ਼ਟਰੀਆਂ ਨੂੰ ਕਿੱਥੇ ਸਟੋਰ ਕਰਨਾ ਹੈ "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"

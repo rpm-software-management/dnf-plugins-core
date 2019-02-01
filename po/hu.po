@@ -39,7 +39,7 @@ msgstr "csak a tárolókban lévő legújabb csomagok letöltése"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "hol tárolja a letöltött tárolókat"
+msgstr "hol tárolja a letöltött tárolókat "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"

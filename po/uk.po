@@ -39,7 +39,7 @@ msgstr "отримувати лише найновіші пакунки у ко�
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "місце, де слід зберігати отримані сховища"
+msgstr "місце, де слід зберігати отримані сховища "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -529,7 +529,7 @@ msgstr "Вказати екземпляр Copr для роботи"
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Помилка:"
+msgstr "Помилка: "
 
 #: ../plugins/copr.py:144
 msgid ""

@@ -41,7 +41,7 @@ msgstr "baixe apenas os pacotes mais novos por repo"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "aonde armazenar os repositórios baixados"
+msgstr "aonde armazenar os repositórios baixados "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -100,7 +100,7 @@ msgstr "Migrando dados de histórico..."
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
 msgstr ""
-"Saída em um gráfico de dependência completa dos pacotes no formato de ponto "
+"Saída em um gráfico de dependência completa dos pacotes no formato de ponto"
 
 #: ../plugins/repograph.py:110
 #, python-format
@@ -517,7 +517,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Erro:"
+msgstr "Erro: "
 
 #: ../plugins/copr.py:144
 msgid ""
@@ -572,7 +572,7 @@ msgstr "Repositório desativado com êxito."
 
 #: ../plugins/copr.py:269
 msgid "Repository successfully removed."
-msgstr "Repositório removido com sucesso. "
+msgstr "Repositório removido com sucesso."
 
 #: ../plugins/copr.py:273 ../plugins/copr.py:606
 msgid "Unknown subcommand {}."
@@ -659,7 +659,7 @@ msgstr ""
 
 #: ../plugins/copr.py:596
 msgid "Playground repositories successfully enabled."
-msgstr "Repositórios playground habilitados com sucesso. "
+msgstr "Repositórios playground habilitados com sucesso."
 
 #: ../plugins/copr.py:599
 msgid "Playground repositories successfully disabled."

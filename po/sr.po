@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "где да се чувају преузете ризнице"
+msgstr "где да се чувају преузете ризнице "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -490,7 +490,7 @@ msgstr ""
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Грешка:"
+msgstr "Грешка: "
 
 #: ../plugins/copr.py:144
 msgid ""

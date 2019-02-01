@@ -41,7 +41,7 @@ msgstr "ne télécharger que les nouveaux paquets per-rep"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "là où stocker les dépôts téléchargés"
+msgstr "là où stocker les dépôts téléchargés "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -528,7 +528,7 @@ msgstr "Précisez une instance Copr avec laquelle travailler"
 
 #: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
 msgid "Error: "
-msgstr "Erreur :"
+msgstr "Erreur : "
 
 #: ../plugins/copr.py:144
 msgid ""
@@ -699,7 +699,7 @@ msgstr "Mise à jour des dépôts Playground réussie."
 
 #: ../plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr "déverse les informations des paquets rpm installés vers un fichier "
+msgstr "déverse les informations des paquets rpm installés vers un fichier"
 
 #: ../plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."

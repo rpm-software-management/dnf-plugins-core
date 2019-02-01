@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "on emmagatzemar els dipòsits que s'han baixat"
+msgstr "on emmagatzemar els dipòsits que s'han baixat "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -656,6 +656,7 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
 "Esteu a punt d'habilitar un dipòsit d'esbarjo.\n"
 "\n"
 "Voleu continuar?"

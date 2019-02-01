@@ -42,7 +42,7 @@ msgstr "Laden Sie nur die neuesten Pakete pro Repo herunter"
 
 #: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
 msgid "where to store downloaded repositories "
-msgstr "Speicherort für Paketquellen zum Herunterladen"
+msgstr "Speicherort für Paketquellen zum Herunterladen "
 
 #: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
 msgid "operate on source packages"
@@ -179,7 +179,7 @@ msgstr "Befehlszeilenargumente als Source-RPM auswerten"
 
 #: ../plugins/builddep.py:138
 msgid "Some packages could not be found."
-msgstr "Einige Pakete konnten nicht gefunden werden. "
+msgstr "Einige Pakete konnten nicht gefunden werden."
 
 #. No provides, no files
 #: ../plugins/builddep.py:157
@@ -264,7 +264,7 @@ msgstr "Paketquelle von %s wird hinzugefügt"
 #: ../plugins/config_manager.py:173
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
-msgstr[0] "Konfiguration des Repository fehlgeschlagen\n"
+msgstr[0] "Konfiguration des Repository fehlgeschlagen"
 msgstr[1] "Konfiguration der Repositories fehlgeschlagen"
 
 #: ../plugins/config_manager.py:183
@@ -286,7 +286,7 @@ msgstr "»{}« wird in ein lokales Verzeichnis kopiert"
 
 #: ../plugins/local.py:136
 msgid "Can't write file '{}'"
-msgstr "Datei »{}« kann nicht geschrieben werden "
+msgstr "Datei »{}« kann nicht geschrieben werden"
 
 #: ../plugins/local.py:151
 msgid "Rebuilding local repo"
@@ -485,7 +485,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-" enable Name/Projekt [chroot]\n"
+"  enable Name/Projekt [chroot]\n"
 "  disable Name/Projekt\n"
 "  remove Name/Projekt\n"
 "  list --installed/enabled/disabled\n"
