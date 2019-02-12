@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.4 Release Notes
+===================
+
+* [download] Do not download src without ``--source`` (RhBug:1666648)
+
+Bugs fixed in 4.0.4:
+
+* :rhbug:`1666648`
+
+===================
 4.0.3 Release Notes
 ===================
 

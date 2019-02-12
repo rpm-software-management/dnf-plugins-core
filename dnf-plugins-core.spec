@@ -23,7 +23,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.3
+Version:        4.0.4
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -684,6 +684,9 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Feb 12 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.4-1
+- [download] Do not download src without ``--source`` (RhBug:1666648)
+
 * Wed Dec 12 2018 Jaroslav Mracek <jmracek@redhat.com> - 4.0.3-1
 - Add ``changelog`` plugin that is used for viewing package changelogs
 - New option ``--metadata-path`` option for reposync plugin

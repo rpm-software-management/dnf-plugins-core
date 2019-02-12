@@ -426,5 +426,9 @@
     [
         1654529,
         "dnf versionlock will accept NEVRA forms for additions which it then cannot match when deleting"
+    ],
+    [
+        1666648,
+        "dnf download command downloads also a srpm"
     ]
 ]
