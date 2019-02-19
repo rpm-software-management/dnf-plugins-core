@@ -153,7 +153,9 @@ class RepoSyncCommand(dnf.cli.Command):
     def getcomps(self, repo):
         comps_fn = repo._repo.getCompsFn()
         if comps_fn:
-            dest = os.path.join(self.metadata_target(repo), 'comps.xml')
+            dest_path = self.metadata_target(repo)
+            dnf.util.ensure_dir(dest_path)
+            dest = os.path.join(dest_path, 'comps.xml')
             dnf.yum.misc.decompress(comps_fn, dest=dest)
             logger.info(_("comps.xml for repository %s saved"), repo.id)
 
