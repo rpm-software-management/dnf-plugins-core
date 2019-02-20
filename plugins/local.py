@@ -26,7 +26,6 @@ from dnfpluginscore import _, logger
 
 import dnf
 import dnf.cli
-import iniparse.compat as ini
 import os
 import shutil
 import subprocess
@@ -36,23 +35,25 @@ class LocalConfParse(object):
     """Parsing config
 
     Args:
-      conf (iniparse.compat.ConfigParser): Config to parse
+      conf (libdnf.conf.ConfigParser): Config to parse
 
     """
     def __init__(self, conf):
         self.conf = conf
 
     def get_value(self, section, key, default=None):
-        try:
+        if self.conf.has_section(section) and self.conf.has_option(section, key):
             return self.conf.get(section, key)
-        except ini.Error:
-            return default
+        return default
 
     def parse_config(self):
         conf = self.conf
         main = {}
         crepo = {}
 
+        if not conf.has_section("main") or not conf.has_section("createrepo") or \
+           not conf.has_option("main", "enabled") or not conf.has_option("createrepo", "enabled"):
+            raise KeyError("Missing key")
         main["enabled"] = conf.getboolean("main", "enabled")
         crepo["enabled"] = conf.getboolean("createrepo", "enabled")
 
@@ -60,17 +61,19 @@ class LocalConfParse(object):
             main["repodir"] = self.get_value("main", "repodir",
                                              default="/var/lib/dnf/plugins/local")
         else:
-            raise ini.Error("Disabled")
+            raise KeyError("Disabled")
 
         if crepo["enabled"]:
             crepo["cachedir"] = self.get_value("createrepo", "cachedir")
-            try:
+
+            if conf.has_option("createrepo", "quiet"):
                 crepo["quiet"] = conf.getboolean("createrepo", "quiet")
-            except ini.NoOptionError:
+            else:
                 crepo["quiet"] = True
-            try:
+
+            if conf.has_option("createrepo", "verbose"):
                 crepo["verbose"] = conf.getboolean("createrepo", "verbose")
-            except ini.NoOptionError:
+            else:
                 crepo["verbose"] = False
 
         return main, crepo
@@ -93,7 +96,7 @@ class Local(dnf.Plugin):
         parser = LocalConfParse(conf)
         try:
             self.main, self.crepo = parser.parse_config()
-        except ini.Error:
+        except KeyError:
             self.main["enabled"] = False
             self.crepo["enabled"] = False
             return
