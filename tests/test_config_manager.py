@@ -22,7 +22,6 @@ from tests.support import command_run, mock
 import config_manager
 import dnf
 import filecmp
-import iniparse
 import os
 import shutil
 import tempfile
@@ -69,8 +68,6 @@ class ConfigManagerCommandTest(unittest.TestCase):
         def get_matching(x):
             repo = dnf.repo.Repo(x, self.cmd.base.conf)
             repo.repofile = installed_repofile
-            repo.cfg = iniparse.compat.RawConfigParser()
-            repo.cfg.read(installed_repofile)
             return [repo]
         self.cmd.base.repos.get_matching = get_matching
         self.cmd.base.output = dnf.cli.output.Output(self.cmd.base, self.cmd.base.conf)
