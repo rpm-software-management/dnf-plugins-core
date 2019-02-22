@@ -110,9 +110,9 @@ class ConfigManagerCommand(dnf.cli.Command):
         for repo in sorted(matched):
             repo_modify = dict(modify)  # create local copy
             if self.opts.set_enabled:
-                repo_modify['enabled'] = 1
+                repo_modify['enabled'] = "1"
             elif self.opts.set_disabled:
-                repo_modify['enabled'] = 0
+                repo_modify['enabled'] = "0"
             if (hasattr(self.opts, 'repo_setopts')
                     and repo.id in self.opts.repo_setopts):
                 repo_modify.update(self.opts.repo_setopts[repo.id])
