@@ -144,7 +144,7 @@ class DownloadCommand(dnf.cli.Command):
                 # python<3.4 shutil module does not raise SameFileError, check manually
                 src = pkg.localPkg()
                 dst = os.path.join(self.base.conf.destdir, os.path.basename(src))
-                if os.path.samefile(src, dst):
+                if os.path.exists(dst) and os.path.samefile(src, dst):
                     continue
                 shutil.copy(src, self.base.conf.destdir)
         locations = sorted([pkg.localPkg() for pkg in to_download + cmdline])
