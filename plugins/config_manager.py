@@ -121,9 +121,8 @@ class ConfigManagerCommand(dnf.cli.Command):
             if self.opts.dump:
                 print(self.base.output.fmtSection('repo: ' + repo.id))
                 for name, val in repo_modify.items():
-                    opt = repo._get_option(name)
-                    if opt:
-                        opt._set(val)
+                    if repo._has_option(name):
+                        repo._set_value(name, val)
                 print(repo.dump())
 
     def add_repo(self):
