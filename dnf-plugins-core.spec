@@ -1,4 +1,4 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.0.7}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.7.0
 
@@ -23,7 +23,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.5
+Version:        4.0.6
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
