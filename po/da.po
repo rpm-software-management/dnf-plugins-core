@@ -1,12 +1,13 @@
 # Danish translation for dnf-plugins-core
 # scootergrisen, 2018.
 # scootergrisen <scootergrisen@gmail.com>, 2018. #zanata
+# scootergrisen <scootergrisen@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-10-16 04:44+0000\n"
+"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"PO-Revision-Date: 2019-02-24 11:31+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -16,62 +17,127 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "download alle pakker fra fjernsoftwarearkiv"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "download kun pakker til denne ARKITEKTUR"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "slet lokale pakker som ikke længere findes i softwarearkiv"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "download også comps.xml"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "download kun nyeste pakker per-softwarearkiv"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
 msgid "where to store downloaded repositories "
 msgstr "hvor downloadede softwarearkiver lagres "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "operer på kildepakker"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[SLETTET] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
 msgstr "kunne ikke slette filen %s"
 
-#: ../plugins/reposync.orig.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "Kunne ikke oprette softwarearkivmappe: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "comps.xml til softwarearkivet %s blev gemt"
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "installer debuginfo-pakker"
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "Ikke en gyldig dato: \"{0}\"."
 
-#: ../plugins/debuginfo-install.py:85
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "Vis pakkernes ændringslogdata"
+
+#: ../plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr ""
+"vis ændringslogposter siden DATO. Det anbefales at bruge ÅÅÅÅ-MM-DD-formatet"
+" for at undgå tvetydighed."
+
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr "Vis angivne antal ændringslogposter pr. pakke"
+
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr ""
+"Vis kun nye ændringslogposter for pakker, som leverer en opgradering til "
+"nogen af de pakker som allerede er installeret."
+
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "PAKKE"
+
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
 msgstr "Intet match for argument: %s"
+
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "Oplister ændringslogge siden {}"
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "Vis kun seneste ændringslog"
+msgstr[1] "Vis{} seneste ændringslogge"
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr ""
+"Vis kun nye ændringslogge der kommer efter den installeret version af pakken"
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "Oplister alle ændringslogge"
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "Ændringslogge for {}"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "installer debuginfo-pakker"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
@@ -85,6 +151,47 @@ msgstr "Kan ikke finde et match"
 #, python-format
 msgid "Could not find debuginfo for package: %s"
 msgstr "Kunne ikke finde debuginfo til pakken: %s"
+
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Kan ikke læse versionslås-konfiguration: %s"
+
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "Låseliste ikke sat"
+
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr "Tilføjer versionslås på:"
+
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr "Tilføjer udelukkelse på:"
+
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:36
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr "Sletter versionslås for:"
+
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:37
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr "Ingen pakke fundet for:"
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:38
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Udelukkelser fra versionlås-plugin blev ikke anvendt"
+
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:119
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
+msgstr "styr låse for pakkeversion"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -103,50 +210,17 @@ msgstr "Output en fuld pakkeafhængighedsgraf i punktformat"
 msgid "Nothing provides: '%s'"
 msgstr "Intet leverer: '%s'"
 
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Kan ikke læse versionslås-konfiguration: %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "Låseliste ikke sat"
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr "Tilføjer versionslås på:"
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr "Tilføjer udelukkelse på:"
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr "Sletter versionslås for:"
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "Ingen pakke fundet for:"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "Udelukkelser fra versionlås-plugin blev ikke anvendt"
-
-#: ../plugins/versionlock.py:39
+#: ../plugins/versionlock.py:39 ../plugins/versionlock_master.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr "Versionslås-plugin: antal låseregler fra filen \"{}\" anvendt: {}"
 
-#: ../plugins/versionlock.py:40
+#: ../plugins/versionlock.py:40 ../plugins/versionlock_master.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr "Versionslås-plugin: antal udelukkelsesregler fra filen \"{}\" anvendt: {}"
 
-#: ../plugins/versionlock.py:41
+#: ../plugins/versionlock.py:41 ../plugins/versionlock_master.py:41
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Versionslås-plugin: kunne ikke fortolke mønster:"
-
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
-msgstr "styr låse for pakkeversion"
 
 #: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -216,71 +290,59 @@ msgid "save the current options (useful with --setopt)"
 msgstr "gem de nuværende tilvalg (nyttig med --setopt)"
 
 #: ../plugins/config_manager.py:47
-msgid "enable the specified repos (automatically saves)"
-msgstr "aktivér de angivne softwarearkiver (gemmer automatisk)"
-
-#: ../plugins/config_manager.py:50
-msgid "disable the specified repos (automatically saves)"
-msgstr "deaktivér de angivne softwarearkiver (gemmer automatisk)"
-
-#: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "tilføj (og aktivér) softwarearkivet fra den angivne fil eller url"
 
-#: ../plugins/config_manager.py:56
+#: ../plugins/config_manager.py:50
 msgid "print current configuration values to stdout"
 msgstr "udskriv nuværende konfigurationsværdier til stdout"
 
-#: ../plugins/config_manager.py:59
+#: ../plugins/config_manager.py:53
 msgid "print variable values to stdout"
 msgstr "udskriv variabelværdier til stdout"
 
-#: ../plugins/config_manager.py:76
-msgid "Error: Trying to enable and disable repos at the same time."
-msgstr "Fejl: Prøver at aktivere og deaktivere softwarearkiver på samme tid."
-
-#: ../plugins/config_manager.py:79
+#: ../plugins/config_manager.py:69
 msgid "Error: Trying to enable already enabled repos."
 msgstr "Fejl: Prøver at aktivere softwarearkiver som allerede er aktiveret."
 
-#: ../plugins/config_manager.py:118
+#: ../plugins/config_manager.py:108
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Intet matchende softwarearkiv at ændre: %s."
 
-#: ../plugins/config_manager.py:149
+#: ../plugins/config_manager.py:138
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Tilføjer softwarearkiv fra: %s"
 
-#: ../plugins/config_manager.py:173
+#: ../plugins/config_manager.py:162
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Konfiguration af softwarearkiv mislykkedes"
 msgstr[1] "Konfiguration af softwarearkiver mislykkedes"
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:172
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Kunne ikke gemme softwarearkiv til softwarearkivfilen %s: %s"
 
-#: ../plugins/local.py:117
+#: ../plugins/local.py:120
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "Kan ikke oprette en mappe '{}' pga. '{}'"
 
-#: ../plugins/local.py:121
+#: ../plugins/local.py:124
 msgid "'{}' is not a directory"
 msgstr "'{}' er ikke en mappe"
 
-#: ../plugins/local.py:130
+#: ../plugins/local.py:133
 msgid "Copying '{}' to local repo"
 msgstr "Kopierer '{}' til lokalt softwarearkiv"
 
-#: ../plugins/local.py:136
+#: ../plugins/local.py:139
 msgid "Can't write file '{}'"
 msgstr "Kan ikke skrive filen '{}'"
 
-#: ../plugins/local.py:151
+#: ../plugins/local.py:154
 msgid "Rebuilding local repo"
 msgstr "Genbygger lokalt softwarearkiv"
 
@@ -320,11 +382,162 @@ msgstr "Tjek kun de nyeste pakker i softwarearkiverne"
 msgid "Check closure for this package only"
 msgstr "Tjek kun lukningen af pakken"
 
+#: ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Vis forskelle mellem to sæt softwarearkiver"
+
+#: ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Angiv gamle softwarearkiv, kan bruges flere gange"
+
+#: ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Angiv nye softwarearkiv, kan bruges flere gange"
+
+#: ../plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+"Angiv arkitekturer som skal sammenlignes, kan bruges flere gange. Som "
+"standard sammenlignes kun kilde-rpm'er."
+
+#: ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Output yderligere data om ændringens størrelse."
+
+#: ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Sammenlign pakker, også efter arkitektur. Som standard sammenlignes pakker "
+"kun efter navn."
+
+#: ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "Output en simpel meddelese på én linje for ændret pakker."
+
+#: ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Opdel dataene af ændrede pakker mellem opgraderet og nedgraderet pakker."
+
+#: ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Både gamle og nye softwararkiver skal indstilles."
+
+#: ../plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "Ændring af størrelse: {} bytes"
+
+#: ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Tilføjet pakke  : {}"
+
+#: ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Fjernet pakke: {}"
+
+#: ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Forældet pakke   : {}"
+
+#: ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Opgraderet pakker"
+
+#: ../plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"Nedgraderet pakker"
+
+#: ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Ændret pakker"
+
+#: ../plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"Opsummering"
+
+#: ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Tilføjet pakker: {}"
+
+#: ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Fjernet pakker: {}"
+
+#: ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Opgraderet pakker: {}"
+
+#: ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Downloadet pakker: {}"
+
+#: ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Ændret pakker: {}"
+
+#: ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Størrelsen på tilføjet pakker: {}"
+
+#: ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Størrelsen på fjernet pakker: {}"
+
+#: ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Størrelsen på ændret pakker: {}"
+
+#: ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Størrelsen på opgraderet pakker: {}"
+
+#: ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Størrelsen på nedgraderet pakker: {}"
+
+#: ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Ændring af størrelse: {}"
+
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr "download metadataene."
 
-#: ../plugins/reposync.py:121
+#: ../plugins/reposync.py:72
+msgid "where to store downloaded repositories"
+msgstr "hvor downloadede softwarearkiver skal gemmes"
+
+#: ../plugins/reposync.py:74
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+"hvor downloadede softwarearkivmetadata skal gemmes. Standard er værdien af "
+"--download-path."
+
+#: ../plugins/reposync.py:129
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr "Downloadmålet '{}' er udenfor downloadstien '{}'."
 
@@ -407,25 +620,25 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "når der køres med --url, så begræns til angivne protokoller"
 
-#: ../plugins/download.py:110
+#: ../plugins/download.py:112
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Kunne ikke hente spejl til pakke: %s"
 
-#: ../plugins/download.py:193
+#: ../plugins/download.py:212
 msgid "Exiting due to strict setting."
 msgstr "Afslutter pga. striks-indstilling."
 
-#: ../plugins/download.py:213
+#: ../plugins/download.py:232
 msgid "Error in resolve of packages:"
 msgstr "Fejl i løsning af pakker:"
 
-#: ../plugins/download.py:230
+#: ../plugins/download.py:249
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Ingen kilde-rpm defineret til %s"
 
-#: ../plugins/download.py:248 ../plugins/download.py:262
+#: ../plugins/download.py:266 ../plugins/download.py:280
 #, python-format
 msgid "No package %s available."
 msgstr "Pakken %s er ikke tilgængelig."
@@ -434,27 +647,27 @@ msgstr "Pakken %s er ikke tilgængelig."
 msgid "New leaves:"
 msgstr "Nye leaves:"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "yes"
 msgstr "ja"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "y"
 msgstr "j"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "no"
 msgstr "nej"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:74
+#: ../plugins/copr.py:76
 msgid "Interact with Copr repositories."
 msgstr "Interager med Copr-softwarearkiver."
 
-#: ../plugins/copr.py:75
+#: ../plugins/copr.py:77
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -492,31 +705,31 @@ msgstr ""
 "  copr search test\n"
 "    "
 
-#: ../plugins/copr.py:101
+#: ../plugins/copr.py:103
 msgid "List all installed Copr repositories (default)"
 msgstr "Oplist alle installerede Copr-softwarearkiver (standard)"
 
-#: ../plugins/copr.py:103
+#: ../plugins/copr.py:105
 msgid "List enabled Copr repositories"
 msgstr "Oplist aktiverede Copr-softwarearkiver"
 
-#: ../plugins/copr.py:105
+#: ../plugins/copr.py:107
 msgid "List disabled Copr repositories"
 msgstr "Oplist deaktiverede Copr-softwarearkiver"
 
-#: ../plugins/copr.py:107
+#: ../plugins/copr.py:109
 msgid "List available Copr repositories by user NAME"
 msgstr "Oplist tilgængelige Copr-softwarearkiver fra brugeren NAVN"
 
-#: ../plugins/copr.py:109
+#: ../plugins/copr.py:111
 msgid "Specify an instance of Copr to work with"
 msgstr "Angiv en instans af Copr som der skal arbejdes med"
 
-#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
+#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
 msgid "Error: "
 msgstr "Fejl: "
 
-#: ../plugins/copr.py:144
+#: ../plugins/copr.py:146
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -524,25 +737,25 @@ msgstr ""
 "angiv enten Copr-hub med `--hub` eller ved at bruge "
 "`copr_hub/copr_brugernavn/copr_projektnavn`-format"
 
-#: ../plugins/copr.py:147
+#: ../plugins/copr.py:149
 msgid "multiple hubs specified"
 msgstr "flere hubs angivet"
 
-#: ../plugins/copr.py:209 ../plugins/copr.py:213
+#: ../plugins/copr.py:211 ../plugins/copr.py:215
 msgid "exactly two additional parameters to copr command are required"
 msgstr "der kræves præcist to yderligere parametre copr-kommandoen"
 
-#: ../plugins/copr.py:229
+#: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "brug formatet `copr_brugernavn/copr_projektnavn` til at referere copr-"
 "projektet"
 
-#: ../plugins/copr.py:231
+#: ../plugins/copr.py:233
 msgid "bad copr project format"
 msgstr "dårligt format for copr-projekt"
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:247
 #, python-brace-format
 msgid ""
 "\n"
@@ -573,23 +786,23 @@ msgstr ""
 "\n"
 "Vil du virkelig aktivere {0}?"
 
-#: ../plugins/copr.py:261
+#: ../plugins/copr.py:263
 msgid "Repository successfully enabled."
 msgstr "Softwarearkiv aktiveret."
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:267
 msgid "Repository successfully disabled."
 msgstr "Softwarearkiv deaktiveret."
 
-#: ../plugins/copr.py:269
+#: ../plugins/copr.py:271
 msgid "Repository successfully removed."
 msgstr "Softwarearkiv fjernet."
 
-#: ../plugins/copr.py:273 ../plugins/copr.py:606
+#: ../plugins/copr.py:275 ../plugins/copr.py:616
 msgid "Unknown subcommand {}."
 msgstr "Ukendt underkommando {}."
 
-#: ../plugins/copr.py:322
+#: ../plugins/copr.py:324
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -599,67 +812,67 @@ msgstr ""
 "nogen information om Copr-hub - standarden blev antaget. Genaktivér "
 "projektet for at rette det."
 
-#: ../plugins/copr.py:334
+#: ../plugins/copr.py:336
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan ikke fortolke softwarearkiver for brugernavnet '{}'."
 
-#: ../plugins/copr.py:337
+#: ../plugins/copr.py:339
 msgid "List of {} coprs"
 msgstr "Liste over {}-copr'er"
 
-#: ../plugins/copr.py:345
+#: ../plugins/copr.py:347
 msgid "No description given"
 msgstr "Ingen beskrivelse givet"
 
-#: ../plugins/copr.py:357
+#: ../plugins/copr.py:359
 msgid "Can't parse search for '{}'."
 msgstr "Kan ikke fortolke søgning til '{}'."
 
-#: ../plugins/copr.py:360
+#: ../plugins/copr.py:362
 msgid "Matched: {}"
 msgstr "Matchet: {}"
 
-#: ../plugins/copr.py:368
+#: ../plugins/copr.py:370
 msgid "No description given."
 msgstr "Ingen beskrivelse givet."
 
-#: ../plugins/copr.py:381
+#: ../plugins/copr.py:383
 msgid "Safe and good answer. Exiting."
 msgstr "Sikkert og godt svar. Afslutter."
 
-#: ../plugins/copr.py:388
+#: ../plugins/copr.py:390
 msgid "This command has to be run under the root user."
 msgstr "Kommandoen skal køres under root-brugeren."
 
-#: ../plugins/copr.py:449
+#: ../plugins/copr.py:455
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Softwarearkivet har endnu ikke nogen bygninger, så du kan ikke aktivere den "
 "nu."
 
-#: ../plugins/copr.py:452
+#: ../plugins/copr.py:458
 msgid "Such repository does not exist."
 msgstr "Softwarearkivet findes ikke."
 
-#: ../plugins/copr.py:496
+#: ../plugins/copr.py:506
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Kunne ikke fjerne copr-softwarearkiv {0}/{1}/{2}"
 
-#: ../plugins/copr.py:507
+#: ../plugins/copr.py:517
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Kunne ikke deaktivere copr-softwarearkivet {}/{}"
 
-#: ../plugins/copr.py:523 ../plugins/copr.py:561
+#: ../plugins/copr.py:533 ../plugins/copr.py:571
 msgid "Unknown response from server."
 msgstr "Ukendt svar fra server."
 
-#: ../plugins/copr.py:545
+#: ../plugins/copr.py:555
 msgid "Interact with Playground repository."
 msgstr "Interager med Playground-softwarearkiv."
 
-#: ../plugins/copr.py:550
+#: ../plugins/copr.py:560
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -671,15 +884,15 @@ msgstr ""
 "\n"
 "Vil du fortsætte?"
 
-#: ../plugins/copr.py:596
+#: ../plugins/copr.py:606
 msgid "Playground repositories successfully enabled."
 msgstr "Playground-softwarearkiver blev aktiveret."
 
-#: ../plugins/copr.py:599
+#: ../plugins/copr.py:609
 msgid "Playground repositories successfully disabled."
 msgstr "Playground-softwarearkiver blev deaktiveret."
 
-#: ../plugins/copr.py:603
+#: ../plugins/copr.py:613
 msgid "Playground repositories successfully updated."
 msgstr "Playground-softwarearkiver blev opdateret."
 

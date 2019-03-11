@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 09:48+0200\n"
+"POT-Creation-Date: 2019-03-11 10:35+0100\n"
 "PO-Revision-Date: 2018-11-02 04:31+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Korean\n"
@@ -14,62 +14,121 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "원격 저장소에서 모든 패키지를 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "이 ARCH 용 패키지 만 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "저장소에 더 이상 존재하지 않는 로컬 패키지 삭제"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "comps.xml도 다운로드하십시오."
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "repo 당 최신 패키지 만 다운로드하십시오."
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
 msgid "where to store downloaded repositories "
 msgstr "다운로드 한 저장소를 저장할 위치 "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "소스 패키지를 조작한다."
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
 msgstr "파일을 삭제하지 못했습니다. %s"
 
-#: ../plugins/reposync.orig.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "저장소 디렉토리를 만들지 못했습니다 : %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "저장소에 대한 comps.xml %s 저장된"
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "debuginfo 패키지 설치"
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr ""
 
-#: ../plugins/debuginfo-install.py:85
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr ""
+
+#: ../plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr ""
+
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr ""
+
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr ""
+
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr ""
+
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
 msgstr "인수와 일치하는 항목 없음 : %s"
+
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr ""
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] ""
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr ""
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr ""
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "debuginfo 패키지 설치"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
@@ -82,6 +141,47 @@ msgstr "경기를 찾을 수 없습니다."
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
+msgstr ""
+
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "버전 잠금 설정을 읽을 수 없습니다 : %s"
+
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "잠금 목록이 설정되지 않았습니다."
+
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr ""
+
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr ""
+
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:36
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr ""
+
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:37
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr ""
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:38
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:119
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
 msgstr ""
 
 #: ../plugins/migrate.py:45
@@ -101,49 +201,16 @@ msgstr "도트 형식의 전체 패키지 종속성 그래프 출력"
 msgid "Nothing provides: '%s'"
 msgstr "아무것도 제공하지 않습니다 : '%s'"
 
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "버전 잠금 설정을 읽을 수 없습니다 : %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "잠금 목록이 설정되지 않았습니다."
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr ""
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr ""
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr ""
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr ""
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
-
-#: ../plugins/versionlock.py:39
+#: ../plugins/versionlock.py:39 ../plugins/versionlock_master.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
 
-#: ../plugins/versionlock.py:40
+#: ../plugins/versionlock.py:40 ../plugins/versionlock_master.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
 
-#: ../plugins/versionlock.py:41
+#: ../plugins/versionlock.py:41 ../plugins/versionlock_master.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
-
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
 msgstr ""
 
 #: ../plugins/builddep.py:68
@@ -214,70 +281,58 @@ msgid "save the current options (useful with --setopt)"
 msgstr "현재 옵션 저장 (--setopt와 함께 유용함)"
 
 #: ../plugins/config_manager.py:47
-msgid "enable the specified repos (automatically saves)"
-msgstr "지정된 저장소를 사용하도록 설정 (자동 저장)"
-
-#: ../plugins/config_manager.py:50
-msgid "disable the specified repos (automatically saves)"
-msgstr "지정된 저장소를 사용하지 않도록 설정 (자동 저장)"
-
-#: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "지정된 파일 또는 URL에서 repo를 추가 (및 활성화)"
 
-#: ../plugins/config_manager.py:56
+#: ../plugins/config_manager.py:50
 msgid "print current configuration values to stdout"
 msgstr "현재 구성 값을 표준 출력으로 인쇄"
 
-#: ../plugins/config_manager.py:59
+#: ../plugins/config_manager.py:53
 msgid "print variable values to stdout"
 msgstr "변수 값을 표준 출력으로 출력"
 
-#: ../plugins/config_manager.py:76
-msgid "Error: Trying to enable and disable repos at the same time."
-msgstr "오류 : 같은 시간에 repos를 사용 또는 사용 중지하려고합니다."
-
-#: ../plugins/config_manager.py:79
+#: ../plugins/config_manager.py:69
 msgid "Error: Trying to enable already enabled repos."
 msgstr "오류 : 이미 활성화 된 repos를 활성화하려고합니다."
 
-#: ../plugins/config_manager.py:118
+#: ../plugins/config_manager.py:108
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "수정할 일치하는 Repo가 없습니다. %s."
 
-#: ../plugins/config_manager.py:149
+#: ../plugins/config_manager.py:138
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "다음 위치에서 레포 추가 : %s"
 
-#: ../plugins/config_manager.py:173
+#: ../plugins/config_manager.py:162
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "저장소 구성에 실패했습니다."
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:172
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "repofile에 repo를 저장할 수 없습니다. %s: %s"
 
-#: ../plugins/local.py:117
+#: ../plugins/local.py:120
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "'{}'(으)로 인해 '{}'디렉토리를 만들 수 없습니다."
 
-#: ../plugins/local.py:121
+#: ../plugins/local.py:124
 msgid "'{}' is not a directory"
 msgstr "'{}'은 (는) 디렉토리가 아닙니다."
 
-#: ../plugins/local.py:130
+#: ../plugins/local.py:133
 msgid "Copying '{}' to local repo"
 msgstr "'{}'을 (를) 로컬 저장소로 복사 중입니다."
 
-#: ../plugins/local.py:136
+#: ../plugins/local.py:139
 msgid "Can't write file '{}'"
 msgstr "'{}'파일을 쓸 수 없습니다."
 
-#: ../plugins/local.py:151
+#: ../plugins/local.py:154
 msgid "Rebuilding local repo"
 msgstr "지역 레포 복구"
 
@@ -317,11 +372,147 @@ msgstr "리포지토리의 최신 패키지 만 확인하십시오."
 msgid "Check closure for this package only"
 msgstr "이 패키지의 폐쇄 만 확인하십시오."
 
+#: ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr ""
+
+#: ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr ""
+
+#: ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr ""
+
+#: ../plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+
+#: ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr ""
+
+#: ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+
+#: ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr ""
+
+#: ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+
+#: ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr ""
+
+#: ../plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr ""
+
+#: ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+
+#: ../plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+
+#: ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+
+#: ../plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+
+#: ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr ""
+
+#: ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr ""
+
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr ""
 
-#: ../plugins/reposync.py:121
+#: ../plugins/reposync.py:72
+msgid "where to store downloaded repositories"
+msgstr ""
+
+#: ../plugins/reposync.py:74
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+
+#: ../plugins/reposync.py:129
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 
@@ -400,25 +591,25 @@ msgstr "다운로드 대신 rpms를 다운로드 할 수있는 URL 목록 인쇄
 msgid "when running with --url, limit to specific protocols"
 msgstr "--url을 사용하여 실행하면 특정 프로토콜로 제한됩니다."
 
-#: ../plugins/download.py:110
+#: ../plugins/download.py:112
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "패키지 미러링에 실패했습니다. %s"
 
-#: ../plugins/download.py:193
+#: ../plugins/download.py:212
 msgid "Exiting due to strict setting."
 msgstr "엄격한 설정으로 인해 종료됩니다."
 
-#: ../plugins/download.py:213
+#: ../plugins/download.py:232
 msgid "Error in resolve of packages:"
 msgstr "패키지 해결 오류 :"
 
-#: ../plugins/download.py:230
+#: ../plugins/download.py:249
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "소스 rpm이 정의되지 않았습니다. %s"
 
-#: ../plugins/download.py:248 ../plugins/download.py:262
+#: ../plugins/download.py:266 ../plugins/download.py:280
 #, python-format
 msgid "No package %s available."
 msgstr "패키지 없음 %s 유효한."
@@ -427,27 +618,27 @@ msgstr "패키지 없음 %s 유효한."
 msgid "New leaves:"
 msgstr "새 잎 :"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "yes"
 msgstr "예"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "y"
 msgstr "y"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "no"
 msgstr "아니"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:74
+#: ../plugins/copr.py:76
 msgid "Interact with Copr repositories."
 msgstr "Copr 저장소와 상호 작용하십시오."
 
-#: ../plugins/copr.py:75
+#: ../plugins/copr.py:77
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -471,53 +662,53 @@ msgstr ""
 "  프로젝트 이름 / 프로젝트 제거 - 설치 / 사용 / 사용 안 함 목록 - 사용 가능 사용자 = NAME 검색 프로젝트 예 : copr enable rhscl / perl516 epel-6-x86_64 copr enable ignatenkobrain / ocltoys copr 비활성화 rhscl / perl516 copr 제거 rhscl / perl516 copr 목록 - 사용 가능 목록 - 사용 가능 사용자 = ignatenkobrain copr 검색 테스트\n"
 "    "
 
-#: ../plugins/copr.py:101
+#: ../plugins/copr.py:103
 msgid "List all installed Copr repositories (default)"
 msgstr "설치된 모든 Copr 저장소 나열 (기본값)"
 
-#: ../plugins/copr.py:103
+#: ../plugins/copr.py:105
 msgid "List enabled Copr repositories"
 msgstr "사용 가능한 Copr 저장소 목록"
 
-#: ../plugins/copr.py:105
+#: ../plugins/copr.py:107
 msgid "List disabled Copr repositories"
 msgstr "비활성화 된 Copr 저장소 목록"
 
-#: ../plugins/copr.py:107
+#: ../plugins/copr.py:109
 msgid "List available Copr repositories by user NAME"
 msgstr "사용자가 사용할 수있는 Copr 저장소를 나열합니다. NAME"
 
-#: ../plugins/copr.py:109
+#: ../plugins/copr.py:111
 msgid "Specify an instance of Copr to work with"
 msgstr ""
 
-#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
+#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
 msgid "Error: "
 msgstr "오류: "
 
-#: ../plugins/copr.py:144
+#: ../plugins/copr.py:146
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 
-#: ../plugins/copr.py:147
+#: ../plugins/copr.py:149
 msgid "multiple hubs specified"
 msgstr ""
 
-#: ../plugins/copr.py:209 ../plugins/copr.py:213
+#: ../plugins/copr.py:211 ../plugins/copr.py:215
 msgid "exactly two additional parameters to copr command are required"
 msgstr "copr 명령에 정확히 두 개의 추가 매개 변수가 필요합니다."
 
-#: ../plugins/copr.py:229
+#: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr "copr 프로젝트를 참조하기 위해`copr_username / copr_projectname` 형식을 사용하십시오"
 
-#: ../plugins/copr.py:231
+#: ../plugins/copr.py:233
 msgid "bad copr project format"
 msgstr "나쁜 copr 프로젝트 형식"
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:247
 #, python-brace-format
 msgid ""
 "\n"
@@ -535,88 +726,88 @@ msgid ""
 "Do you really want to enable {0}?"
 msgstr ""
 
-#: ../plugins/copr.py:261
+#: ../plugins/copr.py:263
 msgid "Repository successfully enabled."
 msgstr "저장소가 사용 설정되었습니다."
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:267
 msgid "Repository successfully disabled."
 msgstr "저장소가 사용 중지되었습니다."
 
-#: ../plugins/copr.py:269
+#: ../plugins/copr.py:271
 msgid "Repository successfully removed."
 msgstr "저장소가 제거되었습니다."
 
-#: ../plugins/copr.py:273 ../plugins/copr.py:606
+#: ../plugins/copr.py:275 ../plugins/copr.py:616
 msgid "Unknown subcommand {}."
 msgstr "알 수없는 부속 명령 {}."
 
-#: ../plugins/copr.py:322
+#: ../plugins/copr.py:324
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 
-#: ../plugins/copr.py:334
+#: ../plugins/copr.py:336
 msgid "Can't parse repositories for username '{}'."
 msgstr "사용자 이름 '{}'에 대한 리포지토리를 구문 분석 할 수 없습니다."
 
-#: ../plugins/copr.py:337
+#: ../plugins/copr.py:339
 msgid "List of {} coprs"
 msgstr "{} 명의 경찰 목록"
 
-#: ../plugins/copr.py:345
+#: ../plugins/copr.py:347
 msgid "No description given"
 msgstr "설명이 없습니다."
 
-#: ../plugins/copr.py:357
+#: ../plugins/copr.py:359
 msgid "Can't parse search for '{}'."
 msgstr "'{}'에 대한 검색을 구문 분석 할 수 없습니다."
 
-#: ../plugins/copr.py:360
+#: ../plugins/copr.py:362
 msgid "Matched: {}"
 msgstr "일치하는 항목 : {}"
 
-#: ../plugins/copr.py:368
+#: ../plugins/copr.py:370
 msgid "No description given."
 msgstr "설명이 없습니다."
 
-#: ../plugins/copr.py:381
+#: ../plugins/copr.py:383
 msgid "Safe and good answer. Exiting."
 msgstr "안전하고 좋은 대답. 나가기."
 
-#: ../plugins/copr.py:388
+#: ../plugins/copr.py:390
 msgid "This command has to be run under the root user."
 msgstr "이 명령은 루트 사용자로 실행해야합니다."
 
-#: ../plugins/copr.py:449
+#: ../plugins/copr.py:455
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr "이 저장소에는 빌드가 아직 없으므로 지금 사용할 수 없습니다."
 
-#: ../plugins/copr.py:452
+#: ../plugins/copr.py:458
 msgid "Such repository does not exist."
 msgstr "이러한 저장소는 존재하지 않습니다."
 
-#: ../plugins/copr.py:496
+#: ../plugins/copr.py:506
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr ""
 
-#: ../plugins/copr.py:507
+#: ../plugins/copr.py:517
 msgid "Failed to disable copr repo {}/{}"
 msgstr "copr repo {} / {}를 사용 중지하지 못했습니다."
 
-#: ../plugins/copr.py:523 ../plugins/copr.py:561
+#: ../plugins/copr.py:533 ../plugins/copr.py:571
 msgid "Unknown response from server."
 msgstr "서버에서 알 수없는 응답."
 
-#: ../plugins/copr.py:545
+#: ../plugins/copr.py:555
 msgid "Interact with Playground repository."
 msgstr "놀이터 저장소와 상호 작용하십시오."
 
-#: ../plugins/copr.py:550
+#: ../plugins/copr.py:560
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -626,15 +817,15 @@ msgstr ""
 "\n"
 "놀이터 저장소를 사용하려고합니다. 계속 하시겠습니까?"
 
-#: ../plugins/copr.py:596
+#: ../plugins/copr.py:606
 msgid "Playground repositories successfully enabled."
 msgstr "놀이터 저장소를 사용하도록 설정했습니다."
 
-#: ../plugins/copr.py:599
+#: ../plugins/copr.py:609
 msgid "Playground repositories successfully disabled."
 msgstr "놀이터 저장소가 사용 중지되었습니다."
 
-#: ../plugins/copr.py:603
+#: ../plugins/copr.py:613
 msgid "Playground repositories successfully updated."
 msgstr "놀이터 저장소가 성공적으로 업데이트되었습니다."
 

@@ -5,12 +5,14 @@
 # William  Moreno Reyes <williamjmorenor@gmail.com>, 2016. #zanata
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017. #zanata
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2018. #zanata
+# Ludek Janda <ljanda@redhat.com>, 2019. #zanata
+# Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-11-22 04:12+0000\n"
+"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"PO-Revision-Date: 2019-03-02 12:23+0000\n"
 "Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -20,62 +22,125 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "descargar todos los paquetes del repositorio remoto"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "descargar sólo los paquetes para esta ARQUITECTURA"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "borrar los paquetes locales que ya no existen en el repositorio"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "descargar también comps.xml"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "descargar sólo los paquetes más nuevos por repositorio"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
 msgid "where to store downloaded repositories "
-msgstr "donde guardar paquetes descargados "
+msgstr "dónde almacenar los repositorios descargados "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "operar con los paquetes fuente"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[BORRADO] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
 msgstr "no se pudo borrar %s"
 
-#: ../plugins/reposync.orig.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "No se pudo crear el directorio de repositorio: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "guardado comps.xml para el repositorio %s"
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "instalar paquetes con información debug"
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "La fecha no es válida: \"{0}\"."
 
-#: ../plugins/debuginfo-install.py:85
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "Mostrar cambios de los paquetes"
+
+#: ../plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr ""
+"mostrar cambios desde FECHA. Se recomienda usar el formato AAAA-MM-DD."
+
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr "mostrar la cantidad indicada de cambios por paquete"
+
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr ""
+"mostrar sólo los nuevos cambios de paquetes que actualizan a alguno ya "
+"instalado."
+
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "PAQUETE"
+
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
 msgstr "No hay coincidencias para el argumento: %s"
+
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "Mostrando cambios desde {}"
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "Mostrando sólo el último cambio"
+msgstr[1] "Mostrando los últimos {} cambios"
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr "Mostrando sólo los cambios desde la versión instalada del paquete"
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "Mostrando todos los cambios"
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "Cambios para {}"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "instalar paquetes con información debug"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
@@ -89,6 +154,62 @@ msgstr "No se pudo encontrar ningún resultado"
 #, python-format
 msgid "Could not find debuginfo for package: %s"
 msgstr "No se pudo encontrar la información de depuración para el paquete: %s"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "No es posible leer la configuración de bloqueo de versión: %s"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "No se ha establecido lista de bloqueos"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr "Agregando bloqueo de versión en:"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr "Agregando exclusión en:"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:36
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr "Eliminando bloqueo de versión para:"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:37
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr "No se encontró paquete para:"
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:38
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr ""
+"No se aplicaron las exclusiones del complemento de bloqueo de versiones"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:119
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
+msgstr "controla bloqueos de la versión del paquete"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
@@ -115,69 +236,21 @@ msgstr "Genera una gráfica completa de las dependencias en formato dot"
 msgid "Nothing provides: '%s'"
 msgstr "Nada proporciona: '%s'"
 
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "No es posible leer la configuración de bloqueo de versión: %s"
-
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "No se ha establecido lista de bloqueos"
-
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr "Agregando bloqueo de versión en:"
-
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr "Agregando exclusión en:"
-
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr "Eliminando bloqueo de versión para:"
-
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "No se encontró paquete para:"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
-"No se aplicaron las exclusiones del complemento de bloqueo de versiones"
-
-#: ../plugins/versionlock.py:39
+#: ../plugins/versionlock.py:39 ../plugins/versionlock_master.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
 "Versionlock plugin: número de reglas de bloqueo aplicadas del archivo "
 "\"{}\": {}"
 
-#: ../plugins/versionlock.py:40
+#: ../plugins/versionlock.py:40 ../plugins/versionlock_master.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
 "Versionlock plugin: número de reglas de exclusión aplicadas del archivo "
 "\"{}\": {}"
 
-#: ../plugins/versionlock.py:41
+#: ../plugins/versionlock.py:41 ../plugins/versionlock_master.py:41
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Versionlock plugin: no se pudo interpretar el patrón:"
-
-# auto translated by TM merge from project: dnf-plugins-extras, version:
-# master, DocId: dnf-plugins-extras
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
-msgstr "controla bloqueos de la versión del paquete"
 
 #: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -212,7 +285,7 @@ msgstr "Algunos paquetes no pudieron ser encontrados."
 #: ../plugins/builddep.py:157
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr "No se encontraron paquetes para intalar: '%s'"
+msgstr "No se encontraron paquetes para instalar: '%s'"
 
 #: ../plugins/builddep.py:174
 #, python-format
@@ -247,82 +320,70 @@ msgid "save the current options (useful with --setopt)"
 msgstr "guardar las opciones actuales (útil con --setopt)"
 
 #: ../plugins/config_manager.py:47
-msgid "enable the specified repos (automatically saves)"
-msgstr "activar los repositorios especificados (se guarda automáticamente)"
-
-#: ../plugins/config_manager.py:50
-msgid "disable the specified repos (automatically saves)"
-msgstr "desactivar los repositorios especificados (se guarda automáticamente)"
-
-#: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
 msgstr ""
 "agregar (y activar) el repo desde el archivo o la dirección especificada"
 
-#: ../plugins/config_manager.py:56
+#: ../plugins/config_manager.py:50
 msgid "print current configuration values to stdout"
 msgstr "imprimir valores de la configuración a la salida estándar"
 
-#: ../plugins/config_manager.py:59
+#: ../plugins/config_manager.py:53
 msgid "print variable values to stdout"
 msgstr "imprimir valores de variables a la salida estándar"
 
-#: ../plugins/config_manager.py:76
-msgid "Error: Trying to enable and disable repos at the same time."
-msgstr "Error: intento de activar y desactivar repositorios al mismo tiempo."
-
-#: ../plugins/config_manager.py:79
+#: ../plugins/config_manager.py:69
 msgid "Error: Trying to enable already enabled repos."
 msgstr "Error: intento de activar repositorios que ya están activos."
 
-#: ../plugins/config_manager.py:118
+#: ../plugins/config_manager.py:108
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "No se encontró repo coincidente para modificar: %s."
 
-#: ../plugins/config_manager.py:149
+#: ../plugins/config_manager.py:138
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Agregando repositorio de: %s"
 
-#: ../plugins/config_manager.py:173
+#: ../plugins/config_manager.py:162
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Falló la configuración del repositorio"
 msgstr[1] "Falló la configuración de los repositorios"
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:172
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "No se puede guardar repositorio al repofile %s: %s"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/local.py:117
+#: ../plugins/local.py:120
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "No se pudo crear el directorio '{}' debido a '{}'"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/local.py:121
+#: ../plugins/local.py:124
 msgid "'{}' is not a directory"
 msgstr "'{}' no es un directorio"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/local.py:130
+#: ../plugins/local.py:133
 msgid "Copying '{}' to local repo"
 msgstr "Copiando '{}' al repositorio local"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/local.py:136
+#: ../plugins/local.py:139
 msgid "Can't write file '{}'"
 msgstr "No es posible escribir el archivo '{}'"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: ../plugins/local.py:151
+#: ../plugins/local.py:154
 msgid "Rebuilding local repo"
 msgstr "Reconstruyendo repositorio local"
 
@@ -377,11 +438,161 @@ msgstr "Comprobar sólo los paquetes más recientes de los repositorios"
 msgid "Check closure for this package only"
 msgstr "Comprobar este paquete solamente"
 
+#: ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Mostrar diferencias entre dos conjuntos de repositorios"
+
+#: ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Repositorio viejo, se puede usar varias veces"
+
+#: ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Repositorio nuevo, se puede usar varias veces"
+
+#: ../plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+"Arquitecturas a comparar, se puede usar varias veces. De forma "
+"predeterminada sólo se comparan rpm de fuentes."
+
+#: ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Mostrar datos sobre el tamaño de los cambios."
+
+#: ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Comparar paquetes por arquitectura. De forma predeterminado sólo se comparan"
+" por nombre."
+
+#: ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "Mostrar una línea simple por cada paquete modificado."
+
+#: ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr "Separar los datos entre los paquetes actualizados y revertidos."
+
+#: ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Se deben indicar tanto los repositorios nuevos como los viejos."
+
+#: ../plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "Variación de tamaño: {} bytes"
+
+#: ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Paquete nuevo    : {}"
+
+#: ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Paquete eliminado: {}"
+
+#: ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Reemplazado por  : {}"
+
+#: ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Paquetes actualizados"
+
+#: ../plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"Paquetes revertidos"
+
+#: ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Paquetes modificados"
+
+#: ../plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"Resumen"
+
+#: ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Paquetes nuevos: {}"
+
+#: ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Paquetes eliminados: {}"
+
+#: ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Paquetes actualizados: {}"
+
+#: ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Paquetes revertidos: {}"
+
+#: ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Paquetes modificados: {}"
+
+#: ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Tamaño de los paquetes nuevos: {}"
+
+#: ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Tamaño de los paquetes eliminados: {}"
+
+#: ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Tamaño de los paquetes modificados: {}"
+
+#: ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Tamaño de los paquetes actualizados: {}"
+
+#: ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Tamaño de los paquetes revertidos: {}"
+
+#: ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Variación de tamaño: {}"
+
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr "descargar todos los metadatos."
 
-#: ../plugins/reposync.py:121
+#: ../plugins/reposync.py:72
+msgid "where to store downloaded repositories"
+msgstr "dónde almacenar los repositorios descargados"
+
+#: ../plugins/reposync.py:74
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+"dónde almacenar los metadatos descargados de los repositorios. El valor "
+"predeterminado es el de --download-path."
+
+#: ../plugins/reposync.py:129
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 
@@ -481,25 +692,25 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "limitar a protocolos concretos cuando se ejecuta con --url"
 
-#: ../plugins/download.py:110
+#: ../plugins/download.py:112
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "No se puedo obtener un espejo para el paquete: %s"
 
-#: ../plugins/download.py:193
+#: ../plugins/download.py:212
 msgid "Exiting due to strict setting."
 msgstr "Saliendo debido a configuraciones estrictas."
 
-#: ../plugins/download.py:213
+#: ../plugins/download.py:232
 msgid "Error in resolve of packages:"
 msgstr "Error en la resolución de paquetes:"
 
-#: ../plugins/download.py:230
+#: ../plugins/download.py:249
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "No hay fuente de rpm definido para %s"
 
-#: ../plugins/download.py:248 ../plugins/download.py:262
+#: ../plugins/download.py:266 ../plugins/download.py:280
 #, python-format
 msgid "No package %s available."
 msgstr "No hay ningún paquete %s disponible."
@@ -510,27 +721,27 @@ msgstr "No hay ningún paquete %s disponible."
 msgid "New leaves:"
 msgstr "Nuevos paquetes de los que no dependen otros:"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "yes"
 msgstr "si"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "y"
 msgstr "s"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "no"
 msgstr "no"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:74
+#: ../plugins/copr.py:76
 msgid "Interact with Copr repositories."
 msgstr "Interactuar con repositorios Copr."
 
-#: ../plugins/copr.py:75
+#: ../plugins/copr.py:77
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -568,57 +779,57 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:101
+#: ../plugins/copr.py:103
 msgid "List all installed Copr repositories (default)"
 msgstr ""
 "Mostrar todos los repositorios Copr instalados (opción predeterminada)"
 
-#: ../plugins/copr.py:103
+#: ../plugins/copr.py:105
 msgid "List enabled Copr repositories"
 msgstr "Mostrar los repositorios Copr activos"
 
-#: ../plugins/copr.py:105
+#: ../plugins/copr.py:107
 msgid "List disabled Copr repositories"
 msgstr "Mostrar los repositorios Copr desactivados"
 
-#: ../plugins/copr.py:107
+#: ../plugins/copr.py:109
 msgid "List available Copr repositories by user NAME"
 msgstr "Mostrar los repositorios Copr disponibles por NOMBRE de usuario"
 
-#: ../plugins/copr.py:109
+#: ../plugins/copr.py:111
 msgid "Specify an instance of Copr to work with"
 msgstr "Instancia de Copr con la que trabajar"
 
-#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
+#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
 msgid "Error: "
 msgstr "Error: "
 
-#: ../plugins/copr.py:144
+#: ../plugins/copr.py:146
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 
-#: ../plugins/copr.py:147
+#: ../plugins/copr.py:149
 msgid "multiple hubs specified"
 msgstr ""
 
-#: ../plugins/copr.py:209 ../plugins/copr.py:213
+#: ../plugins/copr.py:211 ../plugins/copr.py:215
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 "exactamente dos parámetros adicionales son requeridos para comandos copr"
 
-#: ../plugins/copr.py:229
+#: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "use el formato \"nombreusuario_copr/proyecto_corp\" para referirse al "
 "proyecto copr"
 
-#: ../plugins/copr.py:231
+#: ../plugins/copr.py:233
 msgid "bad copr project format"
 msgstr "formato de proyecto de copr incorrecto"
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:247
 #, python-brace-format
 msgid ""
 "\n"
@@ -649,90 +860,90 @@ msgstr ""
 "\n"
 "¿Realmente quiere activar {0}?"
 
-#: ../plugins/copr.py:261
+#: ../plugins/copr.py:263
 msgid "Repository successfully enabled."
 msgstr "Repositorio activado."
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:267
 msgid "Repository successfully disabled."
 msgstr "Repositorio desactivado."
 
-#: ../plugins/copr.py:269
+#: ../plugins/copr.py:271
 msgid "Repository successfully removed."
 msgstr "Repositorio eliminado exitosamente."
 
-#: ../plugins/copr.py:273 ../plugins/copr.py:606
+#: ../plugins/copr.py:275 ../plugins/copr.py:616
 msgid "Unknown subcommand {}."
 msgstr "Subcomando {} desconocido."
 
-#: ../plugins/copr.py:322
+#: ../plugins/copr.py:324
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 
-#: ../plugins/copr.py:334
+#: ../plugins/copr.py:336
 msgid "Can't parse repositories for username '{}'."
-msgstr "No se puede procesar repositorios para el usuario '{}'."
+msgstr "No se pueden procesar repositorios para el usuario '{}'."
 
-#: ../plugins/copr.py:337
+#: ../plugins/copr.py:339
 msgid "List of {} coprs"
-msgstr "Lista de {} coprs"
+msgstr "Lista de coprs {}"
 
-#: ../plugins/copr.py:345
+#: ../plugins/copr.py:347
 msgid "No description given"
 msgstr "No se dio una descripción"
 
-#: ../plugins/copr.py:357
+#: ../plugins/copr.py:359
 msgid "Can't parse search for '{}'."
 msgstr "No se puede procesar búsqueda por '{}'."
 
-#: ../plugins/copr.py:360
+#: ../plugins/copr.py:362
 msgid "Matched: {}"
 msgstr "Coincidencias: {}"
 
-#: ../plugins/copr.py:368
+#: ../plugins/copr.py:370
 msgid "No description given."
 msgstr "No se dio una descripción."
 
-#: ../plugins/copr.py:381
+#: ../plugins/copr.py:383
 msgid "Safe and good answer. Exiting."
 msgstr "Respuesta buena y segura. Saliendo."
 
-#: ../plugins/copr.py:388
+#: ../plugins/copr.py:390
 msgid "This command has to be run under the root user."
 msgstr "Este comando debe ejecutarse como usuario root."
 
-#: ../plugins/copr.py:449
+#: ../plugins/copr.py:455
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Este repositorio no tiene construcciones todavía así que no lo puede "
 "activar."
 
-#: ../plugins/copr.py:452
+#: ../plugins/copr.py:458
 msgid "Such repository does not exist."
 msgstr "Tal repositorio no existe."
 
-#: ../plugins/copr.py:496
+#: ../plugins/copr.py:506
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "No se pudo eliminar el repositorio copr {0}/{1}/{2}"
 
-#: ../plugins/copr.py:507
+#: ../plugins/copr.py:517
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Falló la activación del repo copr {}/{}"
 
-#: ../plugins/copr.py:523 ../plugins/copr.py:561
+#: ../plugins/copr.py:533 ../plugins/copr.py:571
 msgid "Unknown response from server."
 msgstr "Respuesta desconocida del servidor."
 
-#: ../plugins/copr.py:545
+#: ../plugins/copr.py:555
 msgid "Interact with Playground repository."
 msgstr "Interactuar con el repositorio Playground."
 
-#: ../plugins/copr.py:550
+#: ../plugins/copr.py:560
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -744,15 +955,15 @@ msgstr ""
 "\n"
 "¿Seguro que quiere hacerlo?"
 
-#: ../plugins/copr.py:596
+#: ../plugins/copr.py:606
 msgid "Playground repositories successfully enabled."
 msgstr "Se han activado los repositorios Playground."
 
-#: ../plugins/copr.py:599
+#: ../plugins/copr.py:609
 msgid "Playground repositories successfully disabled."
 msgstr "Se desactivaron los repositorios Playground."
 
-#: ../plugins/copr.py:603
+#: ../plugins/copr.py:613
 msgid "Playground repositories successfully updated."
 msgstr "Repositorios Playground actualizados exitosamente."
 

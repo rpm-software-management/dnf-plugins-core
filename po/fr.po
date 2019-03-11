@@ -4,12 +4,13 @@
 # Jérôme Fenal <jfenal@gmail.com>, 2017. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018. #zanata
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-10-17 11:36+0000\n"
+"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"PO-Revision-Date: 2019-02-17 09:00+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -19,62 +20,130 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "télécharger tous les paquets depuis le dépôt distant"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "télécharger seulement les paquets s'appliquant à cette ARCH"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "supprimer les packages locaux qui ne sont plus présents dans le dépôt"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "télécharger comps.xml également"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "ne télécharger que les nouveaux paquets per-rep"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
 msgid "where to store downloaded repositories "
 msgstr "là où stocker les dépôts téléchargés "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "opère sur les paquets source"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
 msgstr "n'a pas pu supprimer le fichier %s"
 
-#: ../plugins/reposync.orig.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "N'a pas pu créer le répertoire de dépôt : %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "comps.xml pour le dépôt %s sauvegardé"
 
-#: ../plugins/debuginfo-install.py:58
-msgid "install debuginfo packages"
-msgstr "installe les paquets debuginfo"
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "Date invalide :  « {0} »"
 
-#: ../plugins/debuginfo-install.py:85
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "affiche le contenu du journal des changements des paquets"
+
+#: ../plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr ""
+"affiche les entrées du journal des changements depuis DATE. Pour éviter "
+"l'ambiguïté, le format AAAA-MM-JJ est recommandé."
+
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr ""
+"afficher le nombre donné d'entrées de journal des changements par paquet"
+
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr ""
+"n'affichent que les nouvelles entrées du journal des changements pour les "
+"paquets qui fournissent une mise à niveau pour certains paquets déjà "
+"installés."
+
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "PAQUET"
+
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:85
 #, python-format
 msgid "No match for argument: %s"
 msgstr "Aucune correspondance pour l’argument : %s"
+
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "Liste des journaux des changements depuis {}"
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "Liste uniquement les derniers changements"
+msgstr[1] "Liste les {} derniers changements"
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr ""
+"Liste uniquement les nouveaux changements depuis la version installée du "
+"paquet"
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "Liste tous les changements"
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "Changements pour {}"
+
+#: ../plugins/debuginfo-install.py:58
+msgid "install debuginfo packages"
+msgstr "installe les paquets debuginfo"
 
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
@@ -88,6 +157,47 @@ msgstr "Impossible de trouver une correspondance"
 #, python-format
 msgid "Could not find debuginfo for package: %s"
 msgstr "Impossible de trouver de debuginfo pour le paquet : %s"
+
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Ne peut lire la configuration du verrouillage de version : %s"
+
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "Liste des verrouillages non établie."
+
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr "Verrouille la version de :"
+
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr "Exclusion de :"
+
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:36
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr "Déverrouille la version de :"
+
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:37
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr "Aucun paquet trouvé pour :"
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:38
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Les exclusions du plugin versionlock n’ont pas été appliquées"
+
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:119
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
+msgstr "contrôle le verrouillage de version des paquets"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -106,54 +216,21 @@ msgstr "Sortie d’un graphe de dépendance des paquets complet au format dot"
 msgid "Nothing provides: '%s'"
 msgstr "Aucun paquet ne fournit : '%s'"
 
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Ne peut lire la configuration du verrouillage de version : %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "Liste des verrouillages non établie."
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr "Verrouille la version de :"
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr "Exclusion de :"
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr "Déverrouille la version de :"
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "Aucun paquet trouvé pour :"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "Les exclusions du plugin versionlock n’ont pas été appliquées"
-
-#: ../plugins/versionlock.py:39
+#: ../plugins/versionlock.py:39 ../plugins/versionlock_master.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
 "Versionlock plugin: nombre de règles de verrouillage du fichier \"{}\" "
 "appliquées : {}"
 
-#: ../plugins/versionlock.py:40
+#: ../plugins/versionlock.py:40 ../plugins/versionlock_master.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
 "Versionlock plugin: nombre de règles d'exclusion du fichier \"{}\" "
 "appliquées : {}"
 
-#: ../plugins/versionlock.py:41
+#: ../plugins/versionlock.py:41 ../plugins/versionlock_master.py:41
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Versionlock plugin: n'a pas pu analyser le modèle :"
-
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
-msgstr "contrôle le verrouillage de version des paquets"
 
 #: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -223,73 +300,60 @@ msgid "save the current options (useful with --setopt)"
 msgstr "enregistrer les options actuelles (utile avec --setopt)"
 
 #: ../plugins/config_manager.py:47
-msgid "enable the specified repos (automatically saves)"
-msgstr "active les dépôts indiqués (rend la modification permanente)"
-
-#: ../plugins/config_manager.py:50
-msgid "disable the specified repos (automatically saves)"
-msgstr "désactive les dépôts indiqués (rend la modification permanente)"
-
-#: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "ajoute (et active) le dépôt à partir du fichier ou de l'url indiqué"
 
-#: ../plugins/config_manager.py:56
+#: ../plugins/config_manager.py:50
 msgid "print current configuration values to stdout"
 msgstr ""
 "affiche les valeurs de la configuration actuelle sur la sortie standard"
 
-#: ../plugins/config_manager.py:59
+#: ../plugins/config_manager.py:53
 msgid "print variable values to stdout"
 msgstr "affiche les valeurs des variables sur la sortie standard"
 
-#: ../plugins/config_manager.py:76
-msgid "Error: Trying to enable and disable repos at the same time."
-msgstr ""
-"Erreur : tentative d'activation et de désactivation simultanée de dépôts."
-
-#: ../plugins/config_manager.py:79
+#: ../plugins/config_manager.py:69
 msgid "Error: Trying to enable already enabled repos."
 msgstr "Erreur : tentative d'activation de dépôts déjà activés."
 
-#: ../plugins/config_manager.py:118
+#: ../plugins/config_manager.py:108
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Aucun dépôt correspondant à modifier : %s."
 
-#: ../plugins/config_manager.py:149
+#: ../plugins/config_manager.py:138
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Ajout du dépôt depuis : %s"
 
-#: ../plugins/config_manager.py:173
+#: ../plugins/config_manager.py:162
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "La configuration du dépôt a échoué"
 msgstr[1] "La configuration des dépôts a échoué"
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:172
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Sauvegarde impossible du dépôt dans le fichier du dépôt %s : %s"
 
-#: ../plugins/local.py:117
+#: ../plugins/local.py:120
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "Impossible de créer le répertoire '{}' du fait de '{}'"
 
-#: ../plugins/local.py:121
+#: ../plugins/local.py:124
 msgid "'{}' is not a directory"
 msgstr "'{}' n'est pas un répertoire"
 
-#: ../plugins/local.py:130
+#: ../plugins/local.py:133
 msgid "Copying '{}' to local repo"
 msgstr "Copie de '{}' vers le dépôt local en cours"
 
-#: ../plugins/local.py:136
+#: ../plugins/local.py:139
 msgid "Can't write file '{}'"
 msgstr "Impossible d'écrire le fichier '{}'"
 
-#: ../plugins/local.py:151
+#: ../plugins/local.py:154
 msgid "Rebuilding local repo"
 msgstr "Reconstruction du dépôt local"
 
@@ -332,11 +396,163 @@ msgstr "Vérifier uniquement les paquets les plus récents dans les dépôts"
 msgid "Check closure for this package only"
 msgstr "Vérifie la clôture pour ce paquet seulement"
 
+#: ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Liste les différences entre deux ensembles de dépôts"
+
+#: ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Définir un ancien dépôt, peut être utilisé plusieurs fois"
+
+#: ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Définir un nouveau dépôt, peut être utilisé plusieurs fois"
+
+#: ../plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+"Définir les architectures à comparer, peut-être utilisé plusieurs fois. Par "
+"défaut, les rpms source sont comparés."
+
+#: ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Affichez des données supplémentaires sur la taille des changements."
+
+#: ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Compare également les paquets par architecture. Par défaut, les paquets sont"
+" uniquement comparés par nom."
+
+#: ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "Produit un message simple d'une ligne pour les paquets modifiés."
+
+#: ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Segmenter les données des paquets modifiés entre ceux mis à niveau et ceux "
+"rétrogradés."
+
+#: ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Le nouveau et l'ancien dépôt doivent être renseignés."
+
+#: ../plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "Taille des changements : {} bytes"
+
+#: ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Paquet ajouté : {}"
+
+#: ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Paquet retiré : {}"
+
+#: ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Rendu obsolète par : {}"
+
+#: ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Paquets mis à niveau"
+
+#: ../plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"Paquets rétrogradés"
+
+#: ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Paquets modifiés"
+
+#: ../plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"Résumé"
+
+#: ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Paquets ajoutés : {}"
+
+#: ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Paquets retirés : {}"
+
+#: ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Paquets mis à niveau : {}"
+
+#: ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Paquets rétrogradés : {}"
+
+#: ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Paquets modifiés : {}"
+
+#: ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Taille des paquets ajoutés : {}"
+
+#: ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Taille des paquets retirés : {}"
+
+#: ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Taille des paquets modifiés : {}"
+
+#: ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Taille des paquets mis à niveau : {}"
+
+#: ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Taille des paquets téléchargés : {}"
+
+#: ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Taille des changements : {}"
+
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr "télécharger toutes les métadonnées."
 
-#: ../plugins/reposync.py:121
+#: ../plugins/reposync.py:72
+msgid "where to store downloaded repositories"
+msgstr "lieu où stocker les dépôts téléchargés"
+
+#: ../plugins/reposync.py:74
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+"là où stocker les métadonnées du dépôt. Prend par défaut la valeur de "
+"--download-path."
+
+#: ../plugins/reposync.py:129
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 "La cible de téléchargement '{}' est en dehors du chemin de téléchargement  "
@@ -421,25 +637,25 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "si --url est renseigné, limite aux protocoles spécifiés"
 
-#: ../plugins/download.py:110
+#: ../plugins/download.py:112
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Échec de l'obtention du miroir pour le paquet : %s"
 
-#: ../plugins/download.py:193
+#: ../plugins/download.py:212
 msgid "Exiting due to strict setting."
 msgstr "Fin du programme suite au paramétrage stricte."
 
-#: ../plugins/download.py:213
+#: ../plugins/download.py:232
 msgid "Error in resolve of packages:"
 msgstr "Erreur de résolution des paquets :"
 
-#: ../plugins/download.py:230
+#: ../plugins/download.py:249
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Aucune source définie pour %s"
 
-#: ../plugins/download.py:248 ../plugins/download.py:262
+#: ../plugins/download.py:266 ../plugins/download.py:280
 #, python-format
 msgid "No package %s available."
 msgstr "Aucun paquet %s n'est disponible"
@@ -448,27 +664,27 @@ msgstr "Aucun paquet %s n'est disponible"
 msgid "New leaves:"
 msgstr "Nouvelles feuilles :"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "yes"
 msgstr "oui"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "y"
 msgstr "o"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "no"
 msgstr "non"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:74
+#: ../plugins/copr.py:76
 msgid "Interact with Copr repositories."
 msgstr "Interagit avec les dépôts Copr."
 
-#: ../plugins/copr.py:75
+#: ../plugins/copr.py:77
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -506,31 +722,31 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:101
+#: ../plugins/copr.py:103
 msgid "List all installed Copr repositories (default)"
 msgstr "Lister tous les dépôts Copr installés (par défaut)"
 
-#: ../plugins/copr.py:103
+#: ../plugins/copr.py:105
 msgid "List enabled Copr repositories"
 msgstr "Lister les dépôts Copr activés"
 
-#: ../plugins/copr.py:105
+#: ../plugins/copr.py:107
 msgid "List disabled Copr repositories"
 msgstr "Lister les dépôts Copr désactivés"
 
-#: ../plugins/copr.py:107
+#: ../plugins/copr.py:109
 msgid "List available Copr repositories by user NAME"
 msgstr "Lister les dépôts Copr disponibles par NOM d’utilisateur"
 
-#: ../plugins/copr.py:109
+#: ../plugins/copr.py:111
 msgid "Specify an instance of Copr to work with"
 msgstr "Précisez une instance Copr avec laquelle travailler"
 
-#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
+#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
 msgid "Error: "
 msgstr "Erreur : "
 
-#: ../plugins/copr.py:144
+#: ../plugins/copr.py:146
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -538,25 +754,25 @@ msgstr ""
 "précisez un hub Copr soit via `--hub` ou en utilisant le format "
 "`hub_copr/utilisateur_copr/projet_copr`"
 
-#: ../plugins/copr.py:147
+#: ../plugins/copr.py:149
 msgid "multiple hubs specified"
 msgstr "de multiples hubs ont été renseignés"
 
-#: ../plugins/copr.py:209 ../plugins/copr.py:213
+#: ../plugins/copr.py:211 ../plugins/copr.py:215
 msgid "exactly two additional parameters to copr command are required"
 msgstr "la commande copr requiert exactement deux paramètres additionnels"
 
-#: ../plugins/copr.py:229
+#: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "utilisez le  format `copr_username/copr_projectname` pour faire référence au"
 " projet copr"
 
-#: ../plugins/copr.py:231
+#: ../plugins/copr.py:233
 msgid "bad copr project format"
 msgstr "mauvais format de projet  copr"
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:247
 #, python-brace-format
 msgid ""
 "\n"
@@ -586,23 +802,23 @@ msgstr ""
 "\n"
 "Voulez-vous vraiment activer {0} ?"
 
-#: ../plugins/copr.py:261
+#: ../plugins/copr.py:263
 msgid "Repository successfully enabled."
 msgstr "Activation du dépôt réussie."
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:267
 msgid "Repository successfully disabled."
 msgstr "Désactivation du dépôt réussie."
 
-#: ../plugins/copr.py:269
+#: ../plugins/copr.py:271
 msgid "Repository successfully removed."
 msgstr "Suppression du dépôt réussie."
 
-#: ../plugins/copr.py:273 ../plugins/copr.py:606
+#: ../plugins/copr.py:275 ../plugins/copr.py:616
 msgid "Unknown subcommand {}."
 msgstr "Sous-commande inconnue {}."
 
-#: ../plugins/copr.py:322
+#: ../plugins/copr.py:324
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -612,68 +828,68 @@ msgstr ""
 "aucune information à propos de Copr hub - celui par défaut a été utilisé. "
 "Réactivez le projet pour résoudre le problème."
 
-#: ../plugins/copr.py:334
+#: ../plugins/copr.py:336
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 "Ne peut analyser les dépôts pour y chercher le nom d'utilisateur '{}'."
 
-#: ../plugins/copr.py:337
+#: ../plugins/copr.py:339
 msgid "List of {} coprs"
 msgstr "Liste de  {} coprs"
 
-#: ../plugins/copr.py:345
+#: ../plugins/copr.py:347
 msgid "No description given"
 msgstr "Aucune description fournie"
 
-#: ../plugins/copr.py:357
+#: ../plugins/copr.py:359
 msgid "Can't parse search for '{}'."
 msgstr "Impossible d'analyser la recherche pour '{}'."
 
-#: ../plugins/copr.py:360
+#: ../plugins/copr.py:362
 msgid "Matched: {}"
 msgstr "Correspondance : {}"
 
-#: ../plugins/copr.py:368
+#: ../plugins/copr.py:370
 msgid "No description given."
 msgstr "Pas de description fournie."
 
-#: ../plugins/copr.py:381
+#: ../plugins/copr.py:383
 msgid "Safe and good answer. Exiting."
 msgstr "Réponse sûre et exacte. Fin."
 
-#: ../plugins/copr.py:388
+#: ../plugins/copr.py:390
 msgid "This command has to be run under the root user."
 msgstr "Cette commande requiert les privilèges du super utilisateur."
 
-#: ../plugins/copr.py:449
+#: ../plugins/copr.py:455
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Ce dépôt ne contient pas encore d'exécutables vous ne pouvez donc pas "
 "l'activer."
 
-#: ../plugins/copr.py:452
+#: ../plugins/copr.py:458
 msgid "Such repository does not exist."
 msgstr "Ce dépôt n’existe pas."
 
-#: ../plugins/copr.py:496
+#: ../plugins/copr.py:506
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Échec de la suppression du dépôt Copr {0}/{1}/{2}"
 
-#: ../plugins/copr.py:507
+#: ../plugins/copr.py:517
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Échec de la désactivation du dépôt copr {}/{}"
 
-#: ../plugins/copr.py:523 ../plugins/copr.py:561
+#: ../plugins/copr.py:533 ../plugins/copr.py:571
 msgid "Unknown response from server."
 msgstr "Réponse inconnue du serveur."
 
-#: ../plugins/copr.py:545
+#: ../plugins/copr.py:555
 msgid "Interact with Playground repository."
 msgstr "Interagit avec le dépôt Playground."
 
-#: ../plugins/copr.py:550
+#: ../plugins/copr.py:560
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -685,15 +901,15 @@ msgstr ""
 "\n"
 "Voulez-vous continuer ?"
 
-#: ../plugins/copr.py:596
+#: ../plugins/copr.py:606
 msgid "Playground repositories successfully enabled."
 msgstr "Activation des dépôts Playground réussie."
 
-#: ../plugins/copr.py:599
+#: ../plugins/copr.py:609
 msgid "Playground repositories successfully disabled."
 msgstr "Désactivation des dépôts Playground réussie."
 
-#: ../plugins/copr.py:603
+#: ../plugins/copr.py:613
 msgid "Playground repositories successfully updated."
 msgstr "Mise à jour des dépôts Playground réussie."
 

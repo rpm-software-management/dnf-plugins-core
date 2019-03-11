@@ -1,13 +1,14 @@
 # Igor Gorbounov <igor.gorbounov@gmail.com>, 2017. #zanata
 # Igor Gorbounov <igor.gorbounov@gmail.com>, 2018. #zanata
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
+# Igor Gorbounov <igor.gorbounov@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 09:48+0200\n"
-"PO-Revision-Date: 2018-11-02 04:31+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"PO-Revision-Date: 2019-02-07 08:23+0000\n"
+"Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -16,67 +17,133 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:52
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "загрузить все пакеты из удаленного репозитория"
 
 #: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
-msgstr "скачать только пакеты для этого ARCH"
+msgstr "загрузить только пакеты для этой архитектуры"
 
 #: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr ""
 "удалить локальные пакеты, которые больше не присутствуют в репозитории"
 
 #: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
-msgstr "также скачивают comps.xml"
+msgstr "также загружать comps.xml"
 
 #: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
-msgstr "загружать только самые новые пакеты за репо"
+msgstr "загружать только самые новые пакеты для каждого репозитория"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.py:72
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
 msgid "where to store downloaded repositories "
 msgstr "где хранить загруженные репозитории "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:74
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "работать с исходными пакетами"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:139
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
-msgstr "[УДАЛИТЬ] %s"
+msgstr "[УДАЛЕНО] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:141
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
 msgstr "не удалось удалить файл %s"
 
-#: ../plugins/reposync.orig.py:110
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
 #, python-format
 msgid "Could not make repository directory: %s"
 msgstr "Не удалось создать каталог репозитория: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:148
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr "comps.xml для репозитория %s сохранены"
+msgstr "comps.xml для репозитория %s сохранен"
+
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "Неправильная дата: \"{0}\"."
+
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "Показывать данные журнала изменений для пакетов"
+
+#: ../plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr ""
+"показывать записи журнала изменений с ДАТЫ. Чтобы не было неопределенности, "
+"рекомендуется формат ГГГГ-ММ-ДД."
+
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr "показывать заданное число записей журнала изменений на пакет"
+
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr ""
+"показывать только новые записи журнала изменений для пакетов, "
+"предоставляющих обновление для некоторых из уже установленных пакетов."
+
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "ПАКЕТ"
+
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:85
+#, python-format
+msgid "No match for argument: %s"
+msgstr "Нет совпадений для аргумента: %s"
+
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "Отображение журналов изменений с {}"
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "Отображение только последнего журнала изменений"
+msgstr[1] "Отобразить {} последних журнала изменений"
+msgstr[2] "Отображение {} последних журналов изменений"
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr ""
+"Вывод только новых журналов изменений, начиная с установленной версии пакета"
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "Вывод всех журналов изменений"
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "Журналы изменений для {}"
 
 #: ../plugins/debuginfo-install.py:58
 msgid "install debuginfo packages"
 msgstr "установить пакеты debuginfo"
 
-#: ../plugins/debuginfo-install.py:85
-#, python-format
-msgid "No match for argument: %s"
-msgstr "Нет совпадений для аргумента: %s"
-
 #: ../plugins/debuginfo-install.py:92
 msgid "No debuginfo packages available to install"
-msgstr ""
+msgstr "Нет пакетов debuginfo для установки"
 
 #: ../plugins/debuginfo-install.py:95
 msgid "Unable to find a match"
@@ -85,7 +152,48 @@ msgstr "Не удалось найти совпадение"
 #: ../plugins/debuginfo-install.py:132
 #, python-format
 msgid "Could not find debuginfo for package: %s"
-msgstr ""
+msgstr "Не удалось найти отладочную информацию для пакета: %s"
+
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Не удается прочитать конфигурацию блокировки версий: %s"
+
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "Не задан список блокировок"
+
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr "Добавление блокирования версии на:"
+
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr "Добавление исключения на:"
+
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:36
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr "Удаление блокирования версии для:"
+
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:37
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr "Нет пакетов для:"
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:38
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Исключения из модуля versionlock не применяются"
+
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:119
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
+msgstr "управление блокированием версии пакетов"
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
@@ -104,50 +212,21 @@ msgstr "Вывести полную диаграмму зависимостей 
 msgid "Nothing provides: '%s'"
 msgstr "Ни один пакет не содержит: «%s»"
 
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Не удается прочитать конфигурацию блокировки версий: %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "Не задан список блокировок"
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr "Добавление блокирования версии на:"
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr "Добавление исключения на:"
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr "Удаление блокирования версии для:"
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "Нет пакетов для:"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "Исключения из модуля versionlock не применяются"
-
-#: ../plugins/versionlock.py:39
+#: ../plugins/versionlock.py:39 ../plugins/versionlock_master.py:39
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
+"Подключаемый модуль Versionlock: применено правил блокировки из файла «{}»: "
+"{}"
 
-#: ../plugins/versionlock.py:40
+#: ../plugins/versionlock.py:40 ../plugins/versionlock_master.py:40
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
+"Подключаемый модуль Versionlock: применено правил исключения из файла «{}»: "
+"{}"
 
-#: ../plugins/versionlock.py:41
+#: ../plugins/versionlock.py:41 ../plugins/versionlock_master.py:41
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
-
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
-msgstr "управление блокированием версии пакетов"
+msgstr "Подключаемый модуль Versionlock: не удалось разобрать шаблон:"
 
 #: ../plugins/builddep.py:68
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -218,73 +297,60 @@ msgid "save the current options (useful with --setopt)"
 msgstr "сохранить текущие параметры (хорошо с --setopt)"
 
 #: ../plugins/config_manager.py:47
-msgid "enable the specified repos (automatically saves)"
-msgstr "подключить указанные репозитории (сохранение автоматическое)"
-
-#: ../plugins/config_manager.py:50
-msgid "disable the specified repos (automatically saves)"
-msgstr "отключить указанные репозитории (сохранение автоматическое)"
-
-#: ../plugins/config_manager.py:53
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "добавить (и подключить) репозиторий из указанного файла или URL"
 
-#: ../plugins/config_manager.py:56
+#: ../plugins/config_manager.py:50
 msgid "print current configuration values to stdout"
 msgstr "вывести текущие параметры конфигурации в stdout"
 
-#: ../plugins/config_manager.py:59
+#: ../plugins/config_manager.py:53
 msgid "print variable values to stdout"
 msgstr "вывести значения переменных в stdout"
 
-#: ../plugins/config_manager.py:76
-msgid "Error: Trying to enable and disable repos at the same time."
-msgstr ""
-"Ошибка: попытка подключения и отключения репозитория в одно и то же время."
-
-#: ../plugins/config_manager.py:79
+#: ../plugins/config_manager.py:69
 msgid "Error: Trying to enable already enabled repos."
 msgstr "Ошибка: попытка подключения уже подключенных репозиториев."
 
-#: ../plugins/config_manager.py:118
+#: ../plugins/config_manager.py:108
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Нет подходящего репозитория для изменения: %s."
 
-#: ../plugins/config_manager.py:149
+#: ../plugins/config_manager.py:138
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Добавление репозитория из: %s"
 
-#: ../plugins/config_manager.py:173
+#: ../plugins/config_manager.py:162
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Не удалось настроить конфигурацию репозитория"
 msgstr[1] "Не удалось настроить конфигурацию репозиториев"
 msgstr[2] "Не удалось настроить конфигурацию репозиториев"
 
-#: ../plugins/config_manager.py:183
+#: ../plugins/config_manager.py:172
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не удалось сохранить репозиторий в repofile %s: %s"
 
-#: ../plugins/local.py:117
+#: ../plugins/local.py:120
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "Не удается создать каталог «{}» из-за «{}»"
 
-#: ../plugins/local.py:121
+#: ../plugins/local.py:124
 msgid "'{}' is not a directory"
 msgstr "«{}» не является каталогом"
 
-#: ../plugins/local.py:130
+#: ../plugins/local.py:133
 msgid "Copying '{}' to local repo"
 msgstr "Копирование «{}» в локальный репозиторий"
 
-#: ../plugins/local.py:136
+#: ../plugins/local.py:139
 msgid "Can't write file '{}'"
 msgstr "Ошибка записи файла «{}»"
 
-#: ../plugins/local.py:151
+#: ../plugins/local.py:154
 msgid "Rebuilding local repo"
 msgstr "Пересборка локального репозитория"
 
@@ -326,13 +392,165 @@ msgstr "Проверять только самые новые пакеты в р
 msgid "Check closure for this package only"
 msgstr "Проверить завершение только для этого пакета"
 
+#: ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Показать список различий двух наборов репозиториев"
+
+#: ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Укажите старый репозиторий, может использоваться несколько раз"
+
+#: ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Укажите новый репозиторий, может использоваться несколько раз"
+
+#: ../plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+"Укажите архитектуры для сравнения, это может использоваться несколько раз. "
+"По умолчанию, сравниваются только rpm с исходными текстами."
+
+#: ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Выводить дополнительные данные о размере изменений."
+
+#: ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Сравнивать пакеты еще и по архитектуре. По умолчанию, пакеты сравниваются "
+"только по имени."
+
+#: ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "Выводить простое однострочное сообщение для измененных пакетов."
+
+#: ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Разделять данные для измененных пакетов между обновленными пакетами и "
+"пакетами с прежними версиями."
+
+#: ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Должны быть настроены как старый, так и новый репозитории."
+
+#: ../plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "Изменение размера: {} байт"
+
+#: ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Добавленный пакет : {}"
+
+#: ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Удаленный пакет: {}"
+
+#: ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Замещается пакетом : {}"
+
+#: ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Обновленные пакеты"
+
+#: ../plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"Пакеты, возвращенные к прежней версии"
+
+#: ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Измененные пакеты"
+
+#: ../plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"Итог"
+
+#: ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Добавленные пакеты: {}"
+
+#: ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Удаленные пакеты: {}"
+
+#: ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Обновленные пакеты: {}"
+
+#: ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Пакеты, возвращенные к прежней версии: {}"
+
+#: ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Измененные пакеты: {}"
+
+#: ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Размер добавленных пакетоы: {}"
+
+#: ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Размер удаленных пакетов: {}"
+
+#: ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Размер измененных пакетов: {}"
+
+#: ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Размер обновленных пакетов: {}"
+
+#: ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Размер пакетов, возвращенных к прежней версии: {}"
+
+#: ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Изменение размера: {}"
+
 #: ../plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "загрузить все метаданные."
 
-#: ../plugins/reposync.py:121
-msgid "Download target '{}' is outside of download path '{}'."
+#: ../plugins/reposync.py:72
+msgid "where to store downloaded repositories"
+msgstr "где хранить загруженные репозитории"
+
+#: ../plugins/reposync.py:74
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
 msgstr ""
+"где хранить метаданные загруженных репозиториев. По умолчанию --download-"
+"path."
+
+#: ../plugins/reposync.py:129
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "Место для загрузки '{}' вне пути для загрузки '{}'."
 
 #: ../plugins/repomanage.py:44
 msgid "Manage a directory of rpm packages"
@@ -399,6 +617,8 @@ msgid ""
 "when running with --resolve, download all dependencies (do not exclude "
 "already installed ones)"
 msgstr ""
+"при запуске с параметром --resolve загружать все зависимости (не исключать "
+"уже установленные)"
 
 #: ../plugins/download.py:66
 msgid ""
@@ -409,25 +629,25 @@ msgstr "вместо загрузки вывести список URL, отку�
 msgid "when running with --url, limit to specific protocols"
 msgstr "ограничить указанными протоколами при работе с --url"
 
-#: ../plugins/download.py:110
+#: ../plugins/download.py:112
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Не удалось получить зеркало для пакета: %s"
 
-#: ../plugins/download.py:193
+#: ../plugins/download.py:212
 msgid "Exiting due to strict setting."
 msgstr "Выход вследствие жестких настроек."
 
-#: ../plugins/download.py:213
+#: ../plugins/download.py:232
 msgid "Error in resolve of packages:"
 msgstr "Ошибка в разрешении пакетов:"
 
-#: ../plugins/download.py:230
+#: ../plugins/download.py:249
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "Не заданы пакеты с исходными текстами для %s"
 
-#: ../plugins/download.py:248 ../plugins/download.py:262
+#: ../plugins/download.py:266 ../plugins/download.py:280
 #, python-format
 msgid "No package %s available."
 msgstr "Нет пакета %s."
@@ -436,27 +656,27 @@ msgstr "Нет пакета %s."
 msgid "New leaves:"
 msgstr "Новые пакеты - \"листья\":"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "yes"
 msgstr "да"
 
-#: ../plugins/copr.py:54
+#: ../plugins/copr.py:56
 msgid "y"
 msgstr "д"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "no"
 msgstr "нет"
 
-#: ../plugins/copr.py:55
+#: ../plugins/copr.py:57
 msgid "n"
 msgstr "н"
 
-#: ../plugins/copr.py:74
+#: ../plugins/copr.py:76
 msgid "Interact with Copr repositories."
 msgstr "Взаимодействие с репозиториями Copr."
 
-#: ../plugins/copr.py:75
+#: ../plugins/copr.py:77
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -494,55 +714,57 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:101
-msgid "List all installed Copr repositories (default)"
-msgstr "Перечислить все установленные репозитории Copr (по умолчанию)"
-
 #: ../plugins/copr.py:103
-msgid "List enabled Copr repositories"
-msgstr "Перечислить разрешенные репозитории Copr"
+msgid "List all installed Copr repositories (default)"
+msgstr "Перечислять все установленные репозитории Copr (по умолчанию)"
 
 #: ../plugins/copr.py:105
-msgid "List disabled Copr repositories"
-msgstr "Перечислить отключенные репозитории Copr"
+msgid "List enabled Copr repositories"
+msgstr "Перечислять разрешенные репозитории Copr"
 
 #: ../plugins/copr.py:107
-msgid "List available Copr repositories by user NAME"
-msgstr "Перечислить доступные репозитории Copr по ИМЕНИ пользователя"
+msgid "List disabled Copr repositories"
+msgstr "Перечислять отключенные репозитории Copr"
 
 #: ../plugins/copr.py:109
-msgid "Specify an instance of Copr to work with"
-msgstr ""
+msgid "List available Copr repositories by user NAME"
+msgstr "Перечислять доступные репозитории Copr по ИМЕНИ пользователя"
 
-#: ../plugins/copr.py:143 ../plugins/copr.py:208 ../plugins/copr.py:228
+#: ../plugins/copr.py:111
+msgid "Specify an instance of Copr to work with"
+msgstr "Укажите экземпляр Copr, с которым нужно работать"
+
+#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
 msgid "Error: "
 msgstr "Ошибка: "
 
-#: ../plugins/copr.py:144
+#: ../plugins/copr.py:146
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"укажите узел Copr либо с помощью `--hub`, либо с использованием формата "
+"`copr_hub/copr_username/copr_projectname`"
 
-#: ../plugins/copr.py:147
+#: ../plugins/copr.py:149
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "указано несколько узлов"
 
-#: ../plugins/copr.py:209 ../plugins/copr.py:213
+#: ../plugins/copr.py:211 ../plugins/copr.py:215
 msgid "exactly two additional parameters to copr command are required"
-msgstr "требуются точно два дополнительных параметра к команде copr"
+msgstr "требуются в точности два дополнительных параметра к команде copr"
 
-#: ../plugins/copr.py:229
+#: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "для ссылки на проект copr используйте формат "
 "`copr_username/copr_projectname`"
 
-#: ../plugins/copr.py:231
+#: ../plugins/copr.py:233
 msgid "bad copr project format"
 msgstr "неверный формат проекта copr"
 
-#: ../plugins/copr.py:245
+#: ../plugins/copr.py:247
 #, python-brace-format
 msgid ""
 "\n"
@@ -559,91 +781,107 @@ msgid ""
 "\n"
 "Do you really want to enable {0}?"
 msgstr ""
+"\n"
+"Вы собираетесь включить репозиторий Copr. Обратите внимание, \n"
+"что этот репозиторий не является частью основного дистрибутива, и качество может отличаться.\n"
+"\n"
+"Проект Fedora не имеет какого-либо влияния на содержимое этого\n"
+"репозитория за рамками  правил, описанных в Вопросах и Ответах Copr в\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"а качество и безопасность пакетов не поддерживаются на каком-либо уровне.\n"
+"\n"
+"Не отправляйте сообщения об ошибках этих пакетов в Fedora\n"
+"Bugzilla. В случае возникновения проблем обращайтесь к владельцу этого репозитория.\n"
+"\n"
+"Действительно хотите включить {0}?"
 
-#: ../plugins/copr.py:261
+#: ../plugins/copr.py:263
 msgid "Repository successfully enabled."
 msgstr "Репозиторий успешно подключен."
 
-#: ../plugins/copr.py:265
+#: ../plugins/copr.py:267
 msgid "Repository successfully disabled."
 msgstr "Репозиторий успешно отключен."
 
-#: ../plugins/copr.py:269
+#: ../plugins/copr.py:271
 msgid "Repository successfully removed."
 msgstr "Репозиторий успешно удален."
 
-#: ../plugins/copr.py:273 ../plugins/copr.py:606
+#: ../plugins/copr.py:275 ../plugins/copr.py:616
 msgid "Unknown subcommand {}."
 msgstr "Неизвестная подкоманда {}."
 
-#: ../plugins/copr.py:322
+#: ../plugins/copr.py:324
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* У этих copr-репозиториев rep-файл имеет старый формат, в котором нет "
+"информации об узле Copr - был принят узел по умолчанию. Переподключите "
+"проект для исправления этого."
 
-#: ../plugins/copr.py:334
+#: ../plugins/copr.py:336
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не удается обработать репозитории для имени пользователя «{}»."
 
-#: ../plugins/copr.py:337
+#: ../plugins/copr.py:339
 msgid "List of {} coprs"
 msgstr "Список copr {}"
 
-#: ../plugins/copr.py:345
+#: ../plugins/copr.py:347
 msgid "No description given"
 msgstr "Нет описания"
 
-#: ../plugins/copr.py:357
+#: ../plugins/copr.py:359
 msgid "Can't parse search for '{}'."
 msgstr "Ошибка обработки поиска для «{}»."
 
-#: ../plugins/copr.py:360
+#: ../plugins/copr.py:362
 msgid "Matched: {}"
 msgstr "Совпадений: {}"
 
-#: ../plugins/copr.py:368
+#: ../plugins/copr.py:370
 msgid "No description given."
 msgstr "Нет описания."
 
-#: ../plugins/copr.py:381
+#: ../plugins/copr.py:383
 msgid "Safe and good answer. Exiting."
 msgstr "Верный и хороший ответ. Выход."
 
-#: ../plugins/copr.py:388
+#: ../plugins/copr.py:390
 msgid "This command has to be run under the root user."
 msgstr "Эта команда должна быть выполнена от имени пользователя root."
 
-#: ../plugins/copr.py:449
+#: ../plugins/copr.py:455
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "В этом репозитории еще нет собранных пакетов, так что сейчас его нельзя "
 "подключить."
 
-#: ../plugins/copr.py:452
+#: ../plugins/copr.py:458
 msgid "Such repository does not exist."
 msgstr "Такой репозиторий не существует."
 
-#: ../plugins/copr.py:496
+#: ../plugins/copr.py:506
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
+msgstr "Не удалось удалить репозиторий copr {0}/{1}/{2}"
 
-#: ../plugins/copr.py:507
+#: ../plugins/copr.py:517
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Не удалось отключить репозиторий copr {}/{}"
 
-#: ../plugins/copr.py:523 ../plugins/copr.py:561
+#: ../plugins/copr.py:533 ../plugins/copr.py:571
 msgid "Unknown response from server."
 msgstr "Неизвестный ответ сервера."
 
-#: ../plugins/copr.py:545
+#: ../plugins/copr.py:555
 msgid "Interact with Playground repository."
 msgstr "Взаимодействие с репозиторием Playground."
 
-#: ../plugins/copr.py:550
+#: ../plugins/copr.py:560
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -655,15 +893,15 @@ msgstr ""
 "\n"
 "Продолжить?"
 
-#: ../plugins/copr.py:596
+#: ../plugins/copr.py:606
 msgid "Playground repositories successfully enabled."
 msgstr "Репозитории Playground успешно подключены."
 
-#: ../plugins/copr.py:599
+#: ../plugins/copr.py:609
 msgid "Playground repositories successfully disabled."
 msgstr "Репозитории Playground успешно отключены."
 
-#: ../plugins/copr.py:603
+#: ../plugins/copr.py:613
 msgid "Playground repositories successfully updated."
 msgstr "Репозитории Playground успешно обновлены."
 
