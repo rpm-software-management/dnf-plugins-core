@@ -22,6 +22,15 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.6 Release Notes
+===================
+
+* Use improved config parser that preserves order of data
+* [leaves] Show multiply satisfied dependencies as leaves
+* [download] Fix downloading an rpm from a URL (RhBug:1678582)
+* [download] Fix problem with downloading src pkgs (RhBug:1649627)
+
+===================
 4.0.4 Release Notes
 ===================
 
