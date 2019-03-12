@@ -60,3 +60,18 @@ Options
 
 ``--metadata-path``
     Root path under which the downloaded metadata are stored. It defaults to ``--download-path`` value if not given.
+
+--------
+Examples
+--------
+
+This section presents examples of reposync usage and how it combines with generic dnf options.
+
+``dnf reposync --repoid rpmsoftwaremanagement-dnf-nightly -n``
+    Synchronizes local directory rpmsoftwaremanagement-dnf-nightly with the newest packages of remote repository with id rpmsoftwaremanagement-dnf-nightly.
+
+``dnf reposync -p repos_dir -n --source``
+    Synchronizes newest source packages from all enabled repositories inside directory repos_dir.
+
+``dnf reposync -v --repoid fedora --download-metadata -m``
+    Verbosely synchronizes entire fedora repository with metadata, ready to use locally.
