@@ -21,6 +21,11 @@
 %else
 %bcond_without dnfutils
 %endif
+%global utils_subpackage_name yum-utils
+%if (0%{?fedora} && 0%{?fedora} < 31) || (0%{?rhel} && 0%{?rhel} < 8)
+# Avoid name conflict with yum-utils < 4
+%global utils_subpackage_name dnf-utils
+%endif
 
 Name:           dnf-plugins-core
 Version:        4.0.7
@@ -158,9 +163,12 @@ Additionally provides generate_completion_cache passive plugin.
 %endif
 
 %if %{with dnfutils}
-%package -n dnf-utils
+%package -n %{utils_subpackage_name}
+%if (0%{?fedora} >= 31) || (0%{?rhel} >= 8)
+Provides:       dnf-utils = %{version}-%{release}
+Obsoletes:      dnf-utils < %{version}-%{release}
+%else
 Conflicts:      yum-utils < 1.1.31-513
-%if 0%{?rhel} != 7
 Provides:       yum-utils = %{version}-%{release}
 %endif
 Requires:       dnf >= %{dnf_lowest_compatible}
@@ -172,7 +180,7 @@ Requires:       python2-dnf >= %{dnf_lowest_compatible}
 %endif
 Summary:        Yum-utils CLI compatibility layer
 
-%description -n dnf-utils
+%description -n %{utils_subpackage_name}
 As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
 repoquery, reposync, repotrack, repodiff, builddep, config-manager, debug
@@ -520,7 +528,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %if %{with dnfutils}
-%files -n dnf-utils
+%files -n %{utils_subpackage_name}
 %{_libexecdir}/dnf-utils
 %{_bindir}/debuginfo-install
 %{_bindir}/needs-restarting
