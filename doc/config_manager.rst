@@ -26,15 +26,15 @@ repositories are enabled or disabled, and add new repositories.
 Synopsis
 --------
 
-``dnf config-manager [options] <repo>...``
+``dnf config-manager [options] <repoid>...``
 
 ---------
 Arguments
 ---------
 
-``<repo>``
-    Display / modify specified repository. If not specified display / modify main DNF configuration.
-    Repositories can be specified using globs.
+``<repoid>``
+    Display / modify a repository identified by <repoid>. If not specified, display / modify
+    main DNF configuration. Repositories can be specified using globs.
 
 -------
 Options
@@ -71,11 +71,12 @@ Examples
 ``dnf config-manager --dump``
     Display main DNF configuration.
 
-``dnf config-manager repo --dump``
-    Display configuration of repo.
+``dnf config-manager <repoid> --dump``
+    Display configuration of a repository identified by <repoid>.
 
-``dnf config-manager --set-enabled repo``
-    Enable repo and make the change permanent.
+``dnf config-manager --set-enabled <repoid>``
+    Enable repository identified by <repoid> and make the change permanent.
 
-``dnf config-manager --setopt proxy=http://proxy.example.com:3128/ repo1 repo2 --save``
-    Update proxy setting in repo1 and repo2 and make the change permanent.
+``dnf config-manager --setopt proxy=http://proxy.example.com:3128/ <repo1> <repo2> --save``
+    Update proxy setting in repositories with repoid <repo1> and <repo2> and make the change
+    permanent.
