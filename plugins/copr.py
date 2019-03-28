@@ -518,7 +518,7 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
                   .format(copr_username, copr_projectname)))
 
         self.base.conf.write_raw_configfile(repo.repofile, repo.id,
-                                            self.base.conf.substitutions, {"enabled": 0})
+                                            self.base.conf.substitutions, {"enabled": "0"})
 
     @classmethod
     def _get_data(cls, f):
