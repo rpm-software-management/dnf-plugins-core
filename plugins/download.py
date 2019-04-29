@@ -270,13 +270,11 @@ class DownloadCommand(dnf.cli.Command):
     def _get_query_source(self, pkg_spec):
         """Return a query to match a source rpm file name."""
         pkg_spec = pkg_spec[:-4]  # skip the .rpm
-        nevra = hawkey.split_nevra(pkg_spec)
-        q = self.base.sack.query()
-        q = q.available()
-        q = q.latest()
-        q = q.filter(name=nevra.name, version=nevra.version,
-                     release=nevra.release, arch=nevra.arch)
-        if len(q.run()) == 0:
-            msg = _("No package %s available.") % (pkg_spec)
-            raise dnf.exceptions.PackageNotFoundError(msg)
-        return q
+        subj = dnf.subject.Subject(pkg_spec)
+        for nevra_obj in subj.get_nevra_possibilities():
+            tmp_query = nevra_obj.to_query(self.base.sack).available()
+            if tmp_query:
+                return tmp_query.latest()
+
+        msg = _("No package %s available.") % (pkg_spec)
+        raise dnf.exceptions.PackageNotFoundError(msg)
