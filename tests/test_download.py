@@ -271,12 +271,6 @@ class DownloadCommandTest(unittest.TestCase):
         finally:
             os.remove(rpm_path)
 
-    def test_get_query_source(self):
-        pkgs = self.cmd._get_query_source('foo-2.0-1.src.rpm')
-        self.assertEqual(len(pkgs), 1)
-        self.assertEqual(pkgs[0].arch, 'src')
-        self.assertEqual(pkgs[0].reponame, 'test-repo-source')
-
     def test_get_packages(self):
         pkgs = self.cmd._get_packages(['bar'])
         self.assertEqual(len(pkgs), 1)
@@ -299,10 +293,6 @@ class DownloadCommandTest(unittest.TestCase):
         self.cmd.base.conf.strict = strict_orig
 
         self.assertEqual(pkgs[0].name, 'bar')
-        pkgs = self.cmd._get_packages(['foo-2.0-1.src.rpm'], source=True)
-        self.assertEqual(len(pkgs), 1)
-        self.assertEqual(pkgs[0].arch, 'src')
-        self.assertEqual(pkgs[0].reponame, 'test-repo-source')
 
     def test_download_rpms(self):
         pkgs = self.cmd._get_pkg_objs_rpms(['foo'])
@@ -315,17 +305,6 @@ class DownloadCommandTest(unittest.TestCase):
         self.assertEqual(locations[0], '/tmp/dnf/bar-2.0-1.noarch.rpm')
         self.assertEqual(locations[1], '/tmp/dnf/foo-2.0-1.noarch.rpm')
         self.assertTrue(self.cmd.base.download_packages.called)
-
-    def test_download_source(self):
-        pkgs = self.cmd._get_pkg_objs_source(['foo'])
-        locations = self.cmd._do_downloads(pkgs)
-        self.assertEqual(len(locations), 1)
-        self.assertEqual(locations[0], '/tmp/dnf/foo-2.0-1.src.rpm')
-        pkgs = self.cmd._get_pkg_objs_source(['foo', 'bar'])
-        locations = self.cmd._do_downloads(pkgs)
-        self.assertEqual(len(locations), 2)
-        self.assertEqual(locations[0], '/tmp/dnf/bar-2.0-1.src.rpm')
-        self.assertEqual(locations[1], '/tmp/dnf/foo-2.0-1.src.rpm')
 
     def test_download_debuginfo(self):
         pkgs = self.cmd._get_pkg_objs_debuginfo(['kernel-PAE'])
