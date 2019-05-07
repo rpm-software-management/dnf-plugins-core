@@ -23,7 +23,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.6
+Version:        4.0.7
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -684,6 +684,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue May 07 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.7-1
+- Fix: copr disable command traceback (RhBug:1693551)
+- [doc] state repoid as repo identifier of config-manager (RhBug:1686779)
+- Fix download of src when not the latest requested (RhBug:1649627)
+
 * Mon Mar 11 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.6-1
 - Use improved config parser that preserves order of data
 - [leaves] Show multiply satisfied dependencies as leaves

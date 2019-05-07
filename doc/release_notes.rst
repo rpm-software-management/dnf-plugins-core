@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.7 Release Notes
+===================
+
+- Fix: copr disable command traceback (RhBug:1693551)
+- [doc] state repoid as repo identifier of config-manager (RhBug:1686779)
+- Fix download of src when not the latest requested (RhBug:1649627)
+
+Bugs fixed in 4.0.7:
+
+* :rhbug:`1693551`
+
+===================
 4.0.6 Release Notes
 ===================
 

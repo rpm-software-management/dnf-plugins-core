@@ -430,5 +430,9 @@
     [
         1666648,
         "dnf download command downloads also a srpm"
+    ],
+    [
+        1693551,
+        "Problem with dnf copr disable command"
     ]
 ]
