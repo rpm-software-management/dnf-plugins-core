@@ -61,6 +61,9 @@ Options
 ``--metadata-path``
     Root path under which the downloaded metadata are stored. It defaults to ``--download-path`` value if not given.
 
+``--remote-time``
+    Try to set the timestamps of the downloaded files to those on the remote side.
+
 Besides these reposync specific options the ``dnf reposync`` command also accepts all general DNF options. This is especially useful for specifying which repositories should be synchronized (``--repoid`` option). See `Options` in :manpage:`dnf(8)` for details.
 
 --------

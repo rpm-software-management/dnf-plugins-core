@@ -75,6 +75,9 @@ class RepoSyncCommand(dnf.cli.Command):
                                    'Defaults to the value of --download-path.'))
         parser.add_argument('--source', default=False, action='store_true',
                             help=_('operate on source packages'))
+        parser.add_argument('--remote-time', default=False, action='store_true',
+                            help=_('try to set local timestamps of local files by '
+                                   'the one on the server'))
 
     def configure(self):
         demands = self.cli.demands
@@ -102,6 +105,8 @@ class RepoSyncCommand(dnf.cli.Command):
     def run(self):
         self.base.conf.keepcache = True
         for repo in self.base.repos.iter_enabled():
+            if self.opts.remote_time:
+                repo._repo.setPreserveRemoteTime(True)
             if self.opts.download_metadata:
                 self.download_metadata(repo)
             if self.opts.downloadcomps:
