@@ -1,6 +1,6 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.7.0
+%global hawkey_version 0.34.0
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
