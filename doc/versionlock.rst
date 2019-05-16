@@ -98,7 +98,7 @@ The minimal content of conf file should contain ``main`` sections with ``enabled
 
       The file takes entries in the format of ``package-spec`` (optionally prefixed with '!' for
       excludes).
-      See :ref:`\specifying_packages-label`.
+      See `Specifying packages` in :manpage:`dnf(8)` for details.
 
 -----
 Notes
