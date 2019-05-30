@@ -284,8 +284,6 @@ man_pages = [
      AUTHORS, 5),
     ('builddep', 'yum-builddep', u'redirecting to DNF builddep Plugin', AUTHORS, 1),
     ('changelog', 'yum-changelog', u'redirecting to DNF changelog Plugin', AUTHORS, 1),
-    ('changelog', 'yum-changelog.conf', u'redirecting to DNF changelog Plugin',
-     AUTHORS, 5),
     ('config_manager', 'yum-config-manager', u'redirecting to DNF config-manager Plugin',
      AUTHORS, 1),
     ('debug', 'yum-debug-dump', u'redirecting to DNF debug Plugin', AUTHORS, 1),

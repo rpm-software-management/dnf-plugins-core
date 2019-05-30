@@ -62,7 +62,6 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-utils.1
 	DESTINATION share/man/man1)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/yum-changelog.conf.5
-    ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.conf.5
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.conf.5
 	DESTINATION share/man/man5)
 
