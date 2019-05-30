@@ -450,9 +450,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %if %{with yumcompatibility}
 %{_mandir}/man1/yum-changelog.*
 %{_mandir}/man5/yum-changelog.conf.*
+%{_mandir}/man8/yum-copr.*
 %else
 %exclude %{_mandir}/man1/yum-changelog.*
 %exclude %{_mandir}/man5/yum-changelog.conf.*
+%exclude %{_mandir}/man8/yum-copr.*
 %endif
 
 %if %{with python2}
@@ -538,7 +540,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
-%{_mandir}/man8/yum-copr.*
 %{_mandir}/man1/debuginfo-install.*
 %{_mandir}/man1/needs-restarting.*
 %{_mandir}/man1/repo-graph.*
@@ -560,7 +561,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man1/yum-utils.*
 %else
 # These are built regardless of dnfutils bcond so we need to exclude them.
-%exclude %{_mandir}/man8/yum-copr.*
 %exclude %{_mandir}/man1/debuginfo-install.*
 %exclude %{_mandir}/man1/needs-restarting.*
 %exclude %{_mandir}/man1/repo-graph.*
