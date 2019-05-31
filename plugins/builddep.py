@@ -21,42 +21,16 @@
 
 from __future__ import absolute_import
 from __future__ import unicode_literals
-from dnfpluginscore import _, logger, rpm_logger
+from dnfpluginscore import _, logger
 
 import argparse
 import dnf
 import dnf.cli
 import dnf.exceptions
 import dnf.rpm.transaction
-import functools
-import logging
+import dnf.yum.rpmtrans
 import os
 import rpm
-
-
-class redirect_rpm_logging(object):
-    def __init__(self):
-        self.sink = None
-
-    def __call__(self, func):
-        @functools.wraps(func)
-        def inner(*args, **kwds):
-            with self:
-                return func(*args, **kwds)
-        return inner
-
-    def __enter__(self):
-        for handler in rpm_logger.handlers:
-            if isinstance(handler, logging.FileHandler):
-                rpm.setLogFile(handler.stream)
-                break
-        else:
-            self.sink = open('/dev/null', 'w')
-            rpm.setLogFile(self.sink)
-
-    def __exit__(self, exc_type, exc, exc_tb):
-        if self.sink:
-            self.sink.close()
 
 
 @dnf.plugin.register_command
@@ -91,6 +65,10 @@ class BuildDepCommand(dnf.cli.Command):
         ptype.add_argument('--srpm', action='store_true',
                             help=_('treat commandline arguments as source rpm'))
 
+    def pre_configure(self):
+        if not self.opts.rpmverbosity:
+            self.opts.rpmverbosity = 'error'
+
     def configure(self):
         demands = self.cli.demands
         demands.available_repos = True
@@ -107,8 +85,8 @@ class BuildDepCommand(dnf.cli.Command):
                     self.base.repos.enable_source_repos()
                     break
 
-    @redirect_rpm_logging()
     def run(self):
+        rpmlog = dnf.yum.rpmtrans.RPMTransaction(self.base)
         # Push user-supplied macro definitions for spec parsing
         for macro in self.opts.define:
             rpm.addMacro(macro[0], macro[1])
@@ -127,6 +105,8 @@ class BuildDepCommand(dnf.cli.Command):
                 else:
                     self._remote_deps(pkgspec)
             except dnf.exceptions.Error as e:
+                for line in rpmlog.messages():
+                    logger.error(_("RPM: {}").format(line))
                 logger.error(e)
                 pkg_errors = True
 
