@@ -21,6 +21,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import hawkey
 import os
 import shutil
 
@@ -170,7 +171,8 @@ class RepoSyncCommand(dnf.cli.Command):
         return True
 
     def get_pkglist(self, repo):
-        query = self.base.sack.query().available().filterm(reponame=repo.id)
+        query = self.base.sack.query(flags=hawkey.IGNORE_EXCLUDES).available().filterm(
+            reponame=repo.id)
         if self.opts.newest_only:
             query = query.latest()
         if self.opts.source:
@@ -188,7 +190,8 @@ class RepoSyncCommand(dnf.cli.Command):
             progress = base.output.progress
             if progress is None:
                 progress = dnf.callback.NullDownloadProgress()
-            drpm = dnf.drpm.DeltaInfo(base.sack.query().installed(), progress, 0)
+            drpm = dnf.drpm.DeltaInfo(base.sack.query(flags=hawkey.IGNORE_EXCLUDES).installed(),
+                                      progress, 0)
             payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
                         for pkg in remote_pkgs]
             base._download_remote_payloads(payloads, drpm, progress, None)
