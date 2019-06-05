@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 10:35+0100\n"
-"PO-Revision-Date: 2019-02-03 08:08+0000\n"
+"POT-Creation-Date: 2019-06-05 10:59+0200\n"
+"PO-Revision-Date: 2019-06-03 03:40+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "отримати усі пакунки із віддаленого сховища"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
 #: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "отримати лише пакунки для вказаної архітектури"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
 #: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "вилучити локальні пакунки, яких більше немає у сховищі пакунків"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:67
 #: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "також отримати comps.xml"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
 #: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "отримувати лише найновіші пакунки у кожному зі сховищ"
@@ -47,18 +47,18 @@ msgstr "отримувати лише найновіші пакунки у ко�
 msgid "where to store downloaded repositories "
 msgstr "місце, де слід зберігати отримані сховища "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:78
 #: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "працювати із пакунками початкових кодів"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:155
 #: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[ВИЛУЧЕНО] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:157
 #: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
@@ -69,7 +69,7 @@ msgstr "не вдалося вилучити файл %s"
 msgid "Could not make repository directory: %s"
 msgstr "Не вдалося створити каталог сховища: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:166
 #: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
@@ -534,15 +534,15 @@ msgstr "Розмір пакунків зі зниженими версіями: 
 msgid "Size change: {}"
 msgstr "Різниця у розмірах: {}"
 
-#: ../plugins/reposync.py:68
+#: ../plugins/reposync.py:69
 msgid "download all the metadata."
 msgstr "отримати усі метадані."
 
-#: ../plugins/reposync.py:72
+#: ../plugins/reposync.py:73
 msgid "where to store downloaded repositories"
 msgstr "місце зберігання отриманих сховищ"
 
-#: ../plugins/reposync.py:74
+#: ../plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
@@ -550,7 +550,11 @@ msgstr ""
 "місце зберігання отриманих метаданих сховищ. Типовим є значення у "
 "--download-path."
 
-#: ../plugins/reposync.py:129
+#: ../plugins/reposync.py:80
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 "Ціль отримання даних «{}» перебуває поза межами шляху для отримання даних "
@@ -655,7 +659,7 @@ msgstr "Помилка під час спроби розв'язати залеж
 msgid "No source rpm defined for %s"
 msgstr "Не визначено rpm із початковим кодом для %s"
 
-#: ../plugins/download.py:266 ../plugins/download.py:280
+#: ../plugins/download.py:266 ../plugins/download.py:279
 #, python-format
 msgid "No package %s available."
 msgstr "Немає доступного пакунка %s."
@@ -705,12 +709,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"  enable назва/проект [chroot]\n"
-"  disable назва/проект\n"
-"  remove назва/проект\n"
+"  enable назва/проєкт [chroot]\n"
+"  disable назва/проєкт\n"
+"  remove назва/проєкт\n"
 "  list --installed/enabled/disabled\n"
 "  list --available-by-user=ІМ'Я\n"
-"  search проект\n"
+"  search проєкт\n"
 "\n"
 "  Приклади:\n"
 "  copr enable rhscl/perl516 epel-6-x86_64\n"
@@ -753,7 +757,7 @@ msgid ""
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 "вкажіть концентратор Copr за допомогою «--hub» або за допомогою формату "
-"«концентратор_copr/користувач_copr/назва_проекту_copr»"
+"«концентратор_copr/користувач_copr/назва_проєкту_copr»"
 
 #: ../plugins/copr.py:149
 msgid "multiple hubs specified"
@@ -766,12 +770,12 @@ msgstr "команді copr слід передавати точно два до
 #: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
-"для використання проект copr скористайтеся форматом "
-"«copr_користувач/copr_назва_проекту»"
+"для використання проєкт copr скористайтеся форматом "
+"«copr_користувач/copr_назва_проєкту»"
 
 #: ../plugins/copr.py:233
 msgid "bad copr project format"
-msgstr "помилкове форматування проекту copr"
+msgstr "помилкове форматування проєкту copr"
 
 #: ../plugins/copr.py:247
 #, python-brace-format
@@ -795,7 +799,7 @@ msgstr ""
 "що це сховище не є частиною основного дистрибутива, тому може\n"
 "містити пакунки неналежної якості.\n"
 "\n"
-"Проект Fedora ніяким чином не впливає на вміст цього\n"
+"Проєкт Fedora ніяким чином не впливає на вміст цього\n"
 "сховища, окрім правил, які визначено у списку питань щодо Copr тут:\n"
 "<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
 "а пакунки не проходять жодних рівнів забезпечення якості чи захищеності.\n"
@@ -829,7 +833,7 @@ msgid ""
 "this."
 msgstr ""
 "* Ці copr-и містять файл сховища у застарілому форматі, який не містить "
-"даних щодо концентратора Copr — припускаємо типовий. Знову увімкніть проект "
+"даних щодо концентратора Copr — припускаємо типовий. Знову увімкніть проєкт "
 "для виправлення."
 
 #: ../plugins/copr.py:336

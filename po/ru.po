@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"POT-Creation-Date: 2019-06-05 10:59+0200\n"
 "PO-Revision-Date: 2019-02-07 08:23+0000\n"
 "Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -17,28 +17,28 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "загрузить все пакеты из удаленного репозитория"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
 #: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "загрузить только пакеты для этой архитектуры"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
 #: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr ""
 "удалить локальные пакеты, которые больше не присутствуют в репозитории"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:67
 #: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "также загружать comps.xml"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
 #: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "загружать только самые новые пакеты для каждого репозитория"
@@ -47,18 +47,18 @@ msgstr "загружать только самые новые пакеты дл�
 msgid "where to store downloaded repositories "
 msgstr "где хранить загруженные репозитории "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:78
 #: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "работать с исходными пакетами"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:155
 #: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[УДАЛЕНО] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:157
 #: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
@@ -69,7 +69,7 @@ msgstr "не удалось удалить файл %s"
 msgid "Could not make repository directory: %s"
 msgstr "Не удалось создать каталог репозитория: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:166
 #: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
@@ -532,15 +532,15 @@ msgstr "Размер пакетов, возвращенных к прежней 
 msgid "Size change: {}"
 msgstr "Изменение размера: {}"
 
-#: ../plugins/reposync.py:68
+#: ../plugins/reposync.py:69
 msgid "download all the metadata."
 msgstr "загрузить все метаданные."
 
-#: ../plugins/reposync.py:72
+#: ../plugins/reposync.py:73
 msgid "where to store downloaded repositories"
 msgstr "где хранить загруженные репозитории"
 
-#: ../plugins/reposync.py:74
+#: ../plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
@@ -548,7 +548,11 @@ msgstr ""
 "где хранить метаданные загруженных репозиториев. По умолчанию --download-"
 "path."
 
-#: ../plugins/reposync.py:129
+#: ../plugins/reposync.py:80
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr "Место для загрузки '{}' вне пути для загрузки '{}'."
 
@@ -647,7 +651,7 @@ msgstr "Ошибка в разрешении пакетов:"
 msgid "No source rpm defined for %s"
 msgstr "Не заданы пакеты с исходными текстами для %s"
 
-#: ../plugins/download.py:266 ../plugins/download.py:280
+#: ../plugins/download.py:266 ../plugins/download.py:279
 #, python-format
 msgid "No package %s available."
 msgstr "Нет пакета %s."

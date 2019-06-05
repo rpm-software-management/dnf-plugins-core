@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"POT-Creation-Date: 2019-06-05 10:59+0200\n"
 "PO-Revision-Date: 2019-02-17 09:00+0000\n"
 "Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: French\n"
@@ -20,27 +20,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "télécharger tous les paquets depuis le dépôt distant"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
 #: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "télécharger seulement les paquets s'appliquant à cette ARCH"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
 #: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "supprimer les packages locaux qui ne sont plus présents dans le dépôt"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:67
 #: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "télécharger comps.xml également"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
 #: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "ne télécharger que les nouveaux paquets per-rep"
@@ -49,18 +49,18 @@ msgstr "ne télécharger que les nouveaux paquets per-rep"
 msgid "where to store downloaded repositories "
 msgstr "là où stocker les dépôts téléchargés "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:78
 #: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "opère sur les paquets source"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:155
 #: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:157
 #: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
@@ -71,7 +71,7 @@ msgstr "n'a pas pu supprimer le fichier %s"
 msgid "Could not make repository directory: %s"
 msgstr "N'a pas pu créer le répertoire de dépôt : %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:166
 #: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
@@ -536,15 +536,15 @@ msgstr "Taille des paquets téléchargés : {}"
 msgid "Size change: {}"
 msgstr "Taille des changements : {}"
 
-#: ../plugins/reposync.py:68
+#: ../plugins/reposync.py:69
 msgid "download all the metadata."
 msgstr "télécharger toutes les métadonnées."
 
-#: ../plugins/reposync.py:72
+#: ../plugins/reposync.py:73
 msgid "where to store downloaded repositories"
 msgstr "lieu où stocker les dépôts téléchargés"
 
-#: ../plugins/reposync.py:74
+#: ../plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
@@ -552,7 +552,11 @@ msgstr ""
 "là où stocker les métadonnées du dépôt. Prend par défaut la valeur de "
 "--download-path."
 
-#: ../plugins/reposync.py:129
+#: ../plugins/reposync.py:80
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 "La cible de téléchargement '{}' est en dehors du chemin de téléchargement  "
@@ -655,7 +659,7 @@ msgstr "Erreur de résolution des paquets :"
 msgid "No source rpm defined for %s"
 msgstr "Aucune source définie pour %s"
 
-#: ../plugins/download.py:266 ../plugins/download.py:280
+#: ../plugins/download.py:266 ../plugins/download.py:279
 #, python-format
 msgid "No package %s available."
 msgstr "Aucun paquet %s n'est disponible"
