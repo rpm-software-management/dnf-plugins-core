@@ -35,6 +35,12 @@ import re
 import stat
 
 
+# For which package updates we should recommend a reboot
+# Mostly taken from https://access.redhat.com/solutions/27943
+NEED_REBOOT = ['kernel', 'glibc', 'linux-firmware', 'systemd', 'dbus',
+               'dbus-broker', 'dbus-daemon']
+
+
 def list_opened_files(uid):
     for (pid, smaps) in list_smaps():
         try:
@@ -169,7 +175,10 @@ class NeedsRestartingCommand(dnf.cli.Command):
     @staticmethod
     def set_argparser(parser):
         parser.add_argument('-u', '--useronly', action='store_true',
-                        help=_("only consider this user's processes"))
+                            help=_("only consider this user's processes"))
+        parser.add_argument('-r', '--reboothint', action='store_true',
+                            help=_("only report whether a reboot is required "
+                                   "(exit code 1) or not (exit code 0)"))
 
     def configure(self):
         demands = self.cli.demands
@@ -179,6 +188,28 @@ class NeedsRestartingCommand(dnf.cli.Command):
         process_start = ProcessStart()
         owning_pkg_fn = functools.partial(owning_package, self.base.sack)
         owning_pkg_fn = memoize(owning_pkg_fn)
+
+        if self.opts.reboothint:
+            need_reboot = set()
+            installed = self.base.sack.query().installed()
+            for pkg in installed.filter(name=NEED_REBOOT):
+                if pkg.installtime > process_start.boot_time:
+                    need_reboot.add(pkg.name)
+            if need_reboot:
+                print(_('Core libraries or services have been updated '
+                        'since boot-up:'))
+                for name in sorted(need_reboot):
+                    print('  * %s' % name)
+                print()
+                print(_('Reboot is required to fully utilize these updates.'))
+                print(_('More information:'),
+                      'https://access.redhat.com/solutions/27943')
+                raise dnf.exceptions.Error()  # Sets exit code 1
+            else:
+                print(_('No core libraries or services have been updated '
+                        'since boot-up.'))
+                print(_('Reboot should not be necessary.'))
+                return None
 
         stale_pids = set()
         uid = os.geteuid() if self.opts.useronly else None
