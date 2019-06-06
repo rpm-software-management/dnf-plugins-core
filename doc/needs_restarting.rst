@@ -42,3 +42,7 @@ Options
 ``-u, --useronly``
 
     Only consider processes belonging to the running user.
+
+``-r, --reboothint``
+
+    Only report whether a reboot is required (exit code 1) or not (exit code 0).
