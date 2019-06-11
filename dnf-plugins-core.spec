@@ -27,7 +27,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.7
+Version:        4.0.8
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -686,6 +686,14 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Jun 11 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.8-1
+- [reposync] Enable timestamp preserving for downloaded data (RhBug:1688537)
+- [reposync] Download packages from all streams (RhBug:1714788)
+- Make yum-copr manpage available (RhBug:1673902)
+- [needs-restarting] Add --reboothint option (RhBug:1192946) (RhBug:1639468)
+- Set the cost of ``_dnf_local`` repo to 500, to make it preferred to normal
+  repos
+
 * Tue May 07 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.7-1
 - Fix: copr disable command traceback (RhBug:1693551)
 - [doc] state repoid as repo identifier of config-manager (RhBug:1686779)

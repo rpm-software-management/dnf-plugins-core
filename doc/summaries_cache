@@ -434,5 +434,29 @@
     [
         1693551,
         "Problem with dnf copr disable command"
+    ],
+    [
+        1192946,
+        "[RFE] needs-restarting should give a hint if reboot is required"
+    ],
+    [
+        1673920,
+        "confusing yum-plugin-changelog documentation"
+    ],
+    [
+        1673902,
+        "missing yum-copr man page"
+    ],
+    [
+        1707552,
+        "conflicts with yum-plugin-changelog"
+    ],
+    [
+        1714788,
+        "Reposync should sync the entire repository to include module information. reposync should download the packages regardless of whether a module is enabled or disabled"
+    ],
+    [
+        1688537,
+        "reposync doesn't preserve timestamp from repo being synced"
     ]
 ]

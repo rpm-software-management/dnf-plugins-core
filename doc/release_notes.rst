@@ -22,6 +22,25 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.8 Release Notes
+===================
+
+- [reposync] Enable timestamp preserving for downloaded data (RhBug:1688537)
+- [reposync] Download packages from all streams (RhBug:1714788)
+- Make yum-copr manpage available (RhBug:1673902)
+- [needs-restarting] Add ``--reboothint`` option (RhBug:1192946) (RhBug:1639468)
+- Set the cost of ``_dnf_local`` repo to 500, to make it preferred to normal repos
+
+Bugs fixed in 4.0.8:
+
+* :rhbug:`1192946`
+* :rhbug:`1673920`
+* :rhbug:`1673902`
+* :rhbug:`1707552`
+* :rhbug:`1714788`
+* :rhbug:`1688537`
+
+===================
 4.0.7 Release Notes
 ===================
 
