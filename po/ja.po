@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 10:35+0100\n"
+"POT-Creation-Date: 2019-06-05 10:59+0200\n"
 "PO-Revision-Date: 2018-09-11 12:23+0000\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
@@ -15,27 +15,27 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "リモート repo からすべてのパッケージをダウンロードします"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
 #: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "この ARCH 向けのパッケージのみをダウンロード"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
 #: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "リポジトリーにもはや存在しないローカルパッケージを削除"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:67
 #: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "comps.xml もダウンロード"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
 #: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "最新のパッケージ per-repo のみをダウンロード"
@@ -44,18 +44,18 @@ msgstr "最新のパッケージ per-repo のみをダウンロード"
 msgid "where to store downloaded repositories "
 msgstr "ダウンロード済みリポジトリーの保管場所 "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:78
 #: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "ソースパッケージでの操作"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:155
 #: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:157
 #: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
@@ -66,7 +66,7 @@ msgstr "ファイル %s の削除に失敗しました"
 msgid "Could not make repository directory: %s"
 msgstr "リポジトリーディレクトリーを作成できませんでした: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:166
 #: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
@@ -499,21 +499,25 @@ msgstr ""
 msgid "Size change: {}"
 msgstr ""
 
-#: ../plugins/reposync.py:68
+#: ../plugins/reposync.py:69
 msgid "download all the metadata."
 msgstr ""
 
-#: ../plugins/reposync.py:72
+#: ../plugins/reposync.py:73
 msgid "where to store downloaded repositories"
 msgstr ""
 
-#: ../plugins/reposync.py:74
+#: ../plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
 msgstr ""
 
-#: ../plugins/reposync.py:129
+#: ../plugins/reposync.py:80
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 
@@ -610,7 +614,7 @@ msgstr "パッケージの解決でエラー:"
 msgid "No source rpm defined for %s"
 msgstr "%s に対して定義されているソース rpm はありません"
 
-#: ../plugins/download.py:266 ../plugins/download.py:280
+#: ../plugins/download.py:266 ../plugins/download.py:279
 #, python-format
 msgid "No package %s available."
 msgstr "利用可能なパッケージ %s はありません。"

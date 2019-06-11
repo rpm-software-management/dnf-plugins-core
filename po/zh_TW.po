@@ -3,13 +3,14 @@
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2018. #zanata
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 # Peter Pan <pan93412@gmail.com>, 2018. #zanata
+# Cheng-Chia Tseng <pswo10680@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 10:35+0100\n"
-"PO-Revision-Date: 2018-11-12 11:31+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"POT-Creation-Date: 2019-06-05 10:59+0200\n"
+"PO-Revision-Date: 2019-04-02 05:18+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -18,27 +19,27 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "從遠端軟體庫下載所有軟體包"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
 #: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "僅下載此ARCH的軟件包"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
 #: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "刪除存儲庫中不再存在的本地包"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:67
 #: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "還下載comps.xml"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
 #: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "每次只下載最新的軟件包"
@@ -47,18 +48,18 @@ msgstr "每次只下載最新的軟件包"
 msgid "where to store downloaded repositories "
 msgstr "儲存下載軟體庫的地方 "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:78
 #: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "在源包上運行"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:155
 #: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:157
 #: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
@@ -69,7 +70,7 @@ msgstr "無法刪除文件 %s"
 msgid "Could not make repository directory: %s"
 msgstr "無法創建存儲庫目錄： %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:166
 #: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
@@ -502,21 +503,25 @@ msgstr ""
 msgid "Size change: {}"
 msgstr ""
 
-#: ../plugins/reposync.py:68
+#: ../plugins/reposync.py:69
 msgid "download all the metadata."
 msgstr "下載所有的中繼資料。"
 
-#: ../plugins/reposync.py:72
+#: ../plugins/reposync.py:73
 msgid "where to store downloaded repositories"
 msgstr ""
 
-#: ../plugins/reposync.py:74
+#: ../plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
 msgstr ""
 
-#: ../plugins/reposync.py:129
+#: ../plugins/reposync.py:80
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr "下載目標「{}」在下載位置「{}」之外。"
 
@@ -613,7 +618,7 @@ msgstr "解析包時出錯："
 msgid "No source rpm defined for %s"
 msgstr "%s 沒有來源 RPM 指定"
 
-#: ../plugins/download.py:266 ../plugins/download.py:280
+#: ../plugins/download.py:266 ../plugins/download.py:279
 #, python-format
 msgid "No package %s available."
 msgstr "沒有軟體包 %s 可用。"
@@ -865,7 +870,7 @@ msgstr "傾印安裝的 RPM 軟體包資訊至檔案"
 
 #: ../plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
-msgstr "不要嘗試去傾印軟體庫資訊。"
+msgstr "不要嘗試傾印軟體庫資訊。"
 
 #: ../plugins/debug.py:70
 msgid "optional name of dump file"

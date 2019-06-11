@@ -104,6 +104,7 @@ class Local(dnf.Plugin):
         local_repo = dnf.repo.Repo("_dnf_local", self.base.conf)
         local_repo.baseurl = "file://{}".format(self.main["repodir"])
         local_repo.cost = 500
+        local_repo.skip_if_unavailable = True
         self.base.repos.add(local_repo)
 
     def transaction(self):

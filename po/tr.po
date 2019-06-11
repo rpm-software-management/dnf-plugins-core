@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-11 10:35+0100\n"
-"PO-Revision-Date: 2019-03-08 02:04+0000\n"
+"POT-Creation-Date: 2019-06-05 10:59+0200\n"
+"PO-Revision-Date: 2019-05-11 10:32+0000\n"
 "Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n>1)\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:53
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
 msgid "download all packages from remote repo"
 msgstr "tüm paketleri uzak depodan indir"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:62
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
 #: ../plugins/reposync.175df5c.py:48
 msgid "download only packages for this ARCH"
 msgstr "sadece bu YAPI için paketleri indir"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:64
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
 #: ../plugins/reposync.175df5c.py:50
 msgid "delete local packages no longer present in repository"
 msgstr "depoda olmayan yerel paketleri sil"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:66
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.py:67
 #: ../plugins/reposync.175df5c.py:52
 msgid "also download comps.xml"
 msgstr "ayrıca comps.xml indir"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:70
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
 #: ../plugins/reposync.175df5c.py:54
 msgid "download only newest packages per-repo"
 msgstr "depo üstünden sadece en yeni paketleri indir"
@@ -43,18 +43,18 @@ msgstr "depo üstünden sadece en yeni paketleri indir"
 msgid "where to store downloaded repositories "
 msgstr "indirilen depolar nerede saklanacak "
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:77
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:78
 #: ../plugins/reposync.175df5c.py:58
 msgid "operate on source packages"
 msgstr "kaynak paketleri üzerinde çalış"
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:149
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:155
 #: ../plugins/reposync.175df5c.py:95
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[SİLİNDİ] %s"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:151
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:157
 #: ../plugins/reposync.175df5c.py:97
 #, python-format
 msgid "failed to delete file %s"
@@ -65,7 +65,7 @@ msgstr "%s dosyası silinemedi"
 msgid "Could not make repository directory: %s"
 msgstr "Depo dizini oluşturulamadı: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:160
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:166
 #: ../plugins/reposync.175df5c.py:111
 #, python-format
 msgid "comps.xml for repository %s saved"
@@ -192,11 +192,11 @@ msgstr ""
 
 #: ../plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
+msgstr "yum'ın geçmişini, grubunu ve yumdb verilerini dnf'ye geçir"
 
 #: ../plugins/migrate.py:54
 msgid "Migrating history data..."
-msgstr ""
+msgstr "Geçmiş verileri taşınıyor..."
 
 #: ../plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
@@ -324,27 +324,27 @@ msgstr ""
 
 #: ../plugins/local.py:120
 msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
+msgstr "'{}' nedeniyle '{}' dizini oluşturulamıyor"
 
 #: ../plugins/local.py:124
 msgid "'{}' is not a directory"
-msgstr ""
+msgstr "'{}' bir dizin değil"
 
 #: ../plugins/local.py:133
 msgid "Copying '{}' to local repo"
-msgstr ""
+msgstr "'{}' dosyasını yerel depoya kopyala"
 
 #: ../plugins/local.py:139
 msgid "Can't write file '{}'"
-msgstr ""
+msgstr "Dosya'ya yazılamıyor '{}'"
 
 #: ../plugins/local.py:154
 msgid "Rebuilding local repo"
-msgstr ""
+msgstr "Yerel repoyu yeniden oluştur"
 
 #: ../plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
-msgstr ""
+msgstr "Başka bir paketin gerektirmediği kurulu paketleri listeler"
 
 #: ../plugins/needs_restarting.py:167
 msgid "determine updated binaries that need restarting"
@@ -380,57 +380,63 @@ msgstr ""
 
 #: ../plugins/repodiff.py:45
 msgid "List differences between two sets of repositories"
-msgstr ""
+msgstr "İki depo arasındaki farkları listele"
 
 #: ../plugins/repodiff.py:58
 msgid "Specify old repository, can be used multiple times"
-msgstr ""
+msgstr "Eski depoyı belirtin, birden çok kez kullanılabilir"
 
 #: ../plugins/repodiff.py:60
 msgid "Specify new repository, can be used multiple times"
-msgstr ""
+msgstr "Yeni depo belirtin, birden çok kez kullanılabilir"
 
 #: ../plugins/repodiff.py:63
 msgid ""
 "Specify architectures to compare, can be used multiple times. By default, "
 "only source rpms are compared."
 msgstr ""
+"Karşılaştırılacak mimarileri belirtin, birçok kez kullanılabilir. Varsayılan"
+" olarak, sadece kaynak rpm'ler karşılaştırılır."
 
 #: ../plugins/repodiff.py:67
 msgid "Output additional data about the size of the changes."
-msgstr ""
+msgstr "Değişikliklerin büyüklüğü hakkında ek veriler alın."
 
 #: ../plugins/repodiff.py:69
 msgid ""
 "Compare packages also by arch. By default packages are compared just by "
 "name."
 msgstr ""
+"Paketleri de mimari ile karşılaştırın. Varsayılan olarak paketler sadece "
+"isim ile karşılaştırılır."
 
 #: ../plugins/repodiff.py:72
 msgid "Output a simple one line message for modified packages."
-msgstr ""
+msgstr "Değiştirilmiş paketler için basit bir satırlık mesaj gönderin."
 
 #: ../plugins/repodiff.py:74
 msgid ""
 "Split the data for modified packages between upgraded and downgraded "
 "packages."
 msgstr ""
+"Değiştirilmiş paketlerin verilerini yükseltilmiş ve düşürülmüş paketler "
+"arasında bölün."
 
 #: ../plugins/repodiff.py:86
 msgid "Both old and new repositories must be set."
-msgstr ""
+msgstr "Hem eski hem de yeni depolar ayarlanmalıdır."
 
 #: ../plugins/repodiff.py:178
 msgid "Size change: {} bytes"
-msgstr ""
+msgstr "Boyut değişimi: {} bayt"
 
 #: ../plugins/repodiff.py:184
 msgid "Added package  : {}"
-msgstr ""
+msgstr "Eklenen paket  : {}"
 
 #: ../plugins/repodiff.py:187
 msgid "Removed package: {}"
-msgstr ""
+msgstr "Kaldırılan paket: {}"
 
 #: ../plugins/repodiff.py:190
 msgid "Obsoleted by   : {}"
@@ -441,84 +447,96 @@ msgid ""
 "\n"
 "Upgraded packages"
 msgstr ""
+"\n"
+"Yükseltilmiş paketler"
 
 #: ../plugins/repodiff.py:200
 msgid ""
 "\n"
 "Downgraded packages"
 msgstr ""
+"\n"
+"Sürümü düşürülen paketler"
 
 #: ../plugins/repodiff.py:207
 msgid ""
 "\n"
 "Modified packages"
 msgstr ""
+"\n"
+"Düzenlenmiş paketler"
 
 #: ../plugins/repodiff.py:212
 msgid ""
 "\n"
 "Summary"
 msgstr ""
+"\n"
+"Özet"
 
 #: ../plugins/repodiff.py:213
 msgid "Added packages: {}"
-msgstr ""
+msgstr "Eklenen paketler: {}"
 
 #: ../plugins/repodiff.py:214
 msgid "Removed packages: {}"
-msgstr ""
+msgstr "Kaldırılan paketler: {}"
 
 #: ../plugins/repodiff.py:216
 msgid "Upgraded packages: {}"
-msgstr ""
+msgstr "Yükseltilmiş paketler: {}"
 
 #: ../plugins/repodiff.py:217
 msgid "Downgraded packages: {}"
-msgstr ""
+msgstr "Sürümü düşürülen paketler: {}"
 
 #: ../plugins/repodiff.py:219
 msgid "Modified packages: {}"
-msgstr ""
+msgstr "Değiştirilen paketler: {}"
 
 #: ../plugins/repodiff.py:222
 msgid "Size of added packages: {}"
-msgstr ""
+msgstr "Eklenen paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:223
 msgid "Size of removed packages: {}"
-msgstr ""
+msgstr "Kaldırılan paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:225
 msgid "Size of modified packages: {}"
-msgstr ""
+msgstr "Değiştirilen paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:228
 msgid "Size of upgraded packages: {}"
-msgstr ""
+msgstr "Yükseltilmiş paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:230
 msgid "Size of downgraded packages: {}"
-msgstr ""
+msgstr "Sürümü düşürülen paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:232
 msgid "Size change: {}"
 msgstr ""
 
-#: ../plugins/reposync.py:68
+#: ../plugins/reposync.py:69
 msgid "download all the metadata."
 msgstr ""
 
-#: ../plugins/reposync.py:72
+#: ../plugins/reposync.py:73
 msgid "where to store downloaded repositories"
 msgstr ""
 
-#: ../plugins/reposync.py:74
+#: ../plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
 msgstr ""
 
-#: ../plugins/reposync.py:129
+#: ../plugins/reposync.py:80
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 
@@ -615,14 +633,14 @@ msgstr ""
 msgid "No source rpm defined for %s"
 msgstr ""
 
-#: ../plugins/download.py:266 ../plugins/download.py:280
+#: ../plugins/download.py:266 ../plugins/download.py:279
 #, python-format
 msgid "No package %s available."
 msgstr ""
 
 #: ../plugins/show_leaves.py:54
 msgid "New leaves:"
-msgstr ""
+msgstr "Yeni dallar:"
 
 #: ../plugins/copr.py:56
 msgid "yes"

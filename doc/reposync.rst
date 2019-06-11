@@ -60,3 +60,32 @@ Options
 
 ``--metadata-path``
     Root path under which the downloaded metadata are stored. It defaults to ``--download-path`` value if not given.
+
+``--remote-time``
+    Try to set the timestamps of the downloaded files to those on the remote side.
+
+Besides these reposync specific options the ``dnf reposync`` command also accepts all general DNF options. This is especially useful for specifying which repositories should be synchronized (``--repoid`` option). See `Options` in :manpage:`dnf(8)` for details.
+
+--------
+Examples
+--------
+
+``dnf reposync --repoid=the_repo``
+    Synchronize all packages from the repository with id "the_repo". The synchronized copy is saved in "the_repo" subdirectory of the current working directory.
+
+``dnf reposync -p /my/repos/path --repoid=the_repo``
+    Synchronize all packages from the repository with id "the_repo". In this case files are saved in "/my/repos/path/the_repo" directory.
+
+``dnf reposync --repoid=the_repo --download-metadata``
+    Synchronize all packages and metadata from "the_repo" repository.
+
+Repository synchronized with ``--download-metadata`` option can be directly used in DNF for example by using ``--repofrompath`` option:
+
+``dnf --repofrompath=syncedrepo,the_repo --repoid=syncedrepo list --available``
+
+
+--------
+See Also
+--------
+
+* :manpage:`dnf(8)`, DNF Command Reference

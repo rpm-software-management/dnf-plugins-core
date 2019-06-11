@@ -1,6 +1,6 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.7.0
+%global hawkey_version 0.34.0
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
@@ -10,9 +10,13 @@
 
 %if 0%{?rhel} > 7 || 0%{?fedora} > 29
 %bcond_with python2
-%bcond_without yumcompatibility
 %else
 %bcond_without python2
+%endif
+
+%if 0%{?rhel} > 7 || 0%{?fedora} > 30
+%bcond_without yumcompatibility
+%else
 %bcond_with yumcompatibility
 %endif
 
@@ -449,10 +453,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf.plugin.reposync.*
 %if %{with yumcompatibility}
 %{_mandir}/man1/yum-changelog.*
-%{_mandir}/man5/yum-changelog.conf.*
+%{_mandir}/man8/yum-copr.*
 %else
 %exclude %{_mandir}/man1/yum-changelog.*
-%exclude %{_mandir}/man5/yum-changelog.conf.*
+%exclude %{_mandir}/man8/yum-copr.*
 %endif
 
 %if %{with python2}
@@ -538,7 +542,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
 %{_bindir}/yumdownloader
-%{_mandir}/man8/yum-copr.*
 %{_mandir}/man1/debuginfo-install.*
 %{_mandir}/man1/needs-restarting.*
 %{_mandir}/man1/repo-graph.*
@@ -560,7 +563,6 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man1/yum-utils.*
 %else
 # These are built regardless of dnfutils bcond so we need to exclude them.
-%exclude %{_mandir}/man8/yum-copr.*
 %exclude %{_mandir}/man1/debuginfo-install.*
 %exclude %{_mandir}/man1/needs-restarting.*
 %exclude %{_mandir}/man1/repo-graph.*

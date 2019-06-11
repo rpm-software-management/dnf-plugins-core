@@ -21,6 +21,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import hawkey
 import os
 import shutil
 
@@ -75,6 +76,9 @@ class RepoSyncCommand(dnf.cli.Command):
                                    'Defaults to the value of --download-path.'))
         parser.add_argument('--source', default=False, action='store_true',
                             help=_('operate on source packages'))
+        parser.add_argument('--remote-time', default=False, action='store_true',
+                            help=_('try to set local timestamps of local files by '
+                                   'the one on the server'))
 
     def configure(self):
         demands = self.cli.demands
@@ -102,6 +106,8 @@ class RepoSyncCommand(dnf.cli.Command):
     def run(self):
         self.base.conf.keepcache = True
         for repo in self.base.repos.iter_enabled():
+            if self.opts.remote_time:
+                repo._repo.setPreserveRemoteTime(True)
             if self.opts.download_metadata:
                 self.download_metadata(repo)
             if self.opts.downloadcomps:
@@ -165,7 +171,8 @@ class RepoSyncCommand(dnf.cli.Command):
         return True
 
     def get_pkglist(self, repo):
-        query = self.base.sack.query().available().filterm(reponame=repo.id)
+        query = self.base.sack.query(flags=hawkey.IGNORE_EXCLUDES).available().filterm(
+            reponame=repo.id)
         if self.opts.newest_only:
             query = query.latest()
         if self.opts.source:
@@ -183,7 +190,8 @@ class RepoSyncCommand(dnf.cli.Command):
             progress = base.output.progress
             if progress is None:
                 progress = dnf.callback.NullDownloadProgress()
-            drpm = dnf.drpm.DeltaInfo(base.sack.query().installed(), progress, 0)
+            drpm = dnf.drpm.DeltaInfo(base.sack.query(flags=hawkey.IGNORE_EXCLUDES).installed(),
+                                      progress, 0)
             payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
                         for pkg in remote_pkgs]
             base._download_remote_payloads(payloads, drpm, progress, None)
