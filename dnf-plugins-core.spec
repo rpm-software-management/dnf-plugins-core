@@ -1,6 +1,7 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.34.0
+%global yum_utils_subpackage_name dnf-utils
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
@@ -15,15 +16,16 @@
 %endif
 
 %if 0%{?rhel} > 7 || 0%{?fedora} > 30
+%global yum_utils_subpackage_name yum-utils
 %bcond_without yumcompatibility
 %else
 %bcond_with yumcompatibility
 %endif
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
-%bcond_with dnfutils
+%bcond_with yumutils
 %else
-%bcond_without dnfutils
+%bcond_without yumutils
 %endif
 
 Name:           dnf-plugins-core
@@ -161,11 +163,16 @@ repoclosure, repograph, repomanage, reposync, changelog and repodiff commands.
 Additionally provides generate_completion_cache passive plugin.
 %endif
 
-%if %{with dnfutils}
-%package -n dnf-utils
+%if %{with yumutils}
+%package -n %{yum_utils_subpackage_name}
+%if "%{yum_utils_subpackage_name}" == "dnf-utils"
 Conflicts:      yum-utils < 1.1.31-513
 %if 0%{?rhel} != 7
 Provides:       yum-utils = %{version}-%{release}
+%endif
+%else
+Provides:       dnf-utils = %{version}-%{release}
+Obsoletes:      dnf-utils < %{version}-%{release}
 %endif
 Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       %{name} = %{version}-%{release}
@@ -176,7 +183,7 @@ Requires:       python2-dnf >= %{dnf_lowest_compatible}
 %endif
 Summary:        Yum-utils CLI compatibility layer
 
-%description -n dnf-utils
+%description -n %{yum_utils_subpackage_name}
 As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
 repoquery, reposync, repotrack, repodiff, builddep, config-manager, debug
@@ -393,7 +400,7 @@ pushd build-py3
 popd
 %endif
 %find_lang %{name}
-%if %{with dnfutils}
+%if %{with yumutils}
   %if %{with python3}
   mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
   %else
@@ -402,7 +409,7 @@ popd
 %endif
 rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
 
-%if %{with dnfutils}
+%if %{with yumutils}
 mkdir -p %{buildroot}%{_bindir}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
@@ -523,8 +530,8 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{python3_sitelib}/dnfpluginscore/
 %endif
 
-%if %{with dnfutils}
-%files -n dnf-utils
+%if %{with yumutils}
+%files -n %{yum_utils_subpackage_name}
 %{_libexecdir}/dnf-utils
 %{_bindir}/debuginfo-install
 %{_bindir}/needs-restarting
@@ -556,13 +563,13 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man1/yumdownloader.*
 %{_mandir}/man1/package-cleanup.*
 %{_mandir}/man1/dnf-utils.*
-# These are only built with dnfutils bcond.
+# These are only built with yumutils bcond.
 %{_mandir}/man1/find-repos-of-install.*
 %{_mandir}/man1/repoquery.*
 %{_mandir}/man1/repotrack.*
 %{_mandir}/man1/yum-utils.*
 %else
-# These are built regardless of dnfutils bcond so we need to exclude them.
+# These are built regardless of yumutils bcond so we need to exclude them.
 %exclude %{_mandir}/man1/debuginfo-install.*
 %exclude %{_mandir}/man1/needs-restarting.*
 %exclude %{_mandir}/man1/repo-graph.*
