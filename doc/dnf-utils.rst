@@ -1,8 +1,8 @@
 =========
-DNF Utils
+YUM Utils
 =========
 
-The main purpose of these shims is ensuring backward compatibility.
+The main purpose of these shims is ensuring backward compatibility with yum-3.
 
 --------------
 Shell Commands
