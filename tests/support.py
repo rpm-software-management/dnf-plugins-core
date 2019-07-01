@@ -75,21 +75,6 @@ class BaseCliStub(object):
         self.repos = dnf.repodict.RepoDict()
         self.conf = dnf.conf.BaseConfig()
 
-    def install_grouplist(self, names):
-        """Install given groups."""
-        to_install = (set(names) & self._available_groups)\
-                     - self.installed_groups
-        if not to_install:
-            raise dnf.exceptions.Error('nothing to do')
-        self.installed_groups.update(to_install)
-
-    def install(self, pattern):
-        """Install given package."""
-        if pattern not in self._available_pkgs or \
-           pattern in self.installed_pkgs:
-            raise dnf.exceptions.MarkingError('no package matched')
-        self.installed_pkgs.add(pattern)
-
     def read_all_repos(self):
         """Read repositories information."""
         self.repos.add(dnf.repo.Repo(name='main'))
