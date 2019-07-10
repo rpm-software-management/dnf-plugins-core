@@ -23,6 +23,7 @@ from dnfpluginscore import _, logger, P_
 import dnf
 import dnf.cli
 import dnf.pycomp
+import fnmatch
 import os
 import re
 import shutil
@@ -111,9 +112,10 @@ class ConfigManagerCommand(dnf.cli.Command):
                 repo_modify['enabled'] = "1"
             elif self.opts.set_disabled:
                 repo_modify['enabled'] = "0"
-            if (hasattr(self.opts, 'repo_setopts')
-                    and repo.id in self.opts.repo_setopts):
-                repo_modify.update(self.opts.repo_setopts[repo.id])
+            if hasattr(self.opts, 'repo_setopts'):
+                for repoid, setopts in self.opts.repo_setopts.items():
+                    if fnmatch.fnmatch(repo.id, repoid):
+                        repo_modify.update(setopts)
             if self.opts.save and repo_modify:
                 self.base.conf.write_raw_configfile(repo.repofile, repo.id, sbc.substitutions, repo_modify)
             if self.opts.dump:
