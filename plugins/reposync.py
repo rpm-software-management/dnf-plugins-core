@@ -79,6 +79,9 @@ class RepoSyncCommand(dnf.cli.Command):
         parser.add_argument('--remote-time', default=False, action='store_true',
                             help=_('try to set local timestamps of local files by '
                                    'the one on the server'))
+        parser.add_argument('-u', '--urls', default=False, action='store_true',
+                            help=_("Just list urls of what would be downloaded, "
+                                   "don't download"))
 
     def configure(self):
         demands = self.cli.demands
@@ -113,7 +116,10 @@ class RepoSyncCommand(dnf.cli.Command):
             if self.opts.downloadcomps:
                 self.getcomps(repo)
             pkglist = self.get_pkglist(repo)
-            self.download_packages(repo, pkglist)
+            if self.opts.urls:
+                self.print_urls(pkglist)
+            else:
+                self.download_packages(repo, pkglist)
             if self.opts.delete:
                 self.delete_old_local_packages(pkglist)
 
@@ -203,3 +209,8 @@ class RepoSyncCommand(dnf.cli.Command):
                 target_dir = os.path.dirname(self.pkg_download_path(pkg))
                 dnf.util.ensure_dir(target_dir)
                 shutil.copy(pkg_path, target_dir)
+
+    def print_urls(self, pkglist):
+        for pkg in pkglist:
+            url = pkg.remote_location(schemes=None)
+            print(url)

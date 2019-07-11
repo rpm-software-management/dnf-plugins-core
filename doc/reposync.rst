@@ -66,6 +66,10 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
 ``--remote-time``
     Try to set the timestamps of the downloaded files to those on the remote side.
 
+``-u, --urls``
+    Just print urls of what would be downloaded, don't download.
+
+
 --------
 Examples
 --------
