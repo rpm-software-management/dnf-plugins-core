@@ -119,7 +119,7 @@ class RepoSyncCommand(dnf.cli.Command):
             if self.opts.urls:
                 self.print_urls(pkglist)
             else:
-                self.download_packages(repo, pkglist)
+                self.download_packages(pkglist)
             if self.opts.delete:
                 self.delete_old_local_packages(pkglist)
 
@@ -190,25 +190,16 @@ class RepoSyncCommand(dnf.cli.Command):
             query.filterm(arch=self.opts.arches)
         return query
 
-    def download_packages(self, repo, pkglist):
+    def download_packages(self, pkglist):
         base = self.base
-
-        remote_pkgs, local_repository_pkgs = base._select_remote_pkgs(pkglist)
-        if remote_pkgs:
-            progress = base.output.progress
-            if progress is None:
-                progress = dnf.callback.NullDownloadProgress()
-            drpm = dnf.drpm.DeltaInfo(base.sack.query(flags=hawkey.IGNORE_EXCLUDES).installed(),
-                                      progress, 0)
-            payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
-                        for pkg in remote_pkgs]
-            base._download_remote_payloads(payloads, drpm, progress, None)
-        if local_repository_pkgs:
-            for pkg in local_repository_pkgs:
-                pkg_path = os.path.join(pkg.repo.pkgdir, pkg.location.lstrip("/"))
-                target_dir = os.path.dirname(self.pkg_download_path(pkg))
-                dnf.util.ensure_dir(target_dir)
-                shutil.copy(pkg_path, target_dir)
+        progress = base.output.progress
+        if progress is None:
+            progress = dnf.callback.NullDownloadProgress()
+        drpm = dnf.drpm.DeltaInfo(base.sack.query(flags=hawkey.IGNORE_EXCLUDES).installed(),
+                                  progress, 0)
+        payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
+                    for pkg in pkglist]
+        base._download_remote_payloads(payloads, drpm, progress, None)
 
     def print_urls(self, pkglist):
         for pkg in pkglist:
