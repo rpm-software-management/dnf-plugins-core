@@ -112,7 +112,10 @@ class RepoSyncCommand(dnf.cli.Command):
                 self.download_metadata(repo)
             if self.opts.downloadcomps:
                 self.getcomps(repo)
-            self.download_packages(repo)
+            pkglist = self.get_pkglist(repo)
+            self.download_packages(repo, pkglist)
+            if self.opts.delete:
+                self.delete_old_local_packages(pkglist)
 
     def repo_target(self, repo):
         return _pkgdir(self.opts.destdir or self.opts.download_path, repo.id)
@@ -181,9 +184,8 @@ class RepoSyncCommand(dnf.cli.Command):
             query.filterm(arch=self.opts.arches)
         return query
 
-    def download_packages(self, repo):
+    def download_packages(self, repo, pkglist):
         base = self.base
-        pkglist = self.get_pkglist(repo)
 
         remote_pkgs, local_repository_pkgs = base._select_remote_pkgs(pkglist)
         if remote_pkgs:
@@ -201,5 +203,3 @@ class RepoSyncCommand(dnf.cli.Command):
                 target_dir = os.path.dirname(self.pkg_download_path(pkg))
                 dnf.util.ensure_dir(target_dir)
                 shutil.copy(pkg_path, target_dir)
-        if self.opts.delete:
-            self.delete_old_local_packages(pkglist)
