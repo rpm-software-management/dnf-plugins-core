@@ -107,7 +107,7 @@ class ConfigManagerCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
                                        % ', '.join(self.opts.crepo))
         for repo in sorted(matched):
-            repo_modify = dict(modify)  # create local copy
+            repo_modify = {}
             if self.opts.set_enabled:
                 repo_modify['enabled'] = "1"
             elif self.opts.set_disabled:
