@@ -78,6 +78,31 @@ class ConfigManagerCommand(dnf.cli.Command):
     def modify_repo(self):
         """ process --set-enabled, --set-disabled and --setopt options """
 
+        matching_repos = []         # list of matched repositories
+        not_matching_repos_id = set()  # IDs of not matched repositories
+
+        def match_repos(key, add_matching_repos):
+            matching = self.base.repos.get_matching(key)
+            if not matching:
+                not_matching_repos_id.add(name)
+            elif add_matching_repos:
+                matching_repos.extend(matching)
+
+        if self.opts.crepo:
+            for name in self.opts.crepo:
+                match_repos(name, True)
+            if hasattr(self.opts, 'repo_setopts'):
+                for name in self.opts.repo_setopts.keys():
+                    match_repos(name, False)
+        else:
+            if hasattr(self.opts, 'repo_setopts'):
+                for name in self.opts.repo_setopts.keys():
+                    match_repos(name, True)
+
+        if not_matching_repos_id:
+            raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
+                                       % ', '.join(not_matching_repos_id))
+
         sbc = self.base.conf
         modify = {}
         if hasattr(self.opts, 'main_setopts') and self.opts.main_setopts:
@@ -93,24 +118,13 @@ class ConfigManagerCommand(dnf.cli.Command):
                 print(self.base.output.fmtSection('main'))
                 print(self.base.conf.dump())
 
+        if not matching_repos:
+            return
+
         if self.opts.set_enabled or self.opts.set_disabled:
             self.opts.save = True
 
-        matched = []
-        if self.opts.crepo:
-            for name in self.opts.crepo:
-                matched.extend(self.base.repos.get_matching(name))
-        else:
-            if hasattr(self.opts, 'repo_setopts'):
-                for name in self.opts.repo_setopts.keys():
-                    matched.extend(self.base.repos.get_matching(name))
-            if not matched:
-                return
-
-        if not matched:
-            raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
-                                       % ', '.join(self.opts.crepo))
-        for repo in sorted(matched):
+        for repo in sorted(matching_repos):
             repo_modify = {}
             if self.opts.set_enabled:
                 repo_modify['enabled'] = "1"
