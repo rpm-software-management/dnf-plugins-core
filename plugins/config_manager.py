@@ -96,12 +96,16 @@ class ConfigManagerCommand(dnf.cli.Command):
         if self.opts.set_enabled or self.opts.set_disabled:
             self.opts.save = True
 
+        matched = []
         if self.opts.crepo:
-            matched = []
             for name in self.opts.crepo:
                 matched.extend(self.base.repos.get_matching(name))
         else:
-            return
+            if hasattr(self.opts, 'repo_setopts'):
+                for name in self.opts.repo_setopts.keys():
+                    matched.extend(self.base.repos.get_matching(name))
+            if not matched:
+                return
 
         if not matched:
             raise dnf.exceptions.Error(_("No matching repo to modify: %s.")
