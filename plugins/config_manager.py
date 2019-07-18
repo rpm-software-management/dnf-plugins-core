@@ -90,8 +90,6 @@ class ConfigManagerCommand(dnf.cli.Command):
                 self.base.conf.write_raw_configfile(dnf.const.CONF_FILENAME, 'main', sbc.substitutions, modify)
             if self.opts.dump:
                 print(self.base.output.fmtSection('main'))
-                for name, val in modify.items():
-                    sbc._set_value(name, val)
                 print(self.base.conf.dump())
 
         if self.opts.set_enabled or self.opts.set_disabled:
@@ -120,9 +118,6 @@ class ConfigManagerCommand(dnf.cli.Command):
                 self.base.conf.write_raw_configfile(repo.repofile, repo.id, sbc.substitutions, repo_modify)
             if self.opts.dump:
                 print(self.base.output.fmtSection('repo: ' + repo.id))
-                for name, val in repo_modify.items():
-                    if repo._has_option(name):
-                        repo._set_value(name, val)
                 print(repo.dump())
 
     def add_repo(self):
