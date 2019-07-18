@@ -19,22 +19,25 @@
  DNF config-manager Plugin
 ==========================
 
-Manage main DNF configuration options, toggle which
+Manage main and repository DNF configuration options, toggle which
 repositories are enabled or disabled, and add new repositories.
 
 --------
 Synopsis
 --------
 
-``dnf config-manager [options] <repoid>...``
+``dnf config-manager [options] <section>...``
 
 ---------
 Arguments
 ---------
 
-``<repoid>``
-    Display / modify a repository identified by <repoid>. If not specified, display / modify
-    main DNF configuration. Repositories can be specified using globs.
+``<section>``
+    This argument can be used to explicitly select the configuration sections to manage.
+    A section can either be ``main`` or a repoid.
+    If not specified, the program will select the ``main`` section and each repoid
+    used within any ``--setopt`` options.
+    A repoid can be specified using globs.
 
 -------
 Options
@@ -51,13 +54,17 @@ Options
     Print dump of current configuration values to stdout.
 
 ``--set-disabled``, ``--disable``
-    Disable the specified repos (automatically saves).
+    Disable the specified repos (implies ``--save``).
 
 ``--set-enabled``, ``--enable``
-    Enable the specified repos (automatically saves).
+    Enable the specified repos (implies ``--save``).
 
 ``--save``
-    Save the current options (useful with --setopt).
+    Save the current options (useful with ``--setopt``).
+
+``--setopt=<option>=<value>``
+    Set a configuration option. To set configuration options for repositories, use
+    ``repoid.option`` for the ``<option>``. Globs are supported in repoid.
 
 --------
 Examples
@@ -71,12 +78,15 @@ Examples
 ``dnf config-manager --dump``
     Display main DNF configuration.
 
-``dnf config-manager <repoid> --dump``
-    Display configuration of a repository identified by <repoid>.
+``dnf config-manager --dump <section>``
+    Display configuration of a repository identified by <section>.
 
 ``dnf config-manager --set-enabled <repoid>``
     Enable repository identified by <repoid> and make the change permanent.
 
-``dnf config-manager --setopt proxy=http://proxy.example.com:3128/ <repo1> <repo2> --save``
+``dnf config-manager --save --setopt=*.proxy=http://proxy.example.com:3128/ <repo1> <repo2>``
     Update proxy setting in repositories with repoid <repo1> and <repo2> and make the change
     permanent.
+
+``dnf config-manager --save --setopt=*-debuginfo.gpgcheck=0``
+    Update gpgcheck setting in all repositories whose id ends with -debuginfo and make the change permanent.
