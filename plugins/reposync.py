@@ -203,5 +203,9 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def print_urls(self, pkglist):
         for pkg in pkglist:
-            url = pkg.remote_location(schemes=None)
-            print(url)
+            url = pkg.remote_location(schemes=['file', 'http', 'https', 'ftp'])
+            if url:
+                print(url)
+            else:
+                msg = _("Failed to get mirror for package: %s") % pkg.name
+                logger.warning(msg)
