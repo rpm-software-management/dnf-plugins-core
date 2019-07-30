@@ -166,7 +166,8 @@ Additionally provides generate_completion_cache passive plugin.
 %if %{with yumutils}
 %package -n %{yum_utils_subpackage_name}
 %if "%{yum_utils_subpackage_name}" == "dnf-utils"
-Conflicts:      yum-utils < 1.1.31-513
+Conflicts:      yum-utils < 1.1.31-520
+Conflicts:      yum-plugin-copr < 1.1.31-520
 %if 0%{?rhel} != 7
 Provides:       yum-utils = %{version}-%{release}
 %endif
