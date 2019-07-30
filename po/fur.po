@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-05 10:59+0200\n"
+"POT-Creation-Date: 2019-06-18 16:04+0200\n"
 "PO-Revision-Date: 2019-03-24 08:02+0000\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian\n"
@@ -13,6 +13,206 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 4.6.2\n"
+
+#: ../show_installed_doc/show_installed.py:165
+msgid "Gives compact list of installed packages."
+msgstr ""
+
+#: ../builddep-master.py:68 ../plugins/builddep.py:68 ../builddep-v1.py:63
+#: ../builddep-v2.py:68
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PACHET|PACHET.spec]"
+
+#: ../builddep-master.py:79 ../plugins/builddep.py:79 ../builddep-v1.py:75
+#: ../builddep-v2.py:79
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "'%s' nol è tal formât 'MACRO EXPR'"
+
+#: ../builddep-master.py:84 ../plugins/builddep.py:84 ../builddep-v1.py:80
+#: ../builddep-v2.py:84
+msgid "packages with builddeps to install"
+msgstr "i pachets cun dipendencis di costruzion di instalâ"
+
+#: ../builddep-master.py:87 ../plugins/builddep.py:87 ../builddep-v1.py:83
+#: ../builddep-v2.py:87
+msgid "define a macro for spec file parsing"
+msgstr "definìs une macro pe analisi dal file spec"
+
+#: ../builddep-master.py:90 ../plugins/builddep.py:90 ../builddep-v1.py:86
+#: ../builddep-v2.py:90
+msgid "treat commandline arguments as spec files"
+msgstr "dopre i argoments de rie di comant come file spec"
+
+#: ../builddep-master.py:92 ../plugins/builddep.py:92 ../builddep-v1.py:88
+#: ../builddep-v2.py:92
+msgid "treat commandline arguments as source rpm"
+msgstr "dopre i argoments de rie di comant come rpm sorzint"
+
+#: ../builddep-master.py:138 ../plugins/builddep.py:138 ../builddep-v1.py:137
+#: ../builddep-v2.py:140
+msgid "Some packages could not be found."
+msgstr "Impussibil cjatâ cualchi pachet."
+
+#. No provides, no files
+#: ../builddep-master.py:157 ../plugins/builddep.py:157 ../builddep-v1.py:156
+#: ../builddep-v2.py:159
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Nissun pachet corispondent di instalâ: '%s'"
+
+#: ../builddep-master.py:174 ../plugins/builddep.py:174 ../builddep-v1.py:174
+#: ../builddep-v2.py:176
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "No si è rivâts a vierzi: '%s', nol è un file rpm sorzint valit."
+
+#: ../builddep-master.py:187 ../builddep-master.py:203
+#: ../builddep-master.py:220 ../plugins/builddep.py:187
+#: ../plugins/builddep.py:203 ../plugins/builddep.py:220 ../builddep-v1.py:187
+#: ../builddep-v1.py:204 ../builddep-v1.py:221 ../builddep-v2.py:189
+#: ../builddep-v2.py:205 ../builddep-v2.py:222
+msgid "Not all dependencies satisfied"
+msgstr "No son sodisfatis dutis lis dipendencis."
+
+#: ../builddep-master.py:194 ../plugins/builddep.py:194 ../builddep-v2.py:196
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "No si è rivâts a vierzi: '%s', nol è un file spec valit: %s"
+
+#: ../builddep-master.py:213 ../plugins/builddep.py:213
+#: ../plugins/repoclosure.py:118 ../builddep-v1.py:214 ../builddep-v2.py:215
+#, python-format
+msgid "no package matched: %s"
+msgstr "nissun pachet corispondent: %s"
+
+#: ../xxx.repodiff.py:43 ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Liste lis diferencis tra dôs cumbinazions di repository"
+
+#: ../xxx.repodiff.py:56 ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Repository vecjo, si pues doprâ plui voltis"
+
+#: ../xxx.repodiff.py:58 ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Gnûf repository, si pues doprâ plui voltis"
+
+#: ../xxx.repodiff.py:61
+msgid "Specify architectures to compare, can be used multiple times"
+msgstr ""
+
+#: ../xxx.repodiff.py:64 ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Mostre i dâts adizionâi su la dimension des modifichis."
+
+#: ../xxx.repodiff.py:66 ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Paragone i pachets ancje par architeture. Te impostazion predefinide i "
+"pachets a son confrontâts dome par non."
+
+#: ../xxx.repodiff.py:69 ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "Mostre un messaç sempliç di une rie par ogni pachet modificât."
+
+#: ../xxx.repodiff.py:71 ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Divît i dâts dai pachets modificâts tra chei inzornâts e chei cessâts di "
+"version."
+
+#: ../xxx.repodiff.py:83 ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Si àn di indicâ ducj i doi i repository, chei vielis e chei gnûfs."
+
+#: ../xxx.repodiff.py:154
+msgid "  Size change: {} bytes"
+msgstr ""
+
+#: ../xxx.repodiff.py:159 ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Pachet zontât  : {}"
+
+#: ../xxx.repodiff.py:162 ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Pachet gjavât: {}"
+
+#: ../xxx.repodiff.py:165 ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Rimplaçât di   : {}"
+
+#: ../xxx.repodiff.py:182 ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Pachets inzornâts"
+
+#: ../xxx.repodiff.py:184 ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Pachets modificâts"
+
+#: ../xxx.repodiff.py:189
+msgid "Downgraded packages"
+msgstr ""
+
+#: ../xxx.repodiff.py:194
+msgid "Summary"
+msgstr ""
+
+#: ../xxx.repodiff.py:195 ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Pachets zontâts: {}"
+
+#: ../xxx.repodiff.py:196 ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Pachets gjavâts: {}"
+
+#: ../xxx.repodiff.py:199 ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Pachets modificâts: {}"
+
+#: ../xxx.repodiff.py:201 ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Pachets inzornâts: {}"
+
+#: ../xxx.repodiff.py:202 ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Pachets cessâts di version: {}"
+
+#: ../xxx.repodiff.py:204 ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Dimension dai pachets zontâts: {}"
+
+#: ../xxx.repodiff.py:205 ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Dimension dai pachets gjavâts: {}"
+
+#: ../xxx.repodiff.py:207 ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Dimension dai pachets modificâts: {}"
+
+#: ../xxx.repodiff.py:210 ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Dimension dai pachets inzornâts: {}"
+
+#: ../xxx.repodiff.py:212 ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Dimension dai pachets cessâts di version: {}"
+
+#: ../xxx.repodiff.py:214 ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Variazion de dimension: {}"
 
 #: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
@@ -226,61 +426,6 @@ msgstr ""
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Plugin di bloc de version: impussibil analizâ il model:"
 
-#: ../plugins/builddep.py:68
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PACHET|PACHET.spec]"
-
-#: ../plugins/builddep.py:79
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' nol è tal formât 'MACRO EXPR'"
-
-#: ../plugins/builddep.py:84
-msgid "packages with builddeps to install"
-msgstr "i pachets cun dipendencis di costruzion di instalâ"
-
-#: ../plugins/builddep.py:87
-msgid "define a macro for spec file parsing"
-msgstr "definìs une macro pe analisi dal file spec"
-
-#: ../plugins/builddep.py:90
-msgid "treat commandline arguments as spec files"
-msgstr "dopre i argoments de rie di comant come file spec"
-
-#: ../plugins/builddep.py:92
-msgid "treat commandline arguments as source rpm"
-msgstr "dopre i argoments de rie di comant come rpm sorzint"
-
-#: ../plugins/builddep.py:138
-msgid "Some packages could not be found."
-msgstr "Impussibil cjatâ cualchi pachet."
-
-#. No provides, no files
-#: ../plugins/builddep.py:157
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Nissun pachet corispondent di instalâ: '%s'"
-
-#: ../plugins/builddep.py:174
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "No si è rivâts a vierzi: '%s', nol è un file rpm sorzint valit."
-
-#: ../plugins/builddep.py:187 ../plugins/builddep.py:203
-#: ../plugins/builddep.py:220
-msgid "Not all dependencies satisfied"
-msgstr "No son sodisfatis dutis lis dipendencis."
-
-#: ../plugins/builddep.py:194
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "No si è rivâts a vierzi: '%s', nol è un file spec valit: %s"
-
-#: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
-#, python-format
-msgid "no package matched: %s"
-msgstr "nissun pachet corispondent: %s"
-
 #: ../plugins/config_manager.py:35
 msgid "manage dnf configuration options and repositories"
 msgstr "gjestìs lis opzions di configurazions di dnf e i repository"
@@ -330,23 +475,23 @@ msgstr[1] "Configurazion dai repository failde"
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Impussibil salvâ il repository sul file dai repository %s: %s"
 
-#: ../plugins/local.py:120
+#: ../plugins/local.py:122
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "Impussibil creâ une cartele '{}' par vie di '{}'"
 
-#: ../plugins/local.py:124
+#: ../plugins/local.py:126
 msgid "'{}' is not a directory"
 msgstr "'{}' no je une cartele"
 
-#: ../plugins/local.py:133
+#: ../plugins/local.py:135
 msgid "Copying '{}' to local repo"
 msgstr "Daûr a copiâ '{}' al repository locâl"
 
-#: ../plugins/local.py:139
+#: ../plugins/local.py:141
 msgid "Can't write file '{}'"
 msgstr "Impussibil scrivi il file '{}'"
 
-#: ../plugins/local.py:154
+#: ../plugins/local.py:156
 msgid "Rebuilding local repo"
 msgstr "Ricostruzion al repository locâl"
 
@@ -354,13 +499,38 @@ msgstr "Ricostruzion al repository locâl"
 msgid "List installed packages not required by any other package"
 msgstr "Liste i pachets instalâts che no son necessaris a nissun altri pachet"
 
-#: ../plugins/needs_restarting.py:167
+#: ../plugins/needs_restarting.py:173
 msgid "determine updated binaries that need restarting"
 msgstr "determine i binaris inzornâts che a àn bisugne di tornâ a inviâsi"
 
-#: ../plugins/needs_restarting.py:172
+#: ../plugins/needs_restarting.py:178
 msgid "only consider this user's processes"
 msgstr "considere dome i procès di chest utent"
+
+#: ../plugins/needs_restarting.py:180
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:199
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:204
+msgid "Reboot is required to fully utilize these updates."
+msgstr ""
+
+#: ../plugins/needs_restarting.py:205
+msgid "More information:"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:209
+msgid "No core libraries or services have been updated since boot-up."
+msgstr ""
+
+#: ../plugins/needs_restarting.py:211
+msgid "Reboot should not be necessary."
+msgstr ""
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
@@ -387,18 +557,6 @@ msgstr "Controle dome i gnûfs pachets tai repository"
 msgid "Check closure for this package only"
 msgstr ""
 
-#: ../plugins/repodiff.py:45
-msgid "List differences between two sets of repositories"
-msgstr "Liste lis diferencis tra dôs cumbinazions di repository"
-
-#: ../plugins/repodiff.py:58
-msgid "Specify old repository, can be used multiple times"
-msgstr "Repository vecjo, si pues doprâ plui voltis"
-
-#: ../plugins/repodiff.py:60
-msgid "Specify new repository, can be used multiple times"
-msgstr "Gnûf repository, si pues doprâ plui voltis"
-
 #: ../plugins/repodiff.py:63
 msgid ""
 "Specify architectures to compare, can be used multiple times. By default, "
@@ -407,57 +565,9 @@ msgstr ""
 "Architeturis a comparâ, si pues doprâ plui voltis. Impostazion predefinide: "
 "dome i rpms sorzint a son comparâts."
 
-#: ../plugins/repodiff.py:67
-msgid "Output additional data about the size of the changes."
-msgstr "Mostre i dâts adizionâi su la dimension des modifichis."
-
-#: ../plugins/repodiff.py:69
-msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
-msgstr ""
-"Paragone i pachets ancje par architeture. Te impostazion predefinide i "
-"pachets a son confrontâts dome par non."
-
-#: ../plugins/repodiff.py:72
-msgid "Output a simple one line message for modified packages."
-msgstr "Mostre un messaç sempliç di une rie par ogni pachet modificât."
-
-#: ../plugins/repodiff.py:74
-msgid ""
-"Split the data for modified packages between upgraded and downgraded "
-"packages."
-msgstr ""
-"Divît i dâts dai pachets modificâts tra chei inzornâts e chei cessâts di "
-"version."
-
-#: ../plugins/repodiff.py:86
-msgid "Both old and new repositories must be set."
-msgstr "Si àn di indicâ ducj i doi i repository, chei vielis e chei gnûfs."
-
 #: ../plugins/repodiff.py:178
 msgid "Size change: {} bytes"
 msgstr "Variazion di dimension: {} byte"
-
-#: ../plugins/repodiff.py:184
-msgid "Added package  : {}"
-msgstr "Pachet zontât  : {}"
-
-#: ../plugins/repodiff.py:187
-msgid "Removed package: {}"
-msgstr "Pachet gjavât: {}"
-
-#: ../plugins/repodiff.py:190
-msgid "Obsoleted by   : {}"
-msgstr "Rimplaçât di   : {}"
-
-#: ../plugins/repodiff.py:195
-msgid ""
-"\n"
-"Upgraded packages"
-msgstr ""
-"\n"
-"Pachets inzornâts"
 
 #: ../plugins/repodiff.py:200
 msgid ""
@@ -467,14 +577,6 @@ msgstr ""
 "\n"
 "Pachets cessâts di version"
 
-#: ../plugins/repodiff.py:207
-msgid ""
-"\n"
-"Modified packages"
-msgstr ""
-"\n"
-"Pachets modificâts"
-
 #: ../plugins/repodiff.py:212
 msgid ""
 "\n"
@@ -482,50 +584,6 @@ msgid ""
 msgstr ""
 "\n"
 "Sunt"
-
-#: ../plugins/repodiff.py:213
-msgid "Added packages: {}"
-msgstr "Pachets zontâts: {}"
-
-#: ../plugins/repodiff.py:214
-msgid "Removed packages: {}"
-msgstr "Pachets gjavâts: {}"
-
-#: ../plugins/repodiff.py:216
-msgid "Upgraded packages: {}"
-msgstr "Pachets inzornâts: {}"
-
-#: ../plugins/repodiff.py:217
-msgid "Downgraded packages: {}"
-msgstr "Pachets cessâts di version: {}"
-
-#: ../plugins/repodiff.py:219
-msgid "Modified packages: {}"
-msgstr "Pachets modificâts: {}"
-
-#: ../plugins/repodiff.py:222
-msgid "Size of added packages: {}"
-msgstr "Dimension dai pachets zontâts: {}"
-
-#: ../plugins/repodiff.py:223
-msgid "Size of removed packages: {}"
-msgstr "Dimension dai pachets gjavâts: {}"
-
-#: ../plugins/repodiff.py:225
-msgid "Size of modified packages: {}"
-msgstr "Dimension dai pachets modificâts: {}"
-
-#: ../plugins/repodiff.py:228
-msgid "Size of upgraded packages: {}"
-msgstr "Dimension dai pachets inzornâts: {}"
-
-#: ../plugins/repodiff.py:230
-msgid "Size of downgraded packages: {}"
-msgstr "Dimension dai pachets cessâts di version: {}"
-
-#: ../plugins/repodiff.py:232
-msgid "Size change: {}"
-msgstr "Variazion de dimension: {}"
 
 #: ../plugins/reposync.py:69
 msgid "download all the metadata."
@@ -958,3 +1016,12 @@ msgstr "Il pachet %s nol è disponibil"
 #, python-format
 msgid "Bad dnf debug file: %s"
 msgstr "File di debug di dnf no just: %s"
+
+#: ../builddep-v1.py:128
+msgid "Use '-v' argument to get more detailed information."
+msgstr ""
+
+#: ../builddep-v1.py:195
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s."
+msgstr ""

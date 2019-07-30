@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-05 10:59+0200\n"
-"PO-Revision-Date: 2019-06-03 03:40+0000\n"
+"POT-Creation-Date: 2019-06-18 16:04+0200\n"
+"PO-Revision-Date: 2019-06-05 09:22+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -17,6 +17,206 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Zanata 4.6.2\n"
+
+#: ../show_installed_doc/show_installed.py:165
+msgid "Gives compact list of installed packages."
+msgstr ""
+
+#: ../builddep-master.py:68 ../plugins/builddep.py:68 ../builddep-v1.py:63
+#: ../builddep-v2.py:68
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[ПАКУНОК|ПАКУНОК.spec]"
+
+#: ../builddep-master.py:79 ../plugins/builddep.py:79 ../builddep-v1.py:75
+#: ../builddep-v2.py:79
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "«%s» не записано у форматі «МАКРОС ВИРАЗ»"
+
+#: ../builddep-master.py:84 ../plugins/builddep.py:84 ../builddep-v1.py:80
+#: ../builddep-v2.py:84
+msgid "packages with builddeps to install"
+msgstr "пакунки із залежностями для збирання, які встановлюватимуться"
+
+#: ../builddep-master.py:87 ../plugins/builddep.py:87 ../builddep-v1.py:83
+#: ../builddep-v2.py:87
+msgid "define a macro for spec file parsing"
+msgstr "визначити макрос для обробки файла специфікацій"
+
+#: ../builddep-master.py:90 ../plugins/builddep.py:90 ../builddep-v1.py:86
+#: ../builddep-v2.py:90
+msgid "treat commandline arguments as spec files"
+msgstr "вважати аргументи рядка команди назвами файлів spec"
+
+#: ../builddep-master.py:92 ../plugins/builddep.py:92 ../builddep-v1.py:88
+#: ../builddep-v2.py:92
+msgid "treat commandline arguments as source rpm"
+msgstr "вважати аргументи рядка команди назвами rpm із кодом пакунків"
+
+#: ../builddep-master.py:138 ../plugins/builddep.py:138 ../builddep-v1.py:137
+#: ../builddep-v2.py:140
+msgid "Some packages could not be found."
+msgstr "Не вдалося знайти деякі з пакунків."
+
+#. No provides, no files
+#: ../builddep-master.py:157 ../plugins/builddep.py:157 ../builddep-v1.py:156
+#: ../builddep-v2.py:159
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Немає відповідних пакунків для встановлення: «%s»"
+
+#: ../builddep-master.py:174 ../plugins/builddep.py:174 ../builddep-v1.py:174
+#: ../builddep-v2.py:176
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "Не вдалося відкрити «%s», це не файл rpm із кодом пакунка."
+
+#: ../builddep-master.py:187 ../builddep-master.py:203
+#: ../builddep-master.py:220 ../plugins/builddep.py:187
+#: ../plugins/builddep.py:203 ../plugins/builddep.py:220 ../builddep-v1.py:187
+#: ../builddep-v1.py:204 ../builddep-v1.py:221 ../builddep-v2.py:189
+#: ../builddep-v2.py:205 ../builddep-v2.py:222
+msgid "Not all dependencies satisfied"
+msgstr "Задоволено не усі залежності"
+
+#: ../builddep-master.py:194 ../plugins/builddep.py:194 ../builddep-v2.py:196
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "Не вдалося відкрити «%s» — файл не є коректним файлом spec: %s"
+
+#: ../builddep-master.py:213 ../plugins/builddep.py:213
+#: ../plugins/repoclosure.py:118 ../builddep-v1.py:214 ../builddep-v2.py:215
+#, python-format
+msgid "no package matched: %s"
+msgstr "немає відповідного пакунка: %s"
+
+#: ../xxx.repodiff.py:43 ../plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Вивести список відмінностей між двома наборами сховищ"
+
+#: ../xxx.repodiff.py:56 ../plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Вказати старе сховище, можна використовувати декілька разів"
+
+#: ../xxx.repodiff.py:58 ../plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Вказати нове сховище, можна використовувати декілька разів"
+
+#: ../xxx.repodiff.py:61
+msgid "Specify architectures to compare, can be used multiple times"
+msgstr ""
+
+#: ../xxx.repodiff.py:64 ../plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Вивести додаткові дані щодо розміру змін."
+
+#: ../xxx.repodiff.py:66 ../plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Порівнювати пакунки іще і за архітектурою. Типово порівняння пакунків "
+"виконується лише за назвою."
+
+#: ../xxx.repodiff.py:69 ../plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "Вивести просте однорядкове повідомлення для змінених пакунків."
+
+#: ../xxx.repodiff.py:71 ../plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Розділити дані щодо змінених пакунків на пакунки, які оновлено, і пакунки, "
+"версії яких знижено."
+
+#: ../xxx.repodiff.py:83 ../plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Слід вказати і старі, і нові сховища."
+
+#: ../xxx.repodiff.py:154
+msgid "  Size change: {} bytes"
+msgstr ""
+
+#: ../xxx.repodiff.py:159 ../plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Доданий пакунок: {}"
+
+#: ../xxx.repodiff.py:162 ../plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Вилучений пакунок: {}"
+
+#: ../xxx.repodiff.py:165 ../plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Є застарілим через: {}"
+
+#: ../xxx.repodiff.py:182 ../plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Оновлені пакунки"
+
+#: ../xxx.repodiff.py:184 ../plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Змінені пакунки"
+
+#: ../xxx.repodiff.py:189
+msgid "Downgraded packages"
+msgstr ""
+
+#: ../xxx.repodiff.py:194
+msgid "Summary"
+msgstr ""
+
+#: ../xxx.repodiff.py:195 ../plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Додані пакунки: {}"
+
+#: ../xxx.repodiff.py:196 ../plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Вилучені пакунки: {}"
+
+#: ../xxx.repodiff.py:199 ../plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Змінені пакунки: {}"
+
+#: ../xxx.repodiff.py:201 ../plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Оновлені пакунки: {}"
+
+#: ../xxx.repodiff.py:202 ../plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Пакунки зі зниженням версії: {}"
+
+#: ../xxx.repodiff.py:204 ../plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Розмір доданих пакунків: {}"
+
+#: ../xxx.repodiff.py:205 ../plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Розмір вилучених пакунків: {}"
+
+#: ../xxx.repodiff.py:207 ../plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Розмір змінених пакунків: {}"
+
+#: ../xxx.repodiff.py:210 ../plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Розмір оновлених пакунків: {}"
+
+#: ../xxx.repodiff.py:212 ../plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Розмір пакунків зі зниженими версіями: {}"
+
+#: ../xxx.repodiff.py:214 ../plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Різниця у розмірах: {}"
 
 #: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
 #: ../plugins/reposync.175df5c.py:42
@@ -229,61 +429,6 @@ msgstr ""
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Додаток фіксування версій: не вдалося обробити взірець:"
 
-#: ../plugins/builddep.py:68
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[ПАКУНОК|ПАКУНОК.spec]"
-
-#: ../plugins/builddep.py:79
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "«%s» не записано у форматі «МАКРОС ВИРАЗ»"
-
-#: ../plugins/builddep.py:84
-msgid "packages with builddeps to install"
-msgstr "пакунки із залежностями для збирання, які встановлюватимуться"
-
-#: ../plugins/builddep.py:87
-msgid "define a macro for spec file parsing"
-msgstr "визначити макрос для обробки файла специфікацій"
-
-#: ../plugins/builddep.py:90
-msgid "treat commandline arguments as spec files"
-msgstr "вважати аргументи рядка команди назвами файлів spec"
-
-#: ../plugins/builddep.py:92
-msgid "treat commandline arguments as source rpm"
-msgstr "вважати аргументи рядка команди назвами rpm із кодом пакунків"
-
-#: ../plugins/builddep.py:138
-msgid "Some packages could not be found."
-msgstr "Не вдалося знайти деякі з пакунків."
-
-#. No provides, no files
-#: ../plugins/builddep.py:157
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Немає відповідних пакунків для встановлення: «%s»"
-
-#: ../plugins/builddep.py:174
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Не вдалося відкрити «%s», це не файл rpm із кодом пакунка."
-
-#: ../plugins/builddep.py:187 ../plugins/builddep.py:203
-#: ../plugins/builddep.py:220
-msgid "Not all dependencies satisfied"
-msgstr "Задоволено не усі залежності"
-
-#: ../plugins/builddep.py:194
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Не вдалося відкрити «%s» — файл не є коректним файлом spec: %s"
-
-#: ../plugins/builddep.py:213 ../plugins/repoclosure.py:118
-#, python-format
-msgid "no package matched: %s"
-msgstr "немає відповідного пакунка: %s"
-
 #: ../plugins/config_manager.py:35
 msgid "manage dnf configuration options and repositories"
 msgstr "керування налаштуваннями та записами сховищ dnf"
@@ -335,23 +480,23 @@ msgstr[2] "Помилка під час налаштовування схови�
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не вдалося зберегти дані сховища до файла сховищ %s: %s"
 
-#: ../plugins/local.py:120
+#: ../plugins/local.py:122
 msgid "Unable to create a directory '{}' due to '{}'"
 msgstr "Не вдалося створити каталог «{}» через те, що «{}»"
 
-#: ../plugins/local.py:124
+#: ../plugins/local.py:126
 msgid "'{}' is not a directory"
 msgstr "«{}» не є каталогом"
 
-#: ../plugins/local.py:133
+#: ../plugins/local.py:135
 msgid "Copying '{}' to local repo"
 msgstr "Копіюємо «{}» до локального сховища"
 
-#: ../plugins/local.py:139
+#: ../plugins/local.py:141
 msgid "Can't write file '{}'"
 msgstr "Не вдалося записати файл «{}»"
 
-#: ../plugins/local.py:154
+#: ../plugins/local.py:156
 msgid "Rebuilding local repo"
 msgstr "Перезбираємо локальне сховище"
 
@@ -360,13 +505,38 @@ msgid "List installed packages not required by any other package"
 msgstr ""
 "Вивести список пакунків, які не потрібні для роботи будь-яких інших пакунків"
 
-#: ../plugins/needs_restarting.py:167
+#: ../plugins/needs_restarting.py:173
 msgid "determine updated binaries that need restarting"
 msgstr "визначити оновлені виконувані файли, які потребують перезапуску"
 
-#: ../plugins/needs_restarting.py:172
+#: ../plugins/needs_restarting.py:178
 msgid "only consider this user's processes"
 msgstr "брати до уваги лише процеси цього користувача"
+
+#: ../plugins/needs_restarting.py:180
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:199
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:204
+msgid "Reboot is required to fully utilize these updates."
+msgstr ""
+
+#: ../plugins/needs_restarting.py:205
+msgid "More information:"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:209
+msgid "No core libraries or services have been updated since boot-up."
+msgstr ""
+
+#: ../plugins/needs_restarting.py:211
+msgid "Reboot should not be necessary."
+msgstr ""
 
 #: ../plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
@@ -394,18 +564,6 @@ msgstr "Перевірити лише найновіші пакунки у сх�
 msgid "Check closure for this package only"
 msgstr "Перевірити замкненість лише для цього пакунка"
 
-#: ../plugins/repodiff.py:45
-msgid "List differences between two sets of repositories"
-msgstr "Вивести список відмінностей між двома наборами сховищ"
-
-#: ../plugins/repodiff.py:58
-msgid "Specify old repository, can be used multiple times"
-msgstr "Вказати старе сховище, можна використовувати декілька разів"
-
-#: ../plugins/repodiff.py:60
-msgid "Specify new repository, can be used multiple times"
-msgstr "Вказати нове сховище, можна використовувати декілька разів"
-
 #: ../plugins/repodiff.py:63
 msgid ""
 "Specify architectures to compare, can be used multiple times. By default, "
@@ -414,57 +572,9 @@ msgstr ""
 "Вказати архітектури для порівняння, можна використовувати декілька разів. "
 "Типово, порівнюватимуться лише rpm із початковими кодами."
 
-#: ../plugins/repodiff.py:67
-msgid "Output additional data about the size of the changes."
-msgstr "Вивести додаткові дані щодо розміру змін."
-
-#: ../plugins/repodiff.py:69
-msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
-msgstr ""
-"Порівнювати пакунки іще і за архітектурою. Типово порівняння пакунків "
-"виконується лише за назвою."
-
-#: ../plugins/repodiff.py:72
-msgid "Output a simple one line message for modified packages."
-msgstr "Вивести просте однорядкове повідомлення для змінених пакунків."
-
-#: ../plugins/repodiff.py:74
-msgid ""
-"Split the data for modified packages between upgraded and downgraded "
-"packages."
-msgstr ""
-"Розділити дані щодо змінених пакунків на пакунки, які оновлено, і пакунки, "
-"версії яких знижено."
-
-#: ../plugins/repodiff.py:86
-msgid "Both old and new repositories must be set."
-msgstr "Слід вказати і старі, і нові сховища."
-
 #: ../plugins/repodiff.py:178
 msgid "Size change: {} bytes"
 msgstr "Зміна розміру: {} bytes"
-
-#: ../plugins/repodiff.py:184
-msgid "Added package  : {}"
-msgstr "Доданий пакунок: {}"
-
-#: ../plugins/repodiff.py:187
-msgid "Removed package: {}"
-msgstr "Вилучений пакунок: {}"
-
-#: ../plugins/repodiff.py:190
-msgid "Obsoleted by   : {}"
-msgstr "Є застарілим через: {}"
-
-#: ../plugins/repodiff.py:195
-msgid ""
-"\n"
-"Upgraded packages"
-msgstr ""
-"\n"
-"Оновлені пакунки"
 
 #: ../plugins/repodiff.py:200
 msgid ""
@@ -474,14 +584,6 @@ msgstr ""
 "\n"
 "Пакунки зі зниженням версії"
 
-#: ../plugins/repodiff.py:207
-msgid ""
-"\n"
-"Modified packages"
-msgstr ""
-"\n"
-"Змінені пакунки"
-
 #: ../plugins/repodiff.py:212
 msgid ""
 "\n"
@@ -489,50 +591,6 @@ msgid ""
 msgstr ""
 "\n"
 "Резюме"
-
-#: ../plugins/repodiff.py:213
-msgid "Added packages: {}"
-msgstr "Додані пакунки: {}"
-
-#: ../plugins/repodiff.py:214
-msgid "Removed packages: {}"
-msgstr "Вилучені пакунки: {}"
-
-#: ../plugins/repodiff.py:216
-msgid "Upgraded packages: {}"
-msgstr "Оновлені пакунки: {}"
-
-#: ../plugins/repodiff.py:217
-msgid "Downgraded packages: {}"
-msgstr "Пакунки зі зниженням версії: {}"
-
-#: ../plugins/repodiff.py:219
-msgid "Modified packages: {}"
-msgstr "Змінені пакунки: {}"
-
-#: ../plugins/repodiff.py:222
-msgid "Size of added packages: {}"
-msgstr "Розмір доданих пакунків: {}"
-
-#: ../plugins/repodiff.py:223
-msgid "Size of removed packages: {}"
-msgstr "Розмір вилучених пакунків: {}"
-
-#: ../plugins/repodiff.py:225
-msgid "Size of modified packages: {}"
-msgstr "Розмір змінених пакунків: {}"
-
-#: ../plugins/repodiff.py:228
-msgid "Size of upgraded packages: {}"
-msgstr "Розмір оновлених пакунків: {}"
-
-#: ../plugins/repodiff.py:230
-msgid "Size of downgraded packages: {}"
-msgstr "Розмір пакунків зі зниженими версіями: {}"
-
-#: ../plugins/repodiff.py:232
-msgid "Size change: {}"
-msgstr "Різниця у розмірах: {}"
 
 #: ../plugins/reposync.py:69
 msgid "download all the metadata."
@@ -553,6 +611,8 @@ msgstr ""
 #: ../plugins/reposync.py:80
 msgid "try to set local timestamps of local files by the one on the server"
 msgstr ""
+"намагатися встановлювати локальні позначки часу для локальних файлів за "
+"позначками часу на сервері"
 
 #: ../plugins/reposync.py:135
 msgid "Download target '{}' is outside of download path '{}'."
@@ -974,3 +1034,12 @@ msgstr "Пакунок %s недоступний"
 #, python-format
 msgid "Bad dnf debug file: %s"
 msgstr "Помилковий файл діагностики dnf: %s"
+
+#: ../builddep-v1.py:128
+msgid "Use '-v' argument to get more detailed information."
+msgstr ""
+
+#: ../builddep-v1.py:195
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s."
+msgstr ""
