@@ -456,14 +456,14 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
                     res = urllib.urlopen(self.copr_url + "/coprs/" + project_name)
                     status_code = res.getcode()
                 if str(status_code) != '404':
-                    raise dnf.exceptions.Error(_("This repository does not have"\
-                        " any builds yet so you cannot enable it now."))
+                    raise dnf.exceptions.Error(_("This repository does not have"
+                                                 " any builds yet so you cannot enable it now."))
                 else:
                     raise dnf.exceptions.Error(_("Such repository does not exist."))
             raise
 
         for line in f:
-            if re.match("\[copr:", line):
+            if re.match(r"\[copr:", line):
                 repo_filename = os.path.join(self.base.conf.get_reposdir,
                                              "_" + line[1:-2] + ".repo")
             break
