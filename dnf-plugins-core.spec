@@ -29,7 +29,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.8
+Version:        4.0.9
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -693,6 +693,15 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Aug 06 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.9-1
+- [spec] Rename dnf-utils to yum-utils
+- [builddep] Report all rpm errors (RhBug:1663619,1658292,1724668)
+- [config-manager] --setopt: Fix crash with "--save --dump"
+- [config-manager] --setopt: Add globs support to repoid
+- [config-manager] --setopt=key=value is applied only to the main config
+- [config-manager] --setopt and empty list of repositories (RhBug:1702678)
+- [config-manager] --setopt: Add check for existence of input repositories
+
 * Tue Jun 11 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.8-1
 - [reposync] Enable timestamp preserving for downloaded data (RhBug:1688537)
 - [reposync] Download packages from all streams (RhBug:1714788)

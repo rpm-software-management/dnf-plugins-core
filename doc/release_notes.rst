@@ -22,6 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.0.9 Release Notes
+===================
+
+- [spec] Rename dnf-utils to yum-utils
+- [builddep] Report all rpm errors (RhBug:1663619,1658292,1724668)
+- [config-manager] --setopt: Fix crash with "--save --dump"
+- [config-manager] --setopt: Add globs support to repoid
+- [config-manager] --setopt=key=value is applied only to the main config
+- [config-manager] --setopt and empty list of repositories (RhBug:1702678)
+- [config-manager] --setopt: Add check for existence of input repositories
+
+Bugs fixed in 4.0.9:
+
+* :rhbug:`1663619`
+* :rhbug:`1702678`
+* :rhbug:`1724668`
+
+===================
 4.0.8 Release Notes
 ===================
 

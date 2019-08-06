@@ -458,5 +458,17 @@
     [
         1688537,
         "reposync doesn't preserve timestamp from repo being synced"
+    ],
+    [
+        1663619,
+        "dnf builddep fails on glibc.spec"
+    ],
+    [
+        1702678,
+        "Settings are not saved with \"yum config-manager --save --setopt=<repoid>.<option>=<value>\""
+    ],
+    [
+        1724668,
+        "dnf builddep fails trying to parse specfile"
     ]
 ]
