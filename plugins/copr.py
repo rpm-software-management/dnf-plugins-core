@@ -287,6 +287,10 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         elif not match_any:
             return
 
+        if re.match('copr:.*:.*:.*:ml', repo_id):
+            # We skip multilib repositories
+            return
+
         enabled = repo.enabled
         if (enabled and disabled_only) or (not enabled and enabled_only):
             return
@@ -431,8 +435,8 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         if chroot is None:
             chroot = self._guess_chroot(self.chroot_config)
         short_chroot = '-'.join(chroot.split('-')[:2])
-        #http://copr.fedorainfracloud.org/coprs/larsks/rcm/repo/epel-7-x86_64/
-        api_path = "/coprs/{0}/repo/{1}/".format(project_name, short_chroot)
+        arch = chroot.split('-')[2]
+        api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
 
         try:
             f = self.base.urlopen(self.copr_url + api_path, mode='w+')
@@ -519,6 +523,12 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
 
         self.base.conf.write_raw_configfile(repo.repofile, repo.id,
                                             self.base.conf.substitutions, {"enabled": "0"})
+
+        # disable also multilib counterpart, if found
+        multilib_repo_id = repo.id + ':ml'
+        if multilib_repo_id in self.base.repos:
+            self.base.conf.write_raw_configfile(repo.repofile, multilib_repo_id,
+                                                self.base.conf.substitutions, {"enabled": "0"})
 
     @classmethod
     def _get_data(cls, f):
