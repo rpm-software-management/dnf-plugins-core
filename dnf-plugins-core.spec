@@ -428,11 +428,10 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 # These commands don't have a dedicated man page, so let's just point them to
-# dnf-utils(1) which contains the descriptions.
-ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/find-repos-of-install.1.gz
-ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/repoquery.1.gz
-ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/repotrack.1.gz
-ln -sf %{_mandir}/man1/dnf-utils.1.gz %{buildroot}%{_mandir}/man1/yum-utils.1.gz
+# to the utils page which contains their descriptions.
+ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/find-repos-of-install.1.gz
+ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repoquery.1.gz
+ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1.gz
 %endif
 
 %check
@@ -563,11 +562,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man1/yumdownloader.*
 %{_mandir}/man1/package-cleanup.*
 %{_mandir}/man1/dnf-utils.*
+%{_mandir}/man1/yum-utils.*
 # These are only built with yumutils bcond.
 %{_mandir}/man1/find-repos-of-install.*
 %{_mandir}/man1/repoquery.*
 %{_mandir}/man1/repotrack.*
-%{_mandir}/man1/yum-utils.*
 %else
 # These are built regardless of yumutils bcond so we need to exclude them.
 %exclude %{_mandir}/man1/debuginfo-install.*
@@ -584,6 +583,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %exclude %{_mandir}/man1/yumdownloader.*
 %exclude %{_mandir}/man1/package-cleanup.*
 %exclude %{_mandir}/man1/dnf-utils.*
+%exclude %{_mandir}/man1/yum-utils.*
 %endif
 
 %if 0%{?rhel} == 0
