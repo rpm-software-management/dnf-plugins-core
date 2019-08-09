@@ -112,7 +112,16 @@ class RepoSyncCommand(dnf.cli.Command):
             if self.opts.remote_time:
                 repo._repo.setPreserveRemoteTime(True)
             if self.opts.download_metadata:
-                self.download_metadata(repo)
+                if self.opts.urls:
+                    for md_type, md_location in repo._repo.getMetadataLocations():
+                        url = repo.remote_location(md_location)
+                        if url:
+                            print(url)
+                        else:
+                            msg = _("Failed to get mirror for metadata: %s") % md_type
+                            logger.warning(msg)
+                else:
+                    self.download_metadata(repo)
             if self.opts.downloadcomps:
                 self.getcomps(repo)
             pkglist = self.get_pkglist(repo)
@@ -203,7 +212,7 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def print_urls(self, pkglist):
         for pkg in pkglist:
-            url = pkg.remote_location(schemes=['file', 'http', 'https', 'ftp'])
+            url = pkg.remote_location()
             if url:
                 print(url)
             else:
