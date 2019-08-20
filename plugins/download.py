@@ -49,11 +49,12 @@ class DownloadCommand(dnf.cli.Command):
     def set_argparser(parser):
         parser.add_argument('packages', nargs='+',
                             help=_('packages to download'))
-        target = parser.add_mutually_exclusive_group()
-        target.add_argument("--source", action='store_true',
+        parser.add_argument("--source", action='store_true',
                             help=_('download the src.rpm instead'))
-        target.add_argument("--debuginfo", action='store_true',
+        parser.add_argument("--debuginfo", action='store_true',
                             help=_('download the -debuginfo package instead'))
+        parser.add_argument("--debugsource", action='store_true',
+                            help=_('download the -debugsource package instead'))
         parser.add_argument("--arch", '--archlist', dest='arches', default=[],
                             action=OptionParser._SplitCallback, metavar='[arch]',
                             help=_("limit  the  query to packages of given architectures."))
@@ -82,7 +83,7 @@ class DownloadCommand(dnf.cli.Command):
         if self.opts.source:
             self.base.repos.enable_source_repos()
 
-        if self.opts.debuginfo:
+        if self.opts.debuginfo or self.opts.debugsource:
             self.base.repos.enable_debug_repos()
 
         if self.opts.destdir:
@@ -93,12 +94,20 @@ class DownloadCommand(dnf.cli.Command):
     def run(self):
         """Execute the util action here."""
 
-        if self.opts.source:
-            pkgs = self._get_pkg_objs_source(self.opts.packages)
-        elif self.opts.debuginfo:
-            pkgs = self._get_pkg_objs_debuginfo(self.opts.packages)
-        else:
+        if (not self.opts.source
+                and not self.opts.debuginfo
+                and not self.opts.debugsource):
             pkgs = self._get_pkg_objs_rpms(self.opts.packages)
+        else:
+            pkgs = []
+            if self.opts.source:
+                pkgs.extend(self._get_pkg_objs_source(self.opts.packages))
+
+            if self.opts.debuginfo:
+                pkgs.extend(self._get_pkg_objs_debuginfo(self.opts.packages))
+
+            if self.opts.debugsource:
+                pkgs.extend(self._get_pkg_objs_debugsource(self.opts.packages))
 
         # If user asked for just urls then print them and we're done
         if self.opts.url:
@@ -177,25 +186,47 @@ class DownloadCommand(dnf.cli.Command):
         rpms to download.
         """
         dbg_pkgs = set()
-        q = self.base.sack.query()
-        q = q.available()
+        q = self.base.sack.query().available()
 
         for pkg in self._get_packages(pkg_specs):
             for dbg_name in [pkg.debug_name, pkg.source_debug_name]:
                 dbg_available = q.filter(
-                                        name=dbg_name,
-                                        epoch=int(pkg.epoch),
-                                        version=pkg.version,
-                                        release=pkg.release,
-                                        arch=pkg.arch
-                                    )
-                dbg_found = False
+                    name=dbg_name,
+                    epoch=int(pkg.epoch),
+                    version=pkg.version,
+                    release=pkg.release,
+                    arch=pkg.arch
+                )
+
+                if not dbg_available:
+                    continue
+
                 for p in dbg_available:
                     dbg_pkgs.add(p)
-                    dbg_found = True
 
-                if dbg_found:
-                    break
+                break
+
+        return dbg_pkgs
+
+    def _get_pkg_objs_debugsource(self, pkg_specs):
+        """
+        Return a list of dnf.Package objects that represent the debugsource
+        rpms to download.
+        """
+        dbg_pkgs = set()
+        q = self.base.sack.query().available()
+
+        for pkg in self._get_packages(pkg_specs):
+            dbg_available = q.filter(
+                name=pkg.debugsource_name,
+                epoch=int(pkg.epoch),
+                version=pkg.version,
+                release=pkg.release,
+                arch=pkg.arch
+            )
+
+            for p in dbg_available:
+                dbg_pkgs.add(p)
 
         return dbg_pkgs
 
