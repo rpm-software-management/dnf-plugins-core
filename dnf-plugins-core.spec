@@ -429,7 +429,7 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
-# These commands don't have a dedicated man page, so let's just point them to
+# These commands don't have a dedicated man page, so let's just point them
 # to the utils page which contains their descriptions.
 ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/find-repos-of-install.1.gz
 ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repoquery.1.gz
