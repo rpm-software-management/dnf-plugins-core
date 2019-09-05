@@ -78,7 +78,9 @@ Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
 %if %{with yumcompatibility}
 Provides:       yum-plugin-copr = %{version}-%{release}
+Conflicts:      yum-plugin-copr < 1.1.31-520
 Provides:       yum-plugin-changelog = %{version}-%{release}
+Conflicts:      yum-plugin-changelog < 1.1.31-520
 Provides:       yum-plugin-auto-update-debug-info = %{version}-%{release}
 %endif
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
@@ -169,7 +171,6 @@ Additionally provides generate_completion_cache passive plugin.
 %package -n %{yum_utils_subpackage_name}
 %if "%{yum_utils_subpackage_name}" == "dnf-utils"
 Conflicts:      yum-utils < 1.1.31-520
-Conflicts:      yum-plugin-copr < 1.1.31-520
 %if 0%{?rhel} != 7
 Provides:       yum-utils = %{version}-%{release}
 %endif
@@ -332,6 +333,7 @@ Provides:       dnf-command(versionlock)
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
 %if %{with yumcompatibility}
 Provides:       yum-plugin-versionlock = %{version}-%{release}
+Conflicts:      yum-plugin-versionlock < 1.1.31-520
 %endif
 %endif
 Provides:       python2-dnf-plugins-extras-versionlock = %{version}-%{release}
@@ -354,6 +356,7 @@ Provides:       python3-dnf-plugins-extras-versionlock = %{version}-%{release}
 Provides:       dnf-command(versionlock)
 %if %{with yumcompatibility}
 Provides:       yum-plugin-versionlock = %{version}-%{release}
+Conflicts:      yum-plugin-versionlock < 1.1.31-520
 %endif
 Provides:       dnf-plugins-extras-versionlock = %{version}-%{release}
 Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
