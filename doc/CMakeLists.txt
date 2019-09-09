@@ -27,7 +27,6 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-download.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-generate_completion_cache.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-leaves.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-migrate.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-needs-restarting.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repoclosure.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repodiff.8
@@ -40,6 +39,10 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-copr.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.8
 	DESTINATION share/man/man8)
+if (${PYTHON_VERSION_MAJOR} STREQUAL "2")
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-migrate.8
+        DESTINATION share/man/man8)
+endif()
 
 if (${WITHOUT_LOCAL} STREQUAL "0")
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-local.8
