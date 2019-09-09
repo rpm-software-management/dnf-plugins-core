@@ -296,11 +296,11 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             return
 
         old_repo = False
-        # repo ID has copr:<hub>:<user>:<project> format
+        # repo ID has copr:<hostname>:<user>:<copr_dir> format, while <copr_dir>
+        # can contain more colons
         if re.match("copr:", repo_id):
-            copr_name = repo_id.rsplit(':', 2)
-            copr_hostname = copr_name[0].split(':', 1)[1]
-            msg = copr_hostname + '/' + copr_name[1] + '/' + copr_name[2]
+            _, copr_hostname, copr_owner, copr_dir = repo_id.split(':', 3)
+            msg = copr_hostname + '/' + copr_owner + "/" + copr_dir
         # repo ID has <user>-<project> format, try to get hub from file name
         elif re.match("_copr:", file_name):
             copr_name = repo_id.split('-', 1)
