@@ -80,6 +80,8 @@ release = '%s-1' % version
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['_build']
+if sys.version_info[0] > 2:
+    exclude_patterns.append('migrate.rst')
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -251,7 +253,6 @@ man_pages = [
         u'DNF generate_completion_cache Plugin', AUTHORS, 8),
     ('leaves', 'dnf-leaves', u'DNF leaves Plugin', AUTHORS, 8),
     ('local', 'dnf-local', u'DNF local Plugin', AUTHORS, 8),
-    ('migrate', 'dnf-migrate', u'DNF migrate Plugin', AUTHORS, 8),
     ('needs_restarting', 'dnf-needs-restarting', u'DNF needs_restarting Plugin', AUTHORS, 8),
     ('repoclosure', 'dnf-repoclosure', u'DNF repoclosure Plugin', AUTHORS, 8),
     ('repodiff', 'dnf-repodiff', u'DNF repodiff Plugin', AUTHORS, 8),
@@ -292,6 +293,8 @@ man_pages = [
     ('dnf-utils', 'yum-utils', u'classic YUM utilities implemented as CLI shims on top of DNF',
      AUTHORS, 1),
 ]
+if sys.version_info[0] < 3:
+    man_pages.append(('migrate', 'dnf-migrate', u'DNF migrate Plugin', AUTHORS, 8))
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
