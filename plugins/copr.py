@@ -481,7 +481,7 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
     def _get_copr_repo(self, copr_username, copr_projectname):
-        repo_id = "copr:{0}:{1}:{2}".format(self.copr_hostname,
+        repo_id = "copr:{0}:{1}:{2}".format(self.copr_hostname.rsplit(':', 1)[0],
                                             self._sanitize_username(copr_username),
                                             copr_projectname)
         if repo_id not in self.base.repos:
