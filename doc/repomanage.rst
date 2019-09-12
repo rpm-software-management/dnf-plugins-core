@@ -45,10 +45,6 @@ The following options set what packages are displayed. These options are mutuall
 ``--new``
     Show newest packages.
 
-
-Optional Options
-----------------
-
 The following options control how packages are displayed in the output:
 
 ``-s``, ``--space``
