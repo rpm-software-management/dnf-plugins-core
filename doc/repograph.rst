@@ -38,6 +38,8 @@ Description
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--repo <repoid>``
     Specify repo ids to query, can be specified multiple times (default is all enabled).
 

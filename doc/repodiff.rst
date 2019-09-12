@@ -37,6 +37,8 @@ Description
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--repo-old=<repoid>, -o <repoid>``
     Add a ``<repoid>`` as an old repository. It is possible to be used in conjunction with ``--repofrompath`` option. Can be specified multiple times. 
 

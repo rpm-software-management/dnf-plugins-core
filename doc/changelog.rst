@@ -42,6 +42,8 @@ Arguments
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--since=<date>``
    Show only changelog entries since ``<date>``. To avoid ambiguosity using YYYY-MM-DD date format is recommended.
 

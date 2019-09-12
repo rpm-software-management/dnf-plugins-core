@@ -37,6 +37,8 @@ Description
 Options
 -------
 
+All general DNF options are accepted. Namely, the ``--repoid`` option can be used to specify the repositories to synchronize. See `Options` in :manpage:`dnf(8)` for details.
+
 ``-p <download-path>, --download-path=<download-path>``
     Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
 
@@ -63,8 +65,6 @@ Options
 
 ``--remote-time``
     Try to set the timestamps of the downloaded files to those on the remote side.
-
-Besides these reposync specific options the ``dnf reposync`` command also accepts all general DNF options. This is especially useful for specifying which repositories should be synchronized (``--repoid`` option). See `Options` in :manpage:`dnf(8)` for details.
 
 --------
 Examples
