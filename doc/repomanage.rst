@@ -37,9 +37,7 @@ Description
 Options
 -------
 
-Set what packages is displayed.
-
-The following are mutually exclusive, i.e. only one can be specified. If no options specified - ``--new`` activated.
+The following options set what packages are displayed. These options are mutually exclusive, i.e. only one can be specified. If no option is specified, the newest packages are shown.
 
 ``--old``
     Show older packages.
@@ -51,7 +49,7 @@ The following are mutually exclusive, i.e. only one can be specified. If no opti
 Optional Options
 ----------------
 
-Control how packages are displayed in the output.
+The following options control how packages are displayed in the output:
 
 ``-s``, ``--space``
     Print resulting set separated by space instead of newline.

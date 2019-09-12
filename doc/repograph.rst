@@ -38,8 +38,6 @@ Description
 Options
 -------
 
-Set what repos should be processed.
-
 ``--repo <repoid>``
     Specify repo ids to query, can be specified multiple times (default is all enabled).
 
