@@ -37,6 +37,8 @@ Description
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--arch <arch>``
     Query only packages for specified architecture, can be specified multiple times (default is all
     compatible architectures with your system). To run repoclosure for arch incompatible with your

@@ -25,6 +25,8 @@ Arguments
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--help-cmd``
     Show this help.
 

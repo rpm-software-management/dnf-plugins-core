@@ -65,6 +65,12 @@ Arguments (copr)
     Hub is be specified either by its hostname (eg. `copr.fedorainfracloud.org`)
     or by an ID that's defined in a configuration file.
 
+--------------
+Options (copr)
+--------------
+
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--hub Copr``
     Specify a Copr hub to use. Default is the Fedora Copr: ``https://copr.fedorainfracloud.org``.
 
@@ -95,6 +101,12 @@ Arguments (playground)
 
 ``upgrade``
     Upgrade the Playground repository settings (same as ``disable`` and then ``enable``).
+
+--------------------
+Options (playground)
+--------------------
+
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
 
 --------
 Examples

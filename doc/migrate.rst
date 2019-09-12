@@ -37,3 +37,10 @@ Commands
 
 ``dnf migrate``
     Migrate all the data including history, yumdb and groups (if available).
+
+-------
+Options
+-------
+
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+

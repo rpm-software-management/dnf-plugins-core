@@ -34,6 +34,12 @@ Arguments
 ``<pkg-spec>``
     The package to install the associated debuginfo package for.
 
+-------
+Options
+-------
+
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 -------------
 Configuration
 -------------

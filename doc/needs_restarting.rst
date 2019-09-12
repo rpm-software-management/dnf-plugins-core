@@ -39,6 +39,8 @@ Note that in most cases a process should survive update of its binary and librar
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``-u, --useronly``
 
     Only consider processes belonging to the running user.

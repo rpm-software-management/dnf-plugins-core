@@ -27,6 +27,12 @@ Description
 
 `leaves` lists all the packages installed on your system which are not required as a dependency of another installed package. However two or more packages might depend on eachother in a dependency cycle. Packages in such cycles, which are not required by any other package, are also listed.
 
+-------
+Options
+-------
+
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 -------------------
 Why is this useful?
 -------------------

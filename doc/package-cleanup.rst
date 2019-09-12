@@ -31,6 +31,8 @@ Synopsis
 Options
 -------
 
+All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
+
 ``--leaves``
     List leaf nodes in the local RPM database.
     Leaf nodes are RPMs that are not relied upon by any other RPM.
