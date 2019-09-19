@@ -470,5 +470,21 @@
     [
         1724668,
         "dnf builddep fails trying to parse specfile"
+    ],
+    [
+        1689645,
+        "Out of date manual for dnf download"
+    ],
+    [
+        1676418,
+        "yum-utils manpage inconsistent with other yum compat manpages"
+    ],
+    [
+        1532378,
+        "dnf refuses to install debugsource package in presence of debuginfo package"
+    ],
+    [
+        1629412,
+        "debuginfo-install downloads wrong debuginfo"
     ]
 ]

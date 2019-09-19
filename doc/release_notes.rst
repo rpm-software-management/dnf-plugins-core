@@ -21,6 +21,22 @@ Core DNF Plugins Release Notes
 
 .. contents::
 
+====================
+4.0.10 Release Notes
+====================
+
+- debuginfo-install: Update both debuginfo and debugsource for updated package (RhBug:1586084)
+- copr: Support multilib repofiles (RhBug:1393664)
+- copr: Fix disable if copr instance has non-default port
+- copr: Fix repoid when using subdirectories in copr project
+
+Bugs fixed in 4.0.10:
+
+* :rhbug:`1689645`
+* :rhbug:`1676418`
+* :rhbug:`1532378`
+* :rhbug:`1629412`
+
 ===================
 4.0.9 Release Notes
 ===================

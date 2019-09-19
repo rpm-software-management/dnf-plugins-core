@@ -31,7 +31,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.9
+Version:        4.0.10
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -696,6 +696,12 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Thu Sep 19 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.10-1
+- debuginfo-install: Update both debuginfo and debugsource for updated package (RhBug:1586084)
+- copr: Support multilib repofiles (RhBug:1393664)
+- copr: Fix disable if copr instance has non-default port
+- copr: Fix repoid when using subdirectories in copr project
+
 * Tue Aug 06 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.9-1
 - [spec] Rename dnf-utils to yum-utils
 - [builddep] Report all rpm errors (RhBug:1663619,1658292,1724668)
