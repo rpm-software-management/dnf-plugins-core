@@ -472,7 +472,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python2-%{name} -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.rst
-%ghost %{_var}/cache/dnf/packages.db
+%ghost %attr(644,-,-) %{_var}/cache/dnf/packages.db
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
@@ -497,7 +497,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python3-%{name} -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.rst
-%ghost %{_var}/cache/dnf/packages.db
+%ghost %attr(644,-,-) %{_var}/cache/dnf/packages.db
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
