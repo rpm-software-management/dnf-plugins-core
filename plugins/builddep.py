@@ -132,16 +132,18 @@ class BuildDepCommand(dnf.cli.Command):
             sltr.set(file=reldep_str)
             found = sltr.matches()
 
-        if not found:
+        if not found and not reldep_str.startswith("("):
             # No provides, no files
+            # Richdeps can have no matches but it could be correct (solver must decide later)
             msg = _("No matching package to install: '%s'")
             logger.warning(msg, reldep_str)
             return False
 
-        already_inst = self.base._sltr_matches_installed(sltr)
-        if already_inst:
-            for package in already_inst:
-                dnf.base._msg_installed(package)
+        if found:
+            already_inst = self.base._sltr_matches_installed(sltr)
+            if already_inst:
+                for package in already_inst:
+                    dnf.base._msg_installed(package)
         self.base._goal.install(select=sltr, optional=False)
         return True
 
