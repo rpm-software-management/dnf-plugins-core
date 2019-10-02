@@ -217,8 +217,12 @@ def _write_locklist(base, args, try_installed, comment, info, prefix):
 
 
 def _match(ent, patterns):
+    ent = ent.lstrip('!')
+    for pat in patterns:
+        if ent == pat:
+            return True
     try:
-        n = hawkey.split_nevra(ent.lstrip('!'))
+        n = hawkey.split_nevra(ent)
     except hawkey.ValueException:
         return False
     for name in (
