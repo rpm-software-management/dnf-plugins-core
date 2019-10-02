@@ -117,6 +117,13 @@ Options
 
 All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
 
+``--raw``
+    Do not resolve ``<package-name-spec>`` to NEVRAs to find specific version to lock to. Instead ``<package-name-spec>`` are used as they are. This enables locking to not yet available versions of the package.
+    For example you may want to keep the `bash` package on major version 5 and consume any future updates as far as they keep the major version::
+
+        $ dnf versionlock add --raw 'bash-5.*'
+        Adding versionlock on: bash-5.*
+
 -------------
 Configuration
 -------------

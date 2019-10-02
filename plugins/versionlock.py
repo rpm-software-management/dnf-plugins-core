@@ -121,6 +121,9 @@ class VersionLockCommand(dnf.cli.Command):
 
     @staticmethod
     def set_argparser(parser):
+        parser.add_argument("--raw", default=False, action='store_true',
+                            help=_("Use package specifications as they are, do not "
+                                   "try to parse them"))
         parser.add_argument("subcommand", nargs='?',
                             metavar="[add|exclude|list|delete|clear]")
         parser.add_argument("package", nargs='*',
@@ -144,11 +147,11 @@ class VersionLockCommand(dnf.cli.Command):
                 cmd = self.opts.subcommand
 
         if cmd == 'add':
-            _write_locklist(self.base, self.opts.package, True,
+            _write_locklist(self.base, self.opts.package, self.opts.raw, True,
                             "\n# Added locks on %s\n" % time.ctime(),
                             ADDING_SPEC, '')
         elif cmd == 'exclude':
-            _write_locklist(self.base, self.opts.package, False,
+            _write_locklist(self.base, self.opts.package, self.opts.raw, False,
                             "\n# Added exclude on %s\n" % time.ctime(),
                             EXCLUDING_SPEC, '!')
         elif cmd == 'list':
@@ -191,9 +194,12 @@ def _read_locklist():
     return locklist
 
 
-def _write_locklist(base, args, try_installed, comment, info, prefix):
+def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
     specs = set()
     for pat in args:
+        if raw:
+            specs.add(pat)
+            continue
         subj = dnf.subject.Subject(pat)
         pkgs = None
         if try_installed:
