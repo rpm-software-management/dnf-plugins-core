@@ -105,6 +105,7 @@ class VersionLock(dnf.Plugin):
             other_versions = all_versions.difference(locked_query)
             excludes_query = excludes_query.union(other_versions)
 
+        excludes_query.filterm(reponame__neq=hawkey.SYSTEM_REPO_NAME)
         if excludes_query:
             self.base.sack.add_excludes(excludes_query)
 
