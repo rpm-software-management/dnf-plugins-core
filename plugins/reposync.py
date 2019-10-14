@@ -123,7 +123,22 @@ class RepoSyncCommand(dnf.cli.Command):
                 else:
                     self.download_metadata(repo)
             if self.opts.downloadcomps:
-                self.getcomps(repo)
+                if self.opts.urls:
+                    mdl = dict(repo._repo.getMetadataLocations())
+                    group_locations = [mdl[md_type]
+                                       for md_type in ('group', 'group_gz', 'group_gz_zck')
+                                       if md_type in mdl]
+                    if group_locations:
+                        for group_location in group_locations:
+                            url = repo.remote_location(group_location)
+                            if url:
+                                print(url)
+                                break
+                        else:
+                            msg = _("Failed to get mirror for the group file.")
+                            logger.warning(msg)
+                else:
+                    self.getcomps(repo)
             pkglist = self.get_pkglist(repo)
             if self.opts.urls:
                 self.print_urls(pkglist)
