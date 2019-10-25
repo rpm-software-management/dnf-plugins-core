@@ -23,6 +23,7 @@ from dnfpluginscore import _, logger, P_
 import dnf
 import dnf.cli
 import dnf.pycomp
+import dnf.util
 import fnmatch
 import os
 import re
@@ -33,7 +34,8 @@ import shutil
 class ConfigManagerCommand(dnf.cli.Command):
 
     aliases = ['config-manager']
-    summary = _('manage dnf configuration options and repositories')
+    summary = _('manage {prog} configuration options and repositories').format(
+        prog=dnf.util.MAIN_PROG)
 
     @staticmethod
     def set_argparser(parser):
@@ -167,7 +169,7 @@ class ConfigManagerCommand(dnf.cli.Command):
             else:
                 # just url to repo, create .repo file on our own
                 repoid = sanitize_url_to_fs(url)
-                reponame = 'created by dnf config-manager from %s' % url
+                reponame = 'created by {} config-manager from {}'.format(dnf.util.MAIN_PROG, url)
                 destname = os.path.join(myrepodir, "%s.repo" % repoid)
                 content = "[%s]\nname=%s\nbaseurl=%s\nenabled=1\n" % \
                                                 (repoid, reponame, url)
