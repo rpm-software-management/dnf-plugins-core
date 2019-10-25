@@ -37,6 +37,7 @@ This documents core plugins of DNF:
    local
    migrate
    needs_restarting
+   post-transaction-actions
    repoclosure
    repodiff
    repograph
