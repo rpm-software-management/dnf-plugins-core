@@ -1,6 +1,6 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.14}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.35.7
+%global hawkey_version 0.37.0
 %global yum_utils_subpackage_name dnf-utils
 %if 0%{?rhel} > 7
 %global yum_utils_subpackage_name yum-utils
@@ -280,6 +280,34 @@ Obsoletes:      python-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
 
 %description -n python2-dnf-plugin-migrate
 Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data from yum to dnf.
+%endif
+
+%if %{with python2}
+%package -n python2-dnf-plugin-post-transaction-actions
+Summary:        Post transaction actions Plugin for DNF
+Requires:       python2-%{name} = %{version}-%{release}
+%if !%{with python3}
+Provides:       dnf-plugin-post-transaction-actions =  %{version}-%{release}
+%endif
+Conflicts:      python3-dnf-plugin-post-transaction-actions < %{version}-%{release}
+
+%description -n python2-dnf-plugin-post-transaction-actions
+Post transaction actions Plugin for DNF, Python 2 version. Plugin runs actions
+(shell commands) after transaction is completed. Actions are defined in action
+files.
+%endif
+
+%if %{with python3}
+%package -n python3-dnf-plugin-post-transaction-actions
+Summary:        Post transaction actions Plugin for DNF
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-post-transaction-actions =  %{version}-%{release}
+Conflicts:      python2-dnf-plugin-post-transaction-actions < %{version}-%{release}
+
+%description -n python3-dnf-plugin-post-transaction-actions
+Post transaction actions Plugin for DNF, Python 3 version. Plugin runs actions
+(shell commands) after transaction is completed. Actions are defined in action
+files.
 %endif
 
 %if 0%{?rhel} == 0 && %{with python2}
@@ -636,6 +664,23 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %{_mandir}/man8/dnf-migrate.*
 %else
 %exclude %{_mandir}/man8/dnf-migrate.*
+%endif
+
+%if %{with python2}
+%files -n python2-dnf-plugin-post-transaction-actions
+%config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.d
+%{python2_sitelib}/dnf-plugins/post-transaction-actions.*
+%{_mandir}/man8/dnf-post-transaction-actions.*
+%endif
+
+%if %{with python3}
+%files -n python3-dnf-plugin-post-transaction-actions
+%config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.d
+%{python3_sitelib}/dnf-plugins/post-transaction-actions.*
+%{python3_sitelib}/dnf-plugins/__pycache__/post-transaction-actions.*
+%{_mandir}/man8/dnf-post-transaction-actions.*
 %endif
 
 %if 0%{?rhel} == 0
