@@ -43,7 +43,7 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
     Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
 
 ``--download-metadata``
-    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it
+    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it.
 
 ``-a <architecture>, --arch=<architecture>``
     Download only packages of given architectures (default is all architectures). Can be used multiple times.
@@ -52,13 +52,13 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
     Operate on source packages.
 
 ``-m, --downloadcomps``
-    Also download comps.xml.
+    Also download and uncompress comps.xml. Consider using ``--download-metadata`` option which will download all available repository metadata.
 
 ``-n, --newest-only``
     Download only newest packages per-repo.
 
 ``--delete``
-    Delete local packages no longer present in repository
+    Delete local packages no longer present in repository.
 
 ``--metadata-path``
     Root path under which the downloaded metadata are stored. It defaults to ``--download-path`` value if not given.

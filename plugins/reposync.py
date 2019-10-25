@@ -64,7 +64,7 @@ class RepoSyncCommand(dnf.cli.Command):
         parser.add_argument('--delete', default=False, action='store_true',
                             help=_('delete local packages no longer present in repository'))
         parser.add_argument('-m', '--downloadcomps', default=False, action='store_true',
-                            help=_('also download comps.xml'))
+                            help=_('also download and uncompress comps.xml'))
         parser.add_argument('--download-metadata', default=False, action='store_true',
                             help=_('download all the metadata.'))
         parser.add_argument('-n', '--newest-only', default=False, action='store_true',
