@@ -22,6 +22,20 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.11 Release Notes
+====================
+
+- [spec] Specify attributes for ghost file (RhBug: 1754463)
+- download: add the --debugsource option (RhBug:1637008)
+- Fix incorrect handling richdeps in buildep (RhBug:1756902)
+
+Bugs fixed in 4.0.11:
+
+* :rhbug:`1754463`
+* :rhbug:`1637008`
+* :rhbug:`1756902`
+
+====================
 4.0.10 Release Notes
 ====================
 

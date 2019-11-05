@@ -31,7 +31,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.10
+Version:        4.0.11
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -696,6 +696,11 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Nov 05 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.11-1
+- [spec] Specify attributes for ghost file (RhBug: 1754463)
+- download: add the --debugsource option (RhBug:1637008)
+- Fix incorrect handling richdeps in buildep (RhBug:1756902)
+
 * Thu Sep 19 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.10-1
 - debuginfo-install: Update both debuginfo and debugsource for updated package (RhBug:1586084)
 - copr: Support multilib repofiles (RhBug:1393664)

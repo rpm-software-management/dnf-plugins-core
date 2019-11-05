@@ -486,5 +486,17 @@
     [
         1629412,
         "debuginfo-install downloads wrong debuginfo"
+    ],
+    [
+        1637008,
+        "[download] cannot download debugsource (sub)package"
+    ],
+    [
+        1756902,
+        "Incorrectly evaluated rich deps"
+    ],
+    [
+        1754463,
+        "dnf-plugins-core package does not verify"
     ]
 ]
