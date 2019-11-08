@@ -446,20 +446,20 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %files
-%{_mandir}/man8/dnf.plugin.builddep.*
-%{_mandir}/man8/dnf.plugin.changelog.*
-%{_mandir}/man8/dnf.plugin.config_manager.*
-%{_mandir}/man8/dnf.plugin.copr.*
-%{_mandir}/man8/dnf.plugin.debug.*
-%{_mandir}/man8/dnf.plugin.debuginfo-install.*
-%{_mandir}/man8/dnf.plugin.download.*
-%{_mandir}/man8/dnf.plugin.generate_completion_cache.*
-%{_mandir}/man8/dnf.plugin.needs_restarting.*
-%{_mandir}/man8/dnf.plugin.repoclosure.*
-%{_mandir}/man8/dnf.plugin.repodiff.*
-%{_mandir}/man8/dnf.plugin.repograph.*
-%{_mandir}/man8/dnf.plugin.repomanage.*
-%{_mandir}/man8/dnf.plugin.reposync.*
+%{_mandir}/man8/dnf-builddep.*
+%{_mandir}/man8/dnf-changelog.*
+%{_mandir}/man8/dnf-config-manager.*
+%{_mandir}/man8/dnf-copr.*
+%{_mandir}/man8/dnf-debug.*
+%{_mandir}/man8/dnf-debuginfo-install.*
+%{_mandir}/man8/dnf-download.*
+%{_mandir}/man8/dnf-generate_completion_cache.*
+%{_mandir}/man8/dnf-needs-restarting.*
+%{_mandir}/man8/dnf-repoclosure.*
+%{_mandir}/man8/dnf-repodiff.*
+%{_mandir}/man8/dnf-repograph.*
+%{_mandir}/man8/dnf-repomanage.*
+%{_mandir}/man8/dnf-reposync.*
 %if %{with yumcompatibility}
 %{_mandir}/man1/yum-changelog.*
 %{_mandir}/man8/yum-copr.*
@@ -594,18 +594,18 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %if %{with python2}
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
-%{_mandir}/man8/dnf.plugin.leaves.*
+%{_mandir}/man8/dnf-leaves.*
 %endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-leaves
 %{python3_sitelib}/dnf-plugins/leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
-%{_mandir}/man8/dnf.plugin.leaves.*
+%{_mandir}/man8/dnf-leaves.*
 %endif
 
 %else
-%exclude %{_mandir}/man8/dnf.plugin.leaves.*
+%exclude %{_mandir}/man8/dnf-leaves.*
 %if %{with python2}
 %exclude %{python2_sitelib}/dnf-plugins/leaves.*
 %endif
@@ -619,7 +619,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %files -n python2-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python2_sitelib}/dnf-plugins/local.*
-%{_mandir}/man8/dnf.plugin.local.*
+%{_mandir}/man8/dnf-local.*
 %endif
 
 %if %{with python3} && 0%{?rhel} == 0
@@ -627,15 +627,15 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python3_sitelib}/dnf-plugins/local.*
 %{python3_sitelib}/dnf-plugins/__pycache__/local.*
-%{_mandir}/man8/dnf.plugin.local.*
+%{_mandir}/man8/dnf-local.*
 %endif
 
 %if %{with python2}
 %files -n python2-dnf-plugin-migrate
 %{python2_sitelib}/dnf-plugins/migrate.*
-%{_mandir}/man8/dnf.plugin.migrate.*
+%{_mandir}/man8/dnf-migrate.*
 %else
-%exclude %{_mandir}/man8/dnf.plugin.migrate.*
+%exclude %{_mandir}/man8/dnf-migrate.*
 %endif
 
 %if 0%{?rhel} == 0
@@ -643,18 +643,18 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %if %{with python2}
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
-%{_mandir}/man8/dnf.plugin.show-leaves.*
+%{_mandir}/man8/dnf-show-leaves.*
 %endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-show-leaves
 %{python3_sitelib}/dnf-plugins/show_leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
-%{_mandir}/man8/dnf.plugin.show-leaves.*
+%{_mandir}/man8/dnf-show-leaves.*
 %endif
 
 %else
-%exclude %{_mandir}/man8/dnf.plugin.show-leaves.*
+%exclude %{_mandir}/man8/dnf-show-leaves.*
 %if %{with python2}
 %exclude %{python2_sitelib}/dnf-plugins/show_leaves.*
 %endif
@@ -669,7 +669,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python2_sitelib}/dnf-plugins/versionlock.*
-%{_mandir}/man8/dnf.plugin.versionlock.*
+%{_mandir}/man8/dnf-versionlock.*
 %if %{with yumcompatibility}
 %{_mandir}/man8/yum-versionlock.*
 %{_mandir}/man5/yum-versionlock.*
@@ -685,7 +685,7 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
-%{_mandir}/man8/dnf.plugin.versionlock.*
+%{_mandir}/man8/dnf-versionlock.*
 %if %{with yumcompatibility}
 %{_mandir}/man8/yum-versionlock.*
 %{_mandir}/man5/yum-versionlock.*

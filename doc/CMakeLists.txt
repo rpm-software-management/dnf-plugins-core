@@ -18,30 +18,30 @@ ADD_CUSTOM_TARGET (doc-man
 ADD_CUSTOM_TARGET (doc)
 ADD_DEPENDENCIES (doc doc-html doc-man)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.builddep.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.changelog.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.config_manager.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.copr.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.debug.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.debuginfo-install.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.download.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.generate_completion_cache.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.leaves.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.migrate.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.needs_restarting.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repoclosure.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repodiff.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repograph.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.repomanage.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.reposync.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.show-leaves.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.versionlock.8
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-changelog.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-config-manager.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-copr.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-debug.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-debuginfo-install.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-download.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-generate_completion_cache.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-migrate.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-needs-restarting.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repoclosure.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repodiff.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repograph.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repomanage.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-reposync.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-show-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-versionlock.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-copr.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.8
 	DESTINATION share/man/man8)
 
 if (${WITHOUT_LOCAL} STREQUAL "0")
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.local.8
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-local.8
 	DESTINATION share/man/man8)
 endif()
 
