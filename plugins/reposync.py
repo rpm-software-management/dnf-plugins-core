@@ -204,7 +204,7 @@ class RepoSyncCommand(dnf.cli.Command):
         return True
 
     def get_pkglist(self, repo):
-        query = self.base.sack.query(flags=hawkey.IGNORE_EXCLUDES).available().filterm(
+        query = self.base.sack.query(flags=hawkey.IGNORE_MODULAR_EXCLUDES).available().filterm(
             reponame=repo.id)
         if self.opts.newest_only:
             query = query.latest()
@@ -219,7 +219,7 @@ class RepoSyncCommand(dnf.cli.Command):
         progress = base.output.progress
         if progress is None:
             progress = dnf.callback.NullDownloadProgress()
-        drpm = dnf.drpm.DeltaInfo(base.sack.query(flags=hawkey.IGNORE_EXCLUDES).installed(),
+        drpm = dnf.drpm.DeltaInfo(base.sack.query(flags=hawkey.IGNORE_MODULAR_EXCLUDES).installed(),
                                   progress, 0)
         payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
                     for pkg in pkglist]
