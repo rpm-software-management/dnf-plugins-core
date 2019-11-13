@@ -60,10 +60,17 @@ class VersionLock(dnf.Plugin):
         locklist_fn = (cp.has_section('main') and cp.has_option('main', 'locklist')
                        and cp.get('main', 'locklist'))
 
-    def sack(self):
+    def locking_enabled(self):
         if self.cli is None:
-            pass  # loaded via the api, not called by cli
-        elif not self.cli.demands.resolving:
+            enabled = True  # loaded via the api, not called by cli
+        else:
+            enabled = self.cli.demands.plugin_filtering_enabled
+            if enabled is None:
+                enabled = self.cli.demands.resolving
+        return enabled
+
+    def sack(self):
+        if not self.locking_enabled():
             logger.debug(NO_VERSIONLOCK)
             return
 
