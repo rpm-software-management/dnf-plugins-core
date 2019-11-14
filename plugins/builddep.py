@@ -59,6 +59,8 @@ class BuildDepCommand(dnf.cli.Command):
         parser.add_argument('-D', '--define', action='append', default=[],
                             metavar="'MACRO EXPR'", type=macro_def,
                             help=_('define a macro for spec file parsing'))
+        parser.add_argument('--skip-unavailable', action='store_true', default=False,
+                            help=_('skip build dependencies not available in repositories'))
         ptype = parser.add_mutually_exclusive_group()
         ptype.add_argument('--spec', action='store_true',
                             help=_('treat commandline arguments as spec files'))
@@ -137,7 +139,7 @@ class BuildDepCommand(dnf.cli.Command):
             # Richdeps can have no matches but it could be correct (solver must decide later)
             msg = _("No matching package to install: '%s'")
             logger.warning(msg, reldep_str)
-            return False
+            return self.opts.skip_unavailable is True
 
         if found:
             already_inst = self.base._sltr_matches_installed(sltr)

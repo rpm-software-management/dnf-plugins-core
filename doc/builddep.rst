@@ -39,6 +39,11 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``--srpm``
     Treat arguments as source rpm files.
 
+``--skip-unavailable``
+    Skip build dependencies not available in repositories. All available build dependencies will be installed.
+
+Note that `builddep` command does not honor the `--skip-broken` option, so there is no way to skip uninstallable packages (e.g. with broken dependencies).
+
 --------
 Examples
 --------
