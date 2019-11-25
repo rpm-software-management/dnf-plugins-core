@@ -114,8 +114,9 @@ class ConfigManagerCommand(dnf.cli.Command):
                 print("%s = %s" % (name, val))
         if not self.opts.crepo or 'main' in self.opts.crepo:
             if self.opts.save and modify:
-                # modify [main] in dnf.conf
-                self.base.conf.write_raw_configfile(dnf.const.CONF_FILENAME, 'main', sbc.substitutions, modify)
+                # modify [main] in global configuration file
+                self.base.conf.write_raw_configfile(self.base.conf.config_file_path, 'main',
+                                                    sbc.substitutions, modify)
             if self.opts.dump:
                 print(self.base.output.fmtSection('main'))
                 print(self.base.conf.dump())
