@@ -498,5 +498,29 @@
     [
         1754463,
         "dnf-plugins-core package does not verify"
+    ],
+    [
+        967264,
+        "[plugins] Support post-transaction actions"
+    ],
+    [
+        1726712,
+        "Versionlock plugin not allowing upgrades from previous"
+    ],
+    [
+        1645564,
+        "[rfe] Allow versionlock to lock only parts of package version"
+    ],
+    [
+        1750273,
+        "dnf reposync ignoring includepkgs directive (regression)"
+    ],
+    [
+        1686602,
+        "[RFE] Add the \"--urls\" option for RHEL 8 reposync."
+    ],
+    [
+        1706386,
+        "[RFE] Discoverable man page names for DNF plugins"
     ]
 ]

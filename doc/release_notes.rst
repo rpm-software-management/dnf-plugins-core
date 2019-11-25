@@ -22,6 +22,27 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.12 Release Notes
+====================
+
+- [reposync] Add --urls option (RhBug:1686602)
+- [versionlock] Add --raw option (RhBug:1645564)
+- [doc] move manpages for plugins to "dnf-PLUGIN" (RhBug:1706386)
+- Add new plugin post-transaction-actions (RhBug:967264)
+- [builddep] Add --skip-unavailable switch (RhBug:1628634)
+- [versionlock] Don't apply excludes on @System (RhBug:1726712)
+- [reposync] Ignore only modular excludes (RhBug:1750273)
+
+Bugs fixed in 4.0.12:
+
+* :rhbug:`967264`
+* :rhbug:`1726712`
+* :rhbug:`1645564`
+* :rhbug:`1750273`
+* :rhbug:`1686602`
+* :rhbug:`1706386`
+
+====================
 4.0.11 Release Notes
 ====================
 

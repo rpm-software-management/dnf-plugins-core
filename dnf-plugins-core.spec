@@ -740,6 +740,15 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Nov 25 2019 Aleš Matěj <amatej@redhat.com> - 4.0.12-1
+- [reposync] Add --urls option (RhBug:1686602)
+- [versionlock] Add --raw option (RhBug:1645564)
+- [doc] move manpages for plugins to "dnf-PLUGIN" (RhBug:1706386)
+- Add new plugin post-transaction-actions (RhBug:967264)
+- [builddep] Add --skip-unavailable switch (RhBug:1628634)
+- [versionlock] Don't apply excludes on @System (RhBug:1726712)
+- [reposync] Ignore only modular excludes (RhBug:1750273)
+
 * Tue Nov 05 2019 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.11-1
 - [spec] Specify attributes for ghost file (RhBug: 1754463)
 - download: add the --debugsource option (RhBug:1637008)
