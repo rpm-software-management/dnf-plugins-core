@@ -145,7 +145,7 @@ class RepoSyncCommand(dnf.cli.Command):
             else:
                 self.download_packages(pkglist)
             if self.opts.delete:
-                self.delete_old_local_packages(pkglist)
+                self.delete_old_local_packages(repo, pkglist)
 
     def repo_target(self, repo):
         return _pkgdir(self.opts.destdir or self.opts.download_path, repo.id)
@@ -169,25 +169,20 @@ class RepoSyncCommand(dnf.cli.Command):
                     pkg_download_path, repo_target))
         return pkg_download_path
 
-    def delete_old_local_packages(self, packages_to_download):
-        download_map = dict()
-        for pkg in packages_to_download:
-            download_map[(pkg.repo.id, os.path.basename(pkg.location))] = pkg.location
-        # delete any *.rpm file, that is not going to be downloaded from repository
-        for repo in self.base.repos.iter_enabled():
-            repo_target = self.repo_target(repo)
-            for dirpath, dirnames, filenames in os.walk(repo_target):
-                for filename in filenames:
-                    path = os.path.join(dirpath, filename)
-                    if filename.endswith('.rpm') and os.path.isfile(path):
-                        location = download_map.get((repo.id, filename))
-                        if location is None or os.path.join(repo_target, location) != path:
-                            # Delete disappeared or relocated file
-                            try:
-                                os.unlink(path)
-                                logger.info(_("[DELETED] %s"), path)
-                            except OSError:
-                                logger.error(_("failed to delete file %s"), path)
+    def delete_old_local_packages(self, repo, pkglist):
+        # delete any *.rpm file under target path, that was not downloaded from repository
+        downloaded_files = set(self.pkg_download_path(pkg) for pkg in pkglist)
+        for dirpath, dirnames, filenames in os.walk(self.repo_target(repo)):
+            for filename in filenames:
+                path = os.path.join(dirpath, filename)
+                if filename.endswith('.rpm') and os.path.isfile(path):
+                    if path not in downloaded_files:
+                        # Delete disappeared or relocated file
+                        try:
+                            os.unlink(path)
+                            logger.info(_("[DELETED] %s"), path)
+                        except OSError:
+                            logger.error(_("failed to delete file %s"), path)
 
     def getcomps(self, repo):
         comps_fn = repo._repo.getCompsFn()
