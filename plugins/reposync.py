@@ -198,11 +198,35 @@ class RepoSyncCommand(dnf.cli.Command):
         repo._repo.downloadMetadata(repo_target)
         return True
 
+    def _get_latest(self, query):
+        """
+        return query with latest nonmodular package and all packages from latest version per stream
+        """
+        if not dnf.base.WITH_MODULES:
+            return query.latest()
+        query.apply()
+        module_packages = self.base._moduleContainer.getModulePackages()
+        all_artifacts = set()
+        module_dict = {}  # {NameStream: {Version: [modules]}}
+        for module_package in module_packages:
+            all_artifacts.update(module_package.getArtifacts())
+            module_dict.setdefault(module_package.getNameStream(), {}).setdefault(
+                module_package.getVersionNum(), []).append(module_package)
+        non_modular_latest = query.filter(
+            pkg__neq=query.filter(nevra_strict=all_artifacts)).latest()
+        latest_artifacts = set()
+        for version_dict in module_dict.values():
+            keys = sorted(version_dict.keys(), reverse=True)
+            for module in version_dict[keys[0]]:
+                latest_artifacts.update(module.getArtifacts())
+        latest_modular_query = query.filter(nevra_strict=latest_artifacts)
+        return latest_modular_query.union(non_modular_latest)
+
     def get_pkglist(self, repo):
         query = self.base.sack.query(flags=hawkey.IGNORE_MODULAR_EXCLUDES).available().filterm(
             reponame=repo.id)
         if self.opts.newest_only:
-            query = query.latest()
+            query = self._get_latest(query)
         if self.opts.source:
             query.filterm(arch='src')
         elif self.opts.arches:
