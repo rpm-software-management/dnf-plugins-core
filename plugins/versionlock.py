@@ -33,6 +33,7 @@ NOT_READABLE = _('Unable to read version lock configuration: %s')
 NO_LOCKLIST = _('Locklist not set')
 ADDING_SPEC = _('Adding versionlock on:')
 EXCLUDING_SPEC = _('Adding exclude on:')
+EXISTING_SPEC = _('Package already locked:')
 DELETING_SPEC = _('Deleting versionlock for:')
 NOTFOUND_SPEC = _('No package found for:')
 NO_VERSIONLOCK = _('Excludes from versionlock plugin were not applied')
@@ -155,13 +156,21 @@ class VersionLockCommand(dnf.cli.Command):
                 cmd = self.opts.subcommand
 
         if cmd == 'add':
-            _write_locklist(self.base, self.opts.package, self.opts.raw, True,
-                            "\n# Added locks on %s\n" % time.ctime(),
-                            ADDING_SPEC, '')
+            entry = _search_locklist(self.opts.package)
+            if entry == '':
+                _write_locklist(self.base, self.opts.package, self.opts.raw, True,
+                                "\n# Added lock on %s\n" % time.ctime(),
+                                ADDING_SPEC, '')
+            else:
+                logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'exclude':
-            _write_locklist(self.base, self.opts.package, self.opts.raw, False,
-                            "\n# Added exclude on %s\n" % time.ctime(),
-                            EXCLUDING_SPEC, '!')
+            entry = _search_locklist(self.opts.package)
+            if entry == '':
+                _write_locklist(self.base, self.opts.package, self.opts.raw, False,
+                                "\n# Added exclude on %s\n" % time.ctime(),
+                                EXCLUDING_SPEC, '!')
+            else:
+                logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'list':
             for pat in _read_locklist():
                 logger.info(pat)
@@ -200,6 +209,16 @@ def _read_locklist():
     except IOError as e:
         raise dnf.exceptions.Error(NOT_READABLE % e)
     return locklist
+
+
+def _search_locklist(package):
+    found = ''
+    locked_specs = _read_locklist()
+    for ent in locked_specs:
+        if _match(ent, package):
+            found = ent
+            break
+    return found
 
 
 def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
