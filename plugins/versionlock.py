@@ -163,7 +163,7 @@ class VersionLockCommand(dnf.cli.Command):
                                 "\n# Added lock on %s\n" % time.ctime(),
                                 ADDING_SPEC, '')
             elif cmd != entry_cmd:
-                raise dnf.exceptions.Error(CONFLICTING_SPEC %('excluded: ' + entry))
+                raise dnf.exceptions.Error(CONFLICTING_SPEC % ('excluded: ' + entry))
             else:
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'exclude':
@@ -173,7 +173,7 @@ class VersionLockCommand(dnf.cli.Command):
                                 "\n# Added exclude on %s\n" % time.ctime(),
                                 EXCLUDING_SPEC, '!')
             elif cmd != entry_cmd:
-                raise dnf.exceptions.Error(CONFLICTING_SPEC %('locked: ' + entry))
+                raise dnf.exceptions.Error(CONFLICTING_SPEC % ('locked: ' + entry))
             else:
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'list':
