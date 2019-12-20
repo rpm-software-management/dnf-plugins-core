@@ -33,7 +33,8 @@ NOT_READABLE = _('Unable to read version lock configuration: %s')
 NO_LOCKLIST = _('Locklist not set')
 ADDING_SPEC = _('Adding versionlock on:')
 EXCLUDING_SPEC = _('Adding exclude on:')
-EXISTING_SPEC = _('Package already locked:')
+EXISTING_SPEC = _('Package already locked in equivalent form:')
+CONFLICTING_SPEC = _('Package already %s')
 DELETING_SPEC = _('Deleting versionlock for:')
 NOTFOUND_SPEC = _('No package found for:')
 NO_VERSIONLOCK = _('Excludes from versionlock plugin were not applied')
@@ -156,19 +157,23 @@ class VersionLockCommand(dnf.cli.Command):
                 cmd = self.opts.subcommand
 
         if cmd == 'add':
-            entry = _search_locklist(self.opts.package)
+            (entry, entry_cmd) = _search_locklist(self.opts.package)
             if entry == '':
                 _write_locklist(self.base, self.opts.package, self.opts.raw, True,
                                 "\n# Added lock on %s\n" % time.ctime(),
                                 ADDING_SPEC, '')
+            elif cmd != entry_cmd:
+                raise dnf.exceptions.Error(CONFLICTING_SPEC %('excluded: ' + entry))
             else:
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'exclude':
-            entry = _search_locklist(self.opts.package)
+            (entry, entry_cmd) = _search_locklist(self.opts.package)
             if entry == '':
                 _write_locklist(self.base, self.opts.package, self.opts.raw, False,
                                 "\n# Added exclude on %s\n" % time.ctime(),
                                 EXCLUDING_SPEC, '!')
+            elif cmd != entry_cmd:
+                raise dnf.exceptions.Error(CONFLICTING_SPEC %('locked: ' + entry))
             else:
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'list':
@@ -212,13 +217,14 @@ def _read_locklist():
 
 
 def _search_locklist(package):
-    found = ''
+    found = action = ''
     locked_specs = _read_locklist()
     for ent in locked_specs:
         if _match(ent, package):
             found = ent
+            action = 'exclude' if ent.startswith('!') else 'add'
             break
-    return found
+    return (found, action)
 
 
 def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
