@@ -34,7 +34,8 @@ NO_LOCKLIST = _('Locklist not set')
 ADDING_SPEC = _('Adding versionlock on:')
 EXCLUDING_SPEC = _('Adding exclude on:')
 EXISTING_SPEC = _('Package already locked in equivalent form:')
-CONFLICTING_SPEC = _('Package already %s')
+ALREADY_LOCKED = _('Package {} is already locked')
+ALREADY_EXCLUDED = _('Package {} is already excluded')
 DELETING_SPEC = _('Deleting versionlock for:')
 NOTFOUND_SPEC = _('No package found for:')
 NO_VERSIONLOCK = _('Excludes from versionlock plugin were not applied')
@@ -163,7 +164,7 @@ class VersionLockCommand(dnf.cli.Command):
                                 "\n# Added lock on %s\n" % time.ctime(),
                                 ADDING_SPEC, '')
             elif cmd != entry_cmd:
-                raise dnf.exceptions.Error(CONFLICTING_SPEC % ('excluded: ' + entry))
+                raise dnf.exceptions.Error(ALREADY_EXCLUDED.format(entry))
             else:
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'exclude':
@@ -173,7 +174,7 @@ class VersionLockCommand(dnf.cli.Command):
                                 "\n# Added exclude on %s\n" % time.ctime(),
                                 EXCLUDING_SPEC, '!')
             elif cmd != entry_cmd:
-                raise dnf.exceptions.Error(CONFLICTING_SPEC % ('locked: ' + entry))
+                raise dnf.exceptions.Error(ALREADY_LOCKED.format(entry))
             else:
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'list':
