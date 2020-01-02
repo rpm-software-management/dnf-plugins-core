@@ -67,11 +67,6 @@ class ConfigManagerCommand(dnf.cli.Command):
 
     def run(self):
         """Execute the util action here."""
-
-        if self.opts.set_enabled and not self.opts.crepo:
-            logger.error(_("Error: Trying to enable already enabled repos."))
-            self.opts.set_enabled = False
-
         if self.opts.add_repo:
             self.add_repo()
         else:
