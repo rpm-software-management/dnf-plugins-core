@@ -179,7 +179,7 @@ class VersionLockCommand(dnf.cli.Command):
                 logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'list':
             for pat in _read_locklist():
-                logger.info(pat)
+                print(pat)
         elif cmd == 'clear':
             with open(locklist_fn, 'w') as f:
                 # open in write mode truncates file
@@ -192,7 +192,7 @@ class VersionLockCommand(dnf.cli.Command):
             with os.fdopen(out, 'w', -1) as out:
                 for ent in locked_specs:
                     if _match(ent, self.opts.package):
-                        logger.info("%s %s", DELETING_SPEC, ent)
+                        print("%s %s" % (DELETING_SPEC, ent))
                         count += 1
                         continue
                     out.write(ent)
@@ -207,6 +207,8 @@ class VersionLockCommand(dnf.cli.Command):
 def _read_locklist():
     locklist = []
     try:
+        if not locklist_fn:
+            raise dnf.exceptions.Error(NO_LOCKLIST)
         with open(locklist_fn) as llfile:
             for line in llfile.readlines():
                 if line.startswith('#') or line.strip() == '':
@@ -243,7 +245,7 @@ def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
             pkgs = subj.get_best_query(base.sack, with_nevra=True, with_provides=False,
                                        with_filenames=False)
         if not pkgs:
-            logger.info("%s %s", NOTFOUND_SPEC, pat)
+            print("%s %s" % (NOTFOUND_SPEC, pat))
 
         for pkg in pkgs:
             specs.add(pkgtup2spec(*pkg.pkgtup))
@@ -252,7 +254,7 @@ def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
         with open(locklist_fn, 'a') as f:
             f.write(comment)
             for spec in specs:
-                logger.info("%s %s", info, spec)
+                print("%s %s" % (info, spec))
                 f.write("%s%s\n" % (prefix, spec))
 
 
