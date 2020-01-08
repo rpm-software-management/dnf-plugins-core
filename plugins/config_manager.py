@@ -39,19 +39,22 @@ class ConfigManagerCommand(dnf.cli.Command):
 
     @staticmethod
     def set_argparser(parser):
-        parser.add_argument(
-            'crepo', nargs='*', metavar='repo',
+        argument_group = parser.add_argument_group('Plugin config-manager options')
+        mutually_x_grp = gp.add_mutually_exclusive_group(required=True)
+
+        mutually_x_grp.add_argument(
+            'crepo', nargs='*', metavar='repo', default="",
             help=_('repo to modify'))
-        parser.add_argument(
+        mutually_x_grp.add_argument(
             '--save', default=False, action='store_true',
             help=_('save the current options (useful with --setopt)'))
-        parser.add_argument(
+        mutually_x_grp.add_argument(
             '--add-repo', default=[], action='append', metavar='URL',
             help=_('add (and enable) the repo from the specified file or url'))
-        parser.add_argument(
+        mutually_x_grp.add_argument(
             '--dump', default=False, action='store_true',
             help=_('print current configuration values to stdout'))
-        parser.add_argument(
+        mutually_x_grp.add_argument(
             '--dump-variables', default=False, action='store_true',
             help=_('print variable values to stdout'))
 
