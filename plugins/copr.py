@@ -217,7 +217,7 @@ class CoprCommand(dnf.cli.Command):
         try:
             chroot = self.opts.arg[1]
         except IndexError:
-            chroot = self._guess_chroot(self.chroot_config)
+            chroot = self._guess_chroot()
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "search":
@@ -393,35 +393,30 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             raise dnf.exceptions.Error(
                 _('This command has to be run under the root user.'))
 
-    @staticmethod
-    def _guess_chroot(chroot_config):
+    def _guess_chroot(self):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
-        dist = chroot_config
+        dist = self.chroot_config
         if dist is None or (dist[0] is False) or (dist[1] is False):
             dist = linux_distribution()
+        # Get distribution architecture
+        distarch = self.base.conf.substitutions['basearch']
         if "Fedora" in dist:
-            # x86_64 because repo-file is same for all arch
-            # ($basearch is used)
             if "Rawhide" in dist:
-                chroot = ("fedora-rawhide-x86_64")
+                chroot = ("fedora-rawhide-" + distarch)
             # workaround for enabling repos in Rawhide when VERSION in os-release
             # contains a name other than Rawhide
             elif "rawhide" in os_release_attr("redhat_support_product_version"):
-                chroot = ("fedora-rawhide-x86_64")
+                chroot = ("fedora-rawhide-" + distarch)
             else:
-                chroot = ("fedora-{}-x86_64".format(dist[1]))
+                chroot = ("fedora-{0}-{1}".format(dist[1], distarch))
         elif "Mageia" in dist:
-            # Get distribution architecture (Mageia does not use $basearch)
-            distarch = rpm.expandMacro("%{distro_arch}")
             # Set the chroot
             if "Cauldron" in dist:
                 chroot = ("mageia-cauldron-{}".format(distarch))
             else:
                 chroot = ("mageia-{0}-{1}".format(dist[1], distarch))
         elif "openSUSE" in dist:
-            # Get distribution architecture (openSUSE does not use $basearch)
-            distarch = rpm.expandMacro("%{_target_cpu}")
             # Set the chroot
             if "Tumbleweed" in dist:
                 chroot = ("opensuse-tumbleweed-{}".format(distarch))
@@ -433,7 +428,7 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
 
     def _download_repo(self, project_name, repo_filename, chroot=None):
         if chroot is None:
-            chroot = self._guess_chroot(self.chroot_config)
+            chroot = self._guess_chroot()
         short_chroot = '-'.join(chroot.split('-')[:2])
         arch = chroot.split('-')[2]
         api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
@@ -610,7 +605,7 @@ Do you want to continue?""")
 
     def run(self):
         subcommand = self.opts.subcommand[0]
-        chroot = self._guess_chroot(self.chroot_config)
+        chroot = self._guess_chroot()
         if subcommand == "enable":
             self._cmd_enable(chroot)
             logger.info(_("Playground repositories successfully enabled."))
