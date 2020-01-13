@@ -40,7 +40,7 @@ class ConfigManagerCommand(dnf.cli.Command):
     @staticmethod
     def set_argparser(parser):
         argument_group = parser.add_argument_group('Plugin config-manager options')
-        mutually_x_grp = gp.add_mutually_exclusive_group(required=True)
+        mutually_x_grp = argument_group.add_mutually_exclusive_group(required=True)
 
         mutually_x_grp.add_argument(
             'crepo', nargs='*', metavar='repo', default="",
