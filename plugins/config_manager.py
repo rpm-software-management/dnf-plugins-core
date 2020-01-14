@@ -60,6 +60,20 @@ class ConfigManagerCommand(dnf.cli.Command):
         demands = self.cli.demands
         demands.available_repos = True
 
+        # if no argument was passed then error
+        if (not (self.opts.crepo != [] or
+                 self.opts.add_repo != [] or
+                 self.opts.save or
+                 self.opts.dump or
+                 self.opts.dump_variables or
+                 self.opts.set_disabled or
+                 self.opts.set_enabled) ):
+            self.cli.optparser.error(_("one of the arguments {} is required")
+                                     .format(' '.join([
+                                         "repo", "--save", "--add-repo",
+                                         "--dump", "--dump-variables",
+                                         "--enable", "--disable"])))
+
         if (self.opts.save or self.opts.set_enabled or
                 self.opts.set_disabled or self.opts.add_repo):
             demands.root_user = True
