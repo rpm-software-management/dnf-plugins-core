@@ -249,21 +249,20 @@ class DownloadCommand(dnf.cli.Command):
     def _get_packages_with_deps(self, pkg_specs, source=False):
         """Get packages matching pkg_specs and the deps."""
         pkgs = self._get_packages(pkg_specs)
-        goal = hawkey.Goal(self.base.sack)
+        pkg_set = set(pkgs)
         for pkg in pkgs:
+            goal = hawkey.Goal(self.base.sack)
             goal.install(pkg)
-        rc = goal.run()
-        if rc:
-            new_pkgs = goal.list_installs() + goal.list_upgrades()
-            for pkg in pkgs:
-                if pkg not in new_pkgs:
-                    new_pkgs += [pkg]
-            return new_pkgs
-        else:
-            msg = [_('Error in resolve of packages:')]
-            logger.warning("\n    ".join(msg + [str(pkg) for pkg in pkgs]))
-            logger.warning(dnf.util._format_resolve_problems(goal.problem_rules()))
-            return []
+            rc = goal.run()
+            if rc:
+                pkg_set.update(goal.list_installs())
+                pkg_set.update(goal.list_upgrades())
+            else:
+                msg = [_('Error in resolve of packages:')]
+                logger.warning("\n    ".join(msg + [str(pkg) for pkg in pkgs]))
+                logger.warning(dnf.util._format_resolve_problems(goal.problem_rules()))
+                return []
+        return pkg_set
 
     @staticmethod
     def _get_source_packages(pkgs):
