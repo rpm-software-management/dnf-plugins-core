@@ -22,6 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.13 Release Notes
+====================
+
+- Fix: config_manager respect config file location during save
+- [reposync] Fix --delete with multiple repos (RhBug:1774103)
+- Redesign reposync --latest for modular system (RhBug:1775434)
+- [doc] Skip creating and installing migrate documentation for Python 3+
+- [config-manager] Allow use of --set-enabled without arguments (RhBug:1679213)
+- [versionlock] Prevent conflicting/duplicate entries (RhBug:1782052)
+
+Bugs fixed in 4.0.13:
+
+* :rhbug:`1679213`
+* :rhbug:`1782052`
+* :rhbug:`1775434`
+* :rhbug:`1774103`
+
+====================
 4.0.12 Release Notes
 ====================
 

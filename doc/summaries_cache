@@ -522,5 +522,21 @@
     [
         1706386,
         "[RFE] Discoverable man page names for DNF plugins"
+    ],
+    [
+        1679213,
+        "yum-config-manager --enable/--disable without arguments is ambiguous"
+    ],
+    [
+        1782052,
+        "dnf versionlock will accept equivalent package names to add or exclude multiple times"
+    ],
+    [
+        1775434,
+        "reposync does not properly sync modules with --newest option"
+    ],
+    [
+        1774103,
+        "The '--delete' option when used with reposync command deletes the packages immediately after download."
     ]
 ]

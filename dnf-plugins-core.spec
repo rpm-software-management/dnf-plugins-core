@@ -31,7 +31,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.12
+Version:        4.0.13
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -740,6 +740,14 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Wed Jan 15 2020 Aleš Matěj <amatej@redhat.com> - 4.0.13-1
+- Fix: config_manager respect config file location during save
+- Redesign reposync --latest for modular system (RhBug:1775434)
+- [reposync] Fix --delete with multiple repos (RhBug:1774103)
+- [doc] Skip creating and installing migrate documentation for Python 3+
+- [config-manager] Allow use of --set-enabled without arguments (RhBug:1679213)
+- [versionlock] Prevent conflicting/duplicate entries (RhBug:1782052)
+
 * Mon Nov 25 2019 Aleš Matěj <amatej@redhat.com> - 4.0.12-1
 - [reposync] Add --urls option (RhBug:1686602)
 - [versionlock] Add --raw option (RhBug:1645564)
