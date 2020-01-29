@@ -71,6 +71,8 @@ class RepoSyncCommand(dnf.cli.Command):
                             help=_('download only newest packages per-repo'))
         parser.add_argument('-p', '--download-path', default='./',
                             help=_('where to store downloaded repositories'))
+        parser.add_argument('--norepopath', default=False, action='store_true',
+                            help=_("Don't add the reponame to the download path."))
         parser.add_argument('--metadata-path',
                             help=_('where to store downloaded repository metadata. '
                                    'Defaults to the value of --download-path.'))
@@ -101,6 +103,10 @@ class RepoSyncCommand(dnf.cli.Command):
 
         if self.opts.source:
             repos.enable_source_repos()
+
+        if len(list(repos.iter_enabled())) > 1 and self.opts.norepopath:
+            raise dnf.cli.CliError(
+                _("Can't use --norepopath with multiple repositories"))
 
         for repo in repos.iter_enabled():
             repo._repo.expire()
@@ -148,7 +154,8 @@ class RepoSyncCommand(dnf.cli.Command):
                 self.delete_old_local_packages(repo, pkglist)
 
     def repo_target(self, repo):
-        return _pkgdir(self.opts.destdir or self.opts.download_path, repo.id)
+        return _pkgdir(self.opts.destdir or self.opts.download_path,
+                       repo.id if not self.opts.norepopath else '')
 
     def metadata_target(self, repo):
         if self.opts.metadata_path:
