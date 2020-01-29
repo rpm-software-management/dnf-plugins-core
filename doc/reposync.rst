@@ -41,6 +41,9 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
 
 ``-p <download-path>, --download-path=<download-path>``
     Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
+    
+``--norepopath``
+    Don't add the reponame to the download path. Can only be used when syncing a single repository (default is to add the reponame).
 
 ``--download-metadata``
     Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it.
