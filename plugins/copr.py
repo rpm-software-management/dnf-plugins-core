@@ -411,12 +411,16 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             else:
                 chroot = ("fedora-{0}-{1}".format(dist[1], distarch))
         elif "Mageia" in dist:
+            # Get distribution architecture (Mageia does not use $basearch)
+            distarch = rpm.expandMacro("%{distro_arch}")
             # Set the chroot
             if "Cauldron" in dist:
                 chroot = ("mageia-cauldron-{}".format(distarch))
             else:
                 chroot = ("mageia-{0}-{1}".format(dist[1], distarch))
         elif "openSUSE" in dist:
+            # Get distribution architecture (openSUSE does not use $basearch)
+            distarch = rpm.expandMacro("%{_target_cpu}")
             # Set the chroot
             if "Tumbleweed" in dist:
                 chroot = ("opensuse-tumbleweed-{}".format(distarch))
