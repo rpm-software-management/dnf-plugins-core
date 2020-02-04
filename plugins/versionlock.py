@@ -77,9 +77,6 @@ class VersionLock(dnf.Plugin):
             logger.debug(NO_VERSIONLOCK)
             return
 
-        if not locklist_fn:
-            raise dnf.exceptions.Error(NO_LOCKLIST)
-
         excludes_query = self.base.sack.query().filter(empty=True)
         locked_query = self.base.sack.query().filter(empty=True)
         locked_names = set()
@@ -181,10 +178,14 @@ class VersionLockCommand(dnf.cli.Command):
             for pat in _read_locklist():
                 print(pat)
         elif cmd == 'clear':
+            if not locklist_fn:
+                raise dnf.exceptions.Error(NO_LOCKLIST)
             with open(locklist_fn, 'w') as f:
                 # open in write mode truncates file
                 pass
         elif cmd == 'delete':
+            if not locklist_fn:
+                raise dnf.exceptions.Error(NO_LOCKLIST)
             dirname = os.path.dirname(locklist_fn)
             (out, tmpfilename) = tempfile.mkstemp(dir=dirname, suffix='.tmp')
             locked_specs = _read_locklist()
@@ -251,12 +252,16 @@ def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
             specs.add(pkgtup2spec(*pkg.pkgtup))
 
     if specs:
-        with open(locklist_fn, 'a') as f:
-            f.write(comment)
-            for spec in specs:
-                print("%s %s" % (info, spec))
-                f.write("%s%s\n" % (prefix, spec))
-
+        try:
+            if not locklist_fn:
+                raise dnf.exceptions.Error(NO_LOCKLIST)
+            with open(locklist_fn, 'a') as f:
+                f.write(comment)
+                for spec in specs:
+                    print("%s %s" % (info, spec))
+                    f.write("%s%s\n" % (prefix, spec))
+        except IOError as e:
+            raise dnf.exceptions.Error(NOT_READABLE % e)
 
 def _match(ent, patterns):
     ent = ent.lstrip('!')
