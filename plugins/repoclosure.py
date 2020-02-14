@@ -59,9 +59,11 @@ class RepoClosureCommand(dnf.cli.Command):
             module_dict, base_query, non_modular = self._prepare_module_data()
             module_string_list = sorted(module_dict.keys())
             combinations, broken_module_dict = self._get_module_combinations(module_string_list)
+            if broken_module_dict:
+                self._report_unresolved_modules_to_terminal(broken_module_dict)
             problem = self._analyze_modular_combinations(
                 arch, combinations, base_query, module_dict, non_modular)
-            if problem:
+            if problem or broken_module_dict:
                 self._raise_unresolved_dependencies()
         else:
             unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
@@ -243,6 +245,14 @@ class RepoClosureCommand(dnf.cli.Command):
             print("package: {} from {}".format(str(pkg), pkg.reponame))
             print("  unresolved deps:")
             for dep in unresolved[pkg]:
+                print("    {}".format(dep))
+
+    @staticmethod
+    def _report_unresolved_modules_to_terminal(unresolved):
+        for module in sorted(unresolved.keys()):
+            print("module: {}".format(module))
+            print("  unresolved deps:")
+            for dep in unresolved[module]:
                 print("    {}".format(dep))
 
     @staticmethod
