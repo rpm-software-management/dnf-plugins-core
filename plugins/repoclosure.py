@@ -24,6 +24,7 @@ from __future__ import unicode_literals
 from dnfpluginscore import _
 
 import dnf.cli
+import hawkey
 
 
 class RepoClosure(dnf.Plugin):
@@ -54,9 +55,187 @@ class RepoClosureCommand(dnf.cli.Command):
 
     def run(self):
         arch = self.opts.arches if self.opts.arches else None
-        unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
-                                          self.base.sack.query().available())
-        self._report_results_to_terminal(unresolved)
+        if self.opts.modules:
+            module_dict, base_query, non_modular = self._prepare_module_data()
+            module_string_list = sorted(module_dict.keys())
+            combinations, broken_module_dict = self._get_module_combinations(module_string_list)
+            problem = self._analyze_modular_combinations(
+                arch, combinations, base_query, module_dict, non_modular)
+            if problem:
+                self._raise_unresolved_dependencies()
+        else:
+            unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
+                                              self.base.sack.query().available())
+            self._report_results_to_terminal(unresolved)
+            if len(unresolved) > 0:
+                self._raise_unresolved_dependencies()
+
+    def _analyze_modular_combinations(self, arch, combinations, query, module_dict, non_modular):
+        problem = False
+        whatrequires_dict = {}  # {pkg: query}
+        for combination in combinations:
+            include_query = query.filter(empty=True)
+            exclude_name_query = query.filter(empty=True)
+            for module_substream_string in combination:
+                artifacts, include, exclude = module_dict[module_substream_string]
+                include_query = include_query.union(include)
+                exclude_name_query = exclude_name_query.union(exclude)
+            test_query = non_modular.union(include_query).filterm(
+                pkg__neq=exclude_name_query)
+            to_check = include_query
+            for pkg in exclude_name_query:
+                whatrequires = whatrequires_dict.setdefault(
+                    pkg, query.filter(requires=[pkg]))
+                to_check = to_check.union(whatrequires)
+            to_check.filterm(pkg__neq=exclude_name_query)
+            unresolved = self._get_unresolved(arch, test_query, to_check)
+            if unresolved:
+                msg = _("Problems in module combination: '{}'").format(" ".join(combination))
+                print(msg)
+                self._report_results_to_terminal(unresolved)
+                problem = True
+        return problem
+
+    def _get_module_combinations(self, module_substream_string_list):
+        dependent_combinations = []
+        broken_module_stream_dep = {}
+        for module_stream_dep in module_substream_string_list:
+            found, broken = self._get_dependencies(
+                [module_stream_dep], module_substream_string_list)
+            if broken:
+                for key, value in broken.items():
+                    broken_module_stream_dep.setdefault(key, set()).update(value)
+            if found:
+                dependent_combinations.extend(found)
+        return dependent_combinations, broken_module_stream_dep
+
+    @staticmethod
+    def _find_dependencies(dependencies, module_stream_deps):
+        found_provider = set()
+        for module_stream_require in dependencies:
+            for mod_stream in module_stream_deps:
+                if mod_stream.startswith(module_stream_require):
+                    size_req = len(module_stream_require)
+                    if size_req >= len(mod_stream):
+                        continue
+                    if module_stream_require[-1] == ":" or mod_stream[size_req] == ":":
+                        found_provider.add(mod_stream)
+        return found_provider
+
+    def _get_dependencies(self, module_stream_dep_combination, module_substream_string_list):
+        broken_dependencies = {}
+        found_list = []
+        results = []
+        for module_stream_dep in module_stream_dep_combination:
+            requires = module_stream_dep.split(":", 2)[2]
+            if not requires:
+                continue
+            for module_streams in requires.split(";"):
+                dependencies = module_streams.split(",")
+                found_dep = self._find_dependencies(dependencies, module_stream_dep_combination)
+                if found_dep:
+                    continue
+                found_dep = self._find_dependencies(dependencies, module_substream_string_list)
+                if not found_dep:
+                    broken_dependencies.setdefault(module_stream_dep, set()).add(module_streams)
+                else:
+                    found_list.append(found_dep)
+        if not broken_dependencies:
+            if found_list:
+                for new_require in self._get_all_combinations(found_list):
+                    new_combinantion = module_stream_dep_combination + new_require
+                    result, broken = self._get_dependencies(new_combinantion,
+                                                            module_substream_string_list)
+                    if broken:
+                        broken_dependencies.update(broken)
+                    elif result:
+                        results.extend(result)
+            else:
+                results.append(module_stream_dep_combination)
+        return results, broken_dependencies if not results else set()
+
+    @staticmethod
+    def _get_all_combinations(found_list):
+        if not found_list:
+            return []
+        sorted_elements = []
+        for set_elements in found_list:
+            sorted_elements.append(list(sorted(set_elements)))
+        combinations = []
+        found_list_size = len(found_list)
+        base_patterns = [0 for x in range(found_list_size)]
+        while(True):
+            new_combination = []
+            #  create a new combination
+            for index in range(found_list_size):
+                new_combination.append(sorted_elements[index][base_patterns[index]])
+            combinations.append(new_combination)
+            all_combination_created = True
+            #  move indexes to create the next combination
+            for index in reversed(range(found_list_size)):
+                new_pattern_index = base_patterns[index] + 1
+                if new_pattern_index < len(sorted_elements[index]):
+                    all_combination_created = False
+                    base_patterns[index] = new_pattern_index
+                    index += 1
+                    while(index < found_list_size):
+                        base_patterns[index] = 0
+                        index += 1
+                    break
+            if all_combination_created:
+                break
+        return combinations
+
+    def _prepare_module_data(self):
+        modules = self.base._moduleContainer.getModulePackages()
+
+        #  module_substream_string <name>:<stream>:<requires>
+        module_dict = {}  # {module_substream_string: [artifacts, include_query, exclude_query]}}
+        all_artifacts = set()
+
+        for module in modules:
+            artifacts = module.getArtifacts()
+            all_artifacts.update(artifacts)
+            module_substream_string = "{}:{}:{}".format(
+                module.getName(), module.getStream(), self.get_requires_as_string(module))
+            module_dict.setdefault(module_substream_string, [set(), None, None])[0].update(
+                artifacts)
+
+        query = self.base.sack.query(flags=hawkey.IGNORE_MODULAR_EXCLUDES).available().apply()
+        non_modular = query.filter(pkg__neq=query.filter(nevra_strict=all_artifacts)).apply()
+
+        for list_elements in module_dict.values():
+            list_elements[1] = query.filter(nevra_strict=list_elements[0]).apply()
+            names = set()
+            for nevra_spec in list_elements[0]:
+                names.add(nevra_spec.rsplit("-", 2)[0])
+            list_elements[2] = non_modular.filter(name=names).apply()
+
+        return module_dict, query, non_modular
+
+    @staticmethod
+    def deplist_to_string(req_list):
+        req_string = []
+        for mod_require, streams in req_list:
+            module_stream_list = []
+            if streams:
+                for stream in streams:
+                    module_stream_list.append("{}:{}".format(mod_require, stream))
+            else:
+                module_stream_list.append("{}:".format(mod_require))
+            req_string.append(",".join(sorted(module_stream_list)))
+        return ";".join(sorted(req_string))
+
+    def get_requires_as_string(self, module):
+        req_list = []
+        for req in module.getModuleDependencies():
+            for require_dict in req.getRequires():
+                req.string = ""
+                for mod_require, stream in require_dict.items():
+                    if mod_require == "platform":
+                        continue
+                    req_list.append([mod_require, stream])
+        return self.deplist_to_string(req_list)
 
     @staticmethod
     def _report_results_to_terminal(unresolved):
@@ -65,9 +244,11 @@ class RepoClosureCommand(dnf.cli.Command):
             print("  unresolved deps:")
             for dep in unresolved[pkg]:
                 print("    {}".format(dep))
-        if len(unresolved) > 0:
-            msg = _("Repoclosure ended with unresolved dependencies.")
-            raise dnf.exceptions.Error(msg)
+
+    @staticmethod
+    def _raise_unresolved_dependencies():
+        msg = _("Repoclosure ended with unresolved dependencies.")
+        raise dnf.exceptions.Error(msg)
 
     def _get_unresolved(self, arch, available, to_check):
         unresolved = {}
