@@ -153,6 +153,8 @@ class RepoClosureCommand(dnf.cli.Command):
                                    "specified multiple times"))
         parser.add_argument("--check", default=[], action="append",
                             help=_("Specify repositories to check"))
+        parser.add_argument("--modules", action="store_true",
+                            help=_("Check all modular and nomodular content"))
         parser.add_argument("-n", "--newest", action="store_true",
                             help=_("Check only the newest packages in the "
                                    "repos"))
