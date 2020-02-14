@@ -56,7 +56,10 @@ class RepoClosureCommand(dnf.cli.Command):
         arch = self.opts.arches if self.opts.arches else None
         unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
                                           self.base.sack.query().available())
+        self._report_results_to_terminal(unresolved)
 
+    @staticmethod
+    def _report_results_to_terminal(unresolved):
         for pkg in sorted(unresolved.keys()):
             print("package: {} from {}".format(str(pkg), pkg.reponame))
             print("  unresolved deps:")
