@@ -53,10 +53,10 @@ class RepoClosureCommand(dnf.cli.Command):
                     repo.enable()
 
     def run(self):
-        if self.opts.arches:
-            unresolved = self._get_unresolved(self.opts.arches)
-        else:
-            unresolved = self._get_unresolved()
+        arch = self.opts.arches if self.opts.arches else None
+        unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
+                                          self.base.sack.query().available())
+
         for pkg in sorted(unresolved.keys()):
             print("package: {} from {}".format(str(pkg), pkg.reponame))
             print("  unresolved deps:")
@@ -66,7 +66,7 @@ class RepoClosureCommand(dnf.cli.Command):
             msg = _("Repoclosure ended with unresolved dependencies.")
             raise dnf.exceptions.Error(msg)
 
-    def _get_unresolved(self, arch=None):
+    def _get_unresolved(self, arch, available, to_check):
         unresolved = {}
         deps = set()
 
@@ -90,16 +90,15 @@ class RepoClosureCommand(dnf.cli.Command):
         # to_check  | all     | all                 | latest per repo | latest per repo     |
 
         if self.opts.newest:
-            available = self.base.sack.query().filter(empty=True)
-            to_check = self.base.sack.query().filter(empty=True)
+            available_tmp = self.base.sack.query().filter(empty=True)
+            to_check_tmp = self.base.sack.query().filter(empty=True)
             for repo in self.base.repos.iter_enabled():
                 available = \
-                    available.union(self.base.sack.query().filter(reponame=repo.id).latest())
+                    available_tmp.union(available.filter(reponame=repo.id).latest())
                 to_check = \
-                    to_check.union(self.base.sack.query().filter(reponame=repo.id).latest())
-        else:
-            available = self.base.sack.query().available()
-            to_check = self.base.sack.query().available()
+                    to_check_tmp.union(to_check.filter(reponame=repo.id).latest())
+            available = available_tmp
+            to_check = to_check_tmp
 
         if self.opts.pkglist:
             pkglist_q = self.base.sack.query().filter(empty=True)
