@@ -102,11 +102,13 @@ class RepoClosureCommand(dnf.cli.Command):
         dependent_combinations = []
         broken_module_stream_dep = {}
         for module_stream_dep in module_substream_string_list:
-            found, broken = self._get_dependencies(
+            found, broken, conflicts = self._get_dependencies(
                 [module_stream_dep], module_substream_string_list)
             if broken:
                 for key, value in broken.items():
                     broken_module_stream_dep.setdefault(key, set()).update(value)
+            if conflicts:
+                broken_module_stream_dep.setdefault(module_stream_dep, set()).update(conflicts)
             if found:
                 dependent_combinations.extend(found)
         return dependent_combinations, broken_module_stream_dep
@@ -125,7 +127,13 @@ class RepoClosureCommand(dnf.cli.Command):
         return found_provider
 
     def _get_dependencies(self, module_stream_dep_combination, module_substream_string_list):
-        broken_dependencies = {}
+        """
+        :return: [combinations with all dependencies],
+        {module_stream_dep: set(<broken modular dependencies>),
+        set(multiple streams from same nmodule)
+        """
+        broken_dependencies = {}  # {module_stream_dep: set(<broken modular dependencies>)
+        conflicts = set()
         found_list = []
         results = []
         for module_stream_dep in module_stream_dep_combination:
@@ -145,16 +153,41 @@ class RepoClosureCommand(dnf.cli.Command):
         if not broken_dependencies:
             if found_list:
                 for new_require in self._get_all_combinations(found_list):
-                    new_combinantion = module_stream_dep_combination + new_require
-                    result, broken = self._get_dependencies(new_combinantion,
-                                                            module_substream_string_list)
-                    if broken:
-                        broken_dependencies.update(broken)
+                    new_combination = set(module_stream_dep_combination).update(new_require)
+                    conflict = self._check_combination(new_combination)
+                    if conflict:
+                        conflicts.update(conflict)
+                        continue
+                    result, broken, conflict = self._get_dependencies(
+                        new_combination, module_substream_string_list)
+                    if broken or conflict:
+                        for module_stream_dep, broken_deps in broken.items():
+                            broken_dependencies.setdefault(
+                                module_stream_dep, set()).update(broken_deps)
+                        conflicts.update(conflict)
                     elif result:
                         results.extend(result)
             else:
-                results.append(module_stream_dep_combination)
-        return results, broken_dependencies if not results else set()
+                conflict = self._check_combination(module_stream_dep_combination)
+                if conflict:
+                    conflicts.update(conflict)
+                else:
+                    results.append(list(sorted(set(module_stream_dep_combination))))
+        if results:
+            return results, {}, set()
+        return results, broken_dependencies, conflicts
+
+    @staticmethod
+    def _check_combination(combination):
+        problem = []
+        unique_name = set()
+        for name_stream_dep in combination:
+            name = name_stream_dep.split(":", 1)[0]
+            if name in unique_name:
+                problem.append(name_stream_dep)
+            else:
+                unique_name.add(name)
+        return problem
 
     @staticmethod
     def _get_all_combinations(found_list):
@@ -189,6 +222,10 @@ class RepoClosureCommand(dnf.cli.Command):
         return combinations
 
     def _prepare_module_data(self):
+        """
+        :return: {module_substream_string: [artifacts, include_query, exclude_query]}},
+        query_with_all_available_pkgs_including_modules, query_with_all_non_modular_pkgs
+        """
         modules = self.base._moduleContainer.getModulePackages()
 
         #  module_substream_string <name>:<stream>:<requires>
