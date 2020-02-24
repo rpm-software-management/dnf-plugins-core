@@ -31,7 +31,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.13
+Version:        4.0.14
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -740,6 +740,12 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Mon Feb 24 2020 Aleš Matěj <amatej@redhat.com> - 4.0.14-1
+- Fix conflict for dnf download --resolve (RhBug:1787908)
+- config-manager calls parser error when without options (RhBug:1782822)
+- Update reposync.py with --norepopath option
+- Fix: don't open stdin if versionlock is missing (RhBug:1785563)
+
 * Wed Jan 15 2020 Aleš Matěj <amatej@redhat.com> - 4.0.13-1
 - Fix: config_manager respect config file location during save
 - Redesign reposync --latest for modular system (RhBug:1775434)

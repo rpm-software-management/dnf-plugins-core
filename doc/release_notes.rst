@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.14 Release Notes
+====================
+
+- Fix conflict for dnf download --resolve (RhBug:1787908)
+- config-manager calls parser error when without options (RhBug:1782822)
+- Update reposync.py with --norepopath option
+- Fix: don't open stdin if versionlock is missing (RhBug:1785563)
+
+Bugs fixed in 4.0.14:
+
+* :rhbug:`1787908`
+* :rhbug:`1782822`
+* :rhbug:`1785563`
+
+====================
 4.0.13 Release Notes
 ====================
 

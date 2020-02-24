@@ -538,5 +538,17 @@
     [
         1774103,
         "The '--delete' option when used with reposync command deletes the packages immediately after download."
+    ],
+    [
+        1787908,
+        "dnf treats identical package in two repositories (testing/stable) as conflicting request"
+    ],
+    [
+        1782822,
+        "dnf config-manager prints nothing and exits with 0"
+    ],
+    [
+        1785563,
+        "When using versionlock with -q option ALL outputs are dismissed"
     ]
 ]
