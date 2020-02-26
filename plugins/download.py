@@ -289,7 +289,7 @@ class DownloadCommand(dnf.cli.Command):
         subj = dnf.subject.Subject(pkg_spec)
         q = subj.get_best_query(self.base.sack, with_src=self.opts.source)
         q = q.available()
-        q = q.latest()
+        q = q.filterm(latest_per_arch_by_priority=True)
         if self.opts.arches:
             q = q.filter(arch=self.opts.arches)
         if len(q.run()) == 0:
