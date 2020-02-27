@@ -69,11 +69,13 @@ class RepoClosureCommand(dnf.cli.Command):
             unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
                                               self.base.sack.query().available())
             self._report_results_to_terminal(unresolved)
-            if len(unresolved) > 0:
+            if unresolved:
                 self._raise_unresolved_dependencies()
 
     def _analyze_modular_combinations(self, arch, combinations, query, module_dict, non_modular):
-        problem = False
+        problem = {}  # {test_name: {module_combination: unresolved_dict}}
+        error_msg = _("Problems in non modular packages")
+        self._analyze_modular_packages(problem, arch, non_modular, non_modular, error_msg, "non_modular", "non_modular")
         whatrequires_dict = {}  # {pkg: query}
         for combination in combinations:
             include_query = query.filter(empty=True)
@@ -85,18 +87,47 @@ class RepoClosureCommand(dnf.cli.Command):
             test_query = non_modular.union(include_query).filterm(
                 pkg__neq=exclude_name_query)
             to_check = include_query
+            combination_string = " ".join(combination)
+            error_msg = _("Unresolved dependencies for modular packages in module combination: "
+                          "'{}'").format(combination_string)
+            #  analyze modular packages
+            self._analyze_modular_packages(problem, arch, test_query, to_check, error_msg,
+                                           combination_string, "modular")
+            to_check.filterm(empty=True)
             for pkg in exclude_name_query:
                 whatrequires = whatrequires_dict.setdefault(
                     pkg, query.filter(requires=[pkg]))
                 to_check = to_check.union(whatrequires)
             to_check.filterm(pkg__neq=exclude_name_query)
-            unresolved = self._get_unresolved(arch, test_query, to_check)
-            if unresolved:
-                msg = _("Problems in module combination: '{}'").format(" ".join(combination))
-                print(msg)
-                self._report_results_to_terminal(unresolved)
-                problem = True
+            error_msg = _("Problems in non modular packages caused by module combination: "
+                          "'{}'").format(combination_string)
+            #  search for problems with non modular packages caused by module combinations
+            self._analyze_modular_packages(problem, arch, test_query, to_check, error_msg,
+                                           combination_string, "non_modular")
         return problem
+
+    def _analyze_modular_packages(self, problem_dict, arch, test_query, to_check, error_msg,
+                                  combination_name, type_test):
+        unresolved = self._get_unresolved(arch, test_query, to_check)
+        if unresolved:
+            print(error_msg)
+            self._report_results_to_terminal(unresolved)
+            problem_dict.setdefault(combination_name, {})[type_test] = \
+                self._convert_unresolved_to_string_dict(unresolved)
+
+    @staticmethod
+    def _convert_unresolved_to_string_dict(unresolved):
+        """
+        It is required for storage in json where package object hawkey,dep cannot be used
+        :param unresolved:
+        :return: {str(pkg): set(str(dep))}
+        """
+        converted_data = {}
+        for pkg, deps in unresolved.items():
+            new_deps = converted_data.setdefault(str(pkg), set())
+            for dep in deps:
+                new_deps.add(str(dep))
+        return converted_data
 
     def _get_module_combinations(self, module_substream_string_list):
         dependent_combinations = []
@@ -130,10 +161,10 @@ class RepoClosureCommand(dnf.cli.Command):
         """
         :return: [combinations with all dependencies],
         {module_stream_dep: set(<broken modular dependencies>),
-        set(multiple streams from same nmodule)
+        {combination_string: multiple streams from same module}
         """
         broken_dependencies = {}  # {module_stream_dep: set(<broken modular dependencies>)
-        conflicts = set()
+        conflicts = {}
         found_list = []
         results = []
         for module_stream_dep in module_stream_dep_combination:
@@ -153,10 +184,12 @@ class RepoClosureCommand(dnf.cli.Command):
         if not broken_dependencies:
             if found_list:
                 for new_require in self._get_all_combinations(found_list):
-                    new_combination = set(module_stream_dep_combination).update(new_require)
+                    new_combination = set(module_stream_dep_combination)
+                    new_combination.update(new_require)
                     conflict = self._check_combination(new_combination)
                     if conflict:
-                        conflicts.update(conflict)
+                        combination_string = " ".join(sorted(new_combination))
+                        conflicts.setdefault(combination_string, set()).update(conflict)
                         continue
                     result, broken, conflict = self._get_dependencies(
                         new_combination, module_substream_string_list)
@@ -170,23 +203,25 @@ class RepoClosureCommand(dnf.cli.Command):
             else:
                 conflict = self._check_combination(module_stream_dep_combination)
                 if conflict:
-                    conflicts.update(conflict)
+                    combination_string = " ".join(sorted(module_stream_dep_combination))
+                    conflicts.setdefault(combination_string, set()).update(conflict)
                 else:
                     results.append(list(sorted(set(module_stream_dep_combination))))
         if results:
-            return results, {}, set()
+            return results, {}, {}
         return results, broken_dependencies, conflicts
 
     @staticmethod
     def _check_combination(combination):
-        problem = []
-        unique_name = set()
+        problem = set()
+        unique_name = {}  # {unique_name: name_stream_dep}
         for name_stream_dep in combination:
             name = name_stream_dep.split(":", 1)[0]
             if name in unique_name:
-                problem.append(name_stream_dep)
+                problem.add(name_stream_dep)
+                problem.add(unique_name[name])
             else:
-                unique_name.add(name)
+                unique_name[name] = name_stream_dep
         return problem
 
     @staticmethod
