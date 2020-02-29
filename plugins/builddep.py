@@ -29,8 +29,11 @@ import dnf.cli
 import dnf.exceptions
 import dnf.rpm.transaction
 import dnf.yum.rpmtrans
+import libdnf.repo
 import os
 import rpm
+import shutil
+import tempfile
 
 
 @dnf.plugin.register_command
@@ -44,6 +47,35 @@ class BuildDepCommand(dnf.cli.Command):
     def __init__(self, cli):
         super(BuildDepCommand, self).__init__(cli)
         self._rpm_ts = dnf.rpm.transaction.initReadOnlyTransaction()
+        self.tempdirs = []
+
+    def __del__(self):
+        for temp_dir in self.tempdirs:
+            shutil.rmtree(temp_dir)
+
+    def _download_remote_file(self, pkgspec):
+        """
+        In case pkgspec is a remote URL, download it to a temporary location
+        and use the temporary file instead.
+        """
+        location = dnf.pycomp.urlparse.urlparse(pkgspec)
+        if location[0] in ('file', ''):
+            # just strip the file:// prefix
+            return location.path
+
+        downloader = libdnf.repo.Downloader()
+        temp_dir = tempfile.mkdtemp(prefix="dnf_builddep_")
+        temp_file = os.path.join(temp_dir, os.path.basename(pkgspec))
+        self.tempdirs.append(temp_dir)
+
+        temp_fo = open(temp_file, "wb+")
+        try:
+            downloader.downloadURL(self.base.conf._config, pkgspec, temp_fo.fileno())
+        except RuntimeError as ex:
+            raise
+        finally:
+            temp_fo.close()
+        return temp_file
 
     @staticmethod
     def set_argparser(parser):
@@ -95,6 +127,7 @@ class BuildDepCommand(dnf.cli.Command):
 
         pkg_errors = False
         for pkgspec in self.opts.packages:
+            pkgspec = self._download_remote_file(pkgspec)
             try:
                 if self.opts.srpm:
                     self._src_deps(pkgspec)
