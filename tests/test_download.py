@@ -81,7 +81,7 @@ class QueryStub(object):
             results = self._avail
         elif 'installed' in kwargs:
             results = self._inst
-        elif 'latest' in kwargs:
+        elif 'latest' in kwargs or 'latest_per_arch_by_priority' in kwargs:
             results = self._latest
 
         name = None
