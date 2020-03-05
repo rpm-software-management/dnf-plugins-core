@@ -97,8 +97,10 @@ Summary:        Core Plugins for DNF
 %{?python_provide:%python_provide python2-%{name}}
 BuildRequires:  python2-dnf >= %{dnf_lowest_compatible}
 %if 0%{?rhel} && 0%{?rhel} <= 7
+BuildRequires:  dbus-python
 BuildRequires:  python-nose
 %else
+BuildRequires:  python2-dbus
 BuildRequires:  python2-nose
 %endif
 BuildRequires:  python2-devel
@@ -108,8 +110,10 @@ Requires:       python2-distro
 Requires:       python2-dnf >= %{dnf_lowest_compatible}
 Requires:       python2-hawkey >= %{hawkey_version}
 %if 0%{?rhel} && 0%{?rhel} <= 7
+Requires:       dbus-python
 Requires:       python-dateutil
 %else
+Requires:       python2-dbus
 Requires:       python2-dateutil
 %endif
 Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
@@ -137,12 +141,14 @@ Additionally provides generate_completion_cache passive plugin.
 %package -n python3-%{name}
 Summary:    Core Plugins for DNF
 %{?python_provide:%python_provide python3-%{name}}
+BuildRequires:  python3-dbus
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-nose
 %if 0%{?fedora}
 Requires:       python3-distro
 %endif
+Requires:       python3-dbus
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
 Requires:       python3-dateutil

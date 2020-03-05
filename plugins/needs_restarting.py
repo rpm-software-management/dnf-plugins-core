@@ -29,6 +29,7 @@ from dnfpluginscore import logger, _
 
 import dnf
 import dnf.cli
+import dbus
 import functools
 import os
 import re
@@ -126,6 +127,30 @@ def print_cmd(pid):
     print('%d : %s' % (pid, command))
 
 
+def get_service_dbus(pid):
+    bus = dbus.SystemBus()
+    systemd_manager_object = bus.get_object(
+        'org.freedesktop.systemd1',
+        '/org/freedesktop/systemd1'
+    )
+    systemd_manager_interface = dbus.Interface(
+        systemd_manager_object,
+        'org.freedesktop.systemd1.Manager'
+    )
+    service_proxy = bus.get_object(
+        'org.freedesktop.systemd1',
+        systemd_manager_interface.GetUnitByPID(pid)
+    )
+    service_properties = dbus.Interface(
+        service_proxy, dbus_interface="org.freedesktop.DBus.Properties")
+    name = service_properties.Get(
+        "org.freedesktop.systemd1.Unit",
+        'Id'
+    )
+    if name.endswith(".service"):
+        return name
+    return
+
 def smap2opened_file(pid, line):
     slash = line.find('/')
     if slash < 0:
@@ -205,6 +230,8 @@ class NeedsRestartingCommand(dnf.cli.Command):
         parser.add_argument('-r', '--reboothint', action='store_true',
                             help=_("only report whether a reboot is required "
                                    "(exit code 1) or not (exit code 0)"))
+        parser.add_argument('-s', '--services', action='store_true',
+                            help=_("only report affected systemd services"))
 
     def configure(self):
         demands = self.cli.demands
@@ -251,5 +278,11 @@ class NeedsRestartingCommand(dnf.cli.Command):
             if pkg.installtime > process_start(ofile.pid):
                 stale_pids.add(ofile.pid)
 
+        if self.opts.services:
+            names = set([get_service_dbus(pid) for pid in sorted(stale_pids)])
+            for name in names:
+                if name is not None:
+                    print(name)
+            return 0
         for pid in sorted(stale_pids):
             print_cmd(pid)
