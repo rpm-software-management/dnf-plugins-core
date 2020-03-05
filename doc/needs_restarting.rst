@@ -48,3 +48,6 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``-r, --reboothint``
 
     Only report whether a reboot is required (exit code 1) or not (exit code 0).
+
+``-s, --services``
+    Only list the affected systemd services.
