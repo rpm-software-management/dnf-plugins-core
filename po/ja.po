@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-03 21:16-0500\n"
+"POT-Creation-Date: 2020-03-19 14:54+0100\n"
 "PO-Revision-Date: 2018-09-11 12:23+0000\n"
 "Last-Translator: Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>\n"
 "Language-Team: Japanese\n"
@@ -15,58 +15,451 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr "ファイルにインストール済みの rpm パッケージに関するダンプ情報"
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
+#: ../plugins/reposync.175df5c.py:42
+msgid "download all packages from remote repo"
+msgstr "リモート repo からすべてのパッケージをダウンロードします"
 
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr "リポジトリーコンテンツのダンプは試みないでください。"
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
+#: ../plugins/reposync.175df5c.py:48
+msgid "download only packages for this ARCH"
+msgstr "この ARCH 向けのパッケージのみをダウンロード"
 
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr "ダンプファイルの名前のオプション"
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
+#: ../plugins/reposync.175df5c.py:50
+msgid "delete local packages no longer present in repository"
+msgstr "リポジトリーにもはや存在しないローカルパッケージを削除"
 
-#: ../plugins/debug.py:95
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.175df5c.py:52
+msgid "also download comps.xml"
+msgstr "comps.xml もダウンロード"
+
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
+#: ../plugins/reposync.175df5c.py:54
+msgid "download only newest packages per-repo"
+msgstr "最新のパッケージ per-repo のみをダウンロード"
+
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
+msgid "where to store downloaded repositories "
+msgstr "ダウンロード済みリポジトリーの保管場所 "
+
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:80
+#: ../plugins/reposync.175df5c.py:58
+msgid "operate on source packages"
+msgstr "ソースパッケージでの操作"
+
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:190
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
-msgid "Output written to: %s"
-msgstr "書き込まれた出力: %s"
+msgid "[DELETED] %s"
+msgstr "[DELETED] %s"
 
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr "debug-dump ファイルに記録されたパッケージを復元します"
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:192
+#: ../plugins/reposync.175df5c.py:97
+#, python-format
+msgid "failed to delete file %s"
+msgstr "ファイル %s の削除に失敗しました"
 
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr "stdout に実行するコマンドを出力します。"
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
+#, python-format
+msgid "Could not make repository directory: %s"
+msgstr "リポジトリーディレクトリーを作成できませんでした: %s"
 
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr "記録されたパッケージの最新バージョンをインストールします。"
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:201
+#: ../plugins/reposync.175df5c.py:111
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr "リポジトリー %s の comps.xml が保存されました"
 
-#: ../plugins/debug.py:189
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr ""
+
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr ""
+
+#: ../plugins/changelog.py:51
 msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
-msgstr "アーキテクチャーを無視し、名前、エポック、バージョン、およびリリースと一致する不足のパッケージをインストールします。"
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr ""
 
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
-msgstr "指定したタイプに限定します"
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr ""
 
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr "ダンプファイルの名前"
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr ""
 
-#: ../plugins/debug.py:264
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr ""
+
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:90
 #, python-format
-msgid "Package %s is not available"
-msgstr "パッケージ %s は利用できません"
+msgid "No match for argument: %s"
+msgstr "一致した引数がありません: %s"
 
-#: ../plugins/debug.py:274
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr ""
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] ""
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr ""
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr ""
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:56
+msgid "install debuginfo packages"
+msgstr "debuginfo パッケージのインストール"
+
+#: ../plugins/debuginfo-install.py:180
 #, python-format
-msgid "Bad dnf debug file: %s"
-msgstr "不正な dnf デバッグファイル: %s"
+msgid ""
+"Could not find debuginfo package for the following available packages: %s"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:185
+#, python-format
+msgid ""
+"Could not find debugsource package for the following available packages: %s"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:190
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following installed packages: %s"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:195
+#, python-format
+msgid ""
+"Could not find debugsource package for the following installed packages: %s"
+msgstr ""
+
+#: ../plugins/debuginfo-install.py:199
+msgid "Unable to find a match"
+msgstr "一致するものが見つかりません"
+
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "バージョンロック設定の読み込みができません: %s"
+
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "ロックリストが設定されていません"
+
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr "versionlock を追加:"
+
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr "除外を追加:"
+
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:39
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr "versionlock を削除:"
+
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:40
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr "パッケージが見つかりませんでした:"
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:41
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "versionlock プラグインからの除外は適用されませんでした"
+
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:127
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
+msgstr "パッケージバージョンロックの制御"
+
+#: ../plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "yum の履歴、グループ、および yumdb データを dnf へ移行"
+
+#: ../plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "履歴データを移行中..."
+
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "ドット形式でパッケージの依存関係グラフ全体を出力"
+
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "何も提供しません: '%s'"
+
+#: ../plugins/versionlock.py:36
+msgid "Package already locked in equivalent form:"
+msgstr ""
+
+#: ../plugins/versionlock.py:37
+msgid "Package {} is already locked"
+msgstr ""
+
+#: ../plugins/versionlock.py:38
+msgid "Package {} is already excluded"
+msgstr ""
+
+#: ../plugins/versionlock.py:42 ../plugins/versionlock_master.py:39
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr "versionlock プラグイン: ファイル \"{}\" のロックルールの数を適用: {}"
+
+#: ../plugins/versionlock.py:43 ../plugins/versionlock_master.py:40
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr "versionlock プラグイン: ファイル \"{}\" の除外ルールの数を適用: {}"
+
+#: ../plugins/versionlock.py:44 ../plugins/versionlock_master.py:41
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr "versionlock プラグイン: パターンを解析できませんでした:"
+
+#: ../plugins/versionlock.py:133
+msgid "Use package specifications as they are, do not try to parse them"
+msgstr ""
+
+#: ../plugins/post-transaction-actions.py:71
+#, python-format
+msgid "Bad Action Line \"%s\": %s"
+msgstr ""
+
+#. unsupported state, skip it
+#: ../plugins/post-transaction-actions.py:130
+#, python-format
+msgid "Bad Transaction State: %s"
+msgstr ""
+
+#: ../plugins/post-transaction-actions.py:153
+#: ../plugins/post-transaction-actions.py:155
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr ""
+
+#: ../plugins/post-transaction-actions.py:157
+#, python-format
+msgid "post-transaction-actions: Bad Command \"%s\": %s"
+msgstr ""
+
+#: ../plugins/builddep.py:45
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PACKAGE|PACKAGE.spec]"
+
+#: ../plugins/builddep.py:85
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "'%s' は、'MACRO EXPR' の形式ではありません"
+
+#: ../plugins/builddep.py:90
+msgid "packages with builddeps to install"
+msgstr "インストールする builddeps パッケージ"
+
+#: ../plugins/builddep.py:93
+msgid "define a macro for spec file parsing"
+msgstr "スペックファイルの解析にマクロを定義"
+
+#: ../plugins/builddep.py:95
+msgid "skip build dependencies not available in repositories"
+msgstr ""
+
+#: ../plugins/builddep.py:98
+msgid "treat commandline arguments as spec files"
+msgstr "コマンドラインの引数をスペックファイルとして処理"
+
+#: ../plugins/builddep.py:100
+msgid "treat commandline arguments as source rpm"
+msgstr "コマンドラインの引数をソース rpm として処理"
+
+#: ../plugins/builddep.py:144
+msgid "RPM: {}"
+msgstr ""
+
+#: ../plugins/builddep.py:153
+msgid "Some packages could not be found."
+msgstr "一部のパッケージは見つかりませんでした。"
+
+#. No provides, no files
+#. Richdeps can have no matches but it could be correct (solver must decide
+#. later)
+#: ../plugins/builddep.py:173
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "インストール用の一致するパッケージがありません: '%s'"
+
+#: ../plugins/builddep.py:191
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "開くことに失敗しました: '%s'、有効なソース rpm ファイルではありません。"
+
+#: ../plugins/builddep.py:204 ../plugins/builddep.py:220
+#: ../plugins/builddep.py:237
+msgid "Not all dependencies satisfied"
+msgstr "すべての依存関係が満たされているわけではない"
+
+#: ../plugins/builddep.py:211
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "開くことに失敗しました: '%s'、有効なスペックファイルではありません: %s"
+
+#: ../plugins/builddep.py:230 ../plugins/repoclosure.py:118
+#, python-format
+msgid "no package matched: %s"
+msgstr "一致するパッケージはありません: %s"
+
+#: ../plugins/config_manager.py:37
+#, python-brace-format
+msgid "manage {prog} configuration options and repositories"
+msgstr ""
+
+#: ../plugins/config_manager.py:44
+msgid "repo to modify"
+msgstr "修正する repo"
+
+#: ../plugins/config_manager.py:47
+msgid "save the current options (useful with --setopt)"
+msgstr "現在のオプションを保存 (--setopt で有用)"
+
+#: ../plugins/config_manager.py:50
+msgid "add (and enable) the repo from the specified file or url"
+msgstr "指定されたファイルまたは url から repo を追加 (および有効化)"
+
+#: ../plugins/config_manager.py:53
+msgid "print current configuration values to stdout"
+msgstr "stdout に現在の設定値を印刷"
+
+#: ../plugins/config_manager.py:56
+msgid "print variable values to stdout"
+msgstr "stdout に変数値を印刷"
+
+#: ../plugins/config_manager.py:70
+msgid "one of the following arguments is required: {}"
+msgstr ""
+
+#: ../plugins/config_manager.py:113
+#, python-format
+msgid "No matching repo to modify: %s."
+msgstr "修正用の一致する repo はありません: %s."
+
+#: ../plugins/config_manager.py:164
+#, python-format
+msgid "Adding repo from: %s"
+msgstr "repo の追加: %s"
+
+#: ../plugins/config_manager.py:188
+msgid "Configuration of repo failed"
+msgid_plural "Configuration of repos failed"
+msgstr[0] "repo の設定に失敗しました"
+
+#: ../plugins/config_manager.py:198
+#, python-format
+msgid "Could not save repo to repofile %s: %s"
+msgstr "repofile %s に repo を保存できませんでした: %s"
+
+#: ../plugins/local.py:122
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "'{}' のため、ディレクトリー '{}' を作成できませんでした"
+
+#: ../plugins/local.py:126
+msgid "'{}' is not a directory"
+msgstr "'{}' はディレクトリーではありません"
+
+#: ../plugins/local.py:135
+msgid "Copying '{}' to local repo"
+msgstr "ローカル repo に '{}' をコピー中"
+
+#: ../plugins/local.py:141
+msgid "Can't write file '{}'"
+msgstr "ファイル '{}' を書き込みできません"
+
+#: ../plugins/local.py:156
+msgid "Rebuilding local repo"
+msgstr "ローカル repo を再ビルド中"
+
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr "他のパッケージから必要とされないインスール済みパッケージを一覧表示します"
+
+#: ../plugins/needs_restarting.py:173
+msgid "determine updated binaries that need restarting"
+msgstr "再起動が必要な更新済みバイナリーを決定します"
+
+#: ../plugins/needs_restarting.py:178
+msgid "only consider this user's processes"
+msgstr "このユーザーのプロセスのみを検討します"
+
+#: ../plugins/needs_restarting.py:180
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:199
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:204
+msgid "Reboot is required to fully utilize these updates."
+msgstr ""
+
+#: ../plugins/needs_restarting.py:205
+msgid "More information:"
+msgstr ""
+
+#: ../plugins/needs_restarting.py:209
+msgid "No core libraries or services have been updated since boot-up."
+msgstr ""
+
+#: ../plugins/needs_restarting.py:211
+msgid "Reboot should not be necessary."
+msgstr ""
+
+#: ../plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "リポジトリーの未解決の依存関係の一覧を表示します"
+
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "repoclosure は未解決の依存関係で終了しました。"
+
+#: ../plugins/repoclosure.py:153
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr "特定の arch のパッケージを確認します。複数回指定することができます"
+
+#: ../plugins/repoclosure.py:156
+msgid "Specify repositories to check"
+msgstr "確認するリポジトリーを指定します"
+
+#: ../plugins/repoclosure.py:158
+msgid "Check only the newest packages in the repos"
+msgstr "repo の最新パッケージのみを確認します"
+
+#: ../plugins/repoclosure.py:161
+msgid "Check closure for this package only"
+msgstr "このパッケージのみのクロージャーを確認します"
 
 #: ../plugins/repodiff.py:45
 msgid "List differences between two sets of repositories"
@@ -194,34 +587,93 @@ msgstr ""
 msgid "Size change: {}"
 msgstr ""
 
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "リポジトリーの未解決の依存関係の一覧を表示します"
+#: ../plugins/reposync.py:67
+msgid "also download and uncompress comps.xml"
+msgstr ""
 
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "repoclosure は未解決の依存関係で終了しました。"
+#: ../plugins/reposync.py:69
+msgid "download all the metadata."
+msgstr ""
 
-#: ../plugins/repoclosure.py:118 ../plugins/builddep.py:195
+#: ../plugins/reposync.py:73
+msgid "where to store downloaded repositories"
+msgstr ""
+
+#: ../plugins/reposync.py:75
+msgid "Don't add the reponame to the download path."
+msgstr ""
+
+#: ../plugins/reposync.py:77
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+
+#: ../plugins/reposync.py:82
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+
+#: ../plugins/reposync.py:85
+msgid "Just list urls of what would be downloaded, don't download"
+msgstr ""
+
+#: ../plugins/reposync.py:109
+msgid "Can't use --norepopath with multiple repositories"
+msgstr ""
+
+#: ../plugins/reposync.py:127
 #, python-format
-msgid "no package matched: %s"
-msgstr "一致するパッケージはありません: %s"
+msgid "Failed to get mirror for metadata: %s"
+msgstr ""
 
-#: ../plugins/repoclosure.py:153
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr "特定の arch のパッケージを確認します。複数回指定することができます"
+#: ../plugins/reposync.py:144
+msgid "Failed to get mirror for the group file."
+msgstr ""
 
-#: ../plugins/repoclosure.py:156
-msgid "Specify repositories to check"
-msgstr "確認するリポジトリーを指定します"
+#: ../plugins/reposync.py:175
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr ""
 
-#: ../plugins/repoclosure.py:158
-msgid "Check only the newest packages in the repos"
-msgstr "repo の最新パッケージのみを確認します"
+#: ../plugins/reposync.py:260 ../plugins/download.py:121
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "パッケージのミラー取得に失敗しました: %s"
 
-#: ../plugins/repoclosure.py:161
-msgid "Check closure for this package only"
-msgstr "このパッケージのみのクロージャーを確認します"
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "rpm パッケージのディレクトリーを管理します"
+
+#: ../plugins/repomanage.py:58
+msgid "Pass either --old or --new, not both!"
+msgstr "--old または --new のいずれかを渡します。両方ではありません。"
+
+#: ../plugins/repomanage.py:68
+msgid "No files to process"
+msgstr "処理するファイルはありません"
+
+#: ../plugins/repomanage.py:73
+msgid "Could not open {}"
+msgstr "{} を開くことができません"
+
+#: ../plugins/repomanage.py:130
+msgid "Print the older packages"
+msgstr "古いパッケージを印刷します"
+
+#: ../plugins/repomanage.py:132
+msgid "Print the newest packages"
+msgstr "最新のパッケージを印刷します"
+
+#: ../plugins/repomanage.py:134
+msgid "Space separated output, not newline"
+msgstr "スペースで区切られた出力で、改行ではありません"
+
+#: ../plugins/repomanage.py:136
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "維持する最新の N パッケージ - デフォルトは 1 に設定されます"
+
+#: ../plugins/repomanage.py:139
+msgid "Path to directory"
+msgstr "ディレクトリーへのパス"
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
@@ -266,132 +718,27 @@ msgstr "ダウンロードする代わりに、rpm をダウンロードでき�
 msgid "when running with --url, limit to specific protocols"
 msgstr "--url で実行中の際は、特定のプロトコルに限定します"
 
-#: ../plugins/download.py:121
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "パッケージのミラー取得に失敗しました: %s"
-
 #: ../plugins/download.py:243
 msgid "Exiting due to strict setting."
 msgstr "厳密な設定により終了中です。"
 
-#: ../plugins/download.py:263
+#: ../plugins/download.py:261
 msgid "Error in resolve of packages:"
 msgstr "パッケージの解決でエラー:"
 
-#: ../plugins/download.py:280
+#: ../plugins/download.py:279
 #, python-format
 msgid "No source rpm defined for %s"
 msgstr "%s に対して定義されているソース rpm はありません"
 
-#: ../plugins/download.py:297 ../plugins/download.py:310
+#: ../plugins/download.py:296 ../plugins/download.py:309
 #, python-format
 msgid "No package %s available."
 msgstr "利用可能なパッケージ %s はありません。"
 
-#: ../plugins/config_manager.py:36
-msgid "manage dnf configuration options and repositories"
-msgstr "dnf 設定オプションおよびリポジトリーの管理"
-
-#: ../plugins/config_manager.py:42
-msgid "repo to modify"
-msgstr "修正する repo"
-
-#: ../plugins/config_manager.py:45
-msgid "save the current options (useful with --setopt)"
-msgstr "現在のオプションを保存 (--setopt で有用)"
-
-#: ../plugins/config_manager.py:48
-msgid "add (and enable) the repo from the specified file or url"
-msgstr "指定されたファイルまたは url から repo を追加 (および有効化)"
-
-#: ../plugins/config_manager.py:51
-msgid "print current configuration values to stdout"
-msgstr "stdout に現在の設定値を印刷"
-
-#: ../plugins/config_manager.py:54
-msgid "print variable values to stdout"
-msgstr "stdout に変数値を印刷"
-
-#: ../plugins/config_manager.py:70
-msgid "Error: Trying to enable already enabled repos."
-msgstr "エラー: すでに有効化された repo を有効化します。"
-
-#: ../plugins/config_manager.py:103
-#, python-format
-msgid "No matching repo to modify: %s."
-msgstr "修正用の一致する repo はありません: %s."
-
-#: ../plugins/config_manager.py:153
-#, python-format
-msgid "Adding repo from: %s"
-msgstr "repo の追加: %s"
-
-#: ../plugins/config_manager.py:177
-msgid "Configuration of repo failed"
-msgid_plural "Configuration of repos failed"
-msgstr[0] "repo の設定に失敗しました"
-
-#: ../plugins/config_manager.py:187
-#, python-format
-msgid "Could not save repo to repofile %s: %s"
-msgstr "repofile %s に repo を保存できませんでした: %s"
-
-#: ../plugins/builddep.py:42
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PACKAGE|PACKAGE.spec]"
-
-#: ../plugins/builddep.py:53
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' は、'MACRO EXPR' の形式ではありません"
-
-#: ../plugins/builddep.py:58
-msgid "packages with builddeps to install"
-msgstr "インストールする builddeps パッケージ"
-
-#: ../plugins/builddep.py:61
-msgid "define a macro for spec file parsing"
-msgstr "スペックファイルの解析にマクロを定義"
-
-#: ../plugins/builddep.py:64
-msgid "treat commandline arguments as spec files"
-msgstr "コマンドラインの引数をスペックファイルとして処理"
-
-#: ../plugins/builddep.py:66
-msgid "treat commandline arguments as source rpm"
-msgstr "コマンドラインの引数をソース rpm として処理"
-
-#: ../plugins/builddep.py:109
-msgid "RPM: {}"
-msgstr ""
-
-#: ../plugins/builddep.py:118
-msgid "Some packages could not be found."
-msgstr "一部のパッケージは見つかりませんでした。"
-
-#. No provides, no files
-#. Richdeps can have no matches but it could be correct (solver must decide
-#. later)
-#: ../plugins/builddep.py:138
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "インストール用の一致するパッケージがありません: '%s'"
-
-#: ../plugins/builddep.py:156
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "開くことに失敗しました: '%s'、有効なソース rpm ファイルではありません。"
-
-#: ../plugins/builddep.py:169 ../plugins/builddep.py:185
-#: ../plugins/builddep.py:202
-msgid "Not all dependencies satisfied"
-msgstr "すべての依存関係が満たされているわけではない"
-
-#: ../plugins/builddep.py:176
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "開くことに失敗しました: '%s'、有効なスペックファイルではありません: %s"
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "新規のリーフパッケージ (他のパッケージから依存されていないパッケージ) :"
 
 #: ../plugins/copr.py:56
 msgid "yes"
@@ -527,7 +874,7 @@ msgstr "リポジトリが正常に無効化されました。"
 msgid "Repository successfully removed."
 msgstr "リポジトリーが正常に削除されました。"
 
-#: ../plugins/copr.py:275 ../plugins/copr.py:626
+#: ../plugins/copr.py:275 ../plugins/copr.py:625
 msgid "Unknown subcommand {}."
 msgstr "不明なサブコマンド {}。"
 
@@ -570,33 +917,33 @@ msgstr "安全で優れた回答。終了中。"
 msgid "This command has to be run under the root user."
 msgstr "このコマンドは root ユーザーの下で実行する必要があります。"
 
-#: ../plugins/copr.py:459
+#: ../plugins/copr.py:458
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr "このリポジトリーにはまだビルドがありませんので、今すぐ有効化できません。"
 
-#: ../plugins/copr.py:462
+#: ../plugins/copr.py:461
 msgid "Such repository does not exist."
 msgstr "そのようなリポジトリーは存在しません。"
 
-#: ../plugins/copr.py:510
+#: ../plugins/copr.py:509
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr ""
 
-#: ../plugins/copr.py:521
+#: ../plugins/copr.py:520
 msgid "Failed to disable copr repo {}/{}"
 msgstr "copr repo {}/{} の無効化に失敗しました。"
 
-#: ../plugins/copr.py:543 ../plugins/copr.py:581
+#: ../plugins/copr.py:542 ../plugins/copr.py:580
 msgid "Unknown response from server."
 msgstr "サーバーからの不明な応答です。"
 
-#: ../plugins/copr.py:565
+#: ../plugins/copr.py:564
 msgid "Interact with Playground repository."
 msgstr "Playground リポジトリーとの対話。"
 
-#: ../plugins/copr.py:570
+#: ../plugins/copr.py:569
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
@@ -608,321 +955,67 @@ msgstr ""
 "\n"
 "続行しますか?"
 
-#: ../plugins/copr.py:616
+#: ../plugins/copr.py:615
 msgid "Playground repositories successfully enabled."
 msgstr "Playground リポジトリーが正常に有効化されました。"
 
-#: ../plugins/copr.py:619
+#: ../plugins/copr.py:618
 msgid "Playground repositories successfully disabled."
 msgstr "Playground リポジトリーが正常に無効化されました。"
 
-#: ../plugins/copr.py:623
+#: ../plugins/copr.py:622
 msgid "Playground repositories successfully updated."
 msgstr "Playground リポジトリーが正常に更新されました。"
 
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "新規のリーフパッケージ (他のパッケージから依存されていないパッケージ) :"
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "ファイルにインストール済みの rpm パッケージに関するダンプ情報"
 
-#: ../plugins/debuginfo-install.py:56
-msgid "install debuginfo packages"
-msgstr "debuginfo パッケージのインストール"
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "リポジトリーコンテンツのダンプは試みないでください。"
 
-#: ../plugins/debuginfo-install.py:90 ../plugins/changelog.py:81
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "ダンプファイルの名前のオプション"
+
+#: ../plugins/debug.py:95
 #, python-format
-msgid "No match for argument: %s"
-msgstr "一致した引数がありません: %s"
+msgid "Output written to: %s"
+msgstr "書き込まれた出力: %s"
 
-#: ../plugins/debuginfo-install.py:180
-#, python-format
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "debug-dump ファイルに記録されたパッケージを復元します"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "stdout に実行するコマンドを出力します。"
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "記録されたパッケージの最新バージョンをインストールします。"
+
+#: ../plugins/debug.py:189
 msgid ""
-"Could not find debuginfo package for the following available packages: %s"
-msgstr ""
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
+msgstr "アーキテクチャーを無視し、名前、エポック、バージョン、およびリリースと一致する不足のパッケージをインストールします。"
 
-#: ../plugins/debuginfo-install.py:185
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "指定したタイプに限定します"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "ダンプファイルの名前"
+
+#: ../plugins/debug.py:264
 #, python-format
-msgid ""
-"Could not find debugsource package for the following available packages: %s"
-msgstr ""
+msgid "Package %s is not available"
+msgstr "パッケージ %s は利用できません"
 
-#: ../plugins/debuginfo-install.py:190
+#: ../plugins/debug.py:274
 #, python-format
-msgid ""
-"Could not find debuginfo package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:195
-#, python-format
-msgid ""
-"Could not find debugsource package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:199
-msgid "Unable to find a match"
-msgstr "一致するものが見つかりません"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr "他のパッケージから必要とされないインスール済みパッケージを一覧表示します"
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr "ドット形式でパッケージの依存関係グラフ全体を出力"
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr "何も提供しません: '%s'"
-
-#: ../plugins/needs_restarting.py:173
-msgid "determine updated binaries that need restarting"
-msgstr "再起動が必要な更新済みバイナリーを決定します"
-
-#: ../plugins/needs_restarting.py:178
-msgid "only consider this user's processes"
-msgstr "このユーザーのプロセスのみを検討します"
-
-#: ../plugins/needs_restarting.py:180
-msgid ""
-"only report whether a reboot is required (exit code 1) or not (exit code 0)"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:199
-msgid "Core libraries or services have been updated since boot-up:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:204
-msgid "Reboot is required to fully utilize these updates."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:205
-msgid "More information:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:209
-msgid "No core libraries or services have been updated since boot-up."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:211
-msgid "Reboot should not be necessary."
-msgstr ""
-
-#: ../plugins/local.py:122
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "'{}' のため、ディレクトリー '{}' を作成できませんでした"
-
-#: ../plugins/local.py:126
-msgid "'{}' is not a directory"
-msgstr "'{}' はディレクトリーではありません"
-
-#: ../plugins/local.py:135
-msgid "Copying '{}' to local repo"
-msgstr "ローカル repo に '{}' をコピー中"
-
-#: ../plugins/local.py:141
-msgid "Can't write file '{}'"
-msgstr "ファイル '{}' を書き込みできません"
-
-#: ../plugins/local.py:156
-msgid "Rebuilding local repo"
-msgstr "ローカル repo を再ビルド中"
-
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "バージョンロック設定の読み込みができません: %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "ロックリストが設定されていません"
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr "versionlock を追加:"
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr "除外を追加:"
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr "versionlock を削除:"
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "パッケージが見つかりませんでした:"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "versionlock プラグインからの除外は適用されませんでした"
-
-#: ../plugins/versionlock.py:39
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr "versionlock プラグイン: ファイル \"{}\" のロックルールの数を適用: {}"
-
-#: ../plugins/versionlock.py:40
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr "versionlock プラグイン: ファイル \"{}\" の除外ルールの数を適用: {}"
-
-#: ../plugins/versionlock.py:41
-msgid "Versionlock plugin: could not parse pattern:"
-msgstr "versionlock プラグイン: パターンを解析できませんでした:"
-
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
-msgstr "パッケージバージョンロックの制御"
-
-#: ../plugins/reposync.py:54
-msgid "download all packages from remote repo"
-msgstr "リモート repo からすべてのパッケージをダウンロードします"
-
-#: ../plugins/reposync.py:63
-msgid "download only packages for this ARCH"
-msgstr "この ARCH 向けのパッケージのみをダウンロード"
-
-#: ../plugins/reposync.py:65
-msgid "delete local packages no longer present in repository"
-msgstr "リポジトリーにもはや存在しないローカルパッケージを削除"
-
-#: ../plugins/reposync.py:67
-msgid "also download comps.xml"
-msgstr "comps.xml もダウンロード"
-
-#: ../plugins/reposync.py:69
-msgid "download all the metadata."
-msgstr ""
-
-#: ../plugins/reposync.py:71
-msgid "download only newest packages per-repo"
-msgstr "最新のパッケージ per-repo のみをダウンロード"
-
-#: ../plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr ""
-
-#: ../plugins/reposync.py:75
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-
-#: ../plugins/reposync.py:78
-msgid "operate on source packages"
-msgstr "ソースパッケージでの操作"
-
-#: ../plugins/reposync.py:80
-msgid "try to set local timestamps of local files by the one on the server"
-msgstr ""
-
-#: ../plugins/reposync.py:135
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr ""
-
-#: ../plugins/reposync.py:155
-#, python-format
-msgid "[DELETED] %s"
-msgstr "[DELETED] %s"
-
-#: ../plugins/reposync.py:157
-#, python-format
-msgid "failed to delete file %s"
-msgstr "ファイル %s の削除に失敗しました"
-
-#: ../plugins/reposync.py:166
-#, python-format
-msgid "comps.xml for repository %s saved"
-msgstr "リポジトリー %s の comps.xml が保存されました"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr "rpm パッケージのディレクトリーを管理します"
-
-#: ../plugins/repomanage.py:58
-msgid "Pass either --old or --new, not both!"
-msgstr "--old または --new のいずれかを渡します。両方ではありません。"
-
-#: ../plugins/repomanage.py:68
-msgid "No files to process"
-msgstr "処理するファイルはありません"
-
-#: ../plugins/repomanage.py:73
-msgid "Could not open {}"
-msgstr "{} を開くことができません"
-
-#: ../plugins/repomanage.py:130
-msgid "Print the older packages"
-msgstr "古いパッケージを印刷します"
-
-#: ../plugins/repomanage.py:132
-msgid "Print the newest packages"
-msgstr "最新のパッケージを印刷します"
-
-#: ../plugins/repomanage.py:134
-msgid "Space separated output, not newline"
-msgstr "スペースで区切られた出力で、改行ではありません"
-
-#: ../plugins/repomanage.py:136
-msgid "Newest N packages to keep - defaults to 1"
-msgstr "維持する最新の N パッケージ - デフォルトは 1 に設定されます"
-
-#: ../plugins/repomanage.py:139
-msgid "Path to directory"
-msgstr "ディレクトリーへのパス"
-
-#: ../plugins/migrate.py:45
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "yum の履歴、グループ、および yumdb データを dnf へ移行"
-
-#: ../plugins/migrate.py:54
-msgid "Migrating history data..."
-msgstr "履歴データを移行中..."
-
-#: ../plugins/changelog.py:37
-#, python-brace-format
-msgid "Not a valid date: \"{0}\"."
-msgstr ""
-
-#: ../plugins/changelog.py:43
-msgid "Show changelog data of packages"
-msgstr ""
-
-#: ../plugins/changelog.py:51
-msgid ""
-"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
-"is recommended."
-msgstr ""
-
-#: ../plugins/changelog.py:55
-msgid "show given number of changelog entries per package"
-msgstr ""
-
-#: ../plugins/changelog.py:58
-msgid ""
-"show only new changelog entries for packages, that provide an upgrade for "
-"some of already installed packages."
-msgstr ""
-
-#: ../plugins/changelog.py:60
-msgid "PACKAGE"
-msgstr ""
-
-#: ../plugins/changelog.py:109
-msgid "Listing changelogs since {}"
-msgstr ""
-
-#: ../plugins/changelog.py:111
-msgid "Listing only latest changelog"
-msgid_plural "Listing {} latest changelogs"
-msgstr[0] ""
-
-#: ../plugins/changelog.py:116
-msgid "Listing only new changelogs since installed version of the package"
-msgstr ""
-
-#: ../plugins/changelog.py:118
-msgid "Listing all changelogs"
-msgstr ""
-
-#: ../plugins/changelog.py:122
-msgid "Changelogs for {}"
-msgstr ""
+msgid "Bad dnf debug file: %s"
+msgstr "不正な dnf デバッグファイル: %s"

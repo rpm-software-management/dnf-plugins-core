@@ -1,115 +1,529 @@
 # Serdar Sağlam <teknomobil@msn.com>, 2019. #zanata
+# Oğuz Ersen <oguzersen@protonmail.com>, 2020.
+# Anonymous <noreply@weblate.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-03 21:16-0500\n"
-"PO-Revision-Date: 2019-05-11 10:32+0000\n"
-"Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
-"Language-Team: Turkish\n"
+"POT-Creation-Date: 2020-03-19 14:54+0100\n"
+"PO-Revision-Date: 2020-03-25 14:38+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>1)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Generator: Weblate 3.11.3\n"
 
-#: ../plugins/debug.py:53
-msgid "dump information about installed rpm packages to file"
-msgstr ""
+#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
+#: ../plugins/reposync.175df5c.py:42
+msgid "download all packages from remote repo"
+msgstr "tüm paketleri uzak depodan indir"
 
-#: ../plugins/debug.py:67
-msgid "do not attempt to dump the repository contents."
-msgstr ""
+#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
+#: ../plugins/reposync.175df5c.py:48
+msgid "download only packages for this ARCH"
+msgstr "sadece bu MİMARİ için paketleri indir"
 
-#: ../plugins/debug.py:70
-msgid "optional name of dump file"
-msgstr ""
+#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
+#: ../plugins/reposync.175df5c.py:50
+msgid "delete local packages no longer present in repository"
+msgstr "depoda artık bulunmayan yerel paketleri sil"
 
-#: ../plugins/debug.py:95
+#: ../plugins/reposync.orig.py:52 ../plugins/reposync.175df5c.py:52
+msgid "also download comps.xml"
+msgstr "ayrıca comps.xml dosyasını indir"
+
+#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
+#: ../plugins/reposync.175df5c.py:54
+msgid "download only newest packages per-repo"
+msgstr "her depo için sadece en yeni paketleri indir"
+
+#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
+msgid "where to store downloaded repositories "
+msgstr "indirilen depoların saklanacağı yer "
+
+#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:80
+#: ../plugins/reposync.175df5c.py:58
+msgid "operate on source packages"
+msgstr "kaynak paketleri üzerinde çalış"
+
+#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:190
+#: ../plugins/reposync.175df5c.py:95
 #, python-format
-msgid "Output written to: %s"
-msgstr ""
+msgid "[DELETED] %s"
+msgstr "[SİLİNDİ] %s"
 
-#: ../plugins/debug.py:172
-msgid "restore packages recorded in debug-dump file"
-msgstr ""
+#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:192
+#: ../plugins/reposync.175df5c.py:97
+#, python-format
+msgid "failed to delete file %s"
+msgstr "%s dosyası silinemedi"
 
-#: ../plugins/debug.py:183
-msgid "output commands that would be run to stdout."
-msgstr ""
+#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
+#, python-format
+msgid "Could not make repository directory: %s"
+msgstr "Depo dizini oluşturulamadı: %s"
 
-#: ../plugins/debug.py:186
-msgid "Install the latest version of recorded packages."
-msgstr ""
+#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:201
+#: ../plugins/reposync.175df5c.py:111
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr "%s deposu için comps.xml dosyası kaydedildi"
 
-#: ../plugins/debug.py:189
+#: ../plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "Geçerli bir tarih değil: \"{0}\"."
+
+#: ../plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "Paketlerin değişiklik günlüğü verilerini göster"
+
+#: ../plugins/changelog.py:51
 msgid ""
-"Ignore architecture and install missing packages matching the name, epoch, "
-"version and release."
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
 msgstr ""
+"TARİH'ten itibaren değişiklik günlüğü girdilerini göster. Belirsizliği "
+"önlemek için, YYYY-AA-GG biçimi önerilir."
 
-#: ../plugins/debug.py:194
-msgid "limit to specified type"
+#: ../plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr "paket başına verilen değişiklik günlüğü girdilerini göster"
+
+#: ../plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
 msgstr ""
+"zaten kurulu paketlerin bazıları için bir yükseltme sağlayan paketler için, "
+"sadece yeni değişiklik günlüğü girdilerini göster."
 
-#: ../plugins/debug.py:196
-msgid "name of dump file"
-msgstr ""
+#: ../plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "PAKET"
 
-#: ../plugins/debug.py:264
+#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:90
 #, python-format
-msgid "Package %s is not available"
-msgstr ""
+msgid "No match for argument: %s"
+msgstr "Argüman için eşleşme yok: %s"
 
-#: ../plugins/debug.py:274
-#, python-format
-msgid "Bad dnf debug file: %s"
+#: ../plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "{} tarihinden itibaren değişiklik günlükleri listeleniyor"
+
+#: ../plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "Sadece en son değişiklik günlüğü listeleniyor"
+msgstr[1] "Son {} değişiklik günlüğü listeleniyor"
+
+#: ../plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
 msgstr ""
+"Sadece paketin kurulu sürümünden bu yana olan yeni değişiklik günlükleri "
+"listeleniyor"
+
+#: ../plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "Tüm değişiklik günlükleri listeleniyor"
+
+#: ../plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "{} için değişiklik günlükleri"
+
+#: ../plugins/debuginfo-install.py:56
+msgid "install debuginfo packages"
+msgstr "debuginfo paketlerini yükle"
+
+#: ../plugins/debuginfo-install.py:180
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following available packages: %s"
+msgstr "Şu mevcut paketler için debuginfo paketi bulunamadı: %s"
+
+#: ../plugins/debuginfo-install.py:185
+#, python-format
+msgid ""
+"Could not find debugsource package for the following available packages: %s"
+msgstr "Şu mevcut paketler için debugsource paketi bulunamadı: %s"
+
+#: ../plugins/debuginfo-install.py:190
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following installed packages: %s"
+msgstr "Şu kurulu paketler için debuginfo paketi bulunamadı: %s"
+
+#: ../plugins/debuginfo-install.py:195
+#, python-format
+msgid ""
+"Could not find debugsource package for the following installed packages: %s"
+msgstr "Şu kurulu paketler için debugsource paketi bulunamadı: %s"
+
+#: ../plugins/debuginfo-install.py:199
+msgid "Unable to find a match"
+msgstr "Bir eşleşme bulunamadı"
+
+#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
+#: ../plugins/versionlock_master.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Sürüm kilidi yapılandırması okunamadı: %s"
+
+#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
+#: ../plugins/versionlock_master.py:33
+msgid "Locklist not set"
+msgstr "Kilit listesi ayarlanmadı"
+
+#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
+#: ../plugins/versionlock_master.py:34
+msgid "Adding versionlock on:"
+msgstr "Sürüm kilidi ekleniyor:"
+
+#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
+#: ../plugins/versionlock_master.py:35
+msgid "Adding exclude on:"
+msgstr "Hariç tutma ekleniyor:"
+
+#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:39
+#: ../plugins/versionlock_master.py:36
+msgid "Deleting versionlock for:"
+msgstr "Şunun için sürüm kilidi kaldırılıyor:"
+
+#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:40
+#: ../plugins/versionlock_master.py:37
+msgid "No package found for:"
+msgstr "Şunun için bir paket bulunamadı:"
+
+#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:41
+#: ../plugins/versionlock_master.py:38
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "versionlock eklentisinin hariç tutmaları uygulanmadı"
+
+#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:127
+#: ../plugins/versionlock_master.py:119
+msgid "control package version locks"
+msgstr "paket sürüm kilitlerini kontrol eder"
+
+#: ../plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "yum'ın geçmiş, grup ve yumdb verilerini dnf'e taşı"
+
+#: ../plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "Geçmiş verileri taşınıyor..."
+
+#: ../plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Tam bir paket bağımlılık grafiğini dot biçiminde yazdır"
+
+#: ../plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Sağlayan yok: '%s'"
+
+#: ../plugins/versionlock.py:36
+msgid "Package already locked in equivalent form:"
+msgstr "Paket zaten eşdeğer biçimde kilitlenmiş:"
+
+#: ../plugins/versionlock.py:37
+msgid "Package {} is already locked"
+msgstr "{} paketi zaten kilitlendi"
+
+#: ../plugins/versionlock.py:38
+msgid "Package {} is already excluded"
+msgstr "{} paketi zaten hariç tutuldu"
+
+#: ../plugins/versionlock.py:42 ../plugins/versionlock_master.py:39
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr ""
+"Versionlock eklentisi: \"{}\" dosyasından uygulanan kilit kuralları sayısı: "
+"{}"
+
+#: ../plugins/versionlock.py:43 ../plugins/versionlock_master.py:40
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr ""
+"Versionlock eklentisi: \"{}\" dosyasından uygulanan hariç tutma kuralları "
+"sayısı: {}"
+
+#: ../plugins/versionlock.py:44 ../plugins/versionlock_master.py:41
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr "Versionlock eklentisi: kalıp ayrıştırılamadı:"
+
+#: ../plugins/versionlock.py:133
+msgid "Use package specifications as they are, do not try to parse them"
+msgstr "Paket belirtimlerini oldukları gibi kullan, ayrıştırmaya çalışma"
+
+#: ../plugins/post-transaction-actions.py:71
+#, python-format
+msgid "Bad Action Line \"%s\": %s"
+msgstr "Hatalı Eylem Satırı \"%s\": %s"
+
+#. unsupported state, skip it
+#: ../plugins/post-transaction-actions.py:130
+#, python-format
+msgid "Bad Transaction State: %s"
+msgstr "Hatalı İşlem Durumu: %s"
+
+#: ../plugins/post-transaction-actions.py:153
+#: ../plugins/post-transaction-actions.py:155
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr "post-transaction-actions: %s"
+
+#: ../plugins/post-transaction-actions.py:157
+#, python-format
+msgid "post-transaction-actions: Bad Command \"%s\": %s"
+msgstr "post-transaction-actions: Hatalı Komut \"%s\": %s"
+
+#: ../plugins/builddep.py:45
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAKET|PAKET.spec]"
+
+#: ../plugins/builddep.py:85
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "'%s', 'MAKRO İFADESİ' biçiminde değil"
+
+#: ../plugins/builddep.py:90
+msgid "packages with builddeps to install"
+msgstr "kurulacak oluşturma bağımlılıkları olan paketler"
+
+#: ../plugins/builddep.py:93
+msgid "define a macro for spec file parsing"
+msgstr "spec dosyası ayrıştırma için makro tanımlama"
+
+#: ../plugins/builddep.py:95
+msgid "skip build dependencies not available in repositories"
+msgstr "depolarda mevcut olmayan oluşturma bağımlılıklarını atla"
+
+#: ../plugins/builddep.py:98
+msgid "treat commandline arguments as spec files"
+msgstr "komut satırı argümanlarını spec dosyası olarak değerlendir"
+
+#: ../plugins/builddep.py:100
+msgid "treat commandline arguments as source rpm"
+msgstr "komut satırı argümanlarını kaynak rpm olarak değerlendir"
+
+#: ../plugins/builddep.py:144
+msgid "RPM: {}"
+msgstr "RPM: {}"
+
+#: ../plugins/builddep.py:153
+msgid "Some packages could not be found."
+msgstr "Bazı paketler bulunamadı."
+
+#. No provides, no files
+#. Richdeps can have no matches but it could be correct (solver must decide
+#. later)
+#: ../plugins/builddep.py:173
+#, python-format
+msgid "No matching package to install: '%s'"
+msgstr "Yüklemek için eşleşen paket yok: '%s'"
+
+#: ../plugins/builddep.py:191
+#, python-format
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "Açılamadı: '%s', geçerli bir kaynak rpm dosyası değil."
+
+#: ../plugins/builddep.py:204 ../plugins/builddep.py:220
+#: ../plugins/builddep.py:237
+msgid "Not all dependencies satisfied"
+msgstr "Tüm bağımlılıklar karşılanmadı"
+
+#: ../plugins/builddep.py:211
+#, python-format
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "Açılamadı: '%s', geçerli bir spec dosyası değil: %s"
+
+#: ../plugins/builddep.py:230 ../plugins/repoclosure.py:118
+#, python-format
+msgid "no package matched: %s"
+msgstr "eşleşen paket yok: %s"
+
+#: ../plugins/config_manager.py:37
+#, python-brace-format
+msgid "manage {prog} configuration options and repositories"
+msgstr "{prog} yapılandırma seçeneklerini ve depolarını yönet"
+
+#: ../plugins/config_manager.py:44
+msgid "repo to modify"
+msgstr "değiştirilecek depo"
+
+#: ../plugins/config_manager.py:47
+msgid "save the current options (useful with --setopt)"
+msgstr "geçerli seçenekleri kaydet (--setopt ile birlikte işe yarar)"
+
+#: ../plugins/config_manager.py:50
+msgid "add (and enable) the repo from the specified file or url"
+msgstr "belirtilen dosya veya url'den depo ekle (ve etkinleştir)"
+
+#: ../plugins/config_manager.py:53
+msgid "print current configuration values to stdout"
+msgstr "geçerli yapılandırma değerlerini standart çıkışa yazdır"
+
+#: ../plugins/config_manager.py:56
+msgid "print variable values to stdout"
+msgstr "değişken değerlerini standart çıkışa yazdır"
+
+#: ../plugins/config_manager.py:70
+msgid "one of the following arguments is required: {}"
+msgstr "şu argümanlardan biri gereklidir: {}"
+
+#: ../plugins/config_manager.py:113
+#, python-format
+msgid "No matching repo to modify: %s."
+msgstr "Değiştirmek için eşleşen depo yok: %s."
+
+#: ../plugins/config_manager.py:164
+#, python-format
+msgid "Adding repo from: %s"
+msgstr "Depo ekleniyor: %s"
+
+#: ../plugins/config_manager.py:188
+msgid "Configuration of repo failed"
+msgid_plural "Configuration of repos failed"
+msgstr[0] "Depo yapılandırılamadı"
+msgstr[1] "Depolar yapılandırılamadı"
+
+#: ../plugins/config_manager.py:198
+#, python-format
+msgid "Could not save repo to repofile %s: %s"
+msgstr "Depo, %s depo dosyasına kaydedilemedi: %s"
+
+#: ../plugins/local.py:122
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "'{}' dizini oluşturulamadı: '{}'"
+
+#: ../plugins/local.py:126
+msgid "'{}' is not a directory"
+msgstr "'{}' bir dizin değil"
+
+#: ../plugins/local.py:135
+msgid "Copying '{}' to local repo"
+msgstr "'{}' yerel depoya kopyalanıyor"
+
+#: ../plugins/local.py:141
+msgid "Can't write file '{}'"
+msgstr "'{}' dosyası yazılamıyor"
+
+#: ../plugins/local.py:156
+msgid "Rebuilding local repo"
+msgstr "Yerel depo yeniden oluşturuluyor"
+
+#: ../plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr "Başka bir paketin gerektirmediği kurulu paketleri listele"
+
+#: ../plugins/needs_restarting.py:173
+msgid "determine updated binaries that need restarting"
+msgstr ""
+"güncellenen program dosyalarından yeniden başlatılması gerekenleri belirle"
+
+#: ../plugins/needs_restarting.py:178
+msgid "only consider this user's processes"
+msgstr "sadece bu kullanıcının işlemlerini göz önünde bulundur"
+
+#: ../plugins/needs_restarting.py:180
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr ""
+"sadece yeniden başlatma gerektiğini (çıkış kodu 1) veya gerekmediğini (çıkış"
+" kodu 0) bildir"
+
+#: ../plugins/needs_restarting.py:199
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr ""
+"Başlangıçtan bu yana güncellenen çekirdek kütüphaneler veya servisler:"
+
+#: ../plugins/needs_restarting.py:204
+msgid "Reboot is required to fully utilize these updates."
+msgstr ""
+"Bu güncellemeleri tam olarak kullanmak için yeniden başlatma gereklidir."
+
+#: ../plugins/needs_restarting.py:205
+msgid "More information:"
+msgstr "Daha fazla bilgi için:"
+
+#: ../plugins/needs_restarting.py:209
+msgid "No core libraries or services have been updated since boot-up."
+msgstr ""
+"Başlangıçtan bu yana hiçbir çekirdek kütüphane veya servis güncellenmedi."
+
+#: ../plugins/needs_restarting.py:211
+msgid "Reboot should not be necessary."
+msgstr "Yeniden başlatmaya gerek yok."
+
+#: ../plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Depolar için çözümlenmemiş bağımlılıkların bir listesini görüntüle"
+
+#: ../plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "Repoclosure, çözümlenmemiş bağımlılıklarla sona erdi."
+
+#: ../plugins/repoclosure.py:153
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr ""
+"verilen mimarilere sahip paketleri kontrol et, birden çok kez belirtilebilir"
+
+#: ../plugins/repoclosure.py:156
+msgid "Specify repositories to check"
+msgstr "Belirtilen depoları kontrol et"
+
+#: ../plugins/repoclosure.py:158
+msgid "Check only the newest packages in the repos"
+msgstr "Sadece depolardaki en yeni paketleri kontrol et"
+
+#: ../plugins/repoclosure.py:161
+msgid "Check closure for this package only"
+msgstr "Sadece bu paket için çözümlenmemiş bağımlılıkları kontrol et"
 
 #: ../plugins/repodiff.py:45
 msgid "List differences between two sets of repositories"
-msgstr "İki depo arasındaki farkları listele"
+msgstr "İki depo kümesi arasındaki farkları listele"
 
 #: ../plugins/repodiff.py:58
 msgid "Specify old repository, can be used multiple times"
-msgstr "Eski depoyı belirtin, birden çok kez kullanılabilir"
+msgstr "Eski depoyu belirtin, birden çok kez kullanılabilir"
 
 #: ../plugins/repodiff.py:60
 msgid "Specify new repository, can be used multiple times"
-msgstr "Yeni depo belirtin, birden çok kez kullanılabilir"
+msgstr "Yeni depoyu belirtin, birden çok kez kullanılabilir"
 
 #: ../plugins/repodiff.py:63
 msgid ""
 "Specify architectures to compare, can be used multiple times. By default, "
 "only source rpms are compared."
 msgstr ""
-"Karşılaştırılacak mimarileri belirtin, birçok kez kullanılabilir. Varsayılan"
-" olarak, sadece kaynak rpm'ler karşılaştırılır."
+"Karşılaştırılacak mimarileri belirtin, birden çok kez kullanılabilir. "
+"Varsayılan olarak, sadece kaynak rpm'ler karşılaştırılır."
 
 #: ../plugins/repodiff.py:67
 msgid "Output additional data about the size of the changes."
-msgstr "Değişikliklerin büyüklüğü hakkında ek veriler alın."
+msgstr "Değişikliklerin boyutu hakkında ek veriler yazdır."
 
 #: ../plugins/repodiff.py:69
 msgid ""
 "Compare packages also by arch. By default packages are compared just by "
 "name."
 msgstr ""
-"Paketleri de mimari ile karşılaştırın. Varsayılan olarak paketler sadece "
-"isim ile karşılaştırılır."
+"Paketleri mimariye göre de karşılaştır. Varsayılan olarak paketler sadece "
+"isme göre karşılaştırılır."
 
 #: ../plugins/repodiff.py:72
 msgid "Output a simple one line message for modified packages."
-msgstr "Değiştirilmiş paketler için basit bir satırlık mesaj gönderin."
+msgstr "Değiştirilmiş paketler için tek satırlık basit bir mesaj yazdır."
 
 #: ../plugins/repodiff.py:74
 msgid ""
 "Split the data for modified packages between upgraded and downgraded "
 "packages."
 msgstr ""
-"Değiştirilmiş paketlerin verilerini yükseltilmiş ve düşürülmüş paketler "
-"arasında bölün."
+"Değiştirilmiş paketler için verileri yükseltilmiş ve sürümü düşürülmüş "
+"paketler arasında böl."
 
 #: ../plugins/repodiff.py:86
 msgid "Both old and new repositories must be set."
@@ -117,7 +531,7 @@ msgstr "Hem eski hem de yeni depolar ayarlanmalıdır."
 
 #: ../plugins/repodiff.py:178
 msgid "Size change: {} bytes"
-msgstr "Boyut değişimi: {} bayt"
+msgstr "Boyut değişimi: {} byte"
 
 #: ../plugins/repodiff.py:184
 msgid "Added package  : {}"
@@ -129,7 +543,7 @@ msgstr "Kaldırılan paket: {}"
 
 #: ../plugins/repodiff.py:190
 msgid "Obsoleted by   : {}"
-msgstr ""
+msgstr "Artık kullanılmaz hale getiren: {}"
 
 #: ../plugins/repodiff.py:195
 msgid ""
@@ -137,7 +551,7 @@ msgid ""
 "Upgraded packages"
 msgstr ""
 "\n"
-"Yükseltilmiş paketler"
+"Yükseltilen paketler"
 
 #: ../plugins/repodiff.py:200
 msgid ""
@@ -153,7 +567,7 @@ msgid ""
 "Modified packages"
 msgstr ""
 "\n"
-"Düzenlenmiş paketler"
+"Değiştirilen paketler"
 
 #: ../plugins/repodiff.py:212
 msgid ""
@@ -173,7 +587,7 @@ msgstr "Kaldırılan paketler: {}"
 
 #: ../plugins/repodiff.py:216
 msgid "Upgraded packages: {}"
-msgstr "Yükseltilmiş paketler: {}"
+msgstr "Yükseltilen paketler: {}"
 
 #: ../plugins/repodiff.py:217
 msgid "Downgraded packages: {}"
@@ -197,7 +611,7 @@ msgstr "Değiştirilen paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:228
 msgid "Size of upgraded packages: {}"
-msgstr "Yükseltilmiş paketlerin boyutu: {}"
+msgstr "Yükseltilen paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:230
 msgid "Size of downgraded packages: {}"
@@ -205,226 +619,189 @@ msgstr "Sürümü düşürülen paketlerin boyutu: {}"
 
 #: ../plugins/repodiff.py:232
 msgid "Size change: {}"
-msgstr ""
+msgstr "Boyut değişikliği: {}"
 
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr ""
+#: ../plugins/reposync.py:67
+msgid "also download and uncompress comps.xml"
+msgstr "ayrıca comps.xml dosyasını indir ve çıkart"
 
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
+#: ../plugins/reposync.py:69
+msgid "download all the metadata."
+msgstr "tüm meta verileri indir."
 
-#: ../plugins/repoclosure.py:118 ../plugins/builddep.py:195
+#: ../plugins/reposync.py:73
+msgid "where to store downloaded repositories"
+msgstr "indirilen depoların saklanacağı yer"
+
+#: ../plugins/reposync.py:75
+msgid "Don't add the reponame to the download path."
+msgstr "İndirme yoluna depo ismini ekleme."
+
+#: ../plugins/reposync.py:77
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+"indirilen depo meta verilerinin saklanacağı yer. Varsayılan olarak "
+"--download-path değeridir."
+
+#: ../plugins/reposync.py:82
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+"yerel dosyaların yerel zaman damgalarını sunucudakine göre ayarlamaya çalış"
+
+#: ../plugins/reposync.py:85
+msgid "Just list urls of what would be downloaded, don't download"
+msgstr "İndirmek yerine sadece indirilecek ögelerin url'lerini listele"
+
+#: ../plugins/reposync.py:109
+msgid "Can't use --norepopath with multiple repositories"
+msgstr "--norepopath, birden fazla depoyla birlikte kullanılamaz"
+
+#: ../plugins/reposync.py:127
 #, python-format
-msgid "no package matched: %s"
-msgstr ""
+msgid "Failed to get mirror for metadata: %s"
+msgstr "Meta veriler için yansı alınamadı: %s"
 
-#: ../plugins/repoclosure.py:153
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
+#: ../plugins/reposync.py:144
+msgid "Failed to get mirror for the group file."
+msgstr "Grup dosyası için yansı alınamadı."
 
-#: ../plugins/repoclosure.py:156
-msgid "Specify repositories to check"
-msgstr ""
+#: ../plugins/reposync.py:175
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "'{}' indirme hedefi, '{}' indirme yolunun dışında."
 
-#: ../plugins/repoclosure.py:158
-msgid "Check only the newest packages in the repos"
-msgstr ""
+#: ../plugins/reposync.py:260 ../plugins/download.py:121
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "%s paketi için yansı alınamadı"
 
-#: ../plugins/repoclosure.py:161
-msgid "Check closure for this package only"
+#: ../plugins/repomanage.py:44
+msgid "Manage a directory of rpm packages"
+msgstr "Bir rpm paketleri dizinini yönet"
+
+#: ../plugins/repomanage.py:58
+msgid "Pass either --old or --new, not both!"
 msgstr ""
+"--old ya da --new seçeneklerinden sadece birini belirtin, ikisini birlikte "
+"belirtmeyin!"
+
+#: ../plugins/repomanage.py:68
+msgid "No files to process"
+msgstr "İşlenecek dosya yok"
+
+#: ../plugins/repomanage.py:73
+msgid "Could not open {}"
+msgstr "{} açılamadı"
+
+#: ../plugins/repomanage.py:130
+msgid "Print the older packages"
+msgstr "Eski paketleri yazdır"
+
+#: ../plugins/repomanage.py:132
+msgid "Print the newest packages"
+msgstr "En yeni paketleri yazdır"
+
+#: ../plugins/repomanage.py:134
+msgid "Space separated output, not newline"
+msgstr ""
+"Satır başı (newline) karakteriyle değil, boşluk (space) karakteriyle "
+"ayrılmış çıktı"
+
+#: ../plugins/repomanage.py:136
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "En yeni N paketi sakla - varsayılan olarak 1"
+
+#: ../plugins/repomanage.py:139
+msgid "Path to directory"
+msgstr "Dizin yolu"
 
 #: ../plugins/download.py:41
 msgid "Download package to current directory"
-msgstr ""
+msgstr "Paketi içinde bulunulan dizine indir"
 
 #: ../plugins/download.py:51
 msgid "packages to download"
-msgstr ""
+msgstr "indirilecek paketler"
 
 #: ../plugins/download.py:53
 msgid "download the src.rpm instead"
-msgstr ""
+msgstr "paketin kendisi yerine src.rpm dosyasını indir"
 
 #: ../plugins/download.py:55
 msgid "download the -debuginfo package instead"
-msgstr ""
+msgstr "kendisi yerine -debuginfo paketini indir"
 
 #: ../plugins/download.py:57
 msgid "download the -debugsource package instead"
-msgstr ""
+msgstr "kendisi yerine -debugsource paketini indir"
 
 #: ../plugins/download.py:60
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "sorguyu verilen mimarilere sahip paketlerle sınırla."
 
 #: ../plugins/download.py:62
 msgid "resolve and download needed dependencies"
-msgstr ""
+msgstr "gerekli bağımlılıkları çözümle ve indir"
 
 #: ../plugins/download.py:64
 msgid ""
 "when running with --resolve, download all dependencies (do not exclude "
 "already installed ones)"
 msgstr ""
+"--resolve seçeneğiyle çalışırken (önceden yüklenmiş olanlar dahil) tüm "
+"bağımlılıkları indir"
 
 #: ../plugins/download.py:67
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
+msgstr "indirmek yerine rpm'lerin indirilebileceği url'lerin listesini yazdır"
 
 #: ../plugins/download.py:72
 msgid "when running with --url, limit to specific protocols"
-msgstr ""
-
-#: ../plugins/download.py:121
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr ""
+msgstr "--url seçeneğiyle çalışırken belirli protokolllerle sınırlı kal"
 
 #: ../plugins/download.py:243
 msgid "Exiting due to strict setting."
-msgstr ""
+msgstr "Katı ayar nedeniyle çıkılıyor."
 
-#: ../plugins/download.py:263
+#: ../plugins/download.py:261
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Paketler çözümlenirken hata oluştu:"
 
-#: ../plugins/download.py:280
+#: ../plugins/download.py:279
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr ""
+msgstr "%s için tanımlanan kaynak rpm yok"
 
-#: ../plugins/download.py:297 ../plugins/download.py:310
+#: ../plugins/download.py:296 ../plugins/download.py:309
 #, python-format
 msgid "No package %s available."
-msgstr ""
+msgstr "%s paketi mevcut değil."
 
-#: ../plugins/config_manager.py:36
-msgid "manage dnf configuration options and repositories"
-msgstr ""
-
-#: ../plugins/config_manager.py:42
-msgid "repo to modify"
-msgstr ""
-
-#: ../plugins/config_manager.py:45
-msgid "save the current options (useful with --setopt)"
-msgstr ""
-
-#: ../plugins/config_manager.py:48
-msgid "add (and enable) the repo from the specified file or url"
-msgstr ""
-
-#: ../plugins/config_manager.py:51
-msgid "print current configuration values to stdout"
-msgstr ""
-
-#: ../plugins/config_manager.py:54
-msgid "print variable values to stdout"
-msgstr ""
-
-#: ../plugins/config_manager.py:70
-msgid "Error: Trying to enable already enabled repos."
-msgstr ""
-
-#: ../plugins/config_manager.py:103
-#, python-format
-msgid "No matching repo to modify: %s."
-msgstr ""
-
-#: ../plugins/config_manager.py:153
-#, python-format
-msgid "Adding repo from: %s"
-msgstr ""
-
-#: ../plugins/config_manager.py:177
-msgid "Configuration of repo failed"
-msgid_plural "Configuration of repos failed"
-msgstr[0] ""
-
-#: ../plugins/config_manager.py:187
-#, python-format
-msgid "Could not save repo to repofile %s: %s"
-msgstr ""
-
-#: ../plugins/builddep.py:42
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr ""
-
-#: ../plugins/builddep.py:53
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr ""
-
-#: ../plugins/builddep.py:58
-msgid "packages with builddeps to install"
-msgstr ""
-
-#: ../plugins/builddep.py:61
-msgid "define a macro for spec file parsing"
-msgstr ""
-
-#: ../plugins/builddep.py:64
-msgid "treat commandline arguments as spec files"
-msgstr ""
-
-#: ../plugins/builddep.py:66
-msgid "treat commandline arguments as source rpm"
-msgstr ""
-
-#: ../plugins/builddep.py:109
-msgid "RPM: {}"
-msgstr ""
-
-#: ../plugins/builddep.py:118
-msgid "Some packages could not be found."
-msgstr ""
-
-#. No provides, no files
-#. Richdeps can have no matches but it could be correct (solver must decide
-#. later)
-#: ../plugins/builddep.py:138
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr ""
-
-#: ../plugins/builddep.py:156
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
-
-#: ../plugins/builddep.py:169 ../plugins/builddep.py:185
-#: ../plugins/builddep.py:202
-msgid "Not all dependencies satisfied"
-msgstr ""
-
-#: ../plugins/builddep.py:176
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
+#: ../plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Yeni yaprak paketler:"
 
 #: ../plugins/copr.py:56
 msgid "yes"
-msgstr ""
+msgstr "evet"
 
 #: ../plugins/copr.py:56
 msgid "y"
-msgstr ""
+msgstr "e"
 
 #: ../plugins/copr.py:57
 msgid "no"
-msgstr ""
+msgstr "hayır"
 
 #: ../plugins/copr.py:57
 msgid "n"
-msgstr ""
+msgstr "h"
 
 #: ../plugins/copr.py:76
 msgid "Interact with Copr repositories."
-msgstr ""
+msgstr "Copr depoları ile etkileşime geçin."
 
 #: ../plugins/copr.py:77
 msgid ""
@@ -446,52 +823,73 @@ msgid ""
 "  copr search tests\n"
 "    "
 msgstr ""
+"\n"
+"  enable isim/proje [chroot]\n"
+"  disable isim/proje\n"
+"  remove isim/proje\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=İSİM\n"
+"  search proje\n"
+"\n"
+"  Örnekler:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
+"  copr search tests\n"
+"    "
 
 #: ../plugins/copr.py:103
 msgid "List all installed Copr repositories (default)"
-msgstr ""
+msgstr "Kurulu tüm Copr depolarını listele (varsayılan)"
 
 #: ../plugins/copr.py:105
 msgid "List enabled Copr repositories"
-msgstr ""
+msgstr "Etkinleştirilmiş Copr depolarını listele"
 
 #: ../plugins/copr.py:107
 msgid "List disabled Copr repositories"
-msgstr ""
+msgstr "Devre dışı bırakılmış Copr depolarını listele"
 
 #: ../plugins/copr.py:109
 msgid "List available Copr repositories by user NAME"
-msgstr ""
+msgstr "NAME kullanıcısına ait mevcut Copr depolarını listele"
 
 #: ../plugins/copr.py:111
 msgid "Specify an instance of Copr to work with"
-msgstr ""
+msgstr "Belirtilen Copr örneği üzerinde çalış"
 
 #: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
 msgid "Error: "
-msgstr ""
+msgstr "Hata: "
 
 #: ../plugins/copr.py:146
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"Copr hub'ını ya `--hub` seçeneğini kullanarak, ya da "
+"`copr_hub/copr_kullanıcı_adı/copr_proje_adı` biçimini kullanarak belirtin"
 
 #: ../plugins/copr.py:149
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "birden çok hub belirtildi"
 
 #: ../plugins/copr.py:211 ../plugins/copr.py:215
 msgid "exactly two additional parameters to copr command are required"
-msgstr ""
+msgstr "copr komutu için tam olarak iki ek parametre gereklidir"
 
 #: ../plugins/copr.py:231
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
+"copr projesi belirtmek için `copr_kullanıcı_adı/copr_proje_adı` biçimini "
+"kullanın"
 
 #: ../plugins/copr.py:233
 msgid "bad copr project format"
-msgstr ""
+msgstr "hatalı copr projesi biçimi"
 
 #: ../plugins/copr.py:247
 #, python-brace-format
@@ -510,22 +908,35 @@ msgid ""
 "\n"
 "Do you really want to enable {0}?"
 msgstr ""
+"\n"
+"Bir Copr deposunu etkinleştirmek üzeresiniz. Bu deponun ana dağıtımın\n"
+"bir parçası olmadığını ve kalitenin değişebileceğini lütfen unutmayın.\n"
+"\n"
+"Fedora Projesinin, bu deponun içeriği üzerinde Copr SSS'de belirtilen kuralların\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"ötesinde herhangi bir kontrolü yoktur, ve paket kalite veya güvenlik\n"
+"seviyesi hakkında herhangi bir garanti verilmemektedir.\n"
+"\n"
+"Lütfen bu paketlerle ilgili hata raporlarını Fedora Bugzilla'ya\n"
+"bildirmeyin. Sorun olması durumunda, bu deponun sahibiyle iletişime geçin.\n"
+"\n"
+"{0} deposunu etkinleştirmeyi gerçekten istiyor musunuz?"
 
 #: ../plugins/copr.py:263
 msgid "Repository successfully enabled."
-msgstr ""
+msgstr "Depo başarıyla etkinleştirildi."
 
 #: ../plugins/copr.py:267
 msgid "Repository successfully disabled."
-msgstr ""
+msgstr "Depo başarıyla devre dışı bırakıldı."
 
 #: ../plugins/copr.py:271
 msgid "Repository successfully removed."
-msgstr ""
+msgstr "Depo başarıyla kaldırıldı."
 
-#: ../plugins/copr.py:275 ../plugins/copr.py:626
+#: ../plugins/copr.py:275 ../plugins/copr.py:625
 msgid "Unknown subcommand {}."
-msgstr ""
+msgstr "Bilinmeyen alt komut {}."
 
 #: ../plugins/copr.py:328
 msgid ""
@@ -533,394 +944,145 @@ msgid ""
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* Bu copr'lar, Copr hub hakkında hiçbir bilgi içermeyen eski bir biçimde "
+"depo dosyasına sahip - varsayılan değer kabul edildi. Bunu düzeltmek için "
+"projeyi yeniden etkinleştirin."
 
 #: ../plugins/copr.py:340
 msgid "Can't parse repositories for username '{}'."
-msgstr ""
+msgstr "'{}' kullanıcı adı için depolar ayrıştırılamıyor."
 
 #: ../plugins/copr.py:343
 msgid "List of {} coprs"
-msgstr ""
+msgstr "{} kullanıcısına ait copr'ların listesi"
 
 #: ../plugins/copr.py:351
 msgid "No description given"
-msgstr ""
+msgstr "Açıklama verilmedi"
 
 #: ../plugins/copr.py:363
 msgid "Can't parse search for '{}'."
-msgstr ""
+msgstr "'{}' için arama ayrıştırılamıyor."
 
 #: ../plugins/copr.py:366
 msgid "Matched: {}"
-msgstr ""
+msgstr "Eşleşti: {}"
 
 #: ../plugins/copr.py:374
 msgid "No description given."
-msgstr ""
+msgstr "Açıklama verilmedi."
 
 #: ../plugins/copr.py:387
 msgid "Safe and good answer. Exiting."
-msgstr ""
+msgstr "Güvenli ve iyi cevap. Çıkış yapılıyor."
 
 #: ../plugins/copr.py:394
 msgid "This command has to be run under the root user."
-msgstr ""
+msgstr "Bu komut root kullanıcısı tarafından çalıştırılmalıdır."
 
-#: ../plugins/copr.py:459
+#: ../plugins/copr.py:458
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
+"Bu depoda henüz oluşturulan bir paket yok, bu yüzden şimdi "
+"etkinleştiremezsiniz."
 
-#: ../plugins/copr.py:462
+#: ../plugins/copr.py:461
 msgid "Such repository does not exist."
-msgstr ""
+msgstr "Böyle bir depo yok."
 
-#: ../plugins/copr.py:510
+#: ../plugins/copr.py:509
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
+msgstr "{0}/{1}/{2} copr deposu kaldırılamadı"
 
-#: ../plugins/copr.py:521
+#: ../plugins/copr.py:520
 msgid "Failed to disable copr repo {}/{}"
-msgstr ""
+msgstr "{}/{} copr deposu devre dışı bırakılamadı"
 
-#: ../plugins/copr.py:543 ../plugins/copr.py:581
+#: ../plugins/copr.py:542 ../plugins/copr.py:580
 msgid "Unknown response from server."
-msgstr ""
+msgstr "Sunucudan bilinmeyen yanıt."
 
-#: ../plugins/copr.py:565
+#: ../plugins/copr.py:564
 msgid "Interact with Playground repository."
-msgstr ""
+msgstr "Playground deposu ile etkileşime geçin."
 
-#: ../plugins/copr.py:570
+#: ../plugins/copr.py:569
 msgid ""
 "\n"
 "You are about to enable a Playground repository.\n"
 "\n"
 "Do you want to continue?"
 msgstr ""
+"\n"
+"Bir Playground deposunu etkinleştirmek üzeresiniz.\n"
+"\n"
+"Devam etmek istiyor musunuz?"
 
-#: ../plugins/copr.py:616
+#: ../plugins/copr.py:615
 msgid "Playground repositories successfully enabled."
-msgstr ""
+msgstr "Playground depoları başarıyla etkinleştirildi."
 
-#: ../plugins/copr.py:619
+#: ../plugins/copr.py:618
 msgid "Playground repositories successfully disabled."
-msgstr ""
+msgstr "Playground depoları başarıyla devre dışı bırakıldı."
 
-#: ../plugins/copr.py:623
+#: ../plugins/copr.py:622
 msgid "Playground repositories successfully updated."
-msgstr ""
+msgstr "Playground depoları başarıyla güncellendi."
 
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "Yeni dallar:"
+#: ../plugins/debug.py:53
+msgid "dump information about installed rpm packages to file"
+msgstr "kurulu rpm paketleri hakkındaki bilgileri bir dosyaya yazdır"
 
-#: ../plugins/debuginfo-install.py:56
-msgid "install debuginfo packages"
-msgstr "hata ayıklama paketlerini kur"
+#: ../plugins/debug.py:67
+msgid "do not attempt to dump the repository contents."
+msgstr "depo içeriğini yazdırmaya çalışma."
 
-#: ../plugins/debuginfo-install.py:90 ../plugins/changelog.py:81
+#: ../plugins/debug.py:70
+msgid "optional name of dump file"
+msgstr "isteğe bağlı debug-dump dosyası adı"
+
+#: ../plugins/debug.py:95
 #, python-format
-msgid "No match for argument: %s"
-msgstr "Bağımsız değişken için eşleşme yok: %s"
+msgid "Output written to: %s"
+msgstr "Çıktı, %s dosyasına yazıldı"
 
-#: ../plugins/debuginfo-install.py:180
-#, python-format
+#: ../plugins/debug.py:172
+msgid "restore packages recorded in debug-dump file"
+msgstr "debug-dump dosyasında kaydedilen paketleri geri yükle"
+
+#: ../plugins/debug.py:183
+msgid "output commands that would be run to stdout."
+msgstr "çalıştırılacak komutları standart çıkışa yazdır."
+
+#: ../plugins/debug.py:186
+msgid "Install the latest version of recorded packages."
+msgstr "Kaydedilen paketlerin en son sürümünü yükle."
+
+#: ../plugins/debug.py:189
 msgid ""
-"Could not find debuginfo package for the following available packages: %s"
+"Ignore architecture and install missing packages matching the name, epoch, "
+"version and release."
 msgstr ""
+"Mimariyi yok say ve isim, dönem, sürüm ve dağıtımla eşleşen eksik paketleri "
+"yükle."
 
-#: ../plugins/debuginfo-install.py:185
+#: ../plugins/debug.py:194
+msgid "limit to specified type"
+msgstr "belirtilen türle sınırla"
+
+#: ../plugins/debug.py:196
+msgid "name of dump file"
+msgstr "debug-dump dosyasının adı"
+
+#: ../plugins/debug.py:264
 #, python-format
-msgid ""
-"Could not find debugsource package for the following available packages: %s"
-msgstr ""
+msgid "Package %s is not available"
+msgstr "%s paketi mevcut değil"
 
-#: ../plugins/debuginfo-install.py:190
+#: ../plugins/debug.py:274
 #, python-format
-msgid ""
-"Could not find debuginfo package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:195
-#, python-format
-msgid ""
-"Could not find debugsource package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:199
-msgid "Unable to find a match"
-msgstr "Eşleşme bulunamadı"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr "Başka bir paketin gerektirmediği kurulu paketleri listeler"
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr ""
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:173
-msgid "determine updated binaries that need restarting"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:178
-msgid "only consider this user's processes"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:180
-msgid ""
-"only report whether a reboot is required (exit code 1) or not (exit code 0)"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:199
-msgid "Core libraries or services have been updated since boot-up:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:204
-msgid "Reboot is required to fully utilize these updates."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:205
-msgid "More information:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:209
-msgid "No core libraries or services have been updated since boot-up."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:211
-msgid "Reboot should not be necessary."
-msgstr ""
-
-#: ../plugins/local.py:122
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "'{}' nedeniyle '{}' dizini oluşturulamıyor"
-
-#: ../plugins/local.py:126
-msgid "'{}' is not a directory"
-msgstr "'{}' bir dizin değil"
-
-#: ../plugins/local.py:135
-msgid "Copying '{}' to local repo"
-msgstr "'{}' dosyasını yerel depoya kopyala"
-
-#: ../plugins/local.py:141
-msgid "Can't write file '{}'"
-msgstr "Dosya'ya yazılamıyor '{}'"
-
-#: ../plugins/local.py:156
-msgid "Rebuilding local repo"
-msgstr "Yerel repoyu yeniden oluştur"
-
-#: ../plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Sürüm kilidi yapılandırması okunamıyor: %s"
-
-#: ../plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr "Kilit listesi ayarlanmadı"
-
-#: ../plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr ""
-
-#: ../plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr ""
-
-#: ../plugins/versionlock.py:36
-msgid "Deleting versionlock for:"
-msgstr ""
-
-#: ../plugins/versionlock.py:37
-msgid "No package found for:"
-msgstr "Bunun için bir paket bulunamadı:"
-
-#: ../plugins/versionlock.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
-
-#: ../plugins/versionlock.py:39
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr ""
-
-#: ../plugins/versionlock.py:40
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr ""
-
-#: ../plugins/versionlock.py:41
-msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
-
-#: ../plugins/versionlock.py:119
-msgid "control package version locks"
-msgstr ""
-
-#: ../plugins/reposync.py:54
-msgid "download all packages from remote repo"
-msgstr "tüm paketleri uzak depodan indir"
-
-#: ../plugins/reposync.py:63
-msgid "download only packages for this ARCH"
-msgstr "sadece bu YAPI için paketleri indir"
-
-#: ../plugins/reposync.py:65
-msgid "delete local packages no longer present in repository"
-msgstr "depoda olmayan yerel paketleri sil"
-
-#: ../plugins/reposync.py:67
-msgid "also download comps.xml"
-msgstr "ayrıca comps.xml indir"
-
-#: ../plugins/reposync.py:69
-msgid "download all the metadata."
-msgstr ""
-
-#: ../plugins/reposync.py:71
-msgid "download only newest packages per-repo"
-msgstr "depo üstünden sadece en yeni paketleri indir"
-
-#: ../plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr ""
-
-#: ../plugins/reposync.py:75
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-
-#: ../plugins/reposync.py:78
-msgid "operate on source packages"
-msgstr "kaynak paketleri üzerinde çalış"
-
-#: ../plugins/reposync.py:80
-msgid "try to set local timestamps of local files by the one on the server"
-msgstr ""
-
-#: ../plugins/reposync.py:135
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr ""
-
-#: ../plugins/reposync.py:155
-#, python-format
-msgid "[DELETED] %s"
-msgstr "[SİLİNDİ] %s"
-
-#: ../plugins/reposync.py:157
-#, python-format
-msgid "failed to delete file %s"
-msgstr "%s dosyası silinemedi"
-
-#: ../plugins/reposync.py:166
-#, python-format
-msgid "comps.xml for repository %s saved"
-msgstr "%s deposu için comps.xml kaydedildi"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:58
-msgid "Pass either --old or --new, not both!"
-msgstr ""
-
-#: ../plugins/repomanage.py:68
-msgid "No files to process"
-msgstr ""
-
-#: ../plugins/repomanage.py:73
-msgid "Could not open {}"
-msgstr ""
-
-#: ../plugins/repomanage.py:130
-msgid "Print the older packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:132
-msgid "Print the newest packages"
-msgstr ""
-
-#: ../plugins/repomanage.py:134
-msgid "Space separated output, not newline"
-msgstr ""
-
-#: ../plugins/repomanage.py:136
-msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
-
-#: ../plugins/repomanage.py:139
-msgid "Path to directory"
-msgstr ""
-
-#: ../plugins/migrate.py:45
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "yum'ın geçmişini, grubunu ve yumdb verilerini dnf'ye geçir"
-
-#: ../plugins/migrate.py:54
-msgid "Migrating history data..."
-msgstr "Geçmiş verileri taşınıyor..."
-
-#: ../plugins/changelog.py:37
-#, python-brace-format
-msgid "Not a valid date: \"{0}\"."
-msgstr "Geçerli bir tarih değil: \"{0}\"."
-
-#: ../plugins/changelog.py:43
-msgid "Show changelog data of packages"
-msgstr "Paketlerin değişiklik verileri göster"
-
-#: ../plugins/changelog.py:51
-msgid ""
-"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
-"is recommended."
-msgstr ""
-"TARİH'den bu yana değiştirilen girişleri göster. Belirsizliği önlemek için, "
-"YYYY-AA-GG biçimi önerilir."
-
-#: ../plugins/changelog.py:55
-msgid "show given number of changelog entries per package"
-msgstr "Paket başına verilen değişiklik listesi girişlerini göster"
-
-#: ../plugins/changelog.py:58
-msgid ""
-"show only new changelog entries for packages, that provide an upgrade for "
-"some of already installed packages."
-msgstr ""
-"zaten kurulu paketlerin bazıları için, bir yükseltme sağlayan paketler için,"
-" yalnızca yeni değişiklik listesi girişlerini göster."
-
-#: ../plugins/changelog.py:60
-msgid "PACKAGE"
-msgstr "PAKET"
-
-#: ../plugins/changelog.py:109
-msgid "Listing changelogs since {}"
-msgstr "{} tarihinden beri değişiklik listesi"
-
-#: ../plugins/changelog.py:111
-msgid "Listing only latest changelog"
-msgid_plural "Listing {} latest changelogs"
-msgstr[0] "Sadece en son değişiklik listesi listeleniyor"
-msgstr[1] ""
-
-#: ../plugins/changelog.py:116
-msgid "Listing only new changelogs since installed version of the package"
-msgstr ""
-"Paketin kurulu sürümünden bu yana yalnızca yeni değişiklikler listeleniyor"
-
-#: ../plugins/changelog.py:118
-msgid "Listing all changelogs"
-msgstr "Tüm değişiklik listelerini listele"
-
-#: ../plugins/changelog.py:122
-msgid "Changelogs for {}"
-msgstr "{} için değişiklikler"
+msgid "Bad dnf debug file: %s"
+msgstr "Hatalı dnf debug-dump dosyası: %s"
