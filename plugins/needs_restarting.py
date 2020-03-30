@@ -40,6 +40,30 @@ import stat
 NEED_REBOOT = ['kernel', 'glibc', 'linux-firmware', 'systemd', 'dbus',
                'dbus-broker', 'dbus-daemon']
 
+def get_options_from_dir(filepath, base):
+    """
+    Provide filepath as string if single dir or list of strings
+    Return set of package names contained in files under filepath
+    """
+
+    options = set()
+    for file in os.listdir(filepath):
+        if os.path.isdir(file) or not file.endswith('.conf'):
+            continue
+
+        with open(os.path.join(filepath, file)) as fp:
+            for line in fp:
+                options.add((line.rstrip(), file))
+
+    packages = set()
+    for pkg in base.sack.query().installed().filter(name={x[0] for x in options}):
+        packages.add(pkg.name)
+    for name, file in {x for x in options if x[0] not in packages }:
+        logger.warning(
+            _('No installed package found for package name "{pkg}"'
+                'specified in needs-restarting file "{file}".'.format(pkg=name, file=file)))
+    return packages
+
 
 def list_opened_files(uid):
     for (pid, smaps) in list_smaps():
@@ -189,6 +213,11 @@ class NeedsRestartingCommand(dnf.cli.Command):
         owning_pkg_fn = functools.partial(owning_package, self.base.sack)
         owning_pkg_fn = memoize(owning_pkg_fn)
 
+        opt = get_options_from_dir(os.path.join(
+            self.base.conf.installroot,
+            "etc/dnf/plugins/needs-restarting.d/"),
+            self.base)
+        NEED_REBOOT.extend(opt)
         if self.opts.reboothint:
             need_reboot = set()
             installed = self.base.sack.query().installed()
