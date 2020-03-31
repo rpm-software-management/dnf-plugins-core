@@ -22,6 +22,17 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.15 Release Notes
+====================
+
+- Support remote files in dnf builddep
+- [download] Respect repo priority (RhBug:1800342)
+
+Bugs fixed in 4.0.15:
+
+* :rhbug:`1800342`
+
+====================
 4.0.14 Release Notes
 ====================
 

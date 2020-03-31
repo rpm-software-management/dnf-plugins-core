@@ -740,6 +740,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Mar 31 2020 Aleš Matěj <amatej@redhat.com> - 4.0.15-1
+- Support remote files in dnf builddep
+- [download] Respect repo priority (RhBug:1800342)
+
 * Mon Feb 24 2020 Aleš Matěj <amatej@redhat.com> - 4.0.14-1
 - Fix conflict for dnf download --resolve (RhBug:1787908)
 - config-manager calls parser error when without options (RhBug:1782822)

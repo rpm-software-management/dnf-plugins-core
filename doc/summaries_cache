@@ -550,5 +550,9 @@
     [
         1785563,
         "When using versionlock with -q option ALL outputs are dismissed"
+    ],
+    [
+        1800342,
+        "dnf download and list do not respect repo priority"
     ]
 ]
