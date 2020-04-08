@@ -640,7 +640,8 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %exclude %{python3_sitelib}/dnf-plugins/leaves.*
 %exclude %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
 %endif
-%endif # 0%{?rhel} == 0
+%endif
+# endif 0%%{?rhel} == 0
 
 %if 0%{?rhel} == 0 && %{with python2}
 %files -n python2-dnf-plugin-local
@@ -706,7 +707,8 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %exclude %{python3_sitelib}/dnf-plugins/show_leaves.*
 %exclude %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
 %endif
-%endif # 0%{?rhel} == 0
+%endif
+# endif 0%%{?rhel} == 0
 
 %if %{with python2}
 %files -n python2-dnf-plugin-versionlock
