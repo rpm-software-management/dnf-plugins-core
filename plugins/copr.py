@@ -261,6 +261,7 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
             self._ask_user(msg)
             self._download_repo(project_name, repo_filename, chroot)
             logger.info(_("Repository successfully enabled."))
+            self._runtime_deps_warning(copr_username, copr_projectname)
         elif subcommand == "disable":
             self._need_root()
             self._disable_repo(copr_username, copr_projectname)
@@ -479,6 +480,52 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         shutil.copy2(f.name, repo_filename)
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
+    def _runtime_deps_warning(self, copr_username, copr_projectname):
+        """
+        In addition to the main copr repo (that has repo ID prefixed with
+        `copr:`), the repofile might contain additional repositories that
+        serve as runtime dependencies. This method informs the user about
+        the additional repos and provides an option to disable them.
+        """
+
+        self.base.reset(repos=True)
+        self.base.read_all_repos()
+
+        repo = self._get_copr_repo(self._sanitize_username(copr_username), copr_projectname)
+
+        runtime_deps = []
+        for repo_id in repo.cfg.sections():
+            if repo_id.startswith("copr:"):
+                continue
+            runtime_deps.append(repo_id)
+
+        if not runtime_deps:
+            return
+
+        print(_("Maintainer of the enabled Copr repository decided to make\n"
+                "it dependent on other repositories. Such repositories are\n"
+                "usually necessary for successful installation of RPMs from\n"
+                "the main Copr repository (runtime dependencies provided).\n\n"
+
+                "Be aware that the note about quality and bug-reporting\n"
+                "above applies here too, Fedora Project doesn't control the\n"
+                "content. Please review the list:"))
+        dep_idx = 1
+        for repo_id in runtime_deps:
+            print("\n{0}. [{1}]".format(dep_idx, repo_id))
+            print("   baseurl={0}".format(repo.cfg.getValue(repo_id, "baseurl")))
+            dep_idx += 1
+
+        msg = _("\nThese repositories have been enabled automatically."
+                "\nDo you want to keep them enabled?")
+        if self.base._promptWanted():
+            if self.base.conf.assumeno or not self.base.output.userconfirm(
+                    msg='{} [Y/n]: '.format(msg), defaultyes_msg='{} [Y/n]: '.format(msg)):
+                for dep in runtime_deps:
+                    self.base.conf.write_raw_configfile(repo.repofile, dep,
+                                                        self.base.conf.substitutions,
+                                                        {"enabled": "0"})
+
     def _get_copr_repo(self, copr_username, copr_projectname):
         repo_id = "copr:{0}:{1}:{2}".format(self.copr_hostname.rsplit(':', 1)[0],
                                             self._sanitize_username(copr_username),
@@ -520,13 +567,9 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
                 _("Failed to disable copr repo {}/{}"
                   .format(copr_username, copr_projectname)))
 
-        self.base.conf.write_raw_configfile(repo.repofile, repo.id,
-                                            self.base.conf.substitutions, {"enabled": "0"})
-
-        # disable also multilib counterpart, if found
-        multilib_repo_id = repo.id + ':ml'
-        if multilib_repo_id in self.base.repos:
-            self.base.conf.write_raw_configfile(repo.repofile, multilib_repo_id,
+        # disable all repos provided by the repo file
+        for repo_id in repo.cfg.sections():
+            self.base.conf.write_raw_configfile(repo.repofile, repo_id,
                                                 self.base.conf.substitutions, {"enabled": "0"})
 
     @classmethod
