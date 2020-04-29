@@ -111,6 +111,9 @@ class VersionLock(dnf.Plugin):
             all_versions = self.base.sack.query().filter(name__glob=list(locked_names))
             other_versions = all_versions.difference(locked_query)
             excludes_query = excludes_query.union(other_versions)
+            # exclude also anything that obsoletes the locked versions of packages
+            excludes_query = excludes_query.union(
+                self.base.sack.query().filterm(obsoletes=locked_query))
 
         excludes_query.filterm(reponame__neq=hawkey.SYSTEM_REPO_NAME)
         if excludes_query:
