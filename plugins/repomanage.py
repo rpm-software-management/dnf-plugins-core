@@ -62,7 +62,7 @@ class RepoManageCommand(dnf.cli.Command):
         verfile = {}
         pkgdict = {}
 
-        keepnum = int(self.opts.keep) * (-1)  # the number of items to keep
+        keepnum = int(self.opts.keep) # the number of items to keep
 
         if len(rpm_list) == 0:
             raise dnf.exceptions.Error(_("No files to process"))
@@ -94,10 +94,10 @@ class RepoManageCommand(dnf.cli.Command):
             for (n, a) in pkgdict.keys():
                 evrlist = pkgdict[(n, a)]
 
-                if len(evrlist) < abs(keepnum):
+                if len(evrlist) < keepnum:
                     newevrs = evrlist
                 else:
-                    newevrs = evrlist[keepnum:]
+                    newevrs = evrlist[-keepnum:]
 
                 for package in newevrs:
                     nevra = self._package_to_nevra(package)
@@ -108,10 +108,10 @@ class RepoManageCommand(dnf.cli.Command):
             for (n, a) in pkgdict.keys():
                 evrlist = pkgdict[(n, a)]
 
-                if len(evrlist) < abs(keepnum):
+                if len(evrlist) < keepnum:
                     continue
 
-                oldevrs = evrlist[:keepnum]
+                oldevrs = evrlist[:-keepnum]
                 for package in oldevrs:
                     nevra = self._package_to_nevra(package)
                     for fpkg in verfile[nevra]:
