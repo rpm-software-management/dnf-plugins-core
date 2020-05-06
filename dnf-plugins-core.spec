@@ -1,4 +1,4 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.17}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.22}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.46.1
 %global yum_utils_subpackage_name dnf-utils
@@ -31,7 +31,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.15
+Version:        4.0.16
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
