@@ -81,6 +81,11 @@ class ConfigManagerCommand(dnf.cli.Command):
                                          "--set-enabled", "--enable",
                                          "--set-disabled", "--disable"])))
 
+        # warn with hint if --enablerepo or --disablerepo argument was passed
+        if self.opts.repos_ed != []:
+            logger.warning(_("Warning: --enablerepo/--disablerepo arguments have no meaning"
+                             "with config manager. Use --set-enabled/--set-disabled instead."))
+
         if (self.opts.save or self.opts.set_enabled or
                 self.opts.set_disabled or self.opts.add_repo):
             demands.root_user = True
