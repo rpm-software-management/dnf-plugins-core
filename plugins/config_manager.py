@@ -54,6 +54,13 @@ class ConfigManagerCommand(dnf.cli.Command):
         parser.add_argument(
             '--dump-variables', default=False, action='store_true',
             help=_('print variable values to stdout'))
+        enable_group = parser.add_mutually_exclusive_group()
+        enable_group.add_argument("--set-enabled", default=False,
+                                  dest="set_enabled", action="store_true",
+                                  help=_("enable repos (automatically saves)"))
+        enable_group.add_argument("--set-disabled", default=False,
+                                  dest="set_disabled", action="store_true",
+                                  help=_("disable repos (automatically saves)"))
 
     def configure(self):
         # setup sack and populate it with enabled repos
