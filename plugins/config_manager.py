@@ -78,7 +78,8 @@ class ConfigManagerCommand(dnf.cli.Command):
                                      .format(' '.join([
                                          "--save", "--add-repo",
                                          "--dump", "--dump-variables",
-                                         "--enable", "--disable"])))
+                                         "--set-enabled", "--enable",
+                                         "--set-disabled", "--disable"])))
 
         if (self.opts.save or self.opts.set_enabled or
                 self.opts.set_disabled or self.opts.add_repo):
