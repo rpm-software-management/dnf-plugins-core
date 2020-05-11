@@ -86,6 +86,12 @@ Examples
 ``dnf config-manager --set-enabled <repoid>``
     Enable repository identified by <repoid> and make the change permanent.
 
+``dnf config-manager --set-disabled <repoid1> <repoid2>``
+    Disable repositories identified by <repoid1> and <repoid2>
+
+``dnf config-manager --set-disabled <repoid1>,<repoid2>``
+    Disable repositories identified by <repoid1> and <repoid2>
+
 ``dnf config-manager --save --setopt=*.proxy=http://proxy.example.com:3128/ <repo1> <repo2>``
     Update proxy setting in repositories with repoid <repo1> and <repo2> and make the change
     permanent.
