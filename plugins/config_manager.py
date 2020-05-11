@@ -90,6 +90,11 @@ class ConfigManagerCommand(dnf.cli.Command):
                 self.opts.set_disabled or self.opts.add_repo):
             demands.root_user = True
 
+        # sanitize commas https://bugzilla.redhat.com/show_bug.cgi?id=1830530
+        temp_list = [x.split(',') for x in self.opts.crepo if x != ',']
+        # flatten sublists
+        self.opts.crepo = [item for sublist in temp_list
+            for item in sublist if item != '']
 
     def run(self):
         """Execute the util action here."""
