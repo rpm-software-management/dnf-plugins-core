@@ -19,21 +19,20 @@
 
 from __future__ import print_function
 
-import sys
-
-from dnf.pycomp import PY3
-from dnfpluginscore import _, logger
-from dnf.i18n import ucd
-
-import dnf
 import glob
 import itertools
 import json
 import os
+import re
 import shutil
 import stat
+import sys
+
+from dnfpluginscore import _, logger
+import dnf
+from dnf.pycomp import PY3
+from dnf.i18n import ucd
 import rpm
-import re
 
 # Attempt importing the linux_distribution function from distro
 # If that fails, attempt to import the deprecated implementation
