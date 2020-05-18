@@ -18,12 +18,16 @@
 #
 
 from __future__ import print_function
+
+import sys
+
 from dnf.pycomp import PY3
 from dnfpluginscore import _, logger
 from dnf.i18n import ucd
 
 import dnf
 import glob
+import itertools
 import json
 import os
 import shutil
@@ -74,6 +78,7 @@ class CoprCommand(dnf.cli.Command):
     default_url = default_protocol + "://" + default_hostname
     aliases = ("copr",)
     summary = _("Interact with Copr repositories.")
+    first_warning = True
     usage = _("""
   enable name/project [chroot]
   disable name/project
@@ -188,6 +193,9 @@ class CoprCommand(dnf.cli.Command):
         except (NoOptionError, NoSectionError):
             return default
 
+    def _user_warning_before_prompt(self, text):
+        sys.stderr.write("{0}\n".format(text.strip()))
+
     def run(self):
         subcommand = self.opts.subcommand[0]
 
@@ -244,9 +252,9 @@ class CoprCommand(dnf.cli.Command):
             self._sanitize_username(copr_username), copr_projectname)
         if subcommand == "enable":
             self._need_root()
-            msg = _("""
-You are about to enable a Copr repository. Please note that this
-repository is not part of the main distribution, and quality may vary.
+            info = _("""
+Enabling a Copr repository. Please note that this repository is not part
+of the main distribution, and quality may vary.
 
 The Fedora Project does not exercise any power over the contents of
 this repository beyond the rules outlined in the Copr FAQ at
@@ -255,10 +263,11 @@ and packages are not held to any quality or security level.
 
 Please do not file bug reports about these packages in Fedora
 Bugzilla. In case of problems, contact the owner of this repository.
-
-Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
-                                                      copr_username, copr_projectname])))
-            self._ask_user(msg)
+""")
+            project = '/'.join([self.copr_hostname, copr_username,
+                                copr_projectname])
+            msg = "Do you really want to enable {0}?".format(project)
+            self._ask_user(info, msg)
             self._download_repo(project_name, repo_filename, chroot)
             logger.info(_("Repository successfully enabled."))
             self._runtime_deps_warning(copr_username, copr_projectname)
@@ -381,11 +390,21 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         formatted = self.base.output.fmtSection(text)
         print(formatted)
 
-    def _ask_user(self, msg):
+    def _ask_user_no_raise(self, info, msg):
+        if not self.first_warning:
+            sys.stderr.write("\n")
+        self.first_warning = False
+        sys.stderr.write("{0}\n".format(info.strip()))
+
         if self.base._promptWanted():
             if self.base.conf.assumeno or not self.base.output.userconfirm(
-                    msg='{} [y/N]: '.format(msg), defaultyes_msg='{} [Y/n]: '.format(msg)):
-                raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
+                    msg='\n{} [y/N]: '.format(msg), defaultyes_msg='\n{} [Y/n]: '.format(msg)):
+                return False
+        return True
+
+    def _ask_user(self, info, msg):
+        if not self._ask_user_no_raise(info, msg):
+            raise dnf.exceptions.Error(_('Safe and good answer. Exiting.'))
 
     @classmethod
     def _need_root(cls):
@@ -502,29 +521,33 @@ Do you really want to enable {0}?""".format('/'.join([self.copr_hostname,
         if not runtime_deps:
             return
 
-        print(_("Maintainer of the enabled Copr repository decided to make\n"
-                "it dependent on other repositories. Such repositories are\n"
-                "usually necessary for successful installation of RPMs from\n"
-                "the main Copr repository (runtime dependencies provided).\n\n"
+        info = _(
+            "Maintainer of the enabled Copr repository decided to make\n"
+            "it dependent on other repositories. Such repositories are\n"
+            "usually necessary for successful installation of RPMs from\n"
+            "the main Copr repository (they provide runtime dependencies).\n\n"
 
-                "Be aware that the note about quality and bug-reporting\n"
-                "above applies here too, Fedora Project doesn't control the\n"
-                "content. Please review the list:"))
-        dep_idx = 1
-        for repo_id in runtime_deps:
-            print("\n{0}. [{1}]".format(dep_idx, repo_id))
-            print("   baseurl={0}".format(repo.cfg.getValue(repo_id, "baseurl")))
-            dep_idx += 1
+            "Be aware that the note about quality and bug-reporting\n"
+            "above applies here too, Fedora Project doesn't control the\n"
+            "content. Please review the list:\n\n"
+            "{0}\n\n"
+            "These repositories have been enabled automatically."
+        )
 
-        msg = _("\nThese repositories have been enabled automatically."
-                "\nDo you want to keep them enabled?")
-        if self.base._promptWanted():
-            if self.base.conf.assumeno or not self.base.output.userconfirm(
-                    msg='{} [Y/n]: '.format(msg), defaultyes_msg='{} [Y/n]: '.format(msg)):
-                for dep in runtime_deps:
-                    self.base.conf.write_raw_configfile(repo.repofile, dep,
-                                                        self.base.conf.substitutions,
-                                                        {"enabled": "0"})
+        counter = itertools.count(1)
+        info = info.format("\n\n".join([
+            "{num:2}. [{repoid}]\n    baseurl={baseurl}".format(
+                num=next(counter),
+                repoid=repoid,
+                baseurl=repo.cfg.getValue(repoid, "baseurl"))
+            for repoid in runtime_deps
+        ]))
+
+        if not self._ask_user_no_raise(info, _("Do you want to keep them enabled?")):
+            for dep in runtime_deps:
+                self.base.conf.write_raw_configfile(repo.repofile, dep,
+                                                    self.base.conf.substitutions,
+                                                    {"enabled": "0"})
 
     def _get_copr_repo(self, copr_username, copr_projectname):
         repo_id = "copr:{0}:{1}:{2}".format(self.copr_hostname.rsplit(':', 1)[0],
@@ -609,11 +632,10 @@ class PlaygroundCommand(CoprCommand):
 
     def _cmd_enable(self, chroot):
         self._need_root()
-        msg = _("""
-You are about to enable a Playground repository.
-
-Do you want to continue?""")
-        self._ask_user(msg)
+        self._ask_user(
+            _("Enabling a Playground repository."),
+            _("Do you want to continue?"),
+        )
         api_url = "{0}/api/playground/list/".format(
             self.copr_url)
         f = self.base.urlopen(api_url, mode="w+")
