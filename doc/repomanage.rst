@@ -19,7 +19,7 @@
 DNF repomanage Plugin
 =====================
 
-Manage a directory of rpm packages.
+Manage a repository or a simple directory of rpm packages.
 
 --------
 Synopsis
@@ -31,7 +31,9 @@ Synopsis
 Description
 -----------
 
-`repomanage` prints newest or oldest packages in specified directory for easy piping to xargs or similar programs.
+`repomanage` prints newest or oldest packages in a repository specified by <path> for easy piping to xargs or similar programs. In case <path> doesn't contain a valid repository it is searched for rpm packages which are then used instead.
+
+In order to work correctly with modular packages <path> has to contain repodata with modular metadata. If modular content is present `repomanage` prints packages from newest or oldest versions of each stream in addition to newest or oldest non-modular packages.
 
 
 Options
@@ -60,14 +62,14 @@ The following options control how packages are displayed in the output:
 Examples
 --------
 
-Display newest packages in current directory::
+Display newest packages in current repository (directory)::
 
     dnf repomanage --new .
 
-Display 2 newest packages in requires "home" directory::
+Display 2 newest versions of each package in "home" directory::
 
     dnf repomanage --new --keep 2 ~/
 
-Display older package separated by space in current directory::
+Display oldest packages separated by space in current repository (directory)::
 
     dnf repomanage --old --space .
