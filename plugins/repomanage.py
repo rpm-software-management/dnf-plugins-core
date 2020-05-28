@@ -26,6 +26,7 @@ import dnf
 import dnf.cli
 import logging
 import os
+import hawkey
 
 
 class RepoManage(dnf.Plugin):
@@ -61,6 +62,8 @@ class RepoManageCommand(dnf.cli.Command):
         rpm_list = self._get_file_list(self.opts.path, ".rpm")
         verfile = {}
         pkgdict = {}
+        module_dict = {}  # {NameStream: {Version: [modules]}}
+        all_modular_artifacts = set()
 
         keepnum = int(self.opts.keep) # the number of items to keep
 
@@ -68,12 +71,32 @@ class RepoManageCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(_("No files to process"))
 
         try:
-            self.base.add_remote_rpms(rpm_list, progress=self.base.output.progress)
-        except IOError:
-            logger.warning(_("Could not open {}").format(', '.join(rpm_list)))
+            this_repo = self.base.repos.add_new_repo("repomanage_repo", self.base.conf, baseurl=[self.opts.path])
+            self.base._add_repo_to_sack(this_repo)
+            if dnf.base.WITH_MODULES:
+                self.base._setup_modular_excludes()
 
-        packages = [x for x in self.base.sack.query().available()]
+                # Prepare modules
+                module_packages = self.base._moduleContainer.getModulePackages()
+
+                for module_package in module_packages:
+                    all_modular_artifacts.update(module_package.getArtifacts())
+                    module_dict.setdefault(module_package.getNameStream(), {}).setdefault(
+                        module_package.getVersionNum(), []).append(module_package)
+
+        except dnf.exceptions.RepoError:
+            self.base.reset(sack=True, repos=True)
+            self.base.fill_sack(load_system_repo=False, load_available_repos=False)
+            try:
+                self.base.add_remote_rpms(rpm_list, progress=self.base.output.progress)
+            except IOError:
+                logger.warning(_("Could not open {}").format(', '.join(rpm_list)))
+
+        # Prepare regular packages
+        query = self.base.sack.query(flags=hawkey.IGNORE_MODULAR_EXCLUDES).available()
+        packages = [x for x in query.filter(pkg__neq=query.filter(nevra_strict=all_modular_artifacts)).available()]
         packages.sort()
+
         for pkg in packages:
             na = (pkg.name, pkg.arch)
             if na in pkgdict:
@@ -88,35 +111,58 @@ class RepoManageCommand(dnf.cli.Command):
                 verfile[nevra] = [self._package_to_path(pkg)]
 
         outputpackages = []
+        # modular packages
+        keepnum_latest_stream_artifacts = set()
 
         # if new
         if not self.opts.old:
+            # regular packages
             for (n, a) in pkgdict.keys():
                 evrlist = pkgdict[(n, a)]
 
-                if len(evrlist) < keepnum:
-                    newevrs = evrlist
-                else:
-                    newevrs = evrlist[-keepnum:]
+                newevrs = evrlist[-keepnum:]
 
                 for package in newevrs:
                     nevra = self._package_to_nevra(package)
                     for fpkg in verfile[nevra]:
                         outputpackages.append(fpkg)
 
+            # modular packages
+            for streams_by_version in module_dict.values():
+                sorted_stream_versions = sorted(streams_by_version.keys(), reverse=True)
+
+                new_sorted_stream_versions = sorted_stream_versions[-keepnum:]
+
+                for i in new_sorted_stream_versions:
+                    for stream in streams_by_version[i]:
+                        keepnum_latest_stream_artifacts.update(set(stream.getArtifacts()))
+
+
         if self.opts.old:
+            # regular packages
             for (n, a) in pkgdict.keys():
                 evrlist = pkgdict[(n, a)]
 
-                if len(evrlist) < keepnum:
-                    continue
-
                 oldevrs = evrlist[:-keepnum]
+
                 for package in oldevrs:
                     nevra = self._package_to_nevra(package)
                     for fpkg in verfile[nevra]:
                         outputpackages.append(fpkg)
 
+            # modular packages
+            for streams_by_version in module_dict.values():
+                sorted_stream_versions = sorted(streams_by_version.keys(), reverse=True)
+
+                old_sorted_stream_versions = sorted_stream_versions[:-keepnum]
+
+                for i in old_sorted_stream_versions:
+                    for stream in streams_by_version[i]:
+                        keepnum_latest_stream_artifacts.update(set(stream.getArtifacts()))
+
+
+        modular_packages = [self._package_to_path(x) for x in query.filter(pkg__eq=query.filter(nevra_strict=keepnum_latest_stream_artifacts)).available()]
+        outputpackages = outputpackages + modular_packages
         outputpackages.sort()
         if self.opts.space:
             print(" ".join(outputpackages))
@@ -152,9 +198,11 @@ class RepoManageCommand(dnf.cli.Command):
 
         return filelist
 
-    @staticmethod
-    def _package_to_path(pkg):
-        return pkg.location
+    def _package_to_path(self, pkg):
+        if len(self.base.repos):
+            return os.path.join(self.opts.path, pkg.location)
+        else:
+            return pkg.location
 
     @staticmethod
     def _package_to_nevra(pkg):
