@@ -62,6 +62,17 @@ class BaseStub(object):
             pkgs.append(self.sack.add_cmdline_package(path))
         return pkgs
 
+    def _add_repo_to_sack(self, repo):
+        raise dnf.exceptions.RepoError()
+
+    def reset(self, sack=True, repos=True):
+        self.sack = dnf.sack.Sack()
+        self.repos = dnf.repodict.RepoDict()
+        self.conf = FakeConf()
+
+    def fill_sack(self, load_system_repo=False, load_available_repos=False):
+        return
+
 
 class BaseCliStub(object):
     """A class mocking `dnf.cli.cli.BaseCli`."""
