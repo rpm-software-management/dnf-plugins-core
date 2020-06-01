@@ -100,7 +100,8 @@ class RepoManageCommand(dnf.cli.Command):
         for pkg in packages:
             na = (pkg.name, pkg.arch)
             if na in pkgdict:
-                pkgdict[na].append(pkg)
+                if pkg not in pkgdict[na]:
+                    pkgdict[na].append(pkg)
             else:
                 pkgdict[na] = [pkg]
 
