@@ -742,6 +742,14 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Jun 02 2020 Nicola Sella <nsella@redhat.com> - 4.0.16-1
+- [versionlock] Take obsoletes into account (RhBug:1627124)
+- Move args "--set-enabled", "--set-disabled" from DNF (RhBug:1727882)
+- Add missing arguments --set-enabled/--set-diabled into error message
+- Warn when --enablerepo/--disablerepo args were passed (RhBug:1727882)
+- [copr] add support for enabling/disabling runtime dependencies
+- [copr] no-liability text to be always printed
+
 * Tue Mar 31 2020 Aleš Matěj <amatej@redhat.com> - 4.0.15-1
 - Support remote files in dnf builddep
 - [download] Respect repo priority (RhBug:1800342)

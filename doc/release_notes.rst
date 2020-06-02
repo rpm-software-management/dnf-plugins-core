@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.16 Release Notes
+====================
+
+- [versionlock] Take obsoletes into account (RhBug:1627124)
+- Move args "--set-enabled", "--set-disabled" from DNF (RhBug:1727882)
+- Add missing arguments --set-enabled/--set-disabled into error message
+- Warn when --enablerepo/--disablerepo args were passed (RhBug:1727882)
+- [copr] add support for enabling/disabling runtime dependencies
+- [copr] no-liability text to be always printed
+
+Bugs fixed in 4.0.16:
+
+* :rhbug:`1727882`
+
+====================
 4.0.15 Release Notes
 ====================
 

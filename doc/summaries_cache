@@ -554,5 +554,9 @@
     [
         1800342,
         "dnf download and list do not respect repo priority"
+    ],
+    [
+        1727882,
+        "yum-config-manager cannot update repos on RHEL8"
     ]
 ]
