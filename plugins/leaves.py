@@ -72,8 +72,7 @@ class LeavesCommand(dnf.cli.Command):
     def kosaraju(self, graph, rgraph):
         """
         Run Kosaraju's algorithm to find strongly connected components
-        in the graph, and return the list of nodes in the components
-        without any incoming edges.
+        in the graph, and return the components without any incoming edges.
         """
         N = len(graph)
         rstack = []
@@ -140,7 +139,7 @@ class LeavesCommand(dnf.cli.Command):
 
             sccredges.difference_update(scc)
             if not sccredges:
-                leaves.extend(scc)
+                leaves.append(scc.copy())
             del scc[:]
             sccredges.clear()
 
@@ -148,8 +147,18 @@ class LeavesCommand(dnf.cli.Command):
 
     def findleaves(self):
         (packages, depends, rdepends) = self.buildgraph()
-        return [packages[i] for i in self.kosaraju(depends, rdepends)]
+        return [packages[i] for scc in self.kosaraju(depends, rdepends) for i in scc]
 
     def run(self):
-        for pkg in sorted(map(str, self.findleaves())):
-            print(pkg)
+        (packages, depends, rdepends) = self.buildgraph()
+        leaves = self.kosaraju(depends, rdepends)
+        for scc in leaves:
+            for i, pkg in enumerate(scc):
+                scc[i] = str(packages[pkg])
+            scc.sort()
+        leaves.sort(key=lambda scc: scc[0])
+        for scc in leaves:
+            mark = '-'
+            for pkg in scc:
+                print("{} {}".format(mark, pkg))
+                mark = ' '
