@@ -31,7 +31,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.16
+Version:        4.0.17
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -742,6 +742,10 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Wed Jun 10 2020 Nicola Sella <nsella@redhat.com> - 4.0.17-1
+- [repomanage] Add modular support (RhBug:1804720)
+- [needs-restarting] add options using .conf file (RhBug:1810123)
+
 * Tue Jun 02 2020 Nicola Sella <nsella@redhat.com> - 4.0.16-1
 - [versionlock] Take obsoletes into account (RhBug:1627124)
 - Move args "--set-enabled", "--set-disabled" from DNF (RhBug:1727882)

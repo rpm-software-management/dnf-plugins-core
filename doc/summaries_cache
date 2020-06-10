@@ -558,5 +558,13 @@
     [
         1727882,
         "yum-config-manager cannot update repos on RHEL8"
+    ],
+    [
+        1804720,
+        "repomanage tool is not working correctly with modules in AppStream"
+    ],
+    [
+        1810123,
+        "[RFE] Provide ability to add packages to the needs-restarting plugin configuration."
     ]
 ]

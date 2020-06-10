@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.17 Release Notes
+====================
+
+- [repomanage] Add modular support (RhBug:1804720)
+- [needs-restarting] add optons using .conf file (RhBug:1810123)
+
+Bugs fixed in 4.0.17:
+
+* :rhbug:`1804720`
+* :rhbug:`1810123`
+
+====================
 4.0.16 Release Notes
 ====================
 
