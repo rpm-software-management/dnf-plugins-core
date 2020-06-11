@@ -46,6 +46,8 @@ def get_options_from_dir(filepath, base):
     Return set of package names contained in files under filepath
     """
 
+    if not os.path.exists(filepath):
+        return set()
     options = set()
     for file in os.listdir(filepath):
         if os.path.isdir(file) or not file.endswith('.conf'):
@@ -58,9 +60,9 @@ def get_options_from_dir(filepath, base):
     packages = set()
     for pkg in base.sack.query().installed().filter(name={x[0] for x in options}):
         packages.add(pkg.name)
-    for name, file in {x for x in options if x[0] not in packages }:
+    for name, file in {x for x in options if x[0] not in packages}:
         logger.warning(
-            _('No installed package found for package name "{pkg}"'
+            _('No installed package found for package name "{pkg}" '
                 'specified in needs-restarting file "{file}".'.format(pkg=name, file=file)))
     return packages
 
