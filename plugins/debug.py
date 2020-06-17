@@ -201,10 +201,9 @@ class DebugRestoreCommand(dnf.cli.Command):
             self.opts.filter_types = set(
                 self.opts.filter_types.replace(",", " ").split())
 
-        installed = self.base.sack.query().installed()
         dump_pkgs = self.read_dump_file(self.opts.filename[0])
 
-        self.process_installed(installed, dump_pkgs, self.opts)
+        self.process_installed(dump_pkgs, self.opts)
 
         self.process_dump(dump_pkgs, self.opts)
 
@@ -212,56 +211,63 @@ class DebugRestoreCommand(dnf.cli.Command):
             self.base.resolve()
             self.base.do_transaction()
 
-    def process_installed(self, installed, dump_pkgs, opts):
-        for pkg in sorted(installed):
-            filtered = False
+    def process_installed(self, dump_pkgs, opts):
+        installed = self.base.sack.query().installed()
+        installonly_pkgs = self.base._get_installonly_query(installed)
+        for pkg in installed:
+            pkg_remove = False
             spec = pkgspec(pkg)
-            action, dn, da, de, dv, dr = dump_pkgs.get((pkg.name, pkg.arch),
-                                                       [None, None, None,
-                                                        None, None, None])
-            dump_naevr = (dn, da, de, dv, dr)
-            if pkg.pkgtup == dump_naevr:
-                # package unchanged
-                del dump_pkgs[(pkg.name, pkg.arch)]
-            else:
-                if action == "install":
-                    # already have some version
-                    dump_pkgs[(pkg.name, pkg.arch)][0] = "replace"
-                    if "replace" not in opts.filter_types:
-                        filtered = True
+            dumped_versions = dump_pkgs.get((pkg.name, pkg.arch), None)
+            if dumped_versions is not None:
+                evr = (pkg.epoch, pkg.version, pkg.release)
+                if evr in dumped_versions:
+                    # the correct version is already installed
+                    dumped_versions[evr] = 'skip'
                 else:
-                    if "remove" not in opts.filter_types:
-                        filtered = True
-                if not filtered:
-                    if opts.output:
-                        print("remove    %s" % spec)
+                    # other version is currently installed
+                    if pkg in installonly_pkgs:
+                        # package is install-only, should be removed
+                        pkg_remove = True
                     else:
-                        self.base.package_remove(pkg)
+                        # package should be upgraded / downgraded
+                        if "replace" in opts.filter_types:
+                            action = 'replace'
+                        else:
+                            action = 'skip'
+                        for d_evr in dumped_versions.keys():
+                            dumped_versions[d_evr] = action
+            else:
+                # package should not be installed
+                pkg_remove = True
+            if pkg_remove and "remove" in opts.filter_types:
+                if opts.output:
+                    print("remove    %s" % spec)
+                else:
+                    self.base.package_remove(pkg)
 
     def process_dump(self, dump_pkgs, opts):
-        for (action, n, a, e, v, r) in sorted(dump_pkgs.values()):
-            filtered = False
-            if opts.ignore_arch:
-                arch = ""
-            else:
-                arch = "." + a
-            if opts.install_latest and action == "install":
-                pkg_spec = "%s%s" % (n, arch)
-                if "install" not in opts.filter_types:
-                    filtered = True
-            else:
-                pkg_spec = pkgtup2spec(n, arch, e, v, r)
-                if (action == "replace" and
-                        "replace" not in opts.filter_types):
-                    filtered = True
-            if not filtered:
-                if opts.output:
-                    print("install   %s" % pkg_spec)
+        for (n, a) in sorted(dump_pkgs.keys()):
+            dumped_versions = dump_pkgs[(n, a)]
+            for (e, v, r) in sorted(dumped_versions.keys()):
+                action = dumped_versions[(e, v, r)]
+                if action == 'skip':
+                    continue
+                if opts.ignore_arch:
+                    arch = ""
                 else:
-                    try:
-                        self.base.install(pkg_spec)
-                    except dnf.exceptions.MarkingError:
-                        logger.error(_("Package %s is not available"), pkg_spec)
+                    arch = "." + a
+                if opts.install_latest and action == "install":
+                    pkg_spec = "%s%s" % (n, arch)
+                else:
+                    pkg_spec = pkgtup2spec(n, arch, e, v, r)
+                if action in opts.filter_types:
+                    if opts.output:
+                        print("%s   %s" % (action, pkg_spec))
+                    else:
+                        try:
+                            self.base.install(pkg_spec)
+                        except dnf.exceptions.MarkingError:
+                            logger.error(_("Package %s is not available"), pkg_spec)
 
     @staticmethod
     def read_dump_file(filename):
@@ -288,11 +294,9 @@ class DebugRestoreCommand(dnf.cli.Command):
 
             pkg_spec = line.strip()
             nevra = hawkey.split_nevra(pkg_spec)
-            pkgs[(nevra.name, nevra.arch)] = ["install", ucd(nevra.name),
-                                              ucd(nevra.arch),
-                                              ucd(nevra.epoch),
-                                              ucd(nevra.version),
-                                              ucd(nevra.release)]
+            # {(name, arch): {(epoch, version, release): action}}
+            pkgs.setdefault((nevra.name, nevra.arch), {})[
+                (nevra.epoch, nevra.version, nevra.release)] = "install"
 
         return pkgs
 
@@ -321,6 +325,6 @@ def pkgspec(pkg):
 
 
 def pkgtup2spec(name, arch, epoch, version, release):
-    a = "" if not arch else ".%s" % arch
+    a = "" if not arch else ".%s" % arch.lstrip('.')
     e = "" if epoch in (None, "") else "%s:" % epoch
     return "%s-%s%s-%s%s" % (name, e, version, release, a)
