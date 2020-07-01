@@ -175,6 +175,8 @@ class DebugRestoreCommand(dnf.cli.Command):
         self.cli.demands.sack_activation = True
         self.cli.demands.available_repos = True
         self.cli.demands.root_user = True
+        if not self.opts.output:
+            self.cli.demands.resolving = True
 
     @staticmethod
     def set_argparser(parser):
@@ -206,10 +208,6 @@ class DebugRestoreCommand(dnf.cli.Command):
         self.process_installed(dump_pkgs, self.opts)
 
         self.process_dump(dump_pkgs, self.opts)
-
-        if not self.opts.output:
-            self.base.resolve()
-            self.base.do_transaction()
 
     def process_installed(self, dump_pkgs, opts):
         installed = self.base.sack.query().installed()
