@@ -57,16 +57,16 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 
 ``dnf debug-restore``
 
-``--output``
-    Only output list of packages which will be installed or removed.
-    No actuall changes are done.
-
-``--install-latest``
-    When installing use the latest package of the same name and architecture.
+``--filter-types=[install,remove,replace]``
+    Limit package changes to specified type.
 
 ``--ignore-arch``
     When installing package ignore architecture and install missing packages
     matching the name, epoch, version and release.
 
-``--filter-types=[install,remove,replace]``
-    Limit package changes to specified type.
+``--install-latest``
+    When installing use the latest package of the same name and architecture.
+
+``--output``
+    Only output list of packages which will be installed or removed.
+    No actuall changes are done.
