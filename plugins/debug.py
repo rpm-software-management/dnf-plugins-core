@@ -195,6 +195,10 @@ class DebugRestoreCommand(dnf.cli.Command):
             default="install, remove, replace",
             help=_("limit to specified type"))
         parser.add_argument(
+            "--remove-installonly", action="store_true",
+            help=_('Allow removing of install-only packages. Using this option may '
+                   'result in an attempt to remove the running kernel.'))
+        parser.add_argument(
             "filename", nargs=1, help=_("name of dump file"))
 
     def run(self):
@@ -238,10 +242,11 @@ class DebugRestoreCommand(dnf.cli.Command):
                 # package should not be installed
                 pkg_remove = True
             if pkg_remove and "remove" in opts.filter_types:
-                if opts.output:
-                    print("remove    %s" % spec)
-                else:
-                    self.base.package_remove(pkg)
+                if pkg not in installonly_pkgs or opts.remove_installonly:
+                    if opts.output:
+                        print("remove    %s" % spec)
+                    else:
+                        self.base.package_remove(pkg)
 
     def process_dump(self, dump_pkgs, opts):
         for (n, a) in sorted(dump_pkgs.keys()):

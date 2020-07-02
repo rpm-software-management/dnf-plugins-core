@@ -23,7 +23,18 @@ DNF debug Plugin
 Description
 -----------
 
-Writes system RPM configuration to a dump file and restore it.
+The plugin provides two dnf commands:
+
+``debug-dump``
+    Writes system RPM configuration to a dump file
+
+``debug-restore``
+    Restore the installed packages to the versions written in the dump file. By
+    default, it does not remove already installed versions of install-only
+    packages and only marks those versions that are mentioned in the dump file
+    for installation. The final decision on which versions to keep on the
+    system is left to dnf and can be fine-tuned using the `installonly_limit`
+    (see :manpage:`dnf.conf(5)`) configuration option.
 
 .. note:: DNF and Yum debug files are not compatible and thus can't be used
           by the other program.
@@ -70,3 +81,8 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``--output``
     Only output list of packages which will be installed or removed.
     No actuall changes are done.
+
+``--remove-installonly``
+    Allow removal of install-only packages. Using this option may result in an
+    attempt to remove the running kernel version (in situations when the currently
+    running kernel version is not part of the dump file).
