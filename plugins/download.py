@@ -259,9 +259,9 @@ class DownloadCommand(dnf.cli.Command):
                 pkg_set.update(goal.list_upgrades())
             else:
                 msg = [_('Error in resolve of packages:')]
-                logger.warning("\n    ".join(msg + [str(pkg) for pkg in pkgs]))
-                logger.warning(dnf.util._format_resolve_problems(goal.problem_rules()))
-                return []
+                logger.error("\n    ".join(msg + [str(pkg) for pkg in pkgs]))
+                logger.error(dnf.util._format_resolve_problems(goal.problem_rules()))
+                raise dnf.exceptions.Error()
         return pkg_set
 
     @staticmethod
