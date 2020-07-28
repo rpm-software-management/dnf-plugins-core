@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 14:54+0100\n"
+"POT-Creation-Date: 2020-06-26 09:18-0400\n"
 "PO-Revision-Date: 2018-11-02 04:31+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Korean\n"
@@ -14,752 +14,211 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 4.6.2\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
-#: ../plugins/reposync.175df5c.py:42
-msgid "download all packages from remote repo"
-msgstr "원격 저장소에서 모든 패키지를 다운로드하십시오."
-
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
-#: ../plugins/reposync.175df5c.py:48
-msgid "download only packages for this ARCH"
-msgstr "이 ARCH 용 패키지 만 다운로드하십시오."
-
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
-#: ../plugins/reposync.175df5c.py:50
-msgid "delete local packages no longer present in repository"
-msgstr "저장소에 더 이상 존재하지 않는 로컬 패키지 삭제"
-
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.175df5c.py:52
-msgid "also download comps.xml"
-msgstr "comps.xml도 다운로드하십시오."
-
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
-#: ../plugins/reposync.175df5c.py:54
-msgid "download only newest packages per-repo"
-msgstr "repo 당 최신 패키지 만 다운로드하십시오."
-
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
-msgid "where to store downloaded repositories "
-msgstr "다운로드 한 저장소를 저장할 위치 "
-
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:80
-#: ../plugins/reposync.175df5c.py:58
-msgid "operate on source packages"
-msgstr "소스 패키지를 조작한다."
-
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:190
-#: ../plugins/reposync.175df5c.py:95
-#, python-format
-msgid "[DELETED] %s"
-msgstr "[DELETED] %s"
-
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:192
-#: ../plugins/reposync.175df5c.py:97
-#, python-format
-msgid "failed to delete file %s"
-msgstr "파일을 삭제하지 못했습니다. %s"
-
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
-#, python-format
-msgid "Could not make repository directory: %s"
-msgstr "저장소 디렉토리를 만들지 못했습니다 : %s"
-
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:201
-#: ../plugins/reposync.175df5c.py:111
-#, python-format
-msgid "comps.xml for repository %s saved"
-msgstr "저장소에 대한 comps.xml %s 저장된"
-
-#: ../plugins/changelog.py:37
-#, python-brace-format
-msgid "Not a valid date: \"{0}\"."
-msgstr ""
-
-#: ../plugins/changelog.py:43
-msgid "Show changelog data of packages"
-msgstr ""
-
-#: ../plugins/changelog.py:51
-msgid ""
-"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
-"is recommended."
-msgstr ""
-
-#: ../plugins/changelog.py:55
-msgid "show given number of changelog entries per package"
-msgstr ""
-
-#: ../plugins/changelog.py:58
-msgid ""
-"show only new changelog entries for packages, that provide an upgrade for "
-"some of already installed packages."
-msgstr ""
-
-#: ../plugins/changelog.py:60
-msgid "PACKAGE"
-msgstr ""
-
-#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:90
-#, python-format
-msgid "No match for argument: %s"
-msgstr "인수와 일치하는 항목 없음 : %s"
-
-#: ../plugins/changelog.py:109
-msgid "Listing changelogs since {}"
-msgstr ""
-
-#: ../plugins/changelog.py:111
-msgid "Listing only latest changelog"
-msgid_plural "Listing {} latest changelogs"
-msgstr[0] ""
-
-#: ../plugins/changelog.py:116
-msgid "Listing only new changelogs since installed version of the package"
-msgstr ""
-
-#: ../plugins/changelog.py:118
-msgid "Listing all changelogs"
-msgstr ""
-
-#: ../plugins/changelog.py:122
-msgid "Changelogs for {}"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:56
-msgid "install debuginfo packages"
-msgstr "debuginfo 패키지 설치"
-
-#: ../plugins/debuginfo-install.py:180
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following available packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:185
-#, python-format
-msgid ""
-"Could not find debugsource package for the following available packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:190
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:195
-#, python-format
-msgid ""
-"Could not find debugsource package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:199
-msgid "Unable to find a match"
-msgstr "경기를 찾을 수 없습니다."
-
-#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
-#: ../plugins/versionlock_master.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "버전 잠금 설정을 읽을 수 없습니다 : %s"
-
-#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
-#: ../plugins/versionlock_master.py:33
-msgid "Locklist not set"
-msgstr "잠금 목록이 설정되지 않았습니다."
-
-#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
-#: ../plugins/versionlock_master.py:34
-msgid "Adding versionlock on:"
-msgstr ""
-
-#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
-#: ../plugins/versionlock_master.py:35
-msgid "Adding exclude on:"
-msgstr ""
-
-#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:39
-#: ../plugins/versionlock_master.py:36
-msgid "Deleting versionlock for:"
-msgstr ""
-
-#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:40
-#: ../plugins/versionlock_master.py:37
-msgid "No package found for:"
-msgstr ""
-
-#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:41
-#: ../plugins/versionlock_master.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
-
-#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:127
-#: ../plugins/versionlock_master.py:119
-msgid "control package version locks"
-msgstr ""
-
-#: ../plugins/migrate.py:45
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "yum의 히스토리, 그룹 및 yumdb 데이터를 dnf로 마이그레이션합니다."
-
-#: ../plugins/migrate.py:54
-msgid "Migrating history data..."
-msgstr "기록 데이터 마이그레이션 중 ..."
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr "도트 형식의 전체 패키지 종속성 그래프 출력"
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr "아무것도 제공하지 않습니다 : '%s'"
-
-#: ../plugins/versionlock.py:36
-msgid "Package already locked in equivalent form:"
-msgstr ""
-
-#: ../plugins/versionlock.py:37
-msgid "Package {} is already locked"
-msgstr ""
-
-#: ../plugins/versionlock.py:38
-msgid "Package {} is already excluded"
-msgstr ""
-
-#: ../plugins/versionlock.py:42 ../plugins/versionlock_master.py:39
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr ""
-
-#: ../plugins/versionlock.py:43 ../plugins/versionlock_master.py:40
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr ""
-
-#: ../plugins/versionlock.py:44 ../plugins/versionlock_master.py:41
-msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
-
-#: ../plugins/versionlock.py:133
-msgid "Use package specifications as they are, do not try to parse them"
-msgstr ""
-
-#: ../plugins/post-transaction-actions.py:71
-#, python-format
-msgid "Bad Action Line \"%s\": %s"
-msgstr ""
-
-#. unsupported state, skip it
-#: ../plugins/post-transaction-actions.py:130
-#, python-format
-msgid "Bad Transaction State: %s"
-msgstr ""
-
-#: ../plugins/post-transaction-actions.py:153
-#: ../plugins/post-transaction-actions.py:155
-#, python-format
-msgid "post-transaction-actions: %s"
-msgstr ""
-
-#: ../plugins/post-transaction-actions.py:157
-#, python-format
-msgid "post-transaction-actions: Bad Command \"%s\": %s"
-msgstr ""
-
-#: ../plugins/builddep.py:45
+#: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
-msgstr ""
+msgstr "[PACKAGE|PACKAGE.spec]"
 
-#: ../plugins/builddep.py:85
+#: plugins/builddep.py:85
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr ""
+msgstr "'%s'는'MACRO EXPR '형식이 아닙니다."
 
-#: ../plugins/builddep.py:90
+#: plugins/builddep.py:90
 msgid "packages with builddeps to install"
-msgstr ""
+msgstr "builddeps가 있는 패키지"
 
-#: ../plugins/builddep.py:93
+#: plugins/builddep.py:93
 msgid "define a macro for spec file parsing"
-msgstr ""
+msgstr "spec 파일 구문 분석을 위한 매크로 정의"
 
-#: ../plugins/builddep.py:95
+#: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
-msgstr ""
+msgstr "리포지토리에서 사용할 수 없는 빌드 종속성 건너 뛰기"
 
-#: ../plugins/builddep.py:98
+#: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
-msgstr ""
+msgstr "명령행 인수를 spec 파일로 처리"
 
-#: ../plugins/builddep.py:100
+#: plugins/builddep.py:100
 msgid "treat commandline arguments as source rpm"
-msgstr ""
+msgstr "명령행 인수를 소스 rpm으로 처리"
 
-#: ../plugins/builddep.py:144
+#: plugins/builddep.py:144
 msgid "RPM: {}"
-msgstr ""
+msgstr "RPM: {}"
 
-#: ../plugins/builddep.py:153
+#: plugins/builddep.py:153
 msgid "Some packages could not be found."
-msgstr ""
+msgstr "일부 패키지를 찾을 수 없습니다."
 
 #. No provides, no files
 #. Richdeps can have no matches but it could be correct (solver must decide
 #. later)
-#: ../plugins/builddep.py:173
+#: plugins/builddep.py:173
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr ""
+msgstr "일치하는 패키지가 없습니다: '%s'"
 
-#: ../plugins/builddep.py:191
+#: plugins/builddep.py:191
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
+msgstr "파일을 열지 못했습니다: '%s', 유효한 소스 rpm 파일이 아닙니다."
 
-#: ../plugins/builddep.py:204 ../plugins/builddep.py:220
-#: ../plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
 msgid "Not all dependencies satisfied"
-msgstr ""
+msgstr "모든 종속성이 충족되는 것은 아닙니다"
 
-#: ../plugins/builddep.py:211
+#: plugins/builddep.py:211
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
+msgstr "파일을 열지 못했습니다: '%s', 유효한 spec 파일이 아닙니다: %s"
 
-#: ../plugins/builddep.py:230 ../plugins/repoclosure.py:118
+#: plugins/builddep.py:230 plugins/repoclosure.py:118
 #, python-format
 msgid "no package matched: %s"
 msgstr "일치하는 패키지 없음 : %s"
 
-#: ../plugins/config_manager.py:37
+#: plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "잘못된 날짜: \"{0}\""
+
+#: plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "패키지의 변경 로그 데이터 표시"
+
+#: plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr "DATE 이후의 변경 로그 정보를 표시합니다. 혼동을 피하려면 YYYY-MM-DD 형식을 사용하는 것이 좋습니다."
+
+#: plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr "각 패키지마다 지정된 수의 변경 로그 정보 표시"
+
+#: plugins/changelog.py:58
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr "패키지의 새 변경 로그 정보만 표시하고 이미 설치된 패키지에 대한 업그레이드를 제공합니다."
+
+#: plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "패키지"
+
+#: plugins/changelog.py:81 plugins/debuginfo-install.py:90
+#, python-format
+msgid "No match for argument: %s"
+msgstr "인수와 일치하는 항목 없음 : %s"
+
+#: plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "{} 이후의 변경 로그 정보 표시"
+
+#: plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "최신 변경 로그 정보만 나열"
+
+#: plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr "설치된 패키지 버전 이후의 새로운 변경 로그만 나열"
+
+#: plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "모든 변경 로그 나열"
+
+#: plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "{}에 대한 변경 로그"
+
+#: plugins/config_manager.py:37
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
-msgstr ""
+msgstr "{prog} 설정 옵션 및 리포지토리 관리"
 
-#: ../plugins/config_manager.py:44
+#: plugins/config_manager.py:44
 msgid "repo to modify"
 msgstr "수정할 repo"
 
-#: ../plugins/config_manager.py:47
+#: plugins/config_manager.py:47
 msgid "save the current options (useful with --setopt)"
 msgstr "현재 옵션 저장 (--setopt와 함께 유용함)"
 
-#: ../plugins/config_manager.py:50
+#: plugins/config_manager.py:50
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "지정된 파일 또는 URL에서 repo를 추가 (및 활성화)"
 
-#: ../plugins/config_manager.py:53
+#: plugins/config_manager.py:53
 msgid "print current configuration values to stdout"
 msgstr "현재 구성 값을 표준 출력으로 인쇄"
 
-#: ../plugins/config_manager.py:56
+#: plugins/config_manager.py:56
 msgid "print variable values to stdout"
 msgstr "변수 값을 표준 출력으로 출력"
 
-#: ../plugins/config_manager.py:70
-msgid "one of the following arguments is required: {}"
-msgstr ""
+#: plugins/config_manager.py:60
+msgid "enable repos (automatically saves)"
+msgstr "리포지토리 활성화 (자동 저장)"
 
-#: ../plugins/config_manager.py:113
+#: plugins/config_manager.py:63
+msgid "disable repos (automatically saves)"
+msgstr "리포지토리 비활성화 (자동 저장)"
+
+#: plugins/config_manager.py:77
+msgid "one of the following arguments is required: {}"
+msgstr "다음 인수 중 하나가 필요합니다. {}"
+
+#: plugins/config_manager.py:86
+msgid ""
+"Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
+"manager. Use --set-enabled/--set-disabled instead."
+msgstr ""
+"경고 : --enablerepo/--disablerepo 인수는 config manager에서 의미가 없습니다. 대신 --set-"
+"enabled/--set-disabled를 사용하십시오."
+
+#: plugins/config_manager.py:131
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "수정할 일치하는 Repo가 없습니다. %s."
 
-#: ../plugins/config_manager.py:164
+#: plugins/config_manager.py:182
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "다음 위치에서 레포 추가 : %s"
 
-#: ../plugins/config_manager.py:188
+#: plugins/config_manager.py:206
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "저장소 구성에 실패했습니다."
 
-#: ../plugins/config_manager.py:198
+#: plugins/config_manager.py:216
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "repofile에 repo를 저장할 수 없습니다. %s: %s"
 
-#: ../plugins/local.py:122
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "'{}'(으)로 인해 '{}'디렉토리를 만들 수 없습니다."
-
-#: ../plugins/local.py:126
-msgid "'{}' is not a directory"
-msgstr "'{}'은 (는) 디렉토리가 아닙니다."
-
-#: ../plugins/local.py:135
-msgid "Copying '{}' to local repo"
-msgstr "'{}'을 (를) 로컬 저장소로 복사 중입니다."
-
-#: ../plugins/local.py:141
-msgid "Can't write file '{}'"
-msgstr "'{}'파일을 쓸 수 없습니다."
-
-#: ../plugins/local.py:156
-msgid "Rebuilding local repo"
-msgstr "지역 레포 복구"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr "다른 패키지에서 필요하지 않은 설치된 패키지 나열"
-
-#: ../plugins/needs_restarting.py:173
-msgid "determine updated binaries that need restarting"
-msgstr "다시 시작해야하는 업데이트 된 바이너리 결정"
-
-#: ../plugins/needs_restarting.py:178
-msgid "only consider this user's processes"
-msgstr "이 사용자의 프로세스 만 고려하십시오."
-
-#: ../plugins/needs_restarting.py:180
-msgid ""
-"only report whether a reboot is required (exit code 1) or not (exit code 0)"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:199
-msgid "Core libraries or services have been updated since boot-up:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:204
-msgid "Reboot is required to fully utilize these updates."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:205
-msgid "More information:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:209
-msgid "No core libraries or services have been updated since boot-up."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:211
-msgid "Reboot should not be necessary."
-msgstr ""
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "저장소에 대한 확인되지 않은 종속성 목록 표시"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "재구 축은 해결되지 않은 종속성으로 종료되었습니다."
-
-#: ../plugins/repoclosure.py:153
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr "지정된 아치의 패키지를 검사하고 여러 번 지정할 수 있습니다."
-
-#: ../plugins/repoclosure.py:156
-msgid "Specify repositories to check"
-msgstr "확인할 저장소를 지정하십시오."
-
-#: ../plugins/repoclosure.py:158
-msgid "Check only the newest packages in the repos"
-msgstr "리포지토리의 최신 패키지 만 확인하십시오."
-
-#: ../plugins/repoclosure.py:161
-msgid "Check closure for this package only"
-msgstr "이 패키지의 폐쇄 만 확인하십시오."
-
-#: ../plugins/repodiff.py:45
-msgid "List differences between two sets of repositories"
-msgstr ""
-
-#: ../plugins/repodiff.py:58
-msgid "Specify old repository, can be used multiple times"
-msgstr ""
-
-#: ../plugins/repodiff.py:60
-msgid "Specify new repository, can be used multiple times"
-msgstr ""
-
-#: ../plugins/repodiff.py:63
-msgid ""
-"Specify architectures to compare, can be used multiple times. By default, "
-"only source rpms are compared."
-msgstr ""
-
-#: ../plugins/repodiff.py:67
-msgid "Output additional data about the size of the changes."
-msgstr ""
-
-#: ../plugins/repodiff.py:69
-msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
-msgstr ""
-
-#: ../plugins/repodiff.py:72
-msgid "Output a simple one line message for modified packages."
-msgstr ""
-
-#: ../plugins/repodiff.py:74
-msgid ""
-"Split the data for modified packages between upgraded and downgraded "
-"packages."
-msgstr ""
-
-#: ../plugins/repodiff.py:86
-msgid "Both old and new repositories must be set."
-msgstr ""
-
-#: ../plugins/repodiff.py:178
-msgid "Size change: {} bytes"
-msgstr ""
-
-#: ../plugins/repodiff.py:184
-msgid "Added package  : {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:187
-msgid "Removed package: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:190
-msgid "Obsoleted by   : {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:195
-msgid ""
-"\n"
-"Upgraded packages"
-msgstr ""
-
-#: ../plugins/repodiff.py:200
-msgid ""
-"\n"
-"Downgraded packages"
-msgstr ""
-
-#: ../plugins/repodiff.py:207
-msgid ""
-"\n"
-"Modified packages"
-msgstr ""
-
-#: ../plugins/repodiff.py:212
-msgid ""
-"\n"
-"Summary"
-msgstr ""
-
-#: ../plugins/repodiff.py:213
-msgid "Added packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:214
-msgid "Removed packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:216
-msgid "Upgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:217
-msgid "Downgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:219
-msgid "Modified packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:222
-msgid "Size of added packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:223
-msgid "Size of removed packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:225
-msgid "Size of modified packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:228
-msgid "Size of upgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:230
-msgid "Size of downgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:232
-msgid "Size change: {}"
-msgstr ""
-
-#: ../plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr ""
-
-#: ../plugins/reposync.py:69
-msgid "download all the metadata."
-msgstr ""
-
-#: ../plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr ""
-
-#: ../plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr ""
-
-#: ../plugins/reposync.py:77
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-
-#: ../plugins/reposync.py:82
-msgid "try to set local timestamps of local files by the one on the server"
-msgstr ""
-
-#: ../plugins/reposync.py:85
-msgid "Just list urls of what would be downloaded, don't download"
-msgstr ""
-
-#: ../plugins/reposync.py:109
-msgid "Can't use --norepopath with multiple repositories"
-msgstr ""
-
-#: ../plugins/reposync.py:127
-#, python-format
-msgid "Failed to get mirror for metadata: %s"
-msgstr ""
-
-#: ../plugins/reposync.py:144
-msgid "Failed to get mirror for the group file."
-msgstr ""
-
-#: ../plugins/reposync.py:175
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr ""
-
-#: ../plugins/reposync.py:260 ../plugins/download.py:121
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "패키지 미러링에 실패했습니다. %s"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr "rpm 패키지 디렉토리 관리"
-
-#: ../plugins/repomanage.py:58
-msgid "Pass either --old or --new, not both!"
-msgstr "--old 또는 --new 중 하나를 전달하십시오."
-
-#: ../plugins/repomanage.py:68
-msgid "No files to process"
-msgstr "처리 할 파일이 없습니다."
-
-#: ../plugins/repomanage.py:73
-msgid "Could not open {}"
-msgstr "{}을 (를) 열 수 없습니다."
-
-#: ../plugins/repomanage.py:130
-msgid "Print the older packages"
-msgstr "이전 패키지 인쇄"
-
-#: ../plugins/repomanage.py:132
-msgid "Print the newest packages"
-msgstr "최신 패키지 인쇄"
-
-#: ../plugins/repomanage.py:134
-msgid "Space separated output, not newline"
-msgstr "공백으로 구분 된 출력이 아닌 개행 문자"
-
-#: ../plugins/repomanage.py:136
-msgid "Newest N packages to keep - defaults to 1"
-msgstr "보관할 최신 N 패키지 - 기본값은 1입니다."
-
-#: ../plugins/repomanage.py:139
-msgid "Path to directory"
-msgstr "디렉토리 경로"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "현재 디렉토리에 패키지 다운로드"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "다운로드 할 패키지"
-
-#: ../plugins/download.py:53
-msgid "download the src.rpm instead"
-msgstr "대신 src.rpm을 다운로드하십시오."
-
-#: ../plugins/download.py:55
-msgid "download the -debuginfo package instead"
-msgstr "대신 -debuginfo 패키지를 다운로드하십시오."
-
-#: ../plugins/download.py:57
-msgid "download the -debugsource package instead"
-msgstr ""
-
-#: ../plugins/download.py:60
-msgid "limit  the  query to packages of given architectures."
-msgstr "쿼리를 주어진 아키텍처의 패키지로 제한하십시오."
-
-#: ../plugins/download.py:62
-msgid "resolve and download needed dependencies"
-msgstr "필요한 종속성을 해결하고 다운로드하십시오."
-
-#: ../plugins/download.py:64
-msgid ""
-"when running with --resolve, download all dependencies (do not exclude "
-"already installed ones)"
-msgstr ""
-
-#: ../plugins/download.py:67
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr "다운로드 대신 rpms를 다운로드 할 수있는 URL 목록 인쇄"
-
-#: ../plugins/download.py:72
-msgid "when running with --url, limit to specific protocols"
-msgstr "--url을 사용하여 실행하면 특정 프로토콜로 제한됩니다."
-
-#: ../plugins/download.py:243
-msgid "Exiting due to strict setting."
-msgstr "엄격한 설정으로 인해 종료됩니다."
-
-#: ../plugins/download.py:261
-msgid "Error in resolve of packages:"
-msgstr "패키지 해결 오류 :"
-
-#: ../plugins/download.py:279
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "소스 rpm이 정의되지 않았습니다. %s"
-
-#: ../plugins/download.py:296 ../plugins/download.py:309
-#, python-format
-msgid "No package %s available."
-msgstr "패키지 없음 %s 유효한."
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "새 잎 :"
-
-#: ../plugins/copr.py:56
-msgid "yes"
-msgstr "예"
-
-#: ../plugins/copr.py:56
+#: plugins/copr.py:59
 msgid "y"
 msgstr "y"
 
-#: ../plugins/copr.py:57
-msgid "no"
-msgstr "아니"
+#: plugins/copr.py:59
+msgid "yes"
+msgstr "예"
 
-#: ../plugins/copr.py:57
+#: plugins/copr.py:60
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:76
+#: plugins/copr.py:60
+msgid "no"
+msgstr "아니요"
+
+#: plugins/copr.py:79
 msgid "Interact with Copr repositories."
 msgstr "Copr 저장소와 상호 작용하십시오."
 
-#: ../plugins/copr.py:77
+#: plugins/copr.py:81
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -780,61 +239,76 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"  프로젝트 이름 / 프로젝트 제거 - 설치 / 사용 / 사용 안 함 목록 - 사용 가능 사용자 = NAME 검색 프로젝트 예 : copr enable rhscl / perl516 epel-6-x86_64 copr enable ignatenkobrain / ocltoys copr 비활성화 rhscl / perl516 copr 제거 rhscl / perl516 copr 목록 - 사용 가능 목록 - 사용 가능 사용자 = ignatenkobrain copr 검색 테스트\n"
+"  enable name/project [chroot]\n"
+"  disable name/project\n"
+"  remove name/project\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
+"  search project\n"
+"\n"
+"  Examples:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
+"  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:103
+#: plugins/copr.py:107
 msgid "List all installed Copr repositories (default)"
 msgstr "설치된 모든 Copr 저장소 나열 (기본값)"
 
-#: ../plugins/copr.py:105
+#: plugins/copr.py:109
 msgid "List enabled Copr repositories"
 msgstr "사용 가능한 Copr 저장소 목록"
 
-#: ../plugins/copr.py:107
+#: plugins/copr.py:111
 msgid "List disabled Copr repositories"
 msgstr "비활성화 된 Copr 저장소 목록"
 
-#: ../plugins/copr.py:109
+#: plugins/copr.py:113
 msgid "List available Copr repositories by user NAME"
 msgstr "사용자가 사용할 수있는 Copr 저장소를 나열합니다. NAME"
 
-#: ../plugins/copr.py:111
+#: plugins/copr.py:115
 msgid "Specify an instance of Copr to work with"
-msgstr ""
+msgstr "사용할 Copr 인스턴스 지정"
 
-#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
 msgid "Error: "
 msgstr "오류: "
 
-#: ../plugins/copr.py:146
+#: plugins/copr.py:150
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"`--hub` 또는`copr_hub/copr_username/copr_projectname` 형식을 사용하여 Copr hub를 "
+"지정하십시오."
 
-#: ../plugins/copr.py:149
+#: plugins/copr.py:153
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "여러 hub 지정"
 
-#: ../plugins/copr.py:211 ../plugins/copr.py:215
+#: plugins/copr.py:218 plugins/copr.py:222
 msgid "exactly two additional parameters to copr command are required"
 msgstr "copr 명령에 정확히 두 개의 추가 매개 변수가 필요합니다."
 
-#: ../plugins/copr.py:231
+#: plugins/copr.py:238
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr "copr 프로젝트를 참조하기 위해`copr_username / copr_projectname` 형식을 사용하십시오"
 
-#: ../plugins/copr.py:233
+#: plugins/copr.py:240
 msgid "bad copr project format"
-msgstr "나쁜 copr 프로젝트 형식"
+msgstr "잘못된 copr 프로젝트 형식"
 
-#: ../plugins/copr.py:247
-#, python-brace-format
+#: plugins/copr.py:254
 msgid ""
 "\n"
-"You are about to enable a Copr repository. Please note that this\n"
-"repository is not part of the main distribution, and quality may vary.\n"
+"Enabling a Copr repository. Please note that this repository is not part\n"
+"of the main distribution, and quality may vary.\n"
 "\n"
 "The Fedora Project does not exercise any power over the contents of\n"
 "this repository beyond the rules outlined in the Copr FAQ at\n"
@@ -843,162 +317,760 @@ msgid ""
 "\n"
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
-"\n"
-"Do you really want to enable {0}?"
 msgstr ""
+"\n"
+"Copr 리포지토리를 활성화합니다. 이 리포지토리는 주요 릴리스 배포의 일부가 아닌 경우 품질이 다를 수 있습니다.\n"
+"\n"
+"Fedora 프로젝트는 <https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>의\n"
+"Copr FAQ에 명시된 규칙 외에,\n"
+"이 리포지토리의 내용에 대해 어떠한 권한도 행사할 수 없습니다.\n"
+"또한 패키지는 특정 품질 또는 보안 수준을 유지하지 않습니다\n"
+"\n"
+"Fedora Bugzilla에 이러한 패키지에 대한 버그 보고서를 제출하지 마십시오. 문제가 발생할 경우 이 리포지토리의 소유자에게 문의하십시오.\n"
 
-#: ../plugins/copr.py:263
+#: plugins/copr.py:271
 msgid "Repository successfully enabled."
-msgstr "저장소가 사용 설정되었습니다."
+msgstr "리포지토리가 사용 설정되었습니다."
 
-#: ../plugins/copr.py:267
+#: plugins/copr.py:276
 msgid "Repository successfully disabled."
-msgstr "저장소가 사용 중지되었습니다."
+msgstr "리포지토리가 사용 중지되었습니다."
 
-#: ../plugins/copr.py:271
+#: plugins/copr.py:280
 msgid "Repository successfully removed."
-msgstr "저장소가 제거되었습니다."
+msgstr "리포지토리가 제거되었습니다."
 
-#: ../plugins/copr.py:275 ../plugins/copr.py:625
+#: plugins/copr.py:284 plugins/copr.py:689
 msgid "Unknown subcommand {}."
-msgstr "알 수없는 부속 명령 {}."
+msgstr "알 수 없는 하위 명령 {}."
 
-#: ../plugins/copr.py:328
+#: plugins/copr.py:337
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* 이 copr에는 Copr hub에 대한 정보를 포함하지 않는 이전 형식의 repo 파일이 있으며 기본값이 사용되었다고 가정합니다. 이"
+" 문제를 해결하려면 프로젝트를 다시 활성화하십시오."
 
-#: ../plugins/copr.py:340
+#: plugins/copr.py:349
 msgid "Can't parse repositories for username '{}'."
 msgstr "사용자 이름 '{}'에 대한 리포지토리를 구문 분석 할 수 없습니다."
 
-#: ../plugins/copr.py:343
+#: plugins/copr.py:352
 msgid "List of {} coprs"
 msgstr "{} 명의 경찰 목록"
 
-#: ../plugins/copr.py:351
+#: plugins/copr.py:360
 msgid "No description given"
 msgstr "설명이 없습니다."
 
-#: ../plugins/copr.py:363
+#: plugins/copr.py:372
 msgid "Can't parse search for '{}'."
 msgstr "'{}'에 대한 검색을 구문 분석 할 수 없습니다."
 
-#: ../plugins/copr.py:366
+#: plugins/copr.py:375
 msgid "Matched: {}"
 msgstr "일치하는 항목 : {}"
 
-#: ../plugins/copr.py:374
+#: plugins/copr.py:383
 msgid "No description given."
 msgstr "설명이 없습니다."
 
-#: ../plugins/copr.py:387
+#: plugins/copr.py:406
 msgid "Safe and good answer. Exiting."
 msgstr "안전하고 좋은 대답. 나가기."
 
-#: ../plugins/copr.py:394
+#: plugins/copr.py:413
 msgid "This command has to be run under the root user."
 msgstr "이 명령은 루트 사용자로 실행해야합니다."
 
-#: ../plugins/copr.py:458
+#: plugins/copr.py:477
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr "이 저장소에는 빌드가 아직 없으므로 지금 사용할 수 없습니다."
 
-#: ../plugins/copr.py:461
+#: plugins/copr.py:480
 msgid "Such repository does not exist."
 msgstr "이러한 저장소는 존재하지 않습니다."
 
-#: ../plugins/copr.py:509
+#: plugins/copr.py:524
+#, python-brace-format
+msgid ""
+"Maintainer of the enabled Copr repository decided to make\n"
+"it dependent on other repositories. Such repositories are\n"
+"usually necessary for successful installation of RPMs from\n"
+"the main Copr repository (they provide runtime dependencies).\n"
+"\n"
+"Be aware that the note about quality and bug-reporting\n"
+"above applies here too, Fedora Project doesn't control the\n"
+"content. Please review the list:\n"
+"\n"
+"{0}\n"
+"\n"
+"These repositories have been enabled automatically."
+msgstr ""
+"활성화된 Copr 리포지토리 관리자는다른 리포지토리에\n"
+"종속되도록 지정했습니다. 이러한 리포지토리는 일반적으로\n"
+"주 Copr 리포지토리에서 RPM을 설치하는 데\n"
+"필요합니다 (런타임 종속성을 제공함).\n"
+"\n"
+"위의 품질 및 버그 보고에 대한 유의 사항도 여기에 적용되며\n"
+"Fedora Project는 컨텐츠를 제어하지 않습니다\n"
+"다음 목록을 확인하십시오:\n"
+"\n"
+"{0}\n"
+"\n"
+"이 리포지토리는 자동으로 활성화되어 있습니다."
+
+#: plugins/copr.py:545
+msgid "Do you want to keep them enabled?"
+msgstr "계속 활성화하시겠습니까?"
+
+#: plugins/copr.py:578
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
+msgstr "copr repo {0}/{1}/{2}을/를 제거하지 못했습니다"
 
-#: ../plugins/copr.py:520
+#: plugins/copr.py:589
 msgid "Failed to disable copr repo {}/{}"
 msgstr "copr repo {} / {}를 사용 중지하지 못했습니다."
 
-#: ../plugins/copr.py:542 ../plugins/copr.py:580
+#: plugins/copr.py:607 plugins/copr.py:644
 msgid "Unknown response from server."
 msgstr "서버에서 알 수없는 응답."
 
-#: ../plugins/copr.py:564
+#: plugins/copr.py:629
 msgid "Interact with Playground repository."
-msgstr "놀이터 저장소와 상호 작용하십시오."
+msgstr "Playground 리포지토리와 상호 작용하십시오."
 
-#: ../plugins/copr.py:569
-msgid ""
-"\n"
-"You are about to enable a Playground repository.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"\n"
-"놀이터 저장소를 사용하려고합니다. 계속 하시겠습니까?"
+#: plugins/copr.py:635
+#| msgid "Interact with Playground repository."
+msgid "Enabling a Playground repository."
+msgstr "Playground 리포지토리 활성화"
 
-#: ../plugins/copr.py:615
+#: plugins/copr.py:636
+msgid "Do you want to continue?"
+msgstr "계속 하시겠습니까?"
+
+#: plugins/copr.py:679
 msgid "Playground repositories successfully enabled."
-msgstr "놀이터 저장소를 사용하도록 설정했습니다."
+msgstr "Playground 리포지토리를 사용하도록 설정했습니다."
 
-#: ../plugins/copr.py:618
+#: plugins/copr.py:682
 msgid "Playground repositories successfully disabled."
-msgstr "놀이터 저장소가 사용 중지되었습니다."
+msgstr "Playground 리포지토리가 사용 중지되었습니다."
 
-#: ../plugins/copr.py:622
+#: plugins/copr.py:686
 msgid "Playground repositories successfully updated."
-msgstr "놀이터 저장소가 성공적으로 업데이트되었습니다."
+msgstr "Playground 리포지토리가 성공적으로 업데이트되었습니다."
 
-#: ../plugins/debug.py:53
+#: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
 msgstr "설치된 rpm 패키지에 대한 정보를 파일에 덤프하십시오."
 
-#: ../plugins/debug.py:67
+#: plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
 msgstr "저장소 내용을 덤프하지 마십시오."
 
-#: ../plugins/debug.py:70
+#: plugins/debug.py:70
 msgid "optional name of dump file"
 msgstr "덤프 파일의 선택적 이름"
 
-#: ../plugins/debug.py:95
+#: plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
 msgstr "작성된 출력 : %s"
 
-#: ../plugins/debug.py:172
+#: plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
 msgstr "디버그 덤프 파일에 기록 된 패키지 복원"
 
-#: ../plugins/debug.py:183
+#: plugins/debug.py:183
 msgid "output commands that would be run to stdout."
 msgstr "stdout으로 실행될 출력 명령."
 
-#: ../plugins/debug.py:186
+#: plugins/debug.py:186
 msgid "Install the latest version of recorded packages."
 msgstr "기록 된 패키지의 최신 버전을 설치하십시오."
 
-#: ../plugins/debug.py:189
+#: plugins/debug.py:189
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
 msgstr "아키텍처를 무시하고 이름, 기원, 버전 및 릴리스와 일치하는 누락 된 패키지를 설치하십시오."
 
-#: ../plugins/debug.py:194
+#: plugins/debug.py:194
 msgid "limit to specified type"
 msgstr "특정 유형으로 제한"
 
-#: ../plugins/debug.py:196
+#: plugins/debug.py:196
 msgid "name of dump file"
 msgstr "덤프 파일의 이름"
 
-#: ../plugins/debug.py:264
+#: plugins/debug.py:270
 #, python-format
 msgid "Package %s is not available"
-msgstr "꾸러미 %s 사용할 수 없습니다"
+msgstr "패키지 %s을/를 사용할 수 없습니다"
 
-#: ../plugins/debug.py:274
+#: plugins/debug.py:280
 #, python-format
 msgid "Bad dnf debug file: %s"
 msgstr "잘못된 dnf 디버그 파일 : %s"
+
+#: plugins/debuginfo-install.py:56
+msgid "install debuginfo packages"
+msgstr "debuginfo 패키지 설치"
+
+#: plugins/debuginfo-install.py:180
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following available packages: %s"
+msgstr "사용 가능한 다음 패키지에 대한 debuginfo 패키지를 찾을 수 없습니다. %s"
+
+#: plugins/debuginfo-install.py:185
+#, python-format
+msgid ""
+"Could not find debugsource package for the following available packages: %s"
+msgstr "사용 가능한 다음 패키지에 대한 debugsource 패키지를 찾을 수 없습니다. %s"
+
+#: plugins/debuginfo-install.py:190
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following installed packages: %s"
+msgstr "설치된 다음 패키지에 대한 debuginfo 패키지를 찾을 수 없습니다. %s"
+
+#: plugins/debuginfo-install.py:195
+#, python-format
+msgid ""
+"Could not find debugsource package for the following installed packages: %s"
+msgstr "설치된 다음 패키지에 대한 debugsource 패키지를 찾을 수 없습니다. %s"
+
+#: plugins/debuginfo-install.py:199
+msgid "Unable to find a match"
+msgstr "일치하지 않습니다."
+
+#: plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "현재 디렉토리에 패키지 다운로드"
+
+#: plugins/download.py:51
+msgid "packages to download"
+msgstr "다운로드 할 패키지"
+
+#: plugins/download.py:53
+msgid "download the src.rpm instead"
+msgstr "대신 src.rpm을 다운로드하십시오."
+
+#: plugins/download.py:55
+msgid "download the -debuginfo package instead"
+msgstr "대신 -debuginfo 패키지를 다운로드하십시오."
+
+#: plugins/download.py:57
+msgid "download the -debugsource package instead"
+msgstr "대신 -debugsource 패키지를 다운로드하십시오."
+
+#: plugins/download.py:60
+msgid "limit  the  query to packages of given architectures."
+msgstr "쿼리를 주어진 아키텍처의 패키지로 제한하십시오."
+
+#: plugins/download.py:62
+msgid "resolve and download needed dependencies"
+msgstr "필요한 종속성을 해결하고 다운로드하십시오."
+
+#: plugins/download.py:64
+msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr "--resolve로 실행할 때 모든 종속 패키지를 다운로드하십시오 (이미 설치된 패키지를 제외하지 마십시오)"
+
+#: plugins/download.py:67
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr "다운로드 대신 rpms를 다운로드 할 수있는 URL 목록 인쇄"
+
+#: plugins/download.py:72
+msgid "when running with --url, limit to specific protocols"
+msgstr "--url을 사용하여 실행하면 특정 프로토콜로 제한됩니다."
+
+#: plugins/download.py:121 plugins/reposync.py:260
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "패키지 미러링에 실패했습니다. %s"
+
+#: plugins/download.py:243
+msgid "Exiting due to strict setting."
+msgstr "엄격한 설정으로 인해 종료됩니다."
+
+#: plugins/download.py:261
+msgid "Error in resolve of packages:"
+msgstr "패키지 해결 오류 :"
+
+#: plugins/download.py:279
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "소스 rpm이 정의되지 않았습니다. %s"
+
+#: plugins/download.py:296 plugins/download.py:309
+#, python-format
+msgid "No package %s available."
+msgstr "패키지 없음 %s 유효한."
+
+#: plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr "다른 패키지에서 필요하지 않은 설치된 패키지 나열"
+
+#: plugins/local.py:122
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "'{}'(으)로 인해 '{}'디렉토리를 만들 수 없습니다."
+
+#: plugins/local.py:126
+msgid "'{}' is not a directory"
+msgstr "'{}'은 (는) 디렉토리가 아닙니다."
+
+#: plugins/local.py:135
+msgid "Copying '{}' to local repo"
+msgstr "'{}'을 (를) 로컬 저장소로 복사 중입니다."
+
+#: plugins/local.py:141
+msgid "Can't write file '{}'"
+msgstr "'{}'파일을 쓸 수 없습니다."
+
+#: plugins/local.py:156
+msgid "Rebuilding local repo"
+msgstr "지역 레포 복구"
+
+#: plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "yum의 히스토리, 그룹 및 yumdb 데이터를 dnf로 마이그레이션합니다."
+
+#: plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "기록 데이터 마이그레이션 중 ..."
+
+#: plugins/needs_restarting.py:65
+#, python-brace-format
+msgid ""
+"No installed package found for package name \"{pkg}\" specified in needs-"
+"restarting file \"{file}\"."
+msgstr "다시 시작해야하는 파일에 지정된 \"{file}\" 패키지 이름 “{pkg}\"의 설치된 패키지가 없습니다."
+
+#: plugins/needs_restarting.py:199
+msgid "determine updated binaries that need restarting"
+msgstr "다시 시작해야하는 업데이트 된 바이너리 결정"
+
+#: plugins/needs_restarting.py:204
+msgid "only consider this user's processes"
+msgstr "이 사용자의 프로세스 만 고려하십시오."
+
+#: plugins/needs_restarting.py:206
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr "재부팅이 필요하거나 (종료 코드 1) 재부팅이 필요하지 않음 (종료 코드 0) 만 보고하십시오"
+
+#: plugins/needs_restarting.py:230
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr "부팅 이후 코어 라이브러리 또는 서비스가 업데이트되었습니다."
+
+#: plugins/needs_restarting.py:235
+msgid "Reboot is required to fully utilize these updates."
+msgstr "이 업데이트를 완전히 적용하려면 재부팅해야합니다."
+
+#: plugins/needs_restarting.py:236
+msgid "More information:"
+msgstr "자세한 정보"
+
+#: plugins/needs_restarting.py:240
+msgid "No core libraries or services have been updated since boot-up."
+msgstr "부팅 후 코어 라이브러리 또는 서비스가 업데이트되지 않았습니다."
+
+#: plugins/needs_restarting.py:242
+msgid "Reboot should not be necessary."
+msgstr "재부팅이 필요하지 않습니다."
+
+#: plugins/post-transaction-actions.py:71
+#, python-format
+msgid "Bad Action Line \"%s\": %s"
+msgstr "잘못된 작업 라인 \"%s\": %s"
+
+#. unsupported state, skip it
+#: plugins/post-transaction-actions.py:130
+#, python-format
+msgid "Bad Transaction State: %s"
+msgstr "잘못된 트랜잭션 상태: %s"
+
+#: plugins/post-transaction-actions.py:153
+#: plugins/post-transaction-actions.py:155
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr "트랜잭션 후 작업: %s"
+
+#: plugins/post-transaction-actions.py:157
+#, python-format
+msgid "post-transaction-actions: Bad Command \"%s\": %s"
+msgstr "트랜잭션 후 작업: 잘못된 명령 \"%s\": %s"
+
+#: plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "저장소에 대한 확인되지 않은 종속성 목록 표시"
+
+#: plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "재구 축은 해결되지 않은 종속성으로 종료되었습니다."
+
+#: plugins/repoclosure.py:153
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr "지정된 아치의 패키지를 검사하고 여러 번 지정할 수 있습니다."
+
+#: plugins/repoclosure.py:156
+msgid "Specify repositories to check"
+msgstr "확인할 저장소를 지정하십시오."
+
+#: plugins/repoclosure.py:158
+msgid "Check only the newest packages in the repos"
+msgstr "리포지토리의 최신 패키지 만 확인하십시오."
+
+#: plugins/repoclosure.py:161
+msgid "Check closure for this package only"
+msgstr "이 패키지의 폐쇄 만 확인하십시오."
+
+#: plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "두 리포지토리 간의 차이점을 나열하십시오"
+
+#: plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "여러 번 사용할 수 있는 이전 리포지토리를 지정합니다"
+
+#: plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "여러 번 사용할 수 있는 새 리포지토리를 지정합니다"
+
+#: plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr "여러 번 사용할 수 있는 비교할 아키텍처를 지정합니다. 기본적으로 소스 rpm 만 비교됩니다."
+
+#: plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "크기 변경에 대한 추가 데이터를 출력합니다."
+
+#: plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr "아키텍처별로 패키지를 비교하십시오. 기본적으로 패키지는 이름별로 비교됩니다."
+
+#: plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "수정된 패키지에 대한 간단한 한 줄 메시지를 출력합니다."
+
+#: plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr "업그레이드된 패키지와 다운 그레이드된 패키지간에 수정된 패키지의 데이터를 분할하십시오."
+
+#: plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "기존 리포지토리와 새 리포지토리를 모두 설정해야합니다."
+
+#: plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "크기 변경: {} 바이트"
+
+#: plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "추가된 패키지 : {}"
+
+#: plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "제거된 패키지 : {}"
+
+#: plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "사용 중지   : {}"
+
+#: plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"업그레이드된 패키지"
+
+#: plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"다운 그레이드된 패키지"
+
+#: plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"수정된 패키지"
+
+#: plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"요약"
+
+#: plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "추가된 패키지: {}"
+
+#: plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "제거된 패키지: {}"
+
+#: plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "업그레이드된 패키지: {}"
+
+#: plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "다운 그레이드된 패키지: {}"
+
+#: plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "수정된 패키지: {}"
+
+#: plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "추가된 패키지 크기: {}"
+
+#: plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "제거된 패키지 크기: {}"
+
+#: plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "수정된 패키지 크기: {}"
+
+#: plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "업그레이드된 패키지 크기: {}"
+
+#: plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "다운 그레이드된 패키지 크기: {}"
+
+#: plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "크기 변경: {}"
+
+#: plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "도트 형식의 전체 패키지 종속성 그래프 출력"
+
+#: plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "아무것도 제공하지 않습니다 : '%s'"
+
+#: plugins/repomanage.py:45
+msgid "Manage a directory of rpm packages"
+msgstr "rpm 패키지 디렉토리 관리"
+
+#: plugins/repomanage.py:59
+msgid "Pass either --old or --new, not both!"
+msgstr "--old 또는 --new 중 하나를 전달하십시오."
+
+#: plugins/repomanage.py:71
+msgid "No files to process"
+msgstr "처리 할 파일이 없습니다."
+
+#: plugins/repomanage.py:93
+msgid "Could not open {}"
+msgstr "{}을 (를) 열 수 없습니다."
+
+#: plugins/repomanage.py:177
+msgid "Print the older packages"
+msgstr "이전 패키지 인쇄"
+
+#: plugins/repomanage.py:179
+msgid "Print the newest packages"
+msgstr "최신 패키지 인쇄"
+
+#: plugins/repomanage.py:181
+msgid "Space separated output, not newline"
+msgstr "공백으로 구분 된 출력이 아닌 개행 문자"
+
+#: plugins/repomanage.py:183
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "보관할 최신 N 패키지 - 기본값은 1입니다."
+
+#: plugins/repomanage.py:186
+msgid "Path to directory"
+msgstr "디렉토리 경로"
+
+#: plugins/reposync.py:54
+msgid "download all packages from remote repo"
+msgstr "원격 저장소에서 모든 패키지를 다운로드하십시오."
+
+#: plugins/reposync.py:63
+msgid "download only packages for this ARCH"
+msgstr "이 ARCH 용 패키지 만 다운로드하십시오."
+
+#: plugins/reposync.py:65
+msgid "delete local packages no longer present in repository"
+msgstr "저장소에 더 이상 존재하지 않는 로컬 패키지 삭제"
+
+#: plugins/reposync.py:67
+msgid "also download and uncompress comps.xml"
+msgstr "comps.xml 다운로드 및 압축 해제"
+
+#: plugins/reposync.py:69
+msgid "download all the metadata."
+msgstr "모든 메타 데이터를 다운로드하십시오."
+
+#: plugins/reposync.py:71
+msgid "download only newest packages per-repo"
+msgstr "repo 당 최신 패키지 만 다운로드하십시오."
+
+#: plugins/reposync.py:73
+msgid "where to store downloaded repositories"
+msgstr "다운로드 한 저장소를 저장할 위치"
+
+#: plugins/reposync.py:75
+msgid "Don't add the reponame to the download path."
+msgstr "다운로드 경로에 reponame을 추가하지 마십시오."
+
+#: plugins/reposync.py:77
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr "다운로드한 리포지터리 메타 데이터를 저장할 위치입니다. 기본값은 --download-path입니다."
+
+#: plugins/reposync.py:80
+msgid "operate on source packages"
+msgstr "소스 패키지에서 작동합니다"
+
+#: plugins/reposync.py:82
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr "서버에서 로컬 파일의 로컬 타임 스탬프를 설정하십시오."
+
+#: plugins/reposync.py:85
+msgid "Just list urls of what would be downloaded, don't download"
+msgstr "다운로드할 URL만 나열하고 다운로드하지 마십시오."
+
+#: plugins/reposync.py:109
+msgid "Can't use --norepopath with multiple repositories"
+msgstr "여러 리포지토리에 --norepopath를 사용할 수 없습니다"
+
+#: plugins/reposync.py:127
+#, python-format
+msgid "Failed to get mirror for metadata: %s"
+msgstr "메타데이터 미러링에 실패했습니다. %s"
+
+#: plugins/reposync.py:144
+msgid "Failed to get mirror for the group file."
+msgstr "그룹 파일의 미러를 가져 오지 못했습니다."
+
+#: plugins/reposync.py:175
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "다운로드 대상 '{}'이/가 다운로드 경로 '{}'외부에 있습니다."
+
+#: plugins/reposync.py:190
+#, python-format
+msgid "[DELETED] %s"
+msgstr "[DELETED] %s"
+
+#: plugins/reposync.py:192
+#, python-format
+msgid "failed to delete file %s"
+msgstr "파일을 삭제하지 못했습니다. %s"
+
+#: plugins/reposync.py:201
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr "리포지터리 %s에 대한 comps.xml이 저장되었습니다"
+
+#: plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "새 항목 :"
+
+#: plugins/versionlock.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "버전 잠금 설정을 읽을 수 없습니다 : %s"
+
+#: plugins/versionlock.py:33
+msgid "Locklist not set"
+msgstr "잠금 목록이 설정되지 않았습니다."
+
+#: plugins/versionlock.py:34
+msgid "Adding versionlock on:"
+msgstr "버전 잠금 추가 :"
+
+#: plugins/versionlock.py:35
+msgid "Adding exclude on:"
+msgstr "제외 항목 추가 :"
+
+#: plugins/versionlock.py:36
+msgid "Package already locked in equivalent form:"
+msgstr "패키지는 다음과 동등한 형식으로 잠겨 있습니다."
+
+#: plugins/versionlock.py:37
+msgid "Package {} is already locked"
+msgstr "{} 패키지가 이미 잠겨 있습니다"
+
+#: plugins/versionlock.py:38
+msgid "Package {} is already excluded"
+msgstr "{} 패키지가 이미 제외되었습니다"
+
+#: plugins/versionlock.py:39
+msgid "Deleting versionlock for:"
+msgstr "버전 잠금 삭제:"
+
+#: plugins/versionlock.py:40
+msgid "No package found for:"
+msgstr "패키지를 찾을 수 없습니다"
+
+#: plugins/versionlock.py:41
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "versionlock 플러그인에서 제외 항목이 적용되지 않았습니다"
+
+#: plugins/versionlock.py:42
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr "Versionlock 플러그인: 파일 \"{}\"의 잠금 규칙 수가 적용됨: {}"
+
+#: plugins/versionlock.py:43
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr "Versionlock플러그인: 파일 \"{}\"의 제외 규칙 수가 적용됨: {}"
+
+#: plugins/versionlock.py:44
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr "Versionlock 플러그인: 패턴을 구문 분석할 수 없습니다."
+
+#: plugins/versionlock.py:130
+msgid "control package version locks"
+msgstr "컨트롤 패키지 버전 잠금"
+
+#: plugins/versionlock.py:136
+msgid "Use package specifications as they are, do not try to parse them"
+msgstr "구문 분석하지 말고 패키지 사양을 그대로 사용하십시오."
+
+#~ msgid ""
+#~ "\n"
+#~ "You are about to enable a Playground repository.\n"
+#~ "\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "\n"
+#~ "놀이터 저장소를 사용하려고합니다. 계속 하시겠습니까?"
+
+#~ msgid "also download comps.xml"
+#~ msgstr "comps.xml도 다운로드하십시오."
+
+#~ msgid "where to store downloaded repositories "
+#~ msgstr "다운로드 한 저장소를 저장할 위치 "
