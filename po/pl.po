@@ -3,94 +3,103 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Piotr Drąg <piotrdrag@gmail.com>, 2015
-# Piotr Drąg <piotrdrag@gmail.com>, 2015. #zanata
-# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata
-# Piotr Drąg <piotrdrag@gmail.com>, 2017. #zanata
-# Piotr Drąg <piotrdrag@gmail.com>, 2018. #zanata
-# Piotr Drąg <piotrdrag@gmail.com>, 2019. #zanata
+# Piotr Drąg <piotrdrag@gmail.com>, 2015, 2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2015. #zanata, 2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2017. #zanata, 2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2018. #zanata, 2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2019. #zanata, 2020.
 # Piotr Drąg <piotrdrag@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 14:54+0100\n"
-"PO-Revision-Date: 2020-02-08 03:23+0000\n"
+"POT-Creation-Date: 2020-07-21 09:18-0400\n"
+"PO-Revision-Date: 2020-07-05 17:34+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/dnf-plugins-extras/language/pl/)\n"
+"Language-Team: Polish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.1.1\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
-#: ../plugins/reposync.175df5c.py:42
-msgid "download all packages from remote repo"
-msgstr "pobiera wszystkie pakiety ze zdalnego repozytorium"
+#: plugins/builddep.py:45
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAKIET|PAKIET.spec]"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
-#: ../plugins/reposync.175df5c.py:48
-msgid "download only packages for this ARCH"
-msgstr "pobiera pakiety tylko dla tej ARCHITEKTURY"
-
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
-#: ../plugins/reposync.175df5c.py:50
-msgid "delete local packages no longer present in repository"
-msgstr "usuwa lokalne pakiety nieobecne już w repozytorium"
-
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.175df5c.py:52
-msgid "also download comps.xml"
-msgstr "pobiera także comps.xml"
-
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
-#: ../plugins/reposync.175df5c.py:54
-msgid "download only newest packages per-repo"
-msgstr "pobiera tylko najnowsze pakiety na każde repozytorium"
-
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
-msgid "where to store downloaded repositories "
-msgstr "gdzie przechowywać pobrane repozytoria "
-
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:80
-#: ../plugins/reposync.175df5c.py:58
-msgid "operate on source packages"
-msgstr "działa na pakietach źródłowych"
-
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:190
-#: ../plugins/reposync.175df5c.py:95
+#: plugins/builddep.py:85
 #, python-format
-msgid "[DELETED] %s"
-msgstr "[USUNIĘTO] %s"
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "„%s” nie jest w formacie „MAKRO WYRAŻENIE”"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:192
-#: ../plugins/reposync.175df5c.py:97
+#: plugins/builddep.py:90
+msgid "packages with builddeps to install"
+msgstr "pakiety z zależnościami budowania do zainstalowania"
+
+#: plugins/builddep.py:93
+msgid "define a macro for spec file parsing"
+msgstr "określa makro do przetwarzania plików spec"
+
+#: plugins/builddep.py:95
+msgid "skip build dependencies not available in repositories"
+msgstr "pomija zależności budowania niedostępne w repozytoriach"
+
+#: plugins/builddep.py:98
+msgid "treat commandline arguments as spec files"
+msgstr "traktuje parametry wiersza poleceń jako pliki spec"
+
+#: plugins/builddep.py:100
+msgid "treat commandline arguments as source rpm"
+msgstr "traktuje parametry wiersza poleceń jako źródłowe pliki RPM"
+
+#: plugins/builddep.py:144
+msgid "RPM: {}"
+msgstr "RPM: {}"
+
+#: plugins/builddep.py:153
+msgid "Some packages could not be found."
+msgstr "Nie można odnaleźć niektórych pakietów."
+
+#. No provides, no files
+#. Richdeps can have no matches but it could be correct (solver must decide
+#. later)
+#: plugins/builddep.py:173
 #, python-format
-msgid "failed to delete file %s"
-msgstr "usunięcie pliku %s się nie powiodło"
+msgid "No matching package to install: '%s'"
+msgstr "Brak pasujących pakietów do zainstalowania: „%s”"
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
+#: plugins/builddep.py:191
 #, python-format
-msgid "Could not make repository directory: %s"
-msgstr "Nie można utworzyć katalogu repozytorium: %s"
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr ""
+"Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:201
-#: ../plugins/reposync.175df5c.py:111
+#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+msgid "Not all dependencies satisfied"
+msgstr "Nie spełniono wszystkich zależności"
+
+#: plugins/builddep.py:211
 #, python-format
-msgid "comps.xml for repository %s saved"
-msgstr "zapisano comps.xml dla repozytorium %s"
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
 
-#: ../plugins/changelog.py:37
+#: plugins/builddep.py:230 plugins/repoclosure.py:118
+#, python-format
+msgid "no package matched: %s"
+msgstr "żaden pakiet nie pasuje: %s"
+
+#: plugins/changelog.py:37
 #, python-brace-format
 msgid "Not a valid date: \"{0}\"."
 msgstr "Nieprawidłowa data: „{0}”."
 
-#: ../plugins/changelog.py:43
+#: plugins/changelog.py:43
 msgid "Show changelog data of packages"
 msgstr "Wyświetla dane dzienników zmian pakietów"
 
-#: ../plugins/changelog.py:51
+#: plugins/changelog.py:51
 msgid ""
 "show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
 "is recommended."
@@ -98,11 +107,11 @@ msgstr ""
 "wyświetla wpisy dziennika zmian od DATY. Aby uniknąć niejednoznaczności, "
 "zalecany jest format RRRR-MM-DD."
 
-#: ../plugins/changelog.py:55
+#: plugins/changelog.py:55
 msgid "show given number of changelog entries per package"
 msgstr "wyświetla podaną liczbę wpisów dziennika zmian na pakiet"
 
-#: ../plugins/changelog.py:58
+#: plugins/changelog.py:58
 msgid ""
 "show only new changelog entries for packages, that provide an upgrade for "
 "some of already installed packages."
@@ -110,716 +119,127 @@ msgstr ""
 "wyświetla tylko nowe wpisy dziennika zmian pakietów, które dostarczają "
 "aktualizację dla jakiegoś już zainstalowanego pakietu."
 
-#: ../plugins/changelog.py:60
+#: plugins/changelog.py:60
 msgid "PACKAGE"
 msgstr "PAKIET"
 
-#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:90
+#: plugins/changelog.py:81 plugins/debuginfo-install.py:90
 #, python-format
 msgid "No match for argument: %s"
 msgstr "Brak wyników dla parametru: %s"
 
-#: ../plugins/changelog.py:109
+#: plugins/changelog.py:109
 msgid "Listing changelogs since {}"
 msgstr "Wyświetlanie dzienników zmian od {}"
 
-#: ../plugins/changelog.py:111
+#: plugins/changelog.py:111
 msgid "Listing only latest changelog"
 msgid_plural "Listing {} latest changelogs"
 msgstr[0] "Wyświetlanie tylko najnowszego dziennika zmian"
 msgstr[1] "Wyświetlanie tylko {} najnowszych dzienników zmian"
 msgstr[2] "Wyświetlanie tylko {} najnowszych dzienników zmian"
 
-#: ../plugins/changelog.py:116
+#: plugins/changelog.py:116
 msgid "Listing only new changelogs since installed version of the package"
 msgstr ""
 "Wyświetlanie tylko nowych dzienników zmian od zainstalowanej wersji pakietu"
 
-#: ../plugins/changelog.py:118
+#: plugins/changelog.py:118
 msgid "Listing all changelogs"
 msgstr "Wyświetlanie wszystkich dzienników zmian"
 
-#: ../plugins/changelog.py:122
+#: plugins/changelog.py:122
 msgid "Changelogs for {}"
 msgstr "Dzienniki zmian dla {}"
 
-#: ../plugins/debuginfo-install.py:56
-msgid "install debuginfo packages"
-msgstr "instaluje pakiety debuginfo"
-
-#: ../plugins/debuginfo-install.py:180
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following available packages: %s"
-msgstr ""
-"Nie można odnaleźć pakietów debuginfo dla tych dostępnych pakietów: %s"
-
-#: ../plugins/debuginfo-install.py:185
-#, python-format
-msgid ""
-"Could not find debugsource package for the following available packages: %s"
-msgstr ""
-"Nie można odnaleźć pakietów debugsource dla tych dostępnych pakietów: %s"
-
-#: ../plugins/debuginfo-install.py:190
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following installed packages: %s"
-msgstr ""
-"Nie można odnaleźć pakietów debuginfo dla tych zainstalowanych pakietów: %s"
-
-#: ../plugins/debuginfo-install.py:195
-#, python-format
-msgid ""
-"Could not find debugsource package for the following installed packages: %s"
-msgstr ""
-"Nie można odnaleźć pakietów debugsource dla tych zainstalowanych pakietów: "
-"%s"
-
-#: ../plugins/debuginfo-install.py:199
-msgid "Unable to find a match"
-msgstr "Brak wyników"
-
-#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
-#: ../plugins/versionlock_master.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Nie można odczytać konfiguracji blokady wersji: %s"
-
-#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
-#: ../plugins/versionlock_master.py:33
-msgid "Locklist not set"
-msgstr "Nie ustawiono listy blokad"
-
-#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
-#: ../plugins/versionlock_master.py:34
-msgid "Adding versionlock on:"
-msgstr "Dodawanie blokady wersji na:"
-
-#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
-#: ../plugins/versionlock_master.py:35
-msgid "Adding exclude on:"
-msgstr "Dodawanie wykluczenia na:"
-
-#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:39
-#: ../plugins/versionlock_master.py:36
-msgid "Deleting versionlock for:"
-msgstr "Usuwanie blokady wersji dla:"
-
-#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:40
-#: ../plugins/versionlock_master.py:37
-msgid "No package found for:"
-msgstr "Nie odnaleziono pakietu dla:"
-
-#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:41
-#: ../plugins/versionlock_master.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "Wykluczenia z wtyczki blokady wersji nie zostały zastosowane"
-
-#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:127
-#: ../plugins/versionlock_master.py:119
-msgid "control package version locks"
-msgstr "kontroluje blokady wersji pakietów"
-
-#: ../plugins/migrate.py:45
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "migruje historię, grupy i dane yumdb programu yum do programu dnf"
-
-#: ../plugins/migrate.py:54
-msgid "Migrating history data..."
-msgstr "Migrowanie danych historii…"
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr "Wyświetla pełny wykres zależności pakietu w formacie programu dot"
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr "Nic nie dostarcza: „%s”"
-
-#: ../plugins/versionlock.py:36
-msgid "Package already locked in equivalent form:"
-msgstr "Pakiet jest już zablokowany w formie równoważnej:"
-
-#: ../plugins/versionlock.py:37
-msgid "Package {} is already locked"
-msgstr "Pakiet {} jest już zablokowany"
-
-#: ../plugins/versionlock.py:38
-msgid "Package {} is already excluded"
-msgstr "Pakiet {} jest już wykluczony"
-
-#: ../plugins/versionlock.py:42 ../plugins/versionlock_master.py:39
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr ""
-"Wtyczka blokady wersji: liczba zastosowanych reguł blokowania z pliku „{}”: "
-"{}"
-
-#: ../plugins/versionlock.py:43 ../plugins/versionlock_master.py:40
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr ""
-"Wtyczka blokady wersji: liczba zastosowanych reguł wykluczenia z pliku „{}”:"
-" {}"
-
-#: ../plugins/versionlock.py:44 ../plugins/versionlock_master.py:41
-msgid "Versionlock plugin: could not parse pattern:"
-msgstr "Wtyczka blokady wersji: nie można przetworzyć wzoru:"
-
-#: ../plugins/versionlock.py:133
-msgid "Use package specifications as they are, do not try to parse them"
-msgstr "Używa specyfikacji pakietów bez ich przetwarzania"
-
-#: ../plugins/post-transaction-actions.py:71
-#, python-format
-msgid "Bad Action Line \"%s\": %s"
-msgstr "Błędny wiersz działania „%s”: %s"
-
-#. unsupported state, skip it
-#: ../plugins/post-transaction-actions.py:130
-#, python-format
-msgid "Bad Transaction State: %s"
-msgstr "Błędny stan transakcji: %s"
-
-#: ../plugins/post-transaction-actions.py:153
-#: ../plugins/post-transaction-actions.py:155
-#, python-format
-msgid "post-transaction-actions: %s"
-msgstr "Działania po transakcji: %s"
-
-#: ../plugins/post-transaction-actions.py:157
-#, python-format
-msgid "post-transaction-actions: Bad Command \"%s\": %s"
-msgstr "Działania po transakcji: błędne polecenie „%s”: %s"
-
-#: ../plugins/builddep.py:45
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PAKIET|PAKIET.spec]"
-
-#: ../plugins/builddep.py:85
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "„%s” nie jest w formacie „MAKRO WYRAŻENIE”"
-
-#: ../plugins/builddep.py:90
-msgid "packages with builddeps to install"
-msgstr "pakiety z zależnościami budowania do zainstalowania"
-
-#: ../plugins/builddep.py:93
-msgid "define a macro for spec file parsing"
-msgstr "określa makro do przetwarzania plików spec"
-
-#: ../plugins/builddep.py:95
-msgid "skip build dependencies not available in repositories"
-msgstr "pomija zależności budowania niedostępne w repozytoriach"
-
-#: ../plugins/builddep.py:98
-msgid "treat commandline arguments as spec files"
-msgstr "traktuje parametry wiersza poleceń jako pliki spec"
-
-#: ../plugins/builddep.py:100
-msgid "treat commandline arguments as source rpm"
-msgstr "traktuje parametry wiersza poleceń jako źródłowe pliki RPM"
-
-#: ../plugins/builddep.py:144
-msgid "RPM: {}"
-msgstr "RPM: {}"
-
-#: ../plugins/builddep.py:153
-msgid "Some packages could not be found."
-msgstr "Nie można odnaleźć niektórych pakietów."
-
-#. No provides, no files
-#. Richdeps can have no matches but it could be correct (solver must decide
-#. later)
-#: ../plugins/builddep.py:173
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Brak pasujących pakietów do zainstalowania: „%s”"
-
-#: ../plugins/builddep.py:191
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
-"Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
-
-#: ../plugins/builddep.py:204 ../plugins/builddep.py:220
-#: ../plugins/builddep.py:237
-msgid "Not all dependencies satisfied"
-msgstr "Nie spełniono wszystkich zależności"
-
-#: ../plugins/builddep.py:211
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
-
-#: ../plugins/builddep.py:230 ../plugins/repoclosure.py:118
-#, python-format
-msgid "no package matched: %s"
-msgstr "żaden pakiet nie pasuje: %s"
-
-#: ../plugins/config_manager.py:37
+#: plugins/config_manager.py:37
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
 msgstr "zarządza opcjami konfiguracji i repozytoriami programu {prog}"
 
-#: ../plugins/config_manager.py:44
+#: plugins/config_manager.py:44
 msgid "repo to modify"
 msgstr "modyfikowane repozytorium"
 
-#: ../plugins/config_manager.py:47
+#: plugins/config_manager.py:47
 msgid "save the current options (useful with --setopt)"
 msgstr "zapisuje bieżące opcje (przydatne z opcją --setopt)"
 
-#: ../plugins/config_manager.py:50
+#: plugins/config_manager.py:50
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "dodaje (i włącza) repozytorium z podanego pliku lub adresu URL"
 
-#: ../plugins/config_manager.py:53
+#: plugins/config_manager.py:53
 msgid "print current configuration values to stdout"
 msgstr "wyświetla bieżące wartości konfiguracji w standardowym wyjściu"
 
-#: ../plugins/config_manager.py:56
+#: plugins/config_manager.py:56
 msgid "print variable values to stdout"
 msgstr "wyświetla zmienne wartości w standardowym wyjściu"
 
-#: ../plugins/config_manager.py:70
+#: plugins/config_manager.py:60
+msgid "enable repos (automatically saves)"
+msgstr "włącza repozytoria (zapisuje automatycznie)"
+
+#: plugins/config_manager.py:63
+msgid "disable repos (automatically saves)"
+msgstr "wyłącza repozytoria (zapisuje automatycznie)"
+
+#: plugins/config_manager.py:77
 msgid "one of the following arguments is required: {}"
 msgstr "wymagany jest jeden z tych parametrów: {}"
 
-#: ../plugins/config_manager.py:113
+#: plugins/config_manager.py:86
+msgid ""
+"Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
+"manager. Use --set-enabled/--set-disabled instead."
+msgstr ""
+"Ostrzeżenie: parametry --enablerepo/--disablerepo nie działają z menedżerem "
+"konfiguracji. Należy użyć --set-enabled/--set-disabled zamiast tego."
+
+#: plugins/config_manager.py:131
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Brak pasującego repozytorium do modyfikacji: %s."
 
-#: ../plugins/config_manager.py:164
+#: plugins/config_manager.py:182
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Dodawanie repozytorium z: %s"
 
-#: ../plugins/config_manager.py:188
+#: plugins/config_manager.py:206
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Utworzenie repozytorium się nie powiodło"
 msgstr[1] "Utworzenie repozytoriów się nie powiodło"
 msgstr[2] "Utworzenie repozytoriów się nie powiodło"
 
-#: ../plugins/config_manager.py:198
+#: plugins/config_manager.py:216
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Nie można zapisać repozytorium do pliku %s: %s"
 
-#: ../plugins/local.py:122
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "Nie można utworzyć katalogu „{}” z powodu „{}”"
-
-#: ../plugins/local.py:126
-msgid "'{}' is not a directory"
-msgstr "„{}” nie jest katalogiem"
-
-#: ../plugins/local.py:135
-msgid "Copying '{}' to local repo"
-msgstr "Kopiowanie „{}” do lokalnego repozytorium"
-
-#: ../plugins/local.py:141
-msgid "Can't write file '{}'"
-msgstr "Nie można zapisać pliku „{}”"
-
-#: ../plugins/local.py:156
-msgid "Rebuilding local repo"
-msgstr "Ponowne budowanie lokalnego repozytorium"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-"wyświetla listę zainstalowanych pakietów, które nie są wymagane przez inne "
-"pakiety"
-
-#: ../plugins/needs_restarting.py:173
-msgid "determine updated binaries that need restarting"
-msgstr ""
-"określa, które zaktualizowane pliki binarne wymagają ponownego uruchomienia"
-
-#: ../plugins/needs_restarting.py:178
-msgid "only consider this user's processes"
-msgstr "uznaje tylko procesy tego użytkownika"
-
-#: ../plugins/needs_restarting.py:180
-msgid ""
-"only report whether a reboot is required (exit code 1) or not (exit code 0)"
-msgstr ""
-"zgłasza tylko, czy wymagane jest ponowne uruchomienie (kod wyjścia 1), czy "
-"nie (kod wyjścia 0)"
-
-#: ../plugins/needs_restarting.py:199
-msgid "Core libraries or services have been updated since boot-up:"
-msgstr "Od uruchomienia zaktualizowano główne biblioteki lub usługi:"
-
-#: ../plugins/needs_restarting.py:204
-msgid "Reboot is required to fully utilize these updates."
-msgstr "Wymagane jest ponowne uruchomienie, aby w pełni je wykorzystać."
-
-#: ../plugins/needs_restarting.py:205
-msgid "More information:"
-msgstr "Więcej informacji:"
-
-#: ../plugins/needs_restarting.py:209
-msgid "No core libraries or services have been updated since boot-up."
-msgstr ""
-"Od uruchomienia nie zaktualizowano żadnych głównych bibliotek ani usługi."
-
-#: ../plugins/needs_restarting.py:211
-msgid "Reboot should not be necessary."
-msgstr "Ponowne uruchomienie nie powinno być konieczne."
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Wyświetla listę nierozwiązanych zależności dla repozytoriów"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr ""
-"Zamknięcie repozytorium zakończyło się z nierozwiązanymi zależnościami."
-
-#: ../plugins/repoclosure.py:153
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
-"sprawdza pakiety o podanych architekturach, może być podawane wielokrotnie"
-
-#: ../plugins/repoclosure.py:156
-msgid "Specify repositories to check"
-msgstr "Podaje repozytoria do sprawdzenia"
-
-#: ../plugins/repoclosure.py:158
-msgid "Check only the newest packages in the repos"
-msgstr "Sprawdza tylko najnowsze pakiety w repozytoriach"
-
-#: ../plugins/repoclosure.py:161
-msgid "Check closure for this package only"
-msgstr "Sprawdza domknięcie tylko tego pakietu"
-
-#: ../plugins/repodiff.py:45
-msgid "List differences between two sets of repositories"
-msgstr "Wyświetla listę różnic między dwoma zestawami repozytoriów"
-
-#: ../plugins/repodiff.py:58
-msgid "Specify old repository, can be used multiple times"
-msgstr "Podaje poprzednie repozytorium, może być używane wiele razy"
-
-#: ../plugins/repodiff.py:60
-msgid "Specify new repository, can be used multiple times"
-msgstr "Podaje nowe repozytorium, może być używane wiele razy"
-
-#: ../plugins/repodiff.py:63
-msgid ""
-"Specify architectures to compare, can be used multiple times. By default, "
-"only source rpms are compared."
-msgstr ""
-"Podaje architektury do porównania, może być używane wiele razy. Domyślnie "
-"porównywane są tylko źródłowe pakiety RPM."
-
-#: ../plugins/repodiff.py:67
-msgid "Output additional data about the size of the changes."
-msgstr "Wyświetla dodatkowe dane o rozmiarze zmian."
-
-#: ../plugins/repodiff.py:69
-msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
-msgstr ""
-"Porównuje pakiety także według architektury. Domyślnie pakiety są "
-"porównywane tylko według nazw."
-
-#: ../plugins/repodiff.py:72
-msgid "Output a simple one line message for modified packages."
-msgstr ""
-"Wyświetla prosty, jednowierszowy komunikat dla zmodyfikowanych pakietów."
-
-#: ../plugins/repodiff.py:74
-msgid ""
-"Split the data for modified packages between upgraded and downgraded "
-"packages."
-msgstr ""
-"Dzieli dane zmodyfikowanych pakietów między zaktualizowane pakiety a pakiety"
-" zainstalowane w poprzedniej wersji."
-
-#: ../plugins/repodiff.py:86
-msgid "Both old and new repositories must be set."
-msgstr "Należy ustawić poprzednie i nowe repozytoria."
-
-#: ../plugins/repodiff.py:178
-msgid "Size change: {} bytes"
-msgstr "Zmiana rozmiaru: {} B"
-
-#: ../plugins/repodiff.py:184
-msgid "Added package  : {}"
-msgstr "Dodany pakiet  : {}"
-
-#: ../plugins/repodiff.py:187
-msgid "Removed package: {}"
-msgstr "Usunięty pakiet: {}"
-
-#: ../plugins/repodiff.py:190
-msgid "Obsoleted by   : {}"
-msgstr "Zastąpione przez   : {}"
-
-#: ../plugins/repodiff.py:195
-msgid ""
-"\n"
-"Upgraded packages"
-msgstr ""
-"\n"
-"Zaktualizowane pakiety"
-
-#: ../plugins/repodiff.py:200
-msgid ""
-"\n"
-"Downgraded packages"
-msgstr ""
-"\n"
-"Pakiety zainstalowane w poprzedniej wersji"
-
-#: ../plugins/repodiff.py:207
-msgid ""
-"\n"
-"Modified packages"
-msgstr ""
-"\n"
-"Zmodyfikowane pakiety"
-
-#: ../plugins/repodiff.py:212
-msgid ""
-"\n"
-"Summary"
-msgstr ""
-"\n"
-"Podsumowanie"
-
-#: ../plugins/repodiff.py:213
-msgid "Added packages: {}"
-msgstr "Dodane pakiety: {}"
-
-#: ../plugins/repodiff.py:214
-msgid "Removed packages: {}"
-msgstr "Usunięte pakiety: {}"
-
-#: ../plugins/repodiff.py:216
-msgid "Upgraded packages: {}"
-msgstr "Zaktualizowane pakiety: {}"
-
-#: ../plugins/repodiff.py:217
-msgid "Downgraded packages: {}"
-msgstr "Pakiety zainstalowane w poprzedniej wersji: {}"
-
-#: ../plugins/repodiff.py:219
-msgid "Modified packages: {}"
-msgstr "Zmodyfikowane pakiety: {}"
-
-#: ../plugins/repodiff.py:222
-msgid "Size of added packages: {}"
-msgstr "Rozmiar dodanych pakietów: {}"
-
-#: ../plugins/repodiff.py:223
-msgid "Size of removed packages: {}"
-msgstr "Rozmiar usuniętych pakietów: {}"
-
-#: ../plugins/repodiff.py:225
-msgid "Size of modified packages: {}"
-msgstr "Rozmiar zmodyfikowanych pakietów: {}"
-
-#: ../plugins/repodiff.py:228
-msgid "Size of upgraded packages: {}"
-msgstr "Rozmiar zaktualizowanych pakietów: {}"
-
-#: ../plugins/repodiff.py:230
-msgid "Size of downgraded packages: {}"
-msgstr "Rozmiar pakietów zainstalowanych w poprzedniej wersji: {}"
-
-#: ../plugins/repodiff.py:232
-msgid "Size change: {}"
-msgstr "Zmiana rozmiaru: {}"
-
-#: ../plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr "także pobiera i dekompresuje comps.xml"
-
-#: ../plugins/reposync.py:69
-msgid "download all the metadata."
-msgstr "pobiera wszystkie metadane."
-
-#: ../plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr "gdzie przechowywać pobrane repozytoria"
-
-#: ../plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr "Nie należy dodawać nazwy repozytorium do ścieżki pobierania."
-
-#: ../plugins/reposync.py:77
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-"gdzie przechowywać metadane pobranych repozytoriów. Domyślnie wartość "
-"parametru --download-path."
-
-#: ../plugins/reposync.py:82
-msgid "try to set local timestamps of local files by the one on the server"
-msgstr "próbuje ustawić lokalne czasy lokalnych plików na ten na serwerze"
-
-#: ../plugins/reposync.py:85
-msgid "Just list urls of what would be downloaded, don't download"
-msgstr ""
-"Tylko wyświetla listę adresów URL, które zostałyby pobrane, nie pobiera"
-
-#: ../plugins/reposync.py:109
-msgid "Can't use --norepopath with multiple repositories"
-msgstr "Nie można używać --norepopath z wieloma repozytoriami"
-
-#: ../plugins/reposync.py:127
-#, python-format
-msgid "Failed to get mirror for metadata: %s"
-msgstr "Uzyskanie serwera lustrzanego dla metadanych się nie powiodło: %s"
-
-#: ../plugins/reposync.py:144
-msgid "Failed to get mirror for the group file."
-msgstr "Uzyskanie serwera lustrzanego dla pliku grup się nie powiodło."
-
-#: ../plugins/reposync.py:175
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr "Cel pobierania „{}” jest poza ścieżką pobierania „{}”."
-
-#: ../plugins/reposync.py:260 ../plugins/download.py:121
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "Uzyskanie serwera lustrzanego dla pakietu się nie powiodło: %s"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr "Zarządza katalogiem pakietów RPM"
-
-#: ../plugins/repomanage.py:58
-msgid "Pass either --old or --new, not both!"
-msgstr "Należy podać --old lub --new."
-
-#: ../plugins/repomanage.py:68
-msgid "No files to process"
-msgstr "Brak plików do przetworzenia"
-
-#: ../plugins/repomanage.py:73
-msgid "Could not open {}"
-msgstr "Nie można otworzyć {}"
-
-#: ../plugins/repomanage.py:130
-msgid "Print the older packages"
-msgstr "Wyświetla listę poprzednich pakietów"
-
-#: ../plugins/repomanage.py:132
-msgid "Print the newest packages"
-msgstr "Wyświetla listę najnowszych pakietów"
-
-#: ../plugins/repomanage.py:134
-msgid "Space separated output, not newline"
-msgstr "Wyjście powinno być rozdzielane spacjami, a nie nowymi wierszami"
-
-#: ../plugins/repomanage.py:136
-msgid "Newest N packages to keep - defaults to 1"
-msgstr "N najnowszych pakietów do zatrzymania — domyślnie 1"
-
-#: ../plugins/repomanage.py:139
-msgid "Path to directory"
-msgstr "Ścieżka do katalogu"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "pobiera pakiet do bieżącego katalogu"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "pakiety do pobrania"
-
-#: ../plugins/download.py:53
-msgid "download the src.rpm instead"
-msgstr "pobiera pakiet src.rpm zamiast tego"
-
-#: ../plugins/download.py:55
-msgid "download the -debuginfo package instead"
-msgstr "pobiera pakiet -debuginfo zamiast tego"
-
-#: ../plugins/download.py:57
-msgid "download the -debugsource package instead"
-msgstr "pobiera pakiet -debugsource zamiast tego"
-
-#: ../plugins/download.py:60
-msgid "limit  the  query to packages of given architectures."
-msgstr "ogranicza zapytanie do pakietów podanych architektur."
-
-#: ../plugins/download.py:62
-msgid "resolve and download needed dependencies"
-msgstr "rozwiązuje i pobiera wymagane zależności"
-
-#: ../plugins/download.py:64
-msgid ""
-"when running with --resolve, download all dependencies (do not exclude "
-"already installed ones)"
-msgstr ""
-"podczas działania z opcją --resolve pobiera wszystkie zależności (nie "
-"wyklucza już zainstalowanych)"
-
-#: ../plugins/download.py:67
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"zamiast pobierać, wyświetla listę adresów URL, z których można pobrać "
-"pakiety RPM"
-
-#: ../plugins/download.py:72
-msgid "when running with --url, limit to specific protocols"
-msgstr "podczas działania z opcją --url, ogranicza do podanych protokołów"
-
-#: ../plugins/download.py:243
-msgid "Exiting due to strict setting."
-msgstr "Kończenie działania z powodu ścisłego ustawienia."
-
-#: ../plugins/download.py:261
-msgid "Error in resolve of packages:"
-msgstr "Błąd podczas rozwiązywania pakietów:"
-
-#: ../plugins/download.py:279
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "Nie określono źródłowego pakietu RPM dla %s"
-
-#: ../plugins/download.py:296 ../plugins/download.py:309
-#, python-format
-msgid "No package %s available."
-msgstr "Pakiet %s jest niedostępny."
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "Nowe pozostałości:"
-
-#: ../plugins/copr.py:56
-msgid "yes"
-msgstr "tak"
-
-#: ../plugins/copr.py:56
+#: plugins/copr.py:59
 msgid "y"
 msgstr "t"
 
-#: ../plugins/copr.py:57
-msgid "no"
-msgstr "nie"
+#: plugins/copr.py:59
+msgid "yes"
+msgstr "tak"
 
-#: ../plugins/copr.py:57
+#: plugins/copr.py:60
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:76
+#: plugins/copr.py:60
+msgid "no"
+msgstr "nie"
+
+#: plugins/copr.py:79
 msgid "Interact with Copr repositories."
 msgstr "używa repozytoriów Copr"
 
-#: ../plugins/copr.py:77
+#: plugins/copr.py:81
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -857,32 +277,32 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:103
+#: plugins/copr.py:107
 msgid "List all installed Copr repositories (default)"
 msgstr ""
 "wyświetla listę wszystkich zainstalowanych repozytoriów Copr (domyślnie)"
 
-#: ../plugins/copr.py:105
+#: plugins/copr.py:109
 msgid "List enabled Copr repositories"
 msgstr "wyświetla listę włączonych repozytoriów Copr"
 
-#: ../plugins/copr.py:107
+#: plugins/copr.py:111
 msgid "List disabled Copr repositories"
 msgstr "wyświetla listę wyłączonych repozytoriów Copr"
 
-#: ../plugins/copr.py:109
+#: plugins/copr.py:113
 msgid "List available Copr repositories by user NAME"
 msgstr "wyświetla listę dostępnych repozytoriów Copr według NAZWY użytkownika"
 
-#: ../plugins/copr.py:111
+#: plugins/copr.py:115
 msgid "Specify an instance of Copr to work with"
 msgstr "Podaje używane wystąpienie Copr"
 
-#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
 msgid "Error: "
 msgstr "Błąd: "
 
-#: ../plugins/copr.py:146
+#: plugins/copr.py:150
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -890,30 +310,29 @@ msgstr ""
 "podaje centrum Copr za pomocą opcji „--hub” lub używając formatu "
 "„centrum_copr/nazwa_użytkownika_copr/nazwa_projektu_copr”"
 
-#: ../plugins/copr.py:149
+#: plugins/copr.py:153
 msgid "multiple hubs specified"
 msgstr "podano wiele centrów"
 
-#: ../plugins/copr.py:211 ../plugins/copr.py:215
+#: plugins/copr.py:218 plugins/copr.py:222
 msgid "exactly two additional parameters to copr command are required"
 msgstr "wymagane są dokładnie dwa dodatkowe parametry dla polecenia copr"
 
-#: ../plugins/copr.py:231
+#: plugins/copr.py:238
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "należy użyć formatu „copr_nazwaużytkownika/copr_nazwaprojektu”, aby odnieść "
 "się do projektu Copr"
 
-#: ../plugins/copr.py:233
+#: plugins/copr.py:240
 msgid "bad copr project format"
 msgstr "błędny format projektu Copr"
 
-#: ../plugins/copr.py:247
-#, python-brace-format
+#: plugins/copr.py:254
 msgid ""
 "\n"
-"You are about to enable a Copr repository. Please note that this\n"
-"repository is not part of the main distribution, and quality may vary.\n"
+"Enabling a Copr repository. Please note that this repository is not part\n"
+"of the main distribution, and quality may vary.\n"
 "\n"
 "The Fedora Project does not exercise any power over the contents of\n"
 "this repository beyond the rules outlined in the Copr FAQ at\n"
@@ -922,13 +341,11 @@ msgid ""
 "\n"
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
-"\n"
-"Do you really want to enable {0}?"
 msgstr ""
 "\n"
-"Zostanie włączone repozytorium Copr. Proszę zauważyć, że to\n"
-"repozytorium nie jest częścią głównej dystrybucji i jego jakość\n"
-"może się różnić.\n"
+"Włączanie repozytorium Copr. Proszę zauważyć, że to\n"
+"repozytorium nie jest częścią głównej dystrybucji i jego\n"
+"jakość może się różnić.\n"
 "\n"
 "Projekt Fedora nie sprawuje żadnej władzy nad zawartością tego\n"
 "repozytorium poza zasadami wytyczonymi w dokumencie FAQ\n"
@@ -938,26 +355,24 @@ msgstr ""
 "Prosimy nie zgłaszać błędów na temat tych pakietów w systemie\n"
 "Bugzilla Fedory. W przypadku problemów prosimy kontaktować się\n"
 "z właścicielem danego repozytorium.\n"
-"\n"
-"Na pewno włączyć {0}?"
 
-#: ../plugins/copr.py:263
+#: plugins/copr.py:271
 msgid "Repository successfully enabled."
 msgstr "Pomyślnie włączono repozytorium."
 
-#: ../plugins/copr.py:267
+#: plugins/copr.py:276
 msgid "Repository successfully disabled."
 msgstr "Pomyślnie wyłączono repozytorium."
 
-#: ../plugins/copr.py:271
+#: plugins/copr.py:280
 msgid "Repository successfully removed."
 msgstr "Pomyślnie usunięto repozytorium."
 
-#: ../plugins/copr.py:275 ../plugins/copr.py:625
+#: plugins/copr.py:284 plugins/copr.py:689
 msgid "Unknown subcommand {}."
 msgstr "Nieznane podpolecenie {}."
 
-#: ../plugins/copr.py:328
+#: plugins/copr.py:337
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -967,121 +382,151 @@ msgstr ""
 "nie zawiera informacji o centrum Copr — przyjęto domyślne. Ponowne włączenie"
 " projektu to naprawi."
 
-#: ../plugins/copr.py:340
+#: plugins/copr.py:349
 msgid "Can't parse repositories for username '{}'."
 msgstr "Nie można przetworzyć repozytoriów dla nazwy użytkownika „{}”."
 
-#: ../plugins/copr.py:343
+#: plugins/copr.py:352
 msgid "List of {} coprs"
 msgstr "Lista repozytoriów Copr {}"
 
-#: ../plugins/copr.py:351
+#: plugins/copr.py:360
 msgid "No description given"
 msgstr "Nie podano opisu"
 
-#: ../plugins/copr.py:363
+#: plugins/copr.py:372
 msgid "Can't parse search for '{}'."
 msgstr "Nie można przetworzyć wyszukiwania dla „{}”."
 
-#: ../plugins/copr.py:366
+#: plugins/copr.py:375
 msgid "Matched: {}"
 msgstr "Pasujące: {}"
 
-#: ../plugins/copr.py:374
+#: plugins/copr.py:383
 msgid "No description given."
 msgstr "Nie podano opisu."
 
-#: ../plugins/copr.py:387
+#: plugins/copr.py:406
 msgid "Safe and good answer. Exiting."
 msgstr "Bezpieczna i dobra odpowiedź. Kończenie działania."
 
-#: ../plugins/copr.py:394
+#: plugins/copr.py:413
 msgid "This command has to be run under the root user."
 msgstr "To polecenie może być wykonywane tylko przez użytkownika root."
 
-#: ../plugins/copr.py:458
+#: plugins/copr.py:477
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "To repozytorium nie posiada jeszcze żadnych pakietów, więc nie można go "
 "teraz włączyć."
 
-#: ../plugins/copr.py:461
+#: plugins/copr.py:480
 msgid "Such repository does not exist."
 msgstr "Repozytorium nie istnieje."
 
-#: ../plugins/copr.py:509
+#: plugins/copr.py:524
+#, python-brace-format
+msgid ""
+"Maintainer of the enabled Copr repository decided to make\n"
+"it dependent on other repositories. Such repositories are\n"
+"usually necessary for successful installation of RPMs from\n"
+"the main Copr repository (they provide runtime dependencies).\n"
+"\n"
+"Be aware that the note about quality and bug-reporting\n"
+"above applies here too, Fedora Project doesn't control the\n"
+"content. Please review the list:\n"
+"\n"
+"{0}\n"
+"\n"
+"These repositories have been enabled automatically."
+msgstr ""
+"Opiekun włączonego repozytorium Copr zdecydował,\n"
+"że będzie ono zależne od innych repozytoriów. Takie\n"
+"repozytoria są zwykle niezbędne do pomyślnej instalacji\n"
+"pakietów RPM z głównego repozytorium Copr\n"
+"(dostarczają zależności wykonawcze).\n"
+"\n"
+"Proszę pamiętać, że powyższa uwaga na temat jakości\n"
+"i miejsca zgłaszania błędów ma zastosowanie także tutaj.\n"
+"Projekt Fedora nie kontroluje zawartości. Proszę przejrzeć listę:\n"
+"\n"
+"{0}\n"
+"\n"
+"Te repozytoria zostały automatycznie włączone."
+
+#: plugins/copr.py:545
+msgid "Do you want to keep them enabled?"
+msgstr "Czy zostawić je włączone?"
+
+#: plugins/copr.py:578
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Usunięcie repozytorium Copr {0}/{1}/{2} się nie powiodło"
 
-#: ../plugins/copr.py:520
+#: plugins/copr.py:589
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Wyłączenie repozytorium Copr {}/{} się nie powiodło"
 
-#: ../plugins/copr.py:542 ../plugins/copr.py:580
+#: plugins/copr.py:607 plugins/copr.py:644
 msgid "Unknown response from server."
 msgstr "Nieznana odpowiedź serwera."
 
-#: ../plugins/copr.py:564
+#: plugins/copr.py:629
 msgid "Interact with Playground repository."
 msgstr "używa repozytorium Playground"
 
-#: ../plugins/copr.py:569
-msgid ""
-"\n"
-"You are about to enable a Playground repository.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"\n"
-"Zostanie włączone repozytorium Playground.\n"
-"\n"
-"Kontynuować?"
+#: plugins/copr.py:635
+msgid "Enabling a Playground repository."
+msgstr "Włączanie repozytorium Playground."
 
-#: ../plugins/copr.py:615
+#: plugins/copr.py:636
+msgid "Do you want to continue?"
+msgstr "Kontynuować?"
+
+#: plugins/copr.py:679
 msgid "Playground repositories successfully enabled."
 msgstr "Pomyślnie włączono repozytoria Playground."
 
-#: ../plugins/copr.py:618
+#: plugins/copr.py:682
 msgid "Playground repositories successfully disabled."
 msgstr "Pomyślnie wyłączono repozytoria Playground."
 
-#: ../plugins/copr.py:622
+#: plugins/copr.py:686
 msgid "Playground repositories successfully updated."
 msgstr "Pomyślnie zaktualizowano repozytoria Playground."
 
-#: ../plugins/debug.py:53
+#: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
 msgstr "zrzuca informacje o zainstalowanych pakietach RPM do pliku"
 
-#: ../plugins/debug.py:67
+#: plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
 msgstr "bez próbowania zrzucenia zawartości repozytorium."
 
-#: ../plugins/debug.py:70
+#: plugins/debug.py:70
 msgid "optional name of dump file"
 msgstr "opcjonalna nazwa pliku zrzutu"
 
-#: ../plugins/debug.py:95
+#: plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
 msgstr "Wyjście zapisano do: %s"
 
-#: ../plugins/debug.py:172
+#: plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
 msgstr "przywraca pakiety zapisane w pliku debug-dump"
 
-#: ../plugins/debug.py:183
+#: plugins/debug.py:185
 msgid "output commands that would be run to stdout."
 msgstr ""
 "wyświetla polecenia, które zostałyby wykonane do standardowego wyjścia."
 
-#: ../plugins/debug.py:186
+#: plugins/debug.py:188
 msgid "Install the latest version of recorded packages."
 msgstr "Instaluje najnowsze wersje zapisanych pakietów."
 
-#: ../plugins/debug.py:189
+#: plugins/debug.py:191
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
@@ -1089,20 +534,632 @@ msgstr ""
 "Ignoruje architekturę i instaluje brakujące pakiety pasujące do nazwy, "
 "epoki, wersji i wydania."
 
-#: ../plugins/debug.py:194
+#: plugins/debug.py:196
 msgid "limit to specified type"
 msgstr "ogranicza do podanego typu"
 
-#: ../plugins/debug.py:196
+#: plugins/debug.py:199
+msgid ""
+"Allow removing of install-only packages. Using this option may result in an "
+"attempt to remove the running kernel."
+msgstr ""
+"Zezwala na usuwanie pakietów, które można tylko instalować. Użycie tej opcji"
+" może spowodować próbę usunięcia działającego jądra."
+
+#: plugins/debug.py:202
 msgid "name of dump file"
 msgstr "nazwa pliku zrzutu"
 
-#: ../plugins/debug.py:264
+#: plugins/debug.py:273
 #, python-format
 msgid "Package %s is not available"
 msgstr "Pakiet %s jest niedostępny"
 
-#: ../plugins/debug.py:274
+#: plugins/debug.py:283
 #, python-format
 msgid "Bad dnf debug file: %s"
 msgstr "Błędny plik debugowania programu dnf: %s"
+
+#: plugins/debuginfo-install.py:56
+msgid "install debuginfo packages"
+msgstr "instaluje pakiety debuginfo"
+
+#: plugins/debuginfo-install.py:180
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following available packages: %s"
+msgstr ""
+"Nie można odnaleźć pakietów debuginfo dla tych dostępnych pakietów: %s"
+
+#: plugins/debuginfo-install.py:185
+#, python-format
+msgid ""
+"Could not find debugsource package for the following available packages: %s"
+msgstr ""
+"Nie można odnaleźć pakietów debugsource dla tych dostępnych pakietów: %s"
+
+#: plugins/debuginfo-install.py:190
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following installed packages: %s"
+msgstr ""
+"Nie można odnaleźć pakietów debuginfo dla tych zainstalowanych pakietów: %s"
+
+#: plugins/debuginfo-install.py:195
+#, python-format
+msgid ""
+"Could not find debugsource package for the following installed packages: %s"
+msgstr ""
+"Nie można odnaleźć pakietów debugsource dla tych zainstalowanych pakietów: "
+"%s"
+
+#: plugins/debuginfo-install.py:199
+msgid "Unable to find a match"
+msgstr "Brak wyników"
+
+#: plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "pobiera pakiet do bieżącego katalogu"
+
+#: plugins/download.py:51
+msgid "packages to download"
+msgstr "pakiety do pobrania"
+
+#: plugins/download.py:53
+msgid "download the src.rpm instead"
+msgstr "pobiera pakiet src.rpm zamiast tego"
+
+#: plugins/download.py:55
+msgid "download the -debuginfo package instead"
+msgstr "pobiera pakiet -debuginfo zamiast tego"
+
+#: plugins/download.py:57
+msgid "download the -debugsource package instead"
+msgstr "pobiera pakiet -debugsource zamiast tego"
+
+#: plugins/download.py:60
+msgid "limit  the  query to packages of given architectures."
+msgstr "ogranicza zapytanie do pakietów podanych architektur."
+
+#: plugins/download.py:62
+msgid "resolve and download needed dependencies"
+msgstr "rozwiązuje i pobiera wymagane zależności"
+
+#: plugins/download.py:64
+msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+"podczas działania z opcją --resolve pobiera wszystkie zależności (nie "
+"wyklucza już zainstalowanych)"
+
+#: plugins/download.py:67
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr ""
+"zamiast pobierać, wyświetla listę adresów URL, z których można pobrać "
+"pakiety RPM"
+
+#: plugins/download.py:72
+msgid "when running with --url, limit to specific protocols"
+msgstr "podczas działania z opcją --url, ogranicza do podanych protokołów"
+
+#: plugins/download.py:121 plugins/reposync.py:260
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Uzyskanie serwera lustrzanego dla pakietu się nie powiodło: %s"
+
+#: plugins/download.py:243
+msgid "Exiting due to strict setting."
+msgstr "Kończenie działania z powodu ścisłego ustawienia."
+
+#: plugins/download.py:261
+msgid "Error in resolve of packages:"
+msgstr "Błąd podczas rozwiązywania pakietów:"
+
+#: plugins/download.py:279
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Nie określono źródłowego pakietu RPM dla %s"
+
+#: plugins/download.py:296 plugins/download.py:309
+#, python-format
+msgid "No package %s available."
+msgstr "Pakiet %s jest niedostępny."
+
+#: plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr ""
+"wyświetla listę zainstalowanych pakietów, które nie są wymagane przez inne "
+"pakiety"
+
+#: plugins/local.py:122
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "Nie można utworzyć katalogu „{}” z powodu „{}”"
+
+#: plugins/local.py:126
+msgid "'{}' is not a directory"
+msgstr "„{}” nie jest katalogiem"
+
+#: plugins/local.py:135
+msgid "Copying '{}' to local repo"
+msgstr "Kopiowanie „{}” do lokalnego repozytorium"
+
+#: plugins/local.py:141
+msgid "Can't write file '{}'"
+msgstr "Nie można zapisać pliku „{}”"
+
+#: plugins/local.py:156
+msgid "Rebuilding local repo"
+msgstr "Ponowne budowanie lokalnego repozytorium"
+
+#: plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "migruje historię, grupy i dane yumdb programu yum do programu dnf"
+
+#: plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "Migrowanie danych historii…"
+
+#: plugins/needs_restarting.py:65
+#, python-brace-format
+msgid ""
+"No installed package found for package name \"{pkg}\" specified in needs-"
+"restarting file \"{file}\"."
+msgstr ""
+"Nie odnaleziono zainstalowanego pakietu dla nazwy pakietu „{pkg}” "
+"określonego w pliku wymagania ponownego uruchomienia „{file}”."
+
+#: plugins/needs_restarting.py:199
+msgid "determine updated binaries that need restarting"
+msgstr ""
+"określa, które zaktualizowane pliki binarne wymagają ponownego uruchomienia"
+
+#: plugins/needs_restarting.py:204
+msgid "only consider this user's processes"
+msgstr "uznaje tylko procesy tego użytkownika"
+
+#: plugins/needs_restarting.py:206
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr ""
+"zgłasza tylko, czy wymagane jest ponowne uruchomienie (kod wyjścia 1), czy "
+"nie (kod wyjścia 0)"
+
+#: plugins/needs_restarting.py:230
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr "Od uruchomienia zaktualizowano główne biblioteki lub usługi:"
+
+#: plugins/needs_restarting.py:235
+msgid "Reboot is required to fully utilize these updates."
+msgstr "Wymagane jest ponowne uruchomienie, aby w pełni je wykorzystać."
+
+#: plugins/needs_restarting.py:236
+msgid "More information:"
+msgstr "Więcej informacji:"
+
+#: plugins/needs_restarting.py:240
+msgid "No core libraries or services have been updated since boot-up."
+msgstr ""
+"Od uruchomienia nie zaktualizowano żadnych głównych bibliotek ani usługi."
+
+#: plugins/needs_restarting.py:242
+msgid "Reboot should not be necessary."
+msgstr "Ponowne uruchomienie nie powinno być konieczne."
+
+#: plugins/post-transaction-actions.py:71
+#, python-format
+msgid "Bad Action Line \"%s\": %s"
+msgstr "Błędny wiersz działania „%s”: %s"
+
+#. unsupported state, skip it
+#: plugins/post-transaction-actions.py:130
+#, python-format
+msgid "Bad Transaction State: %s"
+msgstr "Błędny stan transakcji: %s"
+
+#: plugins/post-transaction-actions.py:153
+#: plugins/post-transaction-actions.py:155
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr "Działania po transakcji: %s"
+
+#: plugins/post-transaction-actions.py:157
+#, python-format
+msgid "post-transaction-actions: Bad Command \"%s\": %s"
+msgstr "Działania po transakcji: błędne polecenie „%s”: %s"
+
+#: plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Wyświetla listę nierozwiązanych zależności dla repozytoriów"
+
+#: plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr ""
+"Zamknięcie repozytorium zakończyło się z nierozwiązanymi zależnościami."
+
+#: plugins/repoclosure.py:153
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr ""
+"sprawdza pakiety o podanych architekturach, może być podawane wielokrotnie"
+
+#: plugins/repoclosure.py:156
+msgid "Specify repositories to check"
+msgstr "Podaje repozytoria do sprawdzenia"
+
+#: plugins/repoclosure.py:158
+msgid "Check only the newest packages in the repos"
+msgstr "Sprawdza tylko najnowsze pakiety w repozytoriach"
+
+#: plugins/repoclosure.py:161
+msgid "Check closure for this package only"
+msgstr "Sprawdza domknięcie tylko tego pakietu"
+
+#: plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Wyświetla listę różnic między dwoma zestawami repozytoriów"
+
+#: plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Podaje poprzednie repozytorium, może być używane wiele razy"
+
+#: plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Podaje nowe repozytorium, może być używane wiele razy"
+
+#: plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+"Podaje architektury do porównania, może być używane wiele razy. Domyślnie "
+"porównywane są tylko źródłowe pakiety RPM."
+
+#: plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Wyświetla dodatkowe dane o rozmiarze zmian."
+
+#: plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Porównuje pakiety także według architektury. Domyślnie pakiety są "
+"porównywane tylko według nazw."
+
+#: plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr ""
+"Wyświetla prosty, jednowierszowy komunikat dla zmodyfikowanych pakietów."
+
+#: plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Dzieli dane zmodyfikowanych pakietów między zaktualizowane pakiety a pakiety"
+" zainstalowane w poprzedniej wersji."
+
+#: plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Należy ustawić poprzednie i nowe repozytoria."
+
+#: plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "Zmiana rozmiaru: {} B"
+
+#: plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Dodany pakiet  : {}"
+
+#: plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Usunięty pakiet: {}"
+
+#: plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Zastąpione przez   : {}"
+
+#: plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Zaktualizowane pakiety"
+
+#: plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"Pakiety zainstalowane w poprzedniej wersji"
+
+#: plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Zmodyfikowane pakiety"
+
+#: plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"Podsumowanie"
+
+#: plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Dodane pakiety: {}"
+
+#: plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Usunięte pakiety: {}"
+
+#: plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Zaktualizowane pakiety: {}"
+
+#: plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Pakiety zainstalowane w poprzedniej wersji: {}"
+
+#: plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Zmodyfikowane pakiety: {}"
+
+#: plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Rozmiar dodanych pakietów: {}"
+
+#: plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Rozmiar usuniętych pakietów: {}"
+
+#: plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Rozmiar zmodyfikowanych pakietów: {}"
+
+#: plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Rozmiar zaktualizowanych pakietów: {}"
+
+#: plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Rozmiar pakietów zainstalowanych w poprzedniej wersji: {}"
+
+#: plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Zmiana rozmiaru: {}"
+
+#: plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "Wyświetla pełny wykres zależności pakietu w formacie programu dot"
+
+#: plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Nic nie dostarcza: „%s”"
+
+#: plugins/repomanage.py:45
+msgid "Manage a directory of rpm packages"
+msgstr "Zarządza katalogiem pakietów RPM"
+
+#: plugins/repomanage.py:59
+msgid "Pass either --old or --new, not both!"
+msgstr "Należy podać --old lub --new."
+
+#: plugins/repomanage.py:71
+msgid "No files to process"
+msgstr "Brak plików do przetworzenia"
+
+#: plugins/repomanage.py:93
+msgid "Could not open {}"
+msgstr "Nie można otworzyć {}"
+
+#: plugins/repomanage.py:177
+msgid "Print the older packages"
+msgstr "Wyświetla listę poprzednich pakietów"
+
+#: plugins/repomanage.py:179
+msgid "Print the newest packages"
+msgstr "Wyświetla listę najnowszych pakietów"
+
+#: plugins/repomanage.py:181
+msgid "Space separated output, not newline"
+msgstr "Wyjście powinno być rozdzielane spacjami, a nie nowymi wierszami"
+
+#: plugins/repomanage.py:183
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "N najnowszych pakietów do zatrzymania — domyślnie 1"
+
+#: plugins/repomanage.py:186
+msgid "Path to directory"
+msgstr "Ścieżka do katalogu"
+
+#: plugins/reposync.py:54
+msgid "download all packages from remote repo"
+msgstr "pobiera wszystkie pakiety ze zdalnego repozytorium"
+
+#: plugins/reposync.py:63
+msgid "download only packages for this ARCH"
+msgstr "pobiera pakiety tylko dla tej ARCHITEKTURY"
+
+#: plugins/reposync.py:65
+msgid "delete local packages no longer present in repository"
+msgstr "usuwa lokalne pakiety nieobecne już w repozytorium"
+
+#: plugins/reposync.py:67
+msgid "also download and uncompress comps.xml"
+msgstr "także pobiera i dekompresuje comps.xml"
+
+#: plugins/reposync.py:69
+msgid "download all the metadata."
+msgstr "pobiera wszystkie metadane."
+
+#: plugins/reposync.py:71
+msgid "download only newest packages per-repo"
+msgstr "pobiera tylko najnowsze pakiety na każde repozytorium"
+
+#: plugins/reposync.py:73
+msgid "where to store downloaded repositories"
+msgstr "gdzie przechowywać pobrane repozytoria"
+
+#: plugins/reposync.py:75
+msgid "Don't add the reponame to the download path."
+msgstr "Nie należy dodawać nazwy repozytorium do ścieżki pobierania."
+
+#: plugins/reposync.py:77
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+"gdzie przechowywać metadane pobranych repozytoriów. Domyślnie wartość "
+"parametru --download-path."
+
+#: plugins/reposync.py:80
+msgid "operate on source packages"
+msgstr "działa na pakietach źródłowych"
+
+#: plugins/reposync.py:82
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr "próbuje ustawić lokalne czasy lokalnych plików na ten na serwerze"
+
+#: plugins/reposync.py:85
+msgid "Just list urls of what would be downloaded, don't download"
+msgstr ""
+"Tylko wyświetla listę adresów URL, które zostałyby pobrane, nie pobiera"
+
+#: plugins/reposync.py:109
+msgid "Can't use --norepopath with multiple repositories"
+msgstr "Nie można używać --norepopath z wieloma repozytoriami"
+
+#: plugins/reposync.py:127
+#, python-format
+msgid "Failed to get mirror for metadata: %s"
+msgstr "Uzyskanie serwera lustrzanego dla metadanych się nie powiodło: %s"
+
+#: plugins/reposync.py:144
+msgid "Failed to get mirror for the group file."
+msgstr "Uzyskanie serwera lustrzanego dla pliku grup się nie powiodło."
+
+#: plugins/reposync.py:175
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "Cel pobierania „{}” jest poza ścieżką pobierania „{}”."
+
+#: plugins/reposync.py:190
+#, python-format
+msgid "[DELETED] %s"
+msgstr "[USUNIĘTO] %s"
+
+#: plugins/reposync.py:192
+#, python-format
+msgid "failed to delete file %s"
+msgstr "usunięcie pliku %s się nie powiodło"
+
+#: plugins/reposync.py:201
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr "zapisano comps.xml dla repozytorium %s"
+
+#: plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Nowe pozostałości:"
+
+#: plugins/versionlock.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Nie można odczytać konfiguracji blokady wersji: %s"
+
+#: plugins/versionlock.py:33
+msgid "Locklist not set"
+msgstr "Nie ustawiono listy blokad"
+
+#: plugins/versionlock.py:34
+msgid "Adding versionlock on:"
+msgstr "Dodawanie blokady wersji na:"
+
+#: plugins/versionlock.py:35
+msgid "Adding exclude on:"
+msgstr "Dodawanie wykluczenia na:"
+
+#: plugins/versionlock.py:36
+msgid "Package already locked in equivalent form:"
+msgstr "Pakiet jest już zablokowany w formie równoważnej:"
+
+#: plugins/versionlock.py:37
+msgid "Package {} is already locked"
+msgstr "Pakiet {} jest już zablokowany"
+
+#: plugins/versionlock.py:38
+msgid "Package {} is already excluded"
+msgstr "Pakiet {} jest już wykluczony"
+
+#: plugins/versionlock.py:39
+msgid "Deleting versionlock for:"
+msgstr "Usuwanie blokady wersji dla:"
+
+#: plugins/versionlock.py:40
+msgid "No package found for:"
+msgstr "Nie odnaleziono pakietu dla:"
+
+#: plugins/versionlock.py:41
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Wykluczenia z wtyczki blokady wersji nie zostały zastosowane"
+
+#: plugins/versionlock.py:42
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr ""
+"Wtyczka blokady wersji: liczba zastosowanych reguł blokowania z pliku „{}”: "
+"{}"
+
+#: plugins/versionlock.py:43
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr ""
+"Wtyczka blokady wersji: liczba zastosowanych reguł wykluczenia z pliku „{}”:"
+" {}"
+
+#: plugins/versionlock.py:44
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr "Wtyczka blokady wersji: nie można przetworzyć wzoru:"
+
+#: plugins/versionlock.py:130
+msgid "control package version locks"
+msgstr "kontroluje blokady wersji pakietów"
+
+#: plugins/versionlock.py:136
+msgid "Use package specifications as they are, do not try to parse them"
+msgstr "Używa specyfikacji pakietów bez ich przetwarzania"
+
+#~ msgid ""
+#~ "\n"
+#~ "These repositories have been enabled automatically.\n"
+#~ "Do you want to keep them enabled?"
+#~ msgstr ""
+#~ "\n"
+#~ "Te repozytoria zostały automatycznie włączone.\n"
+#~ "Czy zostawić je włączone?"
+
+#~ msgid ""
+#~ "\n"
+#~ "You are about to enable a Playground repository.\n"
+#~ "\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "\n"
+#~ "Zostanie włączone repozytorium Playground.\n"
+#~ "\n"
+#~ "Kontynuować?"
+
+#~ msgid "also download comps.xml"
+#~ msgstr "pobiera także comps.xml"
+
+#~ msgid "where to store downloaded repositories "
+#~ msgstr "gdzie przechowywać pobrane repozytoria "
+
+#~ msgid "Could not make repository directory: %s"
+#~ msgstr "Nie można utworzyć katalogu repozytorium: %s"

@@ -4,767 +4,229 @@
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 # Peter Pan <pan93412@gmail.com>, 2018. #zanata
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2019. #zanata
+# Yi-Jyun Pan <pan93412@gmail.com>, 2020.
+# Anonymous <noreply@weblate.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 14:54+0100\n"
-"PO-Revision-Date: 2019-04-02 05:18+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Taiwan)\n"
+"POT-Creation-Date: 2020-07-21 09:18-0400\n"
+"PO-Revision-Date: 2020-05-27 17:40+0000\n"
+"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Zanata 4.6.2\n"
+"X-Generator: Weblate 4.0.4\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
-#: ../plugins/reposync.175df5c.py:42
-msgid "download all packages from remote repo"
-msgstr "從遠端軟體庫下載所有軟體包"
-
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
-#: ../plugins/reposync.175df5c.py:48
-msgid "download only packages for this ARCH"
-msgstr "僅下載此ARCH的軟件包"
-
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
-#: ../plugins/reposync.175df5c.py:50
-msgid "delete local packages no longer present in repository"
-msgstr "刪除存儲庫中不再存在的本地包"
-
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.175df5c.py:52
-msgid "also download comps.xml"
-msgstr "還下載comps.xml"
-
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
-#: ../plugins/reposync.175df5c.py:54
-msgid "download only newest packages per-repo"
-msgstr "每次只下載最新的軟件包"
-
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
-msgid "where to store downloaded repositories "
-msgstr "儲存下載軟體庫的地方 "
-
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:80
-#: ../plugins/reposync.175df5c.py:58
-msgid "operate on source packages"
-msgstr "在源包上運行"
-
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:190
-#: ../plugins/reposync.175df5c.py:95
-#, python-format
-msgid "[DELETED] %s"
-msgstr "[DELETED] %s"
-
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:192
-#: ../plugins/reposync.175df5c.py:97
-#, python-format
-msgid "failed to delete file %s"
-msgstr "無法刪除文件 %s"
-
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
-#, python-format
-msgid "Could not make repository directory: %s"
-msgstr "無法創建存儲庫目錄： %s"
-
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:201
-#: ../plugins/reposync.175df5c.py:111
-#, python-format
-msgid "comps.xml for repository %s saved"
-msgstr "comps.xml for repository %s 保存"
-
-#: ../plugins/changelog.py:37
-#, python-brace-format
-msgid "Not a valid date: \"{0}\"."
-msgstr ""
-
-#: ../plugins/changelog.py:43
-msgid "Show changelog data of packages"
-msgstr ""
-
-#: ../plugins/changelog.py:51
-msgid ""
-"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
-"is recommended."
-msgstr ""
-
-#: ../plugins/changelog.py:55
-msgid "show given number of changelog entries per package"
-msgstr ""
-
-#: ../plugins/changelog.py:58
-msgid ""
-"show only new changelog entries for packages, that provide an upgrade for "
-"some of already installed packages."
-msgstr ""
-
-#: ../plugins/changelog.py:60
-msgid "PACKAGE"
-msgstr ""
-
-#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:90
-#, python-format
-msgid "No match for argument: %s"
-msgstr "參數不匹配： %s"
-
-#: ../plugins/changelog.py:109
-msgid "Listing changelogs since {}"
-msgstr ""
-
-#: ../plugins/changelog.py:111
-msgid "Listing only latest changelog"
-msgid_plural "Listing {} latest changelogs"
-msgstr[0] ""
-
-#: ../plugins/changelog.py:116
-msgid "Listing only new changelogs since installed version of the package"
-msgstr ""
-
-#: ../plugins/changelog.py:118
-msgid "Listing all changelogs"
-msgstr ""
-
-#: ../plugins/changelog.py:122
-msgid "Changelogs for {}"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:56
-msgid "install debuginfo packages"
-msgstr "安裝 debuginfo 軟體包"
-
-#: ../plugins/debuginfo-install.py:180
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following available packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:185
-#, python-format
-msgid ""
-"Could not find debugsource package for the following available packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:190
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:195
-#, python-format
-msgid ""
-"Could not find debugsource package for the following installed packages: %s"
-msgstr ""
-
-#: ../plugins/debuginfo-install.py:199
-msgid "Unable to find a match"
-msgstr "無法找到匹配項"
-
-#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
-#: ../plugins/versionlock_master.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "無法讀取版本鎖設定：%s"
-
-#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
-#: ../plugins/versionlock_master.py:33
-msgid "Locklist not set"
-msgstr "鎖定列表尚未設定"
-
-#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
-#: ../plugins/versionlock_master.py:34
-msgid "Adding versionlock on:"
-msgstr "增加版本鎖於："
-
-#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
-#: ../plugins/versionlock_master.py:35
-msgid "Adding exclude on:"
-msgstr "增加排除於："
-
-#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:39
-#: ../plugins/versionlock_master.py:36
-msgid "Deleting versionlock for:"
-msgstr "移除版本鎖為："
-
-#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:40
-#: ../plugins/versionlock_master.py:37
-msgid "No package found for:"
-msgstr "沒有軟體包被找到於："
-
-#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:41
-#: ../plugins/versionlock_master.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "從版本鎖附加元件排除的項目將不會被套用"
-
-#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:127
-#: ../plugins/versionlock_master.py:119
-msgid "control package version locks"
-msgstr "控制軟體包版本鎖"
-
-#: ../plugins/migrate.py:45
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "遷移 yum 的歷史紀錄、群組與 yumdb 資料至 dnf"
-
-#: ../plugins/migrate.py:54
-msgid "Migrating history data..."
-msgstr "遷移歷史資料中…"
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr "以 dot 格式輸出完整的軟體包依賴關係"
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr "沒有提供者：「%s」"
-
-#: ../plugins/versionlock.py:36
-msgid "Package already locked in equivalent form:"
-msgstr ""
-
-#: ../plugins/versionlock.py:37
-msgid "Package {} is already locked"
-msgstr ""
-
-#: ../plugins/versionlock.py:38
-msgid "Package {} is already excluded"
-msgstr ""
-
-#: ../plugins/versionlock.py:42 ../plugins/versionlock_master.py:39
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr "Versionlock 外掛程式：來自「{}」檔案的封鎖條件數量已經套用：{}"
-
-#: ../plugins/versionlock.py:43 ../plugins/versionlock_master.py:40
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr "Versionlock 外掛程式：來自「{}」檔案的排除條件數量已經套用：{}"
-
-#: ../plugins/versionlock.py:44 ../plugins/versionlock_master.py:41
-msgid "Versionlock plugin: could not parse pattern:"
-msgstr "Versionlock 外掛程式：無法解析範本："
-
-#: ../plugins/versionlock.py:133
-msgid "Use package specifications as they are, do not try to parse them"
-msgstr ""
-
-#: ../plugins/post-transaction-actions.py:71
-#, python-format
-msgid "Bad Action Line \"%s\": %s"
-msgstr ""
-
-#. unsupported state, skip it
-#: ../plugins/post-transaction-actions.py:130
-#, python-format
-msgid "Bad Transaction State: %s"
-msgstr ""
-
-#: ../plugins/post-transaction-actions.py:153
-#: ../plugins/post-transaction-actions.py:155
-#, python-format
-msgid "post-transaction-actions: %s"
-msgstr ""
-
-#: ../plugins/post-transaction-actions.py:157
-#, python-format
-msgid "post-transaction-actions: Bad Command \"%s\": %s"
-msgstr ""
-
-#: ../plugins/builddep.py:45
+#: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
 msgstr "[PACKAGE|PACKAGE.spec]"
 
-#: ../plugins/builddep.py:85
+#: plugins/builddep.py:85
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "「%s」非格式「MACRO EXPR」"
+msgstr "「%s」的格式不是「MACRO EXPR」"
 
-#: ../plugins/builddep.py:90
+#: plugins/builddep.py:90
 msgid "packages with builddeps to install"
-msgstr "builddeps 要安裝的軟體包"
+msgstr "要安裝，且有 builddeps 的軟體包"
 
-#: ../plugins/builddep.py:93
+#: plugins/builddep.py:93
 msgid "define a macro for spec file parsing"
-msgstr "定義一個巨集作為 spec 檔案解析"
+msgstr "定義要用來解析 spec 檔案的巨集"
 
-#: ../plugins/builddep.py:95
+#: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
-msgstr ""
+msgstr "跳過軟體庫沒有的組建依賴關係"
 
-#: ../plugins/builddep.py:98
+#: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
-msgstr "處理指令列的參數為 spec 檔案"
+msgstr "將命令列的引數看成 spec 檔案"
 
-#: ../plugins/builddep.py:100
+#: plugins/builddep.py:100
 msgid "treat commandline arguments as source rpm"
-msgstr "處理指令列上的參數為來源 rpm"
+msgstr "將命令列的引數看成來源 rpm"
 
-#: ../plugins/builddep.py:144
+#: plugins/builddep.py:144
 msgid "RPM: {}"
-msgstr ""
+msgstr "RPM：{}"
 
-#: ../plugins/builddep.py:153
+#: plugins/builddep.py:153
 msgid "Some packages could not be found."
 msgstr "有些軟體包遍尋不著。"
 
 #. No provides, no files
 #. Richdeps can have no matches but it could be correct (solver must decide
 #. later)
-#: ../plugins/builddep.py:173
+#: plugins/builddep.py:173
 #, python-format
 msgid "No matching package to install: '%s'"
-msgstr "沒有符合的項目以安裝：「%s」"
+msgstr "沒有要安裝的符合軟體包：「%s」"
 
-#: ../plugins/builddep.py:191
+#: plugins/builddep.py:191
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "無法開啟：「%s」，不是有效的來源 rpm 檔案。"
 
-#: ../plugins/builddep.py:204 ../plugins/builddep.py:220
-#: ../plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
 msgid "Not all dependencies satisfied"
-msgstr "並非所有的依賴都滿足"
+msgstr "不滿足所有依賴關係"
 
-#: ../plugins/builddep.py:211
+#: plugins/builddep.py:211
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "無法開啟：「%s」，非有效 spec 檔案：%s"
 
-#: ../plugins/builddep.py:230 ../plugins/repoclosure.py:118
+#: plugins/builddep.py:230 plugins/repoclosure.py:118
 #, python-format
 msgid "no package matched: %s"
-msgstr "沒有軟體包符合：%s"
+msgstr "沒有符合的軟體包：%s"
 
-#: ../plugins/config_manager.py:37
+#: plugins/changelog.py:37
+#, python-brace-format
+msgid "Not a valid date: \"{0}\"."
+msgstr "不是有效日期：「{0}」。"
+
+#: plugins/changelog.py:43
+msgid "Show changelog data of packages"
+msgstr "顯示軟體包的變更記錄資料"
+
+#: plugins/changelog.py:51
+msgid ""
+"show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
+"is recommended."
+msgstr "顯示自 DATE 起的變更記錄項目。為防不明確，建議 YYYY-MM-DD 格式。"
+
+#: plugins/changelog.py:55
+msgid "show given number of changelog entries per package"
+msgstr "顯示每個軟體包指定數量的變更記錄項目數"
+
+#: plugins/changelog.py:58
+#, fuzzy
+msgid ""
+"show only new changelog entries for packages, that provide an upgrade for "
+"some of already installed packages."
+msgstr "只顯示提供部分已安裝軟體包升級的軟體包新變更記錄項目。"
+
+#: plugins/changelog.py:60
+msgid "PACKAGE"
+msgstr "PACKAGE"
+
+#: plugins/changelog.py:81 plugins/debuginfo-install.py:90
+#, python-format
+msgid "No match for argument: %s"
+msgstr "引數不符：%s"
+
+#: plugins/changelog.py:109
+msgid "Listing changelogs since {}"
+msgstr "列出自 {} 以來的變更記錄"
+
+#: plugins/changelog.py:111
+msgid "Listing only latest changelog"
+msgid_plural "Listing {} latest changelogs"
+msgstr[0] "列出 {} 項最新的變更記錄"
+
+#: plugins/changelog.py:116
+msgid "Listing only new changelogs since installed version of the package"
+msgstr "只列出自軟體包安裝版本以來的新變更記錄"
+
+#: plugins/changelog.py:118
+msgid "Listing all changelogs"
+msgstr "列出所有變更記錄"
+
+#: plugins/changelog.py:122
+msgid "Changelogs for {}"
+msgstr "{} 的變更記錄"
+
+#: plugins/config_manager.py:37
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
-msgstr ""
+msgstr "管理 {prog} 的設定選項及軟體庫"
 
-#: ../plugins/config_manager.py:44
+#: plugins/config_manager.py:44
 msgid "repo to modify"
 msgstr "要修改的軟體庫"
 
-#: ../plugins/config_manager.py:47
+#: plugins/config_manager.py:47
 msgid "save the current options (useful with --setopt)"
-msgstr "儲存目前的設定（ 用於 --setopt）"
+msgstr "儲存目前的選項（用於 --setopt）"
 
-#: ../plugins/config_manager.py:50
+#: plugins/config_manager.py:50
 msgid "add (and enable) the repo from the specified file or url"
-msgstr "從指定的檔案或網址增加（和啟用）此軟體庫"
+msgstr "從指定的檔案或 URL 新增（並啟用）此軟體庫"
 
-#: ../plugins/config_manager.py:53
+#: plugins/config_manager.py:53
 msgid "print current configuration values to stdout"
-msgstr "顯示目前的設定檔的值至標準輸出"
+msgstr "輸出目前的設定檔值至標準輸出"
 
-#: ../plugins/config_manager.py:56
+#: plugins/config_manager.py:56
 msgid "print variable values to stdout"
-msgstr "顯示變數值至標準輸出"
+msgstr "輸出變數值至標準輸出"
 
-#: ../plugins/config_manager.py:70
+#: plugins/config_manager.py:60
+msgid "enable repos (automatically saves)"
+msgstr "啟用軟體庫（自動儲存）"
+
+#: plugins/config_manager.py:63
+msgid "disable repos (automatically saves)"
+msgstr "停用軟體庫（自動儲存）"
+
+#: plugins/config_manager.py:77
 msgid "one of the following arguments is required: {}"
-msgstr ""
+msgstr "需要以下任一引數：{}"
 
-#: ../plugins/config_manager.py:113
+#: plugins/config_manager.py:86
+msgid ""
+"Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
+"manager. Use --set-enabled/--set-disabled instead."
+msgstr ""
+"警告：--enablerepo/--disablerepo 引數在組態管理員下沒有意義。請改用 --set-enabled/--set-"
+"disabled。"
+
+#: plugins/config_manager.py:131
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr "沒有符合的軟體庫以變更：%s。"
+msgstr "沒有符合要修改的軟體庫：%s。"
 
-#: ../plugins/config_manager.py:164
+#: plugins/config_manager.py:182
 #, python-format
 msgid "Adding repo from: %s"
-msgstr "增加軟體庫自：%s"
+msgstr "從下述加入軟體庫：%s"
 
-#: ../plugins/config_manager.py:188
+#: plugins/config_manager.py:206
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "設定軟體庫失敗"
 
-#: ../plugins/config_manager.py:198
+#: plugins/config_manager.py:216
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "無法儲存軟體庫至 repofile %s：%s"
 
-#: ../plugins/local.py:122
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "無法建立目錄 '{}'，原因：'{}'"
-
-#: ../plugins/local.py:126
-msgid "'{}' is not a directory"
-msgstr "'{}' 不是個資料夾"
-
-#: ../plugins/local.py:135
-msgid "Copying '{}' to local repo"
-msgstr "複製 '{}' 至本機軟體庫"
-
-#: ../plugins/local.py:141
-msgid "Can't write file '{}'"
-msgstr "無法寫入檔案 '{}'"
-
-#: ../plugins/local.py:156
-msgid "Rebuilding local repo"
-msgstr "重新架構本機軟體庫"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr "由其他軟體包列出不需要的已安裝軟體包"
-
-#: ../plugins/needs_restarting.py:173
-msgid "determine updated binaries that need restarting"
-msgstr "判定需要重新啟動的更新後二進位檔"
-
-#: ../plugins/needs_restarting.py:178
-msgid "only consider this user's processes"
-msgstr "只考慮該使用者的程序"
-
-#: ../plugins/needs_restarting.py:180
-msgid ""
-"only report whether a reboot is required (exit code 1) or not (exit code 0)"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:199
-msgid "Core libraries or services have been updated since boot-up:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:204
-msgid "Reboot is required to fully utilize these updates."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:205
-msgid "More information:"
-msgstr ""
-
-#: ../plugins/needs_restarting.py:209
-msgid "No core libraries or services have been updated since boot-up."
-msgstr ""
-
-#: ../plugins/needs_restarting.py:211
-msgid "Reboot should not be necessary."
-msgstr ""
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "顯示軟體庫中未回應的依賴關係列表"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "因為未回應的依賴關係列表，Repoclosure 退出。"
-
-#: ../plugins/repoclosure.py:153
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr "檢查給予的架構的軟體包，可指定多個。"
-
-#: ../plugins/repoclosure.py:156
-msgid "Specify repositories to check"
-msgstr "指定欲檢查的軟體庫"
-
-#: ../plugins/repoclosure.py:158
-msgid "Check only the newest packages in the repos"
-msgstr "只檢查軟體庫內最新的軟體包"
-
-#: ../plugins/repoclosure.py:161
-msgid "Check closure for this package only"
-msgstr "檢查只有這個軟體庫的 closure"
-
-#: ../plugins/repodiff.py:45
-msgid "List differences between two sets of repositories"
-msgstr ""
-
-#: ../plugins/repodiff.py:58
-msgid "Specify old repository, can be used multiple times"
-msgstr ""
-
-#: ../plugins/repodiff.py:60
-msgid "Specify new repository, can be used multiple times"
-msgstr ""
-
-#: ../plugins/repodiff.py:63
-msgid ""
-"Specify architectures to compare, can be used multiple times. By default, "
-"only source rpms are compared."
-msgstr ""
-
-#: ../plugins/repodiff.py:67
-msgid "Output additional data about the size of the changes."
-msgstr ""
-
-#: ../plugins/repodiff.py:69
-msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
-msgstr ""
-
-#: ../plugins/repodiff.py:72
-msgid "Output a simple one line message for modified packages."
-msgstr ""
-
-#: ../plugins/repodiff.py:74
-msgid ""
-"Split the data for modified packages between upgraded and downgraded "
-"packages."
-msgstr ""
-
-#: ../plugins/repodiff.py:86
-msgid "Both old and new repositories must be set."
-msgstr ""
-
-#: ../plugins/repodiff.py:178
-msgid "Size change: {} bytes"
-msgstr ""
-
-#: ../plugins/repodiff.py:184
-msgid "Added package  : {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:187
-msgid "Removed package: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:190
-msgid "Obsoleted by   : {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:195
-msgid ""
-"\n"
-"Upgraded packages"
-msgstr ""
-
-#: ../plugins/repodiff.py:200
-msgid ""
-"\n"
-"Downgraded packages"
-msgstr ""
-
-#: ../plugins/repodiff.py:207
-msgid ""
-"\n"
-"Modified packages"
-msgstr ""
-
-#: ../plugins/repodiff.py:212
-msgid ""
-"\n"
-"Summary"
-msgstr ""
-
-#: ../plugins/repodiff.py:213
-msgid "Added packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:214
-msgid "Removed packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:216
-msgid "Upgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:217
-msgid "Downgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:219
-msgid "Modified packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:222
-msgid "Size of added packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:223
-msgid "Size of removed packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:225
-msgid "Size of modified packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:228
-msgid "Size of upgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:230
-msgid "Size of downgraded packages: {}"
-msgstr ""
-
-#: ../plugins/repodiff.py:232
-msgid "Size change: {}"
-msgstr ""
-
-#: ../plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr ""
-
-#: ../plugins/reposync.py:69
-msgid "download all the metadata."
-msgstr "下載所有的中繼資料。"
-
-#: ../plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr ""
-
-#: ../plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr ""
-
-#: ../plugins/reposync.py:77
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-
-#: ../plugins/reposync.py:82
-msgid "try to set local timestamps of local files by the one on the server"
-msgstr ""
-
-#: ../plugins/reposync.py:85
-msgid "Just list urls of what would be downloaded, don't download"
-msgstr ""
-
-#: ../plugins/reposync.py:109
-msgid "Can't use --norepopath with multiple repositories"
-msgstr ""
-
-#: ../plugins/reposync.py:127
-#, python-format
-msgid "Failed to get mirror for metadata: %s"
-msgstr ""
-
-#: ../plugins/reposync.py:144
-msgid "Failed to get mirror for the group file."
-msgstr ""
-
-#: ../plugins/reposync.py:175
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr "下載目標「{}」在下載位置「{}」之外。"
-
-#: ../plugins/reposync.py:260 ../plugins/download.py:121
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "無法取得此軟體庫的鏡像：%s"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr "管理 rpm 軟體包目錄"
-
-#: ../plugins/repomanage.py:58
-msgid "Pass either --old or --new, not both!"
-msgstr "通過 --old 或 --new，不能兩個一起！"
-
-#: ../plugins/repomanage.py:68
-msgid "No files to process"
-msgstr "沒有檔案要操作"
-
-#: ../plugins/repomanage.py:73
-msgid "Could not open {}"
-msgstr "無法打開 {}"
-
-#: ../plugins/repomanage.py:130
-msgid "Print the older packages"
-msgstr "顯示較舊的軟體包"
-
-#: ../plugins/repomanage.py:132
-msgid "Print the newest packages"
-msgstr "顯示較新的軟體包"
-
-#: ../plugins/repomanage.py:134
-msgid "Space separated output, not newline"
-msgstr "空白分割輸出而非換行符號"
-
-#: ../plugins/repomanage.py:136
-msgid "Newest N packages to keep - defaults to 1"
-msgstr "保留 N 個新軟體包 - 預設值為 1"
-
-#: ../plugins/repomanage.py:139
-msgid "Path to directory"
-msgstr "目錄路徑"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "下載軟體包至目前目錄"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "要下載的軟體包"
-
-#: ../plugins/download.py:53
-msgid "download the src.rpm instead"
-msgstr "改下載 src.rpm"
-
-#: ../plugins/download.py:55
-msgid "download the -debuginfo package instead"
-msgstr "改下載 -debuginfo 軟體包"
-
-#: ../plugins/download.py:57
-msgid "download the -debugsource package instead"
-msgstr ""
-
-#: ../plugins/download.py:60
-msgid "limit  the  query to packages of given architectures."
-msgstr "限制查詢給予架構的軟體包"
-
-#: ../plugins/download.py:62
-msgid "resolve and download needed dependencies"
-msgstr "解析並下載需要的依賴軟體"
-
-#: ../plugins/download.py:64
-msgid ""
-"when running with --resolve, download all dependencies (do not exclude "
-"already installed ones)"
-msgstr "當透過 --resolve 執行時，下載所有相依軟體包 (不排除已下載的項目)"
-
-#: ../plugins/download.py:67
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr "顯示出 URL 列表，使 RPM 可以直接使用而不須下載。"
-
-#: ../plugins/download.py:72
-msgid "when running with --url, limit to specific protocols"
-msgstr "當使用 --url 參數執行，限制指定的通訊協定。"
-
-#: ../plugins/download.py:243
-msgid "Exiting due to strict setting."
-msgstr "因為建構體設定，所以退出。"
-
-#: ../plugins/download.py:261
-msgid "Error in resolve of packages:"
-msgstr "解析包時出錯："
-
-#: ../plugins/download.py:279
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "%s 沒有來源 RPM 指定"
-
-#: ../plugins/download.py:296 ../plugins/download.py:309
-#, python-format
-msgid "No package %s available."
-msgstr "沒有軟體包 %s 可用。"
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "新保留："
-
-#: ../plugins/copr.py:56
-msgid "yes"
-msgstr "是 (yes)"
-
-#: ../plugins/copr.py:56
+#: plugins/copr.py:59
 msgid "y"
 msgstr "y"
 
-#: ../plugins/copr.py:57
-msgid "no"
-msgstr "否 (no)"
+#: plugins/copr.py:59
+msgid "yes"
+msgstr "yes"
 
-#: ../plugins/copr.py:57
+#: plugins/copr.py:60
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:76
-msgid "Interact with Copr repositories."
-msgstr "與 Copr 軟體庫相互作用"
+#: plugins/copr.py:60
+msgid "no"
+msgstr "no"
 
-#: ../plugins/copr.py:77
+#: plugins/copr.py:79
+msgid "Interact with Copr repositories."
+msgstr "與 Copr 軟體庫互動。"
+
+#: plugins/copr.py:81
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -802,59 +264,58 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:103
+#: plugins/copr.py:107
 msgid "List all installed Copr repositories (default)"
 msgstr "列出所有安裝的 Copr 軟體庫（預設值）"
 
-#: ../plugins/copr.py:105
+#: plugins/copr.py:109
 msgid "List enabled Copr repositories"
 msgstr "列出啟用的 Copr 軟體庫"
 
-#: ../plugins/copr.py:107
+#: plugins/copr.py:111
 msgid "List disabled Copr repositories"
 msgstr "列出停用的 Copr 軟體庫"
 
-#: ../plugins/copr.py:109
+#: plugins/copr.py:113
 msgid "List available Copr repositories by user NAME"
-msgstr "由 user NAME 列出可用的 Copr 軟體庫"
+msgstr "列出使用者 NAME 可用的 Copr 軟體庫"
 
-#: ../plugins/copr.py:111
+#: plugins/copr.py:115
 msgid "Specify an instance of Copr to work with"
-msgstr "指定 Copr 的作業實例："
+msgstr "指定要使用 Copr 的實體："
 
-#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
 msgid "Error: "
 msgstr "錯誤： "
 
-#: ../plugins/copr.py:146
+#: plugins/copr.py:150
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
-"對 Copr hub 指定任選 `--hub` 或使用 `copr_hub/copr_username/copr_projectname` 格式"
+"使用 `--hub` 或者用 `copr_hub/copr_username/copr_projectname` 格式指定 Copr hub"
 
-#: ../plugins/copr.py:149
+#: plugins/copr.py:153
 msgid "multiple hubs specified"
 msgstr "指定了多個 hub"
 
-#: ../plugins/copr.py:211 ../plugins/copr.py:215
+#: plugins/copr.py:218 plugins/copr.py:222
 msgid "exactly two additional parameters to copr command are required"
-msgstr "究竟 Copr 指令上兩個選用的參數是否需要"
+msgstr "傳入 copr 命令的選用參數必須剛好兩個"
 
-#: ../plugins/copr.py:231
+#: plugins/copr.py:238
 msgid "use format `copr_username/copr_projectname` to reference copr project"
-msgstr "使用 format `copr_username / copr_projectname` 來參考 Copr 專案"
+msgstr "使用 `copr_username/copr_projectname` 格式來參照 Copr 專案"
 
-#: ../plugins/copr.py:233
+#: plugins/copr.py:240
 msgid "bad copr project format"
-msgstr "損壞的 Copr 專案格式"
+msgstr "Copr 專案格式無效"
 
-#: ../plugins/copr.py:247
-#, python-brace-format
+#: plugins/copr.py:254
 msgid ""
 "\n"
-"You are about to enable a Copr repository. Please note that this\n"
-"repository is not part of the main distribution, and quality may vary.\n"
+"Enabling a Copr repository. Please note that this repository is not part\n"
+"of the main distribution, and quality may vary.\n"
 "\n"
 "The Fedora Project does not exercise any power over the contents of\n"
 "this repository beyond the rules outlined in the Copr FAQ at\n"
@@ -863,173 +324,766 @@ msgid ""
 "\n"
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
-"\n"
-"Do you really want to enable {0}?"
 msgstr ""
 "\n"
-"您正打算啟用一個 Copr 軟體庫。請注意這個軟體庫\n"
+"啟用 Copr 軟體庫中。請注意這個軟體庫\n"
 "不是主散布版的一部分，並且品質不定。\n"
 "\n"
-"Fedora Project 不會對這個軟體庫的內容行使任何超出 Copr 常見問題（<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>）列出規則之外的權力，且軟體包並不保有任何的品質與安全性保證。\n"
+"Fedora Project 不會對這個軟體庫的內容行使任何超出 Copr 常見問題\n"
+"（<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>）\n"
+"列出規則之外的權力，且軟體包並不保有任何的品質與安全性保證。\n"
 "\n"
-"請不要發送關於這些軟體包的漏洞回報至 Fedora Bugzilla。假如碰到問題，請聯絡此軟體庫的擁有者。\n"
-"\n"
-"仍要啟用 {0}？"
+"請不要將這些軟體包的漏洞回報至 Fedora Bugzilla。\n"
+"假如碰到問題，請聯絡此軟體庫的擁有者。\n"
 
-#: ../plugins/copr.py:263
+#: plugins/copr.py:271
 msgid "Repository successfully enabled."
-msgstr "軟體庫順利啟用。"
+msgstr "軟體庫成功啟用。"
 
-#: ../plugins/copr.py:267
+#: plugins/copr.py:276
 msgid "Repository successfully disabled."
-msgstr "軟體庫順利停用。"
+msgstr "軟體庫成功停用。"
 
-#: ../plugins/copr.py:271
+#: plugins/copr.py:280
 msgid "Repository successfully removed."
-msgstr "軟體庫順利移除。"
+msgstr "軟體庫成功移除。"
 
-#: ../plugins/copr.py:275 ../plugins/copr.py:625
+#: plugins/copr.py:284 plugins/copr.py:689
 msgid "Unknown subcommand {}."
-msgstr "未知的子指令 {}。"
+msgstr "{} 子命令未知。"
 
-#: ../plugins/copr.py:328
+#: plugins/copr.py:337
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
-msgstr "* 這些 Copr 包含舊格式的 repo 檔案，其可能不包含 Copr hub 的資訊 - 已假定為預設值。重新啟用專案以修復此問題。"
+msgstr "* 這些 Copr 包含可能沒有 Copr hub 資訊的舊格式 repo 檔案 — 已假設為預設 hub。請重新啟用專案以修正。"
 
-#: ../plugins/copr.py:340
+#: plugins/copr.py:349
 msgid "Can't parse repositories for username '{}'."
-msgstr "無法解析為使用者名稱「{}」的軟體庫。"
+msgstr "無法解析「{}」使用者名稱的軟體庫。"
 
-#: ../plugins/copr.py:343
+#: plugins/copr.py:352
 msgid "List of {} coprs"
-msgstr "列出 {} Copr"
+msgstr "{} Copr 清單"
 
-#: ../plugins/copr.py:351
+#: plugins/copr.py:360
 msgid "No description given"
 msgstr "沒有提供描述"
 
-#: ../plugins/copr.py:363
+#: plugins/copr.py:372
 msgid "Can't parse search for '{}'."
-msgstr "無法解析搜尋「{}」。"
+msgstr "無法解析「{}」搜尋。"
 
-#: ../plugins/copr.py:366
+#: plugins/copr.py:375
 msgid "Matched: {}"
-msgstr "符合：{}"
+msgstr "符合項目：{}"
 
-#: ../plugins/copr.py:374
+#: plugins/copr.py:383
 msgid "No description given."
 msgstr "沒有提供描述。"
 
-#: ../plugins/copr.py:387
+#: plugins/copr.py:406
 msgid "Safe and good answer. Exiting."
-msgstr "安全、且更棒的回應。退出中。"
+msgstr "安全且更棒的回應。結束。"
 
-#: ../plugins/copr.py:394
+#: plugins/copr.py:413
 msgid "This command has to be run under the root user."
-msgstr "這個指令需要以 root 使用者權限執行"
+msgstr "此命令必須在 root 使用者下執行"
 
-#: ../plugins/copr.py:458
+#: plugins/copr.py:477
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
-msgstr "這個軟體庫尚未擁有任何 build，所以您還不能啟用它。"
+msgstr "這個軟體庫尚無任何組建，所以您尚無法啟用。"
 
-#: ../plugins/copr.py:461
+#: plugins/copr.py:480
 msgid "Such repository does not exist."
-msgstr "這樣的軟體庫不存在。"
+msgstr "不存在此軟體庫。"
 
-#: ../plugins/copr.py:509
+#: plugins/copr.py:524
+#, python-brace-format
+msgid ""
+"Maintainer of the enabled Copr repository decided to make\n"
+"it dependent on other repositories. Such repositories are\n"
+"usually necessary for successful installation of RPMs from\n"
+"the main Copr repository (they provide runtime dependencies).\n"
+"\n"
+"Be aware that the note about quality and bug-reporting\n"
+"above applies here too, Fedora Project doesn't control the\n"
+"content. Please review the list:\n"
+"\n"
+"{0}\n"
+"\n"
+"These repositories have been enabled automatically."
+msgstr ""
+
+#: plugins/copr.py:545
+msgid "Do you want to keep them enabled?"
+msgstr "是否保持啟用？"
+
+#: plugins/copr.py:578
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr "無法移除 copr 軟體庫 {0}/{1}/{2}"
+msgstr "無法移除 Copr 軟體庫 {0}/{1}/{2}"
 
-#: ../plugins/copr.py:520
+#: plugins/copr.py:589
 msgid "Failed to disable copr repo {}/{}"
 msgstr "無法停用 Copr 軟體庫 {}/{}"
 
-#: ../plugins/copr.py:542 ../plugins/copr.py:580
+#: plugins/copr.py:607 plugins/copr.py:644
 msgid "Unknown response from server."
-msgstr "來自伺服器的未知回應"
+msgstr "未知的伺服器回應。"
 
-#: ../plugins/copr.py:564
+#: plugins/copr.py:629
 msgid "Interact with Playground repository."
 msgstr "與 Playground 軟體庫互動。"
 
-#: ../plugins/copr.py:569
-msgid ""
-"\n"
-"You are about to enable a Playground repository.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"\n"
-"您正打算啟用 Playground 軟體庫。\n"
-"\n"
-"確定繼續？"
+#: plugins/copr.py:635
+msgid "Enabling a Playground repository."
+msgstr "啟用 Playground 軟體庫。"
 
-#: ../plugins/copr.py:615
+#: plugins/copr.py:636
+msgid "Do you want to continue?"
+msgstr "是否繼續？"
+
+#: plugins/copr.py:679
 msgid "Playground repositories successfully enabled."
 msgstr "Playground 軟體庫成功啟用。"
 
-#: ../plugins/copr.py:618
+#: plugins/copr.py:682
 msgid "Playground repositories successfully disabled."
 msgstr "Playground 軟體庫成功停用。"
 
-#: ../plugins/copr.py:622
+#: plugins/copr.py:686
 msgid "Playground repositories successfully updated."
 msgstr "Playground 軟體庫成功更新。"
 
-#: ../plugins/debug.py:53
+#: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr "傾印安裝的 RPM 軟體包資訊至檔案"
+msgstr "將安裝之 RPM 軟體包的資訊傾印至檔案"
 
-#: ../plugins/debug.py:67
+#: plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
-msgstr "不要嘗試傾印軟體庫資訊。"
+msgstr "不要嘗試傾印軟體庫內容。"
 
-#: ../plugins/debug.py:70
+#: plugins/debug.py:70
 msgid "optional name of dump file"
-msgstr "傾印檔案的選用名字"
+msgstr "傾印檔案的選填名稱"
 
-#: ../plugins/debug.py:95
+#: plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
-msgstr "輸出寫至：%s"
+msgstr "輸出寫入：%s"
 
-#: ../plugins/debug.py:172
+#: plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
-msgstr "在偵錯傾印檔案還原軟體包記錄"
+msgstr "還原除錯傾印檔案中記錄的軟體包"
 
-#: ../plugins/debug.py:183
+#: plugins/debug.py:185
 msgid "output commands that would be run to stdout."
-msgstr "輸出指令，使其能執行至標準輸出。"
+msgstr "輸出執行時會向 stdout 輸出的命令。"
 
-#: ../plugins/debug.py:186
+#: plugins/debug.py:188
 msgid "Install the latest version of recorded packages."
-msgstr "安裝已紀錄軟體包的最新版本。"
+msgstr "安裝記錄軟體包的最新版。"
 
-#: ../plugins/debug.py:189
+#: plugins/debug.py:191
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
-msgstr "忽略 CPU 架構，並安裝符合名字、epoch、版本與釋出版本的遺失軟體包。"
+msgstr "忽略架構，並安裝符合名稱、Epoch、版本與發行版本的遺失軟體包。"
 
-#: ../plugins/debug.py:194
+#: plugins/debug.py:196
 msgid "limit to specified type"
-msgstr "限制指定的類型"
+msgstr "限縮至指定類型"
 
-#: ../plugins/debug.py:196
+#: plugins/debug.py:199
+msgid ""
+"Allow removing of install-only packages. Using this option may result in an "
+"attempt to remove the running kernel."
+msgstr ""
+
+#: plugins/debug.py:202
 msgid "name of dump file"
 msgstr "傾印檔案的名稱"
 
-#: ../plugins/debug.py:264
+#: plugins/debug.py:273
 #, python-format
 msgid "Package %s is not available"
-msgstr "軟體包 %s 不可用"
+msgstr "無法使用 %s 軟體包"
 
-#: ../plugins/debug.py:274
+#: plugins/debug.py:283
 #, python-format
 msgid "Bad dnf debug file: %s"
-msgstr "壞的 dnf 偵錯檔案：%s"
+msgstr "DNF 除錯檔案無效：%s"
+
+#: plugins/debuginfo-install.py:56
+msgid "install debuginfo packages"
+msgstr "安裝 debuginfo 軟體包"
+
+#: plugins/debuginfo-install.py:180
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following available packages: %s"
+msgstr "找不到以下可用軟體包的 debuginfo 軟體包：%s"
+
+#: plugins/debuginfo-install.py:185
+#, python-format
+msgid ""
+"Could not find debugsource package for the following available packages: %s"
+msgstr "找不到以下可用軟體包的 debugsource 軟體包：%s"
+
+#: plugins/debuginfo-install.py:190
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following installed packages: %s"
+msgstr "找不到以下安裝軟體包的 debuginfo 軟體包：%s"
+
+#: plugins/debuginfo-install.py:195
+#, python-format
+msgid ""
+"Could not find debugsource package for the following installed packages: %s"
+msgstr "找不到以下安裝軟體包的 debugsource 軟體包：%s"
+
+#: plugins/debuginfo-install.py:199
+msgid "Unable to find a match"
+msgstr "找不到符合項目"
+
+#: plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "下載軟體包至目前目錄"
+
+#: plugins/download.py:51
+msgid "packages to download"
+msgstr "要下載的軟體包"
+
+#: plugins/download.py:53
+msgid "download the src.rpm instead"
+msgstr "改下載 src.rpm"
+
+#: plugins/download.py:55
+msgid "download the -debuginfo package instead"
+msgstr "改下載 -debuginfo 軟體包"
+
+#: plugins/download.py:57
+msgid "download the -debugsource package instead"
+msgstr "改下載 -debugsource 軟體包"
+
+#: plugins/download.py:60
+msgid "limit  the  query to packages of given architectures."
+msgstr "將查詢限縮至指定架構的軟體包。"
+
+#: plugins/download.py:62
+msgid "resolve and download needed dependencies"
+msgstr "解析並下載需要的依賴關係"
+
+#: plugins/download.py:64
+msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr "與 --resolve 執行時，下載所有依賴關係（不排除已下載）"
+
+#: plugins/download.py:67
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr "輸出可以下載 RPM 的 URL 清單而不下載"
+
+#: plugins/download.py:72
+msgid "when running with --url, limit to specific protocols"
+msgstr "使用 --url 執行時，限縮至指定的通訊協定"
+
+#: plugins/download.py:121 plugins/reposync.py:260
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "無法取得軟體庫的鏡像站：%s"
+
+#: plugins/download.py:243
+msgid "Exiting due to strict setting."
+msgstr "因為嚴格設定而結束。"
+
+#: plugins/download.py:261
+msgid "Error in resolve of packages:"
+msgstr "解析軟體包時發生錯誤："
+
+#: plugins/download.py:279
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "未指定 %s 的來源 RPM"
+
+#: plugins/download.py:296 plugins/download.py:309
+#, python-format
+msgid "No package %s available."
+msgstr "沒有 %s 軟體包可用。"
+
+#: plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr "列出其他軟體包已經不需要的安裝軟體包"
+
+#: plugins/local.py:122
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "無法建立「{}」目錄，因為「{}」"
+
+#: plugins/local.py:126
+msgid "'{}' is not a directory"
+msgstr "「{}」不是目錄"
+
+#: plugins/local.py:135
+msgid "Copying '{}' to local repo"
+msgstr "正在將「{}」複製至本機軟體庫"
+
+#: plugins/local.py:141
+msgid "Can't write file '{}'"
+msgstr "無法寫入「{}」檔案"
+
+#: plugins/local.py:156
+msgid "Rebuilding local repo"
+msgstr "正在重新組建本機軟體庫"
+
+#: plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "遷移 yum 的歷史記錄、群組與 yumdb 資料至 dnf"
+
+#: plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "正在遷移歷史資料…"
+
+#: plugins/needs_restarting.py:65
+#, python-brace-format
+msgid ""
+"No installed package found for package name \"{pkg}\" specified in needs-"
+"restarting file \"{file}\"."
+msgstr ""
+
+#: plugins/needs_restarting.py:199
+msgid "determine updated binaries that need restarting"
+msgstr "決定需要重新啟動的已更新二進位檔"
+
+#: plugins/needs_restarting.py:204
+msgid "only consider this user's processes"
+msgstr "只考慮此位使用者的處理程序"
+
+#: plugins/needs_restarting.py:206
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr "只回報是（錯誤碼 1）否（錯誤碼 0）需要重新啟動"
+
+#: plugins/needs_restarting.py:230
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr "開機後更新過的核心函式庫或服務："
+
+#: plugins/needs_restarting.py:235
+msgid "Reboot is required to fully utilize these updates."
+msgstr "需要重新啟動，才可以完全套用這些更新。"
+
+#: plugins/needs_restarting.py:236
+msgid "More information:"
+msgstr "更多資訊："
+
+#: plugins/needs_restarting.py:240
+msgid "No core libraries or services have been updated since boot-up."
+msgstr "開機後沒有更新過的核心函式庫或服務。"
+
+#: plugins/needs_restarting.py:242
+msgid "Reboot should not be necessary."
+msgstr "應不需要重新啟動。"
+
+#: plugins/post-transaction-actions.py:71
+#, python-format
+msgid "Bad Action Line \"%s\": %s"
+msgstr "動作列「%s」格式錯誤：%s"
+
+#. unsupported state, skip it
+#: plugins/post-transaction-actions.py:130
+#, python-format
+msgid "Bad Transaction State: %s"
+msgstr "無效的處理事項狀態：%s"
+
+#: plugins/post-transaction-actions.py:153
+#: plugins/post-transaction-actions.py:155
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr "post-transaction-actions：%s"
+
+#: plugins/post-transaction-actions.py:157
+#, python-format
+msgid "post-transaction-actions: Bad Command \"%s\": %s"
+msgstr "post-transaction-actions：「%s」命令無效：%s"
+
+#: plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "顯示軟體庫中未回應的依賴關係列表"
+
+#: plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "因為未回應的依賴關係列表，Repoclosure 退出。"
+
+#: plugins/repoclosure.py:153
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr "檢查給予的架構的軟體包，可指定多個。"
+
+#: plugins/repoclosure.py:156
+msgid "Specify repositories to check"
+msgstr "指定欲檢查的軟體庫"
+
+#: plugins/repoclosure.py:158
+msgid "Check only the newest packages in the repos"
+msgstr "只檢查軟體庫內最新的軟體包"
+
+#: plugins/repoclosure.py:161
+msgid "Check closure for this package only"
+msgstr "只檢查這個軟體庫的 closure"
+
+#: plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "列出兩個軟體包集合的差異"
+
+#: plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "指定舊軟體庫，可多次使用"
+
+#: plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "指定新軟體庫，可多次使用"
+
+#: plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr "指定要比較的架構，可多次使用。預設情況下只會比較來源 RPM。"
+
+#: plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "輸出跟變更大小有關的額外資料。"
+
+#: plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr "也依架構比較軟體包。預設情況下，軟體包只會依名稱比較。"
+
+#: plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr "輸出關於修改過軟體包的簡易一列訊息。"
+
+#: plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+
+#: plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "必須設定舊及新軟體庫兩者。"
+
+#: plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "大小變更：{} 位元組"
+
+#: plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "加入的軟體包：{}"
+
+#: plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "移除的軟體包：{}"
+
+#: plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "被下述棄用：{}"
+
+#: plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"升級的軟體包"
+
+#: plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"降級的軟體包"
+
+#: plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"修改過的軟體包"
+
+#: plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"摘要"
+
+#: plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "加入的軟體包：{}"
+
+#: plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "移除的軟體包：{}"
+
+#: plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "升級的軟體包：{}"
+
+#: plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "降級的軟體包：{}"
+
+#: plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "修改過軟體包：{}"
+
+#: plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "加入軟體包的大小：{}"
+
+#: plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "移除軟體包的大小：{}"
+
+#: plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "修改軟體包的大小：{}"
+
+#: plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "升級軟體包的大小：{}"
+
+#: plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "降級軟體包的大小：{}"
+
+#: plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "大小變更：{}"
+
+#: plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr "輸出 dot 格式的完整軟體包依賴關係"
+
+#: plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "沒有軟體包提供：「%s」"
+
+#: plugins/repomanage.py:45
+msgid "Manage a directory of rpm packages"
+msgstr "管理 rpm 軟體包目錄"
+
+#: plugins/repomanage.py:59
+msgid "Pass either --old or --new, not both!"
+msgstr "只能傳入 --old 或 --new 任一，而非兩者！"
+
+#: plugins/repomanage.py:71
+msgid "No files to process"
+msgstr "沒有要處理的檔案"
+
+#: plugins/repomanage.py:93
+msgid "Could not open {}"
+msgstr "無法開啟 {}"
+
+#: plugins/repomanage.py:177
+msgid "Print the older packages"
+msgstr "顯示較舊的軟體包"
+
+#: plugins/repomanage.py:179
+msgid "Print the newest packages"
+msgstr "顯示較新的軟體包"
+
+#: plugins/repomanage.py:181
+msgid "Space separated output, not newline"
+msgstr "以空白而非換行分割輸出"
+
+#: plugins/repomanage.py:183
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "保留最新 N 個軟體包 — 預設值為 1"
+
+#: plugins/repomanage.py:186
+msgid "Path to directory"
+msgstr "目錄路徑"
+
+#: plugins/reposync.py:54
+msgid "download all packages from remote repo"
+msgstr "從遠端軟體庫下載所有軟體包"
+
+#: plugins/reposync.py:63
+msgid "download only packages for this ARCH"
+msgstr "只下載此 ARCH 的軟體包"
+
+#: plugins/reposync.py:65
+msgid "delete local packages no longer present in repository"
+msgstr "刪除已不在軟體庫提供的本機軟體包"
+
+#: plugins/reposync.py:67
+msgid "also download and uncompress comps.xml"
+msgstr "亦下載並解壓縮 comps.xml"
+
+#: plugins/reposync.py:69
+msgid "download all the metadata."
+msgstr "下載所有中介資料。"
+
+#: plugins/reposync.py:71
+msgid "download only newest packages per-repo"
+msgstr "只下載每個軟體庫最新的軟體包"
+
+#: plugins/reposync.py:73
+msgid "where to store downloaded repositories"
+msgstr "儲存下載軟體庫的位置"
+
+#: plugins/reposync.py:75
+msgid "Don't add the reponame to the download path."
+msgstr "不要將軟體庫名稱加進下載路徑中。"
+
+#: plugins/reposync.py:77
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr "儲存下載軟體庫之中介資料的位置。預設值為 --download-path 的值。"
+
+#: plugins/reposync.py:80
+msgid "operate on source packages"
+msgstr "在來源軟體包上操作"
+
+#: plugins/reposync.py:82
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr "嘗試將本機檔案的本地時間戳設定與伺服器一致"
+
+#: plugins/reposync.py:85
+msgid "Just list urls of what would be downloaded, don't download"
+msgstr "只列出會下載的 URL 而不下載"
+
+#: plugins/reposync.py:109
+msgid "Can't use --norepopath with multiple repositories"
+msgstr "無法在多個軟體庫使用 --norepopath"
+
+#: plugins/reposync.py:127
+#, python-format
+msgid "Failed to get mirror for metadata: %s"
+msgstr "無法取得中介資料的鏡像站：%s"
+
+#: plugins/reposync.py:144
+msgid "Failed to get mirror for the group file."
+msgstr "無法取得群組檔案的鏡像站。"
+
+#: plugins/reposync.py:175
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "下載目標「{}」在下載位置「{}」之外。"
+
+#: plugins/reposync.py:190
+#, python-format
+msgid "[DELETED] %s"
+msgstr "[已刪除] %s"
+
+#: plugins/reposync.py:192
+#, python-format
+msgid "failed to delete file %s"
+msgstr "無法刪除 %s 檔案"
+
+#: plugins/reposync.py:201
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr "已儲存 %s 軟體庫的 comps.xml"
+
+#: plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "新保留："
+
+#: plugins/versionlock.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "無法讀取版本鎖設定：%s"
+
+#: plugins/versionlock.py:33
+msgid "Locklist not set"
+msgstr "未設定鎖定列表"
+
+#: plugins/versionlock.py:34
+msgid "Adding versionlock on:"
+msgstr "加入版本鎖於："
+
+#: plugins/versionlock.py:35
+msgid "Adding exclude on:"
+msgstr "加入排除於："
+
+#: plugins/versionlock.py:36
+msgid "Package already locked in equivalent form:"
+msgstr "版本已鎖定在下述等同格式："
+
+#: plugins/versionlock.py:37
+msgid "Package {} is already locked"
+msgstr "已鎖定 {} 軟體包"
+
+#: plugins/versionlock.py:38
+msgid "Package {} is already excluded"
+msgstr "已排除 {} 軟體包"
+
+#: plugins/versionlock.py:39
+msgid "Deleting versionlock for:"
+msgstr "刪除下述的版本鎖："
+
+#: plugins/versionlock.py:40
+msgid "No package found for:"
+msgstr "找不到下述的軟體包："
+
+#: plugins/versionlock.py:41
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "不會套用到自 versionlock 插件排除的軟體包"
+
+#: plugins/versionlock.py:42
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr "Versionlock 插件：已從「{}」檔案套用大量的鎖定規則：{}"
+
+#: plugins/versionlock.py:43
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr "Versionlock 插件：已從「{}」檔案套用大量的排除規則：{}"
+
+#: plugins/versionlock.py:44
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr "Versionlock 插件：無法解析模式："
+
+#: plugins/versionlock.py:130
+msgid "control package version locks"
+msgstr "控制軟體包的版本鎖"
+
+#: plugins/versionlock.py:136
+msgid "Use package specifications as they are, do not try to parse them"
+msgstr "使用其原本的軟體包規範，不要嘗試解析"
+
+#~ msgid ""
+#~ "\n"
+#~ "These repositories have been enabled automatically.\n"
+#~ "Do you want to keep them enabled?"
+#~ msgstr ""
+#~ "\n"
+#~ "這些軟體庫已自動啟用。\n"
+#~ "是否繼續啟用這些軟體庫？"
+
+#~ msgid ""
+#~ "\n"
+#~ "You are about to enable a Playground repository.\n"
+#~ "\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "\n"
+#~ "您正要啟用 Playground 軟體庫。\n"
+#~ "\n"
+#~ "是否繼續？"
+
+#~ msgid "also download comps.xml"
+#~ msgstr "還下載comps.xml"
+
+#~ msgid "where to store downloaded repositories "
+#~ msgstr "儲存下載軟體庫的地方 "
+
+#~ msgid "Could not make repository directory: %s"
+#~ msgstr "無法創建存儲庫目錄： %s"

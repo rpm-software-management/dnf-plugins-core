@@ -1,12 +1,13 @@
 # Geert Warrink <geert.warrink@onsnet.nu>, 2019. #zanata, 2020.
 # Geert Warrink <geert.warrink@onsnet.nu>, 2020. #zanata
 # Anonymous <noreply@weblate.org>, 2020.
+# Richard E. van der Luit <fedoraproject@veneax.nl>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 14:54+0100\n"
-"PO-Revision-Date: 2020-03-22 12:28+0000\n"
+"POT-Creation-Date: 2020-07-21 09:18-0400\n"
+"PO-Revision-Date: 2020-07-10 22:27+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/nl/>\n"
 "Language: nl\n"
@@ -14,75 +15,83 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.3\n"
+"X-Generator: Weblate 4.1.1\n"
 
-#: ../plugins/reposync.orig.py:42 ../plugins/reposync.py:54
-#: ../plugins/reposync.175df5c.py:42
-msgid "download all packages from remote repo"
-msgstr "download alle pakketten van repo op afstand"
+#: plugins/builddep.py:45
+msgid "[PACKAGE|PACKAGE.spec]"
+msgstr "[PAKKET|PAKKET.spec]"
 
-#: ../plugins/reposync.orig.py:48 ../plugins/reposync.py:63
-#: ../plugins/reposync.175df5c.py:48
-msgid "download only packages for this ARCH"
-msgstr "download alleen pakketten voor deze ARCH"
+#: plugins/builddep.py:85
+#, python-format
+msgid "'%s' is not of the format 'MACRO EXPR'"
+msgstr "'%s' heeft niet het formaat 'MACRO EXPR'"
 
-#: ../plugins/reposync.orig.py:50 ../plugins/reposync.py:65
-#: ../plugins/reposync.175df5c.py:50
-msgid "delete local packages no longer present in repository"
+#: plugins/builddep.py:90
+msgid "packages with builddeps to install"
+msgstr "pakketten met builddeps om te installeren"
+
+#: plugins/builddep.py:93
+msgid "define a macro for spec file parsing"
+msgstr "definieer een macro voor het ontleden van spec-bestanden"
+
+#: plugins/builddep.py:95
+msgid "skip build dependencies not available in repositories"
 msgstr ""
-"lokale pakketten verwijderen die niet meer in de repository aanwezig zijn"
+"sla bouwafhankelijkheden over die niet beschikbaar zijn in repositories"
 
-#: ../plugins/reposync.orig.py:52 ../plugins/reposync.175df5c.py:52
-msgid "also download comps.xml"
-msgstr "download ook comps.xml"
+#: plugins/builddep.py:98
+msgid "treat commandline arguments as spec files"
+msgstr "behandel commandoregelargumenten als spec-bestanden"
 
-#: ../plugins/reposync.orig.py:54 ../plugins/reposync.py:71
-#: ../plugins/reposync.175df5c.py:54
-msgid "download only newest packages per-repo"
-msgstr "download alleen de nieuwste pakketten per-repo"
+#: plugins/builddep.py:100
+msgid "treat commandline arguments as source rpm"
+msgstr "behandel commandoregelargumenten als bron-rpm"
 
-#: ../plugins/reposync.orig.py:56 ../plugins/reposync.175df5c.py:56
-msgid "where to store downloaded repositories "
-msgstr "waar gedownloade repositories moeten worden opgeslagen "
+#: plugins/builddep.py:144
+msgid "RPM: {}"
+msgstr "RPM: {}"
 
-#: ../plugins/reposync.orig.py:58 ../plugins/reposync.py:80
-#: ../plugins/reposync.175df5c.py:58
-msgid "operate on source packages"
-msgstr "bewerk bronpakketten"
+#: plugins/builddep.py:153
+msgid "Some packages could not be found."
+msgstr "Sommige pakketten konden niet gevonden worden."
 
-#: ../plugins/reposync.orig.py:98 ../plugins/reposync.py:190
-#: ../plugins/reposync.175df5c.py:95
+#. No provides, no files
+#. Richdeps can have no matches but it could be correct (solver must decide
+#. later)
+#: plugins/builddep.py:173
 #, python-format
-msgid "[DELETED] %s"
-msgstr "[VERWIJDERD] %s"
+msgid "No matching package to install: '%s'"
+msgstr "Geen overeenkomend pakket om te installeren: '%s'"
 
-#: ../plugins/reposync.orig.py:100 ../plugins/reposync.py:192
-#: ../plugins/reposync.175df5c.py:97
+#: plugins/builddep.py:191
 #, python-format
-msgid "failed to delete file %s"
-msgstr "verwijderen van bestand %s mislukte"
+msgid "Failed to open: '%s', not a valid source rpm file."
+msgstr "Openen is mislukt: '%s', geen geldig bron-rpm-bestand."
 
-#: ../plugins/reposync.orig.py:110 ../plugins/reposync.175df5c.py:107
+#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+msgid "Not all dependencies satisfied"
+msgstr "Er is niet aan alle afhankelijkheden voldaan"
+
+#: plugins/builddep.py:211
 #, python-format
-msgid "Could not make repository directory: %s"
-msgstr "Kan repositorymap niet aanmaken: %s"
+msgid "Failed to open: '%s', not a valid spec file: %s"
+msgstr "Openen is mislukt: '%s', geen geldig spec-bestand: %s"
 
-#: ../plugins/reposync.orig.py:114 ../plugins/reposync.py:201
-#: ../plugins/reposync.175df5c.py:111
+#: plugins/builddep.py:230 plugins/repoclosure.py:118
 #, python-format
-msgid "comps.xml for repository %s saved"
-msgstr "comps.xml voor repository %s opgeslagen"
+msgid "no package matched: %s"
+msgstr "geen pakket gevonden: %s"
 
-#: ../plugins/changelog.py:37
+#: plugins/changelog.py:37
 #, python-brace-format
 msgid "Not a valid date: \"{0}\"."
 msgstr "Geen geldige datum: \"{0}\"."
 
-#: ../plugins/changelog.py:43
+#: plugins/changelog.py:43
 msgid "Show changelog data of packages"
 msgstr "Toon changelog data van pakketten"
 
-#: ../plugins/changelog.py:51
+#: plugins/changelog.py:51
 msgid ""
 "show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
 "is recommended."
@@ -90,11 +99,11 @@ msgstr ""
 "toon changelog-vermeldingen sinds DATE. Om dubbelzinnigheid te voorkomen, "
 "wordt het JJJJ-MM-DD-formaat aanbevolen."
 
-#: ../plugins/changelog.py:55
+#: plugins/changelog.py:55
 msgid "show given number of changelog entries per package"
 msgstr "toon het opgegeven aantal changelog-vermeldingen per pakket"
 
-#: ../plugins/changelog.py:58
+#: plugins/changelog.py:58
 msgid ""
 "show only new changelog entries for packages, that provide an upgrade for "
 "some of already installed packages."
@@ -102,721 +111,127 @@ msgstr ""
 "toon alleen nieuwe changelog-vermeldingen voor pakketten, die een upgrade "
 "bieden voor sommige reeds geïnstalleerde pakketten."
 
-#: ../plugins/changelog.py:60
+#: plugins/changelog.py:60
 msgid "PACKAGE"
 msgstr "PAKKET"
 
-#: ../plugins/changelog.py:81 ../plugins/debuginfo-install.py:90
+#: plugins/changelog.py:81 plugins/debuginfo-install.py:90
 #, python-format
 msgid "No match for argument: %s"
 msgstr "Geen match voor argument: %s"
 
-#: ../plugins/changelog.py:109
+#: plugins/changelog.py:109
 msgid "Listing changelogs since {}"
 msgstr "Lijst met changelogs sinds {}"
 
-#: ../plugins/changelog.py:111
+#: plugins/changelog.py:111
 msgid "Listing only latest changelog"
 msgid_plural "Listing {} latest changelogs"
 msgstr[0] "Toon alleen de laatste changelog"
 msgstr[1] "Toon {} nieuwste changelogs"
 
-#: ../plugins/changelog.py:116
+#: plugins/changelog.py:116
 msgid "Listing only new changelogs since installed version of the package"
 msgstr ""
 "Toon alleen nieuwe changelogs sinds geïnstalleerde versie van het pakket"
 
-#: ../plugins/changelog.py:118
+#: plugins/changelog.py:118
 msgid "Listing all changelogs"
 msgstr "Toon alle changelogs"
 
-#: ../plugins/changelog.py:122
+#: plugins/changelog.py:122
 msgid "Changelogs for {}"
 msgstr "Veranderlogs voor {}"
 
-#: ../plugins/debuginfo-install.py:56
-msgid "install debuginfo packages"
-msgstr "installeer debuginfo pakketten"
-
-#: ../plugins/debuginfo-install.py:180
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following available packages: %s"
-msgstr ""
-"Kan geen debuginfo-pakket vinden voor de volgende beschikbare pakketten: %s"
-
-#: ../plugins/debuginfo-install.py:185
-#, python-format
-msgid ""
-"Could not find debugsource package for the following available packages: %s"
-msgstr ""
-"Kan geen debugbron-pakket vinden voor de volgende beschikbare pakketten: %s"
-
-#: ../plugins/debuginfo-install.py:190
-#, python-format
-msgid ""
-"Could not find debuginfo package for the following installed packages: %s"
-msgstr ""
-"Kan geen debuginfo-pakket vinden voor de volgende geïnstalleerde pakketten: "
-"%s"
-
-#: ../plugins/debuginfo-install.py:195
-#, python-format
-msgid ""
-"Could not find debugsource package for the following installed packages: %s"
-msgstr ""
-"Kan geen debugbron-pakket vinden voor de volgende geïnstalleerde pakketten: "
-"%s"
-
-#: ../plugins/debuginfo-install.py:199
-msgid "Unable to find a match"
-msgstr "Kan geen match vinden"
-
-#: ../plugins/versionlock_old.py:32 ../plugins/versionlock.py:32
-#: ../plugins/versionlock_master.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr "Kan configuratie van versieslot niet lezen: %s"
-
-#: ../plugins/versionlock_old.py:33 ../plugins/versionlock.py:33
-#: ../plugins/versionlock_master.py:33
-msgid "Locklist not set"
-msgstr "Slotlijst niet ingesteld"
-
-#: ../plugins/versionlock_old.py:34 ../plugins/versionlock.py:34
-#: ../plugins/versionlock_master.py:34
-msgid "Adding versionlock on:"
-msgstr "Versieslot toevoegen aan:"
-
-#: ../plugins/versionlock_old.py:35 ../plugins/versionlock.py:35
-#: ../plugins/versionlock_master.py:35
-msgid "Adding exclude on:"
-msgstr "Uitsluiting toevoegen aan:"
-
-#: ../plugins/versionlock_old.py:36 ../plugins/versionlock.py:39
-#: ../plugins/versionlock_master.py:36
-msgid "Deleting versionlock for:"
-msgstr "Versieslot verwijderen voor:"
-
-#: ../plugins/versionlock_old.py:37 ../plugins/versionlock.py:40
-#: ../plugins/versionlock_master.py:37
-msgid "No package found for:"
-msgstr "Geen pakket gevonden voor:"
-
-#: ../plugins/versionlock_old.py:38 ../plugins/versionlock.py:41
-#: ../plugins/versionlock_master.py:38
-msgid "Excludes from versionlock plugin were not applied"
-msgstr "Uitsluitingen van de versieslot plug-in zijn niet toegepast"
-
-#: ../plugins/versionlock_old.py:102 ../plugins/versionlock.py:127
-#: ../plugins/versionlock_master.py:119
-msgid "control package version locks"
-msgstr "controleer pakketversieslot"
-
-#: ../plugins/migrate.py:45
-msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr "migreer de geschiedenis, groeps- en yumdb-data van yum naar dnf"
-
-#: ../plugins/migrate.py:54
-msgid "Migrating history data..."
-msgstr "Migreren van geschiedenis data..."
-
-#: ../plugins/repograph.py:50
-msgid "Output a full package dependency graph in dot format"
-msgstr ""
-"Voer een grafiek met volledige pakketafhankelijkheid uit in puntformaat"
-
-#: ../plugins/repograph.py:110
-#, python-format
-msgid "Nothing provides: '%s'"
-msgstr "Niets biedt: '%s'"
-
-#: ../plugins/versionlock.py:36
-msgid "Package already locked in equivalent form:"
-msgstr "Pakket is al afgesloten in equivalente vorm:"
-
-#: ../plugins/versionlock.py:37
-msgid "Package {} is already locked"
-msgstr "Pakket {} is al afgesloten"
-
-#: ../plugins/versionlock.py:38
-msgid "Package {} is already excluded"
-msgstr "Pakket {} is al uitgesloten"
-
-#: ../plugins/versionlock.py:42 ../plugins/versionlock_master.py:39
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr ""
-"Versieslot plug-in: aantal vergrendelingsregels van bestand \"{}\" "
-"toegepast: {}"
-
-#: ../plugins/versionlock.py:43 ../plugins/versionlock_master.py:40
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
-msgstr ""
-"Versieslot plug-in: aantal uitsluitingsregels van bestand \"{}\" toegepast: "
-"{}"
-
-#: ../plugins/versionlock.py:44 ../plugins/versionlock_master.py:41
-msgid "Versionlock plugin: could not parse pattern:"
-msgstr "Versieslot plug-in: kon patroon niet ontleden:"
-
-#: ../plugins/versionlock.py:133
-msgid "Use package specifications as they are, do not try to parse them"
-msgstr ""
-"Gebruik pakketspecificaties zoals ze zijn, probeer ze niet te ontleden"
-
-#: ../plugins/post-transaction-actions.py:71
-#, python-format
-msgid "Bad Action Line \"%s\": %s"
-msgstr "Slechte actie regel \"%s\": %s"
-
-#. unsupported state, skip it
-#: ../plugins/post-transaction-actions.py:130
-#, python-format
-msgid "Bad Transaction State: %s"
-msgstr "Slechte transactie status: %s"
-
-#: ../plugins/post-transaction-actions.py:153
-#: ../plugins/post-transaction-actions.py:155
-#, python-format
-msgid "post-transaction-actions: %s"
-msgstr "post-transaction-actions: %s"
-
-#: ../plugins/post-transaction-actions.py:157
-#, python-format
-msgid "post-transaction-actions: Bad Command \"%s\": %s"
-msgstr "post-transaction-actions: Slecht commando \"%s\": %s"
-
-#: ../plugins/builddep.py:45
-msgid "[PACKAGE|PACKAGE.spec]"
-msgstr "[PAKKET|PAKKET.spec]"
-
-#: ../plugins/builddep.py:85
-#, python-format
-msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr "'%s' heeft niet het formaat 'MACRO EXPR'"
-
-#: ../plugins/builddep.py:90
-msgid "packages with builddeps to install"
-msgstr "pakketten met builddeps om te installeren"
-
-#: ../plugins/builddep.py:93
-msgid "define a macro for spec file parsing"
-msgstr "definieer een macro voor het ontleden van spec-bestanden"
-
-#: ../plugins/builddep.py:95
-msgid "skip build dependencies not available in repositories"
-msgstr ""
-"sla bouwafhankelijkheden over die niet beschikbaar zijn in repositories"
-
-#: ../plugins/builddep.py:98
-msgid "treat commandline arguments as spec files"
-msgstr "behandel commandoregelargumenten als spec-bestanden"
-
-#: ../plugins/builddep.py:100
-msgid "treat commandline arguments as source rpm"
-msgstr "behandel commandoregelargumenten als bron-rpm"
-
-#: ../plugins/builddep.py:144
-msgid "RPM: {}"
-msgstr "RPM: {}"
-
-#: ../plugins/builddep.py:153
-msgid "Some packages could not be found."
-msgstr "Sommige pakketten konden niet gevonden worden."
-
-#. No provides, no files
-#. Richdeps can have no matches but it could be correct (solver must decide
-#. later)
-#: ../plugins/builddep.py:173
-#, python-format
-msgid "No matching package to install: '%s'"
-msgstr "Geen overeenkomend pakket om te installeren: '%s'"
-
-#: ../plugins/builddep.py:191
-#, python-format
-msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr "Openen is mislukt: '%s', geen geldig bron-rpm-bestand."
-
-#: ../plugins/builddep.py:204 ../plugins/builddep.py:220
-#: ../plugins/builddep.py:237
-msgid "Not all dependencies satisfied"
-msgstr "Er is niet aan alle afhankelijkheden voldaan"
-
-#: ../plugins/builddep.py:211
-#, python-format
-msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr "Openen is mislukt: '%s', geen geldig spec-bestand: %s"
-
-#: ../plugins/builddep.py:230 ../plugins/repoclosure.py:118
-#, python-format
-msgid "no package matched: %s"
-msgstr "geen pakket gevonden: %s"
-
-#: ../plugins/config_manager.py:37
+#: plugins/config_manager.py:37
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
 msgstr "beheer {prog} configuratie-opties en repositories"
 
-#: ../plugins/config_manager.py:44
+#: plugins/config_manager.py:44
 msgid "repo to modify"
 msgstr "te wijzigingen repo"
 
-#: ../plugins/config_manager.py:47
+#: plugins/config_manager.py:47
 msgid "save the current options (useful with --setopt)"
 msgstr "sla de huidige opties op (nuttig met --setopt)"
 
-#: ../plugins/config_manager.py:50
+#: plugins/config_manager.py:50
 msgid "add (and enable) the repo from the specified file or url"
 msgstr ""
 "voeg de repo toe vanuit het opgegeven bestand of de opgegeven URL en schakel"
 " deze in"
 
-#: ../plugins/config_manager.py:53
+#: plugins/config_manager.py:53
 msgid "print current configuration values to stdout"
 msgstr "print huidige configuratiewaarden naar stdout"
 
-#: ../plugins/config_manager.py:56
+#: plugins/config_manager.py:56
 msgid "print variable values to stdout"
 msgstr "print variabelewaarden naar stdout"
 
-#: ../plugins/config_manager.py:70
+#: plugins/config_manager.py:60
+msgid "enable repos (automatically saves)"
+msgstr "schakel repo's in (slaat automatisch op)"
+
+#: plugins/config_manager.py:63
+msgid "disable repos (automatically saves)"
+msgstr "schakel repo's uit (slaat automatisch op)"
+
+#: plugins/config_manager.py:77
 msgid "one of the following arguments is required: {}"
 msgstr "een van de volgende argumenten is vereist: {}"
 
-#: ../plugins/config_manager.py:113
+#: plugins/config_manager.py:86
+msgid ""
+"Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
+"manager. Use --set-enabled/--set-disabled instead."
+msgstr ""
+"Waarschuwing: --enablerepo/--disablerepo argumenten hebben geen betekenis "
+"met config manager. Gebruik in plaats daarvan --set-enabled/--set-disabled."
+
+#: plugins/config_manager.py:131
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Geen overeenkomende repo om te wijzigen: %s."
 
-#: ../plugins/config_manager.py:164
+#: plugins/config_manager.py:182
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Voeg repo toe van: %s"
 
-#: ../plugins/config_manager.py:188
+#: plugins/config_manager.py:206
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Configuratie van repo mislukte"
 msgstr[1] "Configuratie van repo's mislukte"
 
-#: ../plugins/config_manager.py:198
+#: plugins/config_manager.py:216
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Kon repo niet opslaan naar repo-bestand %s: %s"
 
-#: ../plugins/local.py:122
-msgid "Unable to create a directory '{}' due to '{}'"
-msgstr "Kan geen map '{}' aanmaken vanwege '{}'"
-
-#: ../plugins/local.py:126
-msgid "'{}' is not a directory"
-msgstr "'{}' is geen map"
-
-#: ../plugins/local.py:135
-msgid "Copying '{}' to local repo"
-msgstr "'{}' kopiëren naar lokale repo"
-
-#: ../plugins/local.py:141
-msgid "Can't write file '{}'"
-msgstr "Kan bestand '{}' niet schrijven"
-
-#: ../plugins/local.py:156
-msgid "Rebuilding local repo"
-msgstr "Lokale repo opnieuw opbouwen"
-
-#: ../plugins/leaves.py:32
-msgid "List installed packages not required by any other package"
-msgstr ""
-"Toon geïnstalleerde pakketten die niet vereist zijn door een ander pakket"
-
-#: ../plugins/needs_restarting.py:173
-msgid "determine updated binaries that need restarting"
-msgstr ""
-"bepaal bijgewerkte binaire bestanden die opnieuw moeten worden gestart"
-
-#: ../plugins/needs_restarting.py:178
-msgid "only consider this user's processes"
-msgstr "houd alleen rekening met de processen van deze gebruiker"
-
-#: ../plugins/needs_restarting.py:180
-msgid ""
-"only report whether a reboot is required (exit code 1) or not (exit code 0)"
-msgstr ""
-"rapporteer alleen of opnieuw opstarten vereist is (exitcode 1) of niet "
-"(exitcode 0)"
-
-#: ../plugins/needs_restarting.py:199
-msgid "Core libraries or services have been updated since boot-up:"
-msgstr "Kernbibliotheken of services die sinds het opstarten zijn bijgewerkt:"
-
-#: ../plugins/needs_restarting.py:204
-msgid "Reboot is required to fully utilize these updates."
-msgstr ""
-"Opnieuw opstarten is vereist om deze vernieuwingen volledig te kunnen "
-"gebruiken."
-
-#: ../plugins/needs_restarting.py:205
-msgid "More information:"
-msgstr "Meer informatie:"
-
-#: ../plugins/needs_restarting.py:209
-msgid "No core libraries or services have been updated since boot-up."
-msgstr ""
-"Sinds het opstarten zijn er geen kernbibliotheken of services bijgewerkt."
-
-#: ../plugins/needs_restarting.py:211
-msgid "Reboot should not be necessary."
-msgstr "Opnieuw opstarten zou niet nodig moeten zijn."
-
-#: ../plugins/repoclosure.py:42
-msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Toon een lijst met onopgeloste afhankelijkheden voor repositories"
-
-#: ../plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "Repoclosure beëindigd met onopgeloste afhankelijkheden."
-
-#: ../plugins/repoclosure.py:153
-msgid "check packages of the given archs, can be specified multiple times"
-msgstr ""
-"Controleer pakketten van de gegeven archs, kunnen meerdere keren worden "
-"opgegeven"
-
-#: ../plugins/repoclosure.py:156
-msgid "Specify repositories to check"
-msgstr "Geef de te controleren repositories op"
-
-#: ../plugins/repoclosure.py:158
-msgid "Check only the newest packages in the repos"
-msgstr "Controleer alleen de nieuwste pakketten in de repo's"
-
-#: ../plugins/repoclosure.py:161
-msgid "Check closure for this package only"
-msgstr "Controleer alleen de afsluiting voor dit pakket"
-
-#: ../plugins/repodiff.py:45
-msgid "List differences between two sets of repositories"
-msgstr "Toon verschillen tussen twee sets van repositories"
-
-#: ../plugins/repodiff.py:58
-msgid "Specify old repository, can be used multiple times"
-msgstr "Geef oude repository op, kan meerdere keren worden gebruikt"
-
-#: ../plugins/repodiff.py:60
-msgid "Specify new repository, can be used multiple times"
-msgstr "Geef nieuwe repository op, kan meerdere keren worden gebruikt"
-
-#: ../plugins/repodiff.py:63
-msgid ""
-"Specify architectures to compare, can be used multiple times. By default, "
-"only source rpms are compared."
-msgstr ""
-"Specificeer architecturen om te vergelijken, kunnen meerdere keren worden "
-"gebruikt. Standaard worden alleen bron-rpms vergeleken."
-
-#: ../plugins/repodiff.py:67
-msgid "Output additional data about the size of the changes."
-msgstr "Voer extra gegevens uit over de grootte van de wijzigingen."
-
-#: ../plugins/repodiff.py:69
-msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
-msgstr ""
-"Vergelijk pakketten ook per architectuur. Standaard worden pakketten alleen "
-"op naam vergeleken."
-
-#: ../plugins/repodiff.py:72
-msgid "Output a simple one line message for modified packages."
-msgstr ""
-"Voer een eenvoudig bericht met één regel uit voor gewijzigde pakketten."
-
-#: ../plugins/repodiff.py:74
-msgid ""
-"Split the data for modified packages between upgraded and downgraded "
-"packages."
-msgstr ""
-"Splits de gegevens voor aangepaste pakketten op tussen opgewaardeerde en "
-"gedowngraded pakketten."
-
-#: ../plugins/repodiff.py:86
-msgid "Both old and new repositories must be set."
-msgstr "Zowel oude als nieuwe orepositories moeten worden ingesteld."
-
-#: ../plugins/repodiff.py:178
-msgid "Size change: {} bytes"
-msgstr "Grootte wijziging: {} bytes"
-
-#: ../plugins/repodiff.py:184
-msgid "Added package  : {}"
-msgstr "Toegevoegde pakket  : {}"
-
-#: ../plugins/repodiff.py:187
-msgid "Removed package: {}"
-msgstr "Verwijderde pakket: {}"
-
-#: ../plugins/repodiff.py:190
-msgid "Obsoleted by   : {}"
-msgstr "Verouderd door   : {}"
-
-#: ../plugins/repodiff.py:195
-msgid ""
-"\n"
-"Upgraded packages"
-msgstr ""
-"\n"
-"Verbeterde pakketten"
-
-#: ../plugins/repodiff.py:200
-msgid ""
-"\n"
-"Downgraded packages"
-msgstr ""
-"\n"
-"Gedegradeerde pakketten"
-
-#: ../plugins/repodiff.py:207
-msgid ""
-"\n"
-"Modified packages"
-msgstr ""
-"\n"
-"Gewijzigde pakketten"
-
-#: ../plugins/repodiff.py:212
-msgid ""
-"\n"
-"Summary"
-msgstr ""
-"\n"
-"Samenvatting"
-
-#: ../plugins/repodiff.py:213
-msgid "Added packages: {}"
-msgstr "Toegevoegde pakketten: {}"
-
-#: ../plugins/repodiff.py:214
-msgid "Removed packages: {}"
-msgstr "Verwijderde pakketten: {}"
-
-#: ../plugins/repodiff.py:216
-msgid "Upgraded packages: {}"
-msgstr "Verbeterde pakketten: {}"
-
-#: ../plugins/repodiff.py:217
-msgid "Downgraded packages: {}"
-msgstr "Gedegradeerde pakketten: {}"
-
-#: ../plugins/repodiff.py:219
-msgid "Modified packages: {}"
-msgstr "Gewijzigde pakketten: {}"
-
-#: ../plugins/repodiff.py:222
-msgid "Size of added packages: {}"
-msgstr "Grootte van toegevoegde pakketten: {}"
-
-#: ../plugins/repodiff.py:223
-msgid "Size of removed packages: {}"
-msgstr "Grootte van verwijderde pakketten: {}"
-
-#: ../plugins/repodiff.py:225
-msgid "Size of modified packages: {}"
-msgstr "Grootte van gewijzigde pakketten: {}"
-
-#: ../plugins/repodiff.py:228
-msgid "Size of upgraded packages: {}"
-msgstr "Grootte van verbeterde pakketten: {}"
-
-#: ../plugins/repodiff.py:230
-msgid "Size of downgraded packages: {}"
-msgstr "Grootte van gedegradeerde pakketten: {}"
-
-#: ../plugins/repodiff.py:232
-msgid "Size change: {}"
-msgstr "Grootteverandering: {}"
-
-#: ../plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr "download en pak ook comps.xml uit"
-
-#: ../plugins/reposync.py:69
-msgid "download all the metadata."
-msgstr "download alle metadata."
-
-#: ../plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr "waar gedownloade repositories moeten worden opgeslagen"
-
-#: ../plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr "Voeg de reponaam niet toe aan het downloadpad."
-
-#: ../plugins/reposync.py:77
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-"waar de gedownloade repository metadata moet worden opgeslagen. Standaard "
-"staat de waarde op --download-path."
-
-#: ../plugins/reposync.py:82
-msgid "try to set local timestamps of local files by the one on the server"
-msgstr ""
-"probeer lokale tijdsstempels van lokale bestanden in te stellen met die op "
-"de server"
-
-#: ../plugins/reposync.py:85
-msgid "Just list urls of what would be downloaded, don't download"
-msgstr "Toon de url's die gedownload gaan worden, download ze nog niet"
-
-#: ../plugins/reposync.py:109
-msgid "Can't use --norepopath with multiple repositories"
-msgstr "Kan --norepopath niet gebruiken met meerdere repositories"
-
-#: ../plugins/reposync.py:127
-#, python-format
-msgid "Failed to get mirror for metadata: %s"
-msgstr "Verkrijgen van spiegel voor metadata mislukte: %s"
-
-#: ../plugins/reposync.py:144
-msgid "Failed to get mirror for the group file."
-msgstr "Verkrijgen van spiegel voor het groepsbestand mislukte."
-
-#: ../plugins/reposync.py:175
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr "Downloaddoel '{}' bevindt zich buiten downloadpad '{}'."
-
-#: ../plugins/reposync.py:260 ../plugins/download.py:121
-#, python-format
-msgid "Failed to get mirror for package: %s"
-msgstr "Kan spiegel voor pakket niet ophalen: %s"
-
-#: ../plugins/repomanage.py:44
-msgid "Manage a directory of rpm packages"
-msgstr "Beheer een map met rpm-pakketten"
-
-#: ../plugins/repomanage.py:58
-msgid "Pass either --old or --new, not both!"
-msgstr "Geef --old of --new door, niet beide!"
-
-#: ../plugins/repomanage.py:68
-msgid "No files to process"
-msgstr "Geen bestanden om te verwerken"
-
-#: ../plugins/repomanage.py:73
-msgid "Could not open {}"
-msgstr "Kon {} niet openen"
-
-#: ../plugins/repomanage.py:130
-msgid "Print the older packages"
-msgstr "Print de oudere pakketten"
-
-#: ../plugins/repomanage.py:132
-msgid "Print the newest packages"
-msgstr "Print de nieuwste pakketten"
-
-#: ../plugins/repomanage.py:134
-msgid "Space separated output, not newline"
-msgstr "Uitvoer gescheiden met spatie, geen nieuwe regel"
-
-#: ../plugins/repomanage.py:136
-msgid "Newest N packages to keep - defaults to 1"
-msgstr "Nieuwste N pakketten om te bewaren - standaard 1"
-
-#: ../plugins/repomanage.py:139
-msgid "Path to directory"
-msgstr "Pad naar map"
-
-#: ../plugins/download.py:41
-msgid "Download package to current directory"
-msgstr "Download pakket naar huidige map"
-
-#: ../plugins/download.py:51
-msgid "packages to download"
-msgstr "te downloaden pakketten"
-
-#: ../plugins/download.py:53
-msgid "download the src.rpm instead"
-msgstr "download in plaats daarvan src.rpm"
-
-#: ../plugins/download.py:55
-msgid "download the -debuginfo package instead"
-msgstr "download in plaats daarvan het pakket -debuginfo"
-
-#: ../plugins/download.py:57
-msgid "download the -debugsource package instead"
-msgstr "download in plaats daarvan het pakket -debugsource"
-
-#: ../plugins/download.py:60
-msgid "limit  the  query to packages of given architectures."
-msgstr "beperk de zoekopdracht tot pakketten van gegeven architecturen."
-
-#: ../plugins/download.py:62
-msgid "resolve and download needed dependencies"
-msgstr "benodigde afhankelijkheden oplossen en downloaden"
-
-#: ../plugins/download.py:64
-msgid ""
-"when running with --resolve, download all dependencies (do not exclude "
-"already installed ones)"
-msgstr ""
-"als je werkt met --resolve, download alle afhankelijkheden (sluit reeds "
-"geïnstalleerde niet uit)"
-
-#: ../plugins/download.py:67
-msgid ""
-"print list of urls where the rpms can be downloaded instead of downloading"
-msgstr ""
-"print lijst met url's waar de rpms kunnen worden gedownload in plaats van te"
-" downloaden"
-
-#: ../plugins/download.py:72
-msgid "when running with --url, limit to specific protocols"
-msgstr "bij gebruik van --url, beperken tot specifieke protocollen"
-
-#: ../plugins/download.py:243
-msgid "Exiting due to strict setting."
-msgstr "Afsluiten vanwege strikte instelling."
-
-#: ../plugins/download.py:261
-msgid "Error in resolve of packages:"
-msgstr "Fout bij het oplossen van pakketten:"
-
-#: ../plugins/download.py:279
-#, python-format
-msgid "No source rpm defined for %s"
-msgstr "Geen bron-rpm gedefinieerd voor %s"
-
-#: ../plugins/download.py:296 ../plugins/download.py:309
-#, python-format
-msgid "No package %s available."
-msgstr "Pakket %s niet beschikbaar."
-
-#: ../plugins/show_leaves.py:54
-msgid "New leaves:"
-msgstr "Nieuwe leaves:"
-
-#: ../plugins/copr.py:56
-msgid "yes"
-msgstr "ja"
-
-#: ../plugins/copr.py:56
+#: plugins/copr.py:59
 msgid "y"
 msgstr "j"
 
-#: ../plugins/copr.py:57
-msgid "no"
-msgstr "nee"
+#: plugins/copr.py:59
+msgid "yes"
+msgstr "ja"
 
-#: ../plugins/copr.py:57
+#: plugins/copr.py:60
 msgid "n"
 msgstr "n"
 
-#: ../plugins/copr.py:76
+#: plugins/copr.py:60
+msgid "no"
+msgstr "nee"
+
+#: plugins/copr.py:79
 msgid "Interact with Copr repositories."
 msgstr "Interactie met Copr repositories."
 
-#: ../plugins/copr.py:77
+#: plugins/copr.py:81
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -854,31 +269,31 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: ../plugins/copr.py:103
+#: plugins/copr.py:107
 msgid "List all installed Copr repositories (default)"
 msgstr "Toon alle geïnstalleerde Copr-repositories (standaard)"
 
-#: ../plugins/copr.py:105
+#: plugins/copr.py:109
 msgid "List enabled Copr repositories"
 msgstr "Toon ingeschakelde Copr-repositories"
 
-#: ../plugins/copr.py:107
+#: plugins/copr.py:111
 msgid "List disabled Copr repositories"
 msgstr "Toon uitgeschakelde Copr-repositories"
 
-#: ../plugins/copr.py:109
+#: plugins/copr.py:113
 msgid "List available Copr repositories by user NAME"
 msgstr "Toon beschikbare Copr-repositories per gebruiker NAAM"
 
-#: ../plugins/copr.py:111
+#: plugins/copr.py:115
 msgid "Specify an instance of Copr to work with"
 msgstr "Geef een instanctie van Copr op om mee te werken"
 
-#: ../plugins/copr.py:145 ../plugins/copr.py:210 ../plugins/copr.py:230
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
 msgid "Error: "
 msgstr "Fout: "
 
-#: ../plugins/copr.py:146
+#: plugins/copr.py:150
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -886,30 +301,29 @@ msgstr ""
 "specificeer Copr hub met `--hub` of gebruik het formaat "
 "`copr_hub/copr_username/copr_projectname`"
 
-#: ../plugins/copr.py:149
+#: plugins/copr.py:153
 msgid "multiple hubs specified"
 msgstr "meerdere hubs opgegeven"
 
-#: ../plugins/copr.py:211 ../plugins/copr.py:215
+#: plugins/copr.py:218 plugins/copr.py:222
 msgid "exactly two additional parameters to copr command are required"
 msgstr "er zijn precies twee extra parameters voor het copr commando vereist"
 
-#: ../plugins/copr.py:231
+#: plugins/copr.py:238
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "gebruik formaat `copr_username/copr_projectname` voor het refereren naar "
 "copr project"
 
-#: ../plugins/copr.py:233
+#: plugins/copr.py:240
 msgid "bad copr project format"
 msgstr "slecht copr-projectformaat"
 
-#: ../plugins/copr.py:247
-#, python-brace-format
+#: plugins/copr.py:254
 msgid ""
 "\n"
-"You are about to enable a Copr repository. Please note that this\n"
-"repository is not part of the main distribution, and quality may vary.\n"
+"Enabling a Copr repository. Please note that this repository is not part\n"
+"of the main distribution, and quality may vary.\n"
 "\n"
 "The Fedora Project does not exercise any power over the contents of\n"
 "this repository beyond the rules outlined in the Copr FAQ at\n"
@@ -918,12 +332,10 @@ msgid ""
 "\n"
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
-"\n"
-"Do you really want to enable {0}?"
 msgstr ""
 "\n"
-"Je staat op het punt een Copr-repository in te schakelen. Houd er rekening mee dat dit\n"
-"repository geen deel uitmaakt van de hoofddistributie en de kwaliteit kan variëren.\n"
+"Een Copr-repository inschakelen. Houd er rekening mee dat dit repository geen deel\n"
+"uitmaakt van de hoofddistributie en de kwaliteit kan variëren.\n"
 "\n"
 "Het Fedora Project heeft geen zeggenschap over de inhoud van\n"
 "deze repository behalve de regels beschreven in de Copr_FAQ in\n"
@@ -932,26 +344,24 @@ msgstr ""
 "\n"
 "Stuur alstublieft geen bug-rapporten over deze pakketten in Fedora\n"
 "Bugzilla. Neem in geval van problemen contact op met de eigenaar van deze repository.\n"
-"\n"
-"Wil je {0} echt inschakelen?"
 
-#: ../plugins/copr.py:263
+#: plugins/copr.py:271
 msgid "Repository successfully enabled."
 msgstr "Repository succesvol ingeschakeld."
 
-#: ../plugins/copr.py:267
+#: plugins/copr.py:276
 msgid "Repository successfully disabled."
 msgstr "Repository succesvol uitgeschakeld."
 
-#: ../plugins/copr.py:271
+#: plugins/copr.py:280
 msgid "Repository successfully removed."
 msgstr "Repository succesvol verwijderd."
 
-#: ../plugins/copr.py:275 ../plugins/copr.py:625
+#: plugins/copr.py:284 plugins/copr.py:689
 msgid "Unknown subcommand {}."
 msgstr "Onbekend subcommando {}."
 
-#: ../plugins/copr.py:328
+#: plugins/copr.py:337
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -961,119 +371,148 @@ msgstr ""
 " bevat over Copr hub - de standaard werd verondersteld. Schakel het project "
 "opnieuw in om dit te verhelpen."
 
-#: ../plugins/copr.py:340
+#: plugins/copr.py:349
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan repositories voor gebruikersnaam '{}' niet ontleden."
 
-#: ../plugins/copr.py:343
+#: plugins/copr.py:352
 msgid "List of {} coprs"
 msgstr "Lijst met {} coprs"
 
-#: ../plugins/copr.py:351
+#: plugins/copr.py:360
 msgid "No description given"
 msgstr "Geen beschrijving gegeven"
 
-#: ../plugins/copr.py:363
+#: plugins/copr.py:372
 msgid "Can't parse search for '{}'."
 msgstr "Kan zoekopdracht voor '{}' niet ontleden."
 
-#: ../plugins/copr.py:366
+#: plugins/copr.py:375
 msgid "Matched: {}"
 msgstr "Op elkaar afgestemd: {}"
 
-#: ../plugins/copr.py:374
+#: plugins/copr.py:383
 msgid "No description given."
 msgstr "Geen beschrijving gegeven."
 
-#: ../plugins/copr.py:387
+#: plugins/copr.py:406
 msgid "Safe and good answer. Exiting."
 msgstr "Veilig en goed antwoord. Afsluiten."
 
-#: ../plugins/copr.py:394
+#: plugins/copr.py:413
 msgid "This command has to be run under the root user."
-msgstr "Dit commando moet met de root gebruiker uitgevoerd worden."
+msgstr "Dit commando moet als root uitgevoerd worden."
 
-#: ../plugins/copr.py:458
+#: plugins/copr.py:477
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Deze repository heeft nog geen builds, dus je kunt deze nu niet inschakelen."
 
-#: ../plugins/copr.py:461
+#: plugins/copr.py:480
 msgid "Such repository does not exist."
 msgstr "Een dergelijke repository bestaat niet."
 
-#: ../plugins/copr.py:509
+#: plugins/copr.py:524
+#, python-brace-format
+msgid ""
+"Maintainer of the enabled Copr repository decided to make\n"
+"it dependent on other repositories. Such repositories are\n"
+"usually necessary for successful installation of RPMs from\n"
+"the main Copr repository (they provide runtime dependencies).\n"
+"\n"
+"Be aware that the note about quality and bug-reporting\n"
+"above applies here too, Fedora Project doesn't control the\n"
+"content. Please review the list:\n"
+"\n"
+"{0}\n"
+"\n"
+"These repositories have been enabled automatically."
+msgstr ""
+"Beheerder van de ingeschakelde Copr-repository besloot het afhankelijk\n"
+"te maken van andere repositories. Dergelijke repositories zijn\n"
+"meestal nodig voor een succesvolle installatie van RPM's vanaf\n"
+"de belangrijkste Copr-repository (ze bieden runtime-afhankelijkheden).\n"
+"\n"
+"Houd er rekening mee dat de opmerking over kwaliteit en bugrapportage\n"
+"hierboven hier ook geldt, Fedora Project heeft geen controle over de\n"
+"inhoud. Bekijk de lijst:\n"
+"\n"
+"{0}\n"
+"\n"
+"Deze repositories zijn automatisch ingeschakeld."
+
+#: plugins/copr.py:545
+msgid "Do you want to keep them enabled?"
+msgstr "Wil je ze ingeschakeld houden?"
+
+#: plugins/copr.py:578
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Kan copr repo {0}/{1}/{2} niet verwijderen"
 
-#: ../plugins/copr.py:520
+#: plugins/copr.py:589
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Kon copr repo {}/{} niet uitschakelen"
 
-#: ../plugins/copr.py:542 ../plugins/copr.py:580
+#: plugins/copr.py:607 plugins/copr.py:644
 msgid "Unknown response from server."
 msgstr "Onbekend antwoord van server."
 
-#: ../plugins/copr.py:564
+#: plugins/copr.py:629
 msgid "Interact with Playground repository."
 msgstr "Interactie met Playground repository."
 
-#: ../plugins/copr.py:569
-msgid ""
-"\n"
-"You are about to enable a Playground repository.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"\n"
-"Je staat op het punt een Playground repository in te schakelen.\n"
-"\n"
-"Wil je doorgaan?"
+#: plugins/copr.py:635
+msgid "Enabling a Playground repository."
+msgstr "Een Playground repositories inschakelen."
 
-#: ../plugins/copr.py:615
+#: plugins/copr.py:636
+msgid "Do you want to continue?"
+msgstr "Wil je verder gaan?"
+
+#: plugins/copr.py:679
 msgid "Playground repositories successfully enabled."
 msgstr "Playground repositories succesvol ingeschakeld."
 
-#: ../plugins/copr.py:618
+#: plugins/copr.py:682
 msgid "Playground repositories successfully disabled."
 msgstr "Playground repositories succesvol uitgeschakeld."
 
-#: ../plugins/copr.py:622
+#: plugins/copr.py:686
 msgid "Playground repositories successfully updated."
 msgstr "Playground repositories succesvol bijgewerkt."
 
-#: ../plugins/debug.py:53
+#: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
 msgstr "dump informatie over geïnstalleerde rpm-pakketten naar bestand"
 
-#: ../plugins/debug.py:67
+#: plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
 msgstr "probeer de inhoud van de repository niet te dumpen."
 
-#: ../plugins/debug.py:70
+#: plugins/debug.py:70
 msgid "optional name of dump file"
 msgstr "optionele naam van het dumpbestand"
 
-#: ../plugins/debug.py:95
+#: plugins/debug.py:95
 #, python-format
 msgid "Output written to: %s"
 msgstr "Output wordt geschreven naar: %s"
 
-#: ../plugins/debug.py:172
+#: plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
 msgstr "herstel pakketten opgenomen in debug-dump bestand"
 
-#: ../plugins/debug.py:183
+#: plugins/debug.py:185
 msgid "output commands that would be run to stdout."
 msgstr "uitvoeropdrachten die naar stdout zouden worden uitgevoerd."
 
-#: ../plugins/debug.py:186
+#: plugins/debug.py:188
 msgid "Install the latest version of recorded packages."
 msgstr "Installeer de nieuwste versie van opgenomen pakketten."
 
-#: ../plugins/debug.py:189
+#: plugins/debug.py:191
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
@@ -1081,20 +520,629 @@ msgstr ""
 "Negeer architectuur en installeer ontbrekende pakketten die overeenkomen met"
 " de naam, het tijdvak, de versie en de release."
 
-#: ../plugins/debug.py:194
+#: plugins/debug.py:196
 msgid "limit to specified type"
 msgstr "beperken tot het opgegeven type"
 
-#: ../plugins/debug.py:196
+#: plugins/debug.py:199
+msgid ""
+"Allow removing of install-only packages. Using this option may result in an "
+"attempt to remove the running kernel."
+msgstr ""
+"Sta het verwijderen van alleen-installeren pakketten toe. Het gebruik van "
+"deze optie kan leiden tot een poging om de actieve kernel te verwijderen."
+
+#: plugins/debug.py:202
 msgid "name of dump file"
 msgstr "naam van dumpbestand"
 
-#: ../plugins/debug.py:264
+#: plugins/debug.py:273
 #, python-format
 msgid "Package %s is not available"
 msgstr "Pakket %s is niet beschikbaar"
 
-#: ../plugins/debug.py:274
+#: plugins/debug.py:283
 #, python-format
 msgid "Bad dnf debug file: %s"
 msgstr "Ongeldig dnf-foutopsporingsbestand: %s"
+
+#: plugins/debuginfo-install.py:56
+msgid "install debuginfo packages"
+msgstr "installeer debuginfo pakketten"
+
+#: plugins/debuginfo-install.py:180
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following available packages: %s"
+msgstr ""
+"Kan geen debuginfo-pakket vinden voor de volgende beschikbare pakketten: %s"
+
+#: plugins/debuginfo-install.py:185
+#, python-format
+msgid ""
+"Could not find debugsource package for the following available packages: %s"
+msgstr ""
+"Kan geen debugbron-pakket vinden voor de volgende beschikbare pakketten: %s"
+
+#: plugins/debuginfo-install.py:190
+#, python-format
+msgid ""
+"Could not find debuginfo package for the following installed packages: %s"
+msgstr ""
+"Kan geen debuginfo-pakket vinden voor de volgende geïnstalleerde pakketten: "
+"%s"
+
+#: plugins/debuginfo-install.py:195
+#, python-format
+msgid ""
+"Could not find debugsource package for the following installed packages: %s"
+msgstr ""
+"Kan geen debugbron-pakket vinden voor de volgende geïnstalleerde pakketten: "
+"%s"
+
+#: plugins/debuginfo-install.py:199
+msgid "Unable to find a match"
+msgstr "Kan geen match vinden"
+
+#: plugins/download.py:41
+msgid "Download package to current directory"
+msgstr "Download pakket naar huidige map"
+
+#: plugins/download.py:51
+msgid "packages to download"
+msgstr "te downloaden pakketten"
+
+#: plugins/download.py:53
+msgid "download the src.rpm instead"
+msgstr "download in plaats daarvan src.rpm"
+
+#: plugins/download.py:55
+msgid "download the -debuginfo package instead"
+msgstr "download in plaats daarvan het pakket -debuginfo"
+
+#: plugins/download.py:57
+msgid "download the -debugsource package instead"
+msgstr "download in plaats daarvan het pakket -debugsource"
+
+#: plugins/download.py:60
+msgid "limit  the  query to packages of given architectures."
+msgstr "beperk de zoekopdracht tot pakketten van gegeven architecturen."
+
+#: plugins/download.py:62
+msgid "resolve and download needed dependencies"
+msgstr "benodigde afhankelijkheden oplossen en downloaden"
+
+#: plugins/download.py:64
+msgid ""
+"when running with --resolve, download all dependencies (do not exclude "
+"already installed ones)"
+msgstr ""
+"als je werkt met --resolve, download alle afhankelijkheden (sluit reeds "
+"geïnstalleerde niet uit)"
+
+#: plugins/download.py:67
+msgid ""
+"print list of urls where the rpms can be downloaded instead of downloading"
+msgstr ""
+"print lijst met url's waar de rpms kunnen worden gedownload in plaats van te"
+" downloaden"
+
+#: plugins/download.py:72
+msgid "when running with --url, limit to specific protocols"
+msgstr "bij gebruik van --url, beperken tot specifieke protocollen"
+
+#: plugins/download.py:121 plugins/reposync.py:260
+#, python-format
+msgid "Failed to get mirror for package: %s"
+msgstr "Kan spiegel voor pakket niet ophalen: %s"
+
+#: plugins/download.py:243
+msgid "Exiting due to strict setting."
+msgstr "Afsluiten vanwege strikte instelling."
+
+#: plugins/download.py:261
+msgid "Error in resolve of packages:"
+msgstr "Fout bij het oplossen van pakketten:"
+
+#: plugins/download.py:279
+#, python-format
+msgid "No source rpm defined for %s"
+msgstr "Geen bron-rpm gedefinieerd voor %s"
+
+#: plugins/download.py:296 plugins/download.py:309
+#, python-format
+msgid "No package %s available."
+msgstr "Pakket %s niet beschikbaar."
+
+#: plugins/leaves.py:32
+msgid "List installed packages not required by any other package"
+msgstr ""
+"Toon geïnstalleerde pakketten die niet vereist zijn door een ander pakket"
+
+#: plugins/local.py:122
+msgid "Unable to create a directory '{}' due to '{}'"
+msgstr "Kan geen map '{}' aanmaken vanwege '{}'"
+
+#: plugins/local.py:126
+msgid "'{}' is not a directory"
+msgstr "'{}' is geen map"
+
+#: plugins/local.py:135
+msgid "Copying '{}' to local repo"
+msgstr "'{}' kopiëren naar lokale repo"
+
+#: plugins/local.py:141
+msgid "Can't write file '{}'"
+msgstr "Kan bestand '{}' niet schrijven"
+
+#: plugins/local.py:156
+msgid "Rebuilding local repo"
+msgstr "Lokale repo opnieuw opbouwen"
+
+#: plugins/migrate.py:45
+msgid "migrate yum's history, group and yumdb data to dnf"
+msgstr "migreer de geschiedenis, groeps- en yumdb-data van yum naar dnf"
+
+#: plugins/migrate.py:54
+msgid "Migrating history data..."
+msgstr "Migreren van geschiedenis data..."
+
+#: plugins/needs_restarting.py:65
+#, python-brace-format
+msgid ""
+"No installed package found for package name \"{pkg}\" specified in needs-"
+"restarting file \"{file}\"."
+msgstr ""
+"Geen geïnstalleerd pakket gevonden voor pakketnaam \"{pkg}\" gespecificeerd "
+"in het herstartbestand \"{file}\"."
+
+#: plugins/needs_restarting.py:199
+msgid "determine updated binaries that need restarting"
+msgstr ""
+"bepaal bijgewerkte binaire bestanden die opnieuw moeten worden gestart"
+
+#: plugins/needs_restarting.py:204
+msgid "only consider this user's processes"
+msgstr "houd alleen rekening met de processen van deze gebruiker"
+
+#: plugins/needs_restarting.py:206
+msgid ""
+"only report whether a reboot is required (exit code 1) or not (exit code 0)"
+msgstr ""
+"rapporteer alleen of opnieuw opstarten vereist is (exitcode 1) of niet "
+"(exitcode 0)"
+
+#: plugins/needs_restarting.py:230
+msgid "Core libraries or services have been updated since boot-up:"
+msgstr "Kernbibliotheken of services die sinds het opstarten zijn bijgewerkt:"
+
+#: plugins/needs_restarting.py:235
+msgid "Reboot is required to fully utilize these updates."
+msgstr ""
+"Opnieuw opstarten is vereist om deze vernieuwingen volledig te kunnen "
+"gebruiken."
+
+#: plugins/needs_restarting.py:236
+msgid "More information:"
+msgstr "Meer informatie:"
+
+#: plugins/needs_restarting.py:240
+msgid "No core libraries or services have been updated since boot-up."
+msgstr ""
+"Sinds het opstarten zijn er geen kernbibliotheken of services bijgewerkt."
+
+#: plugins/needs_restarting.py:242
+msgid "Reboot should not be necessary."
+msgstr "Opnieuw opstarten zou niet nodig moeten zijn."
+
+#: plugins/post-transaction-actions.py:71
+#, python-format
+msgid "Bad Action Line \"%s\": %s"
+msgstr "Slechte actie regel \"%s\": %s"
+
+#. unsupported state, skip it
+#: plugins/post-transaction-actions.py:130
+#, python-format
+msgid "Bad Transaction State: %s"
+msgstr "Slechte transactie status: %s"
+
+#: plugins/post-transaction-actions.py:153
+#: plugins/post-transaction-actions.py:155
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr "post-transaction-actions: %s"
+
+#: plugins/post-transaction-actions.py:157
+#, python-format
+msgid "post-transaction-actions: Bad Command \"%s\": %s"
+msgstr "post-transaction-actions: Slecht commando \"%s\": %s"
+
+#: plugins/repoclosure.py:42
+msgid "Display a list of unresolved dependencies for repositories"
+msgstr "Toon een lijst met onopgeloste afhankelijkheden voor repositories"
+
+#: plugins/repoclosure.py:66
+msgid "Repoclosure ended with unresolved dependencies."
+msgstr "Repoclosure beëindigd met onopgeloste afhankelijkheden."
+
+#: plugins/repoclosure.py:153
+msgid "check packages of the given archs, can be specified multiple times"
+msgstr ""
+"Controleer pakketten van de gegeven archs, kunnen meerdere keren worden "
+"opgegeven"
+
+#: plugins/repoclosure.py:156
+msgid "Specify repositories to check"
+msgstr "Geef de te controleren repositories op"
+
+#: plugins/repoclosure.py:158
+msgid "Check only the newest packages in the repos"
+msgstr "Controleer alleen de nieuwste pakketten in de repo's"
+
+#: plugins/repoclosure.py:161
+msgid "Check closure for this package only"
+msgstr "Controleer alleen de afsluiting voor dit pakket"
+
+#: plugins/repodiff.py:45
+msgid "List differences between two sets of repositories"
+msgstr "Toon verschillen tussen twee sets van repositories"
+
+#: plugins/repodiff.py:58
+msgid "Specify old repository, can be used multiple times"
+msgstr "Geef oude repository op, kan meerdere keren worden gebruikt"
+
+#: plugins/repodiff.py:60
+msgid "Specify new repository, can be used multiple times"
+msgstr "Geef nieuwe repository op, kan meerdere keren worden gebruikt"
+
+#: plugins/repodiff.py:63
+msgid ""
+"Specify architectures to compare, can be used multiple times. By default, "
+"only source rpms are compared."
+msgstr ""
+"Specificeer architecturen om te vergelijken, kunnen meerdere keren worden "
+"gebruikt. Standaard worden alleen bron-rpms vergeleken."
+
+#: plugins/repodiff.py:67
+msgid "Output additional data about the size of the changes."
+msgstr "Voer extra gegevens uit over de grootte van de wijzigingen."
+
+#: plugins/repodiff.py:69
+msgid ""
+"Compare packages also by arch. By default packages are compared just by "
+"name."
+msgstr ""
+"Vergelijk pakketten ook per architectuur. Standaard worden pakketten alleen "
+"op naam vergeleken."
+
+#: plugins/repodiff.py:72
+msgid "Output a simple one line message for modified packages."
+msgstr ""
+"Voer een eenvoudig bericht met één regel uit voor gewijzigde pakketten."
+
+#: plugins/repodiff.py:74
+msgid ""
+"Split the data for modified packages between upgraded and downgraded "
+"packages."
+msgstr ""
+"Splits de gegevens voor aangepaste pakketten op tussen opgewaardeerde en "
+"gedowngraded pakketten."
+
+#: plugins/repodiff.py:86
+msgid "Both old and new repositories must be set."
+msgstr "Zowel oude als nieuwe orepositories moeten worden ingesteld."
+
+#: plugins/repodiff.py:178
+msgid "Size change: {} bytes"
+msgstr "Grootte wijziging: {} bytes"
+
+#: plugins/repodiff.py:184
+msgid "Added package  : {}"
+msgstr "Toegevoegde pakket  : {}"
+
+#: plugins/repodiff.py:187
+msgid "Removed package: {}"
+msgstr "Verwijderde pakket: {}"
+
+#: plugins/repodiff.py:190
+msgid "Obsoleted by   : {}"
+msgstr "Verouderd door   : {}"
+
+#: plugins/repodiff.py:195
+msgid ""
+"\n"
+"Upgraded packages"
+msgstr ""
+"\n"
+"Verbeterde pakketten"
+
+#: plugins/repodiff.py:200
+msgid ""
+"\n"
+"Downgraded packages"
+msgstr ""
+"\n"
+"Gedegradeerde pakketten"
+
+#: plugins/repodiff.py:207
+msgid ""
+"\n"
+"Modified packages"
+msgstr ""
+"\n"
+"Gewijzigde pakketten"
+
+#: plugins/repodiff.py:212
+msgid ""
+"\n"
+"Summary"
+msgstr ""
+"\n"
+"Samenvatting"
+
+#: plugins/repodiff.py:213
+msgid "Added packages: {}"
+msgstr "Toegevoegde pakketten: {}"
+
+#: plugins/repodiff.py:214
+msgid "Removed packages: {}"
+msgstr "Verwijderde pakketten: {}"
+
+#: plugins/repodiff.py:216
+msgid "Upgraded packages: {}"
+msgstr "Verbeterde pakketten: {}"
+
+#: plugins/repodiff.py:217
+msgid "Downgraded packages: {}"
+msgstr "Gedegradeerde pakketten: {}"
+
+#: plugins/repodiff.py:219
+msgid "Modified packages: {}"
+msgstr "Gewijzigde pakketten: {}"
+
+#: plugins/repodiff.py:222
+msgid "Size of added packages: {}"
+msgstr "Grootte van toegevoegde pakketten: {}"
+
+#: plugins/repodiff.py:223
+msgid "Size of removed packages: {}"
+msgstr "Grootte van verwijderde pakketten: {}"
+
+#: plugins/repodiff.py:225
+msgid "Size of modified packages: {}"
+msgstr "Grootte van gewijzigde pakketten: {}"
+
+#: plugins/repodiff.py:228
+msgid "Size of upgraded packages: {}"
+msgstr "Grootte van verbeterde pakketten: {}"
+
+#: plugins/repodiff.py:230
+msgid "Size of downgraded packages: {}"
+msgstr "Grootte van gedegradeerde pakketten: {}"
+
+#: plugins/repodiff.py:232
+msgid "Size change: {}"
+msgstr "Grootteverandering: {}"
+
+#: plugins/repograph.py:50
+msgid "Output a full package dependency graph in dot format"
+msgstr ""
+"Voer een grafiek met volledige pakketafhankelijkheid uit in puntformaat"
+
+#: plugins/repograph.py:110
+#, python-format
+msgid "Nothing provides: '%s'"
+msgstr "Niets biedt: '%s'"
+
+#: plugins/repomanage.py:45
+msgid "Manage a directory of rpm packages"
+msgstr "Beheer een map met rpm-pakketten"
+
+#: plugins/repomanage.py:59
+msgid "Pass either --old or --new, not both!"
+msgstr "Geef --old of --new door, niet beide!"
+
+#: plugins/repomanage.py:71
+msgid "No files to process"
+msgstr "Geen bestanden om te verwerken"
+
+#: plugins/repomanage.py:93
+msgid "Could not open {}"
+msgstr "Kon {} niet openen"
+
+#: plugins/repomanage.py:177
+msgid "Print the older packages"
+msgstr "Print de oudere pakketten"
+
+#: plugins/repomanage.py:179
+msgid "Print the newest packages"
+msgstr "Print de nieuwste pakketten"
+
+#: plugins/repomanage.py:181
+msgid "Space separated output, not newline"
+msgstr "Uitvoer gescheiden met spatie, geen nieuwe regel"
+
+#: plugins/repomanage.py:183
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "Nieuwste N pakketten om te bewaren - standaard 1"
+
+#: plugins/repomanage.py:186
+msgid "Path to directory"
+msgstr "Pad naar map"
+
+#: plugins/reposync.py:54
+msgid "download all packages from remote repo"
+msgstr "download alle pakketten van repo op afstand"
+
+#: plugins/reposync.py:63
+msgid "download only packages for this ARCH"
+msgstr "download alleen pakketten voor deze ARCH"
+
+#: plugins/reposync.py:65
+msgid "delete local packages no longer present in repository"
+msgstr ""
+"lokale pakketten verwijderen die niet meer in de repository aanwezig zijn"
+
+#: plugins/reposync.py:67
+msgid "also download and uncompress comps.xml"
+msgstr "download en pak ook comps.xml uit"
+
+#: plugins/reposync.py:69
+msgid "download all the metadata."
+msgstr "download alle metadata."
+
+#: plugins/reposync.py:71
+msgid "download only newest packages per-repo"
+msgstr "download alleen de nieuwste pakketten per-repo"
+
+#: plugins/reposync.py:73
+msgid "where to store downloaded repositories"
+msgstr "waar gedownloade repositories moeten worden opgeslagen"
+
+#: plugins/reposync.py:75
+msgid "Don't add the reponame to the download path."
+msgstr "Voeg de reponaam niet toe aan het downloadpad."
+
+#: plugins/reposync.py:77
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of "
+"--download-path."
+msgstr ""
+"waar de gedownloade repository metadata moet worden opgeslagen. Standaard "
+"staat de waarde op --download-path."
+
+#: plugins/reposync.py:80
+msgid "operate on source packages"
+msgstr "bewerk bronpakketten"
+
+#: plugins/reposync.py:82
+msgid "try to set local timestamps of local files by the one on the server"
+msgstr ""
+"probeer lokale tijdsstempels van lokale bestanden in te stellen met die op "
+"de server"
+
+#: plugins/reposync.py:85
+msgid "Just list urls of what would be downloaded, don't download"
+msgstr "Toon de url's die gedownload gaan worden, download ze nog niet"
+
+#: plugins/reposync.py:109
+msgid "Can't use --norepopath with multiple repositories"
+msgstr "Kan --norepopath niet gebruiken met meerdere repositories"
+
+#: plugins/reposync.py:127
+#, python-format
+msgid "Failed to get mirror for metadata: %s"
+msgstr "Verkrijgen van spiegel voor metadata mislukte: %s"
+
+#: plugins/reposync.py:144
+msgid "Failed to get mirror for the group file."
+msgstr "Verkrijgen van spiegel voor het groepsbestand mislukte."
+
+#: plugins/reposync.py:175
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "Downloaddoel '{}' bevindt zich buiten downloadpad '{}'."
+
+#: plugins/reposync.py:190
+#, python-format
+msgid "[DELETED] %s"
+msgstr "[VERWIJDERD] %s"
+
+#: plugins/reposync.py:192
+#, python-format
+msgid "failed to delete file %s"
+msgstr "verwijderen van bestand %s mislukte"
+
+#: plugins/reposync.py:201
+#, python-format
+msgid "comps.xml for repository %s saved"
+msgstr "comps.xml voor repository %s opgeslagen"
+
+#: plugins/show_leaves.py:54
+msgid "New leaves:"
+msgstr "Nieuwe leaves:"
+
+#: plugins/versionlock.py:32
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Kan configuratie van versieslot niet lezen: %s"
+
+#: plugins/versionlock.py:33
+msgid "Locklist not set"
+msgstr "Slotlijst niet ingesteld"
+
+#: plugins/versionlock.py:34
+msgid "Adding versionlock on:"
+msgstr "Versieslot toevoegen aan:"
+
+#: plugins/versionlock.py:35
+msgid "Adding exclude on:"
+msgstr "Uitsluiting toevoegen aan:"
+
+#: plugins/versionlock.py:36
+msgid "Package already locked in equivalent form:"
+msgstr "Pakket is al afgesloten in equivalente vorm:"
+
+#: plugins/versionlock.py:37
+msgid "Package {} is already locked"
+msgstr "Pakket {} is al afgesloten"
+
+#: plugins/versionlock.py:38
+msgid "Package {} is already excluded"
+msgstr "Pakket {} is al uitgesloten"
+
+#: plugins/versionlock.py:39
+msgid "Deleting versionlock for:"
+msgstr "Versieslot verwijderen voor:"
+
+#: plugins/versionlock.py:40
+msgid "No package found for:"
+msgstr "Geen pakket gevonden voor:"
+
+#: plugins/versionlock.py:41
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Uitsluitingen van de versieslot plug-in zijn niet toegepast"
+
+#: plugins/versionlock.py:42
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
+msgstr ""
+"Versieslot plug-in: aantal vergrendelingsregels van bestand \"{}\" "
+"toegepast: {}"
+
+#: plugins/versionlock.py:43
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr ""
+"Versieslot plug-in: aantal uitsluitingsregels van bestand \"{}\" toegepast: "
+"{}"
+
+#: plugins/versionlock.py:44
+msgid "Versionlock plugin: could not parse pattern:"
+msgstr "Versieslot plug-in: kon patroon niet ontleden:"
+
+#: plugins/versionlock.py:130
+msgid "control package version locks"
+msgstr "controleer pakketversieslot"
+
+#: plugins/versionlock.py:136
+msgid "Use package specifications as they are, do not try to parse them"
+msgstr ""
+"Gebruik pakketspecificaties zoals ze zijn, probeer ze niet te ontleden"
+
+#~ msgid ""
+#~ "\n"
+#~ "You are about to enable a Playground repository.\n"
+#~ "\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "\n"
+#~ "Je staat op het punt een Playground repository in te schakelen.\n"
+#~ "\n"
+#~ "Wil je doorgaan?"
+
+#~ msgid "also download comps.xml"
+#~ msgstr "download ook comps.xml"
+
+#~ msgid "where to store downloaded repositories "
+#~ msgstr "waar gedownloade repositories moeten worden opgeslagen "
+
+#~ msgid "Could not make repository directory: %s"
+#~ msgstr "Kan repositorymap niet aanmaken: %s"
