@@ -6,6 +6,8 @@
 %global yum_utils_subpackage_name yum-utils
 %endif
 
+%define __cmake_in_source_build 1
+
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
 %else
