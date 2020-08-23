@@ -300,6 +300,10 @@ Bugzilla. In case of problems, contact the owner of this repository.
             # We skip multilib repositories
             return
 
+        if re.match('coprdep:.*', repo_id):
+            # Runtime dependencies are not listed.
+            return
+
         enabled = repo.enabled
         if (enabled and disabled_only) or (not enabled and enabled_only):
             return
