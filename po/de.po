@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 09:18-0400\n"
+"POT-Creation-Date: 2020-09-14 09:18-0400\n"
 "PO-Revision-Date: 2020-03-22 12:28+0000\n"
 "Last-Translator: Christian Kujau <fedora@nerdbynature.de>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/de/>\n"
@@ -591,7 +591,7 @@ msgid "when running with --url, limit to specific protocols"
 msgstr ""
 "Wenn Sie mit --url arbeiten, beschränken Sie sich auf bestimmte Protokolle"
 
-#: plugins/download.py:121 plugins/reposync.py:260
+#: plugins/download.py:121 plugins/reposync.py:293
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Spiegel für Paket konnte nicht abgerufen werden: %s"

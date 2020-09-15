@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 09:18-0400\n"
-"PO-Revision-Date: 2020-05-27 17:40+0000\n"
+"POT-Creation-Date: 2020-09-14 09:18-0400\n"
+"PO-Revision-Date: 2020-08-28 21:29+0000\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_TW/>\n"
 "Language: zh_TW\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.0.4\n"
+"X-Generator: Weblate 4.2.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -501,7 +501,7 @@ msgstr "限縮至指定類型"
 msgid ""
 "Allow removing of install-only packages. Using this option may result in an "
 "attempt to remove the running kernel."
-msgstr ""
+msgstr "允許移除僅安裝 (install-only) 軟體包。啟用這個選項可能會導致執行中內核被移除。"
 
 #: plugins/debug.py:202
 msgid "name of dump file"
@@ -592,7 +592,7 @@ msgstr "輸出可以下載 RPM 的 URL 清單而不下載"
 msgid "when running with --url, limit to specific protocols"
 msgstr "使用 --url 執行時，限縮至指定的通訊協定"
 
-#: plugins/download.py:121 plugins/reposync.py:260
+#: plugins/download.py:121 plugins/reposync.py:293
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "無法取得軟體庫的鏡像站：%s"
@@ -648,11 +648,11 @@ msgid "Migrating history data..."
 msgstr "正在遷移歷史資料…"
 
 #: plugins/needs_restarting.py:65
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
-msgstr ""
+msgstr "未安裝 \"{file}\" 需要重新啟動檔案中指定的 \"{pkg}\" 軟體包。"
 
 #: plugins/needs_restarting.py:199
 msgid "determine updated binaries that need restarting"
@@ -766,10 +766,11 @@ msgid "Output a simple one line message for modified packages."
 msgstr "輸出關於修改過軟體包的簡易一列訊息。"
 
 #: plugins/repodiff.py:74
+#, fuzzy
 msgid ""
 "Split the data for modified packages between upgraded and downgraded "
 "packages."
-msgstr ""
+msgstr "分割經過升級或降級軟體包之修改軟體包的資料。"
 
 #: plugins/repodiff.py:86
 msgid "Both old and new repositories must be set."

@@ -1,22 +1,22 @@
-# Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata
-# Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata
-# Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata
+# Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata, 2020.
+# Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata, 2020.
+# Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata, 2020.
 # Göran Uddeborg <goeran@uddeborg.se>, 2020. #zanata
 # Mikael Granberg <mikael@famgra.se>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 09:18-0400\n"
-"PO-Revision-Date: 2020-05-11 22:44+0000\n"
-"Last-Translator: Mikael Granberg <mikael@famgra.se>\n"
+"POT-Creation-Date: 2020-09-14 09:18-0400\n"
+"PO-Revision-Date: 2020-08-23 08:29+0000\n"
+"Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.4\n"
+"X-Generator: Weblate 4.2.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -96,7 +96,7 @@ msgid ""
 "show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
 "is recommended."
 msgstr ""
-"visa ändringsloggsposter sedan DATE.  För att undvika tvetydigheter "
+"visa ändringsloggsposter sedan DATUM. För att undvika tvetydigheter "
 "rekommenderas formatet ÅÅÅÅ-MM-DD."
 
 #: plugins/changelog.py:55
@@ -170,11 +170,11 @@ msgstr "skriv ut variabelvärden till standard ut"
 
 #: plugins/config_manager.py:60
 msgid "enable repos (automatically saves)"
-msgstr ""
+msgstr "aktivera förråd (sparas automatiskt)"
 
 #: plugins/config_manager.py:63
 msgid "disable repos (automatically saves)"
-msgstr ""
+msgstr "avaktivera förråd (sparas automatiskt)"
 
 #: plugins/config_manager.py:77
 msgid "one of the following arguments is required: {}"
@@ -185,6 +185,8 @@ msgid ""
 "Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
 "manager. Use --set-enabled/--set-disabled instead."
 msgstr ""
+"Varning: argumenten --enablerepo/--disablerepo har ingen mening med "
+"konfigurationshanteraren. Använd --set-enabled/--set-disabled istället."
 
 #: plugins/config_manager.py:131
 #, python-format
@@ -316,21 +318,6 @@ msgid "bad copr project format"
 msgstr "felaktigt copr-projektformat"
 
 #: plugins/copr.py:254
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You are about to enable a Copr repository. Please note that this\n"
-#| "repository is not part of the main distribution, and quality may vary.\n"
-#| "\n"
-#| "The Fedora Project does not exercise any power over the contents of\n"
-#| "this repository beyond the rules outlined in the Copr FAQ at\n"
-#| "<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-#| "and packages are not held to any quality or security level.\n"
-#| "\n"
-#| "Please do not file bug reports about these packages in Fedora\n"
-#| "Bugzilla. In case of problems, contact the owner of this repository.\n"
-#| "\n"
-#| "Do you really want to enable {0}?"
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -345,18 +332,16 @@ msgid ""
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 msgstr ""
 "\n"
-"Du står i begrepp att aktivera ett Copr-förråd.  Observera att detta förråd\n"
-"inte är en del av huvuddistributionen, och kvaliteten kan variera.\n"
+"Aktivering av ett Copr-förråd. Observera att detta förråd inte är en del\n"
+"av huvuddistributionen, och kvaliteten kan variera.\n"
 "\n"
 "Fedoraprojektet har ingen makt över innehållet i detta förråd\n"
 "utöver reglerna i Copr FAQ:n på\n"
 "<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
 "och upprätthåller inte någon viss kvalitet eller säkerhetsnivå på paketen.\n"
 "\n"
-"Rapportera inte fel på dessa paket i Fedoras Bugzilla.  Kontakta vid problem\n"
+"Rapportera inte fel på dessa paket i Fedoras Bugzilla. Kontakta vid problem\n"
 "förrådets ägare.\n"
-"\n"
-"Vill du verkligen aktivera {0}?\n"
 
 #: plugins/copr.py:271
 msgid "Repository successfully enabled."
@@ -381,7 +366,7 @@ msgid ""
 "this."
 msgstr ""
 "* Dessa copr:er har förrådsfiler med ett gammalt format som inte innehåller "
-"någon information om Copr-nav — standardnavet antas.  Aktivera om projektet "
+"någon information om Copr-nav — standardnavet antas. Aktivera om projektet "
 "för att fixa detta."
 
 #: plugins/copr.py:349
@@ -410,7 +395,7 @@ msgstr "Ingen beskrivning angiven."
 
 #: plugins/copr.py:406
 msgid "Safe and good answer. Exiting."
-msgstr "Säkert och bra svar.  Avslutar."
+msgstr "Säkert och bra svar. Avslutar."
 
 #: plugins/copr.py:413
 msgid "This command has to be run under the root user."
@@ -442,10 +427,22 @@ msgid ""
 "\n"
 "These repositories have been enabled automatically."
 msgstr ""
+"Administratören av det aktiverade Copr-förrådet beslutade att\n"
+"göra det beroende på andra förråd. Sådana förråd är vanligen\n"
+"nödvändiga för en lyckad installation av RPM:er från huvud-\n"
+"Copr-förrådet (de tillhandahåller körtidsberoenden).\n"
+"\n"
+"Var medveten om att kommentaren om kvalitet och\n"
+"felrapportering ovan gäller även här, Fedoraprojektet\n"
+"styr inte innehållet. Granska listan:\n"
+"\n"
+"{0}\n"
+"\n"
+"Dessa förråd har aktiverats automatiskt."
 
 #: plugins/copr.py:545
 msgid "Do you want to keep them enabled?"
-msgstr ""
+msgstr "Vill du behålla dem aktiverade?"
 
 #: plugins/copr.py:578
 #, python-brace-format
@@ -465,14 +462,12 @@ msgid "Interact with Playground repository."
 msgstr "Interagera med Playground-förrådet."
 
 #: plugins/copr.py:635
-#, fuzzy
-#| msgid "Interact with Playground repository."
 msgid "Enabling a Playground repository."
-msgstr "Interagera med Playground-förrådet."
+msgstr "Aktiverin av ett Playground-förråd."
 
 #: plugins/copr.py:636
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Vill du fortsätta?"
 
 #: plugins/copr.py:679
 msgid "Playground repositories successfully enabled."
@@ -532,6 +527,8 @@ msgid ""
 "Allow removing of install-only packages. Using this option may result in an "
 "attempt to remove the running kernel."
 msgstr ""
+"Tillåt att paket som endast installeras tas bort. Att använda denna flagga "
+"kan resultera i ett försök att ta bort den körande kärnan."
 
 #: plugins/debug.py:202
 msgid "name of dump file"
@@ -628,7 +625,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "när använt med --url, begränsa till specifika protokoll"
 
-#: plugins/download.py:121 plugins/reposync.py:260
+#: plugins/download.py:121 plugins/reposync.py:293
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Misslyckades att få tag i spegeln för paket: %s"
@@ -689,6 +686,8 @@ msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr ""
+"Inget installerat paket finns för paketnamnet ”{pkg}” som angetts i filen "
+"”{file}” för behov av omstart."
 
 #: plugins/needs_restarting.py:199
 msgid "determine updated binaries that need restarting"
@@ -753,7 +752,7 @@ msgstr "Visa en lista över olösta beroenden för förråd"
 
 #: plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
-msgstr "Förrådshöljet slutade med olösta beroenden"
+msgstr "Förrådshöljet slutade med olösta beroenden."
 
 #: plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
@@ -788,7 +787,7 @@ msgid ""
 "Specify architectures to compare, can be used multiple times. By default, "
 "only source rpms are compared."
 msgstr ""
-"Ange arkitekturer att jämföra, kan användas flera gånger.  Som standard "
+"Ange arkitekturer att jämföra, kan användas flera gånger. Som standard "
 "jämförs endast källkods-rpm:er."
 
 #: plugins/repodiff.py:67
@@ -972,7 +971,7 @@ msgstr "hämta även och dekomprimera comps.xml"
 
 #: plugins/reposync.py:69
 msgid "download all the metadata."
-msgstr "hämta all metadatan"
+msgstr "hämta all metadatan."
 
 #: plugins/reposync.py:71
 msgid "download only newest packages per-repo"
@@ -991,7 +990,7 @@ msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
 msgstr ""
-"var hämtad förrådsmetadata skall lagras.  Standard är värdet på --download-"
+"var hämtad förrådsmetadata skall lagras. Standard är värdet på --download-"
 "path."
 
 #: plugins/reposync.py:80

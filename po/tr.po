@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 09:18-0400\n"
+"POT-Creation-Date: 2020-09-14 09:18-0400\n"
 "PO-Revision-Date: 2020-07-07 05:27+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/tr/>\n"
@@ -622,7 +622,7 @@ msgstr "indirmek yerine rpm'lerin indirilebileceği url'lerin listesini yazdır"
 msgid "when running with --url, limit to specific protocols"
 msgstr "--url seçeneğiyle çalışırken belirli protokolllerle sınırlı kal"
 
-#: plugins/download.py:121 plugins/reposync.py:260
+#: plugins/download.py:121 plugins/reposync.py:293
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "%s paketi için yansı alınamadı"

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 09:18-0400\n"
-"PO-Revision-Date: 2020-07-18 17:29+0000\n"
+"POT-Creation-Date: 2020-09-14 09:18-0400\n"
+"PO-Revision-Date: 2020-09-01 14:29+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/es/>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.2.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -42,7 +42,7 @@ msgstr "defina un macro para análisis sintáctico del archivo spec"
 
 #: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
-msgstr ""
+msgstr "saltar el construir dependencias no disponibles en los repositorios"
 
 #: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
@@ -320,21 +320,6 @@ msgid "bad copr project format"
 msgstr "formato de proyecto de copr incorrecto"
 
 #: plugins/copr.py:254
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You are about to enable a Copr repository. Please note that this\n"
-#| "repository is not part of the main distribution, and quality may vary.\n"
-#| "\n"
-#| "The Fedora Project does not exercise any power over the contents of\n"
-#| "this repository beyond the rules outlined in the Copr FAQ at\n"
-#| "<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-#| "and packages are not held to any quality or security level.\n"
-#| "\n"
-#| "Please do not file bug reports about these packages in Fedora\n"
-#| "Bugzilla. In case of problems, contact the owner of this repository.\n"
-#| "\n"
-#| "Do you really want to enable {0}?"
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -349,7 +334,7 @@ msgid ""
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 msgstr ""
 "\n"
-"Va a activar un repositorio Copr. Tenga en cuenta que no es parte de la\n"
+"Habilitando un repositorio Copr. Tenga en cuenta que no es parte de la\n"
 "distribución, y que no hay garantías de calidad.\n"
 "\n"
 "El Proyecto Fedora no ejerce ningún control sobre el contenido de este\n"
@@ -359,8 +344,6 @@ msgstr ""
 "\n"
 "No envíe informes de errores sobre estos paquetes al Bugzilla de Fedora. Si\n"
 "observa problemas, contacte directamente con el propietario de este repositorio.\n"
-"\n"
-"¿Realmente quiere activar {0}?\n"
 
 #: plugins/copr.py:271
 msgid "Repository successfully enabled."
@@ -467,10 +450,8 @@ msgid "Interact with Playground repository."
 msgstr "Interactuar con el repositorio Playground."
 
 #: plugins/copr.py:635
-#, fuzzy
-#| msgid "Interact with Playground repository."
 msgid "Enabling a Playground repository."
-msgstr "Interactuar con el repositorio Playground."
+msgstr "Habilitando un repositorio Playground."
 
 #: plugins/copr.py:636
 msgid "Do you want to continue?"
@@ -627,7 +608,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "limitar a protocolos concretos cuando se ejecuta con --url"
 
-#: plugins/download.py:121 plugins/reposync.py:260
+#: plugins/download.py:121 plugins/reposync.py:293
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "No se puedo obtener un espejo para el paquete: %s"

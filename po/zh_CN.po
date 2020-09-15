@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 09:18-0400\n"
+"POT-Creation-Date: 2020-09-14 09:18-0400\n"
 "PO-Revision-Date: 2020-07-09 13:27+0000\n"
 "Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_CN/>\n"
@@ -579,7 +579,7 @@ msgstr "打印 rpm 可被下载的 url 列表而不是直接下载"
 msgid "when running with --url, limit to specific protocols"
 msgstr "当执行时带有 --url 参数，则限制使用指定协议"
 
-#: plugins/download.py:121 plugins/reposync.py:260
+#: plugins/download.py:121 plugins/reposync.py:293
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "获取针对以下软件包的镜像失败：%s"
