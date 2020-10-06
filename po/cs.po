@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-14 09:18-0400\n"
+"POT-Creation-Date: 2020-10-05 09:18-0400\n"
 "PO-Revision-Date: 2020-01-14 01:52+0000\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech\n"
@@ -336,60 +336,60 @@ msgstr "Repozitář úspěšně vypnut."
 msgid "Repository successfully removed."
 msgstr "Repozitář úspěšně odebrán."
 
-#: plugins/copr.py:284 plugins/copr.py:689
+#: plugins/copr.py:284 plugins/copr.py:693
 msgid "Unknown subcommand {}."
 msgstr "Neznámý podpříkaz {}."
 
-#: plugins/copr.py:337
+#: plugins/copr.py:341
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 
-#: plugins/copr.py:349
+#: plugins/copr.py:353
 msgid "Can't parse repositories for username '{}'."
 msgstr "Nelze analyzovat repozitáře pro uživatelské jméno '{}'."
 
-#: plugins/copr.py:352
+#: plugins/copr.py:356
 msgid "List of {} coprs"
 msgstr "Seznam {} copr repozitářů"
 
-#: plugins/copr.py:360
+#: plugins/copr.py:364
 msgid "No description given"
 msgstr "Popis není uveden"
 
-#: plugins/copr.py:372
+#: plugins/copr.py:376
 msgid "Can't parse search for '{}'."
 msgstr "Nelze analyzovat hledání pro '{}'."
 
-#: plugins/copr.py:375
+#: plugins/copr.py:379
 msgid "Matched: {}"
 msgstr "Shoda: {}"
 
-#: plugins/copr.py:383
+#: plugins/copr.py:387
 msgid "No description given."
 msgstr "Popis není uveden."
 
-#: plugins/copr.py:406
+#: plugins/copr.py:410
 msgid "Safe and good answer. Exiting."
 msgstr "Bezpečná a dobrá odpověď. Ukončení."
 
-#: plugins/copr.py:413
+#: plugins/copr.py:417
 msgid "This command has to be run under the root user."
 msgstr "Tento příkaz musí být spuštěn pod uživatelem root."
 
-#: plugins/copr.py:477
+#: plugins/copr.py:481
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Tento repozitář ještě nemá jakýkoli build, takže jej nyní nelze povolit."
 
-#: plugins/copr.py:480
+#: plugins/copr.py:484
 msgid "Such repository does not exist."
 msgstr "Takový repozitář neexistuje."
 
-#: plugins/copr.py:524
+#: plugins/copr.py:528
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -406,46 +406,46 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:545
+#: plugins/copr.py:549
 msgid "Do you want to keep them enabled?"
 msgstr ""
 
-#: plugins/copr.py:578
+#: plugins/copr.py:582
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr ""
 
-#: plugins/copr.py:589
+#: plugins/copr.py:593
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Selhalo vypnutí copr repozitáře {}/{}"
 
-#: plugins/copr.py:607 plugins/copr.py:644
+#: plugins/copr.py:611 plugins/copr.py:648
 msgid "Unknown response from server."
 msgstr "Neznámá odpověď ze serveru."
 
-#: plugins/copr.py:629
+#: plugins/copr.py:633
 msgid "Interact with Playground repository."
 msgstr "Interagovat s repozitářem Playground"
 
-#: plugins/copr.py:635
+#: plugins/copr.py:639
 #, fuzzy
 #| msgid "Interact with Playground repository."
 msgid "Enabling a Playground repository."
 msgstr "Interagovat s repozitářem Playground"
 
-#: plugins/copr.py:636
+#: plugins/copr.py:640
 msgid "Do you want to continue?"
 msgstr ""
 
-#: plugins/copr.py:679
+#: plugins/copr.py:683
 msgid "Playground repositories successfully enabled."
 msgstr "Playground repozitář úspěšně povolen."
 
-#: plugins/copr.py:682
+#: plugins/copr.py:686
 msgid "Playground repositories successfully disabled."
 msgstr "Playground repozitář úspěšně vypnut."
 
-#: plugins/copr.py:686
+#: plugins/copr.py:690
 msgid "Playground repositories successfully updated."
 msgstr "Playground repozitář úspěšně aktualizován."
 

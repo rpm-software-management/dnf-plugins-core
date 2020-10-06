@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-14 09:18-0400\n"
+"POT-Creation-Date: 2020-10-05 09:18-0400\n"
 "PO-Revision-Date: 2019-11-27 09:17+0000\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian\n"
@@ -365,11 +365,11 @@ msgstr "Repository disabilitât cun sucès."
 msgid "Repository successfully removed."
 msgstr "Repository gjavât cun sucès."
 
-#: plugins/copr.py:284 plugins/copr.py:689
+#: plugins/copr.py:284 plugins/copr.py:693
 msgid "Unknown subcommand {}."
 msgstr "Sot-comant {} no cognossût."
 
-#: plugins/copr.py:337
+#: plugins/copr.py:341
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -379,50 +379,50 @@ msgstr ""
 "infomazions sul hub Copr - si à considerât chel predefinît. Tornâ a abilitâ "
 "il progjet par comedâ chest probleme."
 
-#: plugins/copr.py:349
+#: plugins/copr.py:353
 msgid "Can't parse repositories for username '{}'."
 msgstr "Impussibil analizâ i repository pal non utent '{}'."
 
-#: plugins/copr.py:352
+#: plugins/copr.py:356
 msgid "List of {} coprs"
 msgstr "Liste di {} copr"
 
-#: plugins/copr.py:360
+#: plugins/copr.py:364
 msgid "No description given"
 msgstr "Nissune descrizione furnide"
 
-#: plugins/copr.py:372
+#: plugins/copr.py:376
 msgid "Can't parse search for '{}'."
 msgstr "Impussibil analizâ la ricercje par '{}'."
 
-#: plugins/copr.py:375
+#: plugins/copr.py:379
 msgid "Matched: {}"
 msgstr "Corispondencis: {}"
 
-#: plugins/copr.py:383
+#: plugins/copr.py:387
 msgid "No description given."
 msgstr "Nissune descrizion furnide."
 
-#: plugins/copr.py:406
+#: plugins/copr.py:410
 msgid "Safe and good answer. Exiting."
 msgstr "Rispueste buine e sigure. Si jes."
 
-#: plugins/copr.py:413
+#: plugins/copr.py:417
 msgid "This command has to be run under the root user."
 msgstr "Si à di eseguî chest comant come utent root."
 
-#: plugins/copr.py:477
+#: plugins/copr.py:481
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Chest repository nol à ancjemò nissune costruzion, duncje no si pues "
 "abilitâlu pal moment."
 
-#: plugins/copr.py:480
+#: plugins/copr.py:484
 msgid "Such repository does not exist."
 msgstr "Chel repository nol esist."
 
-#: plugins/copr.py:524
+#: plugins/copr.py:528
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -439,46 +439,46 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:545
+#: plugins/copr.py:549
 msgid "Do you want to keep them enabled?"
 msgstr ""
 
-#: plugins/copr.py:578
+#: plugins/copr.py:582
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "No si è rivâts a gjavâ il repository copr {0}/{1}/{2}"
 
-#: plugins/copr.py:589
+#: plugins/copr.py:593
 msgid "Failed to disable copr repo {}/{}"
 msgstr "No si è rivâts a disabilitâ il repository copr {}/{}"
 
-#: plugins/copr.py:607 plugins/copr.py:644
+#: plugins/copr.py:611 plugins/copr.py:648
 msgid "Unknown response from server."
 msgstr "Rispueste no cognossude dal servidôr."
 
-#: plugins/copr.py:629
+#: plugins/copr.py:633
 msgid "Interact with Playground repository."
 msgstr "Interagjìs cul repository Playground."
 
-#: plugins/copr.py:635
+#: plugins/copr.py:639
 #, fuzzy
 #| msgid "Interact with Playground repository."
 msgid "Enabling a Playground repository."
 msgstr "Interagjìs cul repository Playground."
 
-#: plugins/copr.py:636
+#: plugins/copr.py:640
 msgid "Do you want to continue?"
 msgstr ""
 
-#: plugins/copr.py:679
+#: plugins/copr.py:683
 msgid "Playground repositories successfully enabled."
 msgstr "Repository Playground abilitâts cun sucès."
 
-#: plugins/copr.py:682
+#: plugins/copr.py:686
 msgid "Playground repositories successfully disabled."
 msgstr "Repository Playground disabilitâts cun sucès."
 
-#: plugins/copr.py:686
+#: plugins/copr.py:690
 msgid "Playground repositories successfully updated."
 msgstr "Repository Playground inzornâts cun sucès."
 

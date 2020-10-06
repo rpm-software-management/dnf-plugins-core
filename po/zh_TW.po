@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-14 09:18-0400\n"
+"POT-Creation-Date: 2020-10-05 09:18-0400\n"
 "PO-Revision-Date: 2020-08-28 21:29+0000\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_TW/>\n"
@@ -348,59 +348,59 @@ msgstr "軟體庫成功停用。"
 msgid "Repository successfully removed."
 msgstr "軟體庫成功移除。"
 
-#: plugins/copr.py:284 plugins/copr.py:689
+#: plugins/copr.py:284 plugins/copr.py:693
 msgid "Unknown subcommand {}."
 msgstr "{} 子命令未知。"
 
-#: plugins/copr.py:337
+#: plugins/copr.py:341
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr "* 這些 Copr 包含可能沒有 Copr hub 資訊的舊格式 repo 檔案 — 已假設為預設 hub。請重新啟用專案以修正。"
 
-#: plugins/copr.py:349
+#: plugins/copr.py:353
 msgid "Can't parse repositories for username '{}'."
 msgstr "無法解析「{}」使用者名稱的軟體庫。"
 
-#: plugins/copr.py:352
+#: plugins/copr.py:356
 msgid "List of {} coprs"
 msgstr "{} Copr 清單"
 
-#: plugins/copr.py:360
+#: plugins/copr.py:364
 msgid "No description given"
 msgstr "沒有提供描述"
 
-#: plugins/copr.py:372
+#: plugins/copr.py:376
 msgid "Can't parse search for '{}'."
 msgstr "無法解析「{}」搜尋。"
 
-#: plugins/copr.py:375
+#: plugins/copr.py:379
 msgid "Matched: {}"
 msgstr "符合項目：{}"
 
-#: plugins/copr.py:383
+#: plugins/copr.py:387
 msgid "No description given."
 msgstr "沒有提供描述。"
 
-#: plugins/copr.py:406
+#: plugins/copr.py:410
 msgid "Safe and good answer. Exiting."
 msgstr "安全且更棒的回應。結束。"
 
-#: plugins/copr.py:413
+#: plugins/copr.py:417
 msgid "This command has to be run under the root user."
 msgstr "此命令必須在 root 使用者下執行"
 
-#: plugins/copr.py:477
+#: plugins/copr.py:481
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr "這個軟體庫尚無任何組建，所以您尚無法啟用。"
 
-#: plugins/copr.py:480
+#: plugins/copr.py:484
 msgid "Such repository does not exist."
 msgstr "不存在此軟體庫。"
 
-#: plugins/copr.py:524
+#: plugins/copr.py:528
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -417,44 +417,44 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:545
+#: plugins/copr.py:549
 msgid "Do you want to keep them enabled?"
 msgstr "是否保持啟用？"
 
-#: plugins/copr.py:578
+#: plugins/copr.py:582
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "無法移除 Copr 軟體庫 {0}/{1}/{2}"
 
-#: plugins/copr.py:589
+#: plugins/copr.py:593
 msgid "Failed to disable copr repo {}/{}"
 msgstr "無法停用 Copr 軟體庫 {}/{}"
 
-#: plugins/copr.py:607 plugins/copr.py:644
+#: plugins/copr.py:611 plugins/copr.py:648
 msgid "Unknown response from server."
 msgstr "未知的伺服器回應。"
 
-#: plugins/copr.py:629
+#: plugins/copr.py:633
 msgid "Interact with Playground repository."
 msgstr "與 Playground 軟體庫互動。"
 
-#: plugins/copr.py:635
+#: plugins/copr.py:639
 msgid "Enabling a Playground repository."
 msgstr "啟用 Playground 軟體庫。"
 
-#: plugins/copr.py:636
+#: plugins/copr.py:640
 msgid "Do you want to continue?"
 msgstr "是否繼續？"
 
-#: plugins/copr.py:679
+#: plugins/copr.py:683
 msgid "Playground repositories successfully enabled."
 msgstr "Playground 軟體庫成功啟用。"
 
-#: plugins/copr.py:682
+#: plugins/copr.py:686
 msgid "Playground repositories successfully disabled."
 msgstr "Playground 軟體庫成功停用。"
 
-#: plugins/copr.py:686
+#: plugins/copr.py:690
 msgid "Playground repositories successfully updated."
 msgstr "Playground 軟體庫成功更新。"
 
