@@ -566,5 +566,25 @@
     [
         1810123,
         "[RFE] Provide ability to add packages to the needs-restarting plugin configuration."
+    ],
+    [
+        1830530,
+        "request to re-introduce functionality - dnf [config-manager] --enable/disablerepo a-repo,b-repo,some*"
+    ],
+    [
+        1863433,
+        "dnf-plugins-core: FTBFS in Fedora rawhide/f33"
+    ],
+    [
+        1833074,
+        "reposync --newest-only does not download the latest package"
+    ],
+    [
+        1844533,
+        "yum debug-restore removes all but one kernel even though the dump has multiple kernels."
+    ],
+    [
+        1844925,
+        "when i execute \"dnf download\" failed i want to get return value 1 not 0 in shell."
     ]
 ]

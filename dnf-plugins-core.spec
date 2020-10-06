@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.17
+Version:        4.0.18
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -744,6 +744,18 @@ PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
 %endif
 
 %changelog
+* Tue Oct 06 2020 Nicola Sella <nsella@redhat.com> - 4.0.18-1
+- [needs-restarting] Fix plugin fail if needs-restarting.d does not exist
+- [needs-restarting] add kernel-rt to reboot list
+- Fix debug-restore command
+- [config-manager] enable/disable comma separated pkgs (RhBug:1830530)
+- [debug] Use standard demands.resolving for transaction handling
+- [debug] Do not remove install-only packages (RhBug:1844533)
+- return error when dnf download failed
+- README: Reference Fedora Weblate instead of Zanata
+- [reposync] Add latest NEVRAs per stream to download (RhBug: 1833074)
+- copr: don't try to list runtime dependencies
+
 * Wed Jun 10 2020 Nicola Sella <nsella@redhat.com> - 4.0.17-1
 - [repomanage] Add modular support (RhBug:1804720)
 - [needs-restarting] add options using .conf file (RhBug:1810123)

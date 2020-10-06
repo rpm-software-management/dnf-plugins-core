@@ -22,6 +22,32 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.18 Release Notes
+====================
+
+- [needs-restarting] Fix plugin fail if needs-restarting.d does not exist
+- [needs-restarting] add kernel-rt to reboot list
+- Fix debug-restore command
+- [config-manager] enable/disable comma separated pkgs (RhBug:1830530)
+- [debug] Use standard demands.resolving for transaction handling
+- [debug] Do not remove install-only packages (RhBug:1844533)
+- return error when dnf download failed
+- README: Reference Fedora Weblate instead of Zanata
+- [reposync] Add latest NEVRAs per stream to download (RhBug: 1833074)
+- copr: don't try to list runtime dependencies
+
+- Bug fixes:
+  - Bugs fixed (RhBug:1863433)
+
+Bugs fixed in 4.0.18:
+
+* :rhbug:`1830530`
+* :rhbug:`1863433`
+* :rhbug:`1833074`
+* :rhbug:`1844533`
+* :rhbug:`1844925`
+
+====================
 4.0.17 Release Notes
 ====================
 
