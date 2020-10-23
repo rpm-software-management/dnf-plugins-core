@@ -63,24 +63,24 @@ class RepoSyncCommand(dnf.cli.Command):
                             help=_('download only packages for this ARCH'))
         parser.add_argument('--delete', default=False, action='store_true',
                             help=_('delete local packages no longer present in repository'))
-        parser.add_argument('-m', '--downloadcomps', default=False, action='store_true',
-                            help=_('also download and uncompress comps.xml'))
         parser.add_argument('--download-metadata', default=False, action='store_true',
                             help=_('download all the metadata.'))
-        parser.add_argument('-n', '--newest-only', default=False, action='store_true',
-                            help=_('download only newest packages per-repo'))
-        parser.add_argument('-p', '--download-path', default='./',
-                            help=_('where to store downloaded repositories'))
-        parser.add_argument('--norepopath', default=False, action='store_true',
-                            help=_("Don't add the reponame to the download path."))
+        parser.add_argument('-m', '--downloadcomps', default=False, action='store_true',
+                            help=_('also download and uncompress comps.xml'))
         parser.add_argument('--metadata-path',
                             help=_('where to store downloaded repository metadata. '
                                    'Defaults to the value of --download-path.'))
-        parser.add_argument('--source', default=False, action='store_true',
-                            help=_('operate on source packages'))
+        parser.add_argument('-n', '--newest-only', default=False, action='store_true',
+                            help=_('download only newest packages per-repo'))
+        parser.add_argument('--norepopath', default=False, action='store_true',
+                            help=_("Don't add the reponame to the download path."))
+        parser.add_argument('-p', '--download-path', default='./',
+                            help=_('where to store downloaded repositories'))
         parser.add_argument('--remote-time', default=False, action='store_true',
                             help=_('try to set local timestamps of local files by '
                                    'the one on the server'))
+        parser.add_argument('--source', default=False, action='store_true',
+                            help=_('operate on source packages'))
         parser.add_argument('-u', '--urls', default=False, action='store_true',
                             help=_("Just list urls of what would be downloaded, "
                                    "don't download"))
