@@ -39,35 +39,35 @@ Options
 
 All general DNF options are accepted. Namely, the ``--repoid`` option can be used to specify the repositories to synchronize. See `Options` in :manpage:`dnf(8)` for details.
 
-``-p <download-path>, --download-path=<download-path>``
-    Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
-    
-``--norepopath``
-    Don't add the reponame to the download path. Can only be used when syncing a single repository (default is to add the reponame).
-
-``--download-metadata``
-    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it.
-
 ``-a <architecture>, --arch=<architecture>``
     Download only packages of given architectures (default is all architectures). Can be used multiple times.
-
-``--source``
-    Operate on source packages.
-
-``-m, --downloadcomps``
-    Also download and uncompress comps.xml. Consider using ``--download-metadata`` option which will download all available repository metadata.
-
-``-n, --newest-only``
-    Download only newest packages per-repo.
 
 ``--delete``
     Delete local packages no longer present in repository.
 
+``--download-metadata``
+    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it.
+
+``-m, --downloadcomps``
+    Also download and uncompress comps.xml. Consider using ``--download-metadata`` option which will download all available repository metadata.
+
 ``--metadata-path``
     Root path under which the downloaded metadata are stored. It defaults to ``--download-path`` value if not given.
 
+``-n, --newest-only``
+    Download only newest packages per-repo.
+
+``--norepopath``
+    Don't add the reponame to the download path. Can only be used when syncing a single repository (default is to add the reponame).
+
+``-p <download-path>, --download-path=<download-path>``
+    Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
+
 ``--remote-time``
     Try to set the timestamps of the downloaded files to those on the remote side.
+
+``--source``
+    Operate on source packages.
 
 ``-u, --urls``
     Just print urls of what would be downloaded, don't download.
