@@ -24,6 +24,7 @@ from __future__ import unicode_literals
 import hawkey
 import os
 import shutil
+import types
 
 from dnfpluginscore import _, logger
 from dnf.cli.option_parser import OptionParser
@@ -65,6 +66,9 @@ class RepoSyncCommand(dnf.cli.Command):
                             help=_('delete local packages no longer present in repository'))
         parser.add_argument('--download-metadata', default=False, action='store_true',
                             help=_('download all the metadata.'))
+        parser.add_argument('-g', '--gpgcheck', default=False, action='store_true',
+                            help=_('Remove packages that fail GPG signature checking '
+                                   'after downloading'))
         parser.add_argument('-m', '--downloadcomps', default=False, action='store_true',
                             help=_('also download and uncompress comps.xml'))
         parser.add_argument('--metadata-path',
@@ -114,6 +118,7 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def run(self):
         self.base.conf.keepcache = True
+        gpgcheck_ok = True
         for repo in self.base.repos.iter_enabled():
             if self.opts.remote_time:
                 repo._repo.setPreserveRemoteTime(True)
@@ -150,8 +155,24 @@ class RepoSyncCommand(dnf.cli.Command):
                 self.print_urls(pkglist)
             else:
                 self.download_packages(pkglist)
+                if self.opts.gpgcheck:
+                    for pkg in pkglist:
+                        local_path = self.pkg_download_path(pkg)
+                        # base.package_signature_check uses pkg.localPkg() to determine
+                        # the location of the package rpm file on the disk.
+                        # Set it to the correct download path.
+                        pkg.localPkg  = types.MethodType(
+                            lambda s, local_path=local_path: local_path, pkg)
+                        result, error = self.base.package_signature_check(pkg)
+                        if result != 0:
+                            logger.warning(_("Removing {}: {}").format(
+                                os.path.basename(local_path), error))
+                            os.unlink(local_path)
+                            gpgcheck_ok = False
             if self.opts.delete:
                 self.delete_old_local_packages(repo, pkglist)
+        if not gpgcheck_ok:
+            raise dnf.exceptions.Error(_("GPG signature check failed."))
 
     def repo_target(self, repo):
         return _pkgdir(self.opts.destdir or self.opts.download_path,
