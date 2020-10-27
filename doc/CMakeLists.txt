@@ -26,6 +26,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-debuginfo-install.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-download.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-generate_completion_cache.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-groups-manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-leaves.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-needs-restarting.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repoclosure.8
@@ -61,6 +62,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-config-manager.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-debug-dump.1
     ${CMAKE_CURRENT_BINARY_DIR}/yum-debug-restore.1
+    ${CMAKE_CURRENT_BINARY_DIR}/yum-groups-manager.1
     ${CMAKE_CURRENT_BINARY_DIR}/yumdownloader.1
     ${CMAKE_CURRENT_BINARY_DIR}/package-cleanup.1
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-utils.1
