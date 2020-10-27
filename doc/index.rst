@@ -33,6 +33,7 @@ This documents core plugins of DNF:
    debuginfo-install
    download
    generate_completion_cache
+   groups-manager
    leaves
    local
    migrate
