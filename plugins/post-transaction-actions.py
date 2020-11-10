@@ -117,7 +117,7 @@ class PostTransactionActions(dnf.Plugin):
                 out_ts_items.append(ts_item)
             all_ts_items.append(ts_item)
 
-        commands_to_run = set()
+        commands_to_run = []
         for (a_key, a_state, a_command) in action_tuples:
             if a_state == "in":
                 ts_items = in_ts_items
@@ -141,7 +141,11 @@ class PostTransactionActions(dnf.Plugin):
                                 if tsi.pkg == pkg and tsi.pkg.reponame == pkg.reponame]
                 ts_item = ts_item_list[0]
                 command = self._replace_vars(ts_item, a_command)
-                commands_to_run.add(command)
+                commands_to_run.append(command)
+
+        # de-dup the list
+        seen = set()
+        commands_to_run = [x for x in commands_to_run if x not in seen and not seen.add(x)]
 
         for command in commands_to_run:
             try:

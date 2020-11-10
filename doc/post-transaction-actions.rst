@@ -76,7 +76,12 @@ Each non-comment line defines an action and consists of three items separated by
    The shell command will be evaluated for each package that matched the ``package_filter`` and
    the ``transaction_state``. However, after variable substitution, any duplicate commands will be
    removed and each command will only be executed once per transaction. The order of execution
-   of the commands may differ from the order of packages in the transaction.
+   of the commands follows the order in the action files, but may differ from the order of
+   packages in the transaction.  In other words, when you define several action lines for the
+   same ``package_filter`` these lines will be executed in the order they were defined in the
+   action file when the ``package_filter`` matches a package during the ``trasaction_state`` state.
+   However, the order of when a particular ``package_filter`` is invoked depends on the position
+   of the corresponding package in the transaction.
 
 An example action file:
 ^^^^^^^^^^^^^^^^^^^^^^^
