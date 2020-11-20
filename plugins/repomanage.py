@@ -71,8 +71,11 @@ class RepoManageCommand(dnf.cli.Command):
             raise dnf.exceptions.Error(_("No files to process"))
 
         try:
-            this_repo = self.base.repos.add_new_repo("repomanage_repo", self.base.conf, baseurl=[self.opts.path])
-            self.base._add_repo_to_sack(this_repo)
+            repo_conf = self.base.repos.add_new_repo("repomanage_repo", self.base.conf, baseurl=[self.opts.path])
+            # Always expire the repo, otherwise repomanage could use cached metadata and give identical results
+            # for multiple runs even if the actual repo changed in the meantime
+            repo_conf._repo.expire()
+            self.base._add_repo_to_sack(repo_conf)
             if dnf.base.WITH_MODULES:
                 self.base._setup_modular_excludes()
 
