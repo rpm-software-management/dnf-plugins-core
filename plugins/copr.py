@@ -223,8 +223,15 @@ class CoprCommand(dnf.cli.Command):
                   'copr command are required'))
         try:
             chroot = self.opts.arg[1]
+            if len(self.opts.arg) > 2:
+                raise dnf.exceptions.Error(_('Too many arguments.'))
+            self.chroot_parts = chroot.split("-")
+            if len(self.chroot_parts) < 3:
+                raise dnf.exceptions.Error(_('Bad format of optional chroot. The format is '
+                                             'distribution-version-architecture.'))
         except IndexError:
             chroot = self._guess_chroot()
+            self.chroot_parts = chroot.split("-")
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "search":
@@ -267,7 +274,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
                                 copr_projectname])
             msg = "Do you really want to enable {0}?".format(project)
             self._ask_user(info, msg)
-            self._download_repo(project_name, repo_filename, chroot)
+            self._download_repo(project_name, repo_filename)
             logger.info(_("Repository successfully enabled."))
             self._runtime_deps_warning(copr_username, copr_projectname)
         elif subcommand == "disable":
@@ -453,11 +460,9 @@ Bugzilla. In case of problems, contact the owner of this repository.
             chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         return chroot
 
-    def _download_repo(self, project_name, repo_filename, chroot=None):
-        if chroot is None:
-            chroot = self._guess_chroot()
-        short_chroot = '-'.join(chroot.split('-')[:2])
-        arch = chroot.split('-')[2]
+    def _download_repo(self, project_name, repo_filename):
+        short_chroot = '-'.join(self.chroot_parts[:-1])
+        arch = self.chroot_parts[-1]
         api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
 
         try:
@@ -660,7 +665,7 @@ class PlaygroundCommand(CoprCommand):
                 f.close()
                 if (output2 and ("output" in output2)
                         and (output2["output"] == "ok")):
-                    self._download_repo(project_name, repo_filename, chroot)
+                    self._download_repo(project_name, repo_filename)
             except dnf.exceptions.Error:
                 # likely 404 and that repo does not exist
                 pass
