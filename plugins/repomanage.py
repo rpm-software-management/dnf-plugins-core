@@ -133,7 +133,7 @@ class RepoManageCommand(dnf.cli.Command):
 
             # modular packages
             for streams_by_version in module_dict.values():
-                sorted_stream_versions = sorted(streams_by_version.keys(), reverse=True)
+                sorted_stream_versions = sorted(streams_by_version.keys())
 
                 new_sorted_stream_versions = sorted_stream_versions[-keepnum:]
 
@@ -156,7 +156,7 @@ class RepoManageCommand(dnf.cli.Command):
 
             # modular packages
             for streams_by_version in module_dict.values():
-                sorted_stream_versions = sorted(streams_by_version.keys(), reverse=True)
+                sorted_stream_versions = sorted(streams_by_version.keys())
 
                 old_sorted_stream_versions = sorted_stream_versions[:-keepnum]
 
