@@ -218,7 +218,10 @@ class RepoSyncCommand(dnf.cli.Command):
             dest_path = self.metadata_target(repo)
             dnf.util.ensure_dir(dest_path)
             dest = os.path.join(dest_path, 'comps.xml')
-            dnf.yum.misc.decompress(comps_fn, dest=dest)
+            if dnf.yum.misc.decompress(comps_fn, dest=dest) == comps_fn:
+                # in case the comps_fn is plain xml (not compressed) the decompress()
+                # method will not copy the file but just return the original path
+                shutil.copyfile(comps_fn, dest)
             logger.info(_("comps.xml for repository %s saved"), repo.id)
 
     def download_metadata(self, repo):
