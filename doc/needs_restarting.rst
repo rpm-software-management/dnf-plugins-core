@@ -51,3 +51,21 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 
 ``-s, --services``
     Only list the affected systemd services.
+
+-------------
+Configuration
+-------------
+
+``/etc/dnf/plugins/needs-restarting.d/``
+
+``/etc/dnf/plugins/needs-restarting.d/pkgname.conf``
+
+Packages can be added to ``needs-restarting`` via conf files in config
+directory. Config files need to have ``.conf`` extension or will be ignored.
+
+More than one package is allowed in each file (one package per line) although
+it is advised to use one file for each package.
+
+Example::
+
+        echo "dwm" > /etc/dnf/plugins/needs-restarting.d/dwm.conf
