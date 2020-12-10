@@ -37,39 +37,10 @@ class BashCompletionCache(dnf.Plugin):
     def _out(msg):
         logger.debug('Completion plugin: %s', msg)
 
-    def sack(self):
-        ''' Generate cache of available packages '''
-        # We generate this cache only if the repos were just freshed or if the
-        # cache file doesn't exist
-
-        fresh = False
-        for repo in self.base.repos.iter_enabled():
-            if repo.metadata is not None and repo.metadata.fresh:
-                # One fresh repo is enough to cause a regen of the cache
-                fresh = True
-                break
-
-        if not os.path.exists(self.cache_file) or fresh:
-            try:
-                with sqlite3.connect(self.cache_file) as conn:
-                    self._out('Generating completion cache...')
-                    cur = conn.cursor()
-                    cur.execute(
-                        "create table if not exists available (pkg TEXT)")
-                    cur.execute(
-                        "create unique index if not exists "
-                        "pkg_available ON available(pkg)")
-                    cur.execute("delete from available")
-                    avail_pkgs = self.base.sack.query().available()
-                    avail_pkgs_insert = [[str(x)] for x in avail_pkgs if x.arch != "src"]
-                    cur.executemany("insert or ignore into available values (?)",
-                                    avail_pkgs_insert)
-                    conn.commit()
-            except sqlite3.OperationalError as e:
-                self._out("Can't write completion cache: %s" % ucd(e))
-
     def transaction(self):
-        ''' Generate cache of installed packages '''
+        ''' Generate cache of packages '''
+        if self.base.conf.installroot != "/":
+            return
         if not self.transaction:
             return
 
@@ -82,10 +53,20 @@ class BashCompletionCache(dnf.Plugin):
                     "create unique index if not exists "
                     "pkg_installed ON installed(pkg)")
                 cur.execute("delete from installed")
+                cur.execute("create table if not exists available (pkg TEXT)")
+                cur.execute("create unique index if not exists pkg_available ON available(pkg)")
+
                 inst_pkgs = dnf.sack._rpmdb_sack(self.base).query().installed()
-                inst_pkgs_insert = [[str(x)] for x in inst_pkgs if x.arch != "src"]
-                cur.executemany("insert or ignore into installed values (?)",
-                                inst_pkgs_insert)
+                inst_pkgs.filterm(arch__neq=['nosrc', 'src'])
+                inst_pkgs_insert = [[x.name] for x in inst_pkgs]
+                cur.executemany("insert or ignore into installed values (?)", inst_pkgs_insert)
+
+                avail_pkgs = self.base.sack.query().available().filterm(arch__neq=['nosrc', 'src'])
+                # for remove command there are no available package => do not update the database
+                if avail_pkgs:
+                    cur.execute("delete from available")
+                    avail_pkgs_insert = [[x.name] for x in avail_pkgs]
+                    cur.executemany("insert or ignore into available values (?)", avail_pkgs_insert)
                 conn.commit()
         except sqlite3.OperationalError as e:
             self._out("Can't write completion cache: %s" % ucd(e))
