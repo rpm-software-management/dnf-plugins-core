@@ -479,10 +479,14 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 
 %check
 %if %{with python2}
-PYTHONPATH=./plugins nosetests-%{python2_version} -s tests/
+    pushd build-py2
+    ctest -VV
+    popd
 %endif
 %if %{with python3}
-PYTHONPATH=./plugins nosetests-%{python3_version} -s tests/
+    pushd build-py3
+    ctest -VV
+    popd
 %endif
 
 %files
