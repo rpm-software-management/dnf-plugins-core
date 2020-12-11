@@ -59,6 +59,10 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``--repo <repoid>``
     Specify repo ids to query, can be specified multiple times (default is all enabled).
 
+``--output``
+    Store problems in file at provided path in JSON. In case that file already exists it asks for
+    overwrite.
+
 
 --------
 Examples

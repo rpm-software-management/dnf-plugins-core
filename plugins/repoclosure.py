@@ -26,6 +26,9 @@ from dnfpluginscore import _
 import dnf.cli
 import hawkey
 
+import json
+import os.path
+
 
 class RepoClosure(dnf.Plugin):
 
@@ -63,12 +66,19 @@ class RepoClosureCommand(dnf.cli.Command):
                 self._report_unresolved_modules_to_terminal(broken_module_dict)
             problem = self._analyze_modular_combinations(
                 arch, combinations, base_query, module_dict, non_modular)
+            if broken_module_dict:
+                problem["broken_modular_dependencies"] = broken_module_dict
+            self._report_results_to_json(problem)
             if problem or broken_module_dict:
                 self._raise_unresolved_dependencies()
         else:
             unresolved = self._get_unresolved(arch, self.base.sack.query().available(),
                                               self.base.sack.query().available())
             self._report_results_to_terminal(unresolved)
+            problem_dict = {}
+            problem_dict.setdefault("non_modular", {})["non_modular"] = \
+                self._convert_unresolved_to_string_dict(unresolved)
+            self._report_results_to_json(problem_dict)
             if unresolved:
                 self._raise_unresolved_dependencies()
 
@@ -120,13 +130,13 @@ class RepoClosureCommand(dnf.cli.Command):
         """
         It is required for storage in json where package object hawkey,dep cannot be used
         :param unresolved:
-        :return: {str(pkg): set(str(dep))}
+        :return: {str(pkg): [str(dep)]}
         """
         converted_data = {}
         for pkg, deps in unresolved.items():
-            new_deps = converted_data.setdefault(str(pkg), set())
+            new_deps = converted_data.setdefault(str(pkg), [])
             for dep in deps:
-                new_deps.add(str(dep))
+                new_deps.append(str(dep))
         return converted_data
 
     def _get_module_combinations(self, module_substream_string_list):
@@ -137,9 +147,9 @@ class RepoClosureCommand(dnf.cli.Command):
                 [module_stream_dep], module_substream_string_list)
             if broken:
                 for key, value in broken.items():
-                    broken_module_stream_dep.setdefault(key, set()).update(value)
+                    broken_module_stream_dep.setdefault(key, []).extend(value)
             if conflicts:
-                broken_module_stream_dep.setdefault(module_stream_dep, set()).update(conflicts)
+                broken_module_stream_dep.setdefault(module_stream_dep, []).extend(conflicts)
             if found:
                 dependent_combinations.extend(found)
         return dependent_combinations, broken_module_stream_dep
@@ -327,6 +337,28 @@ class RepoClosureCommand(dnf.cli.Command):
             for dep in unresolved[module]:
                 print("    {}".format(dep))
 
+    def _report_results_to_json(self, unresolved):
+        if self.opts.output is None:
+            return
+        try:
+            # it is absolutely possible for both assumeyes and assumeno to be True, go figure
+            if (self.base.conf.assumeno or not self.base.conf.assumeyes) and os.path.isfile(
+                    self.opts.output):
+                msg = _("{} exists, overwrite?").format(self.opts.output)
+                if self.base.conf.assumeno or not self.base.output.userconfirm(
+                        msg='\n{} [y/N]: '.format(msg), defaultyes_msg='\n{} [Y/n]: '.format(msg)):
+                    print(_("Not overwriting {}, exiting.").format(self.opts.output))
+                    return
+
+            with open(self.opts.output, "w") as f:
+                json.dump(unresolved, f, indent=4, sort_keys=True)
+                f.write("\n")
+
+            print(_("Problems saved to {}.").format(self.opts.output))
+
+        except OSError as e:
+            raise dnf.cli.CliError(_('Error storing transaction: {}').format(str(e)))
+
     @staticmethod
     def _raise_unresolved_dependencies():
         msg = _("Repoclosure ended with unresolved dependencies.")
@@ -427,3 +459,5 @@ class RepoClosureCommand(dnf.cli.Command):
         parser.add_argument("--pkg", default=[], action="append",
                             help=_("Check closure for this package only"),
                             dest="pkglist")
+        parser.add_argument("-o", "--output", default=None,
+                            help=_("File path to store problems in JSON"))
