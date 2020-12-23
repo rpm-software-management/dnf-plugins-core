@@ -34,6 +34,7 @@ import os
 import rpm
 import shutil
 import tempfile
+import subprocess
 
 
 @dnf.plugin.register_command
@@ -204,13 +205,42 @@ class BuildDepCommand(dnf.cli.Command):
             err = _("Not all dependencies satisfied")
             raise dnf.exceptions.Error(err)
 
+    def _preprocess_spec(self, input_path):
+        # run preproc-rpmspec to get preprocessed spec file text
+        #
+        # --check-context enables preprocessing only if it is explicitly
+        #   allowed by rpkg configuration in the spec file's directory
+        #   and git repo context, ! otherwise original text is output !
+        # --no-outdir disables dynamic source generation
+        cmd = ['preproc-rpmspec', '--check-context', '--no-outdir', input_path]
+
+        process = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        (out, err) = process.communicate()
+
+        if process.returncode != 0:
+            raise dnf.exceptions.Error("Could not preprocess spec file at {} with error:\n{}"
+                                       .format(input_path, err.decode('utf-8')))
+
+        return out.decode('utf-8')
+
     def _spec_deps(self, spec_fn):
+        temp = tempfile.NamedTemporaryFile("w", delete=False)
+        preprocessed_text = self._preprocess_spec(spec_fn)
+        temp.write(preprocessed_text)
+        temp.close()
+        spec_file = temp.name
+
         try:
-            spec = rpm.spec(spec_fn)
+            spec = rpm.spec(spec_file)
         except ValueError as ex:
             msg = _("Failed to open: '%s', not a valid spec file: %s") % (
                     spec_fn, ex)
             raise dnf.exceptions.Error(msg)
+        finally:
+            os.remove(temp.name)
+
         done = True
         for dep in rpm.ds(spec.sourceHeader, 'requires'):
             reldep_str = self._rpm_dep2reldep_str(dep)

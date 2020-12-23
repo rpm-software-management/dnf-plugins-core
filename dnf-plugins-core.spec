@@ -42,6 +42,11 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
+
+%if 0%{?rhel} > 7 || 0%{?fedora}
+Recommends:     preproc-rpmspec >= 1.2
+%endif
+
 # Documentation
 %if %{with python3}
 BuildRequires:  %{_bindir}/sphinx-build-3
