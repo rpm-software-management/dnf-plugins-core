@@ -58,7 +58,7 @@ class RepoClosureCommand(dnf.cli.Command):
 
     def run(self):
         arch = self.opts.arches if self.opts.arches else None
-        if self.opts.modules:
+        if self.opts.modules or self.opts.modules_with_defaults:
             module_dict, base_query, non_modular = self._prepare_module_data()
             module_string_list = sorted(module_dict.keys())
             combinations, broken_module_dict = self._get_module_combinations(module_string_list)
@@ -82,20 +82,70 @@ class RepoClosureCommand(dnf.cli.Command):
             if unresolved:
                 self._raise_unresolved_dependencies()
 
+    def _get_all_module_names(self):
+        all_module_names = set()
+        for module in self.base._moduleContainer.getModulePackages():
+            all_module_names.add(module.getName())
+        return all_module_names
+
+    def _get_default_substrings(self, combination, all_module_names):
+        for name in all_module_names:
+            self.base._moduleContainer.reset(name, False)
+        for module_substream_string in combination:
+            name, stream, __ = module_substream_string.split(":", 2)
+            self.base._moduleContainer.enable(name, stream, False)
+        #  TODO How to handle problems? Only problems with default are allowed
+        problems = self.base._moduleContainer.resolveActiveModulePackages(False)
+        default_substrings = set()
+        for module in self.base._moduleContainer.getModulePackages():
+            if not self.base._moduleContainer.isModuleActive(module):
+                continue
+            if self.base._moduleContainer.isEnabled(module):
+                #  Only requested modules in combination are enabled, skipping
+                continue
+            default_substrings.add(self._get_module_stream_requires_string(module))
+        return default_substrings
+
     def _analyze_modular_combinations(self, arch, combinations, query, module_dict, non_modular):
         problem = {}  # {test_name: {module_combination: unresolved_dict}}
         error_msg = _("Problems in non modular packages")
-        self._analyze_modular_packages(problem, arch, non_modular, non_modular, error_msg, "non_modular", "non_modular")
+        non_modular_data = non_modular
+        all_module_names = None
+        if self.opts.modules_with_defaults:
+            # Add also modules defaults to test set
+            all_module_names = self._get_all_module_names()
+            include_default_query = query.filter(empty=True)
+            exclude_name_query = query.filter(empty=True)
+            for default_string in self._get_default_substrings([], all_module_names):
+                artifacts, include, exclude = module_dict[default_string]
+                include_default_query = include_default_query.union(include)
+                exclude_name_query = exclude_name_query.union(exclude)
+            non_modular_data = non_modular_data.filter(pkg__neq=exclude_name_query)
+            non_modular_data = non_modular_data.union(include_default_query)
+
+        self._analyze_modular_packages(
+            problem, arch, non_modular_data, non_modular_data, error_msg, "non_modular",
+            "non_modular")
         whatrequires_dict = {}  # {pkg: query}
         for combination in combinations:
             include_query = query.filter(empty=True)
+            include_default_query = query.filter(empty=True)
             exclude_name_query = query.filter(empty=True)
             for module_substream_string in combination:
                 artifacts, include, exclude = module_dict[module_substream_string]
                 include_query = include_query.union(include)
                 exclude_name_query = exclude_name_query.union(exclude)
-            test_query = non_modular.union(include_query).filterm(
-                pkg__neq=exclude_name_query)
+            if self.opts.modules_with_defaults:
+                # Add also modules defaults to test set
+                for default_string in self._get_default_substrings(combination, all_module_names):
+                    artifacts, include, exclude = module_dict[default_string]
+                    include_default_query = include_default_query.union(include)
+                    exclude_name_query = exclude_name_query.union(exclude)
+
+            test_query = non_modular.filter(pkg__neq=exclude_name_query).union(include_query)
+            if self.opts.modules_with_defaults:
+                test_query = test_query.union(include_default_query)
+
             to_check = include_query
             combination_string = " ".join(combination)
             error_msg = _("Unresolved dependencies for modular packages in module combination: "
@@ -109,6 +159,7 @@ class RepoClosureCommand(dnf.cli.Command):
                     pkg, query.filter(requires=[pkg]))
                 to_check = to_check.union(whatrequires)
             to_check.filterm(pkg__neq=exclude_name_query)
+            to_check = to_check.intersection(test_query)
             error_msg = _("Problems in non modular packages caused by module combination: "
                           "'{}'").format(combination_string)
             #  search for problems with non modular packages caused by module combinations
@@ -266,6 +317,10 @@ class RepoClosureCommand(dnf.cli.Command):
                 break
         return combinations
 
+    def _get_module_stream_requires_string(self, module):
+        return "{}:{}:{}".format(
+            module.getName(), module.getStream(), self.get_requires_as_string(module))
+
     def _prepare_module_data(self):
         """
         :return: {module_substream_string: [artifacts, include_query, exclude_query]}},
@@ -280,8 +335,7 @@ class RepoClosureCommand(dnf.cli.Command):
         for module in modules:
             artifacts = module.getArtifacts()
             all_artifacts.update(artifacts)
-            module_substream_string = "{}:{}:{}".format(
-                module.getName(), module.getStream(), self.get_requires_as_string(module))
+            module_substream_string = self._get_module_stream_requires_string(module)
             module_dict.setdefault(module_substream_string, [set(), None, None])[0].update(
                 artifacts)
 
@@ -451,8 +505,12 @@ class RepoClosureCommand(dnf.cli.Command):
                                    "specified multiple times"))
         parser.add_argument("--check", default=[], action="append",
                             help=_("Specify repositories to check"))
-        parser.add_argument("--modules", action="store_true",
-                            help=_("Check all modular and nomodular content"))
+        modules_group = parser.add_mutually_exclusive_group()
+        modules_group.add_argument("--modules", action="store_true",
+                                   help=_("Check all modular and nomodular content"))
+        modules_group.add_argument("--modules-with-defaults", action="store_true",
+                                   help=_("Check all modular and nomodular content, tests include "
+                                          "default modules"))
         parser.add_argument("-n", "--newest", action="store_true",
                             help=_("Check only the newest packages in the "
                                    "repos"))
