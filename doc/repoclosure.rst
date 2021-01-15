@@ -50,6 +50,14 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``--check <repoid>``
     Specify repo ids to check, can be specified multiple times (default is all enabled).
 
+``--modules``
+    Check all modular and nomodular content. It tests each module with modular dependencies and
+    reports. It also predict broken dependencies caused by modular filterring
+
+``--modules-with-defaults``
+    Check all modular and nomodular content, like with ``--modules``, but tests include default
+    modules.
+
 ``--newest``
     Check only the newest packages in the repos.
 
