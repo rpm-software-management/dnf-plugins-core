@@ -341,12 +341,15 @@ class RepoClosureCommand(dnf.cli.Command):
 
         query = self.base.sack.query(flags=hawkey.IGNORE_MODULAR_EXCLUDES).available().apply()
         non_modular = query.filter(pkg__neq=query.filter(nevra_strict=all_artifacts)).apply()
-
+        src_arches = {'src', 'nosrc'}
         for list_elements in module_dict.values():
             list_elements[1] = query.filter(nevra_strict=list_elements[0]).apply()
             names = set()
             for nevra_spec in list_elements[0]:
-                names.add(nevra_spec.rsplit("-", 2)[0])
+                nevra_splitted = nevra_spec.rsplit("-", 2)
+                arch = nevra_splitted[2].rsplit(".", 1)[1]
+                if arch not in src_arches:
+                    names.add(nevra_splitted[0])
             list_elements[2] = non_modular.filter(name=names).apply()
 
         return module_dict, query, non_modular
