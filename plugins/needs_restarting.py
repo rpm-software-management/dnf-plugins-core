@@ -199,11 +199,7 @@ class ProcessStart(object):
 
     @staticmethod
     def get_boot_time():
-        with open('/proc/stat') as stat_file:
-            for line in stat_file.readlines():
-                if not line.startswith('btime '):
-                    continue
-                return int(line[len('btime '):].strip())
+        return int(os.stat('/proc/1/cmdline').st_mtime)
 
     @staticmethod
     def get_sc_clk_tck():
