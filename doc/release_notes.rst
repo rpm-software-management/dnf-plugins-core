@@ -22,6 +22,34 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.19 Release Notes
+====================
+
+- copr: allow only 2 arguments with copr enable command
+- [needs-restarting] fix -r in nspawn containers (RhBug:1913962,1914251)
+- Add --gpgcheck option to reposync (RhBug:1856818) (RhBug:1856818)
+- Re-introduce yum-groups-manager functionality (RhBug:1826016)
+- [repomanage] Don't use cached metadata (RhBug:1899852)
+- [needs-restarting] add -s to list services (RhBug:1772939) (RhBug:1772939)
+
+- New features:
+  - Add --gpgcheck option to reposync (RhBug:1856818) (RhBug:1856818)
+  - Re-introduce yum-groups-manager functionality (RhBug:1826016)
+
+- Bug fixes:
+  - [repomanage] Don't use cached metadata (RhBug:1899852)
+  - [repomanage] Fix ordering of modular stream versions
+  - [needs-restarting] add -s to list services (RhBug:1772939) (RhBug:1772939)
+
+Bugs fixed in 4.0.19:
+
+* :rhbug:`1913962`
+* :rhbug:`1772939`
+* :rhbug:`1914251`
+* :rhbug:`1899852`
+* :rhbug:`1856818`
+
+====================
 4.0.18 Release Notes
 ====================
 

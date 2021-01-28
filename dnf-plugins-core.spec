@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.18
+Version:        4.0.19
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -766,6 +766,14 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Thu Jan 28 2021 Nicola Sella <nsella@redhat.com> - 4.0.19-1
+- copr: allow only 2 arguments with copr enable command
+- [needs-restarting] fix -r in nspawn containers (RhBug:1913962,1914251)
+- Add --gpgcheck option to reposync (RhBug:1856818) (RhBug:1856818)
+- Re-introduce yum-groups-manager functionality (RhBug:1826016)
+- [repomanage] Don't use cached metadata (RhBug:1899852)
+- [needs-restarting] add -s to list services (RhBug:1772939) (RhBug:1772939)
+
 * Tue Oct 06 2020 Nicola Sella <nsella@redhat.com> - 4.0.18-1
 - [needs-restarting] Fix plugin fail if needs-restarting.d does not exist
 - [needs-restarting] add kernel-rt to reboot list

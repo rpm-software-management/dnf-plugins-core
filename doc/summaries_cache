@@ -586,5 +586,25 @@
     [
         1844925,
         "when i execute \"dnf download\" failed i want to get return value 1 not 0 in shell."
+    ],
+    [
+        1913962,
+        "\"dnf needs-restarting -r\" work incorrectly inside systemd-nspawn containers"
+    ],
+    [
+        1772939,
+        "For \"needs-restarting\" command.  re-Include option (-s --services  --  \"List the affected systemd services only.\")"
+    ],
+    [
+        1914251,
+        "\"dnf needs-restarting -r\" work incorrectly inside systemd-nspawn containers"
+    ],
+    [
+        1899852,
+        "repomanage is broken, reports not existing packages"
+    ],
+    [
+        1856818,
+        "[RFE] add gpgcheck back to reposync"
     ]
 ]
