@@ -68,6 +68,9 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``--resolve``
     Resolves dependencies of specified packages and downloads missing dependencies in the system.
 
+``--alldeps``
+    When used with ``--resolve``, download all dependencies (do not skip already installed ones).
+
 --------
 Examples
 --------
