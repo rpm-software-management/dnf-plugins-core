@@ -28,6 +28,7 @@ import hawkey
 import os
 import tempfile
 import time
+import warnings
 
 NOT_READABLE = _('Unable to read version lock configuration: %s')
 NO_LOCKLIST = _('Locklist not set')
@@ -119,9 +120,10 @@ class VersionLock(dnf.Plugin):
         if excludes_query:
             self.base.sack.add_excludes(excludes_query)
 
-EXC_CMDS = ['exclude', 'add-!', 'add!', 'blacklist']
+EXC_CMDS = ['exclude', 'add-!', 'add!']
 DEL_CMDS = ['delete', 'del']
-ALL_CMDS = ['add', 'clear', 'list'] + EXC_CMDS + DEL_CMDS
+DEP_EXC_CMDS = ['blacklist']
+ALL_CMDS = ['add', 'clear', 'list'] + EXC_CMDS + DEL_CMDS + DEP_EXC_CMDS
 
 
 class VersionLockCommand(dnf.cli.Command):
@@ -151,6 +153,11 @@ class VersionLockCommand(dnf.cli.Command):
                 cmd = 'add'
                 self.opts.package.insert(0, self.opts.subcommand)
             elif self.opts.subcommand in EXC_CMDS:
+                cmd = 'exclude'
+            elif self.opts.subcommand in DEP_EXC_CMDS:
+                msg = _("Subcommand '{}' is deprecated. Use 'exclude' subcommand instead.").format(
+                    self.opts.subcommand)
+                warnings.warn(msg, dnf.exceptions.DeprecationWarning, stacklevel=2)
                 cmd = 'exclude'
             elif self.opts.subcommand in DEL_CMDS:
                 cmd = 'delete'
