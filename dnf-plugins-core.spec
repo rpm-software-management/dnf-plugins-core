@@ -100,10 +100,8 @@ Summary:        Core Plugins for DNF
 BuildRequires:  python2-dnf >= %{dnf_lowest_compatible}
 %if 0%{?rhel} && 0%{?rhel} <= 7
 BuildRequires:  dbus-python
-BuildRequires:  python-nose
 %else
 BuildRequires:  python2-dbus
-BuildRequires:  python2-nose
 %endif
 BuildRequires:  python2-devel
 %if 0%{?fedora}
@@ -147,7 +145,6 @@ Summary:    Core Plugins for DNF
 BuildRequires:  python3-dbus
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
-BuildRequires:  python3-nose
 %if 0%{?fedora}
 Requires:       python3-distro
 %endif
