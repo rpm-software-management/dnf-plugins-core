@@ -84,7 +84,7 @@ class RepoSyncCommand(dnf.cli.Command):
                             help=_('try to set local timestamps of local files by '
                                    'the one on the server'))
         parser.add_argument('--source', default=False, action='store_true',
-                            help=_('operate on source packages'))
+                            help=_('download only source packages'))
         parser.add_argument('-u', '--urls', default=False, action='store_true',
                             help=_("Just list urls of what would be downloaded, "
                                    "don't download"))

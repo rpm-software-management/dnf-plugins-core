@@ -71,7 +71,7 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
     Try to set the timestamps of the downloaded files to those on the remote side.
 
 ``--source``
-    Operate on source packages.
+    Download only source packages.
 
 ``-u, --urls``
     Just print urls of what would be downloaded, don't download.
