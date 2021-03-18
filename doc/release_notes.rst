@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.20 Release Notes
+====================
+- Bug fixes:
+  - Removed dependency on dnf.yum.misc.Checksum class (RhBug:1935465)
+
+Bugs fixed in 4.0.20:
+
+* :rhbug:`1935465`
+
+====================
 4.0.19 Release Notes
 ====================
 
