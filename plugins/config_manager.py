@@ -25,6 +25,7 @@ import dnf.cli
 import dnf.pycomp
 import dnf.util
 import fnmatch
+import hashlib
 import os
 import re
 import shutil
@@ -253,8 +254,8 @@ def sanitize_url_to_fs(url):
     if len(url) > 250:
         parts = url[:185].split('_')
         lastindex = 185-len(parts[-1])
-        csum = dnf.yum.misc.Checksums(['sha256'])
-        csum.update(url[lastindex:])
+        csum = hashlib.sha256()
+        csum.update(url[lastindex:].encode('utf-8'))
         url = url[:lastindex] + '_' + csum.hexdigest()
     # remove all not allowed characters
     allowed_regex = "[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.:-]"
