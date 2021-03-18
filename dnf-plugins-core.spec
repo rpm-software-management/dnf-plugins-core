@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.19
+Version:        4.0.20
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -763,6 +763,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Thu Mar 18 2021 Matthew Almond <malmond@fb.com> - 4.0.20-1
+- Removed dependency on dnf.yum.misc.Checksum class (RhBug:1935465)
+
 * Thu Jan 28 2021 Nicola Sella <nsella@redhat.com> - 4.0.19-1
 - copr: allow only 2 arguments with copr enable command
 - [needs-restarting] fix -r in nspawn containers (RhBug:1913962,1914251)
