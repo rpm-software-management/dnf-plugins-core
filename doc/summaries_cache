@@ -606,5 +606,13 @@
     [
         1856818,
         "[RFE] add gpgcheck back to reposync"
+    ],
+    [
+        1914827,
+        "[RHEL8] dnf reposync implicitly downloads source rpms in spite of no --source option"
+    ],
+    [
+        1935465,
+        "Cached rpms in dnf uses historic yum checksum code instead of librepo's checksum"
     ]
 ]

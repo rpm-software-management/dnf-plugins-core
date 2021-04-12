@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.21 Release Notes
+====================
+
+- Add missing command line option to documentation
+- doc: add packages to needs-restarting conf
+- Set blacklist subcommand as deprecated
+
+- Bug fixes:
+  - Bugs fixed (RhBug:1914827,1916782)
+
+Bugs fixed in 4.0.21:
+
+* :rhbug:`1914827`
+
+====================
 4.0.20 Release Notes
 ====================
 - Bug fixes:

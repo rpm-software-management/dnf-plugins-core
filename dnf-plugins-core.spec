@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.20
+Version:        4.0.21
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -763,6 +763,12 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Mon Apr 12 2021 Nicola Sella <nsella@redhat.com> - 4.0.21-1
+- Add missing command line option to documentation
+- doc: add packages to needs-restarting conf
+- Set blacklist subcommand as deprecated
+- Bugs fixed (RhBug:1914827,1916782)
+
 * Thu Mar 18 2021 Matthew Almond <malmond@fb.com> - 4.0.20-1
 - Removed dependency on dnf.yum.misc.Checksum class (RhBug:1935465)
 
