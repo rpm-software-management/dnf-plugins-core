@@ -312,5 +312,4 @@ def _match(ent, patterns):
 
 def pkgtup2spec(name, arch, epoch, version, release):
     # we ignore arch
-    e = "" if epoch in (None, "") else "%s:" % epoch
-    return "%s-%s%s-%s.*" % (name, e, version, release)
+    return "%s-%s:%s-%s.*" % (name, epoch or "0", version, release)
