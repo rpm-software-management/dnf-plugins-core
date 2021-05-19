@@ -89,7 +89,9 @@ class VersionLock(dnf.Plugin):
                 pat = pat[1:]
                 excl = 1
 
-            possible_nevras = dnf.subject.Subject(pat).get_nevra_possibilities()
+            possible_nevras = dnf.subject.Subject(pat).get_nevra_possibilities(
+                forms=[hawkey.FORM_NEVRA, hawkey.FORM_NEVR, hawkey.FORM_NEV,
+                       hawkey.FORM_NA, hawkey.FORM_NAME])
             if possible_nevras:
                 count[excl] += 1
             else:
@@ -102,6 +104,8 @@ class VersionLock(dnf.Plugin):
                 else:
                     locked_names.add(nevra.name)
                     locked_query = locked_query.union(pat_query)
+                if pat_query:
+                    break
 
         if count[1]:
             logger.debug(APPLY_EXCLUDE.format(locklist_fn, count[1]))
