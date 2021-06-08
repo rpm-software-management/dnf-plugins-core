@@ -31,9 +31,10 @@ Synopsis
 Description
 -----------
 
-`repomanage` prints newest or oldest packages in a repository specified by <path> for easy piping to xargs or similar programs. In case <path> doesn't contain a valid repository it is searched for rpm packages which are then used instead.
+`repomanage` prints newest or older packages in a repository specified by <path> for easy piping to xargs or similar programs. In case <path> doesn't contain a valid repodata, it is searched for rpm packages which are then used instead.
+If the repodata are present, `repomanage` uses them as the source of truth, it doesn't verify that they match the present rpm packages. In fact, `repomanage` can run with just the repodata, no rpm packages are needed.
 
-In order to work correctly with modular packages <path> has to contain repodata with modular metadata. If modular content is present `repomanage` prints packages from newest or oldest versions of each stream in addition to newest or oldest non-modular packages.
+In order to work correctly with modular packages, <path> has to contain repodata with modular metadata. If modular content is present, `repomanage` prints packages from newest or older stream versions in addition to newest or older non-modular packages.
 
 
 Options
@@ -44,7 +45,7 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 The following options set what packages are displayed. These options are mutually exclusive, i.e. only one can be specified. If no option is specified, the newest packages are shown.
 
 ``--old``
-    Show older packages.
+    Show older packages (for a package or a stream show all versions except the newest one).
 
 ``--new``
     Show newest packages.
