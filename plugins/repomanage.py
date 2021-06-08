@@ -58,17 +58,12 @@ class RepoManageCommand(dnf.cli.Command):
         if self.opts.new and self.opts.old:
             raise dnf.exceptions.Error(_("Pass either --old or --new, not both!"))
 
-        rpm_list = []
-        rpm_list = self._get_file_list(self.opts.path, ".rpm")
         verfile = {}
         pkgdict = {}
         module_dict = {}  # {NameStream: {Version: [modules]}}
         all_modular_artifacts = set()
 
         keepnum = int(self.opts.keep) # the number of items to keep
-
-        if len(rpm_list) == 0:
-            raise dnf.exceptions.Error(_("No files to process"))
 
         try:
             repo_conf = self.base.repos.add_new_repo("repomanage_repo", self.base.conf, baseurl=[self.opts.path])
@@ -88,6 +83,11 @@ class RepoManageCommand(dnf.cli.Command):
                         module_package.getVersionNum(), []).append(module_package)
 
         except dnf.exceptions.RepoError:
+            rpm_list = []
+            rpm_list = self._get_file_list(self.opts.path, ".rpm")
+            if len(rpm_list) == 0:
+                raise dnf.exceptions.Error(_("No files to process"))
+
             self.base.reset(sack=True, repos=True)
             self.base.fill_sack(load_system_repo=False, load_available_repos=False)
             try:
