@@ -1,22 +1,23 @@
-# Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata, 2020.
-# Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata, 2020.
-# Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata, 2020.
-# Göran Uddeborg <goeran@uddeborg.se>, 2020. #zanata
+# Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata, 2020, 2021.
+# Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata, 2020, 2021.
+# Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata, 2020, 2021.
+# Göran Uddeborg <goeran@uddeborg.se>, 2020. #zanata, 2021.
 # Mikael Granberg <mikael@famgra.se>, 2020.
+# Luna Jernberg <bittin@reimu.nl>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-05 09:18-0400\n"
-"PO-Revision-Date: 2020-08-23 08:29+0000\n"
-"Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
+"POT-Creation-Date: 2021-04-27 09:18-0400\n"
+"PO-Revision-Date: 2021-03-31 18:01+0000\n"
+"Last-Translator: Luna Jernberg <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2.1\n"
+"X-Generator: Weblate 4.5.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -143,44 +144,44 @@ msgstr "Listar alla ändringsloggar"
 msgid "Changelogs for {}"
 msgstr "Ändringslogg för {}"
 
-#: plugins/config_manager.py:37
+#: plugins/config_manager.py:38
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
 msgstr "hantera {prog}-konfigurationsalternativ och -förråd"
 
-#: plugins/config_manager.py:44
+#: plugins/config_manager.py:45
 msgid "repo to modify"
 msgstr "förråd att ändra"
 
-#: plugins/config_manager.py:47
+#: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
 msgstr "spara de nuvarande alternativen (användbart med --setopt)"
 
-#: plugins/config_manager.py:50
+#: plugins/config_manager.py:51
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "lägg till (och aktivera) förrådet från den angivna filen eller url:en"
 
-#: plugins/config_manager.py:53
+#: plugins/config_manager.py:54
 msgid "print current configuration values to stdout"
 msgstr "skriv ut aktuella konfigurationsvärden till standard ut"
 
-#: plugins/config_manager.py:56
+#: plugins/config_manager.py:57
 msgid "print variable values to stdout"
 msgstr "skriv ut variabelvärden till standard ut"
 
-#: plugins/config_manager.py:60
+#: plugins/config_manager.py:61
 msgid "enable repos (automatically saves)"
 msgstr "aktivera förråd (sparas automatiskt)"
 
-#: plugins/config_manager.py:63
+#: plugins/config_manager.py:64
 msgid "disable repos (automatically saves)"
 msgstr "avaktivera förråd (sparas automatiskt)"
 
-#: plugins/config_manager.py:77
+#: plugins/config_manager.py:78
 msgid "one of the following arguments is required: {}"
 msgstr "ett av följande argument krävs: {}"
 
-#: plugins/config_manager.py:86
+#: plugins/config_manager.py:87
 msgid ""
 "Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
 "manager. Use --set-enabled/--set-disabled instead."
@@ -188,23 +189,23 @@ msgstr ""
 "Varning: argumenten --enablerepo/--disablerepo har ingen mening med "
 "konfigurationshanteraren. Använd --set-enabled/--set-disabled istället."
 
-#: plugins/config_manager.py:131
+#: plugins/config_manager.py:132
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Inget matchande förråd att ändra: %s."
 
-#: plugins/config_manager.py:182
+#: plugins/config_manager.py:183
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Lägger till förråd från: %s"
 
-#: plugins/config_manager.py:206
+#: plugins/config_manager.py:207
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Konfiguration av förråd misslyckades"
 msgstr[1] "Konfiguration av förråd misslyckades"
 
-#: plugins/config_manager.py:216
+#: plugins/config_manager.py:217
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Kunde inte spara förrådet till förrådsfilen %s: %s"
@@ -287,7 +288,7 @@ msgstr "Lista tillgängliga Copr-förråd från användare NAMN"
 msgid "Specify an instance of Copr to work with"
 msgstr "Ange en instans av Copr att arbeta med"
 
-#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:244
 msgid "Error: "
 msgstr "Fel: "
 
@@ -307,17 +308,29 @@ msgstr "flera nav angivna"
 msgid "exactly two additional parameters to copr command are required"
 msgstr "exakt två ytterligare parametrar till kommandot copr behövs"
 
-#: plugins/copr.py:238
+#: plugins/copr.py:227
+msgid "Too many arguments."
+msgstr "För många argument."
+
+#: plugins/copr.py:230
+msgid ""
+"Bad format of optional chroot. The format is distribution-version-"
+"architecture."
+msgstr ""
+"Felaktigt format för frivillig chroot. Formatet är distribution-version-"
+"arkitektur."
+
+#: plugins/copr.py:245
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "använd formatet ”copr_användarnamn/copr_projektnamn” för att referera copr-"
 "projekt"
 
-#: plugins/copr.py:240
+#: plugins/copr.py:247
 msgid "bad copr project format"
 msgstr "felaktigt copr-projektformat"
 
-#: plugins/copr.py:254
+#: plugins/copr.py:261
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -343,23 +356,23 @@ msgstr ""
 "Rapportera inte fel på dessa paket i Fedoras Bugzilla. Kontakta vid problem\n"
 "förrådets ägare.\n"
 
-#: plugins/copr.py:271
+#: plugins/copr.py:278
 msgid "Repository successfully enabled."
 msgstr "Förrådet aktiverat."
 
-#: plugins/copr.py:276
+#: plugins/copr.py:283
 msgid "Repository successfully disabled."
 msgstr "Förrådet avaktiverat."
 
-#: plugins/copr.py:280
+#: plugins/copr.py:287
 msgid "Repository successfully removed."
 msgstr "Förrådet borttaget."
 
-#: plugins/copr.py:284 plugins/copr.py:693
+#: plugins/copr.py:291 plugins/copr.py:698
 msgid "Unknown subcommand {}."
 msgstr "Okänt underkommando {}."
 
-#: plugins/copr.py:341
+#: plugins/copr.py:348
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -369,49 +382,49 @@ msgstr ""
 "någon information om Copr-nav — standardnavet antas. Aktivera om projektet "
 "för att fixa detta."
 
-#: plugins/copr.py:353
+#: plugins/copr.py:360
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan inte tolka förråd för användarnamnet ”{}”."
 
-#: plugins/copr.py:356
+#: plugins/copr.py:363
 msgid "List of {} coprs"
 msgstr "lista över {} copr"
 
-#: plugins/copr.py:364
+#: plugins/copr.py:371
 msgid "No description given"
 msgstr "Ingen beskrivning angiven"
 
-#: plugins/copr.py:376
+#: plugins/copr.py:383
 msgid "Can't parse search for '{}'."
 msgstr "Kan inte tolka sökningen efter ”{}”."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:386
 msgid "Matched: {}"
 msgstr "Matchade: {}"
 
-#: plugins/copr.py:387
+#: plugins/copr.py:394
 msgid "No description given."
 msgstr "Ingen beskrivning angiven."
 
-#: plugins/copr.py:410
+#: plugins/copr.py:417
 msgid "Safe and good answer. Exiting."
 msgstr "Säkert och bra svar. Avslutar."
 
-#: plugins/copr.py:417
+#: plugins/copr.py:424
 msgid "This command has to be run under the root user."
 msgstr "Detta kommando måste köras som användaren root."
 
-#: plugins/copr.py:481
+#: plugins/copr.py:486
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Detta förråd har inte några byggen ännu så du kan inte aktivera det nu."
 
-#: plugins/copr.py:484
+#: plugins/copr.py:489
 msgid "Such repository does not exist."
 msgstr "Något sådant förråd finns inte."
 
-#: plugins/copr.py:528
+#: plugins/copr.py:533
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -440,44 +453,44 @@ msgstr ""
 "\n"
 "Dessa förråd har aktiverats automatiskt."
 
-#: plugins/copr.py:549
+#: plugins/copr.py:554
 msgid "Do you want to keep them enabled?"
 msgstr "Vill du behålla dem aktiverade?"
 
-#: plugins/copr.py:582
+#: plugins/copr.py:587
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Misslyckades att ta bort copr-förrpdet {0}/{1}/{2}"
 
-#: plugins/copr.py:593
+#: plugins/copr.py:598
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Misslyckades att avaktivera copr-förrådet {}/{}"
 
-#: plugins/copr.py:611 plugins/copr.py:648
+#: plugins/copr.py:616 plugins/copr.py:653
 msgid "Unknown response from server."
 msgstr "Okänt svar från servern."
 
-#: plugins/copr.py:633
+#: plugins/copr.py:638
 msgid "Interact with Playground repository."
 msgstr "Interagera med Playground-förrådet."
 
-#: plugins/copr.py:639
+#: plugins/copr.py:644
 msgid "Enabling a Playground repository."
 msgstr "Aktiverin av ett Playground-förråd."
 
-#: plugins/copr.py:640
+#: plugins/copr.py:645
 msgid "Do you want to continue?"
 msgstr "Vill du fortsätta?"
 
-#: plugins/copr.py:683
+#: plugins/copr.py:688
 msgid "Playground repositories successfully enabled."
 msgstr "Playground-förråden aktiverades."
 
-#: plugins/copr.py:686
+#: plugins/copr.py:691
 msgid "Playground repositories successfully disabled."
 msgstr "Playground-förråden avaktiverades."
 
-#: plugins/copr.py:690
+#: plugins/copr.py:695
 msgid "Playground repositories successfully updated."
 msgstr "Playground-förråden uppdaterades."
 
@@ -625,7 +638,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "när använt med --url, begränsa till specifika protokoll"
 
-#: plugins/download.py:121 plugins/reposync.py:293
+#: plugins/download.py:121 plugins/reposync.py:314
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Misslyckades att få tag i spegeln för paket: %s"
@@ -647,6 +660,123 @@ msgstr "Ingen källkods-rpm definierad för %s"
 #, python-format
 msgid "No package %s available."
 msgstr "Inget paket %s tillgängligt."
+
+#: plugins/groups_manager.py:49
+msgid "Invalid group id"
+msgstr "Ogiltigt grupp id"
+
+#: plugins/groups_manager.py:58
+msgid "Invalid translated data, should be in form 'lang:text'"
+msgstr "Felaktiga översatta data, skall vara på formen ”språk:text”"
+
+#: plugins/groups_manager.py:61
+msgid "Invalid/empty language for translated data"
+msgstr "Felaktigt/tomt språk för översatta data"
+
+#: plugins/groups_manager.py:71
+msgid "Can't generate group id from '{}'. Please specify group id using --id."
+msgstr "Kan inte generera grupp-id från ”{}”, Ange grupp-id med --id."
+
+#: plugins/groups_manager.py:79
+msgid "create and edit groups metadata file"
+msgstr "skapa och redigera en gruppmetadatafil"
+
+#: plugins/groups_manager.py:90
+msgid "load groups metadata from file"
+msgstr "läs in gruppmetadata från fil"
+
+#: plugins/groups_manager.py:93
+msgid "save groups metadata to file"
+msgstr "spara gruppmetadata till fil"
+
+#: plugins/groups_manager.py:95
+msgid "load and save groups metadata to file"
+msgstr "läs in och spara gruppmetadata till fil"
+
+#: plugins/groups_manager.py:97
+msgid "print the result metadata to stdout"
+msgstr "skriv ut resultatmetadata till standard ut"
+
+#: plugins/groups_manager.py:100
+msgid "group id"
+msgstr "grupp-id"
+
+#: plugins/groups_manager.py:101
+msgid "group name"
+msgstr "gruppnamn"
+
+#: plugins/groups_manager.py:103
+msgid "group description"
+msgstr "grupp beskrivning"
+
+#: plugins/groups_manager.py:105
+msgid "group display order"
+msgstr "gruppvisningsordning"
+
+#: plugins/groups_manager.py:108
+msgid "translated name for the group"
+msgstr "översatt namn för gruppen"
+
+#: plugins/groups_manager.py:111
+msgid "translated description for the group"
+msgstr "översatt beskrivning för gruppen"
+
+#: plugins/groups_manager.py:115
+msgid "make the group user visible (default)"
+msgstr "gör gruppen synlig för användare (standard)"
+
+#: plugins/groups_manager.py:118
+msgid "make the group user invisible"
+msgstr "gör gruppen osynlig för användare"
+
+#: plugins/groups_manager.py:123
+msgid "add packages to the mandatory section"
+msgstr "lägg till paket till det obligatoriska avsnittet"
+
+#: plugins/groups_manager.py:125
+msgid "add packages to the optional section"
+msgstr "lägg till paket till det valfria avsnittet"
+
+#: plugins/groups_manager.py:127
+msgid "remove packages from the group instead of adding them"
+msgstr "ta bort paket från gruppen istället för att lägga till dem"
+
+#: plugins/groups_manager.py:129
+msgid "include also direct dependencies for packages"
+msgstr "inkludera även direkta beroenden för paket"
+
+#: plugins/groups_manager.py:132
+msgid "package specification"
+msgstr "paketspecifikation"
+
+#: plugins/groups_manager.py:156
+msgid "Can't edit group without specifying it (use --id or --name)"
+msgstr ""
+"Det går inte att redigera en grupp utan att specificera den (använd --id "
+"eller --name)"
+
+#: plugins/groups_manager.py:190
+msgid "Can't load file \"{}\": {}"
+msgstr "Kan inte läsa in filen ”{}”: {}"
+
+#: plugins/groups_manager.py:206
+msgid "Can't save file \"{}\": {}"
+msgstr "Kan inte spara filen ”{}”: {}"
+
+#: plugins/groups_manager.py:259
+msgid "No match for argument: {}"
+msgstr "Ingen matchning för argumentet: {}"
+
+#: plugins/groups_manager.py:296
+msgid "Can't remove packages from non-existent group"
+msgstr "Det går inte att ta bort paket från en grupp som inte finns"
+
+#: plugins/groups_manager.py:305
+msgid ""
+"Group id '{}' generated from '{}' is duplicit. Please specify group id using"
+" --id."
+msgstr ""
+"Grupp-id ”{}” genererat från ”{}” är en dublett. Ange grupp-id med --id."
 
 #: plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -680,7 +810,7 @@ msgstr "migrera yums historie-, grupp- och yumdb-data till dnf"
 msgid "Migrating history data..."
 msgstr "Migrerar historiedata …"
 
-#: plugins/needs_restarting.py:65
+#: plugins/needs_restarting.py:66
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
@@ -689,15 +819,15 @@ msgstr ""
 "Inget installerat paket finns för paketnamnet ”{pkg}” som angetts i filen "
 "”{file}” för behov av omstart."
 
-#: plugins/needs_restarting.py:199
+#: plugins/needs_restarting.py:220
 msgid "determine updated binaries that need restarting"
 msgstr "avgör vilka uppdaterade binärer som behöver startas om"
 
-#: plugins/needs_restarting.py:204
+#: plugins/needs_restarting.py:225
 msgid "only consider this user's processes"
 msgstr "betrakta endast denna användares processer"
 
-#: plugins/needs_restarting.py:206
+#: plugins/needs_restarting.py:227
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
@@ -705,22 +835,26 @@ msgstr ""
 " 0)"
 
 #: plugins/needs_restarting.py:230
+msgid "only report affected systemd services"
+msgstr "rapportera endast påverkade systemd-tjänster"
+
+#: plugins/needs_restarting.py:253
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr "Kärnbibliotek och -tjänster har uppdaterats sedan uppstart:"
 
-#: plugins/needs_restarting.py:235
+#: plugins/needs_restarting.py:258
 msgid "Reboot is required to fully utilize these updates."
 msgstr "En omstart behövs för att helt utnyttja dessa uppdateringar."
 
-#: plugins/needs_restarting.py:236
+#: plugins/needs_restarting.py:259
 msgid "More information:"
 msgstr "Mer information:"
 
-#: plugins/needs_restarting.py:240
+#: plugins/needs_restarting.py:263
 msgid "No core libraries or services have been updated since boot-up."
 msgstr "Inga kärnbibliotek eller -tjänster har uppdaterats sedan uppstart."
 
-#: plugins/needs_restarting.py:242
+#: plugins/needs_restarting.py:265
 msgid "Reboot should not be necessary."
 msgstr "En omstart skall inte behövas."
 
@@ -735,13 +869,13 @@ msgstr "Felaktig åtgärdsrad ”%s”: %s"
 msgid "Bad Transaction State: %s"
 msgstr "Felaktigt transaktionstillstånd: %s"
 
-#: plugins/post-transaction-actions.py:153
-#: plugins/post-transaction-actions.py:155
+#: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:159
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaktionsåtgärder: %s"
 
-#: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:161
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaktionsåtgärder: Felaktigt kommando ”%s”: %s"
@@ -929,63 +1063,57 @@ msgstr "Skicka antingen --old eller --new, inte båda!"
 msgid "No files to process"
 msgstr "Inga filer att behandla"
 
-#: plugins/repomanage.py:93
+#: plugins/repomanage.py:96
 msgid "Could not open {}"
 msgstr "Kunde inte öppna {}"
 
-#: plugins/repomanage.py:177
+#: plugins/repomanage.py:180
 msgid "Print the older packages"
 msgstr "Skriv de äldre paketen"
 
-#: plugins/repomanage.py:179
+#: plugins/repomanage.py:182
 msgid "Print the newest packages"
 msgstr "Skriv de senaste paketen"
 
-#: plugins/repomanage.py:181
+#: plugins/repomanage.py:184
 msgid "Space separated output, not newline"
 msgstr "Mellanslagsseparerad utdata, inte nyrader"
 
-#: plugins/repomanage.py:183
+#: plugins/repomanage.py:186
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "N nyaste paket att behålla, 1 som standard"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:189
 msgid "Path to directory"
 msgstr "Sökväg till katalogen"
 
-#: plugins/reposync.py:54
+#: plugins/reposync.py:55
 msgid "download all packages from remote repo"
 msgstr "hämta alla paket från fjärrförrådet"
 
-#: plugins/reposync.py:63
+#: plugins/reposync.py:64
 msgid "download only packages for this ARCH"
 msgstr "hämta endast paket för denna ARK"
 
-#: plugins/reposync.py:65
+#: plugins/reposync.py:66
 msgid "delete local packages no longer present in repository"
 msgstr "ta bort lokala paket som inte finns i förrådet längre"
 
-#: plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr "hämta även och dekomprimera comps.xml"
-
-#: plugins/reposync.py:69
+#: plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr "hämta all metadatan."
 
-#: plugins/reposync.py:71
-msgid "download only newest packages per-repo"
-msgstr "hämta endast de nyaste paketen per förråd"
+#: plugins/reposync.py:70
+msgid "Remove packages that fail GPG signature checking after downloading"
+msgstr ""
+"Ta bort paket vars kontroll av GPG-signaturen misslyckas efter att ha "
+"hämtats"
 
 #: plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr "var hämtade förråd skall lagras"
+msgid "also download and uncompress comps.xml"
+msgstr "hämta även och dekomprimera comps.xml"
 
 #: plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr "Lägg iinte till förrådsnamnet till hämtningssökvägen."
-
-#: plugins/reposync.py:77
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
@@ -993,47 +1121,67 @@ msgstr ""
 "var hämtad förrådsmetadata skall lagras. Standard är värdet på --download-"
 "path."
 
+#: plugins/reposync.py:78
+msgid "download only newest packages per-repo"
+msgstr "hämta endast de nyaste paketen per förråd"
+
 #: plugins/reposync.py:80
-msgid "operate on source packages"
-msgstr "arbeta på källpaket"
+msgid "Don't add the reponame to the download path."
+msgstr "Lägg iinte till förrådsnamnet till hämtningssökvägen."
 
 #: plugins/reposync.py:82
+msgid "where to store downloaded repositories"
+msgstr "var hämtade förråd skall lagras"
+
+#: plugins/reposync.py:84
 msgid "try to set local timestamps of local files by the one on the server"
 msgstr ""
 "försök att sätta lokala tidsstämplar på lokala filer från den på servern"
 
-#: plugins/reposync.py:85
+#: plugins/reposync.py:87
+msgid "download only source packages"
+msgstr "hämta endast källpaket"
+
+#: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr "Lista bara url:ar till vad som skulle hämtats, hämta inte"
 
-#: plugins/reposync.py:109
+#: plugins/reposync.py:113
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "Det går inte att använda --norepopath med multipla förråd"
 
-#: plugins/reposync.py:127
+#: plugins/reposync.py:132
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "Misslyckades att få tag i spegeln för metadata: %s"
 
-#: plugins/reposync.py:144
+#: plugins/reposync.py:149
 msgid "Failed to get mirror for the group file."
 msgstr "Misslyckades att få tag i spegeln för gruppfilen."
 
+#: plugins/reposync.py:168
+msgid "Removing {}: {}"
+msgstr "Tar bort {}: {}"
+
 #: plugins/reposync.py:175
+msgid "GPG signature check failed."
+msgstr "GPG-signaturkontrollen misslyckades."
+
+#: plugins/reposync.py:196
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr "Hämtningsmålet ”{}” är utanför hämtningssökvägen ”{}”."
 
-#: plugins/reposync.py:190
+#: plugins/reposync.py:211
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[BORTTAGEN] %s"
 
-#: plugins/reposync.py:192
+#: plugins/reposync.py:213
 #, python-format
 msgid "failed to delete file %s"
 msgstr "kunde inte ta bort filen %s"
 
-#: plugins/reposync.py:201
+#: plugins/reposync.py:222
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "comps.xml för förrådet %s sparad"
@@ -1042,70 +1190,75 @@ msgstr "comps.xml för förrådet %s sparad"
 msgid "New leaves:"
 msgstr "Nya löv:"
 
-#: plugins/versionlock.py:32
+#: plugins/versionlock.py:33
 #, python-format
 msgid "Unable to read version lock configuration: %s"
 msgstr "Kan inte läsa versionslåsningskonfigurationen: %s"
 
-#: plugins/versionlock.py:33
+#: plugins/versionlock.py:34
 msgid "Locklist not set"
 msgstr "Låslista inte satt"
 
-#: plugins/versionlock.py:34
+#: plugins/versionlock.py:35
 msgid "Adding versionlock on:"
 msgstr "Lägger till versionslås på:"
 
-#: plugins/versionlock.py:35
+#: plugins/versionlock.py:36
 msgid "Adding exclude on:"
 msgstr "Lägger till uteslutande på:"
 
-#: plugins/versionlock.py:36
+#: plugins/versionlock.py:37
 msgid "Package already locked in equivalent form:"
 msgstr "Paketet är redan låst i likvärdig form:"
 
-#: plugins/versionlock.py:37
+#: plugins/versionlock.py:38
 msgid "Package {} is already locked"
 msgstr "Paketet {} är redan låst"
 
-#: plugins/versionlock.py:38
+#: plugins/versionlock.py:39
 msgid "Package {} is already excluded"
 msgstr "Paketet {} är redan uteslutet"
 
-#: plugins/versionlock.py:39
+#: plugins/versionlock.py:40
 msgid "Deleting versionlock for:"
 msgstr "Raderar versionslås för:"
 
-#: plugins/versionlock.py:40
+#: plugins/versionlock.py:41
 msgid "No package found for:"
 msgstr "Det finns inget paket för:"
 
-#: plugins/versionlock.py:41
+#: plugins/versionlock.py:42
 msgid "Excludes from versionlock plugin were not applied"
 msgstr "Uteslutanden från versionslås tillämpades inte"
 
-#: plugins/versionlock.py:42
+#: plugins/versionlock.py:43
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
 "Insticksmodul för versionslås: antal låsregler från filen ”{}” verkställda: "
 "{}"
 
-#: plugins/versionlock.py:43
+#: plugins/versionlock.py:44
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
 "Insticksmodul för versionslås: antal uteslutningsregler från filen ”{}” "
 "verkställda: {}"
 
-#: plugins/versionlock.py:44
+#: plugins/versionlock.py:45
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Insticksmodul för versionslås: kunde inte tolka mönstret:"
 
-#: plugins/versionlock.py:130
+#: plugins/versionlock.py:132
 msgid "control package version locks"
 msgstr "styr paketversionslås"
 
-#: plugins/versionlock.py:136
+#: plugins/versionlock.py:138
 msgid "Use package specifications as they are, do not try to parse them"
 msgstr "Använd paketspecifikationer som de är, försök inte att tolka dem"
+
+#: plugins/versionlock.py:158
+msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
+msgstr ""
+"Underkommandot ”{}” bör undvikas. Använd underkommandot ”exclude” istället."
 
 #~ msgid ""
 #~ "\n"

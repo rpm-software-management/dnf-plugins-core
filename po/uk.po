@@ -1,15 +1,15 @@
-# Yuri Chornoivan <yurchor@ukr.net>, 2015. #zanata, 2020.
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2020.
-# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata, 2020.
-# Yuri Chornoivan <yurchor@ukr.net>, 2018. #zanata, 2020.
-# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata, 2020.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020. #zanata
+# Yuri Chornoivan <yurchor@ukr.net>, 2015. #zanata, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2018. #zanata, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020. #zanata, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-05 09:18-0400\n"
-"PO-Revision-Date: 2020-07-07 05:27+0000\n"
+"POT-Creation-Date: 2021-04-27 09:18-0400\n"
+"PO-Revision-Date: 2021-03-12 15:50+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/uk/>\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.5.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -146,45 +146,45 @@ msgstr "Список усіх журналів змін"
 msgid "Changelogs for {}"
 msgstr "Журнали змін для {}"
 
-#: plugins/config_manager.py:37
+#: plugins/config_manager.py:38
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
 msgstr "керування налаштуваннями та записами сховищ {prog}"
 
-#: plugins/config_manager.py:44
+#: plugins/config_manager.py:45
 msgid "repo to modify"
 msgstr "сховище для внесення змін"
 
-#: plugins/config_manager.py:47
+#: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
 msgstr "зберегти поточні параметри (корисний з --setopt)"
 
-#: plugins/config_manager.py:50
+#: plugins/config_manager.py:51
 msgid "add (and enable) the repo from the specified file or url"
 msgstr ""
 "додати (і увімкнути) сховище із вказаного файла або за вказаною адресою"
 
-#: plugins/config_manager.py:53
+#: plugins/config_manager.py:54
 msgid "print current configuration values to stdout"
 msgstr "вивести значення поточних налаштувань до stdout"
 
-#: plugins/config_manager.py:56
+#: plugins/config_manager.py:57
 msgid "print variable values to stdout"
 msgstr "вивести значення змінних до stdout"
 
-#: plugins/config_manager.py:60
+#: plugins/config_manager.py:61
 msgid "enable repos (automatically saves)"
 msgstr "увімкнути сховища (автоматично зберігається)"
 
-#: plugins/config_manager.py:63
+#: plugins/config_manager.py:64
 msgid "disable repos (automatically saves)"
 msgstr "вимкнути сховища (автоматично зберігається)"
 
-#: plugins/config_manager.py:77
+#: plugins/config_manager.py:78
 msgid "one of the following arguments is required: {}"
 msgstr "слід вказати один із таких аргументів: {}"
 
-#: plugins/config_manager.py:86
+#: plugins/config_manager.py:87
 msgid ""
 "Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
 "manager. Use --set-enabled/--set-disabled instead."
@@ -193,24 +193,24 @@ msgstr ""
 "керуванням за допомогою файла налаштувань. Скористайтеся замість них --set-"
 "enabled/--set-disabled."
 
-#: plugins/config_manager.py:131
+#: plugins/config_manager.py:132
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Немає відповідного сховища для внесення змін: %s."
 
-#: plugins/config_manager.py:182
+#: plugins/config_manager.py:183
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Додаємо сховище з %s"
 
-#: plugins/config_manager.py:206
+#: plugins/config_manager.py:207
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Помилка під час налаштовування сховища"
 msgstr[1] "Помилка під час налаштовування сховищ"
 msgstr[2] "Помилка під час налаштовування сховищ"
 
-#: plugins/config_manager.py:216
+#: plugins/config_manager.py:217
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не вдалося зберегти дані сховища до файла сховищ %s: %s"
@@ -294,7 +294,7 @@ msgstr ""
 msgid "Specify an instance of Copr to work with"
 msgstr "Вказати екземпляр Copr для роботи"
 
-#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:244
 msgid "Error: "
 msgstr "Помилка: "
 
@@ -314,17 +314,29 @@ msgstr "вказано декілька концентраторів"
 msgid "exactly two additional parameters to copr command are required"
 msgstr "команді copr слід передавати точно два додаткові параметри"
 
-#: plugins/copr.py:238
+#: plugins/copr.py:227
+msgid "Too many arguments."
+msgstr "Забагато аргументів."
+
+#: plugins/copr.py:230
+msgid ""
+"Bad format of optional chroot. The format is distribution-version-"
+"architecture."
+msgstr ""
+"Помилкове форматування необов'язкового chroot. Значення мало бути записано у"
+" форматі «дистрибутив-версія-архітектура»."
+
+#: plugins/copr.py:245
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "для використання проєкт copr скористайтеся форматом "
 "«copr_користувач/copr_назва_проєкту»"
 
-#: plugins/copr.py:240
+#: plugins/copr.py:247
 msgid "bad copr project format"
 msgstr "помилкове форматування проєкту copr"
 
-#: plugins/copr.py:254
+#: plugins/copr.py:261
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -352,23 +364,23 @@ msgstr ""
 "системи стеження за вадами Fedora. Якщо виникнуть якісь проблеми,\n"
 "зв’яжіться із власником цього сховища пакунків.\n"
 
-#: plugins/copr.py:271
+#: plugins/copr.py:278
 msgid "Repository successfully enabled."
 msgstr "Сховище успішно увімкнено."
 
-#: plugins/copr.py:276
+#: plugins/copr.py:283
 msgid "Repository successfully disabled."
 msgstr "Сховище успішно вимкнено."
 
-#: plugins/copr.py:280
+#: plugins/copr.py:287
 msgid "Repository successfully removed."
 msgstr "Сховище успішно вилучено."
 
-#: plugins/copr.py:284 plugins/copr.py:693
+#: plugins/copr.py:291 plugins/copr.py:698
 msgid "Unknown subcommand {}."
 msgstr "Невідома підкоманда {}."
 
-#: plugins/copr.py:341
+#: plugins/copr.py:348
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -378,50 +390,50 @@ msgstr ""
 "даних щодо концентратора Copr — припускаємо типовий. Знову увімкніть проєкт "
 "для виправлення."
 
-#: plugins/copr.py:353
+#: plugins/copr.py:360
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не вдалося обробити сховища для користувача '{}'."
 
-#: plugins/copr.py:356
+#: plugins/copr.py:363
 msgid "List of {} coprs"
 msgstr "Список copr {}"
 
-#: plugins/copr.py:364
+#: plugins/copr.py:371
 msgid "No description given"
 msgstr "Опис не надано"
 
-#: plugins/copr.py:376
+#: plugins/copr.py:383
 msgid "Can't parse search for '{}'."
 msgstr "Не вдалося обробити пошук для '{}'."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:386
 msgid "Matched: {}"
 msgstr "Відповідник: {}"
 
-#: plugins/copr.py:387
+#: plugins/copr.py:394
 msgid "No description given."
 msgstr "Опис не надано."
 
-#: plugins/copr.py:410
+#: plugins/copr.py:417
 msgid "Safe and good answer. Exiting."
 msgstr "Безпечна і добра відповідь. Завершуємо роботу."
 
-#: plugins/copr.py:417
+#: plugins/copr.py:424
 msgid "This command has to be run under the root user."
 msgstr "Цю команду слід виконувати від імені користувача root."
 
-#: plugins/copr.py:481
+#: plugins/copr.py:486
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "У цьому сховищі ще немає нічого зібраного, отже ви не можете його зараз "
 "увімкнути."
 
-#: plugins/copr.py:484
+#: plugins/copr.py:489
 msgid "Such repository does not exist."
 msgstr "Такого сховища не існує."
 
-#: plugins/copr.py:528
+#: plugins/copr.py:533
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -450,44 +462,44 @@ msgstr ""
 "\n"
 "Ці сховища було увімкнено автоматично."
 
-#: plugins/copr.py:549
+#: plugins/copr.py:554
 msgid "Do you want to keep them enabled?"
 msgstr "Хочете не вимикати їх?"
 
-#: plugins/copr.py:582
+#: plugins/copr.py:587
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Не вдалося вилучити сховище copr {0}/{1}/{2}"
 
-#: plugins/copr.py:593
+#: plugins/copr.py:598
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Не вдалося вилучити сховище copr {}/{}"
 
-#: plugins/copr.py:611 plugins/copr.py:648
+#: plugins/copr.py:616 plugins/copr.py:653
 msgid "Unknown response from server."
 msgstr "Невідома відповідь від сервера."
 
-#: plugins/copr.py:633
+#: plugins/copr.py:638
 msgid "Interact with Playground repository."
 msgstr "Працювати зі сховищем Playground."
 
-#: plugins/copr.py:639
+#: plugins/copr.py:644
 msgid "Enabling a Playground repository."
 msgstr "Вмикання сховища Playground."
 
-#: plugins/copr.py:640
+#: plugins/copr.py:645
 msgid "Do you want to continue?"
 msgstr "Хочете продовжити виконання цієї дії?"
 
-#: plugins/copr.py:683
+#: plugins/copr.py:688
 msgid "Playground repositories successfully enabled."
 msgstr "Сховища playground успішно увімкнено."
 
-#: plugins/copr.py:686
+#: plugins/copr.py:691
 msgid "Playground repositories successfully disabled."
 msgstr "Сховища playground успішно вимкнено."
 
-#: plugins/copr.py:690
+#: plugins/copr.py:695
 msgid "Playground repositories successfully updated."
 msgstr "Сховища playground успішно оновлено."
 
@@ -634,7 +646,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "якщо запущено з --url, обмежитися вказаними протоколами"
 
-#: plugins/download.py:121 plugins/reposync.py:293
+#: plugins/download.py:121 plugins/reposync.py:314
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Не вдалося отримати дзеркало для пакунка: %s"
@@ -656,6 +668,126 @@ msgstr "Не визначено rpm із початковим кодом для 
 #, python-format
 msgid "No package %s available."
 msgstr "Немає доступного пакунка %s."
+
+#: plugins/groups_manager.py:49
+msgid "Invalid group id"
+msgstr "Некоректний ідентифікатор групи"
+
+#: plugins/groups_manager.py:58
+msgid "Invalid translated data, should be in form 'lang:text'"
+msgstr ""
+"Некоректні перекладені дані — дані має бути записано у формі «мова:текст»"
+
+#: plugins/groups_manager.py:61
+msgid "Invalid/empty language for translated data"
+msgstr "Некоректний або порожній запис мови для перекладених даних"
+
+#: plugins/groups_manager.py:71
+msgid "Can't generate group id from '{}'. Please specify group id using --id."
+msgstr ""
+"Не вдалося створити ідентифікатор групи з «{}». Будь ласка, вкажіть "
+"ідентифікатор групи за допомогою --id."
+
+#: plugins/groups_manager.py:79
+msgid "create and edit groups metadata file"
+msgstr "створити і редагувати файл метаданих груп"
+
+#: plugins/groups_manager.py:90
+msgid "load groups metadata from file"
+msgstr "завантажити метадані груп з файла"
+
+#: plugins/groups_manager.py:93
+msgid "save groups metadata to file"
+msgstr "зберегти метадані груп до файла"
+
+#: plugins/groups_manager.py:95
+msgid "load and save groups metadata to file"
+msgstr "завантажити метадані груп і зберегети їх до файла"
+
+#: plugins/groups_manager.py:97
+msgid "print the result metadata to stdout"
+msgstr "вивести метадані-результат до stdout"
+
+#: plugins/groups_manager.py:100
+msgid "group id"
+msgstr "ідентифікатор групи"
+
+#: plugins/groups_manager.py:101
+msgid "group name"
+msgstr "назва групи"
+
+#: plugins/groups_manager.py:103
+msgid "group description"
+msgstr "опис групи"
+
+#: plugins/groups_manager.py:105
+msgid "group display order"
+msgstr "порядок показу груп"
+
+#: plugins/groups_manager.py:108
+msgid "translated name for the group"
+msgstr "перекладена назва групи"
+
+#: plugins/groups_manager.py:111
+msgid "translated description for the group"
+msgstr "перекладений опис групи"
+
+#: plugins/groups_manager.py:115
+msgid "make the group user visible (default)"
+msgstr "зробити групу видимою для користувачів (типовий варіант)"
+
+#: plugins/groups_manager.py:118
+msgid "make the group user invisible"
+msgstr "зробити групу невидимою для користувачів"
+
+#: plugins/groups_manager.py:123
+msgid "add packages to the mandatory section"
+msgstr "додати пакунки до обов'язкового розділу"
+
+#: plugins/groups_manager.py:125
+msgid "add packages to the optional section"
+msgstr "додати пакунки до необов'язкового розділу"
+
+#: plugins/groups_manager.py:127
+msgid "remove packages from the group instead of adding them"
+msgstr "вилучити пакунки з групи замість їхнього додавання"
+
+#: plugins/groups_manager.py:129
+msgid "include also direct dependencies for packages"
+msgstr "включити також безпосередні залежності для пакунків"
+
+#: plugins/groups_manager.py:132
+msgid "package specification"
+msgstr "специфікація пакунка"
+
+#: plugins/groups_manager.py:156
+msgid "Can't edit group without specifying it (use --id or --name)"
+msgstr ""
+"Не можна редагувати групу без її визначення (скористайтеся --id або --name)"
+
+#: plugins/groups_manager.py:190
+msgid "Can't load file \"{}\": {}"
+msgstr "Не вдалося завантажити файл «{}»: {}"
+
+#: plugins/groups_manager.py:206
+msgid "Can't save file \"{}\": {}"
+msgstr "Не вдалося зберегти файл «{}»: {}"
+
+#: plugins/groups_manager.py:259
+msgid "No match for argument: {}"
+msgstr "Відповідника параметра не знайдено: {}"
+
+#: plugins/groups_manager.py:296
+msgid "Can't remove packages from non-existent group"
+msgstr "Не можна вилучати пакунки з групи, якої не існує"
+
+#: plugins/groups_manager.py:305
+msgid ""
+"Group id '{}' generated from '{}' is duplicit. Please specify group id using"
+" --id."
+msgstr ""
+"Ідентифікатор групи «{}», створений з «{}» є дублікатом. Будь ласка, вкажіть"
+" ідентифікатор групи за допомогою --id."
 
 #: plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -690,7 +822,7 @@ msgstr "перенести журнал yum, дані щодо груп та yum
 msgid "Migrating history data..."
 msgstr "Переносимо дані журналу…"
 
-#: plugins/needs_restarting.py:65
+#: plugins/needs_restarting.py:66
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
@@ -699,15 +831,15 @@ msgstr ""
 "Не знайдено встановленого пакунка для пакунка з назвою «{pkg}», вказаного у "
 "файлі того, що потребує перезапуску, «{file}»."
 
-#: plugins/needs_restarting.py:199
+#: plugins/needs_restarting.py:220
 msgid "determine updated binaries that need restarting"
 msgstr "визначити оновлені виконувані файли, які потребують перезапуску"
 
-#: plugins/needs_restarting.py:204
+#: plugins/needs_restarting.py:225
 msgid "only consider this user's processes"
 msgstr "брати до уваги лише процеси цього користувача"
 
-#: plugins/needs_restarting.py:206
+#: plugins/needs_restarting.py:227
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
@@ -715,24 +847,28 @@ msgstr ""
 "0) перезавантаження"
 
 #: plugins/needs_restarting.py:230
+msgid "only report affected systemd services"
+msgstr "повідомляти лише про служби systemd, яких це стосується"
+
+#: plugins/needs_restarting.py:253
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr "Основні бібліотеки та служби було оновлено з часу завантаження:"
 
-#: plugins/needs_restarting.py:235
+#: plugins/needs_restarting.py:258
 msgid "Reboot is required to fully utilize these updates."
 msgstr ""
 "Щоб повністю скористатися цими оновленнями, слід перезавантажити систему."
 
-#: plugins/needs_restarting.py:236
+#: plugins/needs_restarting.py:259
 msgid "More information:"
 msgstr "Докладніші відомості:"
 
-#: plugins/needs_restarting.py:240
+#: plugins/needs_restarting.py:263
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 "З часу завантаження не виконувалося оновлення основних бібліотек або служб."
 
-#: plugins/needs_restarting.py:242
+#: plugins/needs_restarting.py:265
 msgid "Reboot should not be necessary."
 msgstr "У перезавантаженні немає потреби."
 
@@ -747,13 +883,13 @@ msgstr "Помилковий рядок дії «%s»: %s"
 msgid "Bad Transaction State: %s"
 msgstr "Помилковий стан операції: %s"
 
-#: plugins/post-transaction-actions.py:153
-#: plugins/post-transaction-actions.py:155
+#: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:159
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaction-actions: %s"
 
-#: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:161
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaction-actions: помилкова команда «%s»: %s"
@@ -945,65 +1081,58 @@ msgstr "Слід передавати --old або --new, не обидва од
 msgid "No files to process"
 msgstr "Немає файлів для обробки"
 
-#: plugins/repomanage.py:93
+#: plugins/repomanage.py:96
 msgid "Could not open {}"
 msgstr "Не вдалося відкрити {}"
 
-#: plugins/repomanage.py:177
+#: plugins/repomanage.py:180
 msgid "Print the older packages"
 msgstr "Вивести старіші пакунки"
 
-#: plugins/repomanage.py:179
+#: plugins/repomanage.py:182
 msgid "Print the newest packages"
 msgstr "Вивести найновіші пакунки"
 
-#: plugins/repomanage.py:181
+#: plugins/repomanage.py:184
 msgid "Space separated output, not newline"
 msgstr ""
 "Відокремлювати записи у виведених даних пробілами, а не символами розриву "
 "рядка"
 
-#: plugins/repomanage.py:183
+#: plugins/repomanage.py:186
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Зберігати N найновіших пакунків. Типове значення — 1"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:189
 msgid "Path to directory"
 msgstr "Шлях до каталогу"
 
-#: plugins/reposync.py:54
+#: plugins/reposync.py:55
 msgid "download all packages from remote repo"
 msgstr "отримати усі пакунки із віддаленого сховища"
 
-#: plugins/reposync.py:63
+#: plugins/reposync.py:64
 msgid "download only packages for this ARCH"
 msgstr "отримати лише пакунки для вказаної архітектури"
 
-#: plugins/reposync.py:65
+#: plugins/reposync.py:66
 msgid "delete local packages no longer present in repository"
 msgstr "вилучити локальні пакунки, яких більше немає у сховищі пакунків"
 
-#: plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr "крім того, отримати і розпакувати comps.xml"
-
-#: plugins/reposync.py:69
+#: plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr "отримати усі метадані."
 
-#: plugins/reposync.py:71
-msgid "download only newest packages per-repo"
-msgstr "отримувати лише найновіші пакунки у кожному зі сховищ"
+#: plugins/reposync.py:70
+msgid "Remove packages that fail GPG signature checking after downloading"
+msgstr ""
+"Вилучити пакунки, які не пройшли перевірку підпису GPG після отримання"
 
 #: plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr "місце зберігання отриманих сховищ"
+msgid "also download and uncompress comps.xml"
+msgstr "крім того, отримати і розпакувати comps.xml"
 
 #: plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr "Не додавати назву сховища до шляху отримання даних."
-
-#: plugins/reposync.py:77
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
@@ -1011,51 +1140,71 @@ msgstr ""
 "місце зберігання отриманих метаданих сховищ. Типовим є значення у "
 "--download-path."
 
+#: plugins/reposync.py:78
+msgid "download only newest packages per-repo"
+msgstr "отримувати лише найновіші пакунки у кожному зі сховищ"
+
 #: plugins/reposync.py:80
-msgid "operate on source packages"
-msgstr "працювати із пакунками початкових кодів"
+msgid "Don't add the reponame to the download path."
+msgstr "Не додавати назву сховища до шляху отримання даних."
 
 #: plugins/reposync.py:82
+msgid "where to store downloaded repositories"
+msgstr "місце зберігання отриманих сховищ"
+
+#: plugins/reposync.py:84
 msgid "try to set local timestamps of local files by the one on the server"
 msgstr ""
 "намагатися встановлювати локальні позначки часу для локальних файлів за "
 "позначками часу на сервері"
 
-#: plugins/reposync.py:85
+#: plugins/reposync.py:87
+msgid "download only source packages"
+msgstr "отримати лише пакунки початкових кодів"
+
+#: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr ""
 "Просто вивести список адрес того, що буде отримано — не отримувати даних"
 
-#: plugins/reposync.py:109
+#: plugins/reposync.py:113
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "Не можна використовувати --norepopath, якщо вказано декілька сховищ"
 
-#: plugins/reposync.py:127
+#: plugins/reposync.py:132
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "Не вдалося отримати дзеркало для метаданих: %s"
 
-#: plugins/reposync.py:144
+#: plugins/reposync.py:149
 msgid "Failed to get mirror for the group file."
-msgstr "Н евдалося отримати дзеркало для файла групи."
+msgstr "Не вдалося отримати дзеркало для файла групи."
+
+#: plugins/reposync.py:168
+msgid "Removing {}: {}"
+msgstr "Вилучаємо {}: {}"
 
 #: plugins/reposync.py:175
+msgid "GPG signature check failed."
+msgstr "Не пройдено перевірку підпису GPG."
+
+#: plugins/reposync.py:196
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 "Ціль отримання даних «{}» перебуває поза межами шляху для отримання даних "
 "«{}»."
 
-#: plugins/reposync.py:190
+#: plugins/reposync.py:211
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[ВИЛУЧЕНО] %s"
 
-#: plugins/reposync.py:192
+#: plugins/reposync.py:213
 #, python-format
 msgid "failed to delete file %s"
 msgstr "не вдалося вилучити файл %s"
 
-#: plugins/reposync.py:201
+#: plugins/reposync.py:222
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "Збережено comps.xml для сховища %s"
@@ -1064,71 +1213,77 @@ msgstr "Збережено comps.xml для сховища %s"
 msgid "New leaves:"
 msgstr "Нові листки:"
 
-#: plugins/versionlock.py:32
+#: plugins/versionlock.py:33
 #, python-format
 msgid "Unable to read version lock configuration: %s"
 msgstr "Не вдалося прочитати налаштування блокування версії: %s"
 
-#: plugins/versionlock.py:33
+#: plugins/versionlock.py:34
 msgid "Locklist not set"
 msgstr "Список блокування не встановлено"
 
-#: plugins/versionlock.py:34
+#: plugins/versionlock.py:35
 msgid "Adding versionlock on:"
 msgstr "Додаємо блокування версії для:"
 
-#: plugins/versionlock.py:35
+#: plugins/versionlock.py:36
 msgid "Adding exclude on:"
 msgstr "Додаємо виключення для:"
 
-#: plugins/versionlock.py:36
+#: plugins/versionlock.py:37
 msgid "Package already locked in equivalent form:"
 msgstr "Пакунок вже заблоковано у еквівалентній формі:"
 
-#: plugins/versionlock.py:37
+#: plugins/versionlock.py:38
 msgid "Package {} is already locked"
 msgstr "Пакунок {} вже заблоковано"
 
-#: plugins/versionlock.py:38
+#: plugins/versionlock.py:39
 msgid "Package {} is already excluded"
 msgstr "Пакунок {} вже виключено"
 
-#: plugins/versionlock.py:39
+#: plugins/versionlock.py:40
 msgid "Deleting versionlock for:"
 msgstr "Вилучаємо блокування версії для:"
 
-#: plugins/versionlock.py:40
+#: plugins/versionlock.py:41
 msgid "No package found for:"
 msgstr "Не знайдено пакунка для:"
 
-#: plugins/versionlock.py:41
+#: plugins/versionlock.py:42
 msgid "Excludes from versionlock plugin were not applied"
 msgstr "Виключення з додатка versionlock не було застосовано"
 
-#: plugins/versionlock.py:42
+#: plugins/versionlock.py:43
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
 "Додаток фіксування версій: застосовано значення кількості правил фіксування "
 "з файла «{}»: {}"
 
-#: plugins/versionlock.py:43
+#: plugins/versionlock.py:44
 msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
 "Додаток фіксування версій: застосовано значення кількості правил виключення "
 "з файла «{}»: {}"
 
-#: plugins/versionlock.py:44
+#: plugins/versionlock.py:45
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Додаток фіксування версій: не вдалося обробити взірець:"
 
-#: plugins/versionlock.py:130
+#: plugins/versionlock.py:132
 msgid "control package version locks"
 msgstr "керування блокуванням версій пакунків"
 
-#: plugins/versionlock.py:136
+#: plugins/versionlock.py:138
 msgid "Use package specifications as they are, do not try to parse them"
 msgstr ""
 "Використовувати специфікації пакунків без змін, не намагатися обробити їх"
+
+#: plugins/versionlock.py:158
+msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
+msgstr ""
+"Підкоманда «{}» вважається застарілою. Скористайтеся замість неї підкомандою"
+" «exclude»."
 
 #~ msgid ""
 #~ "\n"

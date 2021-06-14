@@ -1,20 +1,22 @@
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2017. #zanata, 2020.
 # Toni Rantala <trantalafilo@gmail.com>, 2017. #zanata
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2018. #zanata, 2020.
+# Ricky Tigg <ricky.tigg@gmail.com>, 2020, 2021.
+# Jan Kuparinen <copper_fin@hotmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-05 09:18-0400\n"
-"PO-Revision-Date: 2020-03-22 12:28+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"POT-Creation-Date: 2021-04-27 09:18-0400\n"
+"PO-Revision-Date: 2021-03-14 08:01+0000\n"
+"Last-Translator: Jan Kuparinen <copper_fin@hotmail.com>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11.3\n"
+"X-Generator: Weblate 4.5.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -23,7 +25,7 @@ msgstr "[PAKETTI|PAKETTI.spec]"
 #: plugins/builddep.py:85
 #, python-format
 msgid "'%s' is not of the format 'MACRO EXPR'"
-msgstr ""
+msgstr "'%s' ei ole muodossa 'MACRO EXPR'"
 
 #: plugins/builddep.py:90
 msgid "packages with builddeps to install"
@@ -31,19 +33,21 @@ msgstr "paketit joilla on riippuvuuksia asennettavana"
 
 #: plugins/builddep.py:93
 msgid "define a macro for spec file parsing"
-msgstr ""
+msgstr "määritä makro spec-tiedoston jäsentämistä varten"
 
 #: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
 msgstr ""
+"ohita rakennusriippuvuudet, jotka eivät ole käytettävissä "
+"ohjelmistolähteissä"
 
 #: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
-msgstr ""
+msgstr "käsittele komentoriviargumentteja spec-tiedostoina"
 
 #: plugins/builddep.py:100
 msgid "treat commandline arguments as source rpm"
-msgstr ""
+msgstr "käsittele komentoriviargumentteja lähde-rpm:na"
 
 #: plugins/builddep.py:144
 msgid "RPM: {}"
@@ -64,7 +68,7 @@ msgstr "Ei vastaavia paketteja asennettavaksi: '%s'"
 #: plugins/builddep.py:191
 #, python-format
 msgid "Failed to open: '%s', not a valid source rpm file."
-msgstr ""
+msgstr "Avaaminen epäonnistui: '%s', ei kelvollinen lähdekoodi rpm-tiedosto."
 
 #: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
 msgid "Not all dependencies satisfied"
@@ -73,7 +77,7 @@ msgstr "Kaikkia riippuvaisuuksia ei voitu toteuttaa"
 #: plugins/builddep.py:211
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
-msgstr ""
+msgstr "Avaaminen epäonnistui: '%s', ei kelvollinen spec-tiedosto: %s"
 
 #: plugins/builddep.py:230 plugins/repoclosure.py:118
 #, python-format
@@ -87,116 +91,126 @@ msgstr "Ei kelvollinen päivä: \"{0}\"."
 
 #: plugins/changelog.py:43
 msgid "Show changelog data of packages"
-msgstr ""
+msgstr "Näytä pakettien muutoslokitiedot"
 
 #: plugins/changelog.py:51
 msgid ""
 "show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
 "is recommended."
 msgstr ""
+"näytä muutoslogimerkinnät PÄIVÄMÄÄRÄSTÄ lähtien. Epäselvyyksien "
+"välttämiseksi suositellaan muotoa VVVV-KK-PP."
 
 #: plugins/changelog.py:55
 msgid "show given number of changelog entries per package"
-msgstr ""
+msgstr "näytä annettu muutoslokimerkintöjen määrä pakettia kohden"
 
 #: plugins/changelog.py:58
 msgid ""
 "show only new changelog entries for packages, that provide an upgrade for "
 "some of already installed packages."
 msgstr ""
+"näytä vain uudet pakettien muutoslokimerkinnät, jotka tarjoavat päivityksen,"
+" joillekin jo asennetuista paketeista."
 
 #: plugins/changelog.py:60
 msgid "PACKAGE"
-msgstr ""
+msgstr "PAKETTI"
 
 #: plugins/changelog.py:81 plugins/debuginfo-install.py:90
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "Ei vastaavaa argumentille: %s"
 
 #: plugins/changelog.py:109
 msgid "Listing changelogs since {}"
-msgstr ""
+msgstr "Luettele muutoslokeja {}:sta lähtien"
 
 #: plugins/changelog.py:111
 msgid "Listing only latest changelog"
 msgid_plural "Listing {} latest changelogs"
-msgstr[0] ""
+msgstr[0] "Luetellaan vain viimeisin muutosloki"
+msgstr[1] "Luetellaan {} viimeisintä muutoslokia"
 
 #: plugins/changelog.py:116
 msgid "Listing only new changelogs since installed version of the package"
-msgstr ""
+msgstr "Luetellaan vain uudet muutoslokit paketin asennetun version jälkeen"
 
 #: plugins/changelog.py:118
 msgid "Listing all changelogs"
-msgstr "Listataan kaikki muutoslokit"
+msgstr "Luetellaan kaikki muutoslokit"
 
 #: plugins/changelog.py:122
 msgid "Changelogs for {}"
-msgstr ""
+msgstr "Muutoslokit {}:lle"
 
-#: plugins/config_manager.py:37
+#: plugins/config_manager.py:38
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
-msgstr ""
+msgstr "käsittele {prog} -asetuksia ja ohjelmistolähteitä"
 
-#: plugins/config_manager.py:44
+#: plugins/config_manager.py:45
 msgid "repo to modify"
-msgstr ""
+msgstr "muokattava okjelmistolähde"
 
-#: plugins/config_manager.py:47
+#: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
-msgstr ""
+msgstr "tallenna nykyiset asetukset (hyödyllinen käytettäessä '--setopt':ta)"
 
-#: plugins/config_manager.py:50
+#: plugins/config_manager.py:51
 msgid "add (and enable) the repo from the specified file or url"
 msgstr ""
+"lisää ja ota käyttöön ohjelmistolähde määritetystä tiedostosta tai URL:sta"
 
-#: plugins/config_manager.py:53
+#: plugins/config_manager.py:54
 msgid "print current configuration values to stdout"
-msgstr ""
+msgstr "tulosta nykyiset kokoonpanoarvot stdout:iin"
 
-#: plugins/config_manager.py:56
+#: plugins/config_manager.py:57
 msgid "print variable values to stdout"
-msgstr ""
+msgstr "tulosta muuttuja stdout:iin"
 
-#: plugins/config_manager.py:60
+#: plugins/config_manager.py:61
 msgid "enable repos (automatically saves)"
-msgstr ""
+msgstr "ota ohjelmistolähteet käyttöön (tallentaa automaattisesti)"
 
-#: plugins/config_manager.py:63
+#: plugins/config_manager.py:64
 msgid "disable repos (automatically saves)"
-msgstr ""
+msgstr "poista ohjelmistolähteet käytöstä (tallentaa automaattisesti)"
 
-#: plugins/config_manager.py:77
+#: plugins/config_manager.py:78
 msgid "one of the following arguments is required: {}"
-msgstr ""
+msgstr "yksi seuraavista argumenteista vaaditaan: {}"
 
-#: plugins/config_manager.py:86
+#: plugins/config_manager.py:87
 msgid ""
 "Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
 "manager. Use --set-enabled/--set-disabled instead."
 msgstr ""
+"Varoitus: argumenteilla '--enablerepo'/'--disablerepo' ei ole merkitystä "
+"config managerin kanssa. Käytä sen sijaan '--set-enabled'/'--set-disabled'."
 
-#: plugins/config_manager.py:131
+#: plugins/config_manager.py:132
 #, python-format
 msgid "No matching repo to modify: %s."
-msgstr ""
+msgstr "Ei vastaavaa ohjelmistolähdettä muokattavaksi: %s."
 
-#: plugins/config_manager.py:182
+#: plugins/config_manager.py:183
 #, python-format
 msgid "Adding repo from: %s"
-msgstr ""
+msgstr "Lisätään ohjelmistolähde: %s:sta"
 
-#: plugins/config_manager.py:206
+#: plugins/config_manager.py:207
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
-msgstr[0] ""
+msgstr[0] "Ohjelmistolähteen määritys epäonnistui"
+msgstr[1] "Ohjelmistolähteiden määritys epäonnistui"
 
-#: plugins/config_manager.py:216
+#: plugins/config_manager.py:217
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr ""
+"Ohjelmistolähdettä ei voitu tallentaa ohjelmistolähdetiedostoon %s: %s"
 
 #: plugins/copr.py:59
 msgid "y"
@@ -216,7 +230,7 @@ msgstr "ei"
 
 #: plugins/copr.py:79
 msgid "Interact with Copr repositories."
-msgstr ""
+msgstr "Vuorovaikuta Copr-ohjelmistolähteiden kanssa."
 
 #: plugins/copr.py:81
 msgid ""
@@ -238,28 +252,46 @@ msgid ""
 "  copr search tests\n"
 "    "
 msgstr ""
+"\n"
+"  enable nimi/projekti [vaihda root]\n"
+"  disable nimi/projekti\n"
+"  remove nimi/projekti\n"
+"  list --installed/enabled/disabled\n"
+"  list --available-by-user=NAME\n"
+"  search projekti\n"
+"\n"
+"  Esimerkkejä:\n"
+"  copr enable rhscl/perl516 epel-6-x86_64\n"
+"  copr enable ignatenkobrain/ocltoys\n"
+"  copr disable rhscl/perl516\n"
+"  copr remove rhscl/perl516\n"
+"  copr list --enabled\n"
+"  copr list --available-by-user=ignatenkobrain\n"
+"  copr search tests\n"
+"    "
 
 #: plugins/copr.py:107
 msgid "List all installed Copr repositories (default)"
-msgstr ""
+msgstr "Luettele kaikki asennetut Copr-ohjelmistolähteet (oletus)"
 
 #: plugins/copr.py:109
 msgid "List enabled Copr repositories"
-msgstr ""
+msgstr "Luettele käyttöönotetut Copr-ohjelmistolähteet"
 
 #: plugins/copr.py:111
 msgid "List disabled Copr repositories"
-msgstr ""
+msgstr "Luettele käyttöstä poistetut Copr-ohjelmistolähteet"
 
 #: plugins/copr.py:113
 msgid "List available Copr repositories by user NAME"
 msgstr ""
+"Luettele saatavilla olevat Copr-ohjelmistolähteet käyttäjän NIMEN mukaan"
 
 #: plugins/copr.py:115
 msgid "Specify an instance of Copr to work with"
-msgstr ""
+msgstr "Määritä Copr-ilmentymä, jota haluat käyttää"
 
-#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
+#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:244
 msgid "Error: "
 msgstr "Virhe: "
 
@@ -268,26 +300,39 @@ msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"määritä Copr hub käyttäen `--hub` tai "
+"`copr_hub/copr_username/copr_projectname` muotoa"
 
 #: plugins/copr.py:153
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "useita keskittimiä määritetty"
 
 #: plugins/copr.py:218 plugins/copr.py:222
 msgid "exactly two additional parameters to copr command are required"
 msgstr "tasan kaksi lisäparametria copr-komentoon vaaditaan"
 
-#: plugins/copr.py:238
+#: plugins/copr.py:227
+msgid "Too many arguments."
+msgstr "Liian monta argumenttia."
+
+#: plugins/copr.py:230
+msgid ""
+"Bad format of optional chroot. The format is distribution-version-"
+"architecture."
+msgstr ""
+"Väärä valinnaisen chrootin muoto. Muoto on jakelu-versio-arkkitehtuuri."
+
+#: plugins/copr.py:245
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
-"käytä muotoa  `copr_käyttäjänimi/copr_projektinimi` viitataksesi copr-"
-"projektiin"
+"käytä muotoa `copr_käyttäjänimi/copr_projektinimi` viitataksesi hankkeeseen "
+"copr"
 
-#: plugins/copr.py:240
+#: plugins/copr.py:247
 msgid "bad copr project format"
-msgstr ""
+msgstr "väärä copr-projektimuoto"
 
-#: plugins/copr.py:254
+#: plugins/copr.py:261
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -301,72 +346,88 @@ msgid ""
 "Please do not file bug reports about these packages in Fedora\n"
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 msgstr ""
+"\n"
+"Copr-ohjelmistolähteen käyttöönotto. Huomaa, että tämä arkisto ei ole osa\n"
+"pääjakelua, ja laatu voi vaihdella.\n"
+"\n"
+"Fedora-projekti ei käytä mitään valtaa asennuslähteen sisällöstä\n"
+"muutoin kuin kerrottu Coprin usein kysytyissä kysymyksissä osoitteessa\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"eikä paketteja kata minkäänlainen laatu- tai turvallisuustaso.\n"
+"\n"
+"Älä lähetä näiden pakettien virheraportteja Fedoran\n"
+"Bugzillaan. Jos paketeissa on ongelmia, ota yhteyttä asennuslähteen omistajaan.\n"
 
-#: plugins/copr.py:271
+#: plugins/copr.py:278
 msgid "Repository successfully enabled."
-msgstr ""
+msgstr "Ohjelmistolähteen käyttöönotto onnistui."
 
-#: plugins/copr.py:276
+#: plugins/copr.py:283
 msgid "Repository successfully disabled."
-msgstr ""
+msgstr "Ohjelmistolähteen käytöstä poisto onnistui."
 
-#: plugins/copr.py:280
+#: plugins/copr.py:287
 msgid "Repository successfully removed."
-msgstr ""
+msgstr "Ohjelmistolähteen poisto onnistui."
 
-#: plugins/copr.py:284 plugins/copr.py:693
+#: plugins/copr.py:291 plugins/copr.py:698
 msgid "Unknown subcommand {}."
 msgstr "Tuntematon alikomento {}."
 
-#: plugins/copr.py:341
+#: plugins/copr.py:348
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* Näillä copr:eilla on ohjelmistolähdetiedosto, jonka muoto on vanha eikä se"
+" sisällä tietoja Copr-keskittimestä - käytetään oletuksia. Ota projekti "
+"uudelleen käyttöön muuttaaksesi tätä oletusta."
 
-#: plugins/copr.py:353
+#: plugins/copr.py:360
 msgid "Can't parse repositories for username '{}'."
-msgstr ""
+msgstr "Käyttäjänimelle ”{}” ohjelmistolähteitä ei voi jäsentää."
 
-#: plugins/copr.py:356
+#: plugins/copr.py:363
 msgid "List of {} coprs"
-msgstr ""
+msgstr "Luettelo {} copr:eista"
 
-#: plugins/copr.py:364
+#: plugins/copr.py:371
 msgid "No description given"
 msgstr "Kuvausta ei annettu"
 
-#: plugins/copr.py:376
+#: plugins/copr.py:383
 msgid "Can't parse search for '{}'."
-msgstr ""
+msgstr "Hakua ”{}”:lle ei voi jäsentää."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:386
 msgid "Matched: {}"
-msgstr ""
+msgstr "Vastaavuus: {}"
 
-#: plugins/copr.py:387
+#: plugins/copr.py:394
 msgid "No description given."
 msgstr "Kuvausta ei annettu."
 
-#: plugins/copr.py:410
+#: plugins/copr.py:417
 msgid "Safe and good answer. Exiting."
 msgstr "Turvallinen ja hyvä vastaus. Jännittävää."
 
-#: plugins/copr.py:417
+#: plugins/copr.py:424
 msgid "This command has to be run under the root user."
-msgstr "Komento pitää suorittaa pääkäyttäjänä."
+msgstr "Tämä komento pitää suorittaa käyttäjänä root."
 
-#: plugins/copr.py:481
+#: plugins/copr.py:486
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
+"Tässä ohjelmistolähteessä ei ole vielä rakennettuja versioita, joten et voi "
+"ottaa sitä käyttöön nyt."
 
-#: plugins/copr.py:484
+#: plugins/copr.py:489
 msgid "Such repository does not exist."
-msgstr ""
+msgstr "Tällaista ohjelmistolähdettä ei ole."
 
-#: plugins/copr.py:528
+#: plugins/copr.py:533
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -382,59 +443,70 @@ msgid ""
 "\n"
 "These repositories have been enabled automatically."
 msgstr ""
+"Käytössä olevan Copr-ohjelmistolähteen ylläpitäjä päätti tehdä\n"
+"se riippuvaisen muistaohjelmistolähteistä. Tällaiset ohjelmistolähteet ovat\n"
+"yleensä tarpeen RPM:ien onnistuneelle asennukselle pääasiallisesta Copr-\n"
+"ohjelmistolähteestä (ne tarjoavat ajonaikaisia riippuvuuksia).\n"
+"\n"
+"Huomaa, että laatua ja vikailmoituksia koskeva huomautus yläpuolella\n"
+"pätee myös tässä, Fedora Project ei hallitse sisältöä. Tarkista luettelo:\n"
+"\n"
+"{0}\n"
+"\n"
+"Nämä asennuslähteet on otettu käyttöön automaattisesti."
 
-#: plugins/copr.py:549
+#: plugins/copr.py:554
 msgid "Do you want to keep them enabled?"
-msgstr ""
+msgstr "Haluatko pitää ne käytössä?"
 
-#: plugins/copr.py:582
+#: plugins/copr.py:587
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr ""
+msgstr "Copr-ohjelmistolähteen {0}/{1}/{2} poisto epäonnistui"
 
-#: plugins/copr.py:593
+#: plugins/copr.py:598
 msgid "Failed to disable copr repo {}/{}"
-msgstr ""
+msgstr "Copr-ohjelmistolähteen {}/{} käytöstä poisto epäonnistui"
 
-#: plugins/copr.py:611 plugins/copr.py:648
+#: plugins/copr.py:616 plugins/copr.py:653
 msgid "Unknown response from server."
 msgstr "Tuntematon vastaus palvelimelta."
 
-#: plugins/copr.py:633
+#: plugins/copr.py:638
 msgid "Interact with Playground repository."
-msgstr ""
+msgstr "Vuorovaikuta Playground-ohjelmistolähteen kanssa."
 
-#: plugins/copr.py:639
+#: plugins/copr.py:644
 msgid "Enabling a Playground repository."
-msgstr ""
+msgstr "Otetaan käyttöön Playground-ohjelmistolähde."
 
-#: plugins/copr.py:640
+#: plugins/copr.py:645
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Haluatko jatkaa?"
 
-#: plugins/copr.py:683
+#: plugins/copr.py:688
 msgid "Playground repositories successfully enabled."
-msgstr ""
+msgstr "Playground-ohjelmistolähde otettu käyttöön."
 
-#: plugins/copr.py:686
+#: plugins/copr.py:691
 msgid "Playground repositories successfully disabled."
-msgstr ""
+msgstr "Playground-ohjelmistolähde poistettu käytöstä."
 
-#: plugins/copr.py:690
+#: plugins/copr.py:695
 msgid "Playground repositories successfully updated."
-msgstr ""
+msgstr "Playground-ohjelmistolähde päivitetty ."
 
 #: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr ""
+msgstr "kirjoita tiedot asennetuista rpm-paketeista tiedostoon"
 
 #: plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
-msgstr ""
+msgstr "älä yritä kirjoittaa ohjelmistolähteen sisältöä."
 
 #: plugins/debug.py:70
 msgid "optional name of dump file"
-msgstr ""
+msgstr "Tyhjennystiedoston valinnainen nimi"
 
 #: plugins/debug.py:95
 #, python-format
@@ -443,35 +515,39 @@ msgstr "Tuloste kirjoitettu %s:n"
 
 #: plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
-msgstr ""
+msgstr "palauta virheenkorjaustyhjennystiedostoon tallennetut paketit"
 
 #: plugins/debug.py:185
 msgid "output commands that would be run to stdout."
-msgstr ""
+msgstr "tulosta suoritettavat komennot oletusulostuloon."
 
 #: plugins/debug.py:188
 msgid "Install the latest version of recorded packages."
-msgstr ""
+msgstr "Asenna uusin tallennettujen pakettien versio."
 
 #: plugins/debug.py:191
 msgid ""
 "Ignore architecture and install missing packages matching the name, epoch, "
 "version and release."
 msgstr ""
+"Ohita arkkitehtuuri ja asenna puuttuvat paketit, jotka vastaavat nimeä, "
+"aikakautta, versiota ja julkaisua."
 
 #: plugins/debug.py:196
 msgid "limit to specified type"
-msgstr ""
+msgstr "rajoita tiettyyn tyyppiin"
 
 #: plugins/debug.py:199
 msgid ""
 "Allow removing of install-only packages. Using this option may result in an "
 "attempt to remove the running kernel."
 msgstr ""
+"Salli vain-asennus pakettien poistaminen. Tämän vaihtoehdon käyttäminen voi "
+"johtaa siihen, että yritetään poistaa käynnissä oleva ydin."
 
 #: plugins/debug.py:202
 msgid "name of dump file"
-msgstr ""
+msgstr "tyhjennystiedoston nimi"
 
 #: plugins/debug.py:273
 #, python-format
@@ -481,7 +557,7 @@ msgstr "Paketti %s ei ole saatavilla"
 #: plugins/debug.py:283
 #, python-format
 msgid "Bad dnf debug file: %s"
-msgstr ""
+msgstr "Väärä dnf-virheenkorjaustiedosto: %s"
 
 #: plugins/debuginfo-install.py:56
 msgid "install debuginfo packages"
@@ -492,28 +568,36 @@ msgstr "asenna debuginfo-paketit"
 msgid ""
 "Could not find debuginfo package for the following available packages: %s"
 msgstr ""
+"Seuraavien käytettävissä olevien pakettien virheenkorjaustieto-pakettia ei "
+"löytynyt: %s"
 
 #: plugins/debuginfo-install.py:185
 #, python-format
 msgid ""
 "Could not find debugsource package for the following available packages: %s"
 msgstr ""
+"Seuraavien käytettävissä olevien pakettien virheenkorjauslähde-pakettia ei "
+"löytynyt: %s"
 
 #: plugins/debuginfo-install.py:190
 #, python-format
 msgid ""
 "Could not find debuginfo package for the following installed packages: %s"
 msgstr ""
+"Seuraavien asennettujen pakettien virheenkorjaustieto-pakettia ei löytynyt: "
+"%s"
 
 #: plugins/debuginfo-install.py:195
 #, python-format
 msgid ""
 "Could not find debugsource package for the following installed packages: %s"
 msgstr ""
+"Seuraavien asennettujen pakettien virheenkorjauslähde-pakettia ei löytynyt: "
+"%s"
 
 #: plugins/debuginfo-install.py:199
 msgid "Unable to find a match"
-msgstr ""
+msgstr "Pakettia ei löydy"
 
 #: plugins/download.py:41
 msgid "Download package to current directory"
@@ -533,11 +617,11 @@ msgstr "lataa sen sijaan -debuginfo paketti"
 
 #: plugins/download.py:57
 msgid "download the -debugsource package instead"
-msgstr ""
+msgstr "lataa sen sijaan -debugsource-paketti"
 
 #: plugins/download.py:60
 msgid "limit  the  query to packages of given architectures."
-msgstr ""
+msgstr "rajoita kysely annetun arkkitehtuurin paketteihin."
 
 #: plugins/download.py:62
 msgid "resolve and download needed dependencies"
@@ -548,46 +632,169 @@ msgid ""
 "when running with --resolve, download all dependencies (do not exclude "
 "already installed ones)"
 msgstr ""
+"käytettäessä parametria '--resolve', lataa kaikki riippuvuudet (älä sulje "
+"pois jo asennettuja)"
 
 #: plugins/download.py:67
 msgid ""
 "print list of urls where the rpms can be downloaded instead of downloading"
 msgstr ""
+"ei ladata vaan tulostetaan luettelo URL-osoitteista, joista rpm:t voidaan "
+"ladata"
 
 #: plugins/download.py:72
 msgid "when running with --url, limit to specific protocols"
-msgstr ""
+msgstr "käytettäessa parametria '--url', rajoita tiettyihin protokolliin"
 
-#: plugins/download.py:121 plugins/reposync.py:293
+#: plugins/download.py:121 plugins/reposync.py:314
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Peiliä paketille %s ei saatu"
 
 #: plugins/download.py:243
 msgid "Exiting due to strict setting."
-msgstr ""
+msgstr "Poistutaan tiukkojen asetusten takia."
 
 #: plugins/download.py:261
 msgid "Error in resolve of packages:"
-msgstr ""
+msgstr "Virhe pakettien ratkaisemisessa:"
 
 #: plugins/download.py:279
 #, python-format
 msgid "No source rpm defined for %s"
-msgstr ""
+msgstr "Lähde-rpm:tä ei ole määritelty %s:lle"
 
 #: plugins/download.py:296 plugins/download.py:309
 #, python-format
 msgid "No package %s available."
 msgstr "Pakettia %s ei ole saatavilla."
 
+#: plugins/groups_manager.py:49
+msgid "Invalid group id"
+msgstr "Ei kelvollinen ryhmän tunnus"
+
+#: plugins/groups_manager.py:58
+msgid "Invalid translated data, should be in form 'lang:text'"
+msgstr "Ei kelvollisia käännettyjä tietoja; pitäisi olla muodossa 'lang:text'"
+
+#: plugins/groups_manager.py:61
+msgid "Invalid/empty language for translated data"
+msgstr "Ei kelvollinen/tyhjä kieli käännetyille tiedoille"
+
+#: plugins/groups_manager.py:71
+msgid "Can't generate group id from '{}'. Please specify group id using --id."
+msgstr ""
+"Ryhmätunnusta ei voi luoda ”{}”:sta. Määritä ryhmän tunnus käyttämällä '--"
+"id'."
+
+#: plugins/groups_manager.py:79
+msgid "create and edit groups metadata file"
+msgstr "luo ja muokkaa ryhmien metatietotiedostoa"
+
+#: plugins/groups_manager.py:90
+msgid "load groups metadata from file"
+msgstr "lataa ryhmien metatiedot tiedostosta"
+
+#: plugins/groups_manager.py:93
+msgid "save groups metadata to file"
+msgstr "tallenna ryhmien metatiedot tiedostoon"
+
+#: plugins/groups_manager.py:95
+msgid "load and save groups metadata to file"
+msgstr "lue ja tallenna ryhmien metatiedot tiedostoon"
+
+#: plugins/groups_manager.py:97
+msgid "print the result metadata to stdout"
+msgstr "tulosta metatiedot vakiotulosteeseen"
+
+#: plugins/groups_manager.py:100
+msgid "group id"
+msgstr "ryhmätunnus"
+
+#: plugins/groups_manager.py:101
+msgid "group name"
+msgstr "ryhmän nimi"
+
+#: plugins/groups_manager.py:103
+msgid "group description"
+msgstr "ryhmäkuvaus"
+
+#: plugins/groups_manager.py:105
+msgid "group display order"
+msgstr "ryhmän esitysjärjestys"
+
+#: plugins/groups_manager.py:108
+msgid "translated name for the group"
+msgstr "ryhmän käännetty nimi"
+
+#: plugins/groups_manager.py:111
+msgid "translated description for the group"
+msgstr "ryhmän käännetty kuvaus"
+
+#: plugins/groups_manager.py:115
+msgid "make the group user visible (default)"
+msgstr "tee ryhmän käyttäjä näkyväksi (oletus)"
+
+#: plugins/groups_manager.py:118
+msgid "make the group user invisible"
+msgstr "tee ryhmäkäyttäjä näkymätömmäksi"
+
+#: plugins/groups_manager.py:123
+msgid "add packages to the mandatory section"
+msgstr "lisää paketteja pakolliseen osioon"
+
+#: plugins/groups_manager.py:125
+msgid "add packages to the optional section"
+msgstr "lisää paketteja valinnaiseen osioon"
+
+#: plugins/groups_manager.py:127
+msgid "remove packages from the group instead of adding them"
+msgstr "poista paketit ryhmästä lisäämisen sijaan"
+
+#: plugins/groups_manager.py:129
+msgid "include also direct dependencies for packages"
+msgstr "sisällytä myös pakettien suorat riippuvuudet"
+
+#: plugins/groups_manager.py:132
+msgid "package specification"
+msgstr "paketin määrittely"
+
+#: plugins/groups_manager.py:156
+msgid "Can't edit group without specifying it (use --id or --name)"
+msgstr ""
+"Ryhmää ei voi muokata määrittelemättä sitä (käytä '--id' tai' --name')"
+
+#: plugins/groups_manager.py:190
+msgid "Can't load file \"{}\": {}"
+msgstr "Tiedostoa \"{}\": {} ei pystytä lataamaan"
+
+#: plugins/groups_manager.py:206
+msgid "Can't save file \"{}\": {}"
+msgstr "Tiedostoa \"{}\": {} ei voi tallentaa"
+
+#: plugins/groups_manager.py:259
+msgid "No match for argument: {}"
+msgstr "Ei vastaavaa argumentille: {}"
+
+#: plugins/groups_manager.py:296
+msgid "Can't remove packages from non-existent group"
+msgstr "Paketteja ei voi poistaa olemattomasta ryhmästä"
+
+#: plugins/groups_manager.py:305
+msgid ""
+"Group id '{}' generated from '{}' is duplicit. Please specify group id using"
+" --id."
+msgstr ""
+"\"{}\":sta luotu ryhmätunnus \"{}\" on kaksoiskappale. Määritä ryhmän tunnus"
+" käyttämällä '--id'."
+
 #: plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
-msgstr ""
+msgstr "Luettele asennetut paketit, joita muut paketit eivät vaadi"
 
 #: plugins/local.py:122
 msgid "Unable to create a directory '{}' due to '{}'"
-msgstr ""
+msgstr "Hakemistoa \"{}\" ei voitu luoda \"{}\":n vuoksi"
 
 #: plugins/local.py:126
 msgid "'{}' is not a directory"
@@ -595,7 +802,7 @@ msgstr "'{}' ei ole hakemisto"
 
 #: plugins/local.py:135
 msgid "Copying '{}' to local repo"
-msgstr ""
+msgstr "Kopioidaan ”{}” paikalliseen ohjelmistolähteeseen"
 
 #: plugins/local.py:141
 msgid "Can't write file '{}'"
@@ -603,148 +810,166 @@ msgstr "Tiedostoa '{}' ei voi kirjoittaa"
 
 #: plugins/local.py:156
 msgid "Rebuilding local repo"
-msgstr ""
+msgstr "Uudelleenrakennetaan paikallinen ohjelmistolähde"
 
 #: plugins/migrate.py:45
 msgid "migrate yum's history, group and yumdb data to dnf"
-msgstr ""
+msgstr "siirrä yumin historia, ryhmä ja yumdb-tiedot DNF:een"
 
 #: plugins/migrate.py:54
 msgid "Migrating history data..."
-msgstr ""
+msgstr "Siirretään historiatiedot..."
 
-#: plugins/needs_restarting.py:65
+#: plugins/needs_restarting.py:66
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr ""
+"Asennettua pakettia ei löytynyt tarvitsee-uudelleenkäynnistyksen tiedostossa"
+" \"{file}\" määritetylle paketin nimelle \"{pkg}\"."
 
-#: plugins/needs_restarting.py:199
+#: plugins/needs_restarting.py:220
 msgid "determine updated binaries that need restarting"
 msgstr ""
+"selvitä päivitetyt binäärit, jotka tarvitsevat uudelleen käynnistyksen"
 
-#: plugins/needs_restarting.py:204
+#: plugins/needs_restarting.py:225
 msgid "only consider this user's processes"
-msgstr ""
+msgstr "ota huomioon vain tämän käyttäjän prosessit"
 
-#: plugins/needs_restarting.py:206
+#: plugins/needs_restarting.py:227
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
+"ilmoita vain, tarvitaanko uudelleenkäynnistys (poistumiskoodi 1) vaiko ei "
+"(poistumiskoodi 0)"
 
 #: plugins/needs_restarting.py:230
+msgid "only report affected systemd services"
+msgstr "ilmoita vain vaikutusalaan kuuluvat systemd-palvelut"
+
+#: plugins/needs_restarting.py:253
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr "Ydinkirjastot tai -palvelut on päivitetty käynnistyksen jälkeen:"
 
-#: plugins/needs_restarting.py:235
+#: plugins/needs_restarting.py:258
 msgid "Reboot is required to fully utilize these updates."
 msgstr "Uudelleenkäynnistys vaaditaan näiden päivitysten hyödyntämiseksi."
 
-#: plugins/needs_restarting.py:236
+#: plugins/needs_restarting.py:259
 msgid "More information:"
 msgstr "Lisätietoja:"
 
-#: plugins/needs_restarting.py:240
+#: plugins/needs_restarting.py:263
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 "Ydinkirjastoja tai -palveluja ei ole päivitetty käynnistyksen jälkeen."
 
-#: plugins/needs_restarting.py:242
+#: plugins/needs_restarting.py:265
 msgid "Reboot should not be necessary."
 msgstr "Uudelleenkäynnistyksen ei pitäisi olla tarpeen."
 
 #: plugins/post-transaction-actions.py:71
 #, python-format
 msgid "Bad Action Line \"%s\": %s"
-msgstr ""
+msgstr "Virheellinen toimintarivi \"%s\": %s"
 
 #. unsupported state, skip it
 #: plugins/post-transaction-actions.py:130
 #, python-format
 msgid "Bad Transaction State: %s"
-msgstr ""
-
-#: plugins/post-transaction-actions.py:153
-#: plugins/post-transaction-actions.py:155
-#, python-format
-msgid "post-transaction-actions: %s"
-msgstr ""
+msgstr "Virheellinen transaktion tila: %s"
 
 #: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:159
+#, python-format
+msgid "post-transaction-actions: %s"
+msgstr "transaktionin jälkeiset toimet: %s"
+
+#: plugins/post-transaction-actions.py:161
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
-msgstr ""
+msgstr "transaktionin jälkeiset toiminnot: Virheellinen komento '%s': %s"
 
 #: plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr ""
+msgstr "Näytä luettelo ohjelmistolähteiden ratkaisemattomista riippuvuuksista"
 
 #: plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
 msgstr ""
+"Ohjelmistolähteen sulkeminen päättyi ratkaisemattomilla riippuvuuksilla."
 
 #: plugins/repoclosure.py:153
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
+"tarkista paketit annettuille arkkitehtuureille, voidaan määrittää useita "
+"kertoja"
 
 #: plugins/repoclosure.py:156
 msgid "Specify repositories to check"
-msgstr ""
+msgstr "Määritä tarkistettavat ohjelmistolähteet"
 
 #: plugins/repoclosure.py:158
 msgid "Check only the newest packages in the repos"
-msgstr ""
+msgstr "Tarkista vain ohjelmistolähteen uusimmat paketit"
 
 #: plugins/repoclosure.py:161
 msgid "Check closure for this package only"
-msgstr ""
+msgstr "Tarkista sulkeminen vain tälle paketille"
 
 #: plugins/repodiff.py:45
 msgid "List differences between two sets of repositories"
-msgstr ""
+msgstr "Luettele kahden ohjelmistolähteiden sarjojen väliset eroavaisuudet"
 
 #: plugins/repodiff.py:58
 msgid "Specify old repository, can be used multiple times"
-msgstr ""
+msgstr "Määritä vanha asennuslähde, voidaan määrittää useita kertoja"
 
 #: plugins/repodiff.py:60
 msgid "Specify new repository, can be used multiple times"
-msgstr ""
+msgstr "Määritä uusi asennuslähde, voidaan määrittää useita kertoja"
 
 #: plugins/repodiff.py:63
 msgid ""
 "Specify architectures to compare, can be used multiple times. By default, "
 "only source rpms are compared."
 msgstr ""
+"Määritä verrattavat arkkitehtuurit, voidaan määrittää useita kertoja. "
+"Oletuksena vain lähde rpm:iä verrataan."
 
 #: plugins/repodiff.py:67
 msgid "Output additional data about the size of the changes."
-msgstr ""
+msgstr "Anna lisätietoja muutosten koosta."
 
 #: plugins/repodiff.py:69
 msgid ""
 "Compare packages also by arch. By default packages are compared just by "
 "name."
 msgstr ""
+"Vertaa paketteja myös arkkitehtuurin mukaan. Paketteja verrataan "
+"oletusarvoisesti vain nimen perusteella."
 
 #: plugins/repodiff.py:72
 msgid "Output a simple one line message for modified packages."
-msgstr ""
+msgstr "Tulosta yksinkertainen yhden rivin viesti muokatuille paketeille."
 
 #: plugins/repodiff.py:74
 msgid ""
 "Split the data for modified packages between upgraded and downgraded "
 "packages."
 msgstr ""
+"Jaa muokattujen pakettien tiedot päivitettyjen ja vanhennettujen pakettien "
+"kesken."
 
 #: plugins/repodiff.py:86
 msgid "Both old and new repositories must be set."
-msgstr ""
+msgstr "Sekä vanhat että uudet asennuslähteet on määritettävä."
 
 #: plugins/repodiff.py:178
 msgid "Size change: {} bytes"
-msgstr ""
+msgstr "Koon muutos: {} bittiä"
 
 #: plugins/repodiff.py:184
 msgid "Added package  : {}"
@@ -756,25 +981,31 @@ msgstr "Poistettiin paketti: {}"
 
 #: plugins/repodiff.py:190
 msgid "Obsoleted by   : {}"
-msgstr ""
+msgstr "{} vanhentama"
 
 #: plugins/repodiff.py:195
 msgid ""
 "\n"
 "Upgraded packages"
 msgstr ""
+"\n"
+"Päivitetyt paketit"
 
 #: plugins/repodiff.py:200
 msgid ""
 "\n"
 "Downgraded packages"
 msgstr ""
+"\n"
+"Taaksepäin päivitetyt paketit"
 
 #: plugins/repodiff.py:207
 msgid ""
 "\n"
 "Modified packages"
 msgstr ""
+"\n"
+"Muokatut paketit"
 
 #: plugins/repodiff.py:212
 msgid ""
@@ -794,43 +1025,43 @@ msgstr "Poistettiin paketit: {}"
 
 #: plugins/repodiff.py:216
 msgid "Upgraded packages: {}"
-msgstr ""
+msgstr "Päivitetyt paketit: {}"
 
 #: plugins/repodiff.py:217
 msgid "Downgraded packages: {}"
-msgstr ""
+msgstr "Vanhennetut paketit: {}"
 
 #: plugins/repodiff.py:219
 msgid "Modified packages: {}"
-msgstr ""
+msgstr "Muokatut paketit: {}"
 
 #: plugins/repodiff.py:222
 msgid "Size of added packages: {}"
-msgstr ""
+msgstr "Lisättyjen pakettien koko: {}"
 
 #: plugins/repodiff.py:223
 msgid "Size of removed packages: {}"
-msgstr ""
+msgstr "Poistettujen pakettien koko: {}"
 
 #: plugins/repodiff.py:225
 msgid "Size of modified packages: {}"
-msgstr ""
+msgstr "Muokattujen pakettien koko: {}"
 
 #: plugins/repodiff.py:228
 msgid "Size of upgraded packages: {}"
-msgstr ""
+msgstr "Päivitettyjen pakettien koko: {}"
 
 #: plugins/repodiff.py:230
 msgid "Size of downgraded packages: {}"
-msgstr ""
+msgstr "Vanhennettujen pakettien koko: {}"
 
 #: plugins/repodiff.py:232
 msgid "Size change: {}"
-msgstr ""
+msgstr "Koon muutos: {}"
 
 #: plugins/repograph.py:50
 msgid "Output a full package dependency graph in dot format"
-msgstr ""
+msgstr "Tulosta koko paketin riippuvuuskaavio pistemuodossa"
 
 #: plugins/repograph.py:110
 #, python-format
@@ -849,176 +1080,203 @@ msgstr "Ohita joko --vanhat tai --uudet, älä molempia!"
 msgid "No files to process"
 msgstr "Ei tiedostoja käsiteltäväksi"
 
-#: plugins/repomanage.py:93
+#: plugins/repomanage.py:96
 msgid "Could not open {}"
 msgstr "Ei voida avata {}"
 
-#: plugins/repomanage.py:177
+#: plugins/repomanage.py:180
 msgid "Print the older packages"
 msgstr "Tulosta vanhemmat paketit"
 
-#: plugins/repomanage.py:179
+#: plugins/repomanage.py:182
 msgid "Print the newest packages"
 msgstr "Tulosta uusimmat paketit"
 
-#: plugins/repomanage.py:181
+#: plugins/repomanage.py:184
 msgid "Space separated output, not newline"
-msgstr ""
-
-#: plugins/repomanage.py:183
-msgid "Newest N packages to keep - defaults to 1"
-msgstr ""
+msgstr "Välilyönnillä eroteltu tulostus, ei uudella rivillä"
 
 #: plugins/repomanage.py:186
+msgid "Newest N packages to keep - defaults to 1"
+msgstr "N uusinta säilytettävää pakettia - oletuksena 1"
+
+#: plugins/repomanage.py:189
 msgid "Path to directory"
 msgstr "Polku hakemistoon"
 
-#: plugins/reposync.py:54
+#: plugins/reposync.py:55
 msgid "download all packages from remote repo"
-msgstr ""
+msgstr "lataa kaikki paketit etäasennuslähteestä"
 
-#: plugins/reposync.py:63
+#: plugins/reposync.py:64
 msgid "download only packages for this ARCH"
-msgstr ""
+msgstr "lataa paketit vain tälle ARKKITEHTUURILLE"
 
-#: plugins/reposync.py:65
+#: plugins/reposync.py:66
 msgid "delete local packages no longer present in repository"
-msgstr ""
+msgstr "poista paikalliset paketit, joita ei enää ole asennuslähteessä"
 
-#: plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr ""
-
-#: plugins/reposync.py:69
+#: plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "lataa kaikki metatieto."
 
-#: plugins/reposync.py:71
-msgid "download only newest packages per-repo"
+#: plugins/reposync.py:70
+msgid "Remove packages that fail GPG signature checking after downloading"
 msgstr ""
+"Poista paketit, joiden GPG-allekirjoituksen tarkistus epäonnistuu lataamisen"
+" jälkeen"
 
 #: plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr ""
+msgid "also download and uncompress comps.xml"
+msgstr "lataa ja pura myös comps.xml"
 
 #: plugins/reposync.py:75
-msgid "Don't add the reponame to the download path."
-msgstr ""
-
-#: plugins/reposync.py:77
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
 msgstr ""
+"mihin ladatut asennuslähteen metatiedot tallennetaan. Oletusarvoisesti "
+"--download-path."
+
+#: plugins/reposync.py:78
+msgid "download only newest packages per-repo"
+msgstr "lataa vain uusimmat asennuslähdekohtaiset paketit"
 
 #: plugins/reposync.py:80
-msgid "operate on source packages"
-msgstr ""
+msgid "Don't add the reponame to the download path."
+msgstr "Älä lisää asennuslähteen nimeä latauspolkuun."
 
 #: plugins/reposync.py:82
+msgid "where to store downloaded repositories"
+msgstr "minne ladatat asennuslähteet tallennetaan"
+
+#: plugins/reposync.py:84
 msgid "try to set local timestamps of local files by the one on the server"
 msgstr ""
+"yritä asettaa paikallisten tiedostojen paikalliset aikaleimat palvelimella "
+"olevan mukaan"
 
-#: plugins/reposync.py:85
+#: plugins/reposync.py:87
+msgid "download only source packages"
+msgstr "lataa vain lähdekoodipaketteja"
+
+#: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"
-msgstr ""
+msgstr "Listaa vain URL-osoitteet ladattavista, älä lataa"
 
-#: plugins/reposync.py:109
+#: plugins/reposync.py:113
 msgid "Can't use --norepopath with multiple repositories"
-msgstr ""
+msgstr "Ei voi käyttää --norepopathia kun on käytössä useita asennuslähteitä"
 
-#: plugins/reposync.py:127
+#: plugins/reposync.py:132
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
-msgstr ""
+msgstr "Metatietojen peilin saaminen epäonnistui: %s"
 
-#: plugins/reposync.py:144
+#: plugins/reposync.py:149
 msgid "Failed to get mirror for the group file."
-msgstr ""
+msgstr "Ryhmätiedoston peilin saaminen epäonnistui."
+
+#: plugins/reposync.py:168
+msgid "Removing {}: {}"
+msgstr "Poistetaan {}: {}"
 
 #: plugins/reposync.py:175
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr ""
+msgid "GPG signature check failed."
+msgstr "GPG-allekirjoituksen tarkistus epäonnistui."
 
-#: plugins/reposync.py:190
+#: plugins/reposync.py:196
+msgid "Download target '{}' is outside of download path '{}'."
+msgstr "Latauskohde ”{}” on latauspolun ”{}” ulkopuolella."
+
+#: plugins/reposync.py:211
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[POISTETTU] %s"
 
-#: plugins/reposync.py:192
+#: plugins/reposync.py:213
 #, python-format
 msgid "failed to delete file %s"
 msgstr "tiedoston %s poistaminen epäonnistui"
 
-#: plugins/reposync.py:201
+#: plugins/reposync.py:222
 #, python-format
 msgid "comps.xml for repository %s saved"
-msgstr ""
+msgstr "comps.xml asennuslähteelle %s tallennettu"
 
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
-msgstr ""
-
-#: plugins/versionlock.py:32
-#, python-format
-msgid "Unable to read version lock configuration: %s"
-msgstr ""
+msgstr "Uudet lehdet:"
 
 #: plugins/versionlock.py:33
-msgid "Locklist not set"
-msgstr ""
+#, python-format
+msgid "Unable to read version lock configuration: %s"
+msgstr "Versiolukituksen määritystä ei voi lukea: %s"
 
 #: plugins/versionlock.py:34
-msgid "Adding versionlock on:"
-msgstr ""
+msgid "Locklist not set"
+msgstr "Lukkolistaa ei ole asetettu"
 
 #: plugins/versionlock.py:35
-msgid "Adding exclude on:"
-msgstr ""
+msgid "Adding versionlock on:"
+msgstr "Lisätään versiolukko kohteelle:"
 
 #: plugins/versionlock.py:36
-msgid "Package already locked in equivalent form:"
-msgstr ""
+msgid "Adding exclude on:"
+msgstr "Lisätään ohita kohteelle:"
 
 #: plugins/versionlock.py:37
+msgid "Package already locked in equivalent form:"
+msgstr "Paketti on jo lukittu vastaavassa muodossa:"
+
+#: plugins/versionlock.py:38
 msgid "Package {} is already locked"
 msgstr "Paketti {} on jo lukittu"
 
-#: plugins/versionlock.py:38
-msgid "Package {} is already excluded"
-msgstr ""
-
 #: plugins/versionlock.py:39
-msgid "Deleting versionlock for:"
-msgstr ""
+msgid "Package {} is already excluded"
+msgstr "Paketti {} on jo suljettu pois"
 
 #: plugins/versionlock.py:40
-msgid "No package found for:"
-msgstr ""
+msgid "Deleting versionlock for:"
+msgstr "Poistetaan versiolukitus kohteelta:"
 
 #: plugins/versionlock.py:41
-msgid "Excludes from versionlock plugin were not applied"
-msgstr ""
+msgid "No package found for:"
+msgstr "Pakettia ei löytynyt kohteelle:"
 
 #: plugins/versionlock.py:42
-msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
-msgstr ""
+msgid "Excludes from versionlock plugin were not applied"
+msgstr "Versiolukon laajennuksen määrittämää poissulkemista ei sovellettu"
 
 #: plugins/versionlock.py:43
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
+"Versionlock-laajennus: lukittujen sääntöjen lukumäärä tiedostosta \"{}\" "
+"otettu käyttöön: {}"
 
 #: plugins/versionlock.py:44
+msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+msgstr ""
+"Versionlock-laajennus: poissuljettujen sääntöjen lukumäärä tiedostosta "
+"\"{}\" otettu käyttöön: {}"
+
+#: plugins/versionlock.py:45
 msgid "Versionlock plugin: could not parse pattern:"
-msgstr ""
+msgstr "Versionlock-laajennus: mallin jäsentäminen epäonnistui:"
 
-#: plugins/versionlock.py:130
+#: plugins/versionlock.py:132
 msgid "control package version locks"
-msgstr ""
+msgstr "ohjauspaketin version lukot"
 
-#: plugins/versionlock.py:136
+#: plugins/versionlock.py:138
 msgid "Use package specifications as they are, do not try to parse them"
 msgstr ""
+"Käytä pakettimäärityksiä sellaisina kuin ne ovat, älä yritä jäsentää niitä"
+
+#: plugins/versionlock.py:158
+msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
+msgstr "Alikomento \"{}\" on vanhentunut. Käytä sen sijaan 'exclude' alikomentoa."
 
 #~ msgid "also download comps.xml"
 #~ msgstr "lataa myös comps.xml"
