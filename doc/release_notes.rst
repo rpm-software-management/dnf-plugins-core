@@ -22,6 +22,24 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.22 Release Notes
+====================
+
+- New features:
+  - [repomanage] Allow running only with metadata
+  - [repomanage] Enhance documentation (RhBug:1898293)
+
+- Bug fixes:
+  - [versionlock] Locking obsoleted package does not make the obsoleter unavailable (RhBug:1957280)
+  - [versionlock] Work correctly with packages with minorbump part of release (RhBug:1961217)
+
+Bugs fixed in 4.0.22:
+
+* :rhbug:`1957280`
+* :rhbug:`1961217`
+* :rhbug:`1898293`
+
+====================
 4.0.21 Release Notes
 ====================
 

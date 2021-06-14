@@ -614,5 +614,17 @@
     [
         1935465,
         "Cached rpms in dnf uses historic yum checksum code instead of librepo's checksum"
+    ],
+    [
+        1957280,
+        "DNF with versionlock silences a conflict due to a provide"
+    ],
+    [
+        1961217,
+        "procps-ng gets updated regardless of versionlock state"
+    ],
+    [
+        1898293,
+        "repomanage --old does not list the oldest package per module"
     ]
 ]

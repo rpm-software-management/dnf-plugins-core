@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.21
+Version:        4.0.22
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -763,6 +763,12 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Mon Jun 14 2021 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.22-1
+- [repomanage] Allow running only with metadata
+- [repomanage] Enhance documentation (RhBug:1898293)
+- [versionlock] Locking obsoleted package does not make the obsoleter unavailable (RhBug:1957280)
+- [versionlock] Work correctly with packages with minorbump part of release (RhBug:1961217)
+
 * Mon Apr 12 2021 Nicola Sella <nsella@redhat.com> - 4.0.21-1
 - Add missing command line option to documentation
 - doc: add packages to needs-restarting conf
