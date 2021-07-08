@@ -199,7 +199,7 @@ class ProcessStart(object):
 
     @staticmethod
     def get_boot_time():
-        return int(os.stat('/proc/1/cmdline').st_mtime)
+        return int(os.stat('/proc/1').st_mtime)
 
     @staticmethod
     def get_sc_clk_tck():
