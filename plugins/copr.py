@@ -431,7 +431,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
             dist = linux_distribution()
         # Get distribution architecture
         distarch = self.base.conf.substitutions['basearch']
-        if "Fedora" in dist:
+        if any([name in dist for name in ["Fedora", "Fedora Linux"]]):
             if "Rawhide" in dist:
                 chroot = ("fedora-rawhide-" + distarch)
             # workaround for enabling repos in Rawhide when VERSION in os-release
