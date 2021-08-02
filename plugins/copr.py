@@ -27,6 +27,8 @@ import re
 import shutil
 import stat
 import sys
+import base64
+import json
 
 from dnfpluginscore import _, logger
 import dnf
@@ -70,10 +72,10 @@ NO = set([_('no'), _('n'), ''])
 
 if PY3:
     from configparser import ConfigParser, NoOptionError, NoSectionError
-    from urllib.request import urlopen, HTTPError
+    from urllib.request import urlopen, HTTPError, URLError
 else:
     from ConfigParser import ConfigParser, NoOptionError, NoSectionError
-    from urllib2 import urlopen, HTTPError
+    from urllib2 import urlopen, HTTPError, URLError
 
 @dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
@@ -475,28 +477,40 @@ Bugzilla. In case of problems, contact the owner of this repository.
         api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
 
         try:
-            f = self.base.urlopen(self.copr_url + api_path, mode='w+')
-        except IOError as e:
+            response = urlopen(self.copr_url + api_path)
             if os.path.exists(repo_filename):
                 os.remove(repo_filename)
-            if '404' in str(e):
-                try:
-                    res = urlopen(self.copr_url + "/coprs/" + project_name)
-                    status_code = res.getcode()
-                except HTTPError as e:
-                    status_code = e.getcode()
-                if str(status_code) != '404':
-                    raise dnf.exceptions.Error(_("This repository does not have"
-                                                 " any builds yet so you cannot enable it now."))
-                else:
-                    raise dnf.exceptions.Error(_("Such repository does not exist."))
-            raise
+        except HTTPError as e:
+            if e.code != 404:
+                error_msg = _("Request to {0} failed: {1} - {2}").format(self.copr_url + api_path, e.code, str(e))
+                raise dnf.exceptions.Error(error_msg)
+            error_msg = _("It wasn't possible to enable this project.\n")
+            error_data = e.headers.get("Copr-Error-Data")
+            if error_data:
+                error_data_decoded = base64.b64decode(error_data).decode('utf-8')
+                error_data_decoded = json.loads(error_data_decoded)
+                error_msg += _("Repository '{0}' does not exist in project '{1}'.").format(
+                    '-'.join(self.chroot_parts), project_name)
+                if error_data_decoded.get("available chroots"):
+                    error_msg += _("\nAvailable repositories: ") + ', '.join(
+                        "'{}'".format(x) for x in error_data_decoded["available chroots"])
+                    error_msg += _("\n\nIf you want to enable a non-default repository, use the following command:\n"
+                                   "  'dnf copr enable {0} <repository>'\n"
+                                   "But note that the installed repo file will likely need a manual "
+                                   "modification.").format(project_name)
+                raise dnf.exceptions.Error(error_msg)
+            else:
+                error_msg += _("Project {0} does not exist.").format(project_name)
+                raise dnf.exceptions.Error(error_msg)
+        except URLError as e:
+            error_msg = _("Failed to connect to {0}: {1}").format(self.copr_url + api_path, e.reason.strerror)
+            raise dnf.exceptions.Error(error_msg)
 
-        for line in f:
-            if re.match(r"\[copr:", line):
-                repo_filename = os.path.join(self.base.conf.get_reposdir,
-                                             "_" + line[1:-2] + ".repo")
-            break
+        # Try to read the first line, and detect the repo_filename from that (override the repo_filename value).
+        first_line = response.readline()
+        line = first_line.decode("utf-8")
+        if re.match(r"\[copr:", line):
+            repo_filename = os.path.join(self.base.conf.get_reposdir, "_" + line[1:-2] + ".repo")
 
         # if using default hub, remove possible old repofile
         if self.copr_url == self.default_url:
@@ -507,7 +521,10 @@ Bugzilla. In case of problems, contact the owner of this repository.
             if os.path.exists(old_repo_filename):
                 os.remove(old_repo_filename)
 
-        shutil.copy2(f.name, repo_filename)
+        with open(repo_filename, 'wb') as f:
+            f.write(first_line)
+            for line in response.readlines():
+                f.write(line)
         os.chmod(repo_filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)
 
     def _runtime_deps_warning(self, copr_username, copr_projectname):
