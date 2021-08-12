@@ -117,6 +117,8 @@ class CoprCommand(dnf.cli.Command):
         parser.add_argument('arg', nargs='*')
 
     def configure(self):
+        if self.cli.command.opts.command != "copr":
+            return
         copr_hub = None
         copr_plugin_config = ConfigParser()
         config_files = []
@@ -681,6 +683,7 @@ class PlaygroundCommand(CoprCommand):
                             choices=['enable', 'disable', 'upgrade'])
 
     def run(self):
+        raise dnf.exceptions.Error("Playground is temporarily unsupported")
         subcommand = self.opts.subcommand[0]
         chroot = self._guess_chroot()
         if subcommand == "enable":
