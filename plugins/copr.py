@@ -70,8 +70,10 @@ NO = set([_('no'), _('n'), ''])
 
 if PY3:
     from configparser import ConfigParser, NoOptionError, NoSectionError
+    from urllib.request import urlopen, HTTPError
 else:
     from ConfigParser import ConfigParser, NoOptionError, NoSectionError
+    from urllib2 import urlopen, HTTPError
 
 @dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
@@ -478,17 +480,11 @@ Bugzilla. In case of problems, contact the owner of this repository.
             if os.path.exists(repo_filename):
                 os.remove(repo_filename)
             if '404' in str(e):
-                if PY3:
-                    import urllib.request
-                    try:
-                        res = urllib.request.urlopen(self.copr_url + "/coprs/" + project_name)
-                        status_code = res.getcode()
-                    except urllib.error.HTTPError as e:
-                        status_code = e.getcode()
-                else:
-                    import urllib
-                    res = urllib.urlopen(self.copr_url + "/coprs/" + project_name)
+                try:
+                    res = urlopen(self.copr_url + "/coprs/" + project_name)
                     status_code = res.getcode()
+                except HTTPError as e:
+                    status_code = e.getcode()
                 if str(status_code) != '404':
                     raise dnf.exceptions.Error(_("This repository does not have"
                                                  " any builds yet so you cannot enable it now."))
