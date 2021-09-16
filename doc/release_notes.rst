@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.23 Release Notes
+====================
+
+- New features:
+  - [leaves] Show strongly connected components
+
+- Bug fixes:
+  - [needs-restarting] Fix wrong boot time (RhBug:1960437)
+  - [playground] Disable playground command, since it doesn't work
+
+Bugs fixed in 4.0.23:
+
+* :rhbug:`1960437`
+
+====================
 4.0.22 Release Notes
 ====================
 

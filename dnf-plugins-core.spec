@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.22
+Version:        4.0.23
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -763,6 +763,11 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Thu Sep 16 2021 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.23-1
+- [leaves] Show strongly connected components
+- [needs-restarting] Fix wrong boot time (RhBug:1960437)
+- [playground] Disable playground command, since it doesn't work
+
 * Mon Jun 14 2021 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.22-1
 - [repomanage] Allow running only with metadata
 - [repomanage] Enhance documentation (RhBug:1898293)

@@ -626,5 +626,9 @@
     [
         1898293,
         "repomanage --old does not list the oldest package per module"
+    ],
+    [
+        1960437,
+        "needs-restarting calculating wrong boot time"
     ]
 ]
