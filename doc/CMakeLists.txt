@@ -28,6 +28,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-generate_completion_cache.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-groups-manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-modulesync.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-needs-restarting.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repoclosure.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repodiff.8
