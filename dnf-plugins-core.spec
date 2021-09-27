@@ -1,6 +1,6 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.9.2}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.10.1}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.46.1
+%global hawkey_version 0.64.0
 %global yum_utils_subpackage_name dnf-utils
 %if 0%{?rhel} > 7
 %global yum_utils_subpackage_name yum-utils
@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.24
+Version:        4.0.25
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -402,6 +402,19 @@ versions of those packages. This allows you to e.g. protect packages from being
 updated by newer versions.
 %endif
 
+%if %{with python3}
+%package -n python3-dnf-plugin-modulesync
+Summary:        Download module metadata and packages and create repository
+Requires:       python3-%{name} = %{version}-%{release}
+Requires:       createrepo_c >= 0.17.4
+Provides:       dnf-plugin-modulesync =  %{version}-%{release}
+Provides:       dnf-command(modulesync)
+
+%description -n python3-dnf-plugin-modulesync
+Download module metadata from all enabled repositories, module artifacts and profiles of matching modules and create
+repository.
+%endif
+
 %prep
 %autosetup
 %if %{with python2}
@@ -760,6 +773,13 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %exclude %{_mandir}/man8/yum-versionlock.*
 %exclude %{_mandir}/man5/yum-versionlock.*
 %endif
+%endif
+
+%if %{with python3}
+%files -n python3-dnf-plugin-modulesync
+%{python3_sitelib}/dnf-plugins/modulesync.*
+%{python3_sitelib}/dnf-plugins/__pycache__/modulesync.*
+%{_mandir}/man8/dnf-modulesync.*
 %endif
 
 %changelog
