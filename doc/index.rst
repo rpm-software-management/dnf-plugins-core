@@ -37,6 +37,7 @@ This documents core plugins of DNF:
    leaves
    local
    migrate
+   modulesync
    needs_restarting
    post-transaction-actions
    repoclosure

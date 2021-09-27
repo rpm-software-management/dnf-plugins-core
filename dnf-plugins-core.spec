@@ -402,6 +402,19 @@ versions of those packages. This allows you to e.g. protect packages from being
 updated by newer versions.
 %endif
 
+%if %{with python3}
+%package -n python3-dnf-plugin-modulesync
+Summary:        Download module metadata and packages and create repository
+Requires:       python3-%{name} = %{version}-%{release}
+Requires:       createrepo_c >= 0.17.4
+Provides:       dnf-plugin-modulesync =  %{version}-%{release}
+Provides:       dnf-command(modulesync)
+
+%description -n python3-dnf-plugin-modulesync
+Download module metadata from all enabled repositories, module artifacts and profiles of matching modules and create
+repository.
+%endif
+
 %prep
 %autosetup
 %if %{with python2}
@@ -760,6 +773,13 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %exclude %{_mandir}/man8/yum-versionlock.*
 %exclude %{_mandir}/man5/yum-versionlock.*
 %endif
+%endif
+
+%if %{with python3}
+%files -n python3-dnf-plugin-modulesync
+%{python3_sitelib}/dnf-plugins/modulesync.*
+%{python3_sitelib}/dnf-plugins/__pycache__/modulesync.*
+%{_mandir}/man8/dnf-modulesync.*
 %endif
 
 %changelog
