@@ -303,7 +303,7 @@ class RepoSyncCommand(dnf.cli.Command):
                                   progress, 0)
         payloads = [RPMPayloadLocation(pkg, progress, self.pkg_download_path(pkg))
                     for pkg in pkglist]
-        base._download_remote_payloads(payloads, drpm, progress, None)
+        base._download_remote_payloads(payloads, drpm, progress, None, False)
 
     def print_urls(self, pkglist):
         for pkg in pkglist:
