@@ -88,6 +88,8 @@ class RepoSyncCommand(dnf.cli.Command):
         parser.add_argument('-u', '--urls', default=False, action='store_true',
                             help=_("Just list urls of what would be downloaded, "
                                    "don't download"))
+        parser.add_argument('--safe-write-path', default=None,
+                            help=_("Filesystem path that is considered safe for writing. Defaults to download path."))
 
     def configure(self):
         demands = self.cli.demands
@@ -108,9 +110,16 @@ class RepoSyncCommand(dnf.cli.Command):
         if self.opts.source:
             repos.enable_source_repos()
 
-        if len(list(repos.iter_enabled())) > 1 and self.opts.norepopath:
-            raise dnf.cli.CliError(
-                _("Can't use --norepopath with multiple repositories"))
+        if self.opts.safe_write_path is not None:
+            self.opts.safe_write_path = os.path.realpath(self.opts.safe_write_path)
+
+        if len(list(repos.iter_enabled())) > 1:
+            if self.opts.norepopath:
+                raise dnf.cli.CliError(
+                    _("Can't use --norepopath with multiple repositories"))
+            elif self.opts.safe_write_path is not None:
+                raise dnf.cli.CliError(
+                    _("Can't use --safe-write-path with multiple repositories"))
 
         for repo in repos.iter_enabled():
             repo._repo.expire()
@@ -188,13 +197,17 @@ class RepoSyncCommand(dnf.cli.Command):
         repo_target = self.repo_target(pkg.repo)
         pkg_download_path = os.path.realpath(
             os.path.join(repo_target, pkg.location))
-        # join() ensures repo_target ends with a path separator (otherwise the
+
+        # join() ensures safe_write_path ends with a path separator (otherwise the
         # check would pass if pkg_download_path was a "sibling" path component
         # of repo_target that has the same prefix).
-        if not pkg_download_path.startswith(os.path.join(repo_target, '')):
+        safe_write_path = os.path.join(self.opts.safe_write_path or repo_target, '')
+
+        if not pkg_download_path.startswith(safe_write_path):
             raise dnf.exceptions.Error(
-                _("Download target '{}' is outside of download path '{}'.").format(
-                    pkg_download_path, repo_target))
+                _("Download target '{0}' for location '{1}' of '{2}' package "
+                  "is outside of safe write path '{3}'.").format(
+                    pkg_download_path, pkg.location, pkg.name, safe_write_path))
         return pkg_download_path
 
     def delete_old_local_packages(self, repo, pkglist):
