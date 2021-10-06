@@ -38,7 +38,11 @@ import rpm
 # If that fails, attempt to import the deprecated implementation
 # from the platform module.
 try:
-    from distro import linux_distribution, os_release_attr
+    from distro import name, version, codename, os_release_attr
+
+    # Re-implement distro.linux_distribution() to avoid a deprecation warning
+    def linux_distribution():
+        return (name(), version(), codename())
 except ImportError:
     def os_release_attr(_):
         return ""
