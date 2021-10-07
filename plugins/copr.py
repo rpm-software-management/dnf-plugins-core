@@ -189,8 +189,12 @@ class CoprCommand(dnf.cli.Command):
                     self.copr_hostname += ":" + port
 
         if not self.copr_url:
-            self.copr_hostname = copr_hub
-            self.copr_url = self.default_protocol + "://" + copr_hub
+            if '://' not in copr_hub:
+                self.copr_hostname = copr_hub
+                self.copr_url = self.default_protocol + "://" + copr_hub
+            else:
+                self.copr_hostname = copr_hub.split('://', 1)[1]
+                self.copr_url = copr_hub
 
     def _read_config_item(self, config, hub, section, default):
         try:
