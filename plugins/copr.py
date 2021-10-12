@@ -356,9 +356,10 @@ Bugzilla. In case of problems, contact the owner of this repository.
                     "Re-enable the project to fix this."))
 
     def _list_user_projects(self, user_name):
-        # http://copr.fedorainfracloud.org/api/coprs/ignatenkobrain/
-        api_path = "/api/coprs/{}/".format(user_name)
-        res = self.base.urlopen(self.copr_url + api_path, mode='w+')
+        # https://copr.fedorainfracloud.org/api_3/project/list?ownername=ignatenkobrain
+        api_path = "/api_3/project/list?ownername={0}".format(user_name)
+        url = self.copr_url + api_path
+        res = self.base.urlopen(url, mode='w+')
         try:
             json_parse = json.loads(res.read())
         except ValueError:
@@ -368,21 +369,18 @@ Bugzilla. In case of problems, contact the owner of this repository.
         self._check_json_output(json_parse)
         section_text = _("List of {} coprs").format(user_name)
         self._print_match_section(section_text)
-        i = 0
-        while i < len(json_parse["repos"]):
-            msg = "{0}/{1} : ".format(user_name,
-                                      json_parse["repos"][i]["name"])
-            desc = json_parse["repos"][i]["description"]
-            if not desc:
-                desc = _("No description given")
+
+        for item in json_parse["items"]:
+            msg = "{0}/{1} : ".format(user_name, item["name"])
+            desc = item["description"] or _("No description given")
             msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
             print(msg)
-            i += 1
 
     def _search(self, query):
-        # http://copr.fedorainfracloud.org/api/coprs/search/tests/
-        api_path = "/api/coprs/search/{}/".format(query)
-        res = self.base.urlopen(self.copr_url + api_path, mode='w+')
+        # https://copr.fedorainfracloud.org/api_3/project/search?query=tests
+        api_path = "/api_3/project/search?query={}".format(query)
+        url = self.copr_url + api_path
+        res = self.base.urlopen(url, mode='w+')
         try:
             json_parse = json.loads(res.read())
         except ValueError:
@@ -391,16 +389,12 @@ Bugzilla. In case of problems, contact the owner of this repository.
         self._check_json_output(json_parse)
         section_text = _("Matched: {}").format(query)
         self._print_match_section(section_text)
-        i = 0
-        while i < len(json_parse["repos"]):
-            msg = "{0}/{1} : ".format(json_parse["repos"][i]["username"],
-                                      json_parse["repos"][i]["coprname"])
-            desc = json_parse["repos"][i]["description"]
-            if not desc:
-                desc = _("No description given.")
+
+        for item in json_parse["items"]:
+            msg = "{0} : ".format(item["full_name"])
+            desc = item["description"] or _("No description given.")
             msg = self.base.output.fmtKeyValFill(ucd(msg), desc)
             print(msg)
-            i += 1
 
     def _print_match_section(self, text):
         formatted = self.base.output.fmtSection(text)
@@ -627,7 +621,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
 
     @classmethod
     def _check_json_output(cls, json_obj):
-        if json_obj["output"] != "ok":
+        if "error" in json_obj:
             raise dnf.exceptions.Error("{}".format(json_obj["error"]))
 
     @classmethod
