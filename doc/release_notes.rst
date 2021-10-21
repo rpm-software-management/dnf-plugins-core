@@ -22,6 +22,20 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ====================
+4.0.24 Release Notes
+====================
+
+- Bug fixes:
+  - [copr] on CentOS Stream, enable centos stream chroot instead of not epel 8 (RhBug:1994154)
+  - [copr] Avoid using deprecated function distro.linux_distribution() (RhBug:2011550)
+  - [copr] don't traceback on empty lines in /etc/os-release
+
+Bugs fixed in 4.0.24:
+
+* :rhbug:`1994154`
+* :rhbug:`2011550`
+
+====================
 4.0.23 Release Notes
 ====================
 

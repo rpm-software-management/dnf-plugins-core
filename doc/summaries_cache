@@ -630,5 +630,13 @@
     [
         1960437,
         "needs-restarting calculating wrong boot time"
+    ],
+    [
+        1994154,
+        "wrong baseurl / dnf copr enable / centos stream"
+    ],
+    [
+        2011550,
+        "dnf-plugins-core uses distro.linux_distribution(), deprecated in distro 1.6.0"
     ]
 ]

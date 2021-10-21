@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.23
+Version:        4.0.24
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -763,6 +763,11 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Thu Oct 21 2021 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.24-1
+- [copr] on CentOS Stream, enable centos stream chroot instead of not epel 8 (RhBug:1994154)
+- [copr] Avoid using deprecated function distro.linux_distribution() (RhBug:2011550)
+- [copr] don't traceback on empty lines in /etc/os-release
+
 * Thu Sep 16 2021 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.23-1
 - [leaves] Show strongly connected components
 - [needs-restarting] Fix wrong boot time (RhBug:1960437)
