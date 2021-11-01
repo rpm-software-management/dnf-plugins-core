@@ -167,25 +167,27 @@ class VersionLockCommand(dnf.cli.Command):
                 cmd = self.opts.subcommand
 
         if cmd == 'add':
-            (entry, entry_cmd) = _search_locklist(self.opts.package)
-            if entry == '':
-                _write_locklist(self.base, self.opts.package, self.opts.raw, True,
-                                "\n# Added lock on %s\n" % time.ctime(),
-                                ADDING_SPEC, '')
-            elif cmd != entry_cmd:
-                raise dnf.exceptions.Error(ALREADY_EXCLUDED.format(entry))
-            else:
-                logger.info("%s %s", EXISTING_SPEC, entry)
+            results = _search_locklist(self.opts.package)
+            for entry, entry_cmd in results:
+                if entry_cmd == '':
+                    _write_locklist(self.base, [entry], self.opts.raw, True,
+                                    "\n# Added lock on %s\n" % time.ctime(),
+                                    ADDING_SPEC, '')
+                elif cmd != entry_cmd:
+                    raise dnf.exceptions.Error(ALREADY_EXCLUDED.format(entry))
+                else:
+                    logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'exclude':
-            (entry, entry_cmd) = _search_locklist(self.opts.package)
-            if entry == '':
-                _write_locklist(self.base, self.opts.package, self.opts.raw, False,
-                                "\n# Added exclude on %s\n" % time.ctime(),
-                                EXCLUDING_SPEC, '!')
-            elif cmd != entry_cmd:
-                raise dnf.exceptions.Error(ALREADY_LOCKED.format(entry))
-            else:
-                logger.info("%s %s", EXISTING_SPEC, entry)
+            results = _search_locklist(self.opts.package)
+            for entry, entry_cmd in results:
+                if entry_cmd == '':
+                    _write_locklist(self.base, [entry], self.opts.raw, False,
+                                    "\n# Added exclude on %s\n" % time.ctime(),
+                                    EXCLUDING_SPEC, '!')
+                elif cmd != entry_cmd:
+                    raise dnf.exceptions.Error(ALREADY_LOCKED.format(entry))
+                else:
+                    logger.info("%s %s", EXISTING_SPEC, entry)
         elif cmd == 'list':
             for pat in _read_locklist():
                 print(pat)
@@ -233,14 +235,21 @@ def _read_locklist():
 
 
 def _search_locklist(package):
+    results = []
     found = action = ''
     locked_specs = _read_locklist()
-    for ent in locked_specs:
-        if _match(ent, package):
-            found = ent
-            action = 'exclude' if ent.startswith('!') else 'add'
-            break
-    return (found, action)
+    for pkg in package:
+        match = False
+        for ent in locked_specs:
+            found = action = ''
+            if _match(ent, [pkg]):
+                found = ent
+                action = 'exclude' if ent.startswith('!') else 'add'
+                results.append((found, action))
+                match = True
+        if not match:
+            results.append((pkg, action))
+    return results
 
 
 def _write_locklist(base, args, raw, try_installed, comment, info, prefix):
