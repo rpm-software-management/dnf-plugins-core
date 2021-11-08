@@ -254,7 +254,9 @@ class GroupsManagerCommand(dnf.cli.Command):
             # find packages according to specifications from command line
             packages = set()
             for pkg_spec in self.opts.packages:
-                q = self.base.sack.query().filterm(name__glob=pkg_spec).latest()
+                subj = dnf.subject.Subject(pkg_spec)
+                q = subj.get_best_query(self.base.sack, with_nevra=True,
+                                        with_provides=False, with_filenames=False).latest()
                 if not q:
                     logger.warning(_("No match for argument: {}").format(pkg_spec))
                     continue
