@@ -97,6 +97,10 @@ Subcommands
             Adding versionlock on: mutt-5:1.11.4-1.fc30.*
             Adding versionlock on: mutt-5:1.12.1-3.fc30.*
 
+    .. note:: Be careful when adding specific versions
+
+        If you add a package specifying a version with ``dnf versionlock mutt-5:1.11.4-1.fc30.x86_64`` then, if you run ``dnf versionlock add mutt``
+        versionlock will not add ``mutt-5:1.12.1-3.fc30.x86_64``.
 
 ``dnf versionlock exclude <package-name-spec>``
     Add an exclude (within  versionlock) for the available packages matching the spec. It means that
