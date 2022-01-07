@@ -50,10 +50,10 @@ class TestRepoClosureFunctions(support.TestCase):
                 support.command_run(self.cmd, args)
 
             self.assertEqual(context.exception.value,
-                             "Repoclosure ended with unresolved dependencies.")
+                             "Repoclosure ended with unresolved dependencies (1) across 1 packages.")
 
             expected_out = ["package: foo-4-6.noarch from @commandline",
-                            "  unresolved deps:",
+                            "  unresolved deps (1):",
                             "    bar = 4-6"]
             self.assertEqual(stdout.getvalue()[:-1], "\n".join(expected_out))
         args = ["--check", "main"]
@@ -69,10 +69,10 @@ class TestRepoClosureFunctions(support.TestCase):
                 support.command_run(self.cmd, args)
 
             self.assertEqual(context.exception.value,
-                             "Repoclosure ended with unresolved dependencies.")
+                             "Repoclosure ended with unresolved dependencies (1) across 1 packages.")
 
             expected_out = ["package: foo-4-6.noarch from @commandline",
-                            "  unresolved deps:",
+                            "  unresolved deps (1):",
                             "    bar = 4-6"]
             self.assertEqual(stdout.getvalue()[:-1], "\n".join(expected_out))
         args = ["--pkg", "bar"]
@@ -89,9 +89,9 @@ class TestRepoClosureFunctions(support.TestCase):
                 support.command_run(self.cmd, args)
 
             self.assertEqual(context.exception.value,
-                             "Repoclosure ended with unresolved dependencies.")
+                             "Repoclosure ended with unresolved dependencies (1) across 1 packages.")
 
             expected_out = ["package: foo-4-6.noarch from @commandline",
-                            "  unresolved deps:",
+                            "  unresolved deps (1):",
                             "    bar = 4-6"]
             self.assertEqual(stdout.getvalue()[:-1], "\n".join(expected_out))

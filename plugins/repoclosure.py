@@ -53,17 +53,23 @@ class RepoClosureCommand(dnf.cli.Command):
                     repo.enable()
 
     def run(self):
+        total_missing = 0
         if self.opts.arches:
             unresolved = self._get_unresolved(self.opts.arches)
         else:
             unresolved = self._get_unresolved()
         for pkg in sorted(unresolved.keys()):
             print("package: {} from {}".format(str(pkg), pkg.reponame))
-            print("  unresolved deps:")
+            print("  unresolved deps ({}):".format(len(unresolved[pkg])))
+            total_missing += len(unresolved[pkg])
             for dep in unresolved[pkg]:
                 print("    {}".format(dep))
         if len(unresolved) > 0:
-            msg = _("Repoclosure ended with unresolved dependencies.")
+            msg = _(
+                "Repoclosure ended with unresolved dependencies ({}) across {} packages.".format(
+                    total_missing, len(unresolved)
+                )
+            )
             raise dnf.exceptions.Error(msg)
 
     def _get_unresolved(self, arch=None):
