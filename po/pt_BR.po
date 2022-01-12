@@ -9,20 +9,21 @@
 # Gustavo Costa <gusta@null.net>, 2020.
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020, 2021.
 # Fábio Rodrigues Ribeiro <farribeiro@gmail.com>, 2021.
+# Gustavo Costa <xfgusta@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-27 09:18-0400\n"
-"PO-Revision-Date: 2021-03-05 08:01+0000\n"
-"Last-Translator: Fábio Rodrigues Ribeiro <farribeiro@gmail.com>\n"
+"POT-Creation-Date: 2022-01-11 01:55+0000\n"
+"PO-Revision-Date: 2021-08-11 01:04+0000\n"
+"Last-Translator: Gustavo Costa <xfgusta@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.7.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -42,7 +43,6 @@ msgid "define a macro for spec file parsing"
 msgstr "define uma macro para especificações por file parsing"
 
 #: plugins/builddep.py:95
-#, fuzzy
 msgid "skip build dependencies not available in repositories"
 msgstr "pular dependências de compilação não disponíveis em repositórios"
 
@@ -80,7 +80,7 @@ msgid "Not all dependencies satisfied"
 msgstr "Nem todas as dependências satisfeitas"
 
 #: plugins/builddep.py:211
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Falha ao abrir: '%s', arquivo spec inválido: %s"
 
@@ -96,24 +96,27 @@ msgstr "Não é uma data válida: \"{0}\"."
 
 #: plugins/changelog.py:43
 msgid "Show changelog data of packages"
-msgstr "Mostrar o log de alterações do pacote de dados"
+msgstr "mostra o registro de alterações dos pacotes"
 
 #: plugins/changelog.py:51
 msgid ""
 "show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
 "is recommended."
 msgstr ""
+"exibe os registros de alterações desde DATE. Para evitar ambiguidade, o "
+"formato AAAA-MM-DD é recomendado"
 
 #: plugins/changelog.py:55
 msgid "show given number of changelog entries per package"
-msgstr ""
-"mostrar um determinado número de entradas do log de alterações por pacote"
+msgstr "exibe um determinado número de registros de alterações por pacote"
 
 #: plugins/changelog.py:58
 msgid ""
 "show only new changelog entries for packages, that provide an upgrade for "
 "some of already installed packages."
 msgstr ""
+"exibe apenas novos registros de alterações para pacotes que fornecem uma "
+"atualização para alguns dos pacotes já instalados"
 
 #: plugins/changelog.py:60
 msgid "PACKAGE"
@@ -129,11 +132,10 @@ msgid "Listing changelogs since {}"
 msgstr "Listar log de alterações desde {}"
 
 #: plugins/changelog.py:111
-#, fuzzy
 msgid "Listing only latest changelog"
 msgid_plural "Listing {} latest changelogs"
-msgstr[0] "Listando apenas o último log de mudanças"
-msgstr[1] "Listando {} últimos logs de mudanças"
+msgstr[0] "Listando apenas o último registro de alterações"
+msgstr[1] "Listando os {} últimos registros de alterações"
 
 #: plugins/changelog.py:116
 msgid "Listing only new changelogs since installed version of the package"
@@ -190,6 +192,8 @@ msgid ""
 "Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
 "manager. Use --set-enabled/--set-disabled instead."
 msgstr ""
+"Aviso: os argumentos --enablerepo/--disablerepo não têm significado com o "
+"gerenciador de configuração. Use --set-enabled /--set-disabled ao invés."
 
 #: plugins/config_manager.py:132
 #, python-format
@@ -202,38 +206,37 @@ msgid "Adding repo from: %s"
 msgstr "Adicionando repositório de: %s"
 
 #: plugins/config_manager.py:207
-#, fuzzy
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
-msgstr[0] "A configuração do repositório falhou"
-msgstr[1] "A configuração dos repositórios falharam"
+msgstr[0] "A configuração do repo falhou"
+msgstr[1] "A configuração dos repos falhou"
 
 #: plugins/config_manager.py:217
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Não pode salvar o repositório para o repofile %s: %s"
 
-#: plugins/copr.py:59
+#: plugins/copr.py:70
 msgid "y"
 msgstr "s"
 
-#: plugins/copr.py:59
+#: plugins/copr.py:70
 msgid "yes"
 msgstr "sim"
 
-#: plugins/copr.py:60
+#: plugins/copr.py:71
 msgid "n"
 msgstr "n"
 
-#: plugins/copr.py:60
+#: plugins/copr.py:71
 msgid "no"
 msgstr "não"
 
-#: plugins/copr.py:79
+#: plugins/copr.py:92
 msgid "Interact with Copr repositories."
-msgstr "Interagir com repositórios COPR."
+msgstr "interage com repositórios Copr"
 
-#: plugins/copr.py:81
+#: plugins/copr.py:94
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -271,74 +274,70 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: plugins/copr.py:107
-#, fuzzy
+#: plugins/copr.py:120
 msgid "List all installed Copr repositories (default)"
-msgstr "Listar todos os repositórios Copr instalados (padrão)"
+msgstr "Lista todos os repositórios Copr instalados (padrão)"
 
-#: plugins/copr.py:109
-#, fuzzy
+#: plugins/copr.py:122
 msgid "List enabled Copr repositories"
-msgstr "Listar respositórios Copr habilitados"
+msgstr "Lista repositórios Copr habilitados"
 
-#: plugins/copr.py:111
-#, fuzzy
+#: plugins/copr.py:124
 msgid "List disabled Copr repositories"
-msgstr "Listar repositórios Copr desabilitados"
+msgstr "Lista repositórios Copr desabilitados"
 
-#: plugins/copr.py:113
-#, fuzzy
+#: plugins/copr.py:126
 msgid "List available Copr repositories by user NAME"
-msgstr "Lista os repositórios Copr disponíveis por usuário NAME"
+msgstr "Lista os repositórios Copr disponíveis pelo usuário NAME"
 
-#: plugins/copr.py:115
+#: plugins/copr.py:128
 msgid "Specify an instance of Copr to work with"
 msgstr "Especificar uma instância do Copr para trabalhar"
 
-#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:244
-#, fuzzy
+#: plugins/copr.py:164 plugins/copr.py:232 plugins/copr.py:259
 msgid "Error: "
 msgstr "Erro: "
 
-#: plugins/copr.py:150
+#: plugins/copr.py:165
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
+"especifique o hub Copr com `--hub` ou usando o formato` "
+"copr_hub/copr_nomedousuario/copr_nomedoprojeto`"
 
-#: plugins/copr.py:153
+#: plugins/copr.py:168
 msgid "multiple hubs specified"
 msgstr "diversos hubs especificados"
 
-#: plugins/copr.py:218 plugins/copr.py:222
+#: plugins/copr.py:233 plugins/copr.py:237
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 "são necessários exatamente dois parâmetros adicionais para o comando copr"
 
-#: plugins/copr.py:227
-#, fuzzy
-#| msgid "No match for argument: %s"
+#: plugins/copr.py:242
 msgid "Too many arguments."
 msgstr "Muitos argumentos."
 
-#: plugins/copr.py:230
+#: plugins/copr.py:245
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
+"Formato ruim de chroot opcional. O formato é distribuição-versão-"
+"arquitetura."
 
-#: plugins/copr.py:245
+#: plugins/copr.py:260
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "use o formato `copr_nomeusuario/copr_nomeprojeto` para referenciar o projeto"
 " copr"
 
-#: plugins/copr.py:247
+#: plugins/copr.py:262
 msgid "bad copr project format"
 msgstr "formato inválido de projeto copr"
 
-#: plugins/copr.py:261
-#, fuzzy
+#: plugins/copr.py:276
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -353,85 +352,123 @@ msgid ""
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 msgstr ""
 "\n"
-"Habilitando um repositório Copr. Por favor, note que este repositório não é parte\n"
+"Habilitando um repositório Copr. Note que este repositório não faz parte\n"
 "da distribuição principal, e a qualidade pode variar.\n"
 "\n"
-"O Projeto Fedora não exerce nenhum poder sobre os conteúdos\n"
-"deste repositório além das normas descritas no FAQ do Copr em\n"
+"O Projeto Fedora não exerce nenhum poder sobre o conteúdo deste\n"
+"repositório além das regras descritas no FAQ do Copr em\n"
 "<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
-"e os pacotes não serão mantidos sob alguma qualidade ou nível de segurança.\n"
+"e os pacotes não são mantidos em nenhum nível de qualidade ou segurança.\n"
 "\n"
-"Por favor, não reporte quaisquer bugs a respeito destes pacotes no Fedora\n"
-"Bugzilla. Em caso de problemas, entre em contato com os proprietários deste repositório.\n"
+"Não envie relatórios de erros sobre esses pacotes no Bugzilla do Fedora.\n"
+"Em caso de problemas, entre em contato com o proprietário deste repositório.\n"
 
-#: plugins/copr.py:278
+#: plugins/copr.py:293
 msgid "Repository successfully enabled."
 msgstr "Repositório ativado com êxito."
 
-#: plugins/copr.py:283
+#: plugins/copr.py:298
 msgid "Repository successfully disabled."
 msgstr "Repositório desativado com êxito."
 
-#: plugins/copr.py:287
-#, fuzzy
+#: plugins/copr.py:302
 msgid "Repository successfully removed."
 msgstr "Repositório removido com sucesso."
 
-#: plugins/copr.py:291 plugins/copr.py:698
+#: plugins/copr.py:306 plugins/copr.py:719
 msgid "Unknown subcommand {}."
 msgstr "subcomando desconhecido {}."
 
-#: plugins/copr.py:348
+#: plugins/copr.py:363
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
+"* Esses coprs possuem um arquivo repo com um formato antigo que não contém "
+"informações sobre o hub Copr - o padrão foi assumido. Reative o projeto para"
+" corrigir isso."
 
-#: plugins/copr.py:360
+#: plugins/copr.py:376
 msgid "Can't parse repositories for username '{}'."
 msgstr "Não é possível analisar repositórios para o username '{}'."
 
-#: plugins/copr.py:363
+#: plugins/copr.py:379
 msgid "List of {} coprs"
 msgstr "Lista de {} coprs"
 
-#: plugins/copr.py:371
+#: plugins/copr.py:384
 msgid "No description given"
 msgstr "Nenhuma descrição dada"
 
-#: plugins/copr.py:383
+#: plugins/copr.py:396
 msgid "Can't parse search for '{}'."
 msgstr "Impossível analisar pesquisa por '{}'."
 
-#: plugins/copr.py:386
+#: plugins/copr.py:399
 msgid "Matched: {}"
 msgstr "Encontrado: {}"
 
-#: plugins/copr.py:394
+#: plugins/copr.py:404
 msgid "No description given."
 msgstr "Nenhuma descrição dada."
 
-#: plugins/copr.py:417
+#: plugins/copr.py:426
 msgid "Safe and good answer. Exiting."
 msgstr "Resposta boa e segura. Saindo."
 
-#: plugins/copr.py:424
+#: plugins/copr.py:433
 msgid "This command has to be run under the root user."
 msgstr "Este comando deve ser executado sob o usuário root."
 
-#: plugins/copr.py:486
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
+#: plugins/copr.py:485
+#, python-brace-format
+msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
-"Este repositório ainda não possui nenhuma compilação, logo, você não poderá "
-"habilitá-lo agora."
 
-#: plugins/copr.py:489
-msgid "Such repository does not exist."
+#: plugins/copr.py:487
+msgid "It wasn't possible to enable this project.\n"
+msgstr ""
+
+#: plugins/copr.py:492
+#, fuzzy, python-brace-format
+#| msgid "Such repository does not exist."
+msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "Esse repositório não existe."
 
-#: plugins/copr.py:533
+#: plugins/copr.py:495
+#, fuzzy
+#| msgid "List enabled Copr repositories"
+msgid ""
+"\n"
+"Available repositories: "
+msgstr ""
+"\n"
+"Lista repositórios Copr habilitados "
+
+#: plugins/copr.py:497
+#, python-brace-format
+msgid ""
+"\n"
+"\n"
+"If you want to enable a non-default repository, use the following command:\n"
+"  'dnf copr enable {0} <repository>'\n"
+"But note that the installed repo file will likely need a manual modification."
+msgstr ""
+
+#: plugins/copr.py:503
+#, fuzzy, python-brace-format
+#| msgid "Such repository does not exist."
+msgid "Project {0} does not exist."
+msgstr "Esse repositório não existe."
+
+#: plugins/copr.py:506
+#, fuzzy, python-brace-format
+#| msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgid "Failed to connect to {0}: {1}"
+msgstr "Falha ao remover o repositório copr {0}/{1}/{2}"
+
+#: plugins/copr.py:553
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -447,52 +484,63 @@ msgid ""
 "\n"
 "These repositories have been enabled automatically."
 msgstr ""
+"O mantenedor do repositório Copr habilitado decidiu fazer\n"
+"ele depende de outros repositórios. Esses repositórios são\n"
+"geralmente necessário para a instalação bem-sucedida de RPMs do\n"
+"repositório Copr principal (eles fornecem dependências de tempo de execução).\n"
+"\n"
+"Esteja ciente de que a nota sobre qualidade e relatórios de bugs\n"
+"acima se aplica aqui também, o Projeto Fedora não controla o\n"
+"conteúdo. Reveja a lista:\n"
+"\n"
+"{0}\n"
+"\n"
+"Esses repositórios foram ativados automaticamente."
 
-#: plugins/copr.py:554
+#: plugins/copr.py:574
 msgid "Do you want to keep them enabled?"
 msgstr "Você deseja mantê-los habilitados?"
 
-#: plugins/copr.py:587
+#: plugins/copr.py:607
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Falha ao remover o repositório copr {0}/{1}/{2}"
 
-#: plugins/copr.py:598
+#: plugins/copr.py:618
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Falha ao desabilitar o repo copr {}/{}"
 
-#: plugins/copr.py:616 plugins/copr.py:653
+#: plugins/copr.py:636 plugins/copr.py:673
 msgid "Unknown response from server."
 msgstr "Resposta desconhecida do servidor."
 
-#: plugins/copr.py:638
+#: plugins/copr.py:658
 msgid "Interact with Playground repository."
-msgstr "Interagir com o repositório Playground."
+msgstr "interage com o repositório Playground"
 
-#: plugins/copr.py:644
+#: plugins/copr.py:664
 msgid "Enabling a Playground repository."
 msgstr "Habilitando um repositório Playground."
 
-#: plugins/copr.py:645
+#: plugins/copr.py:665
 msgid "Do you want to continue?"
 msgstr "Você deseja continuar?"
 
-#: plugins/copr.py:688
-#, fuzzy
+#: plugins/copr.py:709
 msgid "Playground repositories successfully enabled."
 msgstr "Repositórios playground habilitados com sucesso."
 
-#: plugins/copr.py:691
+#: plugins/copr.py:712
 msgid "Playground repositories successfully disabled."
 msgstr "Repositórios playground desabilitados com sucesso."
 
-#: plugins/copr.py:695
+#: plugins/copr.py:716
 msgid "Playground repositories successfully updated."
 msgstr "Repositórios playground atualizados com sucesso."
 
 #: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
-msgstr "descarregar para arquivo as informações sobre pacotes rpm instalados"
+msgstr "descarrega informações sobre os pacotes rpm instalados para o arquivo"
 
 #: plugins/debug.py:67
 msgid "do not attempt to dump the repository contents."
@@ -509,7 +557,7 @@ msgstr "Saída escrita para: %s"
 
 #: plugins/debug.py:172
 msgid "restore packages recorded in debug-dump file"
-msgstr "restaurar pacotes gravados no arquivo de depuração-descarregamento"
+msgstr "restaura pacotes gravados no arquivo debug-dump"
 
 #: plugins/debug.py:185
 msgid "output commands that would be run to stdout."
@@ -553,31 +601,39 @@ msgstr "Arquivo depuração do dnf inválido: %s"
 
 #: plugins/debuginfo-install.py:56
 msgid "install debuginfo packages"
-msgstr "Instalar pacotes debuginfo"
+msgstr "instala pacotes debuginfo"
 
 #: plugins/debuginfo-install.py:180
 #, python-format
 msgid ""
 "Could not find debuginfo package for the following available packages: %s"
 msgstr ""
+"Não foi possível encontrar o pacote debuginfo para os seguintes pacotes "
+"disponíveis: %s"
 
 #: plugins/debuginfo-install.py:185
 #, python-format
 msgid ""
 "Could not find debugsource package for the following available packages: %s"
 msgstr ""
+"Não foi possível encontrar o pacote debugsource para os seguintes pacotes "
+"disponíveis: %s"
 
 #: plugins/debuginfo-install.py:190
 #, python-format
 msgid ""
 "Could not find debuginfo package for the following installed packages: %s"
 msgstr ""
+"Não foi possível encontrar o pacote debuginfo para os seguintes pacotes "
+"instalados: %s"
 
 #: plugins/debuginfo-install.py:195
 #, python-format
 msgid ""
 "Could not find debugsource package for the following installed packages: %s"
 msgstr ""
+"Não foi possível encontrar o pacote debugsource para os seguintes pacotes "
+"instalados: %s"
 
 #: plugins/debuginfo-install.py:199
 msgid "Unable to find a match"
@@ -585,7 +641,7 @@ msgstr "Impossível de encontrar uma correspondência"
 
 #: plugins/download.py:41
 msgid "Download package to current directory"
-msgstr "Baixar o pacote para o diretório corrente"
+msgstr "baixa o pacote para o diretório atual"
 
 #: plugins/download.py:51
 msgid "packages to download"
@@ -608,7 +664,7 @@ msgstr "baixe com o pacote -debuginfo como alternativa"
 msgid "limit  the  query to packages of given architectures."
 msgstr "limitar a consulta aos pacotes das arquiteturas informadas."
 
-#: plugins/download.py:62
+#: plugins/download.py:62 plugins/modulesync.py:51
 msgid "resolve and download needed dependencies"
 msgstr "resolva e baixe as dependências necessarias"
 
@@ -655,131 +711,122 @@ msgstr "Nenhum pacote %s disponível."
 
 #: plugins/groups_manager.py:49
 msgid "Invalid group id"
-msgstr ""
+msgstr "ID de grupo inválido"
 
 #: plugins/groups_manager.py:58
 msgid "Invalid translated data, should be in form 'lang:text'"
 msgstr ""
+"Dados traduzidos inválidos, deveria estar no formato 'linguagem:texto'"
 
 #: plugins/groups_manager.py:61
 msgid "Invalid/empty language for translated data"
-msgstr ""
+msgstr "Linguagem inválida/vazia para os dados traduzidos"
 
 #: plugins/groups_manager.py:71
 msgid "Can't generate group id from '{}'. Please specify group id using --id."
 msgstr ""
+"Não é possível gerar o id de grupo de '{}'. Especifique o id do grupo usando"
+" --id."
 
 #: plugins/groups_manager.py:79
 msgid "create and edit groups metadata file"
-msgstr ""
+msgstr "cria e edita arquivos de metadados de grupos"
 
 #: plugins/groups_manager.py:90
 msgid "load groups metadata from file"
-msgstr ""
+msgstr "carrega metadados de grupos do arquivo"
 
 #: plugins/groups_manager.py:93
 msgid "save groups metadata to file"
-msgstr ""
+msgstr "salva metadados de grupos no arquivo"
 
 #: plugins/groups_manager.py:95
 msgid "load and save groups metadata to file"
-msgstr ""
+msgstr "carrega e salva metadados de grupos no arquivo"
 
 #: plugins/groups_manager.py:97
-#, fuzzy
-#| msgid "print variable values to stdout"
 msgid "print the result metadata to stdout"
-msgstr "imprime valores das variáveis para a saída padrão"
+msgstr "exibe os metadados do resultado no stdout"
 
 #: plugins/groups_manager.py:100
 msgid "group id"
-msgstr ""
+msgstr "id do grupo"
 
 #: plugins/groups_manager.py:101
-#, fuzzy
 msgid "group name"
 msgstr "nome do grupo"
 
 #: plugins/groups_manager.py:103
-#, fuzzy
-#| msgid "No description given"
 msgid "group description"
-msgstr "Nenhuma descrição dada"
+msgstr "descrição do grupo"
 
 #: plugins/groups_manager.py:105
 msgid "group display order"
-msgstr ""
+msgstr "ordem de exibição do grupo"
 
 #: plugins/groups_manager.py:108
 msgid "translated name for the group"
-msgstr ""
+msgstr "nome traduzido para o grupo"
 
 #: plugins/groups_manager.py:111
 msgid "translated description for the group"
-msgstr ""
+msgstr "descrição traduzida para o grupo"
 
 #: plugins/groups_manager.py:115
 msgid "make the group user visible (default)"
-msgstr ""
+msgstr "torna o usuário do grupo visível (padrão)"
 
 #: plugins/groups_manager.py:118
 msgid "make the group user invisible"
-msgstr ""
+msgstr "torna o usuário do grupo invisível"
 
 #: plugins/groups_manager.py:123
 msgid "add packages to the mandatory section"
-msgstr ""
+msgstr "adiciona pacotes à seção obrigatória"
 
 #: plugins/groups_manager.py:125
 msgid "add packages to the optional section"
-msgstr ""
+msgstr "adiciona pacotes à seção opcional"
 
 #: plugins/groups_manager.py:127
 msgid "remove packages from the group instead of adding them"
-msgstr ""
+msgstr "remove pacotes do grupo em vez de adicioná-los"
 
 #: plugins/groups_manager.py:129
-#, fuzzy
-#| msgid "Display a list of unresolved dependencies for repositories"
 msgid "include also direct dependencies for packages"
-msgstr "Exibir uma lista de dependências não resolvidas para os repositórios"
+msgstr "inclui também dependências diretas para pacotes"
 
 #: plugins/groups_manager.py:132
-#, fuzzy
 msgid "package specification"
 msgstr "especificação do pacote"
 
 #: plugins/groups_manager.py:156
 msgid "Can't edit group without specifying it (use --id or --name)"
-msgstr ""
+msgstr "Não é possível editar o grupo sem especificá-lo (use --id ou --name)"
 
 #: plugins/groups_manager.py:190
-#, fuzzy
-#| msgid "Can't write file '{}'"
 msgid "Can't load file \"{}\": {}"
-msgstr "Impossível escrever arquivo '{}'"
+msgstr "Não é possível carregar o arquivo \"{}\": {}"
 
 #: plugins/groups_manager.py:206
-#, fuzzy
-#| msgid "Can't write file '{}'"
 msgid "Can't save file \"{}\": {}"
-msgstr "Impossível escrever arquivo '{}'"
+msgstr "Não é possível salvar o arquivo \"{}\": {}"
 
-#: plugins/groups_manager.py:259
-#, fuzzy
-#| msgid "No match for argument: %s"
+#: plugins/groups_manager.py:261
 msgid "No match for argument: {}"
 msgstr "Sem correspondência para o argumento: {}"
 
-#: plugins/groups_manager.py:296
+#: plugins/groups_manager.py:298
 msgid "Can't remove packages from non-existent group"
-msgstr ""
+msgstr "Não é possível remover pacotes de um grupo inexistente"
 
-#: plugins/groups_manager.py:305
+#: plugins/groups_manager.py:307
 msgid ""
 "Group id '{}' generated from '{}' is duplicit. Please specify group id using"
 " --id."
 msgstr ""
+"O ID do grupo '{}' gerado a partir de '{}' está duplicado. Especifique o id "
+"do grupo usando --id."
 
 #: plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -813,16 +860,84 @@ msgstr "migrar o histórico, grupo e dados yumdb do yum para dnf"
 msgid "Migrating history data..."
 msgstr "Migrando dados de histórico..."
 
+#: plugins/modulesync.py:37
+msgid ""
+"Download packages from modules and/or create a repository with modular data"
+msgstr ""
+
+#: plugins/modulesync.py:44
+msgid "MODULE"
+msgstr ""
+
+#: plugins/modulesync.py:45
+#, fuzzy
+#| msgid "packages to download"
+msgid "modules to download"
+msgstr "pacotes para baixar"
+
+#: plugins/modulesync.py:47
+#, fuzzy
+#| msgid "Specify repositories to check"
+msgid "enable repositories with source packages"
+msgstr "Especificar repositórios para checagem"
+
+#: plugins/modulesync.py:49
+msgid "enable repositories with debug-info and debug-source packages"
+msgstr ""
+
+#: plugins/modulesync.py:53
+#, fuzzy
+#| msgid "download all packages from remote repo"
+msgid "download only packages from newest modules"
+msgstr "baixa todos os pacotes do repositório remoto"
+
+#: plugins/modulesync.py:85
+#, fuzzy
+#| msgid "No match for argument: {}"
+msgid "Unable to find a match for argument: '{}'"
+msgid_plural "Unable to find a match for arguments: '{}'"
+msgstr[0] "Sem correspondência para o argumento: {}"
+msgstr[1] "Sem correspondência para o argumento: {}"
+
+#: plugins/modulesync.py:107
+msgid ""
+"Creation of repository failed with return code {}. All downloaded content "
+"was kept on the system"
+msgstr ""
+
+#: plugins/modulesync.py:144
+#, python-brace-format
+msgid "No match for artifact '{0}' from module '{1}'"
+msgstr ""
+
+#: plugins/modulesync.py:162
+#, python-brace-format
+msgid "No match for package name '{0}' in profile {1} from module {2}"
+msgstr ""
+
+#: plugins/modulesync.py:166
+#, fuzzy
+#| msgid "No match for argument: {}"
+msgid "No mach for argument '{}'"
+msgstr "Sem correspondência para o argumento: {}"
+
+#. TODO(jmracek) Shell we end with an error or with RC 1?
+#: plugins/modulesync.py:198
+msgid "Unable to satisfy require {}"
+msgstr ""
+
 #: plugins/needs_restarting.py:66
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr ""
+"Nenhum pacote instalado foi encontrado para o nome do pacote \"{pkg}\" "
+"especificado no arquivo de needs-restarting \"{file}\"."
 
 #: plugins/needs_restarting.py:220
 msgid "determine updated binaries that need restarting"
-msgstr "determinar se os binários atualizados necessitam de restart"
+msgstr "determina binários atualizados que precisam ser reiniciados"
 
 #: plugins/needs_restarting.py:225
 msgid "only consider this user's processes"
@@ -832,14 +947,18 @@ msgstr "somente considera os processos deste usuário"
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
+"relata apenas se uma reinicialização é necessária (código de saída 1) ou não"
+" (código de saída 0)"
 
 #: plugins/needs_restarting.py:230
 msgid "only report affected systemd services"
-msgstr ""
+msgstr "relata apenas serviços systemd afetados"
 
 #: plugins/needs_restarting.py:253
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr ""
+"As bibliotecas ou serviços principais foram atualizados desde a "
+"inicialização:"
 
 #: plugins/needs_restarting.py:258
 msgid "Reboot is required to fully utilize these updates."
@@ -853,6 +972,8 @@ msgstr "Mais informações:"
 #: plugins/needs_restarting.py:263
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
+"Nenhuma biblioteca ou serviço principal foi atualizado desde a "
+"inicialização."
 
 #: plugins/needs_restarting.py:265
 msgid "Reboot should not be necessary."
@@ -861,7 +982,7 @@ msgstr "Não será necessário reiniciar."
 #: plugins/post-transaction-actions.py:71
 #, python-format
 msgid "Bad Action Line \"%s\": %s"
-msgstr ""
+msgstr "Linha de ação incorreta \"%s\": %s"
 
 #. unsupported state, skip it
 #: plugins/post-transaction-actions.py:130
@@ -882,7 +1003,7 @@ msgstr ""
 
 #: plugins/repoclosure.py:42
 msgid "Display a list of unresolved dependencies for repositories"
-msgstr "Exibir uma lista de dependências não resolvidas para os repositórios"
+msgstr "exibe uma lista de dependências não resolvidas para repositórios"
 
 #: plugins/repoclosure.py:66
 msgid "Repoclosure ended with unresolved dependencies."
@@ -908,7 +1029,7 @@ msgstr "Verificar o encerramento somente para este pacote"
 
 #: plugins/repodiff.py:45
 msgid "List differences between two sets of repositories"
-msgstr "Listar as diferenças entre dois conjuntos de repositórios"
+msgstr "lista as diferenças entre dois conjuntos de repositórios"
 
 #: plugins/repodiff.py:58
 msgid "Specify old repository, can be used multiple times"
@@ -932,13 +1053,12 @@ msgid "Output additional data about the size of the changes."
 msgstr "Escrever dados adicionais sobre o tamanho das mudanças."
 
 #: plugins/repodiff.py:69
-#, fuzzy
 msgid ""
 "Compare packages also by arch. By default packages are compared just by "
 "name."
 msgstr ""
-"Também comparar pacotes por arco. Por padrão os pacotes são comparados "
-"apenas pelo nome."
+"Compara pacotes também pela arquitetura. Por padrão, os pacotes são "
+"comparados apenas pelo nome."
 
 #: plugins/repodiff.py:72
 msgid "Output a simple one line message for modified packages."
@@ -949,14 +1069,16 @@ msgid ""
 "Split the data for modified packages between upgraded and downgraded "
 "packages."
 msgstr ""
+"Divide os dados para pacotes modificados entre pacotes atualizados e "
+"desatualizados."
 
 #: plugins/repodiff.py:86
 msgid "Both old and new repositories must be set."
-msgstr ""
+msgstr "Ambos os repositórios antigos e novos devem ser configurados."
 
 #: plugins/repodiff.py:178
 msgid "Size change: {} bytes"
-msgstr ""
+msgstr "Mudança de tamanho: {} bytes"
 
 #: plugins/repodiff.py:184
 msgid "Added package  : {}"
@@ -968,7 +1090,7 @@ msgstr "Pacotes removidos: {}"
 
 #: plugins/repodiff.py:190
 msgid "Obsoleted by   : {}"
-msgstr ""
+msgstr "Obsoleto por   : {}"
 
 #: plugins/repodiff.py:195
 msgid ""
@@ -1047,10 +1169,8 @@ msgid "Size change: {}"
 msgstr "Tamanho mudança: {}"
 
 #: plugins/repograph.py:50
-#, fuzzy
 msgid "Output a full package dependency graph in dot format"
-msgstr ""
-"Saída em um gráfico de dependência completa dos pacotes no formato de ponto"
+msgstr "gera um gráfico de dependência de pacote completo em formato de ponto"
 
 #: plugins/repograph.py:110
 #, python-format
@@ -1059,13 +1179,13 @@ msgstr "Nada fornece: '%s'"
 
 #: plugins/repomanage.py:45
 msgid "Manage a directory of rpm packages"
-msgstr "Gerenciar um diretório de pacotes rpm"
+msgstr "gerencia um diretório de pacotes rpm"
 
 #: plugins/repomanage.py:59
 msgid "Pass either --old or --new, not both!"
 msgstr "Passe --old ou --new, não ambos!"
 
-#: plugins/repomanage.py:71
+#: plugins/repomanage.py:89
 msgid "No files to process"
 msgstr "Nenhum arquivo para processar"
 
@@ -1095,7 +1215,7 @@ msgstr "Caminho para o diretório"
 
 #: plugins/reposync.py:55
 msgid "download all packages from remote repo"
-msgstr "baixar todos os pacotes do repositório remoto"
+msgstr "baixa todos os pacotes do repositório remoto"
 
 #: plugins/reposync.py:64
 msgid "download only packages for this ARCH"
@@ -1107,21 +1227,25 @@ msgstr "excluir pacotes locais que não estão mais presentes no repositório"
 
 #: plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr ""
+msgstr "baixa todos os metadados."
 
 #: plugins/reposync.py:70
 msgid "Remove packages that fail GPG signature checking after downloading"
 msgstr ""
+"Remove os pacotes que falham na verificação de assinatura GPG após o "
+"download"
 
 #: plugins/reposync.py:73
 msgid "also download and uncompress comps.xml"
-msgstr ""
+msgstr "também baixa e descompacta comps.xml"
 
 #: plugins/reposync.py:75
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
 msgstr ""
+"onde armazenar os metadados do repositório baixados. O padrão é o valor "
+"--download-path."
 
 #: plugins/reposync.py:78
 msgid "download only newest packages per-repo"
@@ -1140,35 +1264,33 @@ msgid "try to set local timestamps of local files by the one on the server"
 msgstr ""
 
 #: plugins/reposync.py:87
-#, fuzzy
-#| msgid "operate on source packages"
 msgid "download only source packages"
-msgstr "operar em pacotes fonte"
+msgstr "baixa apenas pacotes de fontes"
 
 #: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"
-msgstr ""
+msgstr "Apenas lista os urls que serão baixados, não os baixam"
 
 #: plugins/reposync.py:113
 msgid "Can't use --norepopath with multiple repositories"
-msgstr ""
+msgstr "Não é possível usar --norepopath com vários repositórios"
 
 #: plugins/reposync.py:132
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to get mirror for metadata: %s"
-msgstr "Falha ao obter espelho para metadados: %s"
+msgstr "Falha ao obter o espelho para metadados: %s"
 
 #: plugins/reposync.py:149
 msgid "Failed to get mirror for the group file."
-msgstr ""
+msgstr "Falha ao obter o espelho para o arquivo de grupo."
 
 #: plugins/reposync.py:168
 msgid "Removing {}: {}"
-msgstr ""
+msgstr "Removendo {}: {}"
 
 #: plugins/reposync.py:175
 msgid "GPG signature check failed."
-msgstr ""
+msgstr "Falha na verificação da assinatura GPG."
 
 #: plugins/reposync.py:196
 msgid "Download target '{}' is outside of download path '{}'."
@@ -1216,11 +1338,11 @@ msgstr ""
 
 #: plugins/versionlock.py:38
 msgid "Package {} is already locked"
-msgstr ""
+msgstr "O pacote {} já está bloqueado"
 
 #: plugins/versionlock.py:39
 msgid "Package {} is already excluded"
-msgstr ""
+msgstr "O pacote {} já foi excluído"
 
 #: plugins/versionlock.py:40
 msgid "Deleting versionlock for:"
@@ -1247,17 +1369,24 @@ msgstr ""
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr ""
 
-#: plugins/versionlock.py:132
+#: plugins/versionlock.py:138
 msgid "control package version locks"
 msgstr "controlar bloqueios de versão de pacotes"
 
-#: plugins/versionlock.py:138
+#: plugins/versionlock.py:144
 msgid "Use package specifications as they are, do not try to parse them"
-msgstr ""
+msgstr "Use as especificações do pacote como são, não tente analisá-las"
 
-#: plugins/versionlock.py:158
+#: plugins/versionlock.py:164
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
+"O subcomando '{}' está obsoleto. Em vez disso, use o subcomando 'exclude'."
+
+#~ msgid ""
+#~ "This repository does not have any builds yet so you cannot enable it now."
+#~ msgstr ""
+#~ "Este repositório ainda não possui nenhuma compilação, logo, você não poderá "
+#~ "habilitá-lo agora."
 
 #~ msgid ""
 #~ "\n"

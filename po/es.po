@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-27 09:18-0400\n"
+"POT-Creation-Date: 2022-01-11 01:55+0000\n"
 "PO-Revision-Date: 2020-09-01 14:29+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/es/>\n"
@@ -211,27 +211,27 @@ msgstr[1] "Falló la configuración de los repositorios"
 msgid "Could not save repo to repofile %s: %s"
 msgstr "No se puede guardar repositorio al repofile %s: %s"
 
-#: plugins/copr.py:59
+#: plugins/copr.py:70
 msgid "y"
 msgstr "s"
 
-#: plugins/copr.py:59
+#: plugins/copr.py:70
 msgid "yes"
 msgstr "si"
 
-#: plugins/copr.py:60
+#: plugins/copr.py:71
 msgid "n"
 msgstr "n"
 
-#: plugins/copr.py:60
+#: plugins/copr.py:71
 msgid "no"
 msgstr "no"
 
-#: plugins/copr.py:79
+#: plugins/copr.py:92
 msgid "Interact with Copr repositories."
 msgstr "Interactuar con repositorios Copr."
 
-#: plugins/copr.py:81
+#: plugins/copr.py:94
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -269,69 +269,69 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: plugins/copr.py:107
+#: plugins/copr.py:120
 msgid "List all installed Copr repositories (default)"
 msgstr ""
 "Mostrar todos los repositorios Copr instalados (opción predeterminada)"
 
-#: plugins/copr.py:109
+#: plugins/copr.py:122
 msgid "List enabled Copr repositories"
 msgstr "Mostrar los repositorios Copr activos"
 
-#: plugins/copr.py:111
+#: plugins/copr.py:124
 msgid "List disabled Copr repositories"
 msgstr "Mostrar los repositorios Copr desactivados"
 
-#: plugins/copr.py:113
+#: plugins/copr.py:126
 msgid "List available Copr repositories by user NAME"
 msgstr "Mostrar los repositorios Copr disponibles por NOMBRE de usuario"
 
-#: plugins/copr.py:115
+#: plugins/copr.py:128
 msgid "Specify an instance of Copr to work with"
 msgstr "Instancia de Copr con la que trabajar"
 
-#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:244
+#: plugins/copr.py:164 plugins/copr.py:232 plugins/copr.py:259
 msgid "Error: "
 msgstr "Error: "
 
-#: plugins/copr.py:150
+#: plugins/copr.py:165
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 
-#: plugins/copr.py:153
+#: plugins/copr.py:168
 msgid "multiple hubs specified"
 msgstr ""
 
-#: plugins/copr.py:218 plugins/copr.py:222
+#: plugins/copr.py:233 plugins/copr.py:237
 msgid "exactly two additional parameters to copr command are required"
 msgstr ""
 "exactamente dos parámetros adicionales son requeridos para comandos copr"
 
-#: plugins/copr.py:227
+#: plugins/copr.py:242
 #, fuzzy
 #| msgid "No match for argument: %s"
 msgid "Too many arguments."
 msgstr "No hay coincidencias para el argumento: %s"
 
-#: plugins/copr.py:230
+#: plugins/copr.py:245
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
 
-#: plugins/copr.py:245
+#: plugins/copr.py:260
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "use el formato \"nombreusuario_copr/proyecto_corp\" para referirse al "
 "proyecto copr"
 
-#: plugins/copr.py:247
+#: plugins/copr.py:262
 msgid "bad copr project format"
 msgstr "formato de proyecto de copr incorrecto"
 
-#: plugins/copr.py:261
+#: plugins/copr.py:276
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -357,73 +357,109 @@ msgstr ""
 "No envíe informes de errores sobre estos paquetes al Bugzilla de Fedora. Si\n"
 "observa problemas, contacte directamente con el propietario de este repositorio.\n"
 
-#: plugins/copr.py:278
+#: plugins/copr.py:293
 msgid "Repository successfully enabled."
 msgstr "Repositorio activado."
 
-#: plugins/copr.py:283
+#: plugins/copr.py:298
 msgid "Repository successfully disabled."
 msgstr "Repositorio desactivado."
 
-#: plugins/copr.py:287
+#: plugins/copr.py:302
 msgid "Repository successfully removed."
 msgstr "Repositorio eliminado exitosamente."
 
-#: plugins/copr.py:291 plugins/copr.py:698
+#: plugins/copr.py:306 plugins/copr.py:719
 msgid "Unknown subcommand {}."
 msgstr "Subcomando {} desconocido."
 
-#: plugins/copr.py:348
+#: plugins/copr.py:363
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 
-#: plugins/copr.py:360
+#: plugins/copr.py:376
 msgid "Can't parse repositories for username '{}'."
 msgstr "No se pueden procesar repositorios para el usuario '{}'."
 
-#: plugins/copr.py:363
+#: plugins/copr.py:379
 msgid "List of {} coprs"
 msgstr "Lista de coprs {}"
 
-#: plugins/copr.py:371
+#: plugins/copr.py:384
 msgid "No description given"
 msgstr "No se dio una descripción"
 
-#: plugins/copr.py:383
+#: plugins/copr.py:396
 msgid "Can't parse search for '{}'."
 msgstr "No se puede procesar búsqueda por '{}'."
 
-#: plugins/copr.py:386
+#: plugins/copr.py:399
 msgid "Matched: {}"
 msgstr "Coincidencias: {}"
 
-#: plugins/copr.py:394
+#: plugins/copr.py:404
 msgid "No description given."
 msgstr "No se dio una descripción."
 
-#: plugins/copr.py:417
+#: plugins/copr.py:426
 msgid "Safe and good answer. Exiting."
 msgstr "Respuesta buena y segura. Saliendo."
 
-#: plugins/copr.py:424
+#: plugins/copr.py:433
 msgid "This command has to be run under the root user."
 msgstr "Este comando debe ejecutarse como usuario root."
 
-#: plugins/copr.py:486
-msgid ""
-"This repository does not have any builds yet so you cannot enable it now."
+#: plugins/copr.py:485
+#, python-brace-format
+msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
-"Este repositorio no tiene construcciones todavía así que no lo puede "
-"activar."
 
-#: plugins/copr.py:489
-msgid "Such repository does not exist."
+#: plugins/copr.py:487
+msgid "It wasn't possible to enable this project.\n"
+msgstr ""
+
+#: plugins/copr.py:492
+#, fuzzy, python-brace-format
+#| msgid "Such repository does not exist."
+msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "Tal repositorio no existe."
 
-#: plugins/copr.py:533
+#: plugins/copr.py:495
+#, fuzzy
+#| msgid "List enabled Copr repositories"
+msgid ""
+"\n"
+"Available repositories: "
+msgstr ""
+"\n"
+"Mostrar los repositorios Copr activos "
+
+#: plugins/copr.py:497
+#, python-brace-format
+msgid ""
+"\n"
+"\n"
+"If you want to enable a non-default repository, use the following command:\n"
+"  'dnf copr enable {0} <repository>'\n"
+"But note that the installed repo file will likely need a manual modification."
+msgstr ""
+
+#: plugins/copr.py:503
+#, fuzzy, python-brace-format
+#| msgid "Such repository does not exist."
+msgid "Project {0} does not exist."
+msgstr "Tal repositorio no existe."
+
+#: plugins/copr.py:506
+#, fuzzy, python-brace-format
+#| msgid "Failed to remove copr repo {0}/{1}/{2}"
+msgid "Failed to connect to {0}: {1}"
+msgstr "No se pudo eliminar el repositorio copr {0}/{1}/{2}"
+
+#: plugins/copr.py:553
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -440,44 +476,44 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:554
+#: plugins/copr.py:574
 msgid "Do you want to keep them enabled?"
 msgstr ""
 
-#: plugins/copr.py:587
+#: plugins/copr.py:607
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "No se pudo eliminar el repositorio copr {0}/{1}/{2}"
 
-#: plugins/copr.py:598
+#: plugins/copr.py:618
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Falló la activación del repo copr {}/{}"
 
-#: plugins/copr.py:616 plugins/copr.py:653
+#: plugins/copr.py:636 plugins/copr.py:673
 msgid "Unknown response from server."
 msgstr "Respuesta desconocida del servidor."
 
-#: plugins/copr.py:638
+#: plugins/copr.py:658
 msgid "Interact with Playground repository."
 msgstr "Interactuar con el repositorio Playground."
 
-#: plugins/copr.py:644
+#: plugins/copr.py:664
 msgid "Enabling a Playground repository."
 msgstr "Habilitando un repositorio Playground."
 
-#: plugins/copr.py:645
+#: plugins/copr.py:665
 msgid "Do you want to continue?"
 msgstr ""
 
-#: plugins/copr.py:688
+#: plugins/copr.py:709
 msgid "Playground repositories successfully enabled."
 msgstr "Se han activado los repositorios Playground."
 
-#: plugins/copr.py:691
+#: plugins/copr.py:712
 msgid "Playground repositories successfully disabled."
 msgstr "Se desactivaron los repositorios Playground."
 
-#: plugins/copr.py:695
+#: plugins/copr.py:716
 msgid "Playground repositories successfully updated."
 msgstr "Repositorios Playground actualizados exitosamente."
 
@@ -598,7 +634,7 @@ msgstr ""
 msgid "limit  the  query to packages of given architectures."
 msgstr "limitar la consulta a los paquetes de esas arquitecturas."
 
-#: plugins/download.py:62
+#: plugins/download.py:62 plugins/modulesync.py:51
 msgid "resolve and download needed dependencies"
 msgstr "resolver y descargar las dependencias necesarias"
 
@@ -760,17 +796,17 @@ msgstr "No es posible escribir el archivo '{}'"
 msgid "Can't save file \"{}\": {}"
 msgstr "No es posible escribir el archivo '{}'"
 
-#: plugins/groups_manager.py:259
+#: plugins/groups_manager.py:261
 #, fuzzy
 #| msgid "No match for argument: %s"
 msgid "No match for argument: {}"
 msgstr "No hay coincidencias para el argumento: %s"
 
-#: plugins/groups_manager.py:296
+#: plugins/groups_manager.py:298
 msgid "Can't remove packages from non-existent group"
 msgstr ""
 
-#: plugins/groups_manager.py:305
+#: plugins/groups_manager.py:307
 msgid ""
 "Group id '{}' generated from '{}' is duplicit. Please specify group id using"
 " --id."
@@ -823,6 +859,74 @@ msgstr "migra el historial, grupos y datos de yumdb desde yum a dnf"
 #: plugins/migrate.py:54
 msgid "Migrating history data..."
 msgstr "Migrando datos del historial..."
+
+#: plugins/modulesync.py:37
+msgid ""
+"Download packages from modules and/or create a repository with modular data"
+msgstr ""
+
+#: plugins/modulesync.py:44
+msgid "MODULE"
+msgstr ""
+
+#: plugins/modulesync.py:45
+#, fuzzy
+#| msgid "packages to download"
+msgid "modules to download"
+msgstr "paquetes para descargar"
+
+# auto translated by TM merge from project: dnf-plugins-extras, version:
+# master, DocId: dnf-plugins-extras
+#: plugins/modulesync.py:47
+#, fuzzy
+#| msgid "Specify repositories to check"
+msgid "enable repositories with source packages"
+msgstr "Especificar repositorios para comprobar"
+
+#: plugins/modulesync.py:49
+msgid "enable repositories with debug-info and debug-source packages"
+msgstr ""
+
+#: plugins/modulesync.py:53
+#, fuzzy
+#| msgid "download all packages from remote repo"
+msgid "download only packages from newest modules"
+msgstr "descargar todos los paquetes del repositorio remoto"
+
+#: plugins/modulesync.py:85
+#, fuzzy
+#| msgid "No match for argument: %s"
+msgid "Unable to find a match for argument: '{}'"
+msgid_plural "Unable to find a match for arguments: '{}'"
+msgstr[0] "No hay coincidencias para el argumento: %s"
+msgstr[1] "No hay coincidencias para el argumento: %s"
+
+#: plugins/modulesync.py:107
+msgid ""
+"Creation of repository failed with return code {}. All downloaded content "
+"was kept on the system"
+msgstr ""
+
+#: plugins/modulesync.py:144
+#, python-brace-format
+msgid "No match for artifact '{0}' from module '{1}'"
+msgstr ""
+
+#: plugins/modulesync.py:162
+#, python-brace-format
+msgid "No match for package name '{0}' in profile {1} from module {2}"
+msgstr ""
+
+#: plugins/modulesync.py:166
+#, fuzzy
+#| msgid "No match for argument: %s"
+msgid "No mach for argument '{}'"
+msgstr "No hay coincidencias para el argumento: %s"
+
+#. TODO(jmracek) Shell we end with an error or with RC 1?
+#: plugins/modulesync.py:198
+msgid "Unable to satisfy require {}"
+msgstr ""
 
 #: plugins/needs_restarting.py:66
 #, python-brace-format
@@ -1092,7 +1196,7 @@ msgstr "Pase --old o --new, ¡no ambos!"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: plugins/repomanage.py:71
+#: plugins/repomanage.py:89
 msgid "No files to process"
 msgstr "No hay archivos para procesar"
 
@@ -1308,17 +1412,23 @@ msgstr "Versionlock plugin: no se pudo interpretar el patrón:"
 
 # auto translated by TM merge from project: dnf-plugins-extras, version:
 # master, DocId: dnf-plugins-extras
-#: plugins/versionlock.py:132
+#: plugins/versionlock.py:138
 msgid "control package version locks"
 msgstr "controla bloqueos de la versión del paquete"
 
-#: plugins/versionlock.py:138
+#: plugins/versionlock.py:144
 msgid "Use package specifications as they are, do not try to parse them"
 msgstr ""
 
-#: plugins/versionlock.py:158
+#: plugins/versionlock.py:164
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
+
+#~ msgid ""
+#~ "This repository does not have any builds yet so you cannot enable it now."
+#~ msgstr ""
+#~ "Este repositorio no tiene construcciones todavía así que no lo puede "
+#~ "activar."
 
 #~ msgid ""
 #~ "\n"
