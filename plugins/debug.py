@@ -161,7 +161,7 @@ class DebugDumpCommand(dnf.cli.Command):
 
     def dump_rpmdb_versions(self):
         self.write("%%%%RPMDB VERSIONS\n")
-        version = self.base.sack._rpmdb_version()
+        version = self.base._ts.dbCookie()
         self.write("  all: %s\n" % version)
         return
 
