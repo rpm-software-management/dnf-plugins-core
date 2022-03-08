@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.0.26
+Version:        4.1.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -783,6 +783,14 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Tue Mar 08 2022 Pavla Kratochvilova <pkratoch@redhat.com> - 4.1.0-1
+- Add a new subpackage with modulesync command. The command downloads packages from modules and/or creates a repository with modular data. (RhBug:1868047)
+- [groups-manager] Use full NEVRA (not only name) for matching packages (RhBug:2013633)
+- [repoclosure] Print counts of missing dependencies
+- [reposync] Do not stop downloading packages on the first error (RhBug:2009894)
+- [versionlock] Fix: Multiple package-name-spec arguments don't lock correctly (RhBug:2001039) (RhBug:2013324)
+- [versionlock] Update documentation for adding specifi version (RhBug:2013332)
+
 * Thu Oct 21 2021 Pavla Kratochvilova <pkratoch@redhat.com> - 4.0.24-1
 - [copr] on CentOS Stream, enable centos stream chroot instead of not epel 8 (RhBug:1994154)
 - [copr] Avoid using deprecated function distro.linux_distribution() (RhBug:2011550)
@@ -1532,3 +1540,4 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 
 * Fri Dec 20 2013 Aleš Kozumplík <ales@redhat.com> - 0.0.1-1
 - The initial package version.
+

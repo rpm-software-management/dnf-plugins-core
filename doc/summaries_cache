@@ -638,5 +638,25 @@
     [
         2011550,
         "dnf-plugins-core uses distro.linux_distribution(), deprecated in distro 1.6.0"
+    ],
+    [
+        2013633,
+        "[RFE] Add ability to yum-groups-manager to identify packages with version and/or architecture specified in package name"
+    ],
+    [
+        2009894,
+        "dnf reposync does not continue on 401 errors"
+    ],
+    [
+        2013324,
+        "Multiple package-name-spec arguments don't lock correctly"
+    ],
+    [
+        1868047,
+        "[RFE] A module-granularity synchronization tool (similar to reposync)"
+    ],
+    [
+        2013332,
+        "Locking a version of a not installed package disallows locking other versions later"
     ]
 ]

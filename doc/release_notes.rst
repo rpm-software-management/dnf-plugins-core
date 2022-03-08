@@ -21,6 +21,28 @@ Core DNF Plugins Release Notes
 
 .. contents::
 
+===================
+4.1.0 Release Notes
+===================
+
+- New features:
+  - Add a new subpackage with modulesync command. The command downloads packages from modules and/or creates a repository with modular data. (RhBug:1868047)
+  - [groups-manager] Use full NEVRA (not only name) for matching packages (RhBug:2013633)
+  - [repoclosure] Print counts of missing dependencies
+
+- Bug fixes:
+  - [reposync] Do not stop downloading packages on the first error (RhBug:2009894)
+  - [versionlock] Fix: Multiple package-name-spec arguments don't lock correctly (RhBug:2001039) (RhBug:2013324)
+  - [versionlock] Update documentation for adding specifi version (RhBug:2013332)
+
+Bugs fixed in 4.1.0:
+
+* :rhbug:`2013633`
+* :rhbug:`2009894`
+* :rhbug:`2013324`
+* :rhbug:`1868047`
+* :rhbug:`2013332`
+
 ====================
 4.0.24 Release Notes
 ====================
