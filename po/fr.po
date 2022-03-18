@@ -3,23 +3,26 @@
 # José Fournier <jaaf64@zoraldia.com>, 2017. #zanata
 # Jérôme Fenal <jfenal@gmail.com>, 2017. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018. #zanata, 2020.
-# Ludek Janda <ljanda@redhat.com>, 2018. #zanata
+# Ludek Janda <ljanda@redhat.com>, 2018. #zanata, 2021, 2022.
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2019. #zanata, 2020.
 # Julien Humbert <julroy67@gmail.com>, 2020.
+# Sundeep Anand <suanand@redhat.com>, 2021.
+# Transtats <suanand@redhat.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-05 09:18-0400\n"
-"PO-Revision-Date: 2020-07-09 13:27+0000\n"
-"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
-"Language-Team: French <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/fr/>\n"
+"POT-Creation-Date: 2022-02-28 11:53+0100\n"
+"PO-Revision-Date: 2022-03-09 12:39+0000\n"
+"Last-Translator: Ludek Janda <ljanda@redhat.com>\n"
+"Language-Team: French <https://translate.fedoraproject.org/projects/dnf/"
+"dnf-plugins-core-rhel-8/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.11.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -40,8 +43,7 @@ msgstr "définit une macro pour l’interprétation du fichier spec"
 
 #: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
-msgstr ""
-"ignorer les dépendances de compilation non disponibles dans les dépôts"
+msgstr "ignorer les dépendances de compilation non disponibles dans les dépôts"
 
 #: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
@@ -60,8 +62,7 @@ msgid "Some packages could not be found."
 msgstr "Certains paquets n’ont pu être trouvés."
 
 #. No provides, no files
-#. Richdeps can have no matches but it could be correct (solver must decide
-#. later)
+#. Richdeps can have no matches but it could be correct (solver must decide later)
 #: plugins/builddep.py:173
 #, python-format
 msgid "No matching package to install: '%s'"
@@ -150,45 +151,45 @@ msgstr "Liste tous les changements"
 msgid "Changelogs for {}"
 msgstr "Changements pour {}"
 
-#: plugins/config_manager.py:37
+#: plugins/config_manager.py:38
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
 msgstr "gestion de la configuration et des dépôts {prog}"
 
-#: plugins/config_manager.py:44
+#: plugins/config_manager.py:45
 msgid "repo to modify"
 msgstr "dépôt à modifier"
 
-#: plugins/config_manager.py:47
+#: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
 msgstr "enregistrer les options actuelles (utile avec --setopt)"
 
-#: plugins/config_manager.py:50
+#: plugins/config_manager.py:51
 msgid "add (and enable) the repo from the specified file or url"
 msgstr "ajoute (et active) le dépôt à partir du fichier ou de l’url indiqué"
 
-#: plugins/config_manager.py:53
+#: plugins/config_manager.py:54
 msgid "print current configuration values to stdout"
 msgstr ""
 "affiche les valeurs de la configuration actuelle sur la sortie standard"
 
-#: plugins/config_manager.py:56
+#: plugins/config_manager.py:57
 msgid "print variable values to stdout"
 msgstr "affiche les valeurs des variables sur la sortie standard"
 
-#: plugins/config_manager.py:60
+#: plugins/config_manager.py:61
 msgid "enable repos (automatically saves)"
 msgstr "activer les dépôts (enregistre automatiquement)"
 
-#: plugins/config_manager.py:63
+#: plugins/config_manager.py:64
 msgid "disable repos (automatically saves)"
 msgstr "désactiver les dépôts (enregistre automatiquement)"
 
-#: plugins/config_manager.py:77
+#: plugins/config_manager.py:78
 msgid "one of the following arguments is required: {}"
 msgstr "un des paramètres suivants est nécessaire : {}"
 
-#: plugins/config_manager.py:86
+#: plugins/config_manager.py:87
 msgid ""
 "Warning: --enablerepo/--disablerepo arguments have no meaningwith config "
 "manager. Use --set-enabled/--set-disabled instead."
@@ -197,48 +198,48 @@ msgstr ""
 "signification avec le gestionnaire de configuration. Utilisez plutôt --set-"
 "enabled/--set-disabled."
 
-#: plugins/config_manager.py:131
+#: plugins/config_manager.py:132
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Aucun dépôt correspondant à modifier : %s."
 
-#: plugins/config_manager.py:182
+#: plugins/config_manager.py:183
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Ajout du dépôt depuis : %s"
 
-#: plugins/config_manager.py:206
+#: plugins/config_manager.py:207
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "La configuration du dépôt a échoué"
 msgstr[1] "La configuration des dépôts a échoué"
 
-#: plugins/config_manager.py:216
+#: plugins/config_manager.py:217
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Sauvegarde impossible du dépôt dans le fichier du dépôt %s : %s"
 
-#: plugins/copr.py:59
+#: plugins/copr.py:64
 msgid "y"
 msgstr "o"
 
-#: plugins/copr.py:59
+#: plugins/copr.py:64
 msgid "yes"
 msgstr "oui"
 
-#: plugins/copr.py:60
+#: plugins/copr.py:65
 msgid "n"
 msgstr "n"
 
-#: plugins/copr.py:60
+#: plugins/copr.py:65
 msgid "no"
 msgstr "non"
 
-#: plugins/copr.py:79
+#: plugins/copr.py:84
 msgid "Interact with Copr repositories."
 msgstr "Interagit avec les dépôts Copr."
 
-#: plugins/copr.py:81
+#: plugins/copr.py:86
 msgid ""
 "\n"
 "  enable name/project [chroot]\n"
@@ -276,57 +277,69 @@ msgstr ""
 "  copr search tests\n"
 "    "
 
-#: plugins/copr.py:107
+#: plugins/copr.py:112
 msgid "List all installed Copr repositories (default)"
 msgstr "Lister tous les dépôts Copr installés (par défaut)"
 
-#: plugins/copr.py:109
+#: plugins/copr.py:114
 msgid "List enabled Copr repositories"
 msgstr "Lister les dépôts Copr activés"
 
-#: plugins/copr.py:111
+#: plugins/copr.py:116
 msgid "List disabled Copr repositories"
 msgstr "Lister les dépôts Copr désactivés"
 
-#: plugins/copr.py:113
+#: plugins/copr.py:118
 msgid "List available Copr repositories by user NAME"
 msgstr "Lister les dépôts Copr disponibles par NOM d’utilisateur"
 
-#: plugins/copr.py:115
+#: plugins/copr.py:120
 msgid "Specify an instance of Copr to work with"
 msgstr "Précisez une instance Copr avec laquelle travailler"
 
-#: plugins/copr.py:149 plugins/copr.py:217 plugins/copr.py:237
+#: plugins/copr.py:154 plugins/copr.py:222 plugins/copr.py:249
 msgid "Error: "
 msgstr "Erreur : "
 
-#: plugins/copr.py:150
+#: plugins/copr.py:155
 msgid ""
-"specify Copr hub either with `--hub` or using "
-"`copr_hub/copr_username/copr_projectname` format"
+"specify Copr hub either with `--hub` or using `copr_hub/copr_username/"
+"copr_projectname` format"
 msgstr ""
-"précisez un hub Copr soit via `--hub` ou en utilisant le format "
-"`hub_copr/utilisateur_copr/projet_copr`"
+"précisez un hub Copr soit via `--hub` ou en utilisant le format `hub_copr/"
+"utilisateur_copr/projet_copr`"
 
-#: plugins/copr.py:153
+#: plugins/copr.py:158
 msgid "multiple hubs specified"
 msgstr "de multiples hubs ont été renseignés"
 
-#: plugins/copr.py:218 plugins/copr.py:222
+#: plugins/copr.py:223 plugins/copr.py:227
 msgid "exactly two additional parameters to copr command are required"
 msgstr "la commande copr requiert exactement deux paramètres additionnels"
 
-#: plugins/copr.py:238
+#: plugins/copr.py:232
+msgid "Too many arguments."
+msgstr "Trop d'arguments."
+
+#: plugins/copr.py:235
+msgid ""
+"Bad format of optional chroot. The format is distribution-version-"
+"architecture."
+msgstr ""
+"Mauvais format du chroot optionnel. Le format est distribution-version-"
+"architecture."
+
+#: plugins/copr.py:250
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "utilisez le format `copr_username/copr_projectname` pour faire référence au "
 "projet copr"
 
-#: plugins/copr.py:240
+#: plugins/copr.py:252
 msgid "bad copr project format"
 msgstr "mauvais format de projet copr"
 
-#: plugins/copr.py:254
+#: plugins/copr.py:266
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -334,7 +347,8 @@ msgid ""
 "\n"
 "The Fedora Project does not exercise any power over the contents of\n"
 "this repository beyond the rules outlined in the Copr FAQ at\n"
-"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-"
+"in-copr>,\n"
 "and packages are not held to any quality or security level.\n"
 "\n"
 "Please do not file bug reports about these packages in Fedora\n"
@@ -346,83 +360,85 @@ msgstr ""
 "\n"
 "Le projet Fedora n’exerce aucun pouvoir sur le contenu de ce dépôt au delà\n"
 "des règles précisées dans la FAQ Copr \n"
-"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-in-copr>,\n"
+"<https://docs.pagure.org/copr.copr/user_documentation.html#what-i-can-build-"
+"in-copr>,\n"
 "et les paquets ne sont tenus à aucun niveau de qualité ou de sécurité.\n"
 "\n"
-"Veuillez ne pas signaler de bogues à propos de ces paquets dans le Bugzilla de Fedora.\n"
+"Veuillez ne pas signaler de bogues à propos de ces paquets dans le Bugzilla "
+"de Fedora.\n"
 "En cas de problèmes, contactez le propriétaire de ce dépôt.\n"
 
-#: plugins/copr.py:271
+#: plugins/copr.py:283
 msgid "Repository successfully enabled."
 msgstr "Activation du dépôt réussie."
 
-#: plugins/copr.py:276
+#: plugins/copr.py:288
 msgid "Repository successfully disabled."
 msgstr "Désactivation du dépôt réussie."
 
-#: plugins/copr.py:280
+#: plugins/copr.py:292
 msgid "Repository successfully removed."
 msgstr "Suppression du dépôt réussie."
 
-#: plugins/copr.py:284 plugins/copr.py:693
+#: plugins/copr.py:296 plugins/copr.py:697
 msgid "Unknown subcommand {}."
 msgstr "Sous-commande inconnue {}."
 
-#: plugins/copr.py:341
+#: plugins/copr.py:353
 msgid ""
-"* These coprs have repo file with an old format that contains no information"
-" about Copr hub - the default one was assumed. Re-enable the project to fix "
+"* These coprs have repo file with an old format that contains no information "
+"about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 "* Ces Copr ont des fichiers de dépôts avec un ancien format qui ne contient "
 "aucune information à propos de Copr hub - celui par défaut a été utilisé. "
 "Réactivez le projet pour résoudre le problème."
 
-#: plugins/copr.py:353
+#: plugins/copr.py:366
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 "Ne peut analyser les dépôts pour y chercher le nom d’utilisateur « {} »."
 
-#: plugins/copr.py:356
+#: plugins/copr.py:369
 msgid "List of {} coprs"
 msgstr "Liste de {} coprs"
 
-#: plugins/copr.py:364
+#: plugins/copr.py:374
 msgid "No description given"
 msgstr "Aucune description fournie"
 
-#: plugins/copr.py:376
+#: plugins/copr.py:386
 msgid "Can't parse search for '{}'."
 msgstr "Impossible d’analyser la recherche pour « {} »."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:389
 msgid "Matched: {}"
 msgstr "Correspondance : {}"
 
-#: plugins/copr.py:387
+#: plugins/copr.py:394
 msgid "No description given."
 msgstr "Pas de description fournie."
 
-#: plugins/copr.py:410
+#: plugins/copr.py:416
 msgid "Safe and good answer. Exiting."
 msgstr "Réponse sûre et exacte. Fin."
 
-#: plugins/copr.py:417
+#: plugins/copr.py:423
 msgid "This command has to be run under the root user."
 msgstr "Cette commande requiert les privilèges du super utilisateur."
 
-#: plugins/copr.py:481
+#: plugins/copr.py:485
 msgid ""
 "This repository does not have any builds yet so you cannot enable it now."
 msgstr ""
 "Ce dépôt ne contient pas encore d’exécutables vous ne pouvez donc pas "
 "l’activer."
 
-#: plugins/copr.py:484
+#: plugins/copr.py:488
 msgid "Such repository does not exist."
 msgstr "Ce dépôt n’existe pas."
 
-#: plugins/copr.py:528
+#: plugins/copr.py:532
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -451,44 +467,44 @@ msgstr ""
 "\n"
 "Ces dépôts ont été activés automatiquement."
 
-#: plugins/copr.py:549
+#: plugins/copr.py:553
 msgid "Do you want to keep them enabled?"
 msgstr "Souhaitez-vous les maintenir activés ?"
 
-#: plugins/copr.py:582
+#: plugins/copr.py:586
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Échec de la suppression du dépôt Copr {0}/{1}/{2}"
 
-#: plugins/copr.py:593
+#: plugins/copr.py:597
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Échec de la désactivation du dépôt copr {}/{}"
 
-#: plugins/copr.py:611 plugins/copr.py:648
+#: plugins/copr.py:615 plugins/copr.py:652
 msgid "Unknown response from server."
 msgstr "Réponse inconnue du serveur."
 
-#: plugins/copr.py:633
+#: plugins/copr.py:637
 msgid "Interact with Playground repository."
 msgstr "Interagit avec le dépôt Playground."
 
-#: plugins/copr.py:639
+#: plugins/copr.py:643
 msgid "Enabling a Playground repository."
 msgstr "Activation d’un dépôt Playground."
 
-#: plugins/copr.py:640
+#: plugins/copr.py:644
 msgid "Do you want to continue?"
 msgstr "Souhaitez-vous continuer ?"
 
-#: plugins/copr.py:683
+#: plugins/copr.py:687
 msgid "Playground repositories successfully enabled."
 msgstr "Activation des dépôts Playground réussie."
 
-#: plugins/copr.py:686
+#: plugins/copr.py:690
 msgid "Playground repositories successfully disabled."
 msgstr "Désactivation des dépôts Playground réussie."
 
-#: plugins/copr.py:690
+#: plugins/copr.py:694
 msgid "Playground repositories successfully updated."
 msgstr "Mise à jour des dépôts Playground réussie."
 
@@ -574,8 +590,7 @@ msgstr ""
 msgid ""
 "Could not find debugsource package for the following available packages: %s"
 msgstr ""
-"Impossible de trouver le paquet debugsource pour ces paquets disponibles : "
-"%s"
+"Impossible de trouver le paquet debugsource pour ces paquets disponibles : %s"
 
 #: plugins/debuginfo-install.py:190
 #, python-format
@@ -619,7 +634,7 @@ msgstr "télécharge plutôt le paquet -debugsource"
 msgid "limit  the  query to packages of given architectures."
 msgstr "limite les requêtes de paquets aux architectures spécifiées."
 
-#: plugins/download.py:62
+#: plugins/download.py:62 plugins/modulesync.py:51
 msgid "resolve and download needed dependencies"
 msgstr "résout et télécharge les dépendances nécessaires"
 
@@ -642,7 +657,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "si --url est renseigné, limite aux protocoles spécifiés"
 
-#: plugins/download.py:121 plugins/reposync.py:293
+#: plugins/download.py:121 plugins/reposync.py:314
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Échec de l’obtention du miroir pour le paquet : %s"
@@ -664,6 +679,125 @@ msgstr "Aucune source définie pour %s"
 #, python-format
 msgid "No package %s available."
 msgstr "Aucun paquet %s n’est disponible."
+
+#: plugins/groups_manager.py:49
+msgid "Invalid group id"
+msgstr "id de groupe invalide"
+
+#: plugins/groups_manager.py:58
+msgid "Invalid translated data, should be in form 'lang:text'"
+msgstr "Données traduites invalides, doivent être au format « lang : text »"
+
+#: plugins/groups_manager.py:61
+msgid "Invalid/empty language for translated data"
+msgstr "Langue non valide / vide pour les données traduites"
+
+#: plugins/groups_manager.py:71
+msgid "Can't generate group id from '{}'. Please specify group id using --id."
+msgstr ""
+"Impossible de générer l'id du groupe à partir de «{}». Veuillez spécifier "
+"l'id du groupe en utilisant --id."
+
+#: plugins/groups_manager.py:79
+msgid "create and edit groups metadata file"
+msgstr "créer et modifier le fichier de métadonnées des groupes"
+
+#: plugins/groups_manager.py:90
+msgid "load groups metadata from file"
+msgstr "charger des métadonnées de groupes à partir d'un fichier"
+
+#: plugins/groups_manager.py:93
+msgid "save groups metadata to file"
+msgstr "enregistrer les métadonnées des groupes dans un fichier"
+
+#: plugins/groups_manager.py:95
+msgid "load and save groups metadata to file"
+msgstr "charge et enregistre les métadonnées des groupes dans un fichier"
+
+#: plugins/groups_manager.py:97
+msgid "print the result metadata to stdout"
+msgstr "affiche les métadonnées du résultat sur la sortie standard"
+
+#: plugins/groups_manager.py:100
+msgid "group id"
+msgstr "id du groupe"
+
+#: plugins/groups_manager.py:101
+msgid "group name"
+msgstr "Nom du groupe"
+
+#: plugins/groups_manager.py:103
+msgid "group description"
+msgstr "description du groupe"
+
+#: plugins/groups_manager.py:105
+msgid "group display order"
+msgstr "ordre d'affichage du groupe"
+
+#: plugins/groups_manager.py:108
+msgid "translated name for the group"
+msgstr "nom traduit pour le groupe"
+
+#: plugins/groups_manager.py:111
+msgid "translated description for the group"
+msgstr "description traduite pour le groupe"
+
+#: plugins/groups_manager.py:115
+msgid "make the group user visible (default)"
+msgstr "rendre l'utilisateur du groupe visible (par défaut)"
+
+#: plugins/groups_manager.py:118
+msgid "make the group user invisible"
+msgstr "rendre l'utilisateur du groupe invisible"
+
+#: plugins/groups_manager.py:123
+msgid "add packages to the mandatory section"
+msgstr "ajoute les paquets à la section obligatoire"
+
+#: plugins/groups_manager.py:125
+msgid "add packages to the optional section"
+msgstr "ajoute les paquets à la section optionnelle"
+
+#: plugins/groups_manager.py:127
+msgid "remove packages from the group instead of adding them"
+msgstr "supprime les paquets du groupe au lieu de les ajouter"
+
+#: plugins/groups_manager.py:129
+msgid "include also direct dependencies for packages"
+msgstr "inclus également les dépendances directes pour les paquets"
+
+#: plugins/groups_manager.py:132
+msgid "package specification"
+msgstr "spécification du paquet"
+
+#: plugins/groups_manager.py:156
+msgid "Can't edit group without specifying it (use --id or --name)"
+msgstr ""
+"Un groupe ne peut pas être édité sans le spécifier (utilisez --id ou --name)"
+
+#: plugins/groups_manager.py:190
+msgid "Can't load file \"{}\": {}"
+msgstr "Impossible de charger le fichier « {} » : {}"
+
+#: plugins/groups_manager.py:206
+msgid "Can't save file \"{}\": {}"
+msgstr "Impossible d’enregistrer le fichier « {} » : {}"
+
+#: plugins/groups_manager.py:261
+msgid "No match for argument: {}"
+msgstr "Aucune correspondance pour l’argument : {}"
+
+#: plugins/groups_manager.py:298
+msgid "Can't remove packages from non-existent group"
+msgstr "Les paquets ne peuvent pas être retirés d'un groupe qui n'existe pas"
+
+#: plugins/groups_manager.py:307
+msgid ""
+"Group id '{}' generated from '{}' is duplicit. Please specify group id using "
+"--id."
+msgstr ""
+"L'id du groupe « {} » qui a été généré pour « {} » est en double. Veuillez "
+"le spécifier en utilisant --id."
 
 #: plugins/leaves.py:32
 msgid "List installed packages not required by any other package"
@@ -698,7 +832,69 @@ msgstr "migrer les données d’historique, de groupe et de yumdb, vers dnf"
 msgid "Migrating history data..."
 msgstr "Migration des données d’historique …"
 
-#: plugins/needs_restarting.py:65
+#: plugins/modulesync.py:37
+msgid ""
+"Download packages from modules and/or create a repository with modular data"
+msgstr ""
+"Télécharger les paquets des modules et/ou créer un référentiel avec les "
+"données des modules"
+
+#: plugins/modulesync.py:44
+msgid "MODULE"
+msgstr "MODULE"
+
+#: plugins/modulesync.py:45
+msgid "modules to download"
+msgstr "modules à télécharger"
+
+#: plugins/modulesync.py:47
+msgid "enable repositories with source packages"
+msgstr "activer les dépôts avec les paquets sources"
+
+#: plugins/modulesync.py:49
+msgid "enable repositories with debug-info and debug-source packages"
+msgstr "activer les dépôts avec les paquets debug-info et debug-source"
+
+#: plugins/modulesync.py:53
+msgid "download only packages from newest modules"
+msgstr "télécharger uniquement les paquets des modules les plus récents"
+
+#: plugins/modulesync.py:85
+msgid "Unable to find a match for argument: '{}'"
+msgid_plural "Unable to find a match for arguments: '{}'"
+msgstr[0] "Impossible de trouver une correspondance pour l'argument : '{}'"
+msgstr[1] "Impossible de trouver une correspondance pour les arguments : '{}'"
+
+#: plugins/modulesync.py:107
+msgid ""
+"Creation of repository failed with return code {}. All downloaded content "
+"was kept on the system"
+msgstr ""
+"La création du référentiel a échoué avec le code de retour {}. Tout le "
+"contenu téléchargé a été conservé sur le système"
+
+#: plugins/modulesync.py:144
+#, python-brace-format
+msgid "No match for artifact '{0}' from module '{1}'"
+msgstr "Aucune correspondance pour l'artefact '{0}' du module '{1}'"
+
+#: plugins/modulesync.py:162
+#, python-brace-format
+msgid "No match for package name '{0}' in profile {1} from module {2}"
+msgstr ""
+"Aucune correspondance pour le nom de paquet '{0}' dans le profil {1} du "
+"module {2}"
+
+#: plugins/modulesync.py:166
+msgid "No mach for argument '{}'"
+msgstr "Pas de correspondance pour l'argument '{}'"
+
+#. TODO(jmracek) Shell we end with an error or with RC 1?
+#: plugins/modulesync.py:198
+msgid "Unable to satisfy require {}"
+msgstr "Impossible de satisfaire le besoin {}"
+
+#: plugins/needs_restarting.py:66
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
@@ -707,15 +903,15 @@ msgstr ""
 "Aucun paquet installé trouvé pour le nom de paquet « {pkg} » spécifié dans "
 "needs-restarting du fichier « {file} »."
 
-#: plugins/needs_restarting.py:199
+#: plugins/needs_restarting.py:220
 msgid "determine updated binaries that need restarting"
 msgstr "détermine les binaires mis à jour qui nécessitent un redémarrage"
 
-#: plugins/needs_restarting.py:204
+#: plugins/needs_restarting.py:225
 msgid "only consider this user's processes"
 msgstr "considère uniquement les processus de cet utilisateur"
 
-#: plugins/needs_restarting.py:206
+#: plugins/needs_restarting.py:227
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
@@ -723,28 +919,32 @@ msgstr ""
 "(exit code 0)"
 
 #: plugins/needs_restarting.py:230
+msgid "only report affected systemd services"
+msgstr "signaler uniquement les services systemd affectés"
+
+#: plugins/needs_restarting.py:253
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr ""
 "les bibliothèques et les services de base ont été mis à jour depuis le "
 "démarrage (boot-up) :"
 
-#: plugins/needs_restarting.py:235
+#: plugins/needs_restarting.py:258
 msgid "Reboot is required to fully utilize these updates."
 msgstr ""
 "Un nouveau démarrage est requis pour pouvoir bénéficier totalement de ces "
 "mises à jour."
 
-#: plugins/needs_restarting.py:236
+#: plugins/needs_restarting.py:259
 msgid "More information:"
 msgstr "Plus d’information :"
 
-#: plugins/needs_restarting.py:240
+#: plugins/needs_restarting.py:263
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 "Aucune bibliothèque ou service de base n’a été mis à jour depuis le "
 "démarrage."
 
-#: plugins/needs_restarting.py:242
+#: plugins/needs_restarting.py:265
 msgid "Reboot should not be necessary."
 msgstr "Un nouveau démarrage ne devrait pas être utile."
 
@@ -759,13 +959,13 @@ msgstr "Mauvaise ligne d’action « %s » : %s"
 msgid "Bad Transaction State: %s"
 msgstr "Mauvais état de transaction : %s"
 
-#: plugins/post-transaction-actions.py:153
-#: plugins/post-transaction-actions.py:155
+#: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:159
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaction-actions : %s"
 
-#: plugins/post-transaction-actions.py:157
+#: plugins/post-transaction-actions.py:161
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaction-actions : mauvaise commande « %s » : %s"
@@ -822,11 +1022,10 @@ msgstr "Affichez des données supplémentaires sur la taille des changements."
 
 #: plugins/repodiff.py:69
 msgid ""
-"Compare packages also by arch. By default packages are compared just by "
-"name."
+"Compare packages also by arch. By default packages are compared just by name."
 msgstr ""
-"Compare également les paquets par architecture. Par défaut, les paquets sont"
-" uniquement comparés par nom."
+"Compare également les paquets par architecture. Par défaut, les paquets sont "
+"uniquement comparés par nom."
 
 #: plugins/repodiff.py:72
 msgid "Output a simple one line message for modified packages."
@@ -953,119 +1152,133 @@ msgstr "Gère un dossier de paquets rpm"
 msgid "Pass either --old or --new, not both!"
 msgstr "Passez soit --old, soit --new, mais pas les deux !"
 
-#: plugins/repomanage.py:71
+#: plugins/repomanage.py:89
 msgid "No files to process"
 msgstr "Aucun fichier à traiter"
 
-#: plugins/repomanage.py:93
+#: plugins/repomanage.py:96
 msgid "Could not open {}"
 msgstr "Ouverture de {} impossible"
 
-#: plugins/repomanage.py:177
+#: plugins/repomanage.py:180
 msgid "Print the older packages"
 msgstr "Afficher les paquets plus anciens"
 
-#: plugins/repomanage.py:179
+#: plugins/repomanage.py:182
 msgid "Print the newest packages"
 msgstr "Afficher les paquets les plus récents"
 
-#: plugins/repomanage.py:181
+#: plugins/repomanage.py:184
 msgid "Space separated output, not newline"
 msgstr "Sorties séparées par des espaces plutôt que des retours à la ligne"
 
-#: plugins/repomanage.py:183
+#: plugins/repomanage.py:186
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "N paquets les plus récents à conserver — par défaut 1"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:189
 msgid "Path to directory"
 msgstr "Chemin vers le répertoire"
 
-#: plugins/reposync.py:54
+#: plugins/reposync.py:55
 msgid "download all packages from remote repo"
 msgstr "télécharger tous les paquets depuis le dépôt distant"
 
-#: plugins/reposync.py:63
+#: plugins/reposync.py:64
 msgid "download only packages for this ARCH"
 msgstr "télécharger seulement les paquets s’appliquant à cette ARCH"
 
-#: plugins/reposync.py:65
+#: plugins/reposync.py:66
 msgid "delete local packages no longer present in repository"
 msgstr "supprimer les paquets locaux qui ne sont plus présents dans le dépôt"
 
-#: plugins/reposync.py:67
-msgid "also download and uncompress comps.xml"
-msgstr "également télécharger et décompresser comps.xml"
-
-#: plugins/reposync.py:69
+#: plugins/reposync.py:68
 msgid "download all the metadata."
 msgstr "télécharger toutes les métadonnées."
 
-#: plugins/reposync.py:71
+#: plugins/reposync.py:70
+msgid "Remove packages that fail GPG signature checking after downloading"
+msgstr ""
+"Retire les paquets qui ont échoué la vérification de la signature GPG après "
+"téléchargement"
+
+#: plugins/reposync.py:73
+msgid "also download and uncompress comps.xml"
+msgstr "également télécharger et décompresser comps.xml"
+
+#: plugins/reposync.py:75
+msgid ""
+"where to store downloaded repository metadata. Defaults to the value of --"
+"download-path."
+msgstr ""
+"là où stocker les métadonnées du dépôt. Prend par défaut la valeur de --"
+"download-path."
+
+#: plugins/reposync.py:78
 msgid "download only newest packages per-repo"
 msgstr "ne télécharger que les nouveaux paquets per-rep"
 
-#: plugins/reposync.py:73
-msgid "where to store downloaded repositories"
-msgstr "lieu où stocker les dépôts téléchargés"
-
-#: plugins/reposync.py:75
+#: plugins/reposync.py:80
 msgid "Don't add the reponame to the download path."
 msgstr "N’ajoutez pas le nom du dépôt dans le chemin de téléchargement."
 
-#: plugins/reposync.py:77
-msgid ""
-"where to store downloaded repository metadata. Defaults to the value of "
-"--download-path."
-msgstr ""
-"là où stocker les métadonnées du dépôt. Prend par défaut la valeur de "
-"--download-path."
-
-#: plugins/reposync.py:80
-msgid "operate on source packages"
-msgstr "opère sur les paquets source"
-
 #: plugins/reposync.py:82
+msgid "where to store downloaded repositories"
+msgstr "lieu où stocker les dépôts téléchargés"
+
+#: plugins/reposync.py:84
 msgid "try to set local timestamps of local files by the one on the server"
 msgstr ""
 "essayez de définir les horodatages locaux des fichiers locaux par celui du "
 "serveur"
 
-#: plugins/reposync.py:85
+#: plugins/reposync.py:87
+msgid "download only source packages"
+msgstr "télécharger uniquement les packages sources"
+
+#: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr ""
 "Uniquement lister les URL qui seraient téléchargées, ne pas télécharger"
 
-#: plugins/reposync.py:109
+#: plugins/reposync.py:113
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "Impossible d’utiliser --norepopath avec de multiples dépôts"
 
-#: plugins/reposync.py:127
+#: plugins/reposync.py:132
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "Échec de l’obtention du miroir pour les métadonnées : %s"
 
-#: plugins/reposync.py:144
+#: plugins/reposync.py:149
 msgid "Failed to get mirror for the group file."
 msgstr "Échec de l’obtention du miroir pour le fichier de groupe."
 
+#: plugins/reposync.py:168
+msgid "Removing {}: {}"
+msgstr "Suppression de « {} » : {}"
+
 #: plugins/reposync.py:175
+msgid "GPG signature check failed."
+msgstr "La vérification de la signature GPG a échoué."
+
+#: plugins/reposync.py:196
 msgid "Download target '{}' is outside of download path '{}'."
 msgstr ""
 "La cible de téléchargement « {} » est en dehors du chemin de téléchargement "
 "« {} »."
 
-#: plugins/reposync.py:190
+#: plugins/reposync.py:211
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: plugins/reposync.py:192
+#: plugins/reposync.py:213
 #, python-format
 msgid "failed to delete file %s"
 msgstr "n’a pas pu supprimer le fichier %s"
 
-#: plugins/reposync.py:201
+#: plugins/reposync.py:222
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "comps.xml pour le dépôt %s sauvegardé"
@@ -1074,72 +1287,79 @@ msgstr "comps.xml pour le dépôt %s sauvegardé"
 msgid "New leaves:"
 msgstr "Nouvelles feuilles :"
 
-#: plugins/versionlock.py:32
+#: plugins/versionlock.py:33
 #, python-format
 msgid "Unable to read version lock configuration: %s"
 msgstr "Ne peut lire la configuration du verrouillage de version : %s"
 
-#: plugins/versionlock.py:33
+#: plugins/versionlock.py:34
 msgid "Locklist not set"
 msgstr "Liste des verrouillages non établie"
 
-#: plugins/versionlock.py:34
+#: plugins/versionlock.py:35
 msgid "Adding versionlock on:"
 msgstr "Verrouille la version de :"
 
-#: plugins/versionlock.py:35
+#: plugins/versionlock.py:36
 msgid "Adding exclude on:"
 msgstr "Exclusion de :"
 
-#: plugins/versionlock.py:36
+#: plugins/versionlock.py:37
 msgid "Package already locked in equivalent form:"
 msgstr "Paquet déjà verrouillé sous une forme équivalente :"
 
-#: plugins/versionlock.py:37
+#: plugins/versionlock.py:38
 msgid "Package {} is already locked"
 msgstr "Le paquet {} est déjà verrouillé"
 
-#: plugins/versionlock.py:38
+#: plugins/versionlock.py:39
 msgid "Package {} is already excluded"
 msgstr "Le paquet {} est déjà exclu"
 
-#: plugins/versionlock.py:39
+#: plugins/versionlock.py:40
 msgid "Deleting versionlock for:"
 msgstr "Déverrouille la version de :"
 
-#: plugins/versionlock.py:40
+#: plugins/versionlock.py:41
 msgid "No package found for:"
 msgstr "Aucun paquet trouvé pour :"
 
-#: plugins/versionlock.py:41
+#: plugins/versionlock.py:42
 msgid "Excludes from versionlock plugin were not applied"
 msgstr "Les exclusions du plugin versionlock n’ont pas été appliquées"
 
-#: plugins/versionlock.py:42
+#: plugins/versionlock.py:43
 msgid "Versionlock plugin: number of lock rules from file \"{}\" applied: {}"
 msgstr ""
 "Plugin versionlock : nombre de règles de verrouillage du fichier \"{}\" "
 "appliquées : {}"
 
-#: plugins/versionlock.py:43
-msgid "Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
+#: plugins/versionlock.py:44
+msgid ""
+"Versionlock plugin: number of exclude rules from file \"{}\" applied: {}"
 msgstr ""
 "Plugin versionlock : nombre de règles d’exclusion du fichier \"{}\" "
 "appliquées : {}"
 
-#: plugins/versionlock.py:44
+#: plugins/versionlock.py:45
 msgid "Versionlock plugin: could not parse pattern:"
 msgstr "Plugin versionlock : n’a pas pu analyser le modèle :"
 
-#: plugins/versionlock.py:130
+#: plugins/versionlock.py:134
 msgid "control package version locks"
 msgstr "contrôle le verrouillage de version des paquets"
 
-#: plugins/versionlock.py:136
+#: plugins/versionlock.py:140
 msgid "Use package specifications as they are, do not try to parse them"
 msgstr ""
 "Utiliser les spécifications de paquet telles quelles, ne pas essayer de les "
 "analyser"
+
+#: plugins/versionlock.py:160
+msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
+msgstr ""
+"La sous-commande '{}' est obsolète. Utilisez plutôt la sous-commande "
+"'exclude'."
 
 #~ msgid ""
 #~ "\n"
