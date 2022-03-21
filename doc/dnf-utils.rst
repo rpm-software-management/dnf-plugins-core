@@ -14,7 +14,7 @@ Shell Commands
     Maps to ``dnf debuginfo-install``.
 :manpage:`needs-restarting(1)`
     Check for running processes that should be restarted.
-    Maps to ``dnf needs-restarting``.
+    Obsoleted. Please use ``tracer(8)`` instead.
 ``find-repos-of-install``
     Report which repository the package was installed from.
     Part of core DNF functionality.

@@ -73,7 +73,6 @@ Provides:       dnf-plugin-config-manager = %{version}-%{release}
 Provides:       dnf-plugin-debuginfo-install = %{version}-%{release}
 Provides:       dnf-plugin-download = %{version}-%{release}
 Provides:       dnf-plugin-generate_completion_cache = %{version}-%{release}
-Provides:       dnf-plugin-needs_restarting = %{version}-%{release}
 Provides:       dnf-plugin-groups-manager = %{version}-%{release}
 Provides:       dnf-plugin-repoclosure = %{version}-%{release}
 Provides:       dnf-plugin-repodiff = %{version}-%{release}
@@ -89,7 +88,7 @@ Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, debug, debuginfo-install, download, needs-restarting, groups-manager, repoclosure,
+copr, debug, debuginfo-install, download, groups-manager, repoclosure,
 repograph, repomanage, reposync, changelog and repodiff commands. Additionally
 provides generate_completion_cache passive plugin.
 
@@ -132,7 +131,7 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep,
-config-manager, copr, degug, debuginfo-install, download, needs-restarting,
+config-manager, copr, degug, debuginfo-install, download,
 groups-manager, repoclosure, repograph, repomanage, reposync, changelog
 and repodiff commands.
 Additionally provides generate_completion_cache passive plugin.
@@ -168,7 +167,7 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep,
-config-manager, copr, debug, debuginfo-install, download, needs-restarting,
+config-manager, copr, debug, debuginfo-install, download,
 groups-manager, repoclosure, repograph, repomanage, reposync, changelog
 and repodiff commands.
 Additionally provides generate_completion_cache passive plugin.
@@ -464,7 +463,6 @@ rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
 %if %{with yumutils}
 mkdir -p %{buildroot}%{_bindir}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
@@ -509,7 +507,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{_mandir}/man8/dnf-download.*
 %{_mandir}/man8/dnf-generate_completion_cache.*
 %{_mandir}/man8/dnf-groups-manager.*
-%{_mandir}/man8/dnf-needs-restarting.*
 %{_mandir}/man8/dnf-repoclosure.*
 %{_mandir}/man8/dnf-repodiff.*
 %{_mandir}/man8/dnf-repograph.*
@@ -540,7 +537,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python2_sitelib}/dnf-plugins/download.*
 %{python2_sitelib}/dnf-plugins/generate_completion_cache.*
 %{python2_sitelib}/dnf-plugins/groups_manager.*
-%{python2_sitelib}/dnf-plugins/needs_restarting.*
 %{python2_sitelib}/dnf-plugins/repoclosure.*
 %{python2_sitelib}/dnf-plugins/repodiff.*
 %{python2_sitelib}/dnf-plugins/repograph.*
@@ -566,7 +562,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python3_sitelib}/dnf-plugins/download.py
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
 %{python3_sitelib}/dnf-plugins/groups_manager.py
-%{python3_sitelib}/dnf-plugins/needs_restarting.py
 %{python3_sitelib}/dnf-plugins/repoclosure.py
 %{python3_sitelib}/dnf-plugins/repodiff.py
 %{python3_sitelib}/dnf-plugins/repograph.py
@@ -581,7 +576,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python3_sitelib}/dnf-plugins/__pycache__/download.*
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
 %{python3_sitelib}/dnf-plugins/__pycache__/groups_manager.*
-%{python3_sitelib}/dnf-plugins/__pycache__/needs_restarting.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repoclosure.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repodiff.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repograph.*
@@ -594,7 +588,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %files -n %{yum_utils_subpackage_name}
 %{_libexecdir}/dnf-utils
 %{_bindir}/debuginfo-install
-%{_bindir}/needs-restarting
 %{_bindir}/find-repos-of-install
 %{_bindir}/package-cleanup
 %{_bindir}/repo-graph
@@ -611,7 +604,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{_bindir}/yum-groups-manager
 %{_bindir}/yumdownloader
 %{_mandir}/man1/debuginfo-install.*
-%{_mandir}/man1/needs-restarting.*
 %{_mandir}/man1/repo-graph.*
 %{_mandir}/man1/repoclosure.*
 %{_mandir}/man1/repodiff.*
@@ -633,7 +625,6 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %else
 # These are built regardless of yumutils bcond so we need to exclude them.
 %exclude %{_mandir}/man1/debuginfo-install.*
-%exclude %{_mandir}/man1/needs-restarting.*
 %exclude %{_mandir}/man1/repo-graph.*
 %exclude %{_mandir}/man1/repoclosure.*
 %exclude %{_mandir}/man1/repodiff.*

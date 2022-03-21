@@ -23,7 +23,6 @@ import sys
 import os.path
 
 MAPPING = {'debuginfo-install': ['debuginfo-install'],
-           'needs-restarting': ['needs-restarting'],
            'find-repos-of-install': ['list', 'installed'],
            'package-cleanup': [],
            'repo-graph': ['repograph'],

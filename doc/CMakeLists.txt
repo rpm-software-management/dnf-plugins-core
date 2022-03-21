@@ -29,7 +29,6 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-groups-manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-leaves.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-modulesync.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-needs-restarting.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repoclosure.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repodiff.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-repograph.8
@@ -52,7 +51,6 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-local.8
 endif()
 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/debuginfo-install.1
-    ${CMAKE_CURRENT_BINARY_DIR}/needs-restarting.1
     ${CMAKE_CURRENT_BINARY_DIR}/repo-graph.1
     ${CMAKE_CURRENT_BINARY_DIR}/repoclosure.1
     ${CMAKE_CURRENT_BINARY_DIR}/repomanage.1
