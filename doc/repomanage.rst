@@ -47,6 +47,9 @@ The following options set what packages are displayed. These options are mutuall
 ``--old``
     Show older packages (for a package or a stream show all versions except the newest one).
 
+``--oldonly``
+    Show older packages (same as --old, but exclude the newest packages even when it's included in the older stream versions).
+
 ``--new``
     Show newest packages.
 

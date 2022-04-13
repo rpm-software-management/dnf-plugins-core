@@ -57,6 +57,12 @@ class RepoManageCommand(dnf.cli.Command):
     def run(self):
         if self.opts.new and self.opts.old:
             raise dnf.exceptions.Error(_("Pass either --old or --new, not both!"))
+        if self.opts.new and self.opts.oldonly:
+            raise dnf.exceptions.Error(_("Pass either --oldonly or --new, not both!"))
+        if self.opts.old and self.opts.oldonly:
+            raise dnf.exceptions.Error(_("Pass either --old or --oldonly, not both!"))
+        if not self.opts.old and not self.opts.oldonly:
+            self.opts.new = True
 
         verfile = {}
         pkgdict = {}
@@ -118,8 +124,7 @@ class RepoManageCommand(dnf.cli.Command):
         # modular packages
         keepnum_latest_stream_artifacts = set()
 
-        # if new
-        if not self.opts.old:
+        if self.opts.new:
             # regular packages
             for (n, a) in pkgdict.keys():
                 evrlist = pkgdict[(n, a)]
@@ -140,7 +145,6 @@ class RepoManageCommand(dnf.cli.Command):
                 for i in new_sorted_stream_versions:
                     for stream in streams_by_version[i]:
                         keepnum_latest_stream_artifacts.update(set(stream.getArtifacts()))
-
 
         if self.opts.old:
             # regular packages
@@ -164,6 +168,40 @@ class RepoManageCommand(dnf.cli.Command):
                     for stream in streams_by_version[i]:
                         keepnum_latest_stream_artifacts.update(set(stream.getArtifacts()))
 
+        if self.opts.oldonly:
+            # regular packages
+            for (n, a) in pkgdict.keys():
+                evrlist = pkgdict[(n, a)]
+
+                oldevrs = evrlist[:-keepnum]
+
+                for package in oldevrs:
+                    nevra = self._package_to_nevra(package)
+                    for fpkg in verfile[nevra]:
+                        outputpackages.append(fpkg)
+
+            # modular packages
+            keepnum_newer_stream_artifacts = set()
+
+            for streams_by_version in module_dict.values():
+                sorted_stream_versions = sorted(streams_by_version.keys())
+
+                new_sorted_stream_versions = sorted_stream_versions[-keepnum:]
+
+                for i in new_sorted_stream_versions:
+                    for stream in streams_by_version[i]:
+                        keepnum_newer_stream_artifacts.update(set(stream.getArtifacts()))
+
+            for streams_by_version in module_dict.values():
+                sorted_stream_versions = sorted(streams_by_version.keys())
+
+                old_sorted_stream_versions = sorted_stream_versions[:-keepnum]
+
+                for i in old_sorted_stream_versions:
+                    for stream in streams_by_version[i]:
+                        for artifact in stream.getArtifacts():
+                            if artifact not in keepnum_newer_stream_artifacts:
+                                keepnum_latest_stream_artifacts.add(artifact)
 
         modular_packages = [self._package_to_path(x) for x in query.filter(pkg__eq=query.filter(nevra_strict=keepnum_latest_stream_artifacts)).available()]
         outputpackages = outputpackages + modular_packages
@@ -178,6 +216,8 @@ class RepoManageCommand(dnf.cli.Command):
     def set_argparser(parser):
         parser.add_argument("-o", "--old", action="store_true",
                             help=_("Print the older packages"))
+        parser.add_argument("-O", "--oldonly", action="store_true",
+                            help=_("Print the older packages. Exclude the newest packages."))
         parser.add_argument("-n", "--new", action="store_true",
                             help=_("Print the newest packages"))
         parser.add_argument("-s", "--space", action="store_true",
