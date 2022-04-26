@@ -115,6 +115,9 @@ class PostTransactionActions(dnf.Plugin):
                 in_ts_items.append(ts_item)
             elif ts_item.action in dnf.transaction.BACKWARD_ACTIONS:
                 out_ts_items.append(ts_item)
+            else:
+                #  The action is not rpm change. It can be a reason change, therefore we can skip that item
+                continue
             all_ts_items.append(ts_item)
 
         commands_to_run = []
