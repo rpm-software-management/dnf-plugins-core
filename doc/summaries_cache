@@ -658,5 +658,13 @@
     [
         2013332,
         "Locking a version of a not installed package disallows locking other versions later"
+    ],
+    [
+        2034736,
+        "reposync -n downloads more than it should"
+    ],
+    [
+        2058676,
+        "repomanage list the same package in both --old and --new results"
     ]
 ]

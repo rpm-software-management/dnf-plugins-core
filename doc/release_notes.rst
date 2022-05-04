@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.2.0 Release Notes
+===================
+
+- New features:
+  - repomanage: Add new option --oldonly (RhBug:2034736,2058676)
+
+Bugs fixed in 4.2.0:
+
+* :rhbug:`2034736`
+* :rhbug:`2058676`
+
+===================
 4.1.0 Release Notes
 ===================
 

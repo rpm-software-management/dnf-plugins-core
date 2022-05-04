@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.1.0
+Version:        4.2.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -783,6 +783,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Wed May 04 2022 Jaroslav Rohel <jrohel@redhat.com> - 4.2.0-1
+- repomanage: Add new option --oldonly (RhBug:2034736,2058676)
+
 * Tue Mar 08 2022 Pavla Kratochvilova <pkratoch@redhat.com> - 4.1.0-1
 - Add a new subpackage with modulesync command. The command downloads packages from modules and/or creates a repository with modular data. (RhBug:1868047)
 - [groups-manager] Use full NEVRA (not only name) for matching packages (RhBug:2013633)
