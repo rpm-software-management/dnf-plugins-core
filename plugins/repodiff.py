@@ -22,6 +22,8 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import re
+
 import dnf.cli
 from dnf.cli.option_parser import OptionParser
 import hawkey
@@ -73,6 +75,9 @@ class RepoDiffCommand(dnf.cli.Command):
         parser.add_argument("--downgrade", action="store_true",
                             help=_("Split the data for modified packages between "
                                    "upgraded and downgraded packages."))
+        parser.add_argument("--hide-author", action="store_true",
+                            help=_("Hide the authors name and email address"
+                                   "in the changelog."))
 
     def configure(self):
         demands = self.cli.demands
@@ -172,7 +177,9 @@ class RepoDiffCommand(dnf.cli.Command):
                             break
                     msgs.append('### %s %s\n%s' % (
                         chlog['timestamp'].strftime("%a %b %d %Y"),
-                        dnf.i18n.ucd(chlog['author']),
+                        dnf.i18n.ucd(chlog['author'])
+                        if not self.opts.hide_author else
+                        "- %s" % (re.search(".+ - (.+?)$", chlog['author']).group(1)),
                         dnf.i18n.ucd(chlog['text'])))
                     if not self.opts.size:
                         msgs.append("")
