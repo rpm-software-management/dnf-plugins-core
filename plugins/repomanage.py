@@ -66,7 +66,8 @@ class RepoManageCommand(dnf.cli.Command):
         keepnum = int(self.opts.keep) # the number of items to keep
 
         try:
-            repo_conf = self.base.repos.add_new_repo("repomanage_repo", self.base.conf, baseurl=[self.opts.path])
+            REPOMANAGE_REPOID = "repomanage_repo"
+            repo_conf = self.base.repos.add_new_repo(REPOMANAGE_REPOID, self.base.conf, baseurl=[self.opts.path])
             # Always expire the repo, otherwise repomanage could use cached metadata and give identical results
             # for multiple runs even if the actual repo changed in the meantime
             repo_conf._repo.expire()
@@ -78,9 +79,13 @@ class RepoManageCommand(dnf.cli.Command):
                 module_packages = self.base._moduleContainer.getModulePackages()
 
                 for module_package in module_packages:
-                    all_modular_artifacts.update(module_package.getArtifacts())
-                    module_dict.setdefault(module_package.getNameStream(), {}).setdefault(
-                        module_package.getVersionNum(), []).append(module_package)
+                    # Even though we load only REPOMANAGE_REPOID other modules can be loaded from system
+                    # failsafe data automatically, we don't want them affecting repomanage results so ONLY
+                    # use modules from REPOMANAGE_REPOID.
+                    if module_package.getRepoID() == REPOMANAGE_REPOID:
+                        all_modular_artifacts.update(module_package.getArtifacts())
+                        module_dict.setdefault(module_package.getNameStream(), {}).setdefault(
+                            module_package.getVersionNum(), []).append(module_package)
 
         except dnf.exceptions.RepoError:
             rpm_list = []
