@@ -155,20 +155,26 @@ class RepoDiffCommand(dnf.cli.Command):
                 msg += " (-{})".format(dnf.cli.format.format_number(-num).strip())
             return msg
 
-        def report_modified(pkg_old, pkg_new):
+        def report_modified(pkg_old, pkg_new=None, sub_pkgs=[]):
             msgs = []
             if self.opts.simple:
                 msgs.append("- Updated : %s - %s" % (pkg_old.evr, pkg_new.evr))
             else:
                 msgs.append('')
-                msgs.append('### %s' % (pkg_new.name))
-                msgs.append("- Updated : %s - %s" % (pkg_old.evr, pkg_new.evr))
+                msgs.append('### %s' % (pkg_old.name))
+                if pkg_new is not None:
+                    msgs.append("- Updated : %s - %s" % (pkg_old.evr, pkg_new.evr))
+                if sub_pkgs:
+                    msgs.append("- Binaries added : {}".format(', '.join(map(str, sub_pkgs))))
+
+                msgs.append('')
+
                 if pkg_old.changelogs:
                     old_chlog = pkg_old.changelogs[0]
                 else:
                     old_chlog = None
-                for chlog in pkg_new.changelogs:
-                    if old_chlog:
+                for chlog in pkg_old.changelogs if pkg_new is None else pkg_new.changelogs:
+                    if old_chlog and pkg_new is not None:
                         if chlog['timestamp'] < old_chlog['timestamp']:
                             break
                         elif (chlog['timestamp'] == old_chlog['timestamp'] and
@@ -190,11 +196,44 @@ class RepoDiffCommand(dnf.cli.Command):
 
         sizes = dict(added=0, removed=0, upgraded=0, downgraded=0)
 
+        new_sub_packages = {}
+
         if len(repodiff['added']) > 0:
-            print((_("\n# Packages added ({})").format(len(repodiff['added']))))
+            added_source_packages = {}
             for pkg in sorted(repodiff['added']):
-                print("\t%s -- %s" % (pkg.name, pkg.evr))
+
+                src_pkg_exist = False
+                for (upgr_pkg_old, upgr_pkg_new) in repodiff['upgraded']:
+                    if upgr_pkg_old.name == pkg.source_name:
+                        if pkg.source_name not in new_sub_packages:
+                            new_sub_packages[pkg.source_name] = ["%s - %s" % (pkg.name,
+                                                                              pkg.evr)]
+                        else:
+                            new_sub_packages[pkg.source_name] += ["%s - %s" % (pkg.name,
+                                                                               pkg.evr)]
+                        src_pkg_exist = True
+                        break
+                if src_pkg_exist:
+                    continue
+
+                if pkg.source_name not in added_source_packages:
+                    added_source_packages[pkg.source_name] = \
+                        {"pkg": pkg,
+                         "sub_packages": ["%s - %s" % (pkg.name, pkg.evr)]}
+                else:
+                    added_source_packages[pkg.source_name]["sub_packages"] += \
+                        ["%s - %s" % (pkg.name, pkg.evr)]
+                    if pkg.source_name == pkg.name:
+                        added_source_packages[pkg.source_name]["pkg"] = pkg
+
                 sizes['added'] += pkg.size
+
+            if len(added_source_packages) > 0:
+                print((_("\n# Packages added ({})").format(
+                    len(added_source_packages))))
+                for src_pkg in sorted(added_source_packages):
+                    report_modified(pkg_old=added_source_packages[src_pkg]["pkg"],
+                                    sub_pkgs=added_source_packages[src_pkg]["sub_packages"])
 
         if len(repodiff['removed']) > 0:
             print((_("\n# Removed packages ({})\n").format(len(repodiff['removed']))))
@@ -220,14 +259,18 @@ class RepoDiffCommand(dnf.cli.Command):
                         len(repodiff['upgraded']) + len(repodiff['downgraded']))))
                     for (pkg_old, pkg_new) in sorted(repodiff['upgraded']):
                         sizes['upgraded'] += (pkg_new.size - pkg_old.size)
-                        report_modified(pkg_old, pkg_new)
+                        report_modified(pkg_old, pkg_new,
+                                        new_sub_packages[pkg_new.name]
+                                        if pkg_new.name in new_sub_packages else None)
             if len(repodiff['downgraded']) > 0:
                 if repodiff['downgraded']:
                     print((_("\n# Downgraded packages ({})").format(
                         len(repodiff['upgraded']) + len(repodiff['downgraded']))))
                     for (pkg_old, pkg_new) in sorted(repodiff['downgraded']):
                         sizes['downgraded'] += (pkg_new.size - pkg_old.size)
-                        report_modified(pkg_old, pkg_new)
+                        report_modified(pkg_old, pkg_new,
+                                        new_sub_packages[pkg_new.name]
+                                        if pkg_new.name in new_sub_packages else None)
         else:
             modified = repodiff['upgraded'] + repodiff['downgraded']
             if modified:
@@ -235,7 +278,9 @@ class RepoDiffCommand(dnf.cli.Command):
                     len(repodiff['upgraded']) + len(repodiff['downgraded']))))
                 for (pkg_old, pkg_new) in sorted(modified):
                     sizes['upgraded'] += (pkg_new.size - pkg_old.size)
-                    report_modified(pkg_old, pkg_new)
+                    report_modified(pkg_old, pkg_new,
+                                    new_sub_packages[pkg_new.name]
+                                    if pkg_new.name in new_sub_packages else None)
 
         print(_("\n# Summary"))
         print(_("- Added packages: {}").format(len(repodiff['added'])))
