@@ -78,6 +78,8 @@ class RepoDiffCommand(dnf.cli.Command):
         parser.add_argument("--hide-author", action="store_true",
                             help=_("Hide the authors name and email address"
                                    "in the changelog."))
+        parser.add_argument("--summary", action="store_true",
+                            help=_("Sum up changes after all changes have been listed."))
 
     def configure(self):
         demands = self.cli.demands
@@ -281,19 +283,19 @@ class RepoDiffCommand(dnf.cli.Command):
                     report_modified(pkg_old, pkg_new,
                                     new_sub_packages[pkg_new.name]
                                     if pkg_new.name in new_sub_packages else None)
-
-        print(_("\n# Summary"))
-        print(_("- Added packages: {}").format(len(repodiff['added'])))
-        print(_("- Removed packages: {}").format(len(repodiff['removed'])))
-        if self.opts.downgrade:
-            print(_("- Upgraded packages: {}").format(len(repodiff['upgraded'])))
-            print(_("- Downgraded packages: {}").format(len(repodiff['downgraded'])))
-        else:
-            print(_("- Modified packages: {}").format(
-                len(repodiff['upgraded']) + len(repodiff['downgraded'])))
-        if self.opts.size:
-            print(_("- Size of added packages: {}").format(sizestr(sizes['added'])))
-            print(_("- Size of removed packages: {}").format(sizestr(sizes['removed'])))
+        if self.opts.summary:
+            print(_("\n# Summary"))
+            print(_("- Added packages: {}").format(len(repodiff['added'])))
+            print(_("- Removed packages: {}").format(len(repodiff['removed'])))
+            if self.opts.downgrade:
+                print(_("- Upgraded packages: {}").format(len(repodiff['upgraded'])))
+                print(_("- Downgraded packages: {}").format(len(repodiff['downgraded'])))
+            else:
+                print(_("- Modified packages: {}").format(
+                    len(repodiff['upgraded']) + len(repodiff['downgraded'])))
+            if self.opts.size:
+                print(_("- Size of added packages: {}").format(sizestr(sizes['added'])))
+                print(_("- Size of removed packages: {}").format(sizestr(sizes['removed'])))
             if not self.opts.downgrade:
                 print(_("Size of modified packages: {}").format(
                     sizestr(sizes['upgraded'] + sizes['downgraded'])))
@@ -302,8 +304,8 @@ class RepoDiffCommand(dnf.cli.Command):
                     sizestr(sizes['upgraded'])))
                 print(_("- Size of downgraded packages: {}").format(
                     sizestr(sizes['downgraded'])))
-            print(_("- Size change: {}").format(
-                sizestr(sizes['added'] + sizes['upgraded'] + sizes['downgraded'] -
+                print(_("- Size change: {}").format(
+                    sizestr(sizes['added'] + sizes['upgraded'] + sizes['downgraded'] -
                         sizes['removed'])))
 
     def run(self):
