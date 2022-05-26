@@ -78,6 +78,8 @@ class RepoDiffCommand(dnf.cli.Command):
         parser.add_argument("--hide-author", action="store_true",
                             help=_("Hide the authors name and email address"
                                    "in the changelog."))
+        parser.add_argument("--hide-timestamp", action="store_true",
+                            help=_("Hide the timestamp in the changelog."))
         parser.add_argument("--summary", action="store_true",
                             help=_("Sum up changes after all changes have been listed."))
 
@@ -183,12 +185,16 @@ class RepoDiffCommand(dnf.cli.Command):
                               chlog['author'] == old_chlog['author'] and
                               chlog['text'] == old_chlog['text']):
                             break
-                    msgs.append('### %s %s\n%s' % (
-                        chlog['timestamp'].strftime("%a %b %d %Y"),
-                        dnf.i18n.ucd(chlog['author'])
-                        if not self.opts.hide_author else
-                        "- %s" % (re.search(".+ - (.+?)$", chlog['author']).group(1)),
-                        dnf.i18n.ucd(chlog['text'])))
+                    if not self.opts.hide_timestamp:
+                        msgs.append('### %s %s\n%s' % (
+                            chlog['timestamp'].strftime("%a %b %d %Y"),
+                            dnf.i18n.ucd(chlog['author'])
+                            if not self.opts.hide_author else
+                            "- %s" % (re.search(".+ - (.+?)$", chlog['author']).group(1)),
+                            dnf.i18n.ucd(chlog['text'])))
+                    else:
+                        msgs.append(dnf.i18n.ucd(chlog['text']))
+
                     if not self.opts.size:
                         msgs.append("")
                 if self.opts.size:
