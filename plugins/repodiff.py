@@ -145,7 +145,7 @@ class RepoDiffCommand(dnf.cli.Command):
         def pkgstr(pkg):
             if self.opts.compare_arch:
                 return str(pkg)
-            return "%s-%s" % (pkg.name, pkg.evr)
+            return "%s - %s" % (pkg.name, pkg.evr)
 
         def sizestr(num):
             msg = str(num)
@@ -198,11 +198,20 @@ class RepoDiffCommand(dnf.cli.Command):
 
         if len(repodiff['removed']) > 0:
             print((_("\n# Removed packages ({})\n").format(len(repodiff['removed']))))
+            removed_source_packages = {}
             for pkg in sorted(repodiff['removed']):
                 obsoletedby = repodiff['obsoletes'].get(self._pkgkey(pkg))
                 if not obsoletedby:
                     sizes['removed'] += pkg.size
-                    print(pkgstr(pkg))
+                if pkg.source_name not in removed_source_packages:
+                    removed_source_packages[pkg.source_name] = [pkgstr(pkg)]
+                else:
+                    removed_source_packages[pkg.source_name] += [pkgstr(pkg)]
+            for src_pkg in sorted(removed_source_packages):
+                print("## %s" % (src_pkg))
+                print("- ", end='')
+                print(*removed_source_packages[src_pkg], sep=", ")
+                print("")
 
         if self.opts.downgrade:
             if len(repodiff['upgraded']) > 0:
