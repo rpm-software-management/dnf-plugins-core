@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.2.0
+Version:        4.2.1
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPLv2+
@@ -783,6 +783,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Fri May 27 2022 Jaroslav Rohel <jrohel@redhat.com> - 4.2.1-1
+- Skip all non rpm tsi for transaction_action plugins (rhbug:2023652)
+
 * Wed May 04 2022 Jaroslav Rohel <jrohel@redhat.com> - 4.2.0-1
 - repomanage: Add new option --oldonly (RhBug:2034736,2058676)
 

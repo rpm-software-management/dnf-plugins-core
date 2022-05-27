@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.2.1 Release Notes
+===================
+
+- Skip all non rpm tsi for transaction_action plugins (rhbug:2023652)
+
+Bugs fixed in 4.2.1:
+
+* :rhbug:`2023652`
+
+===================
 4.2.0 Release Notes
 ===================
 

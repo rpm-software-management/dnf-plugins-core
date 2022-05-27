@@ -666,5 +666,9 @@
     [
         2058676,
         "repomanage list the same package in both --old and --new results"
+    ],
+    [
+        2023652,
+        "KeyError after upgrading packages (post-transaction actions)"
     ]
 ]
