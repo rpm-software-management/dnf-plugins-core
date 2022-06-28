@@ -40,7 +40,7 @@ import rpm
 # If that fails, attempt to import the deprecated implementation
 # from the platform module.
 try:
-    from distro import name, version, codename, os_release_attr
+    from distro import name, version, codename, os_release_attr, like
 
     # Re-implement distro.linux_distribution() to avoid a deprecation warning
     def linux_distribution():
@@ -469,6 +469,10 @@ Bugzilla. In case of problems, contact the owner of this repository.
                 chroot = ("opensuse-tumbleweed-{}".format(distarch))
             else:
                 chroot = ("opensuse-leap-{0}-{1}".format(dist[1], distarch))
+        elif "Red Hat Enterprise Linux" in dist:
+            chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
+        elif "fedora" in like() and not any(s in like() for s in ["rhel", "centos"]):
+            chroot = ("fedora-{0}-{1}".format(dist[1], distarch))
         else:
             chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
         return chroot
