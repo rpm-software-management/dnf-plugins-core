@@ -204,6 +204,10 @@ class BuildDepCommand(dnf.cli.Command):
             err = _("Not all dependencies satisfied")
             raise dnf.exceptions.Error(err)
 
+        if self.opts.define:
+            logger.warning(_("Warning: -D or --define arguments have no meaning "
+                             "for source rpm packages."))
+
     def _spec_deps(self, spec_fn):
         try:
             spec = rpm.spec(spec_fn)
