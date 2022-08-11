@@ -31,7 +31,7 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
     Show this help.
 
 ``-D <macro expr>, --define <macro expr>``
-    Define the RPM macro named `macro` to the value `expr` when parsing spec files.
+    Define the RPM macro named `macro` to the value `expr` when parsing spec files. Does not apply for source rpm files.
 
 ``--spec``
     Treat arguments as .spec files.
