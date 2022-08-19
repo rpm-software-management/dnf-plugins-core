@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 01:55+0000\n"
+"POT-Creation-Date: 2022-08-08 02:57+0000\n"
 "PO-Revision-Date: 2020-07-21 20:29+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/da/>\n"
@@ -77,7 +77,7 @@ msgstr "Ikke alle afhængigheder er mødt"
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Kunne ikke åbne: '%s', ikke en gyldig spec-fil: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:118
+#: plugins/builddep.py:230 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "ingen pakke matchede: %s"
@@ -287,7 +287,7 @@ msgstr "Oplist tilgængelige Copr-softwarearkiver fra brugeren NAVN"
 msgid "Specify an instance of Copr to work with"
 msgstr "Angiv en instans af Copr som der skal arbejdes med"
 
-#: plugins/copr.py:164 plugins/copr.py:232 plugins/copr.py:259
+#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
 msgid "Error: "
 msgstr "Fejl: "
 
@@ -303,33 +303,33 @@ msgstr ""
 msgid "multiple hubs specified"
 msgstr "flere hubs angivet"
 
-#: plugins/copr.py:233 plugins/copr.py:237
+#: plugins/copr.py:237 plugins/copr.py:241
 msgid "exactly two additional parameters to copr command are required"
 msgstr "der kræves præcist to yderligere parametre copr-kommandoen"
 
-#: plugins/copr.py:242
+#: plugins/copr.py:246
 #, fuzzy
 #| msgid "No match for argument: %s"
 msgid "Too many arguments."
 msgstr "Intet match for argument: %s"
 
-#: plugins/copr.py:245
+#: plugins/copr.py:249
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
 
-#: plugins/copr.py:260
+#: plugins/copr.py:264
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "brug formatet `copr_brugernavn/copr_projektnavn` til at referere copr-"
 "projektet"
 
-#: plugins/copr.py:262
+#: plugins/copr.py:266
 msgid "bad copr project format"
 msgstr "dårligt format for copr-projekt"
 
-#: plugins/copr.py:276
+#: plugins/copr.py:280
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -355,23 +355,23 @@ msgstr ""
 "Indsend venligst ikke fejlrapporter om pakkerne i Fedora\n"
 "Bugzilla. Hvis du oplever problemer kan du kontakte ejeren af softwarearkivet.\n"
 
-#: plugins/copr.py:293
+#: plugins/copr.py:297
 msgid "Repository successfully enabled."
 msgstr "Softwarearkiv aktiveret."
 
-#: plugins/copr.py:298
+#: plugins/copr.py:302
 msgid "Repository successfully disabled."
 msgstr "Softwarearkiv deaktiveret."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:306
 msgid "Repository successfully removed."
 msgstr "Softwarearkiv fjernet."
 
-#: plugins/copr.py:306 plugins/copr.py:719
+#: plugins/copr.py:310 plugins/copr.py:721
 msgid "Unknown subcommand {}."
 msgstr "Ukendt underkommando {}."
 
-#: plugins/copr.py:363
+#: plugins/copr.py:367
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -381,54 +381,54 @@ msgstr ""
 "nogen information om Copr-hub - standarden blev antaget. Genaktivér "
 "projektet for at rette det."
 
-#: plugins/copr.py:376
+#: plugins/copr.py:380
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan ikke fortolke softwarearkiver for brugernavnet '{}'."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:383
 msgid "List of {} coprs"
 msgstr "Liste over {}-copr'er"
 
-#: plugins/copr.py:384
+#: plugins/copr.py:388
 msgid "No description given"
 msgstr "Ingen beskrivelse givet"
 
-#: plugins/copr.py:396
+#: plugins/copr.py:400
 msgid "Can't parse search for '{}'."
 msgstr "Kan ikke fortolke søgning til '{}'."
 
-#: plugins/copr.py:399
+#: plugins/copr.py:403
 msgid "Matched: {}"
 msgstr "Matchet: {}"
 
-#: plugins/copr.py:404
+#: plugins/copr.py:408
 msgid "No description given."
 msgstr "Ingen beskrivelse givet."
 
-#: plugins/copr.py:426
+#: plugins/copr.py:430
 msgid "Safe and good answer. Exiting."
 msgstr "Sikkert og godt svar. Afslutter."
 
-#: plugins/copr.py:433
+#: plugins/copr.py:437
 msgid "This command has to be run under the root user."
 msgstr "Kommandoen skal køres under root-brugeren."
 
-#: plugins/copr.py:485
+#: plugins/copr.py:487
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
 
-#: plugins/copr.py:487
+#: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
 msgstr ""
 
-#: plugins/copr.py:492
+#: plugins/copr.py:494
 #, fuzzy, python-brace-format
 #| msgid "Such repository does not exist."
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "Softwarearkivet findes ikke."
 
-#: plugins/copr.py:495
+#: plugins/copr.py:497
 #, fuzzy
 #| msgid "List enabled Copr repositories"
 msgid ""
@@ -438,7 +438,7 @@ msgstr ""
 "\n"
 "Oplist aktiverede Copr-softwarearkiver "
 
-#: plugins/copr.py:497
+#: plugins/copr.py:499
 #, python-brace-format
 msgid ""
 "\n"
@@ -448,19 +448,19 @@ msgid ""
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
 
-#: plugins/copr.py:503
+#: plugins/copr.py:505
 #, fuzzy, python-brace-format
 #| msgid "Such repository does not exist."
 msgid "Project {0} does not exist."
 msgstr "Softwarearkivet findes ikke."
 
-#: plugins/copr.py:506
+#: plugins/copr.py:508
 #, fuzzy, python-brace-format
 #| msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgid "Failed to connect to {0}: {1}"
 msgstr "Kunne ikke fjerne copr-softwarearkiv {0}/{1}/{2}"
 
-#: plugins/copr.py:553
+#: plugins/copr.py:555
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -489,44 +489,44 @@ msgstr ""
 "\n"
 "Softwarearkiverne er blevet aktiveret automatisk."
 
-#: plugins/copr.py:574
+#: plugins/copr.py:576
 msgid "Do you want to keep them enabled?"
 msgstr "Vil du holde dem aktiveret?"
 
-#: plugins/copr.py:607
+#: plugins/copr.py:609
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Kunne ikke fjerne copr-softwarearkiv {0}/{1}/{2}"
 
-#: plugins/copr.py:618
+#: plugins/copr.py:620
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Kunne ikke deaktivere copr-softwarearkivet {}/{}"
 
-#: plugins/copr.py:636 plugins/copr.py:673
+#: plugins/copr.py:638 plugins/copr.py:675
 msgid "Unknown response from server."
 msgstr "Ukendt svar fra server."
 
-#: plugins/copr.py:658
+#: plugins/copr.py:660
 msgid "Interact with Playground repository."
 msgstr "Interager med Playground-softwarearkiv."
 
-#: plugins/copr.py:664
+#: plugins/copr.py:666
 msgid "Enabling a Playground repository."
 msgstr "Aktiverer et Playground-softwarearkiv."
 
-#: plugins/copr.py:665
+#: plugins/copr.py:667
 msgid "Do you want to continue?"
 msgstr "Vil du fortsætte?"
 
-#: plugins/copr.py:709
+#: plugins/copr.py:711
 msgid "Playground repositories successfully enabled."
 msgstr "Playground-softwarearkiver blev aktiveret."
 
-#: plugins/copr.py:712
+#: plugins/copr.py:714
 msgid "Playground repositories successfully disabled."
 msgstr "Playground-softwarearkiver blev deaktiveret."
 
-#: plugins/copr.py:716
+#: plugins/copr.py:718
 msgid "Playground repositories successfully updated."
 msgstr "Playground-softwarearkiver blev opdateret."
 
@@ -979,18 +979,18 @@ msgid "Bad Action Line \"%s\": %s"
 msgstr "Dårlig handlingslinje \"%s\": %s"
 
 #. unsupported state, skip it
-#: plugins/post-transaction-actions.py:130
+#: plugins/post-transaction-actions.py:133
 #, python-format
 msgid "Bad Transaction State: %s"
 msgstr "Dårlig transaktionstilstand: %s"
 
-#: plugins/post-transaction-actions.py:157
-#: plugins/post-transaction-actions.py:159
+#: plugins/post-transaction-actions.py:160
+#: plugins/post-transaction-actions.py:162
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaction-actions: %s"
 
-#: plugins/post-transaction-actions.py:161
+#: plugins/post-transaction-actions.py:164
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaction-actions: Dårlig kommando \"%s\": %s"
@@ -999,23 +999,26 @@ msgstr "post-transaction-actions: Dårlig kommando \"%s\": %s"
 msgid "Display a list of unresolved dependencies for repositories"
 msgstr "Vis en liste over uløste afhængigheder for softwarearkiver"
 
-#: plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
+#: plugins/repoclosure.py:69
+#, fuzzy
+#| msgid "Repoclosure ended with unresolved dependencies."
+msgid ""
+"Repoclosure ended with unresolved dependencies ({}) across {} packages."
 msgstr "Softwarearkivlukning sluttede med uløste afhængigheder."
 
-#: plugins/repoclosure.py:153
+#: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr "tjek pakker af de givne arkitekturer - kan angives flere gange"
 
-#: plugins/repoclosure.py:156
+#: plugins/repoclosure.py:162
 msgid "Specify repositories to check"
 msgstr "Angiv softwarearkiver som skal tjekkes"
 
-#: plugins/repoclosure.py:158
+#: plugins/repoclosure.py:164
 msgid "Check only the newest packages in the repos"
 msgstr "Tjek kun de nyeste pakker i softwarearkiverne"
 
-#: plugins/repoclosure.py:161
+#: plugins/repoclosure.py:167
 msgid "Check closure for this package only"
 msgstr "Tjek kun lukningen af pakken"
 
@@ -1175,31 +1178,49 @@ msgstr "Håndter en mappe i rpm-pakken"
 msgid "Pass either --old or --new, not both!"
 msgstr "Videregiv --old eller --new, ikke begge!"
 
-#: plugins/repomanage.py:89
+#: plugins/repomanage.py:61
+#, fuzzy
+#| msgid "Pass either --old or --new, not both!"
+msgid "Pass either --oldonly or --new, not both!"
+msgstr "Videregiv --old eller --new, ikke begge!"
+
+#: plugins/repomanage.py:63
+#, fuzzy
+#| msgid "Pass either --old or --new, not both!"
+msgid "Pass either --old or --oldonly, not both!"
+msgstr "Videregiv --old eller --new, ikke begge!"
+
+#: plugins/repomanage.py:100
 msgid "No files to process"
 msgstr "Ingen filer at behandle"
 
-#: plugins/repomanage.py:96
+#: plugins/repomanage.py:107
 msgid "Could not open {}"
 msgstr "Kunne ikke åbne {}"
 
-#: plugins/repomanage.py:180
+#: plugins/repomanage.py:223
 msgid "Print the older packages"
 msgstr "Udskriv de ældre pakker"
 
-#: plugins/repomanage.py:182
+#: plugins/repomanage.py:225
+#, fuzzy
+#| msgid "Print the newest packages"
+msgid "Print the older packages. Exclude the newest packages."
+msgstr "Udskriv de nyeste pakker"
+
+#: plugins/repomanage.py:227
 msgid "Print the newest packages"
 msgstr "Udskriv de nyeste pakker"
 
-#: plugins/repomanage.py:184
+#: plugins/repomanage.py:229
 msgid "Space separated output, not newline"
 msgstr "Mellemrumssepareret outout, ikke linjeskift"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:231
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Nyeste N pakker som skal bevares - standard er 1"
 
-#: plugins/repomanage.py:189
+#: plugins/repomanage.py:234
 msgid "Path to directory"
 msgstr "Sti til mappe"
 

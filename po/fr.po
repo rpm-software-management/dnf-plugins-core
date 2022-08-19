@@ -3,24 +3,25 @@
 # José Fournier <jaaf64@zoraldia.com>, 2017. #zanata
 # Jérôme Fenal <jfenal@gmail.com>, 2017. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018. #zanata, 2020.
-# Ludek Janda <ljanda@redhat.com>, 2018. #zanata, 2021.
+# Ludek Janda <ljanda@redhat.com>, 2018. #zanata, 2021, 2022.
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2019. #zanata, 2020.
-# Julien Humbert <julroy67@gmail.com>, 2020, 2021.
+# Julien Humbert <julroy67@gmail.com>, 2020, 2021, 2022.
 # Arnaud T. <listes.00@gmail.com>, 2021.
+# Transtats <suanand@redhat.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 01:55+0000\n"
-"PO-Revision-Date: 2021-10-08 05:05+0000\n"
-"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
+"POT-Creation-Date: 2022-08-08 02:57+0000\n"
+"PO-Revision-Date: 2022-03-09 12:39+0000\n"
+"Last-Translator: Ludek Janda <ljanda@redhat.com>\n"
 "Language-Team: French <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.11.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -82,7 +83,7 @@ msgstr "Toutes les dépendances ne sont pas satisfaites"
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Échec à l’ouverture de « %s », %s n’est pas un fichier spec valide"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:118
+#: plugins/builddep.py:230 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "aucun paquet ne correspond à : %s"
@@ -297,7 +298,7 @@ msgstr "Lister les dépôts Copr disponibles par NOM d’utilisateur"
 msgid "Specify an instance of Copr to work with"
 msgstr "Précisez une instance Copr avec laquelle travailler"
 
-#: plugins/copr.py:164 plugins/copr.py:232 plugins/copr.py:259
+#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
 msgid "Error: "
 msgstr "Erreur : "
 
@@ -313,33 +314,33 @@ msgstr ""
 msgid "multiple hubs specified"
 msgstr "de multiples hubs ont été renseignés"
 
-#: plugins/copr.py:233 plugins/copr.py:237
+#: plugins/copr.py:237 plugins/copr.py:241
 msgid "exactly two additional parameters to copr command are required"
 msgstr "la commande copr requiert exactement deux paramètres additionnels"
 
-#: plugins/copr.py:242
+#: plugins/copr.py:246
 msgid "Too many arguments."
-msgstr "Trop de paramètres."
+msgstr "Trop d'arguments."
 
-#: plugins/copr.py:245
+#: plugins/copr.py:249
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
-"Mauvais format de chroot facultatif. Le format est distribution-version-"
+"Mauvais format du chroot optionnel. Le format est distribution-version-"
 "architecture."
 
-#: plugins/copr.py:260
+#: plugins/copr.py:264
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "utilisez le format `copr_username/copr_projectname` pour faire référence au "
 "projet copr"
 
-#: plugins/copr.py:262
+#: plugins/copr.py:266
 msgid "bad copr project format"
 msgstr "mauvais format de projet copr"
 
-#: plugins/copr.py:276
+#: plugins/copr.py:280
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -365,23 +366,23 @@ msgstr ""
 "Veuillez ne pas signaler de bogues à propos de ces paquets dans le Bugzilla de Fedora.\n"
 "En cas de problèmes, contactez le propriétaire de ce dépôt.\n"
 
-#: plugins/copr.py:293
+#: plugins/copr.py:297
 msgid "Repository successfully enabled."
 msgstr "Activation du dépôt réussie."
 
-#: plugins/copr.py:298
+#: plugins/copr.py:302
 msgid "Repository successfully disabled."
 msgstr "Désactivation du dépôt réussie."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:306
 msgid "Repository successfully removed."
 msgstr "Suppression du dépôt réussie."
 
-#: plugins/copr.py:306 plugins/copr.py:719
+#: plugins/copr.py:310 plugins/copr.py:721
 msgid "Unknown subcommand {}."
 msgstr "Sous-commande inconnue {}."
 
-#: plugins/copr.py:363
+#: plugins/copr.py:367
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -391,65 +392,62 @@ msgstr ""
 "aucune information à propos de Copr hub - celui par défaut a été utilisé. "
 "Réactivez le projet pour résoudre le problème."
 
-#: plugins/copr.py:376
+#: plugins/copr.py:380
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 "Ne peut analyser les dépôts pour y chercher le nom d’utilisateur « {} »."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:383
 msgid "List of {} coprs"
 msgstr "Liste de {} coprs"
 
-#: plugins/copr.py:384
+#: plugins/copr.py:388
 msgid "No description given"
 msgstr "Aucune description fournie"
 
-#: plugins/copr.py:396
+#: plugins/copr.py:400
 msgid "Can't parse search for '{}'."
 msgstr "Impossible d’analyser la recherche pour « {} »."
 
-#: plugins/copr.py:399
+#: plugins/copr.py:403
 msgid "Matched: {}"
 msgstr "Correspondance : {}"
 
-#: plugins/copr.py:404
+#: plugins/copr.py:408
 msgid "No description given."
 msgstr "Pas de description fournie."
 
-#: plugins/copr.py:426
+#: plugins/copr.py:430
 msgid "Safe and good answer. Exiting."
 msgstr "Réponse sûre et exacte. Fin."
 
-#: plugins/copr.py:433
+#: plugins/copr.py:437
 msgid "This command has to be run under the root user."
 msgstr "Cette commande requiert les privilèges du super utilisateur."
 
-#: plugins/copr.py:485
+#: plugins/copr.py:487
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
 
-#: plugins/copr.py:487
+#: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
 msgstr ""
 
-#: plugins/copr.py:492
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#: plugins/copr.py:494
+#, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "Ce dépôt n’existe pas."
+msgstr "Le dépôt « {0} » n’existe pas dans le projet « {1} »."
 
-#: plugins/copr.py:495
-#, fuzzy
-#| msgid "List enabled Copr repositories"
+#: plugins/copr.py:497
 msgid ""
 "\n"
 "Available repositories: "
 msgstr ""
 "\n"
-"Lister les dépôts Copr activés "
+"Dépôts disponibles : "
 
-#: plugins/copr.py:497
+#: plugins/copr.py:499
 #, python-brace-format
 msgid ""
 "\n"
@@ -459,19 +457,17 @@ msgid ""
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
 
-#: plugins/copr.py:503
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#: plugins/copr.py:505
+#, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "Ce dépôt n’existe pas."
+msgstr "Le projet {0} n’existe pas."
 
-#: plugins/copr.py:506
-#, fuzzy, python-brace-format
-#| msgid "Failed to remove copr repo {0}/{1}/{2}"
+#: plugins/copr.py:508
+#, python-brace-format
 msgid "Failed to connect to {0}: {1}"
-msgstr "Échec de la suppression du dépôt Copr {0}/{1}/{2}"
+msgstr "Impossible de se connecter à {0} : {1}"
 
-#: plugins/copr.py:553
+#: plugins/copr.py:555
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -500,44 +496,44 @@ msgstr ""
 "\n"
 "Ces dépôts ont été activés automatiquement."
 
-#: plugins/copr.py:574
+#: plugins/copr.py:576
 msgid "Do you want to keep them enabled?"
 msgstr "Souhaitez-vous les maintenir activés ?"
 
-#: plugins/copr.py:607
+#: plugins/copr.py:609
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Échec de la suppression du dépôt Copr {0}/{1}/{2}"
 
-#: plugins/copr.py:618
+#: plugins/copr.py:620
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Échec de la désactivation du dépôt copr {}/{}"
 
-#: plugins/copr.py:636 plugins/copr.py:673
+#: plugins/copr.py:638 plugins/copr.py:675
 msgid "Unknown response from server."
 msgstr "Réponse inconnue du serveur."
 
-#: plugins/copr.py:658
+#: plugins/copr.py:660
 msgid "Interact with Playground repository."
 msgstr "Interagit avec le dépôt Playground."
 
-#: plugins/copr.py:664
+#: plugins/copr.py:666
 msgid "Enabling a Playground repository."
 msgstr "Activation d’un dépôt Playground."
 
-#: plugins/copr.py:665
+#: plugins/copr.py:667
 msgid "Do you want to continue?"
 msgstr "Souhaitez-vous continuer ?"
 
-#: plugins/copr.py:709
+#: plugins/copr.py:711
 msgid "Playground repositories successfully enabled."
 msgstr "Activation des dépôts Playground réussie."
 
-#: plugins/copr.py:712
+#: plugins/copr.py:714
 msgid "Playground repositories successfully disabled."
 msgstr "Désactivation des dépôts Playground réussie."
 
-#: plugins/copr.py:716
+#: plugins/copr.py:718
 msgid "Playground repositories successfully updated."
 msgstr "Mise à jour des dépôts Playground réussie."
 
@@ -870,67 +866,63 @@ msgstr "Migration des données d’historique …"
 msgid ""
 "Download packages from modules and/or create a repository with modular data"
 msgstr ""
+"Télécharger les paquets des modules et/ou créer un référentiel avec les "
+"données des modules"
 
 #: plugins/modulesync.py:44
 msgid "MODULE"
-msgstr ""
+msgstr "MODULE"
 
 #: plugins/modulesync.py:45
-#, fuzzy
-#| msgid "packages to download"
 msgid "modules to download"
-msgstr "paquets à télécharger"
+msgstr "modules à télécharger"
 
 #: plugins/modulesync.py:47
-#, fuzzy
-#| msgid "Specify repositories to check"
 msgid "enable repositories with source packages"
-msgstr "Spécifie les dépôts à vérifier"
+msgstr "activer les dépôts avec les paquets sources"
 
 #: plugins/modulesync.py:49
 msgid "enable repositories with debug-info and debug-source packages"
-msgstr ""
+msgstr "activer les dépôts avec les paquets debug-info et debug-source"
 
 #: plugins/modulesync.py:53
-#, fuzzy
-#| msgid "download all packages from remote repo"
 msgid "download only packages from newest modules"
-msgstr "télécharger tous les paquets depuis le dépôt distant"
+msgstr "télécharger uniquement les paquets des modules les plus récents"
 
 #: plugins/modulesync.py:85
-#, fuzzy
-#| msgid "No match for argument: {}"
 msgid "Unable to find a match for argument: '{}'"
 msgid_plural "Unable to find a match for arguments: '{}'"
-msgstr[0] "Aucune correspondance pour l’argument : {}"
-msgstr[1] "Aucune correspondance pour l’argument : {}"
+msgstr[0] "Impossible de trouver une correspondance pour l'argument : '{}'"
+msgstr[1] "Impossible de trouver une correspondance pour les arguments : '{}'"
 
 #: plugins/modulesync.py:107
 msgid ""
 "Creation of repository failed with return code {}. All downloaded content "
 "was kept on the system"
 msgstr ""
+"La création du référentiel a échoué avec le code de retour {}. Tout le "
+"contenu téléchargé a été conservé sur le système"
 
 #: plugins/modulesync.py:144
 #, python-brace-format
 msgid "No match for artifact '{0}' from module '{1}'"
-msgstr ""
+msgstr "Aucune correspondance pour l'artefact '{0}' du module '{1}'"
 
 #: plugins/modulesync.py:162
 #, python-brace-format
 msgid "No match for package name '{0}' in profile {1} from module {2}"
 msgstr ""
+"Aucune correspondance pour le nom de paquet '{0}' dans le profil {1} du "
+"module {2}"
 
 #: plugins/modulesync.py:166
-#, fuzzy
-#| msgid "No match for argument: {}"
 msgid "No mach for argument '{}'"
-msgstr "Aucune correspondance pour l’argument : {}"
+msgstr "Pas de correspondance pour l'argument '{}'"
 
 #. TODO(jmracek) Shell we end with an error or with RC 1?
 #: plugins/modulesync.py:198
 msgid "Unable to satisfy require {}"
-msgstr ""
+msgstr "Impossible de satisfaire le besoin {}"
 
 #: plugins/needs_restarting.py:66
 #, python-brace-format
@@ -992,18 +984,18 @@ msgid "Bad Action Line \"%s\": %s"
 msgstr "Mauvaise ligne d’action « %s » : %s"
 
 #. unsupported state, skip it
-#: plugins/post-transaction-actions.py:130
+#: plugins/post-transaction-actions.py:133
 #, python-format
 msgid "Bad Transaction State: %s"
 msgstr "Mauvais état de transaction : %s"
 
-#: plugins/post-transaction-actions.py:157
-#: plugins/post-transaction-actions.py:159
+#: plugins/post-transaction-actions.py:160
+#: plugins/post-transaction-actions.py:162
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaction-actions : %s"
 
-#: plugins/post-transaction-actions.py:161
+#: plugins/post-transaction-actions.py:164
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaction-actions : mauvaise commande « %s » : %s"
@@ -1012,25 +1004,28 @@ msgstr "post-transaction-actions : mauvaise commande « %s » : %s"
 msgid "Display a list of unresolved dependencies for repositories"
 msgstr "Affiche une liste de dépendances non résolues pour les dépôts"
 
-#: plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
+#: plugins/repoclosure.py:69
+#, fuzzy
+#| msgid "Repoclosure ended with unresolved dependencies."
+msgid ""
+"Repoclosure ended with unresolved dependencies ({}) across {} packages."
 msgstr "Repoclosure a terminé avec des dépendances non-résolues."
 
-#: plugins/repoclosure.py:153
+#: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
 "vérifie les paquets pour les architectures spécifiées, peut être utilisé "
 "plusieurs fois"
 
-#: plugins/repoclosure.py:156
+#: plugins/repoclosure.py:162
 msgid "Specify repositories to check"
 msgstr "Spécifie les dépôts à vérifier"
 
-#: plugins/repoclosure.py:158
+#: plugins/repoclosure.py:164
 msgid "Check only the newest packages in the repos"
 msgstr "Vérifier uniquement les paquets les plus récents dans les dépôts"
 
-#: plugins/repoclosure.py:161
+#: plugins/repoclosure.py:167
 msgid "Check closure for this package only"
 msgstr "Vérifie la clôture pour ce paquet seulement"
 
@@ -1191,31 +1186,49 @@ msgstr "Gère un dossier de paquets rpm"
 msgid "Pass either --old or --new, not both!"
 msgstr "Passez soit --old, soit --new, mais pas les deux !"
 
-#: plugins/repomanage.py:89
+#: plugins/repomanage.py:61
+#, fuzzy
+#| msgid "Pass either --old or --new, not both!"
+msgid "Pass either --oldonly or --new, not both!"
+msgstr "Passez soit --old, soit --new, mais pas les deux !"
+
+#: plugins/repomanage.py:63
+#, fuzzy
+#| msgid "Pass either --old or --new, not both!"
+msgid "Pass either --old or --oldonly, not both!"
+msgstr "Passez soit --old, soit --new, mais pas les deux !"
+
+#: plugins/repomanage.py:100
 msgid "No files to process"
 msgstr "Aucun fichier à traiter"
 
-#: plugins/repomanage.py:96
+#: plugins/repomanage.py:107
 msgid "Could not open {}"
 msgstr "Ouverture de {} impossible"
 
-#: plugins/repomanage.py:180
+#: plugins/repomanage.py:223
 msgid "Print the older packages"
 msgstr "Afficher les paquets plus anciens"
 
-#: plugins/repomanage.py:182
+#: plugins/repomanage.py:225
+#, fuzzy
+#| msgid "Print the newest packages"
+msgid "Print the older packages. Exclude the newest packages."
+msgstr "Afficher les paquets les plus récents"
+
+#: plugins/repomanage.py:227
 msgid "Print the newest packages"
 msgstr "Afficher les paquets les plus récents"
 
-#: plugins/repomanage.py:184
+#: plugins/repomanage.py:229
 msgid "Space separated output, not newline"
 msgstr "Sorties séparées par des espaces plutôt que des retours à la ligne"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:231
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "N paquets les plus récents à conserver — par défaut 1"
 
-#: plugins/repomanage.py:189
+#: plugins/repomanage.py:234
 msgid "Path to directory"
 msgstr "Chemin vers le répertoire"
 

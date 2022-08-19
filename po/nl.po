@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 01:55+0000\n"
-"PO-Revision-Date: 2022-01-11 20:16+0000\n"
+"POT-Creation-Date: 2022-08-08 02:57+0000\n"
+"PO-Revision-Date: 2022-04-16 11:17+0000\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/nl/>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -77,7 +77,7 @@ msgstr "Er is niet aan alle afhankelijkheden voldaan"
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Openen is mislukt: '%s', geen geldig spec-bestand: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:118
+#: plugins/builddep.py:230 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "geen pakket gevonden: %s"
@@ -289,7 +289,7 @@ msgstr "Toon beschikbare Copr-repositories per gebruiker NAAM"
 msgid "Specify an instance of Copr to work with"
 msgstr "Geef een instanctie van Copr op om mee te werken"
 
-#: plugins/copr.py:164 plugins/copr.py:232 plugins/copr.py:259
+#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
 msgid "Error: "
 msgstr "Fout: "
 
@@ -305,15 +305,15 @@ msgstr ""
 msgid "multiple hubs specified"
 msgstr "meerdere hubs opgegeven"
 
-#: plugins/copr.py:233 plugins/copr.py:237
+#: plugins/copr.py:237 plugins/copr.py:241
 msgid "exactly two additional parameters to copr command are required"
 msgstr "er zijn precies twee extra parameters voor het copr commando vereist"
 
-#: plugins/copr.py:242
+#: plugins/copr.py:246
 msgid "Too many arguments."
 msgstr "Te veel argumenten."
 
-#: plugins/copr.py:245
+#: plugins/copr.py:249
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
@@ -321,17 +321,17 @@ msgstr ""
 "Onjuist formaat van optionele chroot. Het formaat is distributie-versie-"
 "architectuur."
 
-#: plugins/copr.py:260
+#: plugins/copr.py:264
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "gebruik formaat `copr_username/copr_projectname` voor het refereren naar "
 "copr project"
 
-#: plugins/copr.py:262
+#: plugins/copr.py:266
 msgid "bad copr project format"
 msgstr "slecht copr-projectformaat"
 
-#: plugins/copr.py:276
+#: plugins/copr.py:280
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -357,23 +357,23 @@ msgstr ""
 "Stuur alstublieft geen bug-rapporten over deze pakketten in Fedora\n"
 "Bugzilla. Neem in geval van problemen contact op met de eigenaar van deze repository.\n"
 
-#: plugins/copr.py:293
+#: plugins/copr.py:297
 msgid "Repository successfully enabled."
 msgstr "Repository succesvol ingeschakeld."
 
-#: plugins/copr.py:298
+#: plugins/copr.py:302
 msgid "Repository successfully disabled."
 msgstr "Repository succesvol uitgeschakeld."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:306
 msgid "Repository successfully removed."
 msgstr "Repository succesvol verwijderd."
 
-#: plugins/copr.py:306 plugins/copr.py:719
+#: plugins/copr.py:310 plugins/copr.py:721
 msgid "Unknown subcommand {}."
 msgstr "Onbekend subcommando {}."
 
-#: plugins/copr.py:363
+#: plugins/copr.py:367
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -383,53 +383,53 @@ msgstr ""
 " bevat over Copr hub - de standaard werd verondersteld. Schakel het project "
 "opnieuw in om dit te verhelpen."
 
-#: plugins/copr.py:376
+#: plugins/copr.py:380
 msgid "Can't parse repositories for username '{}'."
 msgstr "Kan repositories voor gebruikersnaam '{}' niet ontleden."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:383
 msgid "List of {} coprs"
 msgstr "Lijst met {} coprs"
 
-#: plugins/copr.py:384
+#: plugins/copr.py:388
 msgid "No description given"
 msgstr "Geen beschrijving gegeven"
 
-#: plugins/copr.py:396
+#: plugins/copr.py:400
 msgid "Can't parse search for '{}'."
 msgstr "Kan zoekopdracht voor '{}' niet ontleden."
 
-#: plugins/copr.py:399
+#: plugins/copr.py:403
 msgid "Matched: {}"
 msgstr "Op elkaar afgestemd: {}"
 
-#: plugins/copr.py:404
+#: plugins/copr.py:408
 msgid "No description given."
 msgstr "Geen beschrijving gegeven."
 
-#: plugins/copr.py:426
+#: plugins/copr.py:430
 msgid "Safe and good answer. Exiting."
 msgstr "Veilig en goed antwoord. Afsluiten."
 
-#: plugins/copr.py:433
+#: plugins/copr.py:437
 msgid "This command has to be run under the root user."
 msgstr "Dit commando moet als root uitgevoerd worden."
 
-#: plugins/copr.py:485
+#: plugins/copr.py:487
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr "Verzoek aan {0} mislukt: {1} - {2}"
 
-#: plugins/copr.py:487
+#: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
 msgstr "Het was niet mogelijk om dit project in te schakelen.\n"
 
-#: plugins/copr.py:492
+#: plugins/copr.py:494
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "Repository '{0}' bestaat niet in project '{1}'."
 
-#: plugins/copr.py:495
+#: plugins/copr.py:497
 msgid ""
 "\n"
 "Available repositories: "
@@ -437,7 +437,7 @@ msgstr ""
 "\n"
 "Beschikbare repositories: "
 
-#: plugins/copr.py:497
+#: plugins/copr.py:499
 #, python-brace-format
 msgid ""
 "\n"
@@ -452,17 +452,17 @@ msgstr ""
 "   'dnf copr enable {0} <repository>'\n"
 "Houd er echter rekening mee dat het geïnstalleerde repo-bestand waarschijnlijk handmatig moet worden gewijzigd."
 
-#: plugins/copr.py:503
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Project {0} does not exist."
 msgstr "Project {0} bestaat niet."
 
-#: plugins/copr.py:506
+#: plugins/copr.py:508
 #, python-brace-format
 msgid "Failed to connect to {0}: {1}"
 msgstr "Verbinden met {0} mislukte: {1}"
 
-#: plugins/copr.py:553
+#: plugins/copr.py:555
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -491,44 +491,44 @@ msgstr ""
 "\n"
 "Deze repositories zijn automatisch ingeschakeld."
 
-#: plugins/copr.py:574
+#: plugins/copr.py:576
 msgid "Do you want to keep them enabled?"
 msgstr "Wil je ze ingeschakeld houden?"
 
-#: plugins/copr.py:607
+#: plugins/copr.py:609
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Kan copr repo {0}/{1}/{2} niet verwijderen"
 
-#: plugins/copr.py:618
+#: plugins/copr.py:620
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Kon copr repo {}/{} niet uitschakelen"
 
-#: plugins/copr.py:636 plugins/copr.py:673
+#: plugins/copr.py:638 plugins/copr.py:675
 msgid "Unknown response from server."
 msgstr "Onbekend antwoord van server."
 
-#: plugins/copr.py:658
+#: plugins/copr.py:660
 msgid "Interact with Playground repository."
 msgstr "Interactie met Playground repository."
 
-#: plugins/copr.py:664
+#: plugins/copr.py:666
 msgid "Enabling a Playground repository."
 msgstr "Een Playground repositories inschakelen."
 
-#: plugins/copr.py:665
+#: plugins/copr.py:667
 msgid "Do you want to continue?"
 msgstr "Wil je verder gaan?"
 
-#: plugins/copr.py:709
+#: plugins/copr.py:711
 msgid "Playground repositories successfully enabled."
 msgstr "Playground repositories succesvol ingeschakeld."
 
-#: plugins/copr.py:712
+#: plugins/copr.py:714
 msgid "Playground repositories successfully disabled."
 msgstr "Playground repositories succesvol uitgeschakeld."
 
-#: plugins/copr.py:716
+#: plugins/copr.py:718
 msgid "Playground repositories successfully updated."
 msgstr "Playground repositories succesvol bijgewerkt."
 
@@ -972,18 +972,18 @@ msgid "Bad Action Line \"%s\": %s"
 msgstr "Slechte actie regel \"%s\": %s"
 
 #. unsupported state, skip it
-#: plugins/post-transaction-actions.py:130
+#: plugins/post-transaction-actions.py:133
 #, python-format
 msgid "Bad Transaction State: %s"
 msgstr "Slechte transactie status: %s"
 
-#: plugins/post-transaction-actions.py:157
-#: plugins/post-transaction-actions.py:159
+#: plugins/post-transaction-actions.py:160
+#: plugins/post-transaction-actions.py:162
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaction-actions: %s"
 
-#: plugins/post-transaction-actions.py:161
+#: plugins/post-transaction-actions.py:164
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaction-actions: Slecht commando \"%s\": %s"
@@ -992,25 +992,28 @@ msgstr "post-transaction-actions: Slecht commando \"%s\": %s"
 msgid "Display a list of unresolved dependencies for repositories"
 msgstr "Toon een lijst met onopgeloste afhankelijkheden voor repositories"
 
-#: plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "Repoclosure beëindigd met onopgeloste afhankelijkheden."
+#: plugins/repoclosure.py:69
+msgid ""
+"Repoclosure ended with unresolved dependencies ({}) across {} packages."
+msgstr ""
+"Repoclosure beëindigd met onopgeloste afhankelijkheden ({}) over {} "
+"pakketten."
 
-#: plugins/repoclosure.py:153
+#: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr ""
 "Controleer pakketten van de gegeven archs, kunnen meerdere keren worden "
 "opgegeven"
 
-#: plugins/repoclosure.py:156
+#: plugins/repoclosure.py:162
 msgid "Specify repositories to check"
 msgstr "Geef de te controleren repositories op"
 
-#: plugins/repoclosure.py:158
+#: plugins/repoclosure.py:164
 msgid "Check only the newest packages in the repos"
 msgstr "Controleer alleen de nieuwste pakketten in de repo's"
 
-#: plugins/repoclosure.py:161
+#: plugins/repoclosure.py:167
 msgid "Check closure for this package only"
 msgstr "Controleer alleen de afsluiting voor dit pakket"
 
@@ -1173,31 +1176,43 @@ msgstr "Beheer een map met rpm-pakketten"
 msgid "Pass either --old or --new, not both!"
 msgstr "Geef --old of --new door, niet beide!"
 
-#: plugins/repomanage.py:89
+#: plugins/repomanage.py:61
+msgid "Pass either --oldonly or --new, not both!"
+msgstr "Geef --oldonly of --new door, niet beide!"
+
+#: plugins/repomanage.py:63
+msgid "Pass either --old or --oldonly, not both!"
+msgstr "Geef --old of --oldonly door, niet beide!"
+
+#: plugins/repomanage.py:100
 msgid "No files to process"
 msgstr "Geen bestanden om te verwerken"
 
-#: plugins/repomanage.py:96
+#: plugins/repomanage.py:107
 msgid "Could not open {}"
 msgstr "Kon {} niet openen"
 
-#: plugins/repomanage.py:180
+#: plugins/repomanage.py:223
 msgid "Print the older packages"
 msgstr "Print de oudere pakketten"
 
-#: plugins/repomanage.py:182
+#: plugins/repomanage.py:225
+msgid "Print the older packages. Exclude the newest packages."
+msgstr "Print de oudere pakketten. Sluit de nieuwste pakketten uit."
+
+#: plugins/repomanage.py:227
 msgid "Print the newest packages"
 msgstr "Print de nieuwste pakketten"
 
-#: plugins/repomanage.py:184
+#: plugins/repomanage.py:229
 msgid "Space separated output, not newline"
 msgstr "Uitvoer gescheiden met spatie, geen nieuwe regel"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:231
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Nieuwste N pakketten om te bewaren - standaard 1"
 
-#: plugins/repomanage.py:189
+#: plugins/repomanage.py:234
 msgid "Path to directory"
 msgstr "Pad naar map"
 

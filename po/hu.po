@@ -3,14 +3,14 @@
 # Zoltan Hoppar <zoltanh721@fedoraproject.org>, 2017. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2018. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
-# Balázs Meskó <meskobalazs@mailbox.org>, 2020, 2021.
+# Balázs Meskó <meskobalazs@mailbox.org>, 2020, 2021, 2022.
 # Dankaházi (ifj.) István <dankahazi.istvan@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 01:55+0000\n"
-"PO-Revision-Date: 2021-11-02 10:05+0000\n"
+"POT-Creation-Date: 2022-08-08 02:57+0000\n"
+"PO-Revision-Date: 2022-08-08 14:19+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/hu/>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.13\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -80,7 +80,7 @@ msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr ""
 "A(z) „%s” megnyitása sikertelen, nem egy érvényes specifikációs fájl: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:118
+#: plugins/builddep.py:230 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "nincs egyező csomag: %s"
@@ -292,7 +292,7 @@ msgstr "A NÉV felhasználó számára elérhető Copr tárolók"
 msgid "Specify an instance of Copr to work with"
 msgstr "Adja meg a Copr példányt, amivel dolgozni akar"
 
-#: plugins/copr.py:164 plugins/copr.py:232 plugins/copr.py:259
+#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
 msgid "Error: "
 msgstr "Hiba: "
 
@@ -308,15 +308,15 @@ msgstr ""
 msgid "multiple hubs specified"
 msgstr "több kiszolgáló lett megadva"
 
-#: plugins/copr.py:233 plugins/copr.py:237
+#: plugins/copr.py:237 plugins/copr.py:241
 msgid "exactly two additional parameters to copr command are required"
 msgstr "pontosan két további paraméter szükséges a copr parancshoz"
 
-#: plugins/copr.py:242
+#: plugins/copr.py:246
 msgid "Too many arguments."
 msgstr "Túl sok argumentum."
 
-#: plugins/copr.py:245
+#: plugins/copr.py:249
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
@@ -324,17 +324,17 @@ msgstr ""
 "Hibás formátum a nem kötelező chrootnál. A formátum disztribúció-verzió-"
 "architektúra."
 
-#: plugins/copr.py:260
+#: plugins/copr.py:264
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "használja a `copr_felhasználónév/copr_projektnév` formátumot a copr "
 "projektre való hivatkozáshoz"
 
-#: plugins/copr.py:262
+#: plugins/copr.py:266
 msgid "bad copr project format"
 msgstr "hibás copr projektformátum"
 
-#: plugins/copr.py:276
+#: plugins/copr.py:280
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -360,23 +360,23 @@ msgstr ""
 "Ne jelentsen be hibákat a Fedora Bugzillába. Problémák esetén keresse\n"
 "a tároló tulajdonosát.\n"
 
-#: plugins/copr.py:293
+#: plugins/copr.py:297
 msgid "Repository successfully enabled."
 msgstr "Tároló sikeresen engedélyezve."
 
-#: plugins/copr.py:298
+#: plugins/copr.py:302
 msgid "Repository successfully disabled."
 msgstr "Tároló sikeresen letiltva."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:306
 msgid "Repository successfully removed."
 msgstr "Tároló sikeresen eltávolítva."
 
-#: plugins/copr.py:306 plugins/copr.py:719
+#: plugins/copr.py:310 plugins/copr.py:721
 msgid "Unknown subcommand {}."
 msgstr "Ismeretlen alparancs: {}."
 
-#: plugins/copr.py:363
+#: plugins/copr.py:367
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -386,64 +386,61 @@ msgstr ""
 "amelyekben nincs információ a Copr kiszolgálóról – az alapértelmezett lett "
 "feltételezve. Engedélyezze újra a projektet a kijavításhoz."
 
-#: plugins/copr.py:376
+#: plugins/copr.py:380
 msgid "Can't parse repositories for username '{}'."
 msgstr "A tárolók nem értelmezhetőek a(z) „{}” felhasználónévhez."
 
-#: plugins/copr.py:379
+#: plugins/copr.py:383
 msgid "List of {} coprs"
 msgstr "{} copr tárolók listája"
 
-#: plugins/copr.py:384
+#: plugins/copr.py:388
 msgid "No description given"
 msgstr "Nincs leírás adva"
 
-#: plugins/copr.py:396
+#: plugins/copr.py:400
 msgid "Can't parse search for '{}'."
 msgstr "Nem értelmezhető a keresés erre: „{}”."
 
-#: plugins/copr.py:399
+#: plugins/copr.py:403
 msgid "Matched: {}"
 msgstr "Találat: {}"
 
-#: plugins/copr.py:404
+#: plugins/copr.py:408
 msgid "No description given."
 msgstr "Nincs leírás adva."
 
-#: plugins/copr.py:426
+#: plugins/copr.py:430
 msgid "Safe and good answer. Exiting."
 msgstr "Biztonságos és jó válasz. Kilépés."
 
-#: plugins/copr.py:433
+#: plugins/copr.py:437
 msgid "This command has to be run under the root user."
 msgstr "Ezt a parancsot root felhasználóként kell futtatni."
 
-#: plugins/copr.py:485
+#: plugins/copr.py:487
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
-msgstr ""
+msgstr "A(z) {0} számára küldött kérés sikertelen: {1} – {2}"
 
-#: plugins/copr.py:487
+#: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
-msgstr ""
+msgstr "A projekt engedélyezése nem volt lehetséges.\n"
 
-#: plugins/copr.py:492
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#: plugins/copr.py:494
+#, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "Nem létezik ilyen tároló."
+msgstr "A(z) „{0}” tároló nem létezik a(z) „{1}” projektben."
 
-#: plugins/copr.py:495
-#, fuzzy
-#| msgid "List enabled Copr repositories"
+#: plugins/copr.py:497
 msgid ""
 "\n"
 "Available repositories: "
 msgstr ""
 "\n"
-"Engedélyezett Copr tárolók "
+"Elérhető tárolók: "
 
-#: plugins/copr.py:497
+#: plugins/copr.py:499
 #, python-brace-format
 msgid ""
 "\n"
@@ -452,20 +449,23 @@ msgid ""
 "  'dnf copr enable {0} <repository>'\n"
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
+"\n"
+"\n"
+"Ha egy nem alapértelmezett tárolót akar engedélyezni, használja a következő parancsot:\n"
+"  „dnf copr enable {0} <tároló>”\n"
+"De vegye figyelembe, hogy a telepített tárolónál jó eséllyel kézi módosítás lesz szükséges."
 
-#: plugins/copr.py:503
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#: plugins/copr.py:505
+#, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "Nem létezik ilyen tároló."
+msgstr "A(z) {0} projekt nem létezik."
 
-#: plugins/copr.py:506
-#, fuzzy, python-brace-format
-#| msgid "Failed to remove copr repo {0}/{1}/{2}"
+#: plugins/copr.py:508
+#, python-brace-format
 msgid "Failed to connect to {0}: {1}"
-msgstr "Nem sikerült a(z) {0}/{1}/{2} copr tároló eltávolítása"
+msgstr "Nem sikerült kapcsolódni a következőhöz: {0}: {1}"
 
-#: plugins/copr.py:553
+#: plugins/copr.py:555
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -494,44 +494,44 @@ msgstr ""
 "\n"
 "Ezek a tárolók automatikusan engedélyezve lettek."
 
-#: plugins/copr.py:574
+#: plugins/copr.py:576
 msgid "Do you want to keep them enabled?"
 msgstr "Továbbra is engedélyezve hagyja őket?"
 
-#: plugins/copr.py:607
+#: plugins/copr.py:609
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Nem sikerült a(z) {0}/{1}/{2} copr tároló eltávolítása"
 
-#: plugins/copr.py:618
+#: plugins/copr.py:620
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Nem sikerült a(z) {}/{} copr tároló letiltása"
 
-#: plugins/copr.py:636 plugins/copr.py:673
+#: plugins/copr.py:638 plugins/copr.py:675
 msgid "Unknown response from server."
 msgstr "Ismeretlen válasz a kiszolgálótól."
 
-#: plugins/copr.py:658
+#: plugins/copr.py:660
 msgid "Interact with Playground repository."
 msgstr "Együttműködés a Playground tárolóval."
 
-#: plugins/copr.py:664
+#: plugins/copr.py:666
 msgid "Enabling a Playground repository."
 msgstr "A Playground tároló engedélyezése."
 
-#: plugins/copr.py:665
+#: plugins/copr.py:667
 msgid "Do you want to continue?"
 msgstr "Folytatja?"
 
-#: plugins/copr.py:709
+#: plugins/copr.py:711
 msgid "Playground repositories successfully enabled."
 msgstr "Playground tárolók sikeresen engedélyezve."
 
-#: plugins/copr.py:712
+#: plugins/copr.py:714
 msgid "Playground repositories successfully disabled."
 msgstr "Playground tárolók sikeresen letiltva."
 
-#: plugins/copr.py:716
+#: plugins/copr.py:718
 msgid "Playground repositories successfully updated."
 msgstr "Playground tárolók sikeresen frissítve."
 
@@ -861,67 +861,64 @@ msgstr "Előzményadatok migrálása…"
 msgid ""
 "Download packages from modules and/or create a repository with modular data"
 msgstr ""
+"Csomagok letöltése modulokból és/vagy moduláris adatokat tartalmazó tároló "
+"létrehozása"
 
 #: plugins/modulesync.py:44
 msgid "MODULE"
-msgstr ""
+msgstr "MODUL"
 
 #: plugins/modulesync.py:45
-#, fuzzy
-#| msgid "packages to download"
 msgid "modules to download"
-msgstr "letöltendő csomagok"
+msgstr "letöltendő modulok"
 
 #: plugins/modulesync.py:47
-#, fuzzy
-#| msgid "Specify repositories to check"
 msgid "enable repositories with source packages"
-msgstr "Adja meg az ellenőrizendő tárolókat"
+msgstr "forráscsomagokat tartalmazó tárolók engedélyezése"
 
 #: plugins/modulesync.py:49
 msgid "enable repositories with debug-info and debug-source packages"
 msgstr ""
+"debug-info és debug-source csomagokat tartalmazó tárolók engedélyezése"
 
 #: plugins/modulesync.py:53
-#, fuzzy
-#| msgid "download all packages from remote repo"
 msgid "download only packages from newest modules"
-msgstr "minden csomag letöltése a távoli tárolóból"
+msgstr "csomagok letöltése csak a legújabb modulokból"
 
 #: plugins/modulesync.py:85
-#, fuzzy
-#| msgid "No match for argument: {}"
 msgid "Unable to find a match for argument: '{}'"
 msgid_plural "Unable to find a match for arguments: '{}'"
-msgstr[0] "Nem található egyezés a következő argumentumra: {}"
-msgstr[1] "Nem található egyezés a következő argumentumra: {}"
+msgstr[0] "Nincs találat a(z) „{}” argumentumhoz"
+msgstr[1] "Nincs találat a(z) „{}” argumentumokhoz"
 
 #: plugins/modulesync.py:107
 msgid ""
 "Creation of repository failed with return code {}. All downloaded content "
 "was kept on the system"
 msgstr ""
+"A tároló létrehozása a következő sikertelen eredménykóddal tért vissza: {}. "
+"Az összes letöltött tartalom megmaradt a rendszeren."
 
 #: plugins/modulesync.py:144
 #, python-brace-format
 msgid "No match for artifact '{0}' from module '{1}'"
-msgstr ""
+msgstr "Nincs találat a(z) „{0}” elemre a(z) „{1}” modulból"
 
 #: plugins/modulesync.py:162
 #, python-brace-format
 msgid "No match for package name '{0}' in profile {1} from module {2}"
 msgstr ""
+"Nincs találat a(z) „{0}” csomagnévre a(z) „{1}” profilban, a(z) „{2}” "
+"modulból"
 
 #: plugins/modulesync.py:166
-#, fuzzy
-#| msgid "No match for argument: {}"
 msgid "No mach for argument '{}'"
-msgstr "Nem található egyezés a következő argumentumra: {}"
+msgstr "Nem található egyezés a(z) „{}” argumentumhoz"
 
 #. TODO(jmracek) Shell we end with an error or with RC 1?
 #: plugins/modulesync.py:198
 msgid "Unable to satisfy require {}"
-msgstr ""
+msgstr "A következő igénylés nem teljesíthető: {}"
 
 #: plugins/needs_restarting.py:66
 #, python-brace-format
@@ -981,18 +978,18 @@ msgid "Bad Action Line \"%s\": %s"
 msgstr "Hibás műveleti sor: „%s”: %s"
 
 #. unsupported state, skip it
-#: plugins/post-transaction-actions.py:130
+#: plugins/post-transaction-actions.py:133
 #, python-format
 msgid "Bad Transaction State: %s"
 msgstr "Hibás tranzakciós állapot: %s"
 
-#: plugins/post-transaction-actions.py:157
-#: plugins/post-transaction-actions.py:159
+#: plugins/post-transaction-actions.py:160
+#: plugins/post-transaction-actions.py:162
 #, python-format
 msgid "post-transaction-actions: %s"
 msgstr "post-transaction-actions: %s"
 
-#: plugins/post-transaction-actions.py:161
+#: plugins/post-transaction-actions.py:164
 #, python-format
 msgid "post-transaction-actions: Bad Command \"%s\": %s"
 msgstr "post-transaction-actions: Hibás parancs: „%s”: %s"
@@ -1001,23 +998,25 @@ msgstr "post-transaction-actions: Hibás parancs: „%s”: %s"
 msgid "Display a list of unresolved dependencies for repositories"
 msgstr "A tárolók kielégítetlen függőségeinek megjelenítése"
 
-#: plugins/repoclosure.py:66
-msgid "Repoclosure ended with unresolved dependencies."
-msgstr "A tárolózárás kielégítetlen függőségekkel ért véget."
+#: plugins/repoclosure.py:69
+msgid ""
+"Repoclosure ended with unresolved dependencies ({}) across {} packages."
+msgstr ""
+"A tárolózárás kielégítetlen függőségekkel ({}) ért véget {} csomagnál."
 
-#: plugins/repoclosure.py:153
+#: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
 msgstr "megadott architektúrájú csomagok ellenőrzése, többször is megadható"
 
-#: plugins/repoclosure.py:156
+#: plugins/repoclosure.py:162
 msgid "Specify repositories to check"
 msgstr "Adja meg az ellenőrizendő tárolókat"
 
-#: plugins/repoclosure.py:158
+#: plugins/repoclosure.py:164
 msgid "Check only the newest packages in the repos"
 msgstr "Csak a legújabb csomagokat ellenőrizze a tárolókban"
 
-#: plugins/repoclosure.py:161
+#: plugins/repoclosure.py:167
 msgid "Check closure for this package only"
 msgstr "Csak ehhez a csomaghoz ellenőrizze a zárást"
 
@@ -1178,31 +1177,43 @@ msgstr "Egy rpm csomagokkal teli könyvtár kezelése"
 msgid "Pass either --old or --new, not both!"
 msgstr "Csak az --old, vagy a --new kapcsolót használja, de ne mindkettőt!"
 
-#: plugins/repomanage.py:89
+#: plugins/repomanage.py:61
+msgid "Pass either --oldonly or --new, not both!"
+msgstr "Csak az --old, vagy a --new kapcsolót használja, ne mindkettőt."
+
+#: plugins/repomanage.py:63
+msgid "Pass either --old or --oldonly, not both!"
+msgstr "Csak az --old, vagy a --new kapcsolót használja, ne mindkettőt."
+
+#: plugins/repomanage.py:100
 msgid "No files to process"
 msgstr "Nincsenek feldolgozandó fájlok"
 
-#: plugins/repomanage.py:96
+#: plugins/repomanage.py:107
 msgid "Could not open {}"
 msgstr "A(z) {} nem nyitható meg"
 
-#: plugins/repomanage.py:180
+#: plugins/repomanage.py:223
 msgid "Print the older packages"
 msgstr "Régebbi csomagok kiírása"
 
-#: plugins/repomanage.py:182
+#: plugins/repomanage.py:225
+msgid "Print the older packages. Exclude the newest packages."
+msgstr "A régebbi csomagok kiírása. A legújabb csomagok kihagyása."
+
+#: plugins/repomanage.py:227
 msgid "Print the newest packages"
 msgstr "Legújabb csomagok kiírása"
 
-#: plugins/repomanage.py:184
+#: plugins/repomanage.py:229
 msgid "Space separated output, not newline"
 msgstr "Szóközzel, és nem újsorral elválasztott kimenet"
 
-#: plugins/repomanage.py:186
+#: plugins/repomanage.py:231
 msgid "Newest N packages to keep - defaults to 1"
 msgstr "Megtartandó legfrissebb N csomag – alapértelmezésben 1"
 
-#: plugins/repomanage.py:189
+#: plugins/repomanage.py:234
 msgid "Path to directory"
 msgstr "Útvonal a könyvtárhoz"
 
@@ -1259,7 +1270,7 @@ msgstr ""
 
 #: plugins/reposync.py:87
 msgid "download only source packages"
-msgstr "csak a forráscsomagok letöltése"
+msgstr "csak forráscsomagok letöltése"
 
 #: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"
