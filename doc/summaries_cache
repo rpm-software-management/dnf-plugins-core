@@ -670,5 +670,21 @@
     [
         2023652,
         "KeyError after upgrading packages (post-transaction actions)"
+    ],
+    [
+        2072441,
+        "repomanage --new seems to exclude currently enabled modules"
+    ],
+    [
+        2077820,
+        "dnf builddep option --define rpm macro does not work with src.rpm"
+    ],
+    [
+        2075366,
+        "unable to enable or disable repositories using yum-config-manager"
+    ],
+    [
+        2058471,
+        "dnf copr enable fails to pick epel-9 chroot"
     ]
 ]

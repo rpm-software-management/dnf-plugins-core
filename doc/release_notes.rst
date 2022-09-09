@@ -22,6 +22,25 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.3.0 Release Notes
+===================
+
+- copr: Guess EPEL chroots for CentOS Stream (RhBug:2058471)
+- Update translations
+
+- Bug fixes:
+  - builddep: Warning when using macros with source rpms (RhBug:2077820)
+  - [repomanage] Modules are used only when they belong to target repo (RhBug:2072441)
+  - Update documentation for config-manager used with subscription-manager (RhBug:2075366)
+
+Bugs fixed in 4.3.0:
+
+* :rhbug:`2072441`
+* :rhbug:`2077820`
+* :rhbug:`2075366`
+* :rhbug:`2058471`
+
+===================
 4.2.1 Release Notes
 ===================
 
