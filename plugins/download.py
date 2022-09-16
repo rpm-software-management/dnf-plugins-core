@@ -253,7 +253,7 @@ class DownloadCommand(dnf.cli.Command):
         for pkg in pkgs:
             goal = hawkey.Goal(self.base.sack)
             goal.install(pkg)
-            rc = goal.run()
+            rc = goal.run(ignore_weak_deps=(not self.base.conf.install_weak_deps))
             if rc:
                 pkg_set.update(goal.list_installs())
                 pkg_set.update(goal.list_upgrades())
