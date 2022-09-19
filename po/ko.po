@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
-"PO-Revision-Date: 2022-07-21 10:36+0000\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
+"PO-Revision-Date: 2022-09-02 02:19+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/ko/>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.14\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -68,16 +68,21 @@ msgstr "설치: '%s' 꾸러미가 일치하지 않습니다"
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "여는데 실패하였습니다: '%s', 유효한 rpm 파일 출처가 아닙니다."
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "모든 의존성을 만족하지 않습니다"
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr "경고: -D 또는 --define 인수는 원천 rpm 꾸러미를 위한 의미가 없습니다."
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "여는데 실패하였습니다 '%s', 지정한 파일: %s가 유효하지 않습니다"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "일치하는 꾸러미 없음: %s"
@@ -408,12 +413,12 @@ msgstr "{0}에 대한 요청이 실패함: {1} - {2}"
 
 #: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
-msgstr "이 프로젝트는 활성화 할 수 없습니다.\n"
+msgstr "이와 같은 프로젝트를 활성화 할 수 없습니다.\n"
 
 #: plugins/copr.py:494
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "저장소 '{0}'는 프로젝트 '{1}'에서 존재하지 않습니다."
+msgstr "저장소 '{0}'는 프로젝트 '{1}'에 존재하지 않습니다."
 
 #: plugins/copr.py:497
 msgid ""
@@ -421,7 +426,7 @@ msgid ""
 "Available repositories: "
 msgstr ""
 "\n"
-"사용 가능한 저장소 목록: "
+"사용 가능한 저장소: "
 
 #: plugins/copr.py:499
 #, python-brace-format
@@ -434,19 +439,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"만약 기본설정되지 않은 저장소를 활성화 하고자 한다면, 다음 명령을 사용하세요:\n"
-"  'dnf copr enable {0} <repository>'\n"
+"만약 기본설정되지 않은 저장소를 활성화 하고자 한다면, 다음 명령을 사용하세요: \n"
+"  'dnf copr enable {0} <repository>' \n"
 "하지만 설치된 저장소 파일은 수동으로 수정해야 할 필요가 있다는 점을 참고하세요."
 
 #: plugins/copr.py:505
 #, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "프로젝트 {0}는 존재하지 않습니다."
+msgstr "프로젝트 {0}가 존재하지 않습니다."
 
 #: plugins/copr.py:508
 #, python-brace-format
 msgid "Failed to connect to {0}: {1}"
-msgstr "{0}: {1}로 연결 하는데 실패하였습니다"
+msgstr "연결 하는데 실패함 {0}: {1}"
 
 #: plugins/copr.py:555
 #, python-brace-format
@@ -828,19 +833,19 @@ msgstr "모듈에서 꾸러미를 내려 받기와/또는 모듈식 자료를 �
 
 #: plugins/modulesync.py:44
 msgid "MODULE"
-msgstr "모듈"
+msgstr "MODULE"
 
 #: plugins/modulesync.py:45
 msgid "modules to download"
-msgstr "내려받아야 할 모듈"
+msgstr "내려받기 할 모듈"
 
 #: plugins/modulesync.py:47
 msgid "enable repositories with source packages"
-msgstr "원천 꾸러미와 함께 저장소를 활성화"
+msgstr "원천 꾸러미로 저장소 활성화"
 
 #: plugins/modulesync.py:49
 msgid "enable repositories with debug-info and debug-source packages"
-msgstr "디버그-정보와 디버그-원천 꾸러미와 함께 저장소 활성화"
+msgstr "debug-info와 debug-source 꾸러미로 저장소 활성화"
 
 #: plugins/modulesync.py:53
 msgid "download only packages from newest modules"
@@ -849,7 +854,7 @@ msgstr "최신 모듈에서 꾸러미만 내려받기"
 #: plugins/modulesync.py:85
 msgid "Unable to find a match for argument: '{}'"
 msgid_plural "Unable to find a match for arguments: '{}'"
-msgstr[0] "인수와 일치하는 항목을 찾을 수 없습니다: '{}'"
+msgstr[0] "인수와 일치 항목을 찾을 수 없음: '{}'"
 
 #: plugins/modulesync.py:107
 msgid ""
@@ -860,7 +865,7 @@ msgstr "반환 코드 {}로 인하여 저장소 생성에 실패함. 모두 내�
 #: plugins/modulesync.py:144
 #, python-brace-format
 msgid "No match for artifact '{0}' from module '{1}'"
-msgstr "모듈 '{1}'에서 인위 결과물 '{0}'과 일치하는 부분이 없습니다"
+msgstr "모듈 '{1}' 에서 인위 결과물 '{0}'과 일치하는 부분이 없습니다"
 
 #: plugins/modulesync.py:162
 #, python-brace-format
@@ -869,7 +874,7 @@ msgstr "모듈 {2}에서 프로파일 {1}인 꾸러미 이름 '{0}'과 일치하
 
 #: plugins/modulesync.py:166
 msgid "No mach for argument '{}'"
-msgstr "인수와 일치하는 항목이 없습니다 '{}'"
+msgstr "인수 '{}'와 일치하는 항목이 없습니다"
 
 #. TODO(jmracek) Shell we end with an error or with RC 1?
 #: plugins/modulesync.py:198

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
-"PO-Revision-Date: 2022-03-09 10:22+0000\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
+"PO-Revision-Date: 2022-09-07 14:19+0000\n"
 "Last-Translator: Transtats <suanand@redhat.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.14\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -72,16 +72,21 @@ msgstr "没有匹配的软件包可以安装： '%s'"
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "打开文件失败： '%s'，不是有效的源码 RPM 文件。"
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "没有满足全部的依赖关系"
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr ""
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "打开失败： '%s'， 不是有效的 spec 文件： %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "无匹配软件包： %s"
@@ -406,27 +411,24 @@ msgstr "该命令必须以 root 用户运行。"
 #: plugins/copr.py:487
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
-msgstr ""
+msgstr "请求 {0} 失败：{1} - {2}"
 
 #: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
-msgstr ""
+msgstr "无法启用此项目。\n"
 
 #: plugins/copr.py:494
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "该软件仓库不存在。"
+msgstr "仓库 '{0}' 在项目 '{1}' 中不存在。"
 
 #: plugins/copr.py:497
-#, fuzzy
-#| msgid "List enabled Copr repositories"
 msgid ""
 "\n"
 "Available repositories: "
 msgstr ""
 "\n"
-"列出启动的 Copr 仓库 "
+"可用软件仓库： "
 
 #: plugins/copr.py:499
 #, python-brace-format
@@ -437,18 +439,21 @@ msgid ""
 "  'dnf copr enable {0} <repository>'\n"
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
+"\n"
+"\n"
+"如果需要启用一个非默认的仓库，使用以下命令 :\n"
+"  'dnf copr enable {0} <repository>'\n"
+"但请注意，安装的 repo 文件将来可能需要手动修改。"
 
 #: plugins/copr.py:505
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "该软件仓库不存在。"
+msgstr "项目 {0} 不存在。"
 
 #: plugins/copr.py:508
-#, fuzzy, python-brace-format
-#| msgid "Failed to remove copr repo {0}/{1}/{2}"
+#, python-brace-format
 msgid "Failed to connect to {0}: {1}"
-msgstr "删除 copr 仓库 {0}/{1}/{2} 失败"
+msgstr "连接到 {0} 失败：{1}"
 
 #: plugins/copr.py:555
 #, python-brace-format
@@ -486,11 +491,11 @@ msgstr "您需要保持它们被启用吗？"
 #: plugins/copr.py:609
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
-msgstr "删除 copr 仓库 {0}/{1}/{2} 失败"
+msgstr "无法删除 copr 存储库 {0}/{1}/{2}"
 
 #: plugins/copr.py:620
 msgid "Failed to disable copr repo {}/{}"
-msgstr "无法禁用 Copr 软件仓库 {}/{}"
+msgstr "无法禁用 Copr 存储库 {}/{}"
 
 #: plugins/copr.py:638 plugins/copr.py:675
 msgid "Unknown response from server."
@@ -767,7 +772,7 @@ msgstr "软件包规格"
 
 #: plugins/groups_manager.py:156
 msgid "Can't edit group without specifying it (use --id or --name)"
-msgstr "没有指定组（使用 --id 或 --name）就无法编辑组"
+msgstr "没有指定它（使用 --id 或 --name）就不能编辑组"
 
 #: plugins/groups_manager.py:190
 msgid "Can't load file \"{}\": {}"
@@ -851,7 +856,7 @@ msgstr "只从最新的模块中下载软件包"
 #: plugins/modulesync.py:85
 msgid "Unable to find a match for argument: '{}'"
 msgid_plural "Unable to find a match for arguments: '{}'"
-msgstr[0] "找不到与参数：'{}'相匹配的项"
+msgstr[0] "找不到与参数匹配的项：'{}'"
 
 #: plugins/modulesync.py:107
 msgid ""
@@ -883,7 +888,7 @@ msgstr "无法满足要求 {}"
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
-msgstr "未找到在需要重新启动文件 \"{file}\" 中指定的软件包名为 \"{pkg}\" 的已安装的软件包。"
+msgstr "未找到在需要重新启动的文件 \"{file}\" 中指定的软件包名为 \"{pkg}\" 的已安装的软件包。"
 
 #: plugins/needs_restarting.py:220
 msgid "determine updated binaries that need restarting"
@@ -949,11 +954,9 @@ msgid "Display a list of unresolved dependencies for repositories"
 msgstr "显示仓库中未被解决的依赖关系的列表"
 
 #: plugins/repoclosure.py:69
-#, fuzzy
-#| msgid "Repoclosure ended with unresolved dependencies."
 msgid ""
 "Repoclosure ended with unresolved dependencies ({}) across {} packages."
-msgstr "Repoclosure 退出时还有依赖关系未解决。"
+msgstr "Repoclosure 退出时还有未解决的依赖项（{}），针对 {} 软件包。"
 
 #: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
@@ -1120,19 +1123,15 @@ msgstr "管理 RPM 软件包目录"
 
 #: plugins/repomanage.py:59
 msgid "Pass either --old or --new, not both!"
-msgstr "传入 --old 或者 --new，不可同时传入！"
+msgstr "传递 --old 或者 --new，而不是两者都传递！"
 
 #: plugins/repomanage.py:61
-#, fuzzy
-#| msgid "Pass either --old or --new, not both!"
 msgid "Pass either --oldonly or --new, not both!"
-msgstr "传入 --old 或者 --new，不可同时传入！"
+msgstr "传递 --oldonly 或 --new，而不是两者都传递！"
 
 #: plugins/repomanage.py:63
-#, fuzzy
-#| msgid "Pass either --old or --new, not both!"
 msgid "Pass either --old or --oldonly, not both!"
-msgstr "传入 --old 或者 --new，不可同时传入！"
+msgstr "传递 --old 或 --oldonly，而不是两者都传递！"
 
 #: plugins/repomanage.py:100
 msgid "No files to process"
@@ -1147,10 +1146,8 @@ msgid "Print the older packages"
 msgstr "打印较旧的软件包"
 
 #: plugins/repomanage.py:225
-#, fuzzy
-#| msgid "Print the newest packages"
 msgid "Print the older packages. Exclude the newest packages."
-msgstr "打印最新的软件包"
+msgstr "打印旧的软件包。排除最新的软件包。"
 
 #: plugins/repomanage.py:227
 msgid "Print the newest packages"

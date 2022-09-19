@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
-"PO-Revision-Date: 2022-04-15 09:31+0000\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
+"PO-Revision-Date: 2022-08-27 14:35+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/pl/>\n"
 "Language: pl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.14\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -76,16 +76,23 @@ msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr ""
 "Otwarcie się nie powiodło: „%s”, nie jest prawidłowym źródłowym plikiem RPM."
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "Nie spełniono wszystkich zależności"
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr ""
+"Ostrzeżenie: parametry -D lub --define nie mają znaczenia dla źródłowych "
+"pakietów RPM."
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Otwarcie się nie powiodło: „%s”, nieprawidłowy plik spec: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "żaden pakiet nie pasuje: %s"

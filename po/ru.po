@@ -2,20 +2,21 @@
 # Igor Gorbounov <igor.gorbounov@gmail.com>, 2018. #zanata, 2020, 2021, 2022.
 # Igor Gorbounov <igor.gorbounov@gmail.com>, 2019. #zanata, 2020, 2021, 2022.
 # Alexey Rubtsov <rushills@gmail.com>, 2021, 2022.
+# V I <xasertop@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
-"PO-Revision-Date: 2022-06-02 09:18+0000\n"
-"Last-Translator: Alexey Rubtsov <rushills@gmail.com>\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
+"PO-Revision-Date: 2022-09-10 16:19+0000\n"
+"Last-Translator: V I <xasertop@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.14\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -68,16 +69,23 @@ msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr ""
 "Ошибка открытия файла: «%s», неправильный файл rpm с исходными текстами."
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "Не все зависимости удовлетворены"
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr ""
+"Предупреждение: у аргументов -D или --define нет значения для исходных "
+"пакетов rpm."
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Ошибка открытия файла: «%s», неправильный spec-файл: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "нет подходящих пакетов: %s"
@@ -319,8 +327,8 @@ msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
-"Плохой формат необязательного chroot. Формат - архитектура-версия-"
-"дистрибутив."
+"Неверный формат необязательного chroot. Формат должен быть архитектура-"
+"версия-дистрибутив."
 
 #: plugins/copr.py:264
 msgid "use format `copr_username/copr_projectname` to reference copr project"
@@ -428,7 +436,7 @@ msgstr "Не удалось активировать этот проект.\n"
 #: plugins/copr.py:494
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "Репозиторий «{0}» не существует в проекте «{1}»."
+msgstr "Репозитория «{0}» в проекте «{1}» не существует."
 
 #: plugins/copr.py:497
 msgid ""
@@ -449,14 +457,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Если вы хотите включить нестандартный репозиторий, используйте следующую команду:\n"
-"  «dnf copr enable {0} <repository>»\n"
-"Но учтите, что, скорее всего, установленный repo-файл потребуется изменять вручную."
+"Если вы хотите включить репозиторий не по умолчанию, используйте следующую команду:\n"
+"  'dnf copr enable {0} <репозиторий>'\n"
+"Но обратите внимание, что установленный файл репозитория, скорее всего, потребует ручного изменения."
 
 #: plugins/copr.py:505
 #, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "Проект {0} не существует."
+msgstr "Проект «{0}» не существует."
 
 #: plugins/copr.py:508
 #, python-brace-format
@@ -856,7 +864,7 @@ msgstr "Перенос данных истории..."
 msgid ""
 "Download packages from modules and/or create a repository with modular data"
 msgstr ""
-"Загрузить пакеты из модулей и/или создать репозиторий с модульными данными"
+"Загрузите пакеты из модулей и/или создайте репозиторий с модульными данными"
 
 #: plugins/modulesync.py:44
 msgid "MODULE"
@@ -868,7 +876,7 @@ msgstr "модули для загрузки"
 
 #: plugins/modulesync.py:47
 msgid "enable repositories with source packages"
-msgstr "включить репозитории с пакетами c исходным кодом"
+msgstr "включить репозитории с исходными пакетами"
 
 #: plugins/modulesync.py:49
 msgid "enable repositories with debug-info and debug-source packages"
@@ -881,17 +889,17 @@ msgstr "загрузить только пакеты из новейших мо�
 #: plugins/modulesync.py:85
 msgid "Unable to find a match for argument: '{}'"
 msgid_plural "Unable to find a match for arguments: '{}'"
-msgstr[0] "Не удалось найти соответствия для аргумента: {}"
-msgstr[1] "Не удалось найти соответствия для аргументов: {}"
-msgstr[2] "Не удалось найти соответствия для аргументов: {}"
+msgstr[0] "Нет удалось найти совпадений для аргумента: '{}'"
+msgstr[1] "Нет удалось найти совпадений для аргументов: '{}'"
+msgstr[2] "Нет удалось найти совпадений для аргументов: '{}'"
 
 #: plugins/modulesync.py:107
 msgid ""
 "Creation of repository failed with return code {}. All downloaded content "
 "was kept on the system"
 msgstr ""
-"Не удалось создать репозиторий с кодом возврата {}. Все загрузки остались в "
-"системе"
+"Не удалось создать репозиторий с кодом возврата {}. Весь загруженный контент"
+" остался в системе"
 
 #: plugins/modulesync.py:144
 #, python-brace-format
@@ -992,7 +1000,7 @@ msgstr "Показать список неразрешенных зависим�
 msgid ""
 "Repoclosure ended with unresolved dependencies ({}) across {} packages."
 msgstr ""
-"Repoclosure завершил работу с неразрешенными зависимостями ({}) в {} "
+"Repoclosure завершил работу с неразрешёнными зависимостями ({}) в {} "
 "пакетах."
 
 #: plugins/repoclosure.py:159
@@ -1262,7 +1270,7 @@ msgstr ""
 
 #: plugins/reposync.py:87
 msgid "download only source packages"
-msgstr "загружать только пакеты с исходными текстами"
+msgstr "загружать только исходные пакеты"
 
 #: plugins/reposync.py:89
 msgid "Just list urls of what would be downloaded, don't download"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
 "PO-Revision-Date: 2021-08-31 17:04+0000\n"
 "Last-Translator: Alessio <alciregi@posteo.net>\n"
 "Language-Team: Italian <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/it/>\n"
@@ -72,16 +72,21 @@ msgstr "Nessun pacchetto corrispondente da installare: '%s'"
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "Apertura non riuscita di '%s', non è un file rpm sorgente valido."
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "Non tutte le dipendenze sono soddisfatte."
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr ""
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "Apertura non riuscita di '%s', non è un file spec valido: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "nessun pacchetto corrispondente: %s"

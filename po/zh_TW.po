@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
 "PO-Revision-Date: 2020-08-28 21:29+0000\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_TW/>\n"
@@ -71,16 +71,21 @@ msgstr "沒有要安裝的符合軟體包：「%s」"
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "無法開啟：「%s」，不是有效的來源 rpm 檔案。"
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "不滿足所有依賴關係"
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr ""
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "無法開啟：「%s」，非有效 spec 檔案：%s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "沒有符合的軟體包：%s"

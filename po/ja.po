@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 02:57+0000\n"
-"PO-Revision-Date: 2022-03-09 12:39+0000\n"
+"POT-Creation-Date: 2022-09-19 03:37+0000\n"
+"PO-Revision-Date: 2022-09-07 14:19+0000\n"
 "Last-Translator: Transtats <suanand@redhat.com>\n"
 "Language-Team: Japanese <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/ja/>\n"
 "Language: ja\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.14\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -67,16 +67,21 @@ msgstr "インストール用の一致するパッケージがありません: '
 msgid "Failed to open: '%s', not a valid source rpm file."
 msgstr "開くことに失敗しました: '%s'、有効なソース rpm ファイルではありません。"
 
-#: plugins/builddep.py:204 plugins/builddep.py:220 plugins/builddep.py:237
+#: plugins/builddep.py:204 plugins/builddep.py:224 plugins/builddep.py:241
 msgid "Not all dependencies satisfied"
 msgstr "すべての依存関係が満たされているわけではない"
 
-#: plugins/builddep.py:211
+#: plugins/builddep.py:208
+msgid ""
+"Warning: -D or --define arguments have no meaning for source rpm packages."
+msgstr ""
+
+#: plugins/builddep.py:215
 #, python-format
 msgid "Failed to open: '%s', not a valid spec file: %s"
 msgstr "開くことに失敗しました: '%s'、有効なスペックファイルではありません: %s"
 
-#: plugins/builddep.py:230 plugins/repoclosure.py:124
+#: plugins/builddep.py:234 plugins/repoclosure.py:124
 #, python-format
 msgid "no package matched: %s"
 msgstr "一致するパッケージはありません: %s"
@@ -404,27 +409,24 @@ msgstr "このコマンドは root ユーザーの下で実行する必要があ
 #: plugins/copr.py:487
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
-msgstr ""
+msgstr "{0} へのリクエストに失敗しました: {1} - {2}"
 
 #: plugins/copr.py:489
 msgid "It wasn't possible to enable this project.\n"
-msgstr ""
+msgstr "このプロジェクトを有効にすることができませんでした。\n"
 
 #: plugins/copr.py:494
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "そのようなリポジトリーは存在しません。"
+msgstr "'{0}' リポジトリーはプロジェクト '{1}' に存在しません。"
 
 #: plugins/copr.py:497
-#, fuzzy
-#| msgid "List enabled Copr repositories"
 msgid ""
 "\n"
 "Available repositories: "
 msgstr ""
 "\n"
-"有効化された Copr リポジトリーを一覧表示します "
+"利用可能なリポジトリー: "
 
 #: plugins/copr.py:499
 #, python-brace-format
@@ -435,18 +437,21 @@ msgid ""
 "  'dnf copr enable {0} <repository>'\n"
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
+"\n"
+"\n"
+"デフォルト以外のリポジトリーを有効にする場合は、以下のコマンドを使用します:\n"
+"  'dnf copr enable {0} <repository>'\n"
+"ただし、インストールされているリポジトリーファイルを手動で変更する必要がある可能性があることに注意してください。"
 
 #: plugins/copr.py:505
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "そのようなリポジトリーは存在しません。"
+msgstr "プロジェクト {0} は存在しません。"
 
 #: plugins/copr.py:508
-#, fuzzy, python-brace-format
-#| msgid "Failed to remove copr repo {0}/{1}/{2}"
+#, python-brace-format
 msgid "Failed to connect to {0}: {1}"
-msgstr "copr repo {0}/{1}/{2} の削除に失敗しました"
+msgstr "{0} への接続に失敗しました: {1}"
 
 #: plugins/copr.py:555
 #, python-brace-format
@@ -949,11 +954,9 @@ msgid "Display a list of unresolved dependencies for repositories"
 msgstr "リポジトリーの未解決の依存関係の一覧を表示します"
 
 #: plugins/repoclosure.py:69
-#, fuzzy
-#| msgid "Repoclosure ended with unresolved dependencies."
 msgid ""
 "Repoclosure ended with unresolved dependencies ({}) across {} packages."
-msgstr "repoclosure は未解決の依存関係で終了しました。"
+msgstr "Repoclosure は、{} パッケージで依存関係 ({}) が解決されずに終了します。"
 
 #: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
@@ -1120,19 +1123,15 @@ msgstr "rpm パッケージのディレクトリーを管理します"
 
 #: plugins/repomanage.py:59
 msgid "Pass either --old or --new, not both!"
-msgstr "--old または --new のいずれかを渡します。両方ではありません。"
+msgstr "--old または --new のいずれかを渡します、両方ではありません!"
 
 #: plugins/repomanage.py:61
-#, fuzzy
-#| msgid "Pass either --old or --new, not both!"
 msgid "Pass either --oldonly or --new, not both!"
-msgstr "--old または --new のいずれかを渡します。両方ではありません。"
+msgstr "--oldonly または --new のいずれかを渡します、両方ではありません!"
 
 #: plugins/repomanage.py:63
-#, fuzzy
-#| msgid "Pass either --old or --new, not both!"
 msgid "Pass either --old or --oldonly, not both!"
-msgstr "--old または --new のいずれかを渡します。両方ではありません。"
+msgstr "--old または --oldonly のいずれかを渡します、両方ではありません!"
 
 #: plugins/repomanage.py:100
 msgid "No files to process"
@@ -1147,10 +1146,8 @@ msgid "Print the older packages"
 msgstr "古いパッケージを印刷します"
 
 #: plugins/repomanage.py:225
-#, fuzzy
-#| msgid "Print the newest packages"
 msgid "Print the older packages. Exclude the newest packages."
-msgstr "最新のパッケージを印刷します"
+msgstr "古いパッケージを出力します。最新のパッケージを除外します。"
 
 #: plugins/repomanage.py:227
 msgid "Print the newest packages"
