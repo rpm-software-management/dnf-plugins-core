@@ -264,6 +264,7 @@ man_pages = [
     ('post-transaction-actions', 'dnf-post-transaction-actions',
      u'DNF post transaction actions Plugin', AUTHORS, 8),
     ('show-leaves', 'dnf-show-leaves', u'DNF show-leaves Plugin', AUTHORS, 8),
+    ('system-upgrade', 'dnf-system-upgrade', u'DNF system-upgrade Plugin', AUTHORS, 8),
     ('versionlock', 'dnf-versionlock', u'DNF versionlock Plugin', AUTHORS, 8),
 
     # yum3 compatible layer for manpages

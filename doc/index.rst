@@ -46,6 +46,7 @@ This documents core plugins of DNF:
    repomanage
    reposync
    show-leaves
+   system-upgrade
    versionlock
 
 

@@ -23,6 +23,21 @@ MESSAGE(STATUS "Python install dir is ${PYTHON_INSTALL_DIR}")
 
 SET (SYSCONFDIR /etc)
 
+find_package (PkgConfig)
+
+if (PKG_CONFIG_FOUND)
+  pkg_search_module (SYSTEMD systemd)
+  if (SYSTEMD_FOUND)
+    execute_process (COMMAND ${PKG_CONFIG_EXECUTABLE} --variable=systemdsystemunitdir systemd
+                     OUTPUT_VARIABLE SYSTEMD_DIR
+                     OUTPUT_STRIP_TRAILING_WHITESPACE)
+  endif ()
+endif()
+
+if (NOT SYSTEMD_DIR)
+  set (SYSTEMD_DIR /usr/lib/systemd/system)
+endif ()
+
 ADD_SUBDIRECTORY (libexec)
 ADD_SUBDIRECTORY (doc)
 ADD_SUBDIRECTORY (etc)

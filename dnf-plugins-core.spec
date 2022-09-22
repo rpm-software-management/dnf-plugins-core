@@ -64,6 +64,9 @@ Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
 Provides:       dnf-command(repodiff)
+Provides:       dnf-command(system-upgrade)
+Provides:       dnf-command(offline-upgrade)
+Provides:       dnf-command(offline-distrosync)
 Provides:       dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
@@ -80,6 +83,7 @@ Provides:       dnf-plugin-repodiff = %{version}-%{release}
 Provides:       dnf-plugin-repograph = %{version}-%{release}
 Provides:       dnf-plugin-repomanage = %{version}-%{release}
 Provides:       dnf-plugin-reposync = %{version}-%{release}
+Provides:       dnf-plugin-system-upgrade = %{version}-%{release}
 %if %{with yumcompatibility}
 Provides:       yum-plugin-copr = %{version}-%{release}
 Provides:       yum-plugin-changelog = %{version}-%{release}
@@ -133,8 +137,8 @@ Conflicts:      python-%{name} < %{version}-%{release}
 %description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep,
 config-manager, copr, degug, debuginfo-install, download, needs-restarting,
-groups-manager, repoclosure, repograph, repomanage, reposync, changelog
-and repodiff commands.
+groups-manager, repoclosure, repograph, repomanage, reposync, changelog,
+repodiff, system-upgrade, offline-upgrade and offline-distrosync commands.
 Additionally provides generate_completion_cache passive plugin.
 %endif
 
@@ -145,6 +149,10 @@ Summary:    Core Plugins for DNF
 BuildRequires:  python3-dbus
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
+BuildRequires:  python3-systemd
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  systemd
+%{?systemd_ordering}
 %if 0%{?fedora}
 Requires:       python3-distro
 %endif
@@ -152,14 +160,17 @@ Requires:       python3-dbus
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
 Requires:       python3-dateutil
+Requires:       python3-systemd
 Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repomanage = %{version}-%{release}
+Provides:       python3-dnf-plugin-system-upgrade = %{version}-%{release}
 Obsoletes:      python3-dnf-plugins-extras-debug < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
+Obsoletes:      python3-dnf-plugin-system-upgrade < %{version}-%{release}
 
 Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
@@ -169,8 +180,8 @@ Conflicts:      python-%{name} < %{version}-%{release}
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep,
 config-manager, copr, debug, debuginfo-install, download, needs-restarting,
-groups-manager, repoclosure, repograph, repomanage, reposync, changelog
-and repodiff commands.
+groups-manager, repoclosure, repograph, repomanage, reposync, changelog,
+repodiff, system-upgrade, offline-upgrade and offline-distrosync commands.
 Additionally provides generate_completion_cache passive plugin.
 %endif
 
@@ -451,6 +462,17 @@ pushd build-py3
   %make_install
 popd
 %endif
+
+%if %{with python3}
+mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
+pushd %{buildroot}%{_unitdir}/system-update.target.wants/
+  ln -sr ../dnf-system-upgrade.service
+popd
+
+ln -sf %{_mandir}/man8/dnf-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf-offline-upgrade.8.gz
+ln -sf %{_mandir}/man8/dnf-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf-offline-distrosync.8.gz
+%endif
+
 %find_lang %{name}
 %if %{with yumutils}
   %if %{with python3}
@@ -515,6 +537,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{_mandir}/man8/dnf-repograph.*
 %{_mandir}/man8/dnf-repomanage.*
 %{_mandir}/man8/dnf-reposync.*
+%{_mandir}/man8/dnf-system-upgrade.*
+%{_mandir}/man8/dnf-offline-upgrade.*
+%{_mandir}/man8/dnf-offline-distrosync.*
 %if %{with yumcompatibility}
 %{_mandir}/man1/yum-changelog.*
 %{_mandir}/man8/yum-copr.*
@@ -572,6 +597,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python3_sitelib}/dnf-plugins/repograph.py
 %{python3_sitelib}/dnf-plugins/repomanage.py
 %{python3_sitelib}/dnf-plugins/reposync.py
+%{python3_sitelib}/dnf-plugins/system_upgrade.py
 %{python3_sitelib}/dnf-plugins/__pycache__/builddep.*
 %{python3_sitelib}/dnf-plugins/__pycache__/changelog.*
 %{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*
@@ -587,7 +613,11 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python3_sitelib}/dnf-plugins/__pycache__/repograph.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repomanage.*
 %{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
+%{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
 %{python3_sitelib}/dnfpluginscore/
+%{_unitdir}/dnf-system-upgrade.service
+%{_unitdir}/dnf-system-upgrade-cleanup.service
+%{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 %endif
 
 %if %{with yumutils}

@@ -22,6 +22,7 @@ INSTALL (FILES repograph.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES repomanage.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES reposync.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES show_leaves.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+INSTALL (FILES system_upgrade.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES modulesync.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES versionlock.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 
