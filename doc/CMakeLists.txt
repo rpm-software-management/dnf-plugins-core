@@ -37,6 +37,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-reposync.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-post-transaction-actions.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-show-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf-system-upgrade.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf-versionlock.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-copr.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.8
