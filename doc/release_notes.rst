@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.3.1 Release Notes
+===================
+
+- Update translations (fix RhBug:2127011)
+
+Bugs fixed in 4.3.1:
+
+* :rhbug:`2127011`
+
+===================
 4.3.0 Release Notes
 ===================
 

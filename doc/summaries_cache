@@ -686,5 +686,9 @@
     [
         2058471,
         "dnf copr enable fails to pick epel-9 chroot"
+    ],
+    [
+        2127011,
+        "dnf-plugins-core show errors when use LANG=es_ES-UTF-8"
     ]
 ]
