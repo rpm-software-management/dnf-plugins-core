@@ -27,12 +27,14 @@ DNF system-upgrades plugin provides three commands: ``system-upgrade``, ``offlin
 ``offline-distrosync``. Only ``system-upgrade`` command requires increase of distribution major
 version (``--releasever``) compared to installed version.
 
-``dnf system-upgrade`` can be used to upgrade a Fedora system to a new major
-release. It replaces fedup (the old Fedora Upgrade tool). Before you proceed ensure that your system
+``dnf system-upgrade`` is a recommended way to upgrade a system to a new major release.
+It replaces fedup (the old Fedora Upgrade tool). Before you proceed ensure that your system
 is fully upgraded (``dnf --refresh upgrade``).
 
 The ``system-upgrade`` command also performes additional actions necessary for the upgrade of the
 system, for example an upgrade of groups and environments.
+
+.. WARNING:: The ``system-upgrade`` command is not supported on the RHEL distribution.
 
 --------
 Synopsis

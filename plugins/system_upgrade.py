@@ -20,6 +20,7 @@
 """system_upgrade.py - DNF plugin to handle major-version system upgrades."""
 
 from subprocess import call, Popen, check_output, CalledProcessError
+import distro
 import json
 import os
 import os.path
@@ -451,6 +452,9 @@ class SystemUpgradeCommand(dnf.cli.Command):
 
     def configure_download(self):
         if 'system-upgrade' == self.opts.command or 'fedup' == self.opts.command:
+            if distro.id() == 'rhel':
+                logger.warning(_('WARNING: this operation is not supported on the RHEL distribution. '
+                                 'Proceed at your own risk.'))
             help_url = get_url_from_os_release()
             if help_url:
                 msg = _('Additional information for System Upgrade: {}')

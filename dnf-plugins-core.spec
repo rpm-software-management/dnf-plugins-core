@@ -148,14 +148,13 @@ Summary:    Core Plugins for DNF
 %{?python_provide:%python_provide python3-%{name}}
 BuildRequires:  python3-dbus
 BuildRequires:  python3-devel
+BuildRequires:  python3-distro
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python3-systemd
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd
 %{?systemd_ordering}
-%if 0%{?fedora}
 Requires:       python3-distro
-%endif
 Requires:       python3-dbus
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
