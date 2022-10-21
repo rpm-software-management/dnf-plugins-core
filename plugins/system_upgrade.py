@@ -467,6 +467,9 @@ class SystemUpgradeCommand(dnf.cli.Command):
                     logger.error(_("Operation aborted."))
                     sys.exit(1)
             check_release_ver(self.base.conf, target=self.opts.releasever)
+        elif 'offline-upgrade' == self.opts.command:
+            self.cli._populate_update_security_filter(self.opts)
+
         self.cli.demands.root_user = True
         self.cli.demands.resolving = True
         self.cli.demands.available_repos = True
