@@ -34,6 +34,7 @@ import functools
 import os
 import re
 import stat
+import time
 
 
 # For which package updates we should recommend a reboot
@@ -199,7 +200,14 @@ class ProcessStart(object):
 
     @staticmethod
     def get_boot_time():
-        return int(os.stat('/proc/1').st_mtime)
+        if os.path.isfile('/proc/uptime'):
+            with open('/proc/uptime', 'rb') as f:
+                uptime = f.readline().strip().split()[0].strip()
+                time_now = time.time()
+                return int(time_now - float(uptime))
+        else:
+            print(_('Unable to calculate uptime'))
+            raise dnf.exceptions.Error()
 
     @staticmethod
     def get_sc_clk_tck():
