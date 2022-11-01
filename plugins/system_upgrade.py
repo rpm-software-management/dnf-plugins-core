@@ -62,16 +62,19 @@ DOWNLOAD_FINISHED_MSG = _(  # Translators: do not change "reboot" here
 CANT_RESET_RELEASEVER = _(
     "Sorry, you need to use 'download --releasever' instead of '--network'")
 
-STATE_VERSION = 2
+STATE_VERSION = 3
 
 # --- Miscellaneous helper functions ------------------------------------------
 
 
-def reboot():
+def reboot(poweroff = False):
     if os.getenv("DNF_SYSTEM_UPGRADE_NO_REBOOT", default=False):
         logger.info(_("Reboot turned off, not rebooting."))
     else:
-        Popen(["systemctl", "reboot"])
+        if poweroff:
+            Popen(["systemctl", "poweroff"])
+        else:
+            Popen(["systemctl", "reboot"])
 
 
 def get_url_from_os_release():
@@ -184,6 +187,7 @@ class State(object):
     upgrade_status = _prop("upgrade_status")
     upgrade_command = _prop("upgrade_command")
     distro_sync = _prop("distro_sync")
+    poweroff_after = _prop("poweroff_after")
     enable_disable_repos = _prop("enable_disable_repos")
     module_platform_id = _prop("module_platform_id")
 
@@ -360,6 +364,10 @@ class SystemUpgradeCommand(dnf.cli.Command):
                             action='store_false',
                             help=_("keep installed packages if the new "
                                    "release's version is older"))
+        parser.add_argument('--poweroff', dest='poweroff_after',
+                            action='store_true',
+                            help=_("power off system after the operation "
+                                   "is completed"))
         parser.add_argument('tid', nargs=1, choices=CMDS,
                             metavar="[%s]" % "|".join(CMDS))
         parser.add_argument('--number', type=int, help=_('which logs to show'))
@@ -568,8 +576,13 @@ class SystemUpgradeCommand(dnf.cli.Command):
         if not self.opts.tid[0] == "reboot":
             return
 
+        self.state.poweroff_after = self.opts.poweroff_after
+
         self.log_status(_("Rebooting to perform upgrade."),
                         REBOOT_REQUESTED_ID)
+
+        # Explicit write since __exit__ doesn't seem to get called when rebooting
+        self.state.write()
         reboot()
 
     def run_download(self):
@@ -688,12 +701,15 @@ class SystemUpgradeCommand(dnf.cli.Command):
         self.log_status(_("Download finished."), DOWNLOAD_FINISHED_ID)
 
     def transaction_upgrade(self):
-        Plymouth.message(_("Upgrade complete! Cleaning up and rebooting..."))
-        self.log_status(_("Upgrade complete! Cleaning up and rebooting..."),
+        power_op = "powering off" if self.state.poweroff_after else "rebooting"
+
+        Plymouth.message(_("Upgrade complete! Cleaning up and " + power_op + "..."))
+        self.log_status(_("Upgrade complete! Cleaning up and " + power_op + "..."),
                         UPGRADE_FINISHED_ID)
+
         self.run_clean()
         if self.opts.tid[0] == "upgrade":
-            reboot()
+            reboot(self.state.poweroff_after)
 
 
 class OfflineUpgradeCommand(SystemUpgradeCommand):
