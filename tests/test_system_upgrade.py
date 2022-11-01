@@ -322,7 +322,7 @@ class RebootCheckCommandTestCase(CommandTestCaseBase):
     def check_reboot(self, status='complete', lexists=False, command='system-upgrade',
                      state_command='system-upgrade'):
         with patch('system_upgrade.os.path.lexists') as lexists_func:
-            self.command.state.state_version = 2
+            self.command.state.state_version = 3
             self.command.state.download_status = status
             self.command.opts = mock.MagicMock()
             self.command.opts.command = command
@@ -356,12 +356,28 @@ class RebootCheckCommandTestCase(CommandTestCaseBase):
     @patch('system_upgrade.reboot')
     def test_run_reboot(self, reboot, log_status, run_prepare):
         self.command.opts = mock.MagicMock()
+        self.command.opts.poweroff_after = False
         self.command.opts.tid = ["reboot"]
         self.command.run_reboot()
         run_prepare.assert_called_once_with()
         self.assertEqual(system_upgrade.REBOOT_REQUESTED_ID,
                          log_status.call_args[0][1])
         self.assertTrue(reboot.called)
+
+    @patch('system_upgrade.SystemUpgradeCommand.run_prepare')
+    @patch('system_upgrade.SystemUpgradeCommand.log_status')
+    @patch('system_upgrade.reboot')
+    def test_reboot_poweroff_after(self, reboot, log_status, run_prepare):
+        self.command.opts = mock.MagicMock()
+        self.command.opts.tid = ["reboot"]
+        self.command.opts.poweroff_after = True
+        self.command.run_reboot()
+        run_prepare.assert_called_with()
+        self.assertEqual(system_upgrade.REBOOT_REQUESTED_ID,
+                         log_status.call_args[0][1])
+        self.assertTrue(self.command.state.poweroff_after)
+        self.assertTrue(reboot.called)
+
 
     @patch('system_upgrade.SystemUpgradeCommand.run_prepare')
     @patch('system_upgrade.SystemUpgradeCommand.log_status')
