@@ -44,6 +44,8 @@ Synopsis
 
 ``dnf system-upgrade reboot``
 
+``dnf system-upgrade reboot --poweroff``
+
 ``dnf system-upgrade clean``
 
 ``dnf system-upgrade log``
@@ -54,6 +56,8 @@ Synopsis
 
 ``dnf offline-upgrade reboot``
 
+``dnf offline-upgrade reboot --poweroff``
+
 ``dnf offline-upgrade clean``
 
 ``dnf offline-upgrade log``
@@ -63,6 +67,8 @@ Synopsis
 ``dnf offline-distrosync download [OPTIONS]``
 
 ``dnf offline-distrosync reboot``
+
+``dnf offline-distrosync reboot --poweroff``
 
 ``dnf offline-distrosync clean``
 
@@ -115,6 +121,10 @@ Options
     if they are older than what is currently installed. This is the opposite of
     ``--distro-sync``. If both are specified, the last option will be used. The option cannot be
     used with the ``offline-distrosync`` command.
+
+``--poweroff``
+    When applied with the ``reboot`` subcommand, the system will power off after
+    upgrades are completed, instead of restarting.
 
 ``--number``
     Applied with ``log`` subcommand will show the log specified by the number.
