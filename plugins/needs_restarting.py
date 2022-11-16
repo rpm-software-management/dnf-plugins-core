@@ -34,6 +34,7 @@ import functools
 import os
 import re
 import stat
+import time
 
 
 # For which package updates we should recommend a reboot
@@ -199,7 +200,28 @@ class ProcessStart(object):
 
     @staticmethod
     def get_boot_time():
-        return int(os.stat('/proc/1').st_mtime)
+        """
+        We have two sources from which to derive the boot time. These values vary
+        depending on containerization, existence of a Real Time Clock, etc.
+        For our purposes we want the latest derived value.
+        - st_mtime of /proc/1
+             Reflects the time the first process was run after booting
+             This works for all known cases except machines without
+             a RTC - they awake at the start of the epoch.
+        - /proc/uptime
+             Seconds field of /proc/uptime subtracted from the current time
+             Works for machines without RTC iff the current time is reasonably correct.
+             Does not work on containers which share their kernel with the
+             host - there the host kernel uptime is returned
+        """
+
+        proc_1_boot_time = int(os.stat('/proc/1').st_mtime)
+        if os.path.isfile('/proc/uptime'):
+            with open('/proc/uptime', 'rb') as f:
+                uptime = f.readline().strip().split()[0].strip()
+                proc_uptime_boot_time = int(time.time() - float(uptime))
+                return max(proc_1_boot_time, proc_uptime_boot_time)
+        return proc_1_boot_time
 
     @staticmethod
     def get_sc_clk_tck():
