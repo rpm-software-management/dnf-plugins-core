@@ -36,7 +36,7 @@ Name:           dnf-plugins-core
 Version:        4.3.1
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
-License:        GPLv2+
+License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/dnf-plugins-core
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
