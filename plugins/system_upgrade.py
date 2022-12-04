@@ -701,11 +701,13 @@ class SystemUpgradeCommand(dnf.cli.Command):
         self.log_status(_("Download finished."), DOWNLOAD_FINISHED_ID)
 
     def transaction_upgrade(self):
-        power_op = "powering off" if self.state.poweroff_after else "rebooting"
+        if self.state.poweroff_after:
+            upgrade_complete_msg = _("Upgrade complete! Cleaning up and powering off...")
+        else:
+            upgrade_complete_msg = _("Upgrade complete! Cleaning up and rebooting...")
 
-        Plymouth.message(_("Upgrade complete! Cleaning up and " + power_op + "..."))
-        self.log_status(_("Upgrade complete! Cleaning up and " + power_op + "..."),
-                        UPGRADE_FINISHED_ID)
+        Plymouth.message(upgrade_complete_msg)
+        self.log_status(upgrade_complete_msg, UPGRADE_FINISHED_ID)
 
         self.run_clean()
         if self.opts.tid[0] == "upgrade":
