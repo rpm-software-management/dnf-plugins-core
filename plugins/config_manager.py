@@ -50,6 +50,12 @@ class ConfigManagerCommand(dnf.cli.Command):
             '--add-repo', default=[], action='append', metavar='URL',
             help=_('add (and enable) the repo from the specified file or url'))
         parser.add_argument(
+            '--import-gpg-keys', default=False, action='store_true',
+            help=_('import gpg keys from repo'))
+        parser.add_argument(
+            '--all', default=False, action='store_true',
+            help=_('select all repos (used with --import-gpg-keys)'))
+        parser.add_argument(
             '--dump', default=False, action='store_true',
             help=_('print current configuration values to stdout'))
         parser.add_argument(
@@ -74,13 +80,21 @@ class ConfigManagerCommand(dnf.cli.Command):
                  self.opts.dump or
                  self.opts.dump_variables or
                  self.opts.set_disabled or
-                 self.opts.set_enabled) ):
+                 self.opts.set_enabled or
+                 self.opts.import_gpg_keys)):
             self.cli.optparser.error(_("one of the following arguments is required: {}")
                                      .format(' '.join([
                                          "--save", "--add-repo",
                                          "--dump", "--dump-variables",
                                          "--set-enabled", "--enable",
-                                         "--set-disabled", "--disable"])))
+                                         "--set-disabled", "--disable",
+                                         "--import-gpg-keys"])))
+
+        if self.opts.all and not self.opts.import_gpg_keys:
+            self.cli.optparser.error(_("cannot specify --all without --import-gpg-keys"))
+
+        if self.opts.all and self.opts.crepo != []:
+            self.cli.optparser.error(_("cannot specify repo and --all at the same time"))
 
         # warn with hint if --enablerepo or --disablerepo argument was passed
         if self.opts.repos_ed != []:
@@ -88,7 +102,7 @@ class ConfigManagerCommand(dnf.cli.Command):
                              "with config manager. Use --set-enabled/--set-disabled instead."))
 
         if (self.opts.save or self.opts.set_enabled or
-                self.opts.set_disabled or self.opts.add_repo):
+                self.opts.set_disabled or self.opts.add_repo or self.opts.import_gpg_keys):
             demands.root_user = True
 
         # sanitize commas https://bugzilla.redhat.com/show_bug.cgi?id=1830530
@@ -113,7 +127,7 @@ class ConfigManagerCommand(dnf.cli.Command):
         def match_repos(key, add_matching_repos):
             matching = self.base.repos.get_matching(key)
             if not matching:
-                not_matching_repos_id.add(name)
+                not_matching_repos_id.add(key)
             elif add_matching_repos:
                 matching_repos.extend(matching)
 
@@ -123,6 +137,9 @@ class ConfigManagerCommand(dnf.cli.Command):
             if hasattr(self.opts, 'repo_setopts'):
                 for name in self.opts.repo_setopts.keys():
                     match_repos(name, False)
+        elif self.opts.all:
+            match_repos('*', True)
+            matching_repos = list(filter(lambda repo: repo.enabled and repo.gpgkey, matching_repos))
         else:
             if hasattr(self.opts, 'repo_setopts'):
                 for name in self.opts.repo_setopts.keys():
@@ -169,6 +186,9 @@ class ConfigManagerCommand(dnf.cli.Command):
             if self.opts.dump:
                 print(self.base.output.fmtSection('repo: ' + repo.id))
                 print(repo.dump())
+            if self.opts.import_gpg_keys:
+                fn = lambda x, y: self.output.userconfirm()
+                self.cli.base.retrieve_key_for_repo(repo, fn)
 
     def add_repo(self):
         """ process --add-repo option """
