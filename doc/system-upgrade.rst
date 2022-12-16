@@ -34,8 +34,6 @@ is fully upgraded (``dnf --refresh upgrade``).
 The ``system-upgrade`` command also performes additional actions necessary for the upgrade of the
 system, for example an upgrade of groups and environments.
 
-.. WARNING:: The ``system-upgrade`` command is not supported on the RHEL distribution.
-
 --------
 Synopsis
 --------
