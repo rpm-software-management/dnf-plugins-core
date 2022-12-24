@@ -138,17 +138,15 @@ class CoprCommand(dnf.cli.Command):
         config_path = self.base.conf.pluginconfpath[0]
 
         default_config_file = os.path.join(config_path, PLUGIN_CONF + ".conf")
+        # would use appdirs, but that would mean a new dependency
+        vendor_config_file = os.path.join("/usr/share/dnf/plugins/", PLUGIN_CONF + ".vendor.conf")
+
         if os.path.isfile(default_config_file):
             config_files.append(default_config_file)
 
-            copr_plugin_config.read(default_config_file)
-            if copr_plugin_config.has_option('main', 'distribution') and\
-                    copr_plugin_config.has_option('main', 'releasever'):
-                distribution = copr_plugin_config.get('main', 'distribution')
-                releasever = copr_plugin_config.get('main', 'releasever')
-                self.chroot_config = [distribution, releasever]
-            else:
-                self.chroot_config = [False, False]
+        if os.path.isfile(vendor_config_file):
+            self._get_copr_chroot(vendor_config_file)
+        self._get_copr_chroot(default_config_file)
 
         for filename in os.listdir(os.path.join(config_path, PLUGIN_CONF + ".d")):
             if filename.endswith('.conf'):
@@ -210,6 +208,25 @@ class CoprCommand(dnf.cli.Command):
             return config.get(hub, section)
         except (NoOptionError, NoSectionError):
             return default
+
+    def _get_copr_chroot(self, config):
+        """
+        Sets the Copr root from a config file
+        This is refactored from configure() to avoid code duplication
+        """
+        copr_plugin_config = ConfigParser()
+        if not os.path.isfile(config):
+            return
+        copr_plugin_config.read(config)
+        if copr_plugin_config.has_option('main', 'distribution') and\
+                copr_plugin_config.has_option('main', 'releasever'):
+            distribution = copr_plugin_config.get('main', 'distribution')
+            releasever = copr_plugin_config.get('main', 'releasever')
+            self.chroot_config = [distribution, releasever]
+        else:
+            # check if the chroot_config is already set from a previous call
+            if not self.chroot_config:
+                self.chroot_config = [False, False]
 
     def _user_warning_before_prompt(self, text):
         sys.stderr.write("{0}\n".format(text.strip()))
