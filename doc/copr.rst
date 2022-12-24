@@ -80,6 +80,7 @@ Configuration (copr)
 
 ``/etc/dnf/plugins/copr.conf``
 ``/etc/dnf/plugins/copr.d/``
+``/usr/share/dnf/plugins/copr.vendor.conf``
 
 Configuration file should contain a section for each hub, each section having ``hostname``
  (mandatory), ``protocol`` (default ``https``) and ``port`` (default ``443``) parameters.::
@@ -89,6 +90,14 @@ Configuration file should contain a section for each hub, each section having ``
   protocol = https
   port = 443
 
+
+There is also a vendor configuration that allows a vendor to specify the distro ID that copr should use by default.
+This is useful for vendors that want to use Copr for their own distro. The vendor configuration is in
+``/usr/share/dnf/plugins/copr.vendor.conf`` (optional) or ``/etc/dnf/plugins/copr.conf``::
+
+  [main]
+  distribution = fedora
+  releasever = 37
 ----------------------
 Arguments (playground)
 ----------------------
