@@ -40,9 +40,6 @@ class RefreshPackagekit(dnf.Plugin):
             bus = dbus.SystemBus()
             proxy = bus.get_object('org.freedesktop.PackageKit', '/org/freedesktop/PackageKit')
             iface = dbus.Interface(proxy, dbus_interface='org.freedesktop.PackageKit')
-            trans = iface.CreateTransaction()
-            trans_proxy = bus.get_object('org.freedesktop.PackageKit', trans)
-            trans_iface = dbus.Interface(trans_proxy, dbus_interface='org.freedesktop.PackageKit.Transaction')
-            trans_iface.RefreshCache(False)
+            iface.StateHasChanged('dnf-updated')
         except:
             pass
