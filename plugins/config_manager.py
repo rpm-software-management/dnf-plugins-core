@@ -41,8 +41,8 @@ class ConfigManagerCommand(dnf.cli.Command):
     @staticmethod
     def set_argparser(parser):
         parser.add_argument(
-            'crepo', nargs='*', metavar='repo',
-            help=_('repo to modify'))
+            'crepo', nargs='*', metavar='section',
+            help=_('configuration sections to manage, "main" or repoid'))
         parser.add_argument(
             '--save', default=False, action='store_true',
             help=_('save the current options (useful with --setopt)'))
@@ -111,6 +111,8 @@ class ConfigManagerCommand(dnf.cli.Command):
         not_matching_repos_id = set()  # IDs of not matched repositories
 
         def match_repos(key, add_matching_repos):
+            if key == 'main':
+                return
             matching = self.base.repos.get_matching(key)
             if not matching:
                 not_matching_repos_id.add(name)
