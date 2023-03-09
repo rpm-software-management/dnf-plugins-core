@@ -25,7 +25,7 @@ Check for running processes that should be restarted.
 Synopsis
 --------
 
-``dnf needs-restarting [-u] [-r]``
+``dnf needs-restarting [-u] [-r] [-s]``
 
 -----------
 Description
@@ -42,11 +42,9 @@ Options
 All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for details.
 
 ``-u, --useronly``
-
     Only consider processes belonging to the running user.
 
 ``-r, --reboothint``
-
     Only report whether a reboot is required (exit code 1) or not (exit code 0).
 
 ``-s, --services``
