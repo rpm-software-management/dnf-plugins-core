@@ -46,7 +46,11 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
     Delete local packages no longer present in repository.
 
 ``--download-metadata``
-    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c on it.
+    Download all repository metadata. Downloaded copy is instantly usable as a repository, no need to run createrepo_c
+    on it. When the option is used with `--newest-only`, only latest packages will be downloaded, but metadata will
+    still contain older packages. It might be useful to update metadata using `createrepo_c --update` to remove
+    the packages with missing RPM files from metadata. Otherwise, DNF ends with an error due to the missing files
+    whenever it tries to download older packages.
 
 ``-g, --gpgcheck``
     Remove packages that fail GPG signature checking after downloading. Exit code is ``1`` if at least one package was removed.
