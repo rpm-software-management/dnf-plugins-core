@@ -690,5 +690,25 @@
     [
         2127011,
         "dnf-plugins-core show errors when use LANG=es_ES-UTF-8"
+    ],
+    [
+        2054235,
+        "Offline updates"
+    ],
+    [
+        1939975,
+        "'dnf offline-upgrade' does not support --advisory properly"
+    ],
+    [
+        2137935,
+        "dnf needs-restarting always true"
+    ],
+    [
+        2132383,
+        "reposync produces wrong metadata when using both -n and --download-metadata options"
+    ],
+    [
+        2182004,
+        "reposync produces wrong metadata when using both -n and --download-metadata options"
     ]
 ]

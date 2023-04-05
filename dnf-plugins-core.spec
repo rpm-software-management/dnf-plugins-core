@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.3.1
+Version:        4.4.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -813,6 +813,16 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Wed Apr 05 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.0-1
+- system-upgrade: Move from extras to core (RhBug:2054235)
+- system-upgrade: Add support for security filters in offline-upgrade (RhBug:1939975)
+- needs-restarting: Fix boot time derivation for systems with no rtc (RhBug:2137935)
+- system-upgrade: Add --poweroff option to reboot
+- download: Skip downloading weak deps when install_weak_deps=False
+- copr: Switch to reading a copr.vendor.conf file to determine a vendor ID
+- config-manager: Allow to specify the "main" section
+- reposync: Documentation update (RhBug:2132383, 2182004)
+
 * Fri Sep 23 2022 Jaroslav Rohel <jrohel@redhat.com> - 4.3.1-1
 - Update translations (fix RhBug:2127011)
 

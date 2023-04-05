@@ -22,6 +22,30 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.4.0 Release Notes
+===================
+
+- New features:
+  - system-upgrade: Move from extras to core (RhBug:2054235)
+  - system-upgrade: Add --poweroff option to reboot
+  - copr: Switch to reading a copr.vendor.conf file to determine a vendor ID
+  - config-manager: Allow to specify the "main" section
+
+- Bug fixes:
+  - system-upgrade: Add support for security filters in offline-upgrade (RhBug:1939975)
+  - needs-restarting: Fix boot time derivation for systems with no rtc (RhBug:2137935)
+  - download: Skip downloading weak deps when install_weak_deps=False
+  - reposync: Documentation update (RhBug:2132383, 2182004)
+
+Bugs fixed in 4.4.0:
+
+* :rhbug:`2054235`
+* :rhbug:`1939975`
+* :rhbug:`2137935`
+* :rhbug:`2132383`
+* :rhbug:`2182004`
+
+===================
 4.3.1 Release Notes
 ===================
 
