@@ -101,7 +101,7 @@ class PostTransactionActions(dnf.Plugin):
                    "repoid": ts_item.from_repo,
                    "state": action}
 
-        result = libdnf.conf.ConfigParser_substitute(command, vardict)
+        result = libdnf.conf.ConfigParser.substitute(command, vardict)
         return result
 
     def transaction(self):
