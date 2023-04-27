@@ -179,7 +179,7 @@ class OpenedFile(object):
     def presumed_name(self):
         """Calculate the name of the file pre-transaction.
 
-        In case of a file that got deleted during the transactionm, possibly
+        In case of a file that got deleted during the transaction, possibly
         just because of an upgrade to a newer version of the same file, RPM
         renames the old file to the same name with a hexadecimal suffix just
         before delting it.
