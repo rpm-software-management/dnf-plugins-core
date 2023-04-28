@@ -20,6 +20,8 @@ from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from unittest.mock import patch, Mock
+import dbus
 import needs_restarting
 import tests.support
 
@@ -29,8 +31,6 @@ MM_FILE = '7fc4e1168000-7fc4e1169000 rw-s 1096dd000 00:05 7749' \
           '                      /dev/dri/card0'
 SO_FILE = '30efe06000-30efe07000 r--p 00006000 08:02 139936' \
           '                         /usr/lib64/libSM.so.6.0.1'
-
-
 class NeedsRestartingTest(tests.support.TestCase):
     def test_smap2opened_file(self):
         func = needs_restarting.smap2opened_file
@@ -46,6 +46,17 @@ class NeedsRestartingTest(tests.support.TestCase):
         self.assertTrue(ofile.deleted)
         self.assertEqual(ofile.name, '/usr/lib64/libXfont.so.1.4.1;5408628d')
 
+    def test_get_service_dbus_nounitforpid(self):
+        func = needs_restarting.get_service_dbus
+        # So, This is gonna look kinda screwy unless you are aware of what
+        # this proxies interface is actually doing. The GetUnitByPid function
+        # is normally "dynamically" defined by the get_dbus_method at runtime.
+        # As such there's no actual way to mock it out in any meaningful way
+        # without create=True.
+        with patch( "dbus.proxies.Interface.GetUnitByPID", create=True, side_effect=dbus.DBusException('org.freedesktop.systemd1.NoUnitForPID: PID 1234 does not belong to any loaded unit.') ), \
+             patch( "dbus.SystemBus", return_value=Mock(spec=dbus.Bus) ), \
+             patch( "dbus.bus.BusConnection.__new__", side_effect=dbus.DBusException("Never should hit this exception if mock above works")):
+                 self.assertIsNone(func(1234))
 
 class OpenedFileTest(tests.support.TestCase):
     def test_presumed_name(self):
