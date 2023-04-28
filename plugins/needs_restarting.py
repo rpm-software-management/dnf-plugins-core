@@ -138,10 +138,20 @@ def get_service_dbus(pid):
         systemd_manager_object,
         'org.freedesktop.systemd1.Manager'
     )
-    service_proxy = bus.get_object(
-        'org.freedesktop.systemd1',
-        systemd_manager_interface.GetUnitByPID(pid)
-    )
+    service_proxy = None
+    try:
+        service_proxy = bus.get_object(
+            'org.freedesktop.systemd1',
+            systemd_manager_interface.GetUnitByPID(pid)
+        )
+    except dbus.DBusException as e:
+        # There is no unit for the pid. Usually error is 'NoUnitForPid'.
+        # Considering what we do at the bottom (just return if not service)
+        # Then there's really no reason to exit here on that exception.
+        # Log what's happened then move on.
+        msg = str(e)
+        logger.warning("Failed to get systemd unit for PID {}: {}".format(pid, msg))
+        return
     service_properties = dbus.Interface(
         service_proxy, dbus_interface="org.freedesktop.DBus.Properties")
     name = service_properties.Get(
