@@ -196,7 +196,6 @@ Provides:       yum-utils = %{version}-%{release}
 Provides:       dnf-utils = %{version}-%{release}
 Obsoletes:      dnf-utils < %{version}-%{release}
 %endif
-Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       %{name} = %{version}-%{release}
 %if %{with python3}
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
