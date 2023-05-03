@@ -23,6 +23,7 @@ from __future__ import unicode_literals
 
 import hawkey
 import os
+import re
 import shutil
 import types
 
@@ -186,8 +187,9 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def pkg_download_path(self, pkg):
         repo_target = self.repo_target(pkg.repo)
+        fix_path_re = re.compile(r"^(?:../)+blobstore/[a-fA-F0-9]{64}/")
         pkg_download_path = os.path.realpath(
-            os.path.join(repo_target, pkg.location))
+            os.path.join(repo_target, fix_path_re.sub('', pkg.location)))
         # join() ensures repo_target ends with a path separator (otherwise the
         # check would pass if pkg_download_path was a "sibling" path component
         # of repo_target that has the same prefix).
