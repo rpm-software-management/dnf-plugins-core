@@ -23,8 +23,10 @@ from __future__ import unicode_literals
 
 import hawkey
 import os
+import tempfile
 import shutil
 import types
+import urllib.parse
 
 from dnfpluginscore import _, logger
 from dnf.cli.option_parser import OptionParser
@@ -80,6 +82,21 @@ class RepoSyncCommand(dnf.cli.Command):
                             help=_("Don't add the reponame to the download path."))
         parser.add_argument('-p', '--download-path', default='./',
                             help=_('where to store downloaded repositories'))
+        parser.add_argument('-B', '--blobstore', default=False, action='store_true',
+                            help=_('Enable compatibility with blobstore style repos '
+                                   '(e.g. Amazon Linux repositories)'))
+        parser.add_argument('-M', '--save-relative-mirrorlist', default=False,
+                            action='store_true',
+                            help=_('Save a modified copy of the repo mirror list '
+                                   'pointing to the repo data. pointing to the '
+                                   'repo downloaded. Useful with --blobstore '
+                                   'and needs --save-relative-mirrorlist-prefix '
+                                   'to produce a usable mirrorlist'))
+        parser.add_argument('--save-relative-mirrorlist-prefix',
+                            help=_('Used with --save-releative-mirrorlist so the '
+                                   'resulting mirror list is usable. If hosting '
+                                   'this synced repo on https://example.com/ then '
+                                   'put that URL here.'))
         parser.add_argument('--remote-time', default=False, action='store_true',
                             help=_('try to set local timestamps of local files by '
                                    'the one on the server'))
@@ -169,12 +186,21 @@ class RepoSyncCommand(dnf.cli.Command):
                                 os.path.basename(local_path), error))
                             os.unlink(local_path)
                             gpgcheck_ok = False
+            if self.opts.save_relative_mirrorlist:
+                self.save_relative_mirrorlist(repo)
             if self.opts.delete:
                 self.delete_old_local_packages(repo, pkglist)
         if not gpgcheck_ok:
             raise dnf.exceptions.Error(_("GPG signature check failed."))
 
     def repo_target(self, repo):
+        if self.opts.blobstore:
+            mirrors = repo._repo.getMirrors()
+            dest_path = urllib.parse.urlparse(mirrors[0]).path[1:]
+            dest_path = os.path.join(repo.id if not self.opts.norepopath else '',
+                                     dest_path, '')
+            return _pkgdir(self.opts.destdir or self.opts.download_path,
+                           dest_path)
         return _pkgdir(self.opts.destdir or self.opts.download_path,
                        repo.id if not self.opts.norepopath else '')
 
@@ -186,15 +212,31 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def pkg_download_path(self, pkg):
         repo_target = self.repo_target(pkg.repo)
+
+        pkg_location = pkg.location
         pkg_download_path = os.path.realpath(
-            os.path.join(repo_target, pkg.location))
+            os.path.join(repo_target, pkg_location))
+
+        # If we haven't set the blobstore option (i.e. preserve full path)
+        # and we see references to a file outside our destination,
+        # then we should just store the package in the target location
+        if not self.opts.blobstore:
+            if not pkg_download_path.startswith(os.path.join(repo_target, '')):
+                pkg_location = os.path.basename(pkg_location)
+                pkg_download_path = os.path.realpath(
+                    os.path.join(repo_target, pkg_location))
+
         # join() ensures repo_target ends with a path separator (otherwise the
         # check would pass if pkg_download_path was a "sibling" path component
         # of repo_target that has the same prefix).
-        if not pkg_download_path.startswith(os.path.join(repo_target, '')):
-            raise dnf.exceptions.Error(
-                _("Download target '{}' is outside of download path '{}'.").format(
-                    pkg_download_path, repo_target))
+        repo_target_check = repo_target
+        if self.opts.blobstore:
+            repo_target_check = _pkgdir(pkg.repo.id if not self.opts.norepopath else '', '')
+        else:
+            if not pkg_download_path.startswith(os.path.join(repo_target_check, '')):
+                raise dnf.exceptions.Error(
+                    _("Download target '{}' is outside of download path '{}'.").format(
+                        pkg_download_path, repo_target_check))
         return pkg_download_path
 
     def delete_old_local_packages(self, repo, pkglist):
@@ -224,6 +266,33 @@ class RepoSyncCommand(dnf.cli.Command):
     def download_metadata(self, repo):
         repo_target = self.metadata_target(repo)
         repo._repo.downloadMetadata(repo_target)
+        return True
+
+    def save_relative_mirrorlist(self, repo):
+        if repo.mirrorlist is None:
+            logger.error(_("repo doesn't have mirrorlist to rewrite"))
+            return False
+        target = _pkgdir(self.opts.destdir or self.opts.download_path,
+                         repo.id if not self.opts.norepopath else '')
+        mirrorlist_path = urllib.parse.urlparse(repo.mirrorlist).path[1:]
+        mirrorlist_path = _pkgdir(target, mirrorlist_path)
+
+        if not mirrorlist_path.startswith(os.path.join(target, '')):
+            raise dnf.exceptions.Error(
+                _("Download target '{}' is outside of download path '{}'.").format(
+                    mirrorlist_path, target))
+        os.makedirs(os.path.dirname(mirrorlist_path), exist_ok=True)
+
+        dirname, basename = os.path.split(mirrorlist_path)
+        temp = tempfile.NamedTemporaryFile(mode="w", prefix=basename,
+                                           dir=dirname, delete=False)
+
+        mirrors = repo._repo.getMirrors()
+        for m in mirrors:
+            temp.write(self.opts.save_relative_mirrorlist_prefix + urllib.parse.urlparse(m).path[1:])
+            temp.write("\n")
+
+        os.rename(temp.name, mirrorlist_path)
         return True
 
     def _get_latest(self, query):

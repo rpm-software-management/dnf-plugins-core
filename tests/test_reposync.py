@@ -52,8 +52,8 @@ class TestReposyncFunctions(support.TestCase):
         self.assertEqual(pkgpath, '/become/legend/silver/foo-0-1.0-1.noarch.rpm')
 
         pkg.location = "../pool/foo-0-1.0-1.noarch.rpm"
-        with self.assertRaises(dnf.exceptions.Error):
-            self.cmd.pkg_download_path(pkg)
+        self.assertEqual(self.cmd.pkg_download_path(pkg),
+                         "/become/legend/silver/foo-0-1.0-1.noarch.rpm")
 
     def test_metadata_target_default(self):
         args = '-p /become/legend'.split()
