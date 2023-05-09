@@ -50,7 +50,7 @@ Each non-comment line defines an action and consists of three items separated by
 ``package_filter:transaction_state:command``.
 
 ``package_filter``
-   A (glob-like) filtering rule aplied on the package NEVRA (also in the shortened forms) or
+   A (glob-like) filtering rule applied on the package NEVRA (also in the shortened forms) or
    package files.
 
 ``transaction_state``
