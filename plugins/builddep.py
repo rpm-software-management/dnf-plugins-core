@@ -192,7 +192,7 @@ class BuildDepCommand(dnf.cli.Command):
             os.close(fd)
             raise dnf.exceptions.Error(e)
         os.close(fd)
-        ds = h.dsFromHeader('requirename')
+        ds = rpm.ds(h, 'requirename')
         done = True
         for dep in ds:
             reldep_str = self._rpm_dep2reldep_str(dep)
