@@ -22,6 +22,26 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.4.1 Release Notes
+===================
+
+- New features:
+  - reposync: Implement --safe-write-path option (RhBug:1898089)
+
+- Bug fixes:
+  - needs-restarting: Catch exception when no systemd unit exists for pid (RhBug:2122587)
+  - post-transaction-actions: Fix ConfigParser.substitute call
+
+- Others:
+  - builddep: Avoid using obsolete RPM API
+  - yum-utils: Only depend on python3-dnf, not dnf
+
+Bugs fixed in 4.4.1:
+
+* :rhbug:`1898089`
+* :rhbug:`2122587`
+
+===================
 4.4.0 Release Notes
 ===================
 

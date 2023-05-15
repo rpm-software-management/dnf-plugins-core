@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.4.0
+Version:        4.4.1
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -812,6 +812,13 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Mon May 15 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.1-1
+- reposync: Implement --safe-write-path option (RhBug:1898089)
+- needs-restarting: Catch exception when no systemd unit exists for pid (RhBug:2122587)
+- post-transaction-actions: Fix ConfigParser.substitute call
+- builddep: Avoid using obsolete RPM API
+- yum-utils: Only depend on python3-dnf, not dnf
+
 * Wed Apr 05 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.0-1
 - system-upgrade: Move from extras to core (RhBug:2054235)
 - system-upgrade: Add support for security filters in offline-upgrade (RhBug:1939975)

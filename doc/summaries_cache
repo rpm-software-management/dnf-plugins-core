@@ -710,5 +710,13 @@
     [
         2182004,
         "reposync produces wrong metadata when using both -n and --download-metadata options"
+    ],
+    [
+        1898089,
+        "dnf reposync doesn't handle well relative paths"
+    ],
+    [
+        2122587,
+        "needs-restarting -s fail with mysql container"
     ]
 ]
