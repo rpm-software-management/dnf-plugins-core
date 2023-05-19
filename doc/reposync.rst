@@ -71,9 +71,6 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
 ``-p <download-path>, --download-path=<download-path>``
     Root path under which the downloaded repositories are stored, relative to the current working directory. Defaults to the current working directory. Every downloaded repository has a subdirectory named after its ID under this path.
 
-``--safe-write-path``
-    Specify the filesystem path prefix under which the reposync is allowed to write. If not specified it defaults to download path of the repository. Useful for repositories that use relative locations of packages out of repository directory (e.g. "../packages_store/foo.rpm"). Use with care, any file under the ``safe-write-path`` can be overwritten. Can be only used when syncing a single repository.
-
 ``--remote-time``
     Try to set the timestamps of the downloaded files to those on the remote side.
 
