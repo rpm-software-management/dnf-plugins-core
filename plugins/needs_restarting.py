@@ -284,6 +284,14 @@ class NeedsRestartingCommand(dnf.cli.Command):
             for pkg in installed.filter(name=NEED_REBOOT):
                 if pkg.installtime > process_start.boot_time:
                     need_reboot.add(pkg.name)
+            stale_pids = set()
+            uid = os.geteuid() if self.opts.useronly else None
+            for ofile in list_opened_files(uid):
+                pkg = owning_pkg_fn(ofile.presumed_name)
+                if pkg is None:
+                    continue
+                if pkg.installtime > process_start(ofile.pid):
+                    need_reboot.add(pkg.name)
             if need_reboot:
                 print(_('Core libraries or services have been updated '
                         'since boot-up:'))
