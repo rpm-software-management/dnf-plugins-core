@@ -146,7 +146,8 @@ class CoprCommand(dnf.cli.Command):
 
         if os.path.isfile(vendor_config_file):
             self._get_copr_chroot(vendor_config_file)
-        self._get_copr_chroot(default_config_file)
+        else:
+            self._get_copr_chroot(default_config_file)
 
         for filename in os.listdir(os.path.join(config_path, PLUGIN_CONF + ".d")):
             if filename.endswith('.conf'):
@@ -214,9 +215,9 @@ class CoprCommand(dnf.cli.Command):
         Sets the Copr root from a config file
         This is refactored from configure() to avoid code duplication
         """
-        copr_plugin_config = ConfigParser()
         if not os.path.isfile(config):
             return
+        copr_plugin_config = ConfigParser()
         copr_plugin_config.read(config)
         if copr_plugin_config.has_option('main', 'distribution') and\
                 copr_plugin_config.has_option('main', 'releasever'):
