@@ -1,3 +1,4 @@
+# coding: utf-8
 # Copyright (C) 2014 Red Hat, Inc.
 #
 # This copyrighted material is made available to anyone wishing to use,
@@ -15,7 +16,6 @@
 # Red Hat, Inc.
 #
 
-
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
@@ -24,6 +24,7 @@ from unittest.mock import patch, Mock
 import dbus
 import needs_restarting
 import tests.support
+import tempfile
 
 DEL_FILE = '3dcf000000-3dcf032000 r-xp 00000000 08:02 140759                ' \
            '         /usr/lib64/libXfont.so.1.4.1;5408628d (deleted)'
@@ -57,6 +58,17 @@ class NeedsRestartingTest(tests.support.TestCase):
              patch( "dbus.SystemBus", return_value=Mock(spec=dbus.Bus) ), \
              patch( "dbus.bus.BusConnection.__new__", side_effect=dbus.DBusException("Never should hit this exception if mock above works")):
                  self.assertIsNone(func(1234))
+
+    def test_list_opened_files_garbage_filename(self):
+        tempObj = tempfile.NamedTemporaryFile()
+        tempFile = tempObj.name
+        with open(tempFile, 'wb') as bogusFile:
+            bogusFile.write(b'151e7f7b7000-151e7f7b8000 r--p 00006000 fd:01 14744                      /usr/lib64/lib\xe5Evil-13.37.so')
+        smaps = [[1234,tempObj.name]]
+        with patch("needs_restarting.list_smaps", return_value=smaps):
+            ofiles = list(needs_restarting.list_opened_files(None));
+            self.assertEqual(ofiles[0].presumed_name, '/usr/lib64/lib�Evil-13.37.so')
+
 
 class OpenedFileTest(tests.support.TestCase):
     def test_presumed_name(self):
