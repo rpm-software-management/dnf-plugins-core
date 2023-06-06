@@ -74,7 +74,7 @@ def list_opened_files(uid):
         try:
             if uid is not None and uid != owner_uid(smaps):
                 continue
-            with open(smaps, 'r') as smaps_file:
+            with open(smaps, 'r', errors='replace') as smaps_file:
                 lines = smaps_file.readlines()
         except EnvironmentError:
             logger.warning("Failed to read PID %d's smaps.", pid)
