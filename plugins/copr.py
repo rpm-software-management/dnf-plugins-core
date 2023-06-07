@@ -444,7 +444,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
             dist = linux_distribution()
         # Get distribution architecture
         distarch = self.base.conf.substitutions['basearch']
-        if any([name in dist for name in ["Fedora", "Fedora Linux"]]):
+        if "Fedora" in dist[0]:
             if "Rawhide" in dist:
                 chroot = ("fedora-rawhide-" + distarch)
             # workaround for enabling repos in Rawhide when VERSION in os-release
@@ -470,7 +470,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
             else:
                 chroot = ("opensuse-leap-{0}-{1}".format(dist[1], distarch))
         else:
-            chroot = ("epel-%s-x86_64" % dist[1].split(".", 1)[0])
+            chroot = ("epel-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
         return chroot
 
     def _download_repo(self, project_name, repo_filename):
