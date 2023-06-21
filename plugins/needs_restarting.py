@@ -42,6 +42,8 @@ import time
 NEED_REBOOT = ['kernel', 'kernel-rt', 'glibc', 'linux-firmware',
                'systemd', 'dbus', 'dbus-broker', 'dbus-daemon']
 
+NEED_REBOOT_DEPENDS_ON_DBUS = ['zlib']
+
 def get_options_from_dir(filepath, base):
     """
     Provide filepath as string if single dir or list of strings
@@ -277,15 +279,24 @@ class NeedsRestartingCommand(dnf.cli.Command):
         NEED_REBOOT.extend(opt)
         if self.opts.reboothint:
             need_reboot = set()
+            need_reboot_depends_on_dbus = set()
             installed = self.base.sack.query().installed()
             for pkg in installed.filter(name=NEED_REBOOT):
                 if pkg.installtime > process_start.boot_time:
                     need_reboot.add(pkg.name)
-            if need_reboot:
+
+            dbus_installed = installed.filter(name=['dbus', 'dbus-daemon', 'dbus-broker'])
+            if len(dbus_installed) != 0:
+                for pkg in installed.filter(name=NEED_REBOOT_DEPENDS_ON_DBUS):
+                    if pkg.installtime > process_start.boot_time:
+                        need_reboot_depends_on_dbus.add(pkg.name)
+            if need_reboot or need_reboot_depends_on_dbus:
                 print(_('Core libraries or services have been updated '
                         'since boot-up:'))
                 for name in sorted(need_reboot):
                     print('  * %s' % name)
+                for name in sorted(need_reboot_depends_on_dbus):
+                    print('  * %s (dependency of dbus. Recommending reboot of dbus)' % name)
                 print()
                 print(_('Reboot is required to fully utilize these updates.'))
                 print(_('More information:'),
