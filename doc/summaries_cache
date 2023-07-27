@@ -718,5 +718,9 @@
     [
         2122587,
         "needs-restarting -s fail with mysql container"
+    ],
+    [
+        2211844,
+        "`dnf offline-upgrade reboot --poweroff` doesn't poweroff after upgrade"
     ]
 ]

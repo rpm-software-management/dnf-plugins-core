@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.4.2 Release Notes
+===================
+
+- Fixed copr.vendor.conf not loading
+- "dnf copr enable" on "Asahi Fedora Linux Remix" guesses epel..x86_64
+- system-upgrade: change http to https in unit file
+
+- Bug fixes:
+  - Fix systemd dependencies when using --poweroff option in system-upgrade plugin (RhBug:2211844)
+
+Bugs fixed in 4.4.2:
+
+* :rhbug:`2211844`
+
+===================
 4.4.1 Release Notes
 ===================
 

@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.4.1
+Version:        4.4.2
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -812,6 +812,12 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Thu Jul 27 2023 Nicola Sella <nsella@redhat.com> - 4.4.2-1
+- Fixed copr.vendor.conf not loading
+- "dnf copr enable" on "Asahi Fedora Linux Remix" guesses epel..x86_64
+- system-upgrade: change http to https in unit file
+- Fix systemd dependencies when using --poweroff option in system-upgrade plugin (RhBug:2211844)
+
 * Mon May 15 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.1-1
 - reposync: Implement --safe-write-path option (RhBug:1898089)
 - needs-restarting: Catch exception when no systemd unit exists for pid (RhBug:2122587)
