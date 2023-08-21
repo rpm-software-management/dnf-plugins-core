@@ -39,8 +39,9 @@ import time
 
 # For which package updates we should recommend a reboot
 # Mostly taken from https://access.redhat.com/solutions/27943
-NEED_REBOOT = ['kernel', 'kernel-rt', 'glibc', 'linux-firmware',
-               'systemd', 'dbus', 'dbus-broker', 'dbus-daemon']
+NEED_REBOOT = ['kernel', 'kernel-core', 'kernel-rt', 'glibc',
+               'linux-firmware', 'systemd', 'dbus', 'dbus-broker',
+               'dbus-daemon']
 
 def get_options_from_dir(filepath, base):
     """
