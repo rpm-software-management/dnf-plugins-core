@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2020-04-20 13:40+0000\n"
-"Last-Translator: Adolfo Ketzer <reztek@gmail.com>\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2022-10-15 08:19+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Catalan <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.1\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -114,12 +114,12 @@ msgstr ""
 
 #: plugins/changelog.py:60
 msgid "PACKAGE"
-msgstr ""
+msgstr "PAQUET"
 
 #: plugins/changelog.py:81 plugins/debuginfo-install.py:90
 #, python-format
 msgid "No match for argument: %s"
-msgstr ""
+msgstr "No hi ha cap coincidència per a l'argument: %s"
 
 #: plugins/changelog.py:109
 msgid "Listing changelogs since {}"
@@ -148,8 +148,8 @@ msgid "manage {prog} configuration options and repositories"
 msgstr ""
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "Dipòsit a modificar"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr ""
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -187,23 +187,23 @@ msgid ""
 "manager. Use --set-enabled/--set-disabled instead."
 msgstr ""
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Cap dipòsit que coincideixi per modificar: %s."
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Afegiment del dipòsit: %s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Ha fallat la configuració del dipòsit"
 msgstr[1] "Ha fallat la configuració dels dipòsits"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "No es pot desar el dipòsit al repofile %s: %s"
@@ -286,45 +286,45 @@ msgstr "Llista els dipòsits COPR disponibles amb per al NOM d'usuari"
 msgid "Specify an instance of Copr to work with"
 msgstr ""
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "Error: "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
 msgstr ""
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "l'ordre copr requereix dos paràmetres addicionals"
 
-#: plugins/copr.py:246
+#: plugins/copr.py:264
 msgid "Too many arguments."
-msgstr ""
+msgstr "Massa arguments."
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "utilitzeu el format `usuari_copr/projecte_copr` per referenciar el projecte "
 "copr"
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "format dolent de projecte copr"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -339,78 +339,78 @@ msgid ""
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 msgstr ""
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "S'ha habilitat correctament el dipòsit."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "S'ha inhabilitat correctament el dipòsit."
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "S'ha eliminat correctament el dipòsit."
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "Subordre desconeguda {}."
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr ""
 "No es poden analitzar sintàcticament els dipòsits per a l'usuari '{}'."
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "Llista dels copr {}"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "No s'ha proporcionat cap descripció"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "No es pot analitzar sintàcticament la cerca '{}'."
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "Coincidència: {}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "No s'ha proporcionat cap descripció."
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "Resposta bona i segura. Se surt."
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "Aquesta ordre s'ha d'executar com a root."
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr ""
 
-#: plugins/copr.py:494
+#: plugins/copr.py:512
 #, fuzzy, python-brace-format
 #| msgid "Such repository does not exist."
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "No existeix aquest dipòsit."
 
-#: plugins/copr.py:497
+#: plugins/copr.py:515
 #, fuzzy
 #| msgid "List enabled Copr repositories"
 msgid ""
@@ -420,7 +420,7 @@ msgstr ""
 "\n"
 "Llista els dipòsits COPR habilitats "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -430,19 +430,19 @@ msgid ""
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
 
-#: plugins/copr.py:505
+#: plugins/copr.py:523
 #, fuzzy, python-brace-format
 #| msgid "Such repository does not exist."
 msgid "Project {0} does not exist."
 msgstr "No existeix aquest dipòsit."
 
-#: plugins/copr.py:508
+#: plugins/copr.py:526
 #, fuzzy, python-brace-format
 #| msgid "Failed to disable copr repo {}/{}"
 msgid "Failed to connect to {0}: {1}"
 msgstr "No s'ha pogut inhabilitar el dipòsit copr {}/{}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -459,46 +459,46 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr ""
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr ""
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "No s'ha pogut inhabilitar el dipòsit copr {}/{}"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "Resposta desconeguda del servidor."
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
 msgstr "Interactua amb el dipòsit Playground."
 
-#: plugins/copr.py:666
+#: plugins/copr.py:684
 #, fuzzy
 #| msgid "Interact with Playground repository."
 msgid "Enabling a Playground repository."
 msgstr "Interactua amb el dipòsit Playground."
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr ""
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "S'han habilitat correctament els dipòsits Playground."
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "S'han inhabilitat correctament els dipòsits Playground."
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
 msgstr "S'han actualitzat correctament els dipòsits Playground."
 
@@ -593,7 +593,7 @@ msgstr ""
 
 #: plugins/debuginfo-install.py:199
 msgid "Unable to find a match"
-msgstr ""
+msgstr "No s'ha pogut trobar cap coincidència"
 
 #: plugins/download.py:41
 msgid "Download package to current directory"
@@ -641,7 +641,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "quan s'executa amb --url, ho limita als protocols específics"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "No s'ha pogut obtenir la rèplica per al paquet: %s"
@@ -883,47 +883,47 @@ msgstr ""
 msgid "Unable to satisfy require {}"
 msgstr ""
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr ""
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
 msgstr "determina els binaris que requereixen reinici"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "considera únicament els processos d'aquest usuari"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr ""
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr ""
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr ""
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr ""
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr ""
 
@@ -1220,42 +1220,57 @@ msgstr ""
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr ""
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr ""
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr ""
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+#, fuzzy
+#| msgid "Interact with Copr repositories."
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "Interactua amb els dipòsits Copr."
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr ""
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr ""
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr ""
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr ""
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
+#: plugins/reposync.py:208
+#, python-brace-format
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
 msgstr ""
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr ""
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
 msgstr ""
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr ""
@@ -1263,6 +1278,192 @@ msgstr ""
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Nous abandonaments:"
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "el color del cel"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr "Necessita un--releasever més gran que la versió del sistema actual."
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr ""
+"Ho sentim, heu d'utilitzar «download --releasever» en lloc de «--network»"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr ""
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr ""
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr ""
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr ""
+"Les següents arrencades semblen que continguin registres d'actualització de "
+"versió:"
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- no s'ha trobat cap registre --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "No s'ha pogut trobar cap registre amb aquest índex."
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr ""
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr ""
+"Prepara el sistema per a una actualització de versió a un nou llançament"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr ""
+"mantén els paquets instal·lats si la versió del nou llançament és més antiga"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr ""
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "quins registres s'han de mostrar"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr ""
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr ""
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr ""
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr ""
+"Abans de continuar, assegureu-vos que el vostre sistema estigui completament"
+" actualitzat amb l'execució de «dnf --refresh upgrade». Voleu continuar"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "S'ha avortat l'operació."
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "el sistema no està preparat per una actualització de versió"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr ""
+
+#: plugins/system_upgrade.py:539
+msgid "upgrade is already scheduled"
+msgstr "l'actualització de versió ja està programada"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr ""
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr ""
+"una altra eina d'actualització de versió està en execució. Se surt "
+"ràpidament."
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr ""
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "Es reinicia per a realitzar l'actualització de versió."
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr ""
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr ""
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "S'inicia l'actualització de versió. Això pot trigar una estona."
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "Neteja de les dades baixades..."
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr ""
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr ""
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr ""
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "S'ha finalitzat la baixada."
+
+#: plugins/system_upgrade.py:701
+#, fuzzy
+#| msgid "Upgrade complete! Cleaning up and rebooting..."
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr ""
+"S'ha completat l'actualització de la versió. Es neteja i es reinicia..."
+
+#: plugins/system_upgrade.py:703
+#, fuzzy
+#| msgid "Upgrade complete! Cleaning up and rebooting..."
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr ""
+"S'ha completat l'actualització de la versió. Es neteja i es reinicia..."
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr ""
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr ""
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1328,6 +1529,9 @@ msgstr ""
 #: plugins/versionlock.py:164
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
+
+#~ msgid "repo to modify"
+#~ msgstr "Dipòsit a modificar"
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."

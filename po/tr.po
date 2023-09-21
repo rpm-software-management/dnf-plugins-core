@@ -1,13 +1,13 @@
 # Serdar Sağlam <teknomobil@msn.com>, 2019. #zanata
 # Oğuz Ersen <oguzersen@protonmail.com>, 2020, 2021, 2022.
 # Anonymous <noreply@weblate.org>, 2020.
-# Oğuz Ersen <oguz@ersen.moe>, 2022.
+# Oğuz Ersen <oguz@ersen.moe>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2022-08-30 09:19+0000\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2023-02-23 16:14+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/tr/>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.14\n"
+"X-Generator: Weblate 4.15.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -156,8 +156,8 @@ msgid "manage {prog} configuration options and repositories"
 msgstr "{prog} yapılandırma seçeneklerini ve depolarını yönet"
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "değiştirilecek depo"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr "yönetilecek yapılandırma bölümleri, \"main\" veya depo kimliği"
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -196,23 +196,23 @@ msgstr ""
 "için bir anlamı yoktur. Bunların yerine --set-enabled/--set-disabled "
 "seçeneklerini kullanın."
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Değiştirmek için eşleşen depo yok: %s."
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Depo ekleniyor: %s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Depo yapılandırılamadı"
 msgstr[1] "Depolar yapılandırılamadı"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Depo, %s depo dosyasına kaydedilemedi: %s"
@@ -295,11 +295,11 @@ msgstr "İSİM kullanıcısına ait kullanılabilir Copr depolarını listele"
 msgid "Specify an instance of Copr to work with"
 msgstr "Belirtilen Copr örneği üzerinde çalış"
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "Hata: "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -307,19 +307,19 @@ msgstr ""
 "`--hub` seçeneğini ile ya da `copr_hub/copr_kullanıcı_adı/copr_proje_adı` "
 "biçimini kullanarak Copr hub belirtin"
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
 msgstr "birden çok hub belirtildi"
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "copr komutu için tam olarak iki ek parametre gereklidir"
 
-#: plugins/copr.py:246
+#: plugins/copr.py:264
 msgid "Too many arguments."
 msgstr "Çok fazla argüman."
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
@@ -327,17 +327,17 @@ msgstr ""
 "İsteğe bağlı chroot için hatalı biçim. Biçim, dağıtım-sürüm-mimari "
 "şeklindedir."
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "copr projesi belirtmek için `copr_kullanıcı_adı/copr_proje_adı` biçimini "
 "kullanın"
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "hatalı copr projesi biçimi"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -363,23 +363,23 @@ msgstr ""
 "Lütfen bu paketlerle ilgili hataları Fedora Bugzilla'ya bildirmeyin.\n"
 "Sorun olması durumunda, bu deponun sahibiyle iletişime geçin.\n"
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "Depo başarıyla etkinleştirildi."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "Depo başarıyla devre dışı bırakıldı."
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "Depo başarıyla kaldırıldı."
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "Bilinmeyen alt komut {}."
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -389,53 +389,53 @@ msgstr ""
 "depo dosyasına sahip - öntanımlı değer kabul edildi. Bunu düzeltmek için "
 "projeyi yeniden etkinleştirin."
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr "'{}' kullanıcı adı için depolar ayrıştırılamıyor."
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "{} kullanıcısına ait copr'ların listesi"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "Açıklama verilmedi"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "'{}' için arama ayrıştırılamıyor."
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "Eşleşti: {}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "Açıklama verilmedi."
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "Güvenli ve iyi cevap. Çıkış yapılıyor."
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "Bu komut root kullanıcısı tarafından çalıştırılmalıdır."
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr "{0} isteği başarısız oldu: {1} - {2}"
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr "Bu projeyi etkinleştirmek mümkün değildi.\n"
 
-#: plugins/copr.py:494
+#: plugins/copr.py:512
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "'{0}' deposu '{1}' projesinde yok."
 
-#: plugins/copr.py:497
+#: plugins/copr.py:515
 msgid ""
 "\n"
 "Available repositories: "
@@ -443,7 +443,7 @@ msgstr ""
 "\n"
 "Kullanılabilir depolar: "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -458,17 +458,17 @@ msgstr ""
 "  'dnf copr enable {0} <depo>'\n"
 "Ancak, kurulu repo dosyasının büyük olasılıkla elle bir değişiklik gerektireceğini unutmayın."
 
-#: plugins/copr.py:505
+#: plugins/copr.py:523
 #, python-brace-format
 msgid "Project {0} does not exist."
 msgstr "{0} projesi yok."
 
-#: plugins/copr.py:508
+#: plugins/copr.py:526
 #, python-brace-format
 msgid "Failed to connect to {0}: {1}"
 msgstr "{0} bağlantısı başarısız oldu: {1}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -497,44 +497,44 @@ msgstr ""
 "\n"
 "Bu depolar otomatik olarak etkinleştirildi."
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr "Etkinleştirilmiş olarak kalmalarını istiyor musunuz?"
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "{0}/{1}/{2} copr deposu kaldırılamadı"
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "{}/{} copr deposu devre dışı bırakılamadı"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "Sunucudan bilinmeyen yanıt."
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
 msgstr "Playground deposu ile etkileşime geçin."
 
-#: plugins/copr.py:666
+#: plugins/copr.py:684
 msgid "Enabling a Playground repository."
 msgstr "Playground deposunu etkinleştirme."
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr "Devam etmek istiyor musun?"
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "Playground depoları başarıyla etkinleştirildi."
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "Playground depoları başarıyla devre dışı bırakıldı."
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
 msgstr "Playground depoları başarıyla güncellendi."
 
@@ -678,7 +678,7 @@ msgstr "indirmek yerine rpm'lerin indirilebileceği url'lerin listesini yazdır"
 msgid "when running with --url, limit to specific protocols"
 msgstr "--url seçeneğiyle çalışırken belirli protokolllerle sınırlı kal"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "%s paketi için yansı alınamadı"
@@ -910,7 +910,7 @@ msgstr "'{}' argümanı için eşleşme yok"
 msgid "Unable to satisfy require {}"
 msgstr "{} gereksinimi karşılanamıyor"
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
@@ -919,47 +919,47 @@ msgstr ""
 "Yeniden başlatılması gereken \"{file}\" dosyasında belirtilen \"{pkg}\" "
 "isminde kurulu bir paket bulunamadı."
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
 msgstr "güncellenen programlardan yeniden başlatılması gerekenleri belirle"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "yalnızca bu kullanıcının işlemlerini göz önünde bulundur"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
 "yalnızca yeniden başlatma gerektiğini (çıkış kodu 1) veya gerekmediğini "
 "(çıkış kodu 0) bildir"
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr "yalnızca etkilenen systemd hizmetlerini bildir"
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr ""
 "Sistem başlangıcından bu yana güncellenen çekirdek kütüphaneler veya "
 "hizmetler:"
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr ""
 "Bu güncellemeleri tam olarak kullanmak için yeniden başlatma gereklidir."
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr "Daha fazla bilgi için:"
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 "Sistem başlangıcından bu yana hiçbir çekirdek kütüphane veya hizmet "
 "güncellenmedi."
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr "Yeniden başlatmaya gerek yok."
 
@@ -1274,42 +1274,58 @@ msgstr "yalnızca kaynak paketlerini indir"
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr "İndirmek yerine yalnızca indirilecek ögelerin URL'lerini listele"
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr ""
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "--norepopath, birden fazla depoyla birlikte kullanılamaz"
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+#, fuzzy
+#| msgid "Can't use --norepopath with multiple repositories"
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "--norepopath, birden fazla depoyla birlikte kullanılamaz"
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "Üst veriler için yansı alınamadı: %s"
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr "Grup dosyası için yansı alınamadı."
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr "{} kaldırılıyor: {}"
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr "GPG imza denetimi başarısız oldu."
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
+#: plugins/reposync.py:208
+#, fuzzy, python-brace-format
+#| msgid "Download target '{}' is outside of download path '{}'."
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
 msgstr "'{}' indirme hedefi, '{}' indirme yolunun dışında."
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[SİLİNDİ] %s"
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
 msgstr "%s dosyası silinemedi"
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "%s deposu için comps.xml dosyası kaydedildi"
@@ -1317,6 +1333,192 @@ msgstr "%s deposu için comps.xml dosyası kaydedildi"
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Yeni yaprak paketler:"
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "gökyüzünün rengi"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr ""
+"Geçerli sistem sürümünden daha büyük bir --releasever belirtilmelidir."
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+"İndirme tamamlandı! Yükseltmeyi başlatmak için 'dnf {command} reboot' komutunu kullanın.\n"
+"Önbelleğe alınmış üst verileri ve işlemi kaldırmak için 'dnf {command} clean' komutunu kullanın"
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr ""
+"Maalesef, '--network' yerine 'download --releasever' kullanmanız gerekiyor"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr "Yeniden başlatma kapalı, yeniden başlatılmıyor."
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr "Ekran karartma devre dışı bırakılamıyor: %s"
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr "%s durum dosyası yüklenemedi, boş durumla devam ediliyor."
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr "Aşağıdaki önyüklemeler, yükseltme günlükleri içeriyor gibi görünüyor:"
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- günlük kaydı bulunamadı --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "Bu indekse sahip günlük kaydı bulunamıyor."
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr "systemd günlük girdisi eşleştirilemedi"
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr "Sistemi yeni bir sürüme yükseltmek için hazırla"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr "yükseltilen sistemdeki sürüm eskiyse mevcut kurulu paketleri tut"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr "işlem tamamlandıktan sonra sistemi kapat"
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "gösterilecek günlük kayıtları"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr ""
+"Uyumsuz veri sürümü. 'dnf {command} download [SEÇENEKLER]' komutunu yeniden "
+"çalıştırın"
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr ""
+"'offline-distrosync' komutu --no-downgrade seçeneği ile birlikte "
+"kullanılamaz"
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr "Sistem yükseltme için ek bilgiler: {}"
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr ""
+"Devam etmeden önce \"dnf --refresh upgrade\" komutunu çalıştırarak "
+"sisteminizin tamamen güncellendiğinden emin olun. Devam etmek istiyor "
+"musunuz?"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "İşlem iptal edildi."
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "sistem yükseltmek için hazır değil"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr ""
+"işlem '{command}' için hazırlanmadı. 'dnf {command} download [SEÇENEKLER]' "
+"komutunu yeniden çalıştırın"
+
+#: plugins/system_upgrade.py:539
+msgid "upgrade is already scheduled"
+msgstr "yükseltme zaten zamanlandı"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr "tetikleyici dosyası yok. sessizce çıkılıyor."
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr "başka bir yükseltme aracı çalışıyor. sessizce çıkılıyor."
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr "yükseltmeye başlamak için 'dnf {command} reboot' komutunu kullanın"
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "Yükseltmeyi gerçekleştirmek için yeniden başlatılıyor."
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr "Çevrim dışı yükseltme başlatılıyor. Bu biraz zaman alacak."
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr ""
+"Çevrim dışı dağıtım eşzamanlaması başlatılıyor. Bu biraz zaman alacak."
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "Sistem yükseltme başlatılıyor. Bu biraz zaman alacak."
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "İndirilen veriler temizleniyor..."
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr ""
+"Sistem yükseltme (system-upgrade) işlemi boş, sisteminiz zaten güncel."
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr "İşlem {} dosyasına kaydedildi."
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr "İşlem kaydedilirken hata oluştu: {}"
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "İndirme tamamlandı."
+
+#: plugins/system_upgrade.py:701
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr "Yükseltme tamamlandı! Temizlik yapılıyor ve kapatılıyor..."
+
+#: plugins/system_upgrade.py:703
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr "Yükseltme tamamlandı! Temizlik yapılıyor ve yeniden başlatılıyor..."
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr "Sistemi çevrim dışı yükseltmeye hazırla"
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr "Sistemi çevrim dışı dağıtım eşzamanlamasına hazırla"
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1388,6 +1590,16 @@ msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
 "'{}' alt komutu kullanımdan kaldırıldı. Bunun yerine 'exclude' alt komutunu "
 "kullanın."
+
+#~ msgid "repo to modify"
+#~ msgstr "değiştirilecek depo"
+
+#~ msgid ""
+#~ "WARNING: this operation is not supported on the RHEL distribution. Proceed "
+#~ "at your own risk."
+#~ msgstr ""
+#~ "UYARI: Bu işlem RHEL dağıtımında desteklenmiyor. İlerlemeniz durumunda risk "
+#~ "size aittir."
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."

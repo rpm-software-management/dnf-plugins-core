@@ -2,13 +2,14 @@
 # Marek Blaha <mblaha@redhat.com>, 2020.
 # simmon <simmon@nplob.com>, 2021, 2022.
 # Kim InSoo <simmon@nplob.com>, 2022.
-# 김인수 <simmon@nplob.com>, 2022.
+# 김인수 <simmon@nplob.com>, 2022, 2023.
+# seo hojin <jinswhat@naver.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2022-09-02 02:19+0000\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2023-08-06 02:42+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/ko/>\n"
 "Language: ko\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14\n"
+"X-Generator: Weblate 4.18.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -37,7 +38,7 @@ msgstr "특정한 파일 구문분석을 위해 매크로를 정의한다"
 
 #: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
-msgstr "저장소에서 사용 할 수 없는 구성 의존성을 건너띄기 한다"
+msgstr "저장소에서 사용 할 수 없는 구성 의존성을 건너 뛰기 한다"
 
 #: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
@@ -75,7 +76,7 @@ msgstr "모든 의존성을 만족하지 않습니다"
 #: plugins/builddep.py:208
 msgid ""
 "Warning: -D or --define arguments have no meaning for source rpm packages."
-msgstr "경고: -D 또는 --define 인수는 원천 rpm 꾸러미를 위한 의미가 없습니다."
+msgstr "경고: -D 또는 --define 인수는 원천 rpm 꾸러미를 위해 의미를 가지고 있지 않습니다."
 
 #: plugins/builddep.py:215
 #, python-format
@@ -148,8 +149,8 @@ msgid "manage {prog} configuration options and repositories"
 msgstr "{prog} 환경 선택과 저장소 관리"
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "수정하려는 저장소"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr "관리하려는 구성 부분, \"main\" 또는 repoid"
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -187,25 +188,25 @@ msgstr ""
 "경고: -- --enablerepo/--disablerepo 인수는 설정 관리자와 함께 의미를 갖고 있지 않습니다. 대신에 --set-"
 "enabled/--set-disabled를 사용하세요."
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "수정할 일치하는 Repo가 없습니다. %s."
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "다음 위치에서 레포 추가 : %s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "저장소 구성에 실패했습니다"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
-msgstr "repofile에 repo를 저장할 수 없습니다. %s: %s"
+msgstr "repofile에 repo를 저장 할 수 없습니다. %s: %s"
 
 #: plugins/copr.py:70
 msgid "y"
@@ -285,11 +286,11 @@ msgstr "사용자가 사용할 수있는 Copr 저장소를 나열합니다. NAME
 msgid "Specify an instance of Copr to work with"
 msgstr "일하는 Copr의 예를 지정합니다"
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "오류: "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -297,33 +298,33 @@ msgstr ""
 "Corp hub를 `--hub` 또는 사용하기 `copr_hub/copr_username/copr_projectname`형식으로 "
 "지정합니다"
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
 msgstr "지정된 여러 허브"
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "copr 명령에 정확히 두 개의 추가 매개 변수가 필요합니다"
 
-#: plugins/copr.py:246
+#: plugins/copr.py:264
 msgid "Too many arguments."
 msgstr "너무 많은 인수."
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr "선택적인 chroot의 나쁜 형식. 형식은 배포-버전-구조입니다."
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr "copr 프로젝트를 참조하기 위해`copr_username / copr_projectname` 형식을 사용하십시오"
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "나쁜 copr 프로젝트 형식"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -349,23 +350,23 @@ msgstr ""
 "페도라 버그질라에 이들 꾸러미에 대한 파일 결점 보고를 제출하지 마세요.\n"
 "이들 문제는, 이들 저장소 소유자와 접촉하세요.\n"
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "저장소가 사용 설정되었습니다."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "저장소가 사용 중지되었습니다."
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "저장소가 제거되었습니다."
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "알 수없는 부속 명령 {}."
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -374,53 +375,53 @@ msgstr ""
 "* 이들 coprs은 Copr hub에 대하여 어떤 정보도 포함하지 않는 오래된 형태의 저장소 파일을 갖고 있습니다. 이 문제를 수정하기"
 " 위하여 프로젝트를 재활성화하세요."
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr "사용자 이름 '{}'에 대한 리포지토리를 구문 분석 할 수 없습니다."
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "{} 명의 경찰 목록"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "설명이 없습니다"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "'{}'에 대한 검색을 구문 분석 할 수 없습니다."
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "일치하는 항목 : {}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "설명이 없습니다."
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "안전하고 좋은 대답. 나가기."
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "이 명령은 루트 사용자로 실행해야합니다."
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr "{0}에 대한 요청이 실패함: {1} - {2}"
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr "이와 같은 프로젝트를 활성화 할 수 없습니다.\n"
 
-#: plugins/copr.py:494
+#: plugins/copr.py:512
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "저장소 '{0}'는 프로젝트 '{1}'에 존재하지 않습니다."
 
-#: plugins/copr.py:497
+#: plugins/copr.py:515
 msgid ""
 "\n"
 "Available repositories: "
@@ -428,7 +429,7 @@ msgstr ""
 "\n"
 "사용 가능한 저장소: "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -443,17 +444,17 @@ msgstr ""
 "  'dnf copr enable {0} <repository>' \n"
 "하지만 설치된 저장소 파일은 수동으로 수정해야 할 필요가 있다는 점을 참고하세요."
 
-#: plugins/copr.py:505
+#: plugins/copr.py:523
 #, python-brace-format
 msgid "Project {0} does not exist."
 msgstr "프로젝트 {0}가 존재하지 않습니다."
 
-#: plugins/copr.py:508
+#: plugins/copr.py:526
 #, python-brace-format
 msgid "Failed to connect to {0}: {1}"
 msgstr "연결 하는데 실패함 {0}: {1}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -482,46 +483,46 @@ msgstr ""
 "\n"
 "이들 저장소는 자동으로 활성화 됩니다."
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr "계속 사용하길 원하시나요?"
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "copr repo {0}/{1}/{2} 제거를 실패하였습니다"
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "copr repo {} / {}를 사용 중지를 실패하였습니다"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "서버에서 알 수없는 응답."
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
 msgstr "놀이터 저장소와 상호 작용하십시오."
 
-#: plugins/copr.py:666
+#: plugins/copr.py:684
 msgid "Enabling a Playground repository."
 msgstr "동작 저장소와 활용하기."
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr "계속하기를 원하십니까?"
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "놀이터 저장소를 사용하도록 설정했습니다."
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "놀이터 저장소가 사용 중지되었습니다."
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
-msgstr "놀이터 저장소가 성공적으로 업데이트되었습니다."
+msgstr "놀이터 저장소가 성공적으로 최신화되었습니다."
 
 #: plugins/debug.py:53
 msgid "dump information about installed rpm packages to file"
@@ -657,7 +658,7 @@ msgstr "내려받기 대신 rpms를 내려받기 할 수 있는 URL 목록 인�
 msgid "when running with --url, limit to specific protocols"
 msgstr "--url을 사용하여 실행하면 특정 통신규약이 제한됩니다"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "꾸러미 연결주소 얻기에 실패했습니다: %s"
@@ -698,7 +699,7 @@ msgstr "'{}' 에서 그룹 id를 발생 할 수 없습니다. --id를 사용하�
 
 #: plugins/groups_manager.py:79
 msgid "create and edit groups metadata file"
-msgstr "그룹 메타데이타 파일 생성하고 수정합니다"
+msgstr "그룹 메타자료 파일을 생성하고 수정합니다"
 
 #: plugins/groups_manager.py:90
 msgid "load groups metadata from file"
@@ -714,7 +715,7 @@ msgstr "그룹 메타파일을 파일에 적재하고 저장합니다"
 
 #: plugins/groups_manager.py:97
 msgid "print the result metadata to stdout"
-msgstr "결과 메타데이타를 표준출력으로 출력한다"
+msgstr "결과 메타자료를 표준출력에 출력합니다"
 
 #: plugins/groups_manager.py:100
 msgid "group id"
@@ -881,47 +882,47 @@ msgstr "인수 '{}'와 일치하는 항목이 없습니다"
 msgid "Unable to satisfy require {}"
 msgstr "필요사항 {}를 만족 할 수 없음"
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr "재시작이 필요한 파일 \"{file}\" 에 지정한 꾸러미 이름 \"{pkg}\"을 위하여 설치된 꾸러미를 찾을 수 없습니다."
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
-msgstr "다시 시작해야하는 업데이트 된 바이너리 결정"
+msgstr "다시 시작 해야 하는 최신화 된 바이너리 결정"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "이 사용자의 프로세스만 고려하세요"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr "재시작이 요구되는 (exit code 1) 또는 아닌(exit code0) 경우에만 보고합니다"
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr "systemd 서비스에 영향을 미치는 것만 보고합니다"
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr "Core 라이브러리와 서비스는 재시작 이 후에 최신화 됩니다:"
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr "재시작은 이들 최신화를 완전히 사용하려면 필요합니다."
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr "자세한 정보:"
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr "핵심 라이브러리와 서비스는 재시작 이 후에 최신화 되지 않습니다."
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr "재시작은 필요하지 않을 수 있습니다."
 
@@ -1129,7 +1130,7 @@ msgstr "--oldonly 또는 --new 중 하나를 전달하세요!"
 
 #: plugins/repomanage.py:63
 msgid "Pass either --old or --oldonly, not both!"
-msgstr "--oldonly 또는 --new 중 하나를 전달하세요!"
+msgstr "--old 또는 --oldonly 중 하나를 전달하세요!"
 
 #: plugins/repomanage.py:100
 msgid "No files to process"
@@ -1145,11 +1146,11 @@ msgstr "이전 꾸러미 인쇄"
 
 #: plugins/repomanage.py:225
 msgid "Print the older packages. Exclude the newest packages."
-msgstr "오래된 꾸러미를 출력합니다. 최신 꾸러미는 제외합니다."
+msgstr "이전 꾸러미를 출력합니다. 최신 꾸러미는 제외합니다."
 
 #: plugins/repomanage.py:227
 msgid "Print the newest packages"
-msgstr "최신 꾸러미(package) 인쇄"
+msgstr "최신 꾸러미 출력"
 
 #: plugins/repomanage.py:229
 msgid "Space separated output, not newline"
@@ -1157,7 +1158,7 @@ msgstr "공백으로 구분 된 출력이 아닌 개행 문자"
 
 #: plugins/repomanage.py:231
 msgid "Newest N packages to keep - defaults to 1"
-msgstr "보관할 최신 N 꾸러미(package) - 기본값은 1입니다"
+msgstr "보관하려는 최신 N 꾸러미 - 기본값은 1입니다"
 
 #: plugins/repomanage.py:234
 msgid "Path to directory"
@@ -1177,7 +1178,7 @@ msgstr "저장소에 더 이상 존재하지 않는 로컬 꾸러미(package) �
 
 #: plugins/reposync.py:68
 msgid "download all the metadata."
-msgstr "모든 메타데이타 내려받기."
+msgstr "모든 메타자료 내려받기."
 
 #: plugins/reposync.py:70
 msgid "Remove packages that fail GPG signature checking after downloading"
@@ -1191,7 +1192,7 @@ msgstr "또한 comps.xml 내려받기와 압축 풀기"
 msgid ""
 "where to store downloaded repository metadata. Defaults to the value of "
 "--download-path."
-msgstr "내려받은 저장소 메타데이타를 저장하기 위한 장소. --download-path의 값으로 기본 지정합니다."
+msgstr "내려받은 저장소 메타자료를 저장하기 위한 장소. --download-path의 값으로 기본 지정합니다."
 
 #: plugins/reposync.py:78
 msgid "download only newest packages per-repo"
@@ -1217,42 +1218,55 @@ msgstr "원천 꾸러미만 내려받기"
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr "내려 받을 수 있는 url만 목록화하며, 내려 받지 않습니다"
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr "쓰기를 위해 안전하도록 고려되는 것과 같은 파일시스템 경로. 내려받기 경로로 기본값."
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "다중 저장소와 함께 --norepath를 사용 할 수 없습니다"
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "다중 저장소와 함께 --safe-write-path를 사용 할 수 없습니다"
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
-msgstr "메타데이타에 대한 연결주소 얻기를 실패하였습니다:%s"
+msgstr "메타자료에 대한 연결주소 얻기를 실패하였습니다:%s"
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr "그룹 파일을 위하여 연결주소 얻기에 실패하였습니다."
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr "제거하기{}: {}"
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr "GPG 서명 점검이 실패하였습니다."
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
-msgstr "내려받기 대상 '{}'는 내려받기 경로'{}'의 밖에 있습니다."
+#: plugins/reposync.py:208
+#, python-brace-format
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
+msgstr "'{2}' 꾸러미의 위치 '{1}'을 위한 대상 '{0}' 내려받기는 안전 쓰기 경로 '{3}'의 밖에 있습니다."
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[DELETED] %s"
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
 msgstr "파일을 삭제하지 못했습니다. %s"
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "저장소에 대한 comps.xml %s 저장된"
@@ -1260,6 +1274,180 @@ msgstr "저장소에 대한 comps.xml %s 저장된"
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "독립 꾸러미:"
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "하늘의 색"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr "현재 시스템 버전 보다 큰 --releasever가 필요합니다."
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+"내려받기 완료! 향상을 시작하려면 'dnf {command} reboot'를 사용하세요.\n"
+"캐쉬된 메타자료와 연결을 제거하려면 'dnf {command} clean'을 사용하세요"
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr "죄송합니다, '--network' 대신에 'download --releasever'를 사용해야 합니다"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr "다시 기동하지 않고, 재시작이 꺼졌습니다."
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr "화면 비우기를 비활성화 할 수 없습니다: %s"
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr "상태 파일: %s를 적재 중 실패함, 공백 상태로 유지됨."
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr "다음 기동은 향상된 기록을 포함하여 나타납니다:"
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- 어떤 기록도 찾을 수 없음 --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "이 표시가 있는 기록을 찾을 수 없습니다."
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr "systemd journal 항목과 일치 할 수 없음"
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr "새로운 출시로 향상하기 위해 시스템을 준비합니다"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr "만약 신규 출시의 버전이 오래되었으면 설치된 꾸러미를 유지합니다"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr "동작이 완료된 후에 시스템 전원 종료"
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "표시 할 어떤 기록"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr "호환되지 않는 자료 버전. 'dnf {command} download [OPTIONS]' 되돌리기"
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr "명령 'offline-distrosync'은 --no-downgrade 옵션과 함께 사용 될 수 없습니다"
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr "시스템 향상을 위한 추가 정보: {}"
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr "계속하기 전에 dnf --refresh upgrade\" 실행하여 시스템을 완전히 향상 되도록 해주세요. 계속 하길 원하세요"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "작업이 중지됩니다."
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "시스템이 향상을 위해 준비되지 않았습니다"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr ""
+"연결이 '{command}'을 위해 준비되지 않았습니다. 'dnf {command} download [OPTIONS]'을 되돌립니다"
+
+#: plugins/system_upgrade.py:539
+msgid "upgrade is already scheduled"
+msgstr "향상은 이미 계획되어 있습니다"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr "트리거 파일이 존재하지 않습니다. 바로 종료하기."
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr "다른 향상 도구가 동작 중입니다. 바로 종료하기."
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr "'dnf {command} reboot' 사용하여 향상을 시작합니다"
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "향상을 수행하기 위해서 재시작 중."
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr "오프라인 향상 시작하기. 이는 시간이 좀 걸립니다."
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr "오프라인 distrosync 시작 중. 이는 시간이 좀 걸립니다."
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "시스템 향상이 시작 중. 이는 시간이 좀 걸립니다."
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "내려받기된 자료를 정리 중..."
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr "시스템-향상 연결이 비워 있으며, 시스템은 이미 최신화 되었습니다."
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr "연결이 {}로 저장되었습니다."
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr "저장 중 연결 오류: {}"
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "내려받기 완료됨."
+
+#: plugins/system_upgrade.py:701
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr "향상 성공! 정리하고 전원종료하기..."
+
+#: plugins/system_upgrade.py:703
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr "향상 성공! 정리하고 재시작하기..."
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr "시스템의 오프라인 향상을 준비합니다"
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr "시스템의 오프라인 distrosync를 준비합니다"
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1325,6 +1513,14 @@ msgstr "꾸러미(package) 사양을 그대로 사용하며, 구문 분석을 �
 #: plugins/versionlock.py:164
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr "하위명령 '{}'는 더 이상 사용하지 않습니다. 대신에 하위명령 'exclude'를 사용합니다."
+
+#~ msgid "repo to modify"
+#~ msgstr "수정하려는 저장소"
+
+#~ msgid ""
+#~ "WARNING: this operation is not supported on the RHEL distribution. Proceed "
+#~ "at your own risk."
+#~ msgstr "경고: 이 동작은 REHEL 배포판에서 지원되지 않습니다. 위험을 감수하고 진행하세요."
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."

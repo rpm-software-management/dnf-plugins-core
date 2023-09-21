@@ -1,25 +1,25 @@
 # 張仁傑 <s9727453@gmail.com>, 2015. #zanata
-# Cheng-Chia Tseng <pswo10680@gmail.com>, 2016. #zanata
-# Cheng-Chia Tseng <pswo10680@gmail.com>, 2018. #zanata
+# Cheng-Chia Tseng <pswo10680@gmail.com>, 2016. #zanata, 2023.
+# Cheng-Chia Tseng <pswo10680@gmail.com>, 2018. #zanata, 2023.
 # Ludek Janda <ljanda@redhat.com>, 2018. #zanata
 # Peter Pan <pan93412@gmail.com>, 2018. #zanata
-# Cheng-Chia Tseng <pswo10680@gmail.com>, 2019. #zanata
+# Cheng-Chia Tseng <pswo10680@gmail.com>, 2019. #zanata, 2023.
 # Yi-Jyun Pan <pan93412@gmail.com>, 2020.
 # Anonymous <noreply@weblate.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2020-08-28 21:29+0000\n"
-"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2023-08-14 13:21+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.2.1\n"
+"X-Generator: Weblate 4.18.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -152,8 +152,8 @@ msgid "manage {prog} configuration options and repositories"
 msgstr "管理 {prog} 的設定選項及軟體庫"
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "要修改的軟體庫"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr ""
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -191,22 +191,22 @@ msgstr ""
 "警告：--enablerepo/--disablerepo 引數在組態管理員下沒有意義。請改用 --set-enabled/--set-"
 "disabled。"
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "沒有符合要修改的軟體庫：%s。"
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "從下述加入軟體庫：%s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "設定軟體庫失敗"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "無法儲存軟體庫至 repofile %s：%s"
@@ -289,46 +289,46 @@ msgstr "列出使用者 NAME 可用的 Copr 軟體庫"
 msgid "Specify an instance of Copr to work with"
 msgstr "指定要使用 Copr 的實體："
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "錯誤： "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 "使用 `--hub` 或者用 `copr_hub/copr_username/copr_projectname` 格式指定 Copr hub"
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
 msgstr "指定了多個 hub"
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "傳入 copr 命令的選用參數必須剛好兩個"
 
-#: plugins/copr.py:246
+#: plugins/copr.py:264
 #, fuzzy
 #| msgid "No match for argument: %s"
 msgid "Too many arguments."
 msgstr "引數不符：%s"
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr "使用 `copr_username/copr_projectname` 格式來參照 Copr 專案"
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "Copr 專案格式無效"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -353,77 +353,77 @@ msgstr ""
 "請不要將這些軟體包的漏洞回報至 Fedora Bugzilla。\n"
 "假如碰到問題，請聯絡此軟體庫的擁有者。\n"
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "軟體庫成功啟用。"
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "軟體庫成功停用。"
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "軟體庫成功移除。"
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "{} 子命令未知。"
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr "* 這些 Copr 包含可能沒有 Copr hub 資訊的舊格式 repo 檔案 — 已假設為預設 hub。請重新啟用專案以修正。"
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr "無法解析「{}」使用者名稱的軟體庫。"
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "{} Copr 清單"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "沒有提供描述"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "無法解析「{}」搜尋。"
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "符合項目：{}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "沒有提供描述。"
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "安全且更棒的回應。結束。"
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "此命令必須在 root 使用者下執行"
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr ""
 
-#: plugins/copr.py:494
+#: plugins/copr.py:512
 #, fuzzy, python-brace-format
 #| msgid "Such repository does not exist."
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "不存在此軟體庫。"
 
-#: plugins/copr.py:497
+#: plugins/copr.py:515
 #, fuzzy
 #| msgid "List enabled Copr repositories"
 msgid ""
@@ -433,7 +433,7 @@ msgstr ""
 "\n"
 "列出啟用的 Copr 軟體庫 "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -443,19 +443,19 @@ msgid ""
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
 
-#: plugins/copr.py:505
+#: plugins/copr.py:523
 #, fuzzy, python-brace-format
 #| msgid "Such repository does not exist."
 msgid "Project {0} does not exist."
 msgstr "不存在此軟體庫。"
 
-#: plugins/copr.py:508
+#: plugins/copr.py:526
 #, fuzzy, python-brace-format
 #| msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgid "Failed to connect to {0}: {1}"
 msgstr "無法移除 Copr 軟體庫 {0}/{1}/{2}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -472,44 +472,44 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr "是否保持啟用？"
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "無法移除 Copr 軟體庫 {0}/{1}/{2}"
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "無法停用 Copr 軟體庫 {}/{}"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "未知的伺服器回應。"
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
 msgstr "與 Playground 軟體庫互動。"
 
-#: plugins/copr.py:666
+#: plugins/copr.py:684
 msgid "Enabling a Playground repository."
 msgstr "啟用 Playground 軟體庫。"
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr "是否繼續？"
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "Playground 軟體庫成功啟用。"
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "Playground 軟體庫成功停用。"
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
 msgstr "Playground 軟體庫成功更新。"
 
@@ -647,7 +647,7 @@ msgstr "輸出可以下載 RPM 的 URL 清單而不下載"
 msgid "when running with --url, limit to specific protocols"
 msgstr "使用 --url 執行時，限縮至指定的通訊協定"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "無法取得軟體庫的鏡像站：%s"
@@ -895,47 +895,47 @@ msgstr "引數不符：%s"
 msgid "Unable to satisfy require {}"
 msgstr ""
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, fuzzy, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr "未安裝 \"{file}\" 需要重新啟動檔案中指定的 \"{pkg}\" 軟體包。"
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
 msgstr "決定需要重新啟動的已更新二進位檔"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "只考慮此位使用者的處理程序"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr "只回報是（錯誤碼 1）否（錯誤碼 0）需要重新啟動"
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr ""
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr "開機後更新過的核心函式庫或服務："
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr "需要重新啟動，才可以完全套用這些更新。"
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr "更多資訊："
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr "開機後沒有更新過的核心函式庫或服務。"
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr "應不需要重新啟動。"
 
@@ -1242,42 +1242,58 @@ msgstr "在來源軟體包上操作"
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr "只列出會下載的 URL 而不下載"
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr ""
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "無法在多個軟體庫使用 --norepopath"
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+#, fuzzy
+#| msgid "Can't use --norepopath with multiple repositories"
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "無法在多個軟體庫使用 --norepopath"
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "無法取得中介資料的鏡像站：%s"
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr "無法取得群組檔案的鏡像站。"
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr ""
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr ""
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
+#: plugins/reposync.py:208
+#, fuzzy, python-brace-format
+#| msgid "Download target '{}' is outside of download path '{}'."
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
 msgstr "下載目標「{}」在下載位置「{}」之外。"
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[已刪除] %s"
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
 msgstr "無法刪除 %s 檔案"
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "已儲存 %s 軟體庫的 comps.xml"
@@ -1285,6 +1301,185 @@ msgstr "已儲存 %s 軟體庫的 comps.xml"
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "新保留："
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "天空的顏色"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr "需要比 --releasever 更新的目前系統版本"
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+"下載完成！使用「dnf {command} reboot」以開始升級程序。\n"
+"如要移除快取的中介資料及處理事項，請用「dnf {command} clean」"
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr "抱歉，您需要使用「download --releasever」取代「network」"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr ""
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr "無法停用螢幕轉黑：%s"
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr "無法載入狀態檔案：%s，以空白狀態繼續。"
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr "以下的開機引導包含了升級記錄："
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- 找不到記錄檔案 --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "無法透過這個索引找到記錄檔案"
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr "無法符合 systemd 的記錄檔項目"
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr "準備系統以升級至新的發行版本"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr "假如新的釋出版本比較舊，保留已安裝的軟體包。"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr ""
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "要顯示哪個記錄檔"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr "資料版本不相容。請重新執行「dnf {command} download [OPTIONS]」"
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr "「offline-distrosync」命令不可與 --no-downgrade 選項配合使用"
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr "系統升級的額外資訊：{}"
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr "在您繼續前，請確保您的系統已經透過執行「dnf --refresh upgrade」完全升級。想要繼續嗎？"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "取消作業。"
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "系統尚未準備好升級"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr "未準備好「{command}」的處理事項。請重新執行「dnf {command} download [OPTIONS]」"
+
+#: plugins/system_upgrade.py:539
+#, fuzzy
+#| msgid "Package {} is already excluded"
+msgid "upgrade is already scheduled"
+msgstr "已排除 {} 軟體包"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr "觸發檔案不存在。安靜離開。"
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr "另外一個升級工具正在執行中。安靜離開。"
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr "請使用「dnf {command} reboot」開始升級"
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "重新開機以執行升級。"
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr "開始系統升級。這需要一段時間。"
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr "開始離線 distrosync。這需要一段時間。"
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "開始系統升級。這需要一段時間。"
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "正在清理已下載的資料…"
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr ""
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr "處理事項儲存至 {}。"
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr "儲存處理事項時遭遇錯誤：{}"
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "下載完成。"
+
+#: plugins/system_upgrade.py:701
+#, fuzzy
+#| msgid "Upgrade complete! Cleaning up and rebooting..."
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr "升級完成！正在清理並重新啟動…"
+
+#: plugins/system_upgrade.py:703
+#, fuzzy
+#| msgid "Upgrade complete! Cleaning up and rebooting..."
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr "升級完成！正在清理並重新啟動…"
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr "準備系統的離線更新"
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr "準備系統的離線 distrosync"
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1350,6 +1545,9 @@ msgstr "使用其原本的軟體包規範，不要嘗試解析"
 #: plugins/versionlock.py:164
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
+
+#~ msgid "repo to modify"
+#~ msgstr "要修改的軟體庫"
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."

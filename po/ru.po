@@ -3,20 +3,21 @@
 # Igor Gorbounov <igor.gorbounov@gmail.com>, 2019. #zanata, 2020, 2021, 2022.
 # Alexey Rubtsov <rushills@gmail.com>, 2021, 2022.
 # V I <xasertop@gmail.com>, 2022.
+# Vi <xasertop@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2022-09-10 16:19+0000\n"
-"Last-Translator: V I <xasertop@gmail.com>\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2023-01-19 14:20+0000\n"
+"Last-Translator: Vi <xasertop@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14\n"
+"X-Generator: Weblate 4.15.1\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -158,8 +159,8 @@ msgid "manage {prog} configuration options and repositories"
 msgstr "управлять параметрами конфигурации и репозиториями {prog}"
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "репозиторий для изменения"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr ""
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -198,24 +199,24 @@ msgstr ""
 "диспетчере конфигурации. Вместо этого используйте --set-enabled/--set-"
 "disabled."
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Нет подходящего репозитория для изменения: %s."
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Добавление репозитория из: %s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Не удалось настроить конфигурацию репозитория"
 msgstr[1] "Не удалось настроить конфигурацию репозиториев"
 msgstr[2] "Не удалось настроить конфигурацию репозиториев"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Не удалось сохранить репозиторий в repofile %s: %s"
@@ -298,11 +299,11 @@ msgstr "Перечислять доступные репозитории Copr п
 msgid "Specify an instance of Copr to work with"
 msgstr "Укажите экземпляр Copr, с которым нужно работать"
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "Ошибка: "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -310,19 +311,19 @@ msgstr ""
 "укажите узел Copr либо с помощью `--hub`, либо с использованием формата "
 "`copr_hub/copr_username/copr_projectname`"
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
 msgstr "указано несколько узлов"
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "требуются в точности два дополнительных параметра к команде copr"
 
-#: plugins/copr.py:246
+#: plugins/copr.py:264
 msgid "Too many arguments."
 msgstr "Слишком много аргументов."
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
@@ -330,17 +331,17 @@ msgstr ""
 "Неверный формат необязательного chroot. Формат должен быть архитектура-"
 "версия-дистрибутив."
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "для ссылки на проект copr используйте формат "
 "`copr_username/copr_projectname`"
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "неверный формат проекта copr"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -366,23 +367,23 @@ msgstr ""
 "Не отправляйте сообщения об ошибках этих пакетов в Fedora\n"
 "Bugzilla. В случае возникновения проблем обращайтесь к владельцу этого репозитория.\n"
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "Репозиторий успешно подключен."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "Репозиторий успешно отключен."
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "Репозиторий успешно удален."
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "Неизвестная подкоманда {}."
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -392,53 +393,53 @@ msgstr ""
 "информации об узле Copr - был принят узел по умолчанию. Переподключите "
 "проект для исправления этого."
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr "Не удается обработать репозитории для имени пользователя «{}»."
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "Список copr {}"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "Нет описания"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "Ошибка обработки поиска для «{}»."
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "Совпадений: {}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "Нет описания."
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "Верный и хороший ответ. Выход."
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "Эта команда должна быть выполнена от имени пользователя root."
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr "Запрос к {0} не выполнен: {1} - {2}"
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr "Не удалось активировать этот проект.\n"
 
-#: plugins/copr.py:494
+#: plugins/copr.py:512
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "Репозитория «{0}» в проекте «{1}» не существует."
 
-#: plugins/copr.py:497
+#: plugins/copr.py:515
 msgid ""
 "\n"
 "Available repositories: "
@@ -446,7 +447,7 @@ msgstr ""
 "\n"
 "Доступные репозитории: "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -461,17 +462,17 @@ msgstr ""
 "  'dnf copr enable {0} <репозиторий>'\n"
 "Но обратите внимание, что установленный файл репозитория, скорее всего, потребует ручного изменения."
 
-#: plugins/copr.py:505
+#: plugins/copr.py:523
 #, python-brace-format
 msgid "Project {0} does not exist."
 msgstr "Проект «{0}» не существует."
 
-#: plugins/copr.py:508
+#: plugins/copr.py:526
 #, python-brace-format
 msgid "Failed to connect to {0}: {1}"
 msgstr "Не удалось подключиться к {0}: {1}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -500,44 +501,44 @@ msgstr ""
 "\n"
 "Эти репозитории включены автоматически."
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr "Хотите, чтобы они были включены?"
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Не удалось удалить репозиторий copr {0}/{1}/{2}"
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Не удалось отключить репозиторий copr {}/{}"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "Неизвестный ответ сервера."
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
 msgstr "Взаимодействие с репозиторием Playground."
 
-#: plugins/copr.py:666
+#: plugins/copr.py:684
 msgid "Enabling a Playground repository."
 msgstr "Включение репозитория Playground."
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr "Хотите продолжить?"
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "Репозитории Playground успешно подключены."
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "Репозитории Playground успешно отключены."
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
 msgstr "Репозитории Playground успешно обновлены."
 
@@ -684,7 +685,7 @@ msgstr "вместо загрузки вывести список URL, отку�
 msgid "when running with --url, limit to specific protocols"
 msgstr "ограничить указанными протоколами при работе с --url"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Не удалось получить зеркало для пакета: %s"
@@ -920,7 +921,7 @@ msgstr "Нет совпадений для аргумента «{}»"
 msgid "Unable to satisfy require {}"
 msgstr "Не удалось удовлетворить требование {}"
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
@@ -929,44 +930,44 @@ msgstr ""
 "Не найдено установленного пакета для пакета с именем «{pkg}», указанного в "
 "файле «{file}», для которого требуется перезапуск."
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
 msgstr "определить обновленные двоичные файлы, требующие перезапуска"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "рассматривать только процессы этого пользователя"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
 "сообщать только, требуется перезагрузка (код выхода 1) или нет (код выхода "
 "0)"
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr "сообщать только о службах systemd, которых это касается"
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr "Основные библиотеки или службы были обновлены со времени загрузки:"
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr "Требуется перезагрузка для полного использования этих обновлений."
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr "Дополнительная информация:"
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 "Никакие основные библиотеки или службы не были обновлены со времени "
 "загрузки."
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr "Перезагрузка не должна потребоваться."
 
@@ -1276,42 +1277,58 @@ msgstr "загружать только исходные пакеты"
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr "Просто дать список адресов для загрузки, не загружать"
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr ""
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "Нельзя использовать --norepopath в случае нескольких репозиториев"
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+#, fuzzy
+#| msgid "Can't use --norepopath with multiple repositories"
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "Нельзя использовать --norepopath в случае нескольких репозиториев"
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "Не удалось получить зеркало для метаданных: %s"
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr "Не удалось получить зеркало для файла группы."
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr "Удаление {}: {}"
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr "Ошибка проверки подписи GPG."
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
+#: plugins/reposync.py:208
+#, fuzzy, python-brace-format
+#| msgid "Download target '{}' is outside of download path '{}'."
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
 msgstr "Место для загрузки «{}» вне пути для загрузки «{}»."
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[УДАЛЕНО] %s"
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
 msgstr "не удалось удалить файл %s"
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "comps.xml для репозитория %s сохранен"
@@ -1319,6 +1336,192 @@ msgstr "comps.xml для репозитория %s сохранен"
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Новые пакеты - \"листья\":"
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "цвет неба"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr "--releasever должно быть больше текущей версии системы."
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+"Загрузка завершилась! Для запуска обновления используйте «dnf {command} reboot».\n"
+"Для удаления кэшированных метаданных и транзакции используйте «dnf {command} clean»"
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr ""
+"К сожалению, необходимо использовать «download --releasever» вместо "
+"«--network»"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr "Перезагрузка отключена, перезагрузка не выполняется."
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr "Гашение экрана не отключается: %s"
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr ""
+"Не удалось загрузить файл состояния: %s, продолжение с пустым состоянием."
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr "Похоже, что в следующих загрузках есть журналы обновления:"
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- журналы не найдены --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "Не удается найти журналы с этим индексом."
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr "Не удалось найти соответствие записи в журнале systemd"
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr "Подготовка системы к обновлению до новой версии"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr "оставить установленные пакеты, если версия нового выпуска старше"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr "выключение системы после завершения операции"
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "какие журналы показывать"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr ""
+"Несовместимая версия данных. Еще раз запустите «dnf {command} download "
+"[ПАРАМЕТРЫ]»"
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr ""
+"Команду «offline-distrosync» нельзя использовать с параметром --no-downgrade"
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr "Дополнительная информация для обновления системы: {}"
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr ""
+"Прежде, чем продолжить, убедитесь, что ваша система полностью обновлена, с "
+"помощью команды «dnf --refresh upgrade». Хотите продолжить"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "Операция отменена."
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "система не готова к обновлению"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr ""
+"транзакция не была подготовлена для «{command}». Еще раз запустите «dnf "
+"{command} download [ПАРАМЕТРЫ]»"
+
+#: plugins/system_upgrade.py:539
+msgid "upgrade is already scheduled"
+msgstr "обновление уже запланировано"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr "триггерный файл не существует, завершаем работу без уведомлений."
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr ""
+"работает еще одно средство обновления, завершаем работу без уведомлений."
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr "используйте «dnf {command} reboot», чтобы начать обновление"
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "Перезагрузка для выполнения обновления."
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr "Начинается автономное обновление. На это понадобится некоторое время."
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr ""
+"Начинается автономная синхронизация дистрибутива. На это понадобится "
+"некоторое время."
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "Запуск обновления системы. На это потребуется какое-то время."
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "Очистка загруженных данных..."
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr "Транзакция system-upgrade пуста, ваша система уже обновлена."
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr "Транзакция сохранена в {}."
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr "Ошибка при сохранении транзакции: {}"
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "Загрузка закончена."
+
+#: plugins/system_upgrade.py:701
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr "Обновление завершилось! Очистка и выключение..."
+
+#: plugins/system_upgrade.py:703
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr "Обновление завершилось! Очистка и перезагрузка..."
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr "Подготовить автономное обновление системы"
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr "Подготовить автономную синхронизацию дистрибутива системы"
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1390,6 +1593,16 @@ msgstr ""
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
 "Подкоманда «{}» устарела. Вместо этого используйте подкоманду «exclude»."
+
+#~ msgid "repo to modify"
+#~ msgstr "репозиторий для изменения"
+
+#~ msgid ""
+#~ "WARNING: this operation is not supported on the RHEL distribution. Proceed "
+#~ "at your own risk."
+#~ msgstr ""
+#~ "ВНИМАНИЕ: эта операция не поддерживается в дистрибутиве RHEL. Действуйте на "
+#~ "свой страх и риск."
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."

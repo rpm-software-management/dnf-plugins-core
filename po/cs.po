@@ -4,20 +4,23 @@
 # Zdenek <chmelarz@gmail.com>, 2017. #zanata
 # Daniel Rusek <mail@asciiwolf.com>, 2019. #zanata
 # Daniel Rusek <mail@asciiwolf.com>, 2020. #zanata
+# Jan Kolarik <jkolarik@redhat.com>, 2022.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2023.
+# Jan Kalabza <jan.kalabza@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2020-01-14 01:52+0000\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
-"Language-Team: Czech\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2023-08-11 08:21+0000\n"
+"Last-Translator: Jan Kalabza <jan.kalabza@gmail.com>\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.18.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -39,6 +42,7 @@ msgstr "Definovat makro pro parsování souboru spec"
 #: plugins/builddep.py:95
 msgid "skip build dependencies not available in repositories"
 msgstr ""
+"přeskočit sestavování závislostí, které nejsou v repozitářích k dispozici"
 
 #: plugins/builddep.py:98
 msgid "treat commandline arguments as spec files"
@@ -77,6 +81,8 @@ msgstr "Ne všechny závislosti jsou uspokojeny"
 msgid ""
 "Warning: -D or --define arguments have no meaning for source rpm packages."
 msgstr ""
+"Varování: argumenty -D nebo --define nemají v případě zdrojových rpm balíčků"
+" význam."
 
 #: plugins/builddep.py:215
 #, python-format
@@ -91,27 +97,31 @@ msgstr "žádný balíček neodpovídá: %s"
 #: plugins/changelog.py:37
 #, python-brace-format
 msgid "Not a valid date: \"{0}\"."
-msgstr ""
+msgstr "Není platné datum: \"{0}\"."
 
 #: plugins/changelog.py:43
 msgid "Show changelog data of packages"
-msgstr ""
+msgstr "Zobrazení údajů ze seznamu změn balíčků"
 
 #: plugins/changelog.py:51
 msgid ""
 "show changelog entries since DATE. To avoid ambiguosity, YYYY-MM-DD format "
 "is recommended."
 msgstr ""
+"zobrazit záznamy v seznamu změn od DATA. Aby se zabránilo nejednoznačnosti, "
+"doporučuje se formát RRRR-MM-DD."
 
 #: plugins/changelog.py:55
 msgid "show given number of changelog entries per package"
-msgstr ""
+msgstr "zobrazit daný počet záznamů v seznamu změn na balíček"
 
 #: plugins/changelog.py:58
 msgid ""
 "show only new changelog entries for packages, that provide an upgrade for "
 "some of already installed packages."
 msgstr ""
+"zobrazit pouze nové záznamy v seznamu změn pro balíčky, které poskytují "
+"aktualizaci pro některé z již nainstalovaných balíčků."
 
 #: plugins/changelog.py:60
 msgid "PACKAGE"
@@ -124,33 +134,35 @@ msgstr "Žádná shoda pro argument: %s"
 
 #: plugins/changelog.py:109
 msgid "Listing changelogs since {}"
-msgstr ""
+msgstr "Výpis seznamů změn od {}"
 
 #: plugins/changelog.py:111
 msgid "Listing only latest changelog"
 msgid_plural "Listing {} latest changelogs"
-msgstr[0] ""
+msgstr[0] "Výpis pouze nejnovějších seznamů změn"
+msgstr[1] "Výpis {} nejnovějších seznamů změn"
+msgstr[2] "Výpis pouze nejnovějších seznamů změn"
 
 #: plugins/changelog.py:116
 msgid "Listing only new changelogs since installed version of the package"
-msgstr ""
+msgstr "Výpis pouze nových seznamů změn od nainstalované verze balíčku"
 
 #: plugins/changelog.py:118
 msgid "Listing all changelogs"
-msgstr ""
+msgstr "Výpis všech seznamů změn"
 
 #: plugins/changelog.py:122
 msgid "Changelogs for {}"
-msgstr ""
+msgstr "Seznamy změn pro {}"
 
 #: plugins/config_manager.py:38
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
-msgstr ""
+msgstr "spravovat {prog} konfigurační možnosti a úložiště"
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "repozitář k úpravě"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr "konfigurační sekce pro správu, \"main\" nebo repoid"
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -170,15 +182,15 @@ msgstr "Vytisknout na výstup hodnoty proměnných"
 
 #: plugins/config_manager.py:61
 msgid "enable repos (automatically saves)"
-msgstr ""
+msgstr "povolit úložiště (automaticky ukládá)"
 
 #: plugins/config_manager.py:64
 msgid "disable repos (automatically saves)"
-msgstr ""
+msgstr "zakázat úložiště (automaticky ukládá)"
 
 #: plugins/config_manager.py:78
 msgid "one of the following arguments is required: {}"
-msgstr ""
+msgstr "je vyžadován jeden z následujících argumentů: {}"
 
 #: plugins/config_manager.py:87
 msgid ""
@@ -186,24 +198,24 @@ msgid ""
 "manager. Use --set-enabled/--set-disabled instead."
 msgstr ""
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Nic neodpovídá repozitáři k úpravě: %s."
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Přidávání repozitáře z: %s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Konfigurace repozitáře selhala"
 msgstr[1] "Konfigurace repozitářů selhala"
 msgstr[2] "Konfigurace repozitářů selhala"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Repozitář nelze uložit do repofile %s: %s"
@@ -226,7 +238,7 @@ msgstr "ne"
 
 #: plugins/copr.py:92
 msgid "Interact with Copr repositories."
-msgstr "Interagovat s repozitáři Copr"
+msgstr "Interakce s úložišti Copr."
 
 #: plugins/copr.py:94
 msgid ""
@@ -286,47 +298,45 @@ msgstr "Zobrazit dostupné repozitáře Copr podle uživatelského JMÉNA"
 msgid "Specify an instance of Copr to work with"
 msgstr ""
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "Chyba: "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
 msgstr ""
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
-msgstr ""
+msgstr "zadání více rozbočovačů"
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "jsou nutné přesně dva další parametry do příkazu copr"
 
-#: plugins/copr.py:246
-#, fuzzy
-#| msgid "No match for argument: %s"
+#: plugins/copr.py:264
 msgid "Too many arguments."
-msgstr "Žádná shoda pro argument: %s"
+msgstr "Příliš mnoho argumentů."
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
 msgstr ""
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "Pro odkaz na Copr projekt použijte formát "
 "\"copr_uživatelské_jméno/copr_název_projektu\""
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "Špatný formát Copr projektu"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -341,87 +351,84 @@ msgid ""
 "Bugzilla. In case of problems, contact the owner of this repository.\n"
 msgstr ""
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "Repozitář úspěšně povolen."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "Repozitář úspěšně vypnut."
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "Repozitář úspěšně odebrán."
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "Neznámý podpříkaz {}."
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
 "this."
 msgstr ""
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr "Nelze analyzovat repozitáře pro uživatelské jméno '{}'."
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "Seznam {} copr repozitářů"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "Popis není uveden"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "Nelze analyzovat hledání pro '{}'."
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "Shoda: {}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "Popis není uveden."
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "Bezpečná a dobrá odpověď. Ukončení."
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "Tento příkaz musí být spuštěn pod uživatelem root."
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr ""
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr ""
 
-#: plugins/copr.py:494
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#: plugins/copr.py:512
+#, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
-msgstr "Takový repozitář neexistuje."
+msgstr "Úložiště '{0}' v projektu '{1}' neexistuje."
 
-#: plugins/copr.py:497
-#, fuzzy
-#| msgid "List enabled Copr repositories"
+#: plugins/copr.py:515
 msgid ""
 "\n"
 "Available repositories: "
 msgstr ""
 "\n"
-"Zobrazit povolené repozitáře Copr "
+"Dostupná úložiště: "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -431,19 +438,17 @@ msgid ""
 "But note that the installed repo file will likely need a manual modification."
 msgstr ""
 
-#: plugins/copr.py:505
-#, fuzzy, python-brace-format
-#| msgid "Such repository does not exist."
+#: plugins/copr.py:523
+#, python-brace-format
 msgid "Project {0} does not exist."
-msgstr "Takový repozitář neexistuje."
+msgstr "Projekt {0} neexistuje."
 
-#: plugins/copr.py:508
-#, fuzzy, python-brace-format
-#| msgid "Failed to disable copr repo {}/{}"
+#: plugins/copr.py:526
+#, python-brace-format
 msgid "Failed to connect to {0}: {1}"
-msgstr "Selhalo vypnutí copr repozitáře {}/{}"
+msgstr "Nepodařilo se připojit k {0}: {1}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -460,46 +465,44 @@ msgid ""
 "These repositories have been enabled automatically."
 msgstr ""
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr ""
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr ""
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Selhalo vypnutí copr repozitáře {}/{}"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "Neznámá odpověď ze serveru."
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
-msgstr "Interagovat s repozitářem Playground"
+msgstr "Interakce s úložištěm Playground."
 
-#: plugins/copr.py:666
-#, fuzzy
-#| msgid "Interact with Playground repository."
+#: plugins/copr.py:684
 msgid "Enabling a Playground repository."
-msgstr "Interagovat s repozitářem Playground"
+msgstr "Povolení úložiště Playground."
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr ""
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "Playground repozitář úspěšně povolen."
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "Playground repozitář úspěšně vypnut."
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
 msgstr "Playground repozitář úspěšně aktualizován."
 
@@ -614,7 +617,7 @@ msgstr "Stáhnout místo toho balíček -debuginfo"
 
 #: plugins/download.py:57
 msgid "download the -debugsource package instead"
-msgstr ""
+msgstr "místo toho stáhněte balíček -debugsource"
 
 #: plugins/download.py:60
 msgid "limit  the  query to packages of given architectures."
@@ -640,7 +643,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "Při spuštění s --url omezit na konkrétní protokoly"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "Nepovedlo se získat zrcadlo pro balíček: %s"
@@ -696,10 +699,8 @@ msgid "load and save groups metadata to file"
 msgstr ""
 
 #: plugins/groups_manager.py:97
-#, fuzzy
-#| msgid "print variable values to stdout"
 msgid "print the result metadata to stdout"
-msgstr "Vytisknout na výstup hodnoty proměnných"
+msgstr "vypsat metadata výsledku na stdout"
 
 #: plugins/groups_manager.py:100
 msgid "group id"
@@ -707,13 +708,11 @@ msgstr ""
 
 #: plugins/groups_manager.py:101
 msgid "group name"
-msgstr ""
+msgstr "název skupiny"
 
 #: plugins/groups_manager.py:103
-#, fuzzy
-#| msgid "No description given"
 msgid "group description"
-msgstr "Popis není uveden"
+msgstr "popis skupiny"
 
 #: plugins/groups_manager.py:105
 msgid "group display order"
@@ -748,36 +747,28 @@ msgid "remove packages from the group instead of adding them"
 msgstr ""
 
 #: plugins/groups_manager.py:129
-#, fuzzy
-#| msgid "Display a list of unresolved dependencies for repositories"
 msgid "include also direct dependencies for packages"
-msgstr "Zobrazit seznam nevyřešených závislostí pro repozitáře"
+msgstr "zahrnout také přímé závislosti pro balíčky"
 
 #: plugins/groups_manager.py:132
 msgid "package specification"
-msgstr ""
+msgstr "specifikace balíčku"
 
 #: plugins/groups_manager.py:156
 msgid "Can't edit group without specifying it (use --id or --name)"
 msgstr ""
 
 #: plugins/groups_manager.py:190
-#, fuzzy
-#| msgid "Can't write file '{}'"
 msgid "Can't load file \"{}\": {}"
-msgstr "Nelze zapsat soubor '{}'"
+msgstr "Nelze načíst soubor \"{}\": {}"
 
 #: plugins/groups_manager.py:206
-#, fuzzy
-#| msgid "Can't write file '{}'"
 msgid "Can't save file \"{}\": {}"
-msgstr "Nelze zapsat soubor '{}'"
+msgstr "Nelze uložit soubor \"{}\": {}"
 
 #: plugins/groups_manager.py:261
-#, fuzzy
-#| msgid "No match for argument: %s"
 msgid "No match for argument: {}"
-msgstr "Žádná shoda pro argument: %s"
+msgstr "Žádná shoda pro argument: {}"
 
 #: plugins/groups_manager.py:298
 msgid "Can't remove packages from non-existent group"
@@ -831,35 +822,27 @@ msgid "MODULE"
 msgstr ""
 
 #: plugins/modulesync.py:45
-#, fuzzy
-#| msgid "packages to download"
 msgid "modules to download"
-msgstr "balíčky ke stažení"
+msgstr "moduly ke stažení"
 
 #: plugins/modulesync.py:47
-#, fuzzy
-#| msgid "Specify repositories to check"
 msgid "enable repositories with source packages"
-msgstr "Určit, které repozitáře zkontrolovat"
+msgstr "povolit úložiště se zdrojovými balíčky"
 
 #: plugins/modulesync.py:49
 msgid "enable repositories with debug-info and debug-source packages"
 msgstr ""
 
 #: plugins/modulesync.py:53
-#, fuzzy
-#| msgid "download all packages from remote repo"
 msgid "download only packages from newest modules"
-msgstr "Stáhnout všechny balíčky ze vzdáleného repozitáře"
+msgstr "stahovat pouze balíčky z nejnovějších modulů"
 
 #: plugins/modulesync.py:85
-#, fuzzy
-#| msgid "No match for argument: %s"
 msgid "Unable to find a match for argument: '{}'"
 msgid_plural "Unable to find a match for arguments: '{}'"
 msgstr[0] "Žádná shoda pro argument: %s"
-msgstr[1] "Žádná shoda pro argument: %s"
-msgstr[2] "Žádná shoda pro argument: %s"
+msgstr[1] "Žádná shoda pro argumenty: %s"
+msgstr[2] "Žádná shoda pro argumenty: %s"
 
 #: plugins/modulesync.py:107
 msgid ""
@@ -878,57 +861,55 @@ msgid "No match for package name '{0}' in profile {1} from module {2}"
 msgstr ""
 
 #: plugins/modulesync.py:166
-#, fuzzy
-#| msgid "No match for argument: %s"
 msgid "No mach for argument '{}'"
-msgstr "Žádná shoda pro argument: %s"
+msgstr "Žádná schoda pro argument '{}'"
 
 #. TODO(jmracek) Shell we end with an error or with RC 1?
 #: plugins/modulesync.py:198
 msgid "Unable to satisfy require {}"
 msgstr ""
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
 "restarting file \"{file}\"."
 msgstr ""
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
 msgstr "Určit aktualizované binárky, které je potřeba restartovat"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "Brát v úvahu pouze procesy tohoto uživatele"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr ""
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr ""
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr ""
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr "Více informací:"
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr ""
 
@@ -959,11 +940,11 @@ msgid "Display a list of unresolved dependencies for repositories"
 msgstr "Zobrazit seznam nevyřešených závislostí pro repozitáře"
 
 #: plugins/repoclosure.py:69
-#, fuzzy
-#| msgid "Repoclosure ended with unresolved dependencies."
 msgid ""
 "Repoclosure ended with unresolved dependencies ({}) across {} packages."
-msgstr "Zavření repozitáře skončilo s nevyřešenými závislostmi."
+msgstr ""
+"Opětovné uzavření skončilo s nevyřešenými závislostmi ({}) napříč balíčky "
+"{}."
 
 #: plugins/repoclosure.py:159
 msgid "check packages of the given archs, can be specified multiple times"
@@ -1052,6 +1033,8 @@ msgid ""
 "\n"
 "Downgraded packages"
 msgstr ""
+"\n"
+"Snížení verze balíčku"
 
 #: plugins/repodiff.py:207
 msgid ""
@@ -1126,19 +1109,15 @@ msgstr "Spravovat adresář rpm balíčků"
 
 #: plugins/repomanage.py:59
 msgid "Pass either --old or --new, not both!"
-msgstr "Zadejte buď --old, nebo --new, ne obojí zároveň!"
+msgstr "Předejte buď --old, nebo --new, ne obojí!"
 
 #: plugins/repomanage.py:61
-#, fuzzy
-#| msgid "Pass either --old or --new, not both!"
 msgid "Pass either --oldonly or --new, not both!"
-msgstr "Zadejte buď --old, nebo --new, ne obojí zároveň!"
+msgstr "Předejte buď jen --oldonly, nebo --new, ne obojí!"
 
 #: plugins/repomanage.py:63
-#, fuzzy
-#| msgid "Pass either --old or --new, not both!"
 msgid "Pass either --old or --oldonly, not both!"
-msgstr "Zadejte buď --old, nebo --new, ne obojí zároveň!"
+msgstr "Zadejte buď --old, nebo --oldonly, ne obojí zároveň!"
 
 #: plugins/repomanage.py:100
 msgid "No files to process"
@@ -1153,10 +1132,8 @@ msgid "Print the older packages"
 msgstr "Vypsat starší balíčky"
 
 #: plugins/repomanage.py:225
-#, fuzzy
-#| msgid "Print the newest packages"
 msgid "Print the older packages. Exclude the newest packages."
-msgstr "Vypsat nejnovější balíčky"
+msgstr "Vytiskněte starší balíčky. Vyloučte nejnovější balíčky."
 
 #: plugins/repomanage.py:227
 msgid "Print the newest packages"
@@ -1228,42 +1205,55 @@ msgstr ""
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr ""
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr ""
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr ""
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "Nelze použít --safe-write-path s více úložišti"
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
-msgstr ""
+msgstr "Nepovedlo se získat zrcadlo pro balíček: %s"
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr ""
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr ""
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr ""
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
+#: plugins/reposync.py:208
+#, python-brace-format
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
 msgstr ""
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr ""
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
-msgstr ""
+msgstr "nezdařilo se smazat soubor %s"
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr ""
@@ -1271,6 +1261,180 @@ msgstr ""
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Noví sirotci:"
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "barva oblohy"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr "Verze --releasever musí být vyšší než verze aktuálního systému."
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr "Promiňte, místo '--network' musíte použít 'download --releasever'"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr ""
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr "Zatmívání obrazovky nemůže být zakázáno: %s"
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr "Nepodařilo se načíst stavový soubor: %s, pokračuje prázdným stavem."
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr "Následující boot obsahuje záznamy aktualizace systému:"
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- nenalezeny žádné záznamy --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "Nenalezeny žádné záznamy s tímto indexem."
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr "Nepodařilo se získat požadovaný záznam systemd žurnálu"
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr "Připravit systém k aktualizaci na novou verzi"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr ""
+"ponechat nainstalované balíčky, pokud se v novém vydání nachází starší verze"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr ""
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "které záznamy zobrazit"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr ""
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr ""
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr ""
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr ""
+"Předtím než budete pokračovat, ujistěte se, že váš systém je aktuální pomocí"
+" příkazu \"dnf --refresh upgrade\". Přejete si pokračovat"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "Operace přerušena."
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "systém není na aktualizaci připraven"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr ""
+
+#: plugins/system_upgrade.py:539
+msgid "upgrade is already scheduled"
+msgstr "aktualizace je už naplánována"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr "Spouštěcí soubor neexistuje. Tiché ukončení."
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr "už běží jiný aktualizační nástroj, končím."
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr ""
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "Restartuji, aby se provedla aktualizace."
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr "Spouští se offline aktualizace. To může nějakou dobu trvat."
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr ""
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "Spouští se aktualizace systému. To může nějakou dobu trvat."
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "Mazání stažených dat…"
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr ""
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr "Transakce uložena do {}."
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr "Chyba při ukládání transakce: {}"
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "Stahování dokončeno."
+
+#: plugins/system_upgrade.py:701
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr "Aktualizace dokončena! Úklid a vypnutí..."
+
+#: plugins/system_upgrade.py:703
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr "Aktualizace dokončena! Čištění a restart systému…"
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr ""
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr ""
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1336,6 +1500,9 @@ msgstr ""
 #: plugins/versionlock.py:164
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
+
+#~ msgid "repo to modify"
+#~ msgstr "repozitář k úpravě"
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."

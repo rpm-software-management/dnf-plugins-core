@@ -1,10 +1,10 @@
-# Fabio Tomat <f.t.public@gmail.com>, 2019. #zanata, 2021, 2022.
+# Fabio Tomat <f.t.public@gmail.com>, 2019. #zanata, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 03:37+0000\n"
-"PO-Revision-Date: 2022-06-14 11:18+0000\n"
+"POT-Creation-Date: 2023-09-20 01:38+0000\n"
+"PO-Revision-Date: 2023-03-03 04:20+0000\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <https://translate.fedoraproject.org/projects/dnf/dnf-plugins-core-l10n-master/fur/>\n"
 "Language: fur\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.15.2\n"
 
 #: plugins/builddep.py:45
 msgid "[PACKAGE|PACKAGE.spec]"
@@ -72,6 +72,8 @@ msgstr "No son sodisfatis dutis lis dipendencis."
 msgid ""
 "Warning: -D or --define arguments have no meaning for source rpm packages."
 msgstr ""
+"Atenzion: i argoments -D o --define no àn significât pai pachets rpm dai "
+"sorzints."
 
 #: plugins/builddep.py:215
 #, python-format
@@ -153,8 +155,8 @@ msgid "manage {prog} configuration options and repositories"
 msgstr "gjestìs lis opzions di configurazion di {prog} e i dipuesits"
 
 #: plugins/config_manager.py:45
-msgid "repo to modify"
-msgstr "dipuesit di modificâ"
+msgid "configuration sections to manage, \"main\" or repoid"
+msgstr "sezions di configurazion di gjestî, \"main\" o repoid"
 
 #: plugins/config_manager.py:48
 msgid "save the current options (useful with --setopt)"
@@ -192,23 +194,23 @@ msgstr ""
 "Atenzion: i argoments --enablerepo/--disablerepo no an significât cu la "
 "gjestion de configurazion. Dopre invezit --set-enabled/--set-disabled."
 
-#: plugins/config_manager.py:132
+#: plugins/config_manager.py:134
 #, python-format
 msgid "No matching repo to modify: %s."
 msgstr "Nissun reposiory corispondent di modificâ: %s"
 
-#: plugins/config_manager.py:183
+#: plugins/config_manager.py:185
 #, python-format
 msgid "Adding repo from: %s"
 msgstr "Daûr a zontâ il dipuesit di: %s"
 
-#: plugins/config_manager.py:207
+#: plugins/config_manager.py:209
 msgid "Configuration of repo failed"
 msgid_plural "Configuration of repos failed"
 msgstr[0] "Configurazion dal dipuesit falide"
 msgstr[1] "Configurazion dai repository failde"
 
-#: plugins/config_manager.py:217
+#: plugins/config_manager.py:219
 #, python-format
 msgid "Could not save repo to repofile %s: %s"
 msgstr "Impussibil salvâ il dipuesit sul file dai dipuesits %s: %s"
@@ -291,11 +293,11 @@ msgstr "Liste i dipuesits Copr disponibii par NON utent"
 msgid "Specify an instance of Copr to work with"
 msgstr "Specifiche une istance di Copr che cun chê si à di lavorâ"
 
-#: plugins/copr.py:164 plugins/copr.py:236 plugins/copr.py:263
+#: plugins/copr.py:163 plugins/copr.py:254 plugins/copr.py:281
 msgid "Error: "
 msgstr "Erôr: "
 
-#: plugins/copr.py:165
+#: plugins/copr.py:164
 msgid ""
 "specify Copr hub either with `--hub` or using "
 "`copr_hub/copr_username/copr_projectname` format"
@@ -303,19 +305,19 @@ msgstr ""
 "specifiche l'hub Copr o cun `--hub`o doprant il formât "
 "`copr_hub/copr_username/copr_projectname`"
 
-#: plugins/copr.py:168
+#: plugins/copr.py:167
 msgid "multiple hubs specified"
 msgstr "a son stâts specificâts plui hubs"
 
-#: plugins/copr.py:237 plugins/copr.py:241
+#: plugins/copr.py:255 plugins/copr.py:259
 msgid "exactly two additional parameters to copr command are required"
 msgstr "a son necessaris juste doi parametris adizionâi al comant copr"
 
-#: plugins/copr.py:246
+#: plugins/copr.py:264
 msgid "Too many arguments."
 msgstr "Masse argoments."
 
-#: plugins/copr.py:249
+#: plugins/copr.py:267
 msgid ""
 "Bad format of optional chroot. The format is distribution-version-"
 "architecture."
@@ -323,16 +325,16 @@ msgstr ""
 "Formât sbaliât di chroot opzionâl. Il formât al è distribuzion-version-"
 "architeture."
 
-#: plugins/copr.py:264
+#: plugins/copr.py:282
 msgid "use format `copr_username/copr_projectname` to reference copr project"
 msgstr ""
 "dopre il formât `nonutent_copr/progjet_copr` par riferîsi al progjet copr"
 
-#: plugins/copr.py:266
+#: plugins/copr.py:284
 msgid "bad copr project format"
 msgstr "formât dal progjet copr sbaliât"
 
-#: plugins/copr.py:280
+#: plugins/copr.py:298
 msgid ""
 "\n"
 "Enabling a Copr repository. Please note that this repository is not part\n"
@@ -359,23 +361,23 @@ msgstr ""
 "\n"
 "Abilitâ pardabon {0}?\n"
 
-#: plugins/copr.py:297
+#: plugins/copr.py:315
 msgid "Repository successfully enabled."
 msgstr "Dipuesit abilitât cun sucès."
 
-#: plugins/copr.py:302
+#: plugins/copr.py:320
 msgid "Repository successfully disabled."
 msgstr "Dipuesit disabilitât cun sucès."
 
-#: plugins/copr.py:306
+#: plugins/copr.py:324
 msgid "Repository successfully removed."
 msgstr "Dipuesit gjavât cun sucès."
 
-#: plugins/copr.py:310 plugins/copr.py:721
+#: plugins/copr.py:328 plugins/copr.py:739
 msgid "Unknown subcommand {}."
 msgstr "Sot-comant {} no cognossût."
 
-#: plugins/copr.py:367
+#: plugins/copr.py:385
 msgid ""
 "* These coprs have repo file with an old format that contains no information"
 " about Copr hub - the default one was assumed. Re-enable the project to fix "
@@ -385,53 +387,53 @@ msgstr ""
 "infomazions sul hub Copr - si à considerât chel predefinît. Tornâ a abilitâ "
 "il progjet par comedâ chest probleme."
 
-#: plugins/copr.py:380
+#: plugins/copr.py:398
 msgid "Can't parse repositories for username '{}'."
 msgstr "Impussibil analizâ i dipuesits pal non utent '{}'."
 
-#: plugins/copr.py:383
+#: plugins/copr.py:401
 msgid "List of {} coprs"
 msgstr "Liste di {} copr"
 
-#: plugins/copr.py:388
+#: plugins/copr.py:406
 msgid "No description given"
 msgstr "Nissune descrizione furnide"
 
-#: plugins/copr.py:400
+#: plugins/copr.py:418
 msgid "Can't parse search for '{}'."
 msgstr "Impussibil analizâ la ricercje par '{}'."
 
-#: plugins/copr.py:403
+#: plugins/copr.py:421
 msgid "Matched: {}"
 msgstr "Corispondencis: {}"
 
-#: plugins/copr.py:408
+#: plugins/copr.py:426
 msgid "No description given."
 msgstr "Nissune descrizion furnide."
 
-#: plugins/copr.py:430
+#: plugins/copr.py:448
 msgid "Safe and good answer. Exiting."
 msgstr "Rispueste buine e sigure. Si jes."
 
-#: plugins/copr.py:437
+#: plugins/copr.py:455
 msgid "This command has to be run under the root user."
 msgstr "Si à di eseguî chest comant come utent root."
 
-#: plugins/copr.py:487
+#: plugins/copr.py:505
 #, python-brace-format
 msgid "Request to {0} failed: {1} - {2}"
 msgstr "Richieste a {0} falide: {1} - {2}"
 
-#: plugins/copr.py:489
+#: plugins/copr.py:507
 msgid "It wasn't possible to enable this project.\n"
 msgstr "Nol è stât pussibil abilitâ chest progjet.\n"
 
-#: plugins/copr.py:494
+#: plugins/copr.py:512
 #, python-brace-format
 msgid "Repository '{0}' does not exist in project '{1}'."
 msgstr "Il dipuesit '{0}' nol esist tal progjet '{1}'."
 
-#: plugins/copr.py:497
+#: plugins/copr.py:515
 msgid ""
 "\n"
 "Available repositories: "
@@ -439,7 +441,7 @@ msgstr ""
 "\n"
 "Dipuesits disponibii: "
 
-#: plugins/copr.py:499
+#: plugins/copr.py:517
 #, python-brace-format
 msgid ""
 "\n"
@@ -454,17 +456,17 @@ msgstr ""
 "  'dnf copr enable {0} <dipuesit>'\n"
 "Ma viôt che al è facil che il file di dipuesit instalât al varà bisugne di une modifiche manuâl."
 
-#: plugins/copr.py:505
+#: plugins/copr.py:523
 #, python-brace-format
 msgid "Project {0} does not exist."
 msgstr "Il progjet {0} nol esist."
 
-#: plugins/copr.py:508
+#: plugins/copr.py:526
 #, python-brace-format
 msgid "Failed to connect to {0}: {1}"
 msgstr "Impussibil conetisi a {0}: {1}"
 
-#: plugins/copr.py:555
+#: plugins/copr.py:573
 #, python-brace-format
 msgid ""
 "Maintainer of the enabled Copr repository decided to make\n"
@@ -493,44 +495,44 @@ msgstr ""
 "\n"
 "Chescj dipuesits a son stâts abilitâts in automatic."
 
-#: plugins/copr.py:576
+#: plugins/copr.py:594
 msgid "Do you want to keep them enabled?"
 msgstr "Desideristu tignîju abilitâts?"
 
-#: plugins/copr.py:609
+#: plugins/copr.py:627
 #, python-brace-format
 msgid "Failed to remove copr repo {0}/{1}/{2}"
 msgstr "Impussibil gjavâ il dipuesit copr {0}/{1}/{2}"
 
-#: plugins/copr.py:620
+#: plugins/copr.py:638
 msgid "Failed to disable copr repo {}/{}"
 msgstr "Impussibil disabilitâ il dipuesit copr {}/{}"
 
-#: plugins/copr.py:638 plugins/copr.py:675
+#: plugins/copr.py:656 plugins/copr.py:693
 msgid "Unknown response from server."
 msgstr "Rispueste no cognossude dal servidôr."
 
-#: plugins/copr.py:660
+#: plugins/copr.py:678
 msgid "Interact with Playground repository."
 msgstr "Interagjìs cul dipuesits Playground."
 
-#: plugins/copr.py:666
+#: plugins/copr.py:684
 msgid "Enabling a Playground repository."
 msgstr "Daûr a abilitâ un dipuesit Playground."
 
-#: plugins/copr.py:667
+#: plugins/copr.py:685
 msgid "Do you want to continue?"
 msgstr "Desideristu continuâ?"
 
-#: plugins/copr.py:711
+#: plugins/copr.py:729
 msgid "Playground repositories successfully enabled."
 msgstr "Dipuesits Playground abilitâts cun sucès."
 
-#: plugins/copr.py:714
+#: plugins/copr.py:732
 msgid "Playground repositories successfully disabled."
 msgstr "Dipuesits Playground disabilitâts cun sucès."
 
-#: plugins/copr.py:718
+#: plugins/copr.py:736
 msgid "Playground repositories successfully updated."
 msgstr "Dipuesits Playground inzornâts cun sucès."
 
@@ -680,7 +682,7 @@ msgstr ""
 msgid "when running with --url, limit to specific protocols"
 msgstr "cuant che si eseguìs cun --url, limite ai protocoi specificâts"
 
-#: plugins/download.py:121 plugins/reposync.py:314
+#: plugins/download.py:121 plugins/reposync.py:327
 #, python-format
 msgid "Failed to get mirror for package: %s"
 msgstr "No si è rivâts a otignî il spieli (mirror) pal pachet: %s"
@@ -914,7 +916,7 @@ msgstr "Nissune corispondence pal argoment '{}'"
 msgid "Unable to satisfy require {}"
 msgstr "Impussibil sodisfâ la richieste {}"
 
-#: plugins/needs_restarting.py:66
+#: plugins/needs_restarting.py:68
 #, python-brace-format
 msgid ""
 "No installed package found for package name \"{pkg}\" specified in needs-"
@@ -923,46 +925,46 @@ msgstr ""
 "Nissun pachet instalât cjatât pal non di pachet \"{pkg}\" specificât tal "
 "file di needs-restarting \"{file}\"."
 
-#: plugins/needs_restarting.py:220
+#: plugins/needs_restarting.py:256
 msgid "determine updated binaries that need restarting"
 msgstr "determine i binaris inzornâts che a àn bisugne di tornâ a inviâsi"
 
-#: plugins/needs_restarting.py:225
+#: plugins/needs_restarting.py:261
 msgid "only consider this user's processes"
 msgstr "considere dome i procès di chest utent"
 
-#: plugins/needs_restarting.py:227
+#: plugins/needs_restarting.py:263
 msgid ""
 "only report whether a reboot is required (exit code 1) or not (exit code 0)"
 msgstr ""
 "segnale dome se al covente tornâ a inviâ (codiç di jessude 1) o mancul "
 "(codiç di jessude 0)"
 
-#: plugins/needs_restarting.py:230
+#: plugins/needs_restarting.py:266
 msgid "only report affected systemd services"
 msgstr "segnale dome i servizis di systemd interessâts"
 
-#: plugins/needs_restarting.py:253
+#: plugins/needs_restarting.py:289
 msgid "Core libraries or services have been updated since boot-up:"
 msgstr ""
 "Dal inviament dal sisteme, lis librariis cûr o i servizis a son stâts "
 "inzornâts:"
 
-#: plugins/needs_restarting.py:258
+#: plugins/needs_restarting.py:294
 msgid "Reboot is required to fully utilize these updates."
 msgstr ""
 "Al covente tornâ a inviâ il sisteme par utilizâ dal dut chescj inzornaments."
 
-#: plugins/needs_restarting.py:259
+#: plugins/needs_restarting.py:295
 msgid "More information:"
 msgstr "Plui informazions:"
 
-#: plugins/needs_restarting.py:263
+#: plugins/needs_restarting.py:299
 msgid "No core libraries or services have been updated since boot-up."
 msgstr ""
 "Dal inviament dal sisteme nissune librarie cûr o servizi al è stât inzornât."
 
-#: plugins/needs_restarting.py:265
+#: plugins/needs_restarting.py:301
 msgid "Reboot should not be necessary."
 msgstr "Nol varès di coventâ tornâ a inviâ il sisteme."
 
@@ -1271,44 +1273,60 @@ msgstr "discjame dome i pachets sorzint"
 msgid "Just list urls of what would be downloaded, don't download"
 msgstr "Liste juste i urls di ce che al vignarà discjariât, no sta discjamâ"
 
-#: plugins/reposync.py:113
+#: plugins/reposync.py:92
+msgid ""
+"Filesystem path that is considered safe for writing. Defaults to download "
+"path."
+msgstr ""
+
+#: plugins/reposync.py:119
 msgid "Can't use --norepopath with multiple repositories"
 msgstr "Impussibil doprâ --norepopath cun plui dipuesits"
 
-#: plugins/reposync.py:132
+#: plugins/reposync.py:122
+#, fuzzy
+#| msgid "Can't use --norepopath with multiple repositories"
+msgid "Can't use --safe-write-path with multiple repositories"
+msgstr "Impussibil doprâ --norepopath cun plui dipuesits"
+
+#: plugins/reposync.py:141
 #, python-format
 msgid "Failed to get mirror for metadata: %s"
 msgstr "Nol è stât pussibil otignî il spieli (mirror) pai metadâts: %s"
 
-#: plugins/reposync.py:149
+#: plugins/reposync.py:158
 msgid "Failed to get mirror for the group file."
 msgstr "Nol è stât pussibil otignî il spieli (mirror) pal file dal grup."
 
-#: plugins/reposync.py:168
+#: plugins/reposync.py:177
 msgid "Removing {}: {}"
 msgstr "Rimozion di {}: {}"
 
-#: plugins/reposync.py:175
+#: plugins/reposync.py:184
 msgid "GPG signature check failed."
 msgstr "Control de firme GPG falît."
 
-#: plugins/reposync.py:196
-msgid "Download target '{}' is outside of download path '{}'."
+#: plugins/reposync.py:208
+#, fuzzy, python-brace-format
+#| msgid "Download target '{}' is outside of download path '{}'."
+msgid ""
+"Download target '{0}' for location '{1}' of '{2}' package is outside of safe"
+" write path '{3}'."
 msgstr ""
 "La destinazion di discjariament '{}' e je fûr dal percors di discjariament "
 "'{}'"
 
-#: plugins/reposync.py:211
+#: plugins/reposync.py:224
 #, python-format
 msgid "[DELETED] %s"
 msgstr "[ELIMINÂT] %s"
 
-#: plugins/reposync.py:213
+#: plugins/reposync.py:226
 #, python-format
 msgid "failed to delete file %s"
 msgstr "no si è rivâts a eliminâ il file %s"
 
-#: plugins/reposync.py:222
+#: plugins/reposync.py:235
 #, python-format
 msgid "comps.xml for repository %s saved"
 msgstr "salvât comps.xml pal dipuesit %s"
@@ -1316,6 +1334,195 @@ msgstr "salvât comps.xml pal dipuesit %s"
 #: plugins/show_leaves.py:54
 msgid "New leaves:"
 msgstr "Gnûfs pachets che di chei no dipendin altris:"
+
+#. Translators: This string is only used in unit tests.
+#: plugins/system_upgrade.py:45
+msgid "the color of the sky"
+msgstr "il colôr dal cîl"
+
+#: plugins/system_upgrade.py:57
+msgid "Need a --releasever greater than the current system version."
+msgstr ""
+"Al covente un valôr di --releasever plui grant de version curinte dal "
+"sisteme."
+
+#. Translators: do not change "reboot" here
+#: plugins/system_upgrade.py:59
+#, python-brace-format
+msgid ""
+"Download complete! Use 'dnf {command} reboot' to start the upgrade.\n"
+"To remove cached metadata and transaction use 'dnf {command} clean'"
+msgstr ""
+"Discjariament completât! Dopre 'dnf {command} reboot' par scomençâ l'inzornament.\n"
+"Par gjavâ i metadâts e la transazion in cache dopre 'dnf {command} clean'"
+
+#: plugins/system_upgrade.py:62
+msgid "Sorry, you need to use 'download --releasever' instead of '--network'"
+msgstr "Tu scugnis doprâ 'download --releasever' invezit di '--network'"
+
+#: plugins/system_upgrade.py:71
+msgid "Reboot turned off, not rebooting."
+msgstr ""
+"E je stade disativade la pussibilitât di tornâ a inviâ, duncje no si tornarà"
+" a inviâ."
+
+#: plugins/system_upgrade.py:125
+#, python-format
+msgid "Screen blanking can't be disabled: %s"
+msgstr "Nol è pussibil disativâ il scuriment dal visôr: %s"
+
+#: plugins/system_upgrade.py:145
+#, python-format
+msgid "Failed loading state file: %s, continuing with empty state."
+msgstr ""
+"Nol è stât pussibil cjariâ il file di stât: %s, si continue cul stât vueit."
+
+#: plugins/system_upgrade.py:293
+msgid "The following boots appear to contain upgrade logs:"
+msgstr "Chescj inviaments a somein contignî regjistris di inzornaments:"
+
+#: plugins/system_upgrade.py:303
+msgid "-- no logs were found --"
+msgstr "-- nol è stât cjatât nissun regjistri --"
+
+#: plugins/system_upgrade.py:318
+msgid "Cannot find logs with this index."
+msgstr "Impussibil cjatâ regjistris cun chest indiç."
+
+#: plugins/system_upgrade.py:327
+msgid "Unable to match systemd journal entry"
+msgstr "Impussibil fâ corispuindi la vôs dal gjornâl di systemd"
+
+#: plugins/system_upgrade.py:348
+msgid "Prepare system for upgrade to a new release"
+msgstr "Prepare il sisteme pal inzornament a une gnove version"
+
+#: plugins/system_upgrade.py:364
+msgid "keep installed packages if the new release's version is older"
+msgstr ""
+"ten instalât i pachets se lis versions de gnove publicazion a son plui "
+"vecjis"
+
+#: plugins/system_upgrade.py:368
+msgid "power off system after the operation is completed"
+msgstr "distude il sisteme ae fin de operazion"
+
+#: plugins/system_upgrade.py:372
+msgid "which logs to show"
+msgstr "cuâi regjistris mostrâ"
+
+#: plugins/system_upgrade.py:406
+#, python-brace-format
+msgid "Incompatible version of data. Rerun 'dnf {command} download [OPTIONS]'"
+msgstr ""
+"Version dai dâts incompatibile. Torne eseguìs 'dnf {command} download "
+"[OPZIONS]'"
+
+#: plugins/system_upgrade.py:442
+msgid "Command 'offline-distrosync' cannot be used with --no-downgrade option"
+msgstr ""
+"Nol è pussibil doprâ il comant 'offline-distrosync' cu la opzion --no-"
+"downgrade"
+
+#: plugins/system_upgrade.py:464
+msgid "Additional information for System Upgrade: {}"
+msgstr "Informazions adizionâls pal inzornament dal sisteme: {}"
+
+#: plugins/system_upgrade.py:467
+msgid ""
+"Before you continue ensure that your system is fully upgraded by running "
+"\"dnf --refresh upgrade\". Do you want to continue"
+msgstr ""
+"Prime di continuâ siguriti che il sisteme al sedi dal dut inzornât eseguint "
+"\"dnf --refresh upgrade\". Continuâ"
+
+#: plugins/system_upgrade.py:471
+msgid "Operation aborted."
+msgstr "Operazion anulade."
+
+#: plugins/system_upgrade.py:532
+msgid "system is not ready for upgrade"
+msgstr "il sisteme nol è pront pal inzornament"
+
+#: plugins/system_upgrade.py:535
+#, python-brace-format
+msgid ""
+"the transaction was not prepared for '{command}'. Rerun 'dnf {command} "
+"download [OPTIONS]'"
+msgstr ""
+"la transazion no je stade preparade par '{command}'. Torne eseguìs 'dnf "
+"{command} download [OPZIONS]'"
+
+#: plugins/system_upgrade.py:539
+msgid "upgrade is already scheduled"
+msgstr "l'inzornament al è za planificât"
+
+#: plugins/system_upgrade.py:545
+msgid "trigger file does not exist. exiting quietly."
+msgstr "il file ativadôr nol esist, jessude cidine."
+
+#: plugins/system_upgrade.py:548
+msgid "another upgrade tool is running. exiting quietly."
+msgstr "un altri strument di inzornament al è in esecuzion, jessude cidine."
+
+#: plugins/system_upgrade.py:557
+#, python-brace-format
+msgid "use 'dnf {command} reboot' to begin the upgrade"
+msgstr "dopre 'dnf {command} reboot'par scomençâ l'inzornament"
+
+#: plugins/system_upgrade.py:577
+msgid "Rebooting to perform upgrade."
+msgstr "Si torne a inviâ par eseguî l'inzornament."
+
+#: plugins/system_upgrade.py:613
+msgid "Starting offline upgrade. This will take a while."
+msgstr "Daûr a scomençâ l'inzornament fûr rêt. Chest al durarà un pôc."
+
+#: plugins/system_upgrade.py:615
+msgid "Starting offline distrosync. This will take a while."
+msgstr "Daûr a scomençâ il distrosync fûr rêt. Chest al durarà un pôc."
+
+#: plugins/system_upgrade.py:617
+msgid "Starting system upgrade. This will take a while."
+msgstr "Daûr a scomençâ l'inzornament dal sisteme. Chest al durarà un pôc."
+
+#: plugins/system_upgrade.py:633
+msgid "Cleaning up downloaded data..."
+msgstr "Daûr a netâ fûr i dâts discjariâts..."
+
+#: plugins/system_upgrade.py:663
+msgid ""
+"The system-upgrade transaction is empty, your system is already up-to-date."
+msgstr ""
+"La transazion di system-upgrade e je vueide, il to sisteme al è za inzornât."
+
+#: plugins/system_upgrade.py:672
+msgid "Transaction saved to {}."
+msgstr "Transazion salvade su {}."
+
+#: plugins/system_upgrade.py:675
+msgid "Error storing transaction: {}"
+msgstr "Erôr tal archiviâ la transazion: {}"
+
+#: plugins/system_upgrade.py:697
+msgid "Download finished."
+msgstr "Discjariament finît."
+
+#: plugins/system_upgrade.py:701
+msgid "Upgrade complete! Cleaning up and powering off..."
+msgstr "Inzornament completât! Daûr a netâ e a distudâ..."
+
+#: plugins/system_upgrade.py:703
+msgid "Upgrade complete! Cleaning up and rebooting..."
+msgstr "Inzornament completât! Daûr a netâ e a tornâ a inviâ..."
+
+#: plugins/system_upgrade.py:715
+msgid "Prepare offline upgrade of the system"
+msgstr "Preparazion dal inzornament fûr rêt dal sisteme"
+
+#: plugins/system_upgrade.py:720
+msgid "Prepare offline distrosync of the system"
+msgstr "Preparazion dal distrosync fûr rêt dal sisteme"
 
 #: plugins/versionlock.py:33
 #, python-format
@@ -1388,6 +1595,9 @@ msgstr ""
 msgid "Subcommand '{}' is deprecated. Use 'exclude' subcommand instead."
 msgstr ""
 "Il sot-comant '{}' al è deplorât. Dopre invezit il sot-comant 'exclude'."
+
+#~ msgid "repo to modify"
+#~ msgstr "dipuesit di modificâ"
 
 #~ msgid ""
 #~ "This repository does not have any builds yet so you cannot enable it now."
