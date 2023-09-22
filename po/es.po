@@ -150,7 +150,7 @@ msgstr "Registros de cambios para {}"
 #: plugins/config_manager.py:38
 #, python-brace-format
 msgid "manage {prog} configuration options and repositories"
-msgstr "Dirige {*prog} opciones de configuración y repositorios"
+msgstr "Dirige {prog} opciones de configuración y repositorios"
 
 #: plugins/config_manager.py:45
 msgid "repo to modify"
