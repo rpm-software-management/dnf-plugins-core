@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.4.2
+Version:        4.4.3
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -812,6 +812,11 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Fri Oct 06 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.3-1
+- needs-restarting: Avoid issue with garbage smaps chars (RhBug:2212953)
+- needs-restarting: Add kernel-core to reboot list
+- Update translations
+
 * Thu Jul 27 2023 Nicola Sella <nsella@redhat.com> - 4.4.2-1
 - Fixed copr.vendor.conf not loading
 - "dnf copr enable" on "Asahi Fedora Linux Remix" guesses epel..x86_64

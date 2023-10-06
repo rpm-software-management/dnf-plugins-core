@@ -722,5 +722,9 @@
     [
         2211844,
         "`dnf offline-upgrade reboot --poweroff` doesn't poweroff after upgrade"
+    ],
+    [
+        2212953,
+        "Smaps file parsing in DNF's needs-restarting cannot handle garbage UTF-8-ish characters in smaps lines"
     ]
 ]

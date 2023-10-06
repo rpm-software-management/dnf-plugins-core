@@ -22,6 +22,21 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.4.3 Release Notes
+===================
+
+- Bug fixes:
+  - needs-restarting: Avoid issue with garbage smaps chars (RhBug:2212953)
+
+- Others:
+  - needs-restarting: Add kernel-core to reboot list
+  - Update translations 
+
+Bugs fixed in 4.4.3:
+
+* :rhbug:`2212953`
+
+===================
 4.4.2 Release Notes
 ===================
 
