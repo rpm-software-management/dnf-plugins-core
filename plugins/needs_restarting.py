@@ -40,7 +40,8 @@ import time
 # For which package updates we should recommend a reboot
 # Mostly taken from https://access.redhat.com/solutions/27943
 NEED_REBOOT = ['kernel', 'kernel-rt', 'glibc', 'linux-firmware',
-               'systemd', 'dbus', 'dbus-broker', 'dbus-daemon']
+               'systemd', 'dbus', 'dbus-broker', 'dbus-daemon',
+               'microcode_ctl']
 
 NEED_REBOOT_DEPENDS_ON_DBUS = ['zlib']
 
