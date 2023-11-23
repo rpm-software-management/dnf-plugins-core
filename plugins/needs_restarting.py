@@ -41,7 +41,7 @@ import time
 # Mostly taken from https://access.redhat.com/solutions/27943
 NEED_REBOOT = ['kernel', 'kernel-core', 'kernel-rt', 'glibc',
                'linux-firmware', 'systemd', 'dbus', 'dbus-broker',
-               'dbus-daemon']
+               'dbus-daemon', 'microcode_ctl']
 
 def get_options_from_dir(filepath, base):
     """
