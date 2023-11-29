@@ -1,0 +1,1 @@
+INSTALL (DIRECTORY . DESTINATION ${SYSCONFDIR}/dnf/plugins/pre-transaction-actions.d FILES_MATCHING PATTERN "(NONE)")
