@@ -1,5 +1,5 @@
 """
-This plugin is basically a POST-transaction-actions plugin 
+This plugin is basically a POST-transaction-actions plugin
 but modified (with minimall changes) to work as pre-transaction-actions plugin
 
 The plugin allows to define actions to be executed before an RPM transaction. Each action
