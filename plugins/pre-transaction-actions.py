@@ -1,7 +1,6 @@
-# this script is made from pre-transaction-plugin 
-# Matija Skrgulja (msk@boreus.de)
 """
-This plugin is basically a POST-transaction-actions official plugin but modified (with minimall changes) to work as PRE transaction-plugin
+This plugin is basically a POST-transaction-actions plugin 
+but modified (with minimall changes) to work as pre-transaction-actions plugin
 
 The plugin allows to define actions to be executed before an RPM transaction. Each action
 may define a (glob-like) filtering rule on the package NEVRA or package files, as well as whether
@@ -21,7 +20,9 @@ import glob
 import os
 import subprocess
 
+
 class PreTransactionActions(dnf.Plugin):
+
     name = "pre-transaction-actions"
 
     def __init__(self, base, cli):
