@@ -40,6 +40,7 @@ This documents core plugins of DNF:
    modulesync
    needs_restarting
    post-transaction-actions
+   pre-transaction-actions
    repoclosure
    repodiff
    repograph
