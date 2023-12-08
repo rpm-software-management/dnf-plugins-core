@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.4.3
+Version:        4.4.4
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -812,6 +812,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Fri Dec 08 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.4-1
+- needs-restarting: Add microcode_ctl to a reboot list
+
 * Fri Oct 06 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.3-1
 - needs-restarting: Avoid issue with garbage smaps chars (RhBug:2212953)
 - needs-restarting: Add kernel-core to reboot list

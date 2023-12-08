@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.4.4 Release Notes
+===================
+
+- Bug fixes:
+  - needs-restarting: Add microcode_ctl to a reboot list
+
+Bugs fixed in 4.4.4:
+
+
+===================
 4.4.3 Release Notes
 ===================
 
