@@ -107,11 +107,9 @@ class PreTransactionActions(dnf.Plugin):
 
         commands_to_run = []
         for (a_key, a_state, a_command) in action_tuples:
-            if a_state == "update":
+            if a_state == "in":
                 ts_items = in_ts_items
-            elif a_state == "install":
-                ts_items = in_ts_items
-            elif a_state == "remove":
+            elif a_state == "out":
                 ts_items = out_ts_items
             elif a_state == "any":
                 ts_items = all_ts_items
