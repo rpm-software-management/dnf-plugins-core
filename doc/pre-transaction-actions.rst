@@ -56,9 +56,8 @@ Each non-comment line defines an action and consists of three items separated by
 ``transaction_state``
    Filters packages according to their state in the transaction.
 
-   * ``install`` - packages that will be instaled on the system (install)
-   * ``update`` - packages that will be updated on the system (downgrade, install, obsolete, reinstall, upgrade)
-   * ``remove`` - packages that disappeared from the system (downgraded, obsoleted, remove, upgraded)
+   * ``in`` - packages that will appeared on the system (downgrade, install, obsolete, reinstall, upgrade)
+   * ``out`` - packages that will disappeared from the system (downgraded, obsoleted, remove, upgraded)
    * ``any`` - all packages
 
 ``command``
