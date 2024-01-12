@@ -45,6 +45,7 @@ class RepoClosureCommand(dnf.cli.Command):
         demands = self.cli.demands
         demands.sack_activation = True
         demands.available_repos = True
+        self.base.conf.optional_metadata_types += ["filelists"]
         if self.opts.repo:
             for repo in self.base.repos.all():
                 if repo.id not in self.opts.repo and repo.id not in self.opts.check:

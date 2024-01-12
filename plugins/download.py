@@ -91,6 +91,9 @@ class DownloadCommand(dnf.cli.Command):
         else:
             self.base.conf.destdir = dnf.i18n.ucd(os.getcwd())
 
+        if dnf.util._is_file_pattern_present(self.opts.packages):
+            self.base.conf.optional_metadata_types += ["filelists"]
+
     def run(self):
         """Execute the util action here."""
 
