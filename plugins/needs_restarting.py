@@ -268,6 +268,7 @@ class NeedsRestartingCommand(dnf.cli.Command):
     def configure(self):
         demands = self.cli.demands
         demands.sack_activation = True
+        self.base.conf.optional_metadata_types += ["filelists"]
 
     def run(self):
         process_start = ProcessStart()
