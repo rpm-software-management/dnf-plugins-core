@@ -227,9 +227,24 @@ class ProcessStart(object):
              Works for machines without RTC iff the current time is reasonably correct.
              Does not work on containers which share their kernel with the
              host - there the host kernel uptime is returned
+        - /proc/stat
+             For systems where the RTC is not in UTC, the boot time is computed
+             in the future if the timezone is +something.
+             The correct time can be determined by btime in /proc/stat.
+             Such systems are usually configured with `timedatectl set-local-rtc 1`
+             which changes the 3rd line of /etc/adjtime from UTC to LOCAL.
+             See man timedatectl.
         """
 
         proc_1_boot_time = int(os.stat('/proc/1').st_mtime)
+        with open('/etc/adjtime', 'r') as f:
+            lines = f.readlines()
+        # if LOCAL RTC detected use /proc/stat to determine boot time
+        if lines[2].rstrip() == 'LOCAL':
+            with open('/proc/stat', 'r') as f:
+                btime = [line for line in f if 'btime' in line]
+                proc_stat_boot_time = int(btime[0].strip().split(' ')[1])
+            return max(proc_1_boot_time, proc_stat_boot_time)
         if os.path.isfile('/proc/uptime'):
             with open('/proc/uptime', 'rb') as f:
                 uptime = f.readline().strip().split()[0].strip()
