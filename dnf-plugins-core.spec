@@ -1,6 +1,6 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.19.0}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.64.0
+%global hawkey_version 0.73.0
 %global yum_utils_subpackage_name dnf-utils
 %if 0%{?rhel} > 7
 %global yum_utils_subpackage_name yum-utils
