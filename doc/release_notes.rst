@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.5.0 Release Notes
+===================
+
+- Others:
+  - Request filelists metadata for plugins needing that
+
+Bugs fixed in 4.5.0:
+
+
+===================
 4.4.4 Release Notes
 ===================
 
