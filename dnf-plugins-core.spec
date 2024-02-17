@@ -1,6 +1,6 @@
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.11.0}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.19.0}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.64.0
+%global hawkey_version 0.73.0
 %global yum_utils_subpackage_name dnf-utils
 %if 0%{?rhel} > 7
 %global yum_utils_subpackage_name yum-utils
@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.4.4
+Version:        4.5.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -857,6 +857,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Thu Feb 08 2024 Jan Kolarik <jkolarik@redhat.com> - 4.5.0-1
+- Request filelists metadata for plugins needing that
+
 * Fri Dec 08 2023 Jan Kolarik <jkolarik@redhat.com> - 4.4.4-1
 - needs-restarting: Add microcode_ctl to a reboot list
 
