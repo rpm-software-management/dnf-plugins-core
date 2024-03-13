@@ -218,6 +218,11 @@ class ProcessStart(object):
         We have two sources from which to derive the boot time. These values vary
         depending on containerization, existence of a Real Time Clock, etc.
         For our purposes we want the latest derived value.
+        - UnitsLoadStartTimestamp property on /org/freedesktop/systemd1
+             The start time of the service manager, according to systemd itself.
+             Seems to be more reliable than UserspaceTimestamp when the RTC is
+             in local time. Works unless the system was not booted with systemd,
+             such as in (most) containers.
         - st_mtime of /proc/1
              Reflects the time the first process was run after booting
              This works for all known cases except machines without
@@ -228,6 +233,25 @@ class ProcessStart(object):
              Does not work on containers which share their kernel with the
              host - there the host kernel uptime is returned
         """
+        units_load_start_timestamp = None
+        try:
+            bus = dbus.SystemBus()
+            systemd1 = bus.get_object(
+                'org.freedesktop.systemd1',
+                '/org/freedesktop/systemd1'
+            )
+            props = dbus.Interface(
+                systemd1,
+                dbus.PROPERTIES_IFACE
+            )
+            units_load_start_timestamp = props.Get(
+                'org.freedesktop.systemd1.Manager',
+                'UnitsLoadStartTimestamp'
+            )
+            if units_load_start_timestamp != 0:
+                return int(units_load_start_timestamp / (1000 * 1000))
+        except dbus.exceptions.DBusException as e:
+            logger.debug("D-Bus error getting boot time from systemd: {}".format(e))
 
         proc_1_boot_time = int(os.stat('/proc/1').st_mtime)
         if os.path.isfile('/proc/uptime'):
