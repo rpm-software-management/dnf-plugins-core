@@ -33,7 +33,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.5.0
+Version:        4.6.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -857,6 +857,11 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Tue Mar 26 2024 Evan Goode <mail@evangoo.de> - 4.6.0-1
+- Updated AUTHORS file
+- needs-restarting: get systemd boot time from UnitsLoadStartTimestamp
+- Add new plugin pre-transaction-actions
+
 * Thu Feb 08 2024 Jan Kolarik <jkolarik@redhat.com> - 4.5.0-1
 - Request filelists metadata for plugins needing that
 

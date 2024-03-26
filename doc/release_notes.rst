@@ -22,6 +22,19 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.6.0 Release Notes
+===================
+
+- Updated AUTHORS file
+- needs-restarting: get systemd boot time from UnitsLoadStartTimestamp
+
+- New features:
+  - Add new plugin pre-transaction-actions
+
+Bugs fixed in 4.6.0:
+
+
+===================
 4.5.0 Release Notes
 ===================
 
