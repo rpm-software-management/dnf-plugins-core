@@ -18,28 +18,28 @@ ADD_CUSTOM_TARGET (doc-man
 ADD_CUSTOM_TARGET (doc)
 ADD_DEPENDENCIES (doc doc-html doc-man)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-builddep.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-changelog.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-config-manager.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-copr.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-debug.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-debuginfo-install.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-download.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-generate_completion_cache.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-groups-manager.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-leaves.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-modulesync.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-needs-restarting.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repoclosure.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repodiff.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repograph.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-repomanage.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-reposync.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-post-transaction-actions.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-pre-transaction-actions.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-show-leaves.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-system-upgrade.8
-    ${CMAKE_CURRENT_BINARY_DIR}/dnf-versionlock.8
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-builddep.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-changelog.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-config-manager.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-copr.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-debug.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-debuginfo-install.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-download.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-generate_completion_cache.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-groups-manager.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-modulesync.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-needs-restarting.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-repoclosure.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-repodiff.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-repograph.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-repomanage.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-reposync.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-post-transaction-actions.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-pre-transaction-actions.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-show-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-system-upgrade.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-versionlock.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-copr.8
     ${CMAKE_CURRENT_BINARY_DIR}/yum-versionlock.8
 	DESTINATION share/man/man8)
@@ -49,7 +49,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-migrate.8
 endif()
 
 if (${WITHOUT_LOCAL} STREQUAL "0")
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-local.8
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-local.8
 	DESTINATION share/man/man8)
 endif()
 
