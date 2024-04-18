@@ -8,7 +8,7 @@
 
 %define __cmake_in_source_build 1
 
-%bcond dnf5_obsoletes_dnf %[0%{?fedora} > 41 || 0%{?rhel} > 11]
+%bcond dnf5_obsoletes_dnf %[0%{?fedora} > 40 || 0%{?rhel} > 11]
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
