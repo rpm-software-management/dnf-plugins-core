@@ -559,44 +559,24 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %files
-%{_mandir}/man8/dnf4-builddep.*
-%{_mandir}/man8/dnf4-changelog.*
-%{_mandir}/man8/dnf4-config-manager.*
-%{_mandir}/man8/dnf4-copr.*
-%{_mandir}/man8/dnf4-debug.*
-%{_mandir}/man8/dnf4-debuginfo-install.*
-%{_mandir}/man8/dnf4-download.*
-%{_mandir}/man8/dnf4-generate_completion_cache.*
-%{_mandir}/man8/dnf4-groups-manager.*
-%{_mandir}/man8/dnf4-needs-restarting.*
-%{_mandir}/man8/dnf4-repoclosure.*
-%{_mandir}/man8/dnf4-repodiff.*
-%{_mandir}/man8/dnf4-repograph.*
-%{_mandir}/man8/dnf4-repomanage.*
-%{_mandir}/man8/dnf4-reposync.*
-%{_mandir}/man8/dnf4-system-upgrade.*
-%{_mandir}/man8/dnf4-offline-upgrade.*
-%{_mandir}/man8/dnf4-offline-distrosync.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-builddep.*
-%{_mandir}/man8/dnf-changelog.*
-%{_mandir}/man8/dnf-config-manager.*
-%{_mandir}/man8/dnf-copr.*
-%{_mandir}/man8/dnf-debug.*
-%{_mandir}/man8/dnf-debuginfo-install.*
-%{_mandir}/man8/dnf-download.*
-%{_mandir}/man8/dnf-generate_completion_cache.*
-%{_mandir}/man8/dnf-groups-manager.*
-%{_mandir}/man8/dnf-needs-restarting.*
-%{_mandir}/man8/dnf-repoclosure.*
-%{_mandir}/man8/dnf-repodiff.*
-%{_mandir}/man8/dnf-repograph.*
-%{_mandir}/man8/dnf-repomanage.*
-%{_mandir}/man8/dnf-reposync.*
-%{_mandir}/man8/dnf-system-upgrade.*
-%{_mandir}/man8/dnf-offline-upgrade.*
-%{_mandir}/man8/dnf-offline-distrosync.*
-%endif
+%{_mandir}/man8/dnf*-builddep.*
+%{_mandir}/man8/dnf*-changelog.*
+%{_mandir}/man8/dnf*-config-manager.*
+%{_mandir}/man8/dnf*-copr.*
+%{_mandir}/man8/dnf*-debug.*
+%{_mandir}/man8/dnf*-debuginfo-install.*
+%{_mandir}/man8/dnf*-download.*
+%{_mandir}/man8/dnf*-generate_completion_cache.*
+%{_mandir}/man8/dnf*-groups-manager.*
+%{_mandir}/man8/dnf*-needs-restarting.*
+%{_mandir}/man8/dnf*-repoclosure.*
+%{_mandir}/man8/dnf*-repodiff.*
+%{_mandir}/man8/dnf*-repograph.*
+%{_mandir}/man8/dnf*-repomanage.*
+%{_mandir}/man8/dnf*-reposync.*
+%{_mandir}/man8/dnf*-system-upgrade.*
+%{_mandir}/man8/dnf*-offline-upgrade.*
+%{_mandir}/man8/dnf*-offline-distrosync.*
 %if %{with yumcompatibility}
 %{_mandir}/man1/yum-changelog.*
 %{_mandir}/man8/yum-copr.*
@@ -742,24 +722,18 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %if %{with python2}
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
-%{_mandir}/man8/dnf4-leaves.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-leaves.*
-%endif
+%{_mandir}/man8/dnf*-leaves.*
 %endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-leaves
 %{python3_sitelib}/dnf-plugins/leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
-%{_mandir}/man8/dnf4-leaves.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-leaves.*
-%endif
+%{_mandir}/man8/dnf*-leaves.*
 %endif
 
 %else
-%exclude %{_mandir}/man8/dnf4-leaves.*
+%exclude %{_mandir}/man8/dnf*-leaves.*
 %if %{with python2}
 %exclude %{python2_sitelib}/dnf-plugins/leaves.*
 %endif
@@ -774,10 +748,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %files -n python2-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python2_sitelib}/dnf-plugins/local.*
-%{_mandir}/man8/dnf4-local.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-local.*
-%endif
+%{_mandir}/man8/dnf*-local.*
 %endif
 
 %if %{with python3} && 0%{?rhel} == 0
@@ -785,10 +756,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python3_sitelib}/dnf-plugins/local.*
 %{python3_sitelib}/dnf-plugins/__pycache__/local.*
-%{_mandir}/man8/dnf4-local.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-local.*
-%endif
+%{_mandir}/man8/dnf*-local.*
 %endif
 
 %if %{with python2}
@@ -804,10 +772,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.d
 %{python2_sitelib}/dnf-plugins/post-transaction-actions.*
-%{_mandir}/man8/dnf4-post-transaction-actions.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-post-transaction-actions.*
-%endif
+%{_mandir}/man8/dnf*-post-transaction-actions.*
 %endif
 
 %if %{with python3}
@@ -816,10 +781,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.d
 %{python3_sitelib}/dnf-plugins/post-transaction-actions.*
 %{python3_sitelib}/dnf-plugins/__pycache__/post-transaction-actions.*
-%{_mandir}/man8/dnf4-post-transaction-actions.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-post-transaction-actions.*
-%endif
+%{_mandir}/man8/dnf*-post-transaction-actions.*
 %endif
 
 %if %{with python2}
@@ -827,10 +789,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/pre-transaction-actions.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/pre-transaction-actions.d
 %{python2_sitelib}/dnf-plugins/pre-transaction-actions.*
-%{_mandir}/man8/dnf4-pre-transaction-actions.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-pre-transaction-actions.*
-%endif
+%{_mandir}/man8/dnf*-pre-transaction-actions.*
 %endif
 
 %if %{with python3}
@@ -839,10 +798,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/pre-transaction-actions.d
 %{python3_sitelib}/dnf-plugins/pre-transaction-actions.*
 %{python3_sitelib}/dnf-plugins/__pycache__/pre-transaction-actions.*
-%{_mandir}/man8/dnf4-pre-transaction-actions.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-pre-transaction-actions.*
-%endif
+%{_mandir}/man8/dnf*-pre-transaction-actions.*
 %endif
 
 %if 0%{?rhel} == 0
@@ -850,24 +806,18 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %if %{with python2}
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
-%{_mandir}/man8/dnf4-show-leaves.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-show-leaves.*
-%endif
+%{_mandir}/man8/dnf*-show-leaves.*
 %endif
 
 %if %{with python3}
 %files -n python3-dnf-plugin-show-leaves
 %{python3_sitelib}/dnf-plugins/show_leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
-%{_mandir}/man8/dnf4-show-leaves.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-show-leaves.*
-%endif
+%{_mandir}/man8/dnf*-show-leaves.*
 %endif
 
 %else
-%exclude %{_mandir}/man8/dnf4-show-leaves.*
+%exclude %{_mandir}/man8/dnf*-show-leaves.*
 %if %{with python2}
 %exclude %{python2_sitelib}/dnf-plugins/show_leaves.*
 %endif
@@ -883,10 +833,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python2_sitelib}/dnf-plugins/versionlock.*
-%{_mandir}/man8/dnf4-versionlock.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-versionlock.*
-%endif
+%{_mandir}/man8/dnf*-versionlock.*
 %if %{with yumcompatibility}
 %{_mandir}/man8/yum-versionlock.*
 %{_mandir}/man5/yum-versionlock.*
@@ -902,10 +849,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
-%{_mandir}/man8/dnf4-versionlock.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-versionlock.*
-%endif
+%{_mandir}/man8/dnf*-versionlock.*
 %if %{with yumcompatibility}
 %{_mandir}/man8/yum-versionlock.*
 %{_mandir}/man5/yum-versionlock.*
@@ -919,10 +863,7 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %files -n python3-dnf-plugin-modulesync
 %{python3_sitelib}/dnf-plugins/modulesync.*
 %{python3_sitelib}/dnf-plugins/__pycache__/modulesync.*
-%{_mandir}/man8/dnf4-modulesync.*
-%if %{without dnf5_obsoletes_dnf}
-%{_mandir}/man8/dnf-modulesync.*
-%endif
+%{_mandir}/man8/dnf*-modulesync.*
 %endif
 
 %changelog
