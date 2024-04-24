@@ -22,6 +22,17 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.7.0 Release Notes
+===================
+
+- docs: Documentation of needs-restarting boot time
+- man: Prepare pages for dnf5 switch
+- spec: Prepare for switch of dnf5 in Rawhide
+
+Bugs fixed in 4.7.0:
+
+
+===================
 4.6.0 Release Notes
 ===================
 

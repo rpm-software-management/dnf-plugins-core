@@ -867,6 +867,11 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %endif
 
 %changelog
+* Wed Apr 24 2024 Jan Kolarik <jkolarik@redhat.com> - 4.7.0-1
+- docs: Documentation of needs-restarting boot time
+- man: Prepare pages for dnf5 switch
+- spec: Prepare for switch of dnf5 in Rawhide
+
 * Tue Mar 26 2024 Evan Goode <mail@evangoo.de> - 4.6.0-1
 - Updated AUTHORS file
 - needs-restarting: get systemd boot time from UnitsLoadStartTimestamp
