@@ -22,6 +22,8 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+import re
+
 import dnf.cli
 from dnf.cli.option_parser import OptionParser
 import hawkey
@@ -73,6 +75,13 @@ class RepoDiffCommand(dnf.cli.Command):
         parser.add_argument("--downgrade", action="store_true",
                             help=_("Split the data for modified packages between "
                                    "upgraded and downgraded packages."))
+        parser.add_argument("--hide-author", action="store_true",
+                            help=_("Hide the authors name and email address"
+                                   "in the changelog."))
+        parser.add_argument("--hide-timestamp", action="store_true",
+                            help=_("Hide the timestamp in the changelog."))
+        parser.add_argument("--summary", action="store_true",
+                            help=_("Sum up changes after all changes have been listed."))
 
     def configure(self):
         demands = self.cli.demands
@@ -140,7 +149,7 @@ class RepoDiffCommand(dnf.cli.Command):
         def pkgstr(pkg):
             if self.opts.compare_arch:
                 return str(pkg)
-            return "%s-%s" % (pkg.name, pkg.evr)
+            return "%s - %s" % (pkg.name, pkg.evr)
 
         def sizestr(num):
             msg = str(num)
@@ -150,87 +159,159 @@ class RepoDiffCommand(dnf.cli.Command):
                 msg += " (-{})".format(dnf.cli.format.format_number(-num).strip())
             return msg
 
-        def report_modified(pkg_old, pkg_new):
+        def report_modified(pkg_old, pkg_new=None, sub_pkgs=[]):
             msgs = []
             if self.opts.simple:
-                msgs.append("%s -> %s" % (pkgstr(pkg_old), pkgstr(pkg_new)))
+                msgs.append("- Updated : %s - %s" % (pkg_old.evr, pkg_new.evr))
             else:
                 msgs.append('')
-                msgs.append("%s -> %s" % (pkgstr(pkg_old), pkgstr(pkg_new)))
-                msgs.append('-' * len(msgs[-1]))
+                msgs.append('### %s' % (pkg_old.name))
+                if pkg_new is not None:
+                    msgs.append("- Updated : %s - %s" % (pkg_old.evr, pkg_new.evr))
+                if sub_pkgs:
+                    msgs.append("- Binaries added : {}".format(', '.join(map(str, sub_pkgs))))
+
+                msgs.append('')
+
                 if pkg_old.changelogs:
                     old_chlog = pkg_old.changelogs[0]
                 else:
                     old_chlog = None
-                for chlog in pkg_new.changelogs:
-                    if old_chlog:
+                for chlog in pkg_old.changelogs if pkg_new is None else pkg_new.changelogs:
+                    if old_chlog and pkg_new is not None:
                         if chlog['timestamp'] < old_chlog['timestamp']:
                             break
                         elif (chlog['timestamp'] == old_chlog['timestamp'] and
                               chlog['author'] == old_chlog['author'] and
                               chlog['text'] == old_chlog['text']):
                             break
-                    msgs.append('* %s %s\n%s' % (
-                        chlog['timestamp'].strftime("%a %b %d %Y"),
-                        dnf.i18n.ucd(chlog['author']),
-                        dnf.i18n.ucd(chlog['text'])))
+                    if not self.opts.hide_timestamp:
+                        msgs.append('### %s %s\n%s' % (
+                            chlog['timestamp'].strftime("%a %b %d %Y"),
+                            dnf.i18n.ucd(chlog['author'])
+                            if not self.opts.hide_author else
+                            "- %s" % (re.search(".+ - (.+?)$", chlog['author']).group(1)),
+                            dnf.i18n.ucd(chlog['text'])))
+                    else:
+                        msgs.append(dnf.i18n.ucd(chlog['text']))
+
+                    if not self.opts.size:
+                        msgs.append("")
                 if self.opts.size:
-                    msgs.append(_("Size change: {} bytes").format(
+                    msgs.append(_("- Size change: {} bytes\n").format(
                         pkg_new.size - pkg_old.size))
             print('\n'.join(msgs))
 
         sizes = dict(added=0, removed=0, upgraded=0, downgraded=0)
-        for pkg in sorted(repodiff['added']):
-            print(_("Added package  : {}").format(pkgstr(pkg)))
-            sizes['added'] += pkg.size
-        for pkg in sorted(repodiff['removed']):
-            print(_("Removed package: {}").format(pkgstr(pkg)))
-            obsoletedby = repodiff['obsoletes'].get(self._pkgkey(pkg))
-            if obsoletedby:
-                print(_("Obsoleted by   : {}").format(pkgstr(obsoletedby)))
-            sizes['removed'] += pkg.size
+
+        new_sub_packages = {}
+
+        if len(repodiff['added']) > 0:
+            added_source_packages = {}
+            for pkg in sorted(repodiff['added']):
+
+                src_pkg_exist = False
+                for (upgr_pkg_old, upgr_pkg_new) in repodiff['upgraded']:
+                    if upgr_pkg_old.name == pkg.source_name:
+                        if pkg.source_name not in new_sub_packages:
+                            new_sub_packages[pkg.source_name] = ["%s - %s" % (pkg.name,
+                                                                              pkg.evr)]
+                        else:
+                            new_sub_packages[pkg.source_name] += ["%s - %s" % (pkg.name,
+                                                                               pkg.evr)]
+                        src_pkg_exist = True
+                        break
+                if src_pkg_exist:
+                    continue
+
+                if pkg.source_name not in added_source_packages:
+                    added_source_packages[pkg.source_name] = \
+                        {"pkg": pkg,
+                         "sub_packages": ["%s - %s" % (pkg.name, pkg.evr)]}
+                else:
+                    added_source_packages[pkg.source_name]["sub_packages"] += \
+                        ["%s - %s" % (pkg.name, pkg.evr)]
+                    if pkg.source_name == pkg.name:
+                        added_source_packages[pkg.source_name]["pkg"] = pkg
+
+                sizes['added'] += pkg.size
+
+            if len(added_source_packages) > 0:
+                print((_("\n# Packages added ({})").format(
+                    len(added_source_packages))))
+                for src_pkg in sorted(added_source_packages):
+                    report_modified(pkg_old=added_source_packages[src_pkg]["pkg"],
+                                    sub_pkgs=added_source_packages[src_pkg]["sub_packages"])
+
+        if len(repodiff['removed']) > 0:
+            print((_("\n# Removed packages ({})\n").format(len(repodiff['removed']))))
+            removed_source_packages = {}
+            for pkg in sorted(repodiff['removed']):
+                obsoletedby = repodiff['obsoletes'].get(self._pkgkey(pkg))
+                if not obsoletedby:
+                    sizes['removed'] += pkg.size
+                if pkg.source_name not in removed_source_packages:
+                    removed_source_packages[pkg.source_name] = [pkgstr(pkg)]
+                else:
+                    removed_source_packages[pkg.source_name] += [pkgstr(pkg)]
+            for src_pkg in sorted(removed_source_packages):
+                print("## %s" % (src_pkg))
+                print("- ", end='')
+                print(*removed_source_packages[src_pkg], sep=", ")
+                print("")
 
         if self.opts.downgrade:
-            if repodiff['upgraded']:
-                print(_("\nUpgraded packages"))
-                for (pkg_old, pkg_new) in sorted(repodiff['upgraded']):
-                    sizes['upgraded'] += (pkg_new.size - pkg_old.size)
-                    report_modified(pkg_old, pkg_new)
-            if repodiff['downgraded']:
-                print(_("\nDowngraded packages"))
-                for (pkg_old, pkg_new) in sorted(repodiff['downgraded']):
-                    sizes['downgraded'] += (pkg_new.size - pkg_old.size)
-                    report_modified(pkg_old, pkg_new)
+            if len(repodiff['upgraded']) > 0:
+                if repodiff['upgraded']:
+                    print((_("\n# Upgraded packages ({})").format(
+                        len(repodiff['upgraded']) + len(repodiff['downgraded']))))
+                    for (pkg_old, pkg_new) in sorted(repodiff['upgraded']):
+                        sizes['upgraded'] += (pkg_new.size - pkg_old.size)
+                        report_modified(pkg_old, pkg_new,
+                                        new_sub_packages[pkg_new.name]
+                                        if pkg_new.name in new_sub_packages else None)
+            if len(repodiff['downgraded']) > 0:
+                if repodiff['downgraded']:
+                    print((_("\n# Downgraded packages ({})").format(
+                        len(repodiff['upgraded']) + len(repodiff['downgraded']))))
+                    for (pkg_old, pkg_new) in sorted(repodiff['downgraded']):
+                        sizes['downgraded'] += (pkg_new.size - pkg_old.size)
+                        report_modified(pkg_old, pkg_new,
+                                        new_sub_packages[pkg_new.name]
+                                        if pkg_new.name in new_sub_packages else None)
         else:
             modified = repodiff['upgraded'] + repodiff['downgraded']
             if modified:
-                print(_("\nModified packages"))
+                print((_("\n# Modified packages ({})").format(
+                    len(repodiff['upgraded']) + len(repodiff['downgraded']))))
                 for (pkg_old, pkg_new) in sorted(modified):
                     sizes['upgraded'] += (pkg_new.size - pkg_old.size)
-                    report_modified(pkg_old, pkg_new)
-
-        print(_("\nSummary"))
-        print(_("Added packages: {}").format(len(repodiff['added'])))
-        print(_("Removed packages: {}").format(len(repodiff['removed'])))
-        if self.opts.downgrade:
-            print(_("Upgraded packages: {}").format(len(repodiff['upgraded'])))
-            print(_("Downgraded packages: {}").format(len(repodiff['downgraded'])))
-        else:
-            print(_("Modified packages: {}").format(
-                len(repodiff['upgraded']) + len(repodiff['downgraded'])))
-        if self.opts.size:
-            print(_("Size of added packages: {}").format(sizestr(sizes['added'])))
-            print(_("Size of removed packages: {}").format(sizestr(sizes['removed'])))
+                    report_modified(pkg_old, pkg_new,
+                                    new_sub_packages[pkg_new.name]
+                                    if pkg_new.name in new_sub_packages else None)
+        if self.opts.summary:
+            print(_("\n# Summary"))
+            print(_("- Added packages: {}").format(len(repodiff['added'])))
+            print(_("- Removed packages: {}").format(len(repodiff['removed'])))
+            if self.opts.downgrade:
+                print(_("- Upgraded packages: {}").format(len(repodiff['upgraded'])))
+                print(_("- Downgraded packages: {}").format(len(repodiff['downgraded'])))
+            else:
+                print(_("- Modified packages: {}").format(
+                    len(repodiff['upgraded']) + len(repodiff['downgraded'])))
+            if self.opts.size:
+                print(_("- Size of added packages: {}").format(sizestr(sizes['added'])))
+                print(_("- Size of removed packages: {}").format(sizestr(sizes['removed'])))
             if not self.opts.downgrade:
                 print(_("Size of modified packages: {}").format(
                     sizestr(sizes['upgraded'] + sizes['downgraded'])))
             else:
-                print(_("Size of upgraded packages: {}").format(
+                print(_("- Size of upgraded packages: {}").format(
                     sizestr(sizes['upgraded'])))
-                print(_("Size of downgraded packages: {}").format(
+                print(_("- Size of downgraded packages: {}").format(
                     sizestr(sizes['downgraded'])))
-            print(_("Size change: {}").format(
-                sizestr(sizes['added'] + sizes['upgraded'] + sizes['downgraded'] -
+                print(_("- Size change: {}").format(
+                    sizestr(sizes['added'] + sizes['upgraded'] + sizes['downgraded'] -
                         sizes['removed'])))
 
     def run(self):
