@@ -249,6 +249,7 @@ man_pages = [
     ('debug', 'dnf4-debug', u'DNF debug Plugin', AUTHORS, 8),
     ('debuginfo-install', 'dnf4-debuginfo-install', u'DNF debuginfo-install Plugin', AUTHORS, 8),
     ('download', 'dnf4-download', u'DNF download Plugin', AUTHORS, 8),
+    ('expired-pgp-keys', 'dnf4-expired-pgp-keys', u'DNF expired-pgp-keys Plugin', AUTHORS, 8),
     ('generate_completion_cache', 'dnf4-generate_completion_cache',
         u'DNF generate_completion_cache Plugin', AUTHORS, 8),
     ('groups-manager', 'dnf4-groups-manager', u'DNF groups-manager Plugin', AUTHORS, 8),

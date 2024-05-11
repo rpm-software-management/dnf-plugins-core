@@ -24,6 +24,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-copr.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-debuginfo-install.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-download.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-expired-pgp-keys.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-generate_completion_cache.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-groups-manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-leaves.8

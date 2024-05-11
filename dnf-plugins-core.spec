@@ -592,6 +592,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %endif
 %{_mandir}/man8/dnf*-debuginfo-install.*
 %{_mandir}/man8/dnf*-download.*
+%{_mandir}/man8/dnf*-expired-pgp-keys.*
 %{_mandir}/man8/dnf*-generate_completion_cache.*
 %{_mandir}/man8/dnf*-groups-manager.*
 %{_mandir}/man8/dnf*-needs-restarting.*
@@ -647,6 +648,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/expired-pgp-keys.conf
 %{python3_sitelib}/dnf-plugins/builddep.py
 %{python3_sitelib}/dnf-plugins/changelog.py
 %{python3_sitelib}/dnf-plugins/config_manager.py
@@ -656,6 +658,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %endif
 %{python3_sitelib}/dnf-plugins/debuginfo-install.py
 %{python3_sitelib}/dnf-plugins/download.py
+%{python3_sitelib}/dnf-plugins/expired-pgp-keys.py
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
 %{python3_sitelib}/dnf-plugins/groups_manager.py
 %{python3_sitelib}/dnf-plugins/needs_restarting.py
@@ -674,6 +677,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %endif
 %{python3_sitelib}/dnf-plugins/__pycache__/debuginfo-install.*
 %{python3_sitelib}/dnf-plugins/__pycache__/download.*
+%{python3_sitelib}/dnf-plugins/__pycache__/expired-pgp-keys.*
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
 %{python3_sitelib}/dnf-plugins/__pycache__/groups_manager.*
 %{python3_sitelib}/dnf-plugins/__pycache__/needs_restarting.*
