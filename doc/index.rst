@@ -32,6 +32,7 @@ This documents core plugins of DNF:
    debug
    debuginfo-install
    download
+   expired-pgp-keys
    generate_completion_cache
    groups-manager
    leaves
