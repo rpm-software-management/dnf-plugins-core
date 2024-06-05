@@ -266,12 +266,7 @@ class ProcessStart(object):
         return os.sysconf(os.sysconf_names['SC_CLK_TCK'])
 
     def __call__(self, pid):
-        stat_fn = '/proc/%d/stat' % pid
-        with open(stat_fn) as stat_file:
-            stats = stat_file.read().strip().split()
-        ticks_after_boot = int(stats[21])
-        secs_after_boot = ticks_after_boot // self.sc_clk_tck
-        return self.boot_time + secs_after_boot
+        return int(os.stat(f"/proc/{pid}").st_mtime)
 
 
 @dnf.plugin.register_command
