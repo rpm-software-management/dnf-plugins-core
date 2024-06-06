@@ -36,30 +36,30 @@ Description
 Note that in most cases a process should survive update of its binary and libraries it is using without requiring to be restarted for proper operation. There are however specific cases when this does not apply. Separately, processes often need to be restarted to reflect security updates.
 
 .. note::
-   Needs-restarting will try to guess the boot time using three different methods:
+   Needs restarting will try to guess the boot time using three different methods:
 
    ``UnitsLoadStartTimestamp``
-        D-Bus property on ``/org/freedesktop/systemd1``.
+        property on ``/org/freedesktop/systemd1``.
         Works unless the system was not booted with systemd,
         such as in (most) containers.
    ``st_mtime of /proc/1``
-        Reflects the time the first process was run after booting.
+        Reflects the time the first process was run after booting
         This works for all known cases except machines without
-        a RTC—they awake at the start of the epoch.
+        a RTC - they awake at the start of the epoch.
    ``/proc/uptime``
-        Seconds field of ``/proc/uptime`` subtracted from the current time.
+        Seconds field of /proc/uptime subtracted from the current time
         Works for machines without RTC if the current time is reasonably correct.
         Does not work on containers which share their kernel with the
-        host—there, the host kernel uptime is returned.
+        host - there the host kernel uptime is returned
 
 
 .. warning::
-    Some systems are configured to read the RTC time in the local time
-    zone. This mode cannot be fully supported. It will create various problems
-    with time zone changes and daylight saving time adjustments. The RTC time
-    is never updated, it relies on external facilities to maintain it. **If at
-    all possible, use RTC in UTC by calling** ``timedatectl set-local-rtc 0``.
-    See ``man timedatectl`` for more information.
+    When the system is configured to read the RTC time in the local time zone.
+    This mode cannot be fully supported. It will create various problems
+    with time zone changes and daylight saving time adjustments. The RTC
+    time is never updated, it relies on external facilities to maintain it.
+    **If at all possible, use RTC in UTC by calling**
+    ``timedatectl set-local-rtc 0``.
 
 -------
 Options
