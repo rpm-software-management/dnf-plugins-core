@@ -209,6 +209,9 @@ class DownloadCommand(dnf.cli.Command):
 
                 break
 
+        if self.opts.resolve:
+            dbg_pkgs = self._get_packages_with_deps((), dbg_pkgs)
+
         return dbg_pkgs
 
     def _get_pkg_objs_debugsource(self, pkg_specs):
@@ -231,6 +234,9 @@ class DownloadCommand(dnf.cli.Command):
             for p in dbg_available:
                 dbg_pkgs.add(p)
 
+        if self.opts.resolve:
+            dbg_pkgs = self._get_packages_with_deps((), dbg_pkgs)
+
         return dbg_pkgs
 
     def _get_packages(self, pkg_specs, source=False):
@@ -249,9 +255,9 @@ class DownloadCommand(dnf.cli.Command):
         pkgs = list(itertools.chain(*queries))
         return pkgs
 
-    def _get_packages_with_deps(self, pkg_specs, source=False):
+    def _get_packages_with_deps(self, pkg_specs, pkgs=frozenset()):
         """Get packages matching pkg_specs and the deps."""
-        pkgs = self._get_packages(pkg_specs)
+        pkgs = pkgs | set(self._get_packages(pkg_specs))
         pkg_set = set(pkgs)
         for pkg in pkgs:
             goal = hawkey.Goal(self.base.sack)
