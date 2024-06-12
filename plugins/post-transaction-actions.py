@@ -31,6 +31,7 @@ from dnfpluginscore import _, logger
 import libdnf.conf
 import dnf
 import dnf.transaction
+import dnf.util
 import glob
 import os
 import subprocess
@@ -45,12 +46,21 @@ class PostTransactionActions(dnf.Plugin):
         self.actiondir = "/etc/dnf/plugins/post-transaction-actions.d/"
         self.base = base
         self.logger = logger
+        self.action_tuples = None
 
     def config(self):
         conf = self.read_config(self.base.conf)
         if conf.has_section("main"):
             if conf.has_option("main", "actiondir"):
                 self.actiondir = conf.get("main", "actiondir")
+
+        if "filelists" not in self.base.conf.optional_metadata_types:
+            if self.action_tuples is None:
+                self.action_tuples = self._parse_actions()
+            for (a_key, _, _) in self.action_tuples:
+                if dnf.util._is_file_pattern_present(a_key):
+                    self.base.conf.optional_metadata_types += ["filelists"]
+                    break
 
     def _parse_actions(self):
         """Parses *.action files from self.actiondir path.
@@ -105,7 +115,8 @@ class PostTransactionActions(dnf.Plugin):
         return result
 
     def transaction(self):
-        action_tuples = self._parse_actions()
+        if self.action_tuples is None:
+            self.action_tuples = self._parse_actions()
 
         in_ts_items = []
         out_ts_items = []
@@ -121,7 +132,7 @@ class PostTransactionActions(dnf.Plugin):
             all_ts_items.append(ts_item)
 
         commands_to_run = []
-        for (a_key, a_state, a_command) in action_tuples:
+        for (a_key, a_state, a_command) in self.action_tuples:
             if a_state == "in":
                 ts_items = in_ts_items
             elif a_state == "out":
