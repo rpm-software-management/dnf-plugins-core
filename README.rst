@@ -26,6 +26,14 @@ From the DNF git checkout directory::
     cmake .. && make;
     popd;
 
+CMake optional switches::
+
+    -DWITHOUT_LOCAL:str=1
+        Differnt string value than "0" disables installing a local plugin.
+
+    -DWITHOUT_DEBUG:str=1
+        Differnt string value than "0" disables installing a debug plugin.
+
 Then to run DNF::
 
     PYTHONPATH=`readlink -f .` bin/dnf <arguments>

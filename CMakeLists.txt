@@ -1,6 +1,10 @@
 PROJECT (dnf-plugins-core NONE)
 CMAKE_MINIMUM_REQUIRED (VERSION 2.4)
 
+if (NOT WITHOUT_DEBUG)
+    set (WITHOUT_DEBUG "0")
+endif()
+
 if (NOT WITHOUT_LOCAL)
     set (WITHOUT_LOCAL "0")
 endif()
