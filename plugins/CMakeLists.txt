@@ -1,6 +1,8 @@
 INSTALL (FILES builddep.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES changelog.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+if (${WITHOUT_DEBUG} STREQUAL "0")
 INSTALL (FILES debug.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
+endif()
 INSTALL (FILES debuginfo-install.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES config_manager.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)
 INSTALL (FILES copr.py DESTINATION ${PYTHON_INSTALL_DIR}/dnf-plugins)

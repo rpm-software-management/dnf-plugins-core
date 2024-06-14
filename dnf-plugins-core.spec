@@ -10,6 +10,12 @@
 
 %bcond dnf5_obsoletes_dnf %[0%{?fedora} > 40 || 0%{?rhel} > 11]
 
+%if (0%{?fedora} && 0%{?fedora} >= 41) || (0%{?rhel} && 0%{?rhel} >= 10)
+%bcond_with debug_plugin
+%else
+%bcond_without debug_plugin
+%endif
+
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %bcond_with python3
 %else
@@ -56,8 +62,10 @@ Provides:       dnf-command(builddep)
 Provides:       dnf-command(changelog)
 Provides:       dnf-command(config-manager)
 Provides:       dnf-command(copr)
+%if %{with debug_plugin}
 Provides:       dnf-command(debug-dump)
 Provides:       dnf-command(debug-restore)
+%endif
 Provides:       dnf-command(debuginfo-install)
 Provides:       dnf-command(download)
 Provides:       dnf-command(groups-manager)
@@ -69,7 +77,9 @@ Provides:       dnf-command(repodiff)
 Provides:       dnf-command(system-upgrade)
 Provides:       dnf-command(offline-upgrade)
 Provides:       dnf-command(offline-distrosync)
+%if %{with debug_plugin}
 Provides:       dnf-plugins-extras-debug = %{version}-%{release}
+%endif
 Provides:       dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       dnf-plugins-extras-repomanage = %{version}-%{release}
@@ -95,7 +105,7 @@ Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, debug, debuginfo-install, download, needs-restarting, groups-manager, repoclosure,
+copr, %{?with_debug_plugin:debug, }debuginfo-install, download, needs-restarting, groups-manager, repoclosure,
 repograph, repomanage, reposync, changelog and repodiff commands. Additionally
 provides generate_completion_cache passive plugin.
 
@@ -122,11 +132,15 @@ Requires:       python-dateutil
 Requires:       python2-dbus
 Requires:       python2-dateutil
 %endif
+%if %{with debug_plugin}
 Provides:       python2-dnf-plugins-extras-debug = %{version}-%{release}
+%endif
 Provides:       python2-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python2-dnf-plugins-extras-repomanage = %{version}-%{release}
+%if %{with debug_plugin}
 Obsoletes:      python2-dnf-plugins-extras-debug < %{dnf_plugins_extra}
+%endif
 Obsoletes:      python2-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python2-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
@@ -138,7 +152,7 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
 Core Plugins for DNF, Python 2 interface. This package enhances DNF with builddep,
-config-manager, copr, degug, debuginfo-install, download, needs-restarting,
+config-manager, copr, %{?with_debug_plugin:debug, }debuginfo-install, download, needs-restarting,
 groups-manager, repoclosure, repograph, repomanage, reposync, changelog,
 repodiff, system-upgrade, offline-upgrade and offline-distrosync commands.
 Additionally provides generate_completion_cache passive plugin.
@@ -163,12 +177,16 @@ Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
 Requires:       python3-dateutil
 Requires:       python3-systemd
+%if %{with debug_plugin}
 Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
+%endif
 Provides:       python3-dnf-plugins-extras-repoclosure = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repograph = %{version}-%{release}
 Provides:       python3-dnf-plugins-extras-repomanage = %{version}-%{release}
 Provides:       python3-dnf-plugin-system-upgrade = %{version}-%{release}
+%if %{with debug_plugin}
 Obsoletes:      python3-dnf-plugins-extras-debug < %{dnf_plugins_extra}
+%endif
 Obsoletes:      python3-dnf-plugins-extras-repoclosure < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repograph < %{dnf_plugins_extra}
 Obsoletes:      python3-dnf-plugins-extras-repomanage < %{dnf_plugins_extra}
@@ -181,7 +199,7 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep,
-config-manager, copr, debug, debuginfo-install, download, needs-restarting,
+config-manager, copr, %{?with_debug_plugin:debug, }debuginfo-install, download, needs-restarting,
 groups-manager, repoclosure, repograph, repomanage, reposync, changelog,
 repodiff, system-upgrade, offline-upgrade and offline-distrosync commands.
 Additionally provides generate_completion_cache passive plugin.
@@ -209,7 +227,7 @@ Summary:        Yum-utils CLI compatibility layer
 %description -n %{yum_utils_subpackage_name}
 As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
-repoquery, reposync, repotrack, repodiff, builddep, config-manager, debug,
+repoquery, reposync, repotrack, repodiff, builddep, config-manager,%{?with_debug_plugin: debug,}
 download and yum-groups-manager that use new implementations using DNF.
 %endif
 
@@ -467,14 +485,18 @@ mkdir build-py3
 %build
 %if %{with python2}
 pushd build-py2
-  %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python2} -DWITHOUT_LOCAL:str=0%{?rhel}
+  %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python2} \
+    -DWITHOUT_DEBUG:str=0%{!?with_debug_plugin:1} \
+    -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd
 %endif
 %if %{with python3}
 pushd build-py3
-  %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python3} -DWITHOUT_LOCAL:str=0%{?rhel}
+  %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python3} \
+    -DWITHOUT_DEBUG:str=0%{!?with_debug_plugin:1} \
+    -DWITHOUT_LOCAL:str=0%{?rhel}
   %make_build
   make doc-man
 popd
@@ -535,8 +557,10 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
+%if %{with debug_plugin}
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
+%endif
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-groups-manager
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 # These commands don't have a dedicated man page, so let's just point them
@@ -563,7 +587,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{_mandir}/man8/dnf*-changelog.*
 %{_mandir}/man8/dnf*-config-manager.*
 %{_mandir}/man8/dnf*-copr.*
+%if %{with debug_plugin}
 %{_mandir}/man8/dnf*-debug.*
+%endif
 %{_mandir}/man8/dnf*-debuginfo-install.*
 %{_mandir}/man8/dnf*-download.*
 %{_mandir}/man8/dnf*-generate_completion_cache.*
@@ -597,7 +623,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python2_sitelib}/dnf-plugins/changelog.*
 %{python2_sitelib}/dnf-plugins/config_manager.*
 %{python2_sitelib}/dnf-plugins/copr.*
+%if %{with debug_plugin}
 %{python2_sitelib}/dnf-plugins/debug.*
+%endif
 %{python2_sitelib}/dnf-plugins/debuginfo-install.*
 %{python2_sitelib}/dnf-plugins/download.*
 %{python2_sitelib}/dnf-plugins/generate_completion_cache.*
@@ -623,7 +651,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python3_sitelib}/dnf-plugins/changelog.py
 %{python3_sitelib}/dnf-plugins/config_manager.py
 %{python3_sitelib}/dnf-plugins/copr.py
+%if %{with debug_plugin}
 %{python3_sitelib}/dnf-plugins/debug.py
+%endif
 %{python3_sitelib}/dnf-plugins/debuginfo-install.py
 %{python3_sitelib}/dnf-plugins/download.py
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
@@ -639,7 +669,9 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{python3_sitelib}/dnf-plugins/__pycache__/changelog.*
 %{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*
 %{python3_sitelib}/dnf-plugins/__pycache__/copr.*
+%if %{with debug_plugin}
 %{python3_sitelib}/dnf-plugins/__pycache__/debug.*
+%endif
 %{python3_sitelib}/dnf-plugins/__pycache__/debuginfo-install.*
 %{python3_sitelib}/dnf-plugins/__pycache__/download.*
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
@@ -673,8 +705,10 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{_bindir}/repotrack
 %{_bindir}/yum-builddep
 %{_bindir}/yum-config-manager
+%if %{with debug_plugin}
 %{_bindir}/yum-debug-dump
 %{_bindir}/yum-debug-restore
+%endif
 %{_bindir}/yum-groups-manager
 %{_bindir}/yumdownloader
 %{_mandir}/man1/debuginfo-install.*
@@ -686,8 +720,10 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %{_mandir}/man1/reposync.*
 %{_mandir}/man1/yum-builddep.*
 %{_mandir}/man1/yum-config-manager.*
+%if %{with debug_plugin}
 %{_mandir}/man1/yum-debug-dump.*
 %{_mandir}/man1/yum-debug-restore.*
+%endif
 %{_mandir}/man1/yum-groups-manager.*
 %{_mandir}/man1/yumdownloader.*
 %{_mandir}/man1/package-cleanup.*
@@ -708,8 +744,10 @@ ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/
 %exclude %{_mandir}/man1/reposync.*
 %exclude %{_mandir}/man1/yum-builddep.*
 %exclude %{_mandir}/man1/yum-config-manager.*
+%if %{with debug_plugin}
 %exclude %{_mandir}/man1/yum-debug-dump.*
 %exclude %{_mandir}/man1/yum-debug-restore.*
+%endif
 %exclude %{_mandir}/man1/yum-groups-manager.*
 %exclude %{_mandir}/man1/yumdownloader.*
 %exclude %{_mandir}/man1/package-cleanup.*
