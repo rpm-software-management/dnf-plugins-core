@@ -283,7 +283,7 @@ class NeedsRestartingCommand(dnf.cli.Command):
         if self.opts.reboothint:
             need_reboot = set()
             installed = self.base.sack.query().installed()
-            for pkg in installed.filter(name=NEED_REBOOT):
+            for pkg in installed.filter(provides=NEED_REBOOT):
                 if pkg.installtime > process_start.boot_time:
                     need_reboot.add(pkg.name)
             if need_reboot:
