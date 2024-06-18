@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.8.0 Release Notes
+===================
+
+- needs-restarting: Revert using systemd start time
+- spec: Fix symbolic links to packaged files
+- needs-restarting: detect packages providing NEED_REBOOT.
+- build: Disable debug plugin on Fedora > 40 and RHEL > 9
+
+- Bug fixes:
+  - download plugin now resolves dependencies for debuginfo and debugsource packages
+
+===================
 4.7.0 Release Notes
 ===================
 
