@@ -29,10 +29,10 @@ From the DNF git checkout directory::
 CMake optional switches::
 
     -DWITHOUT_LOCAL:str=1
-        Differnt string value than "0" disables installing a local plugin.
+        Different string value than "0" disables installing a local plugin.
 
     -DWITHOUT_DEBUG:str=1
-        Differnt string value than "0" disables installing a debug plugin.
+        Different string value than "0" disables installing a debug plugin.
 
 Then to run DNF::
 
