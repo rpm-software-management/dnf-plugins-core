@@ -520,15 +520,15 @@ pushd %{buildroot}%{_unitdir}/system-update.target.wants/
   ln -sr ../dnf-system-upgrade.service
 popd
 
-ln -sf %{_mandir}/man8/dnf4-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf4-offline-upgrade.8.gz
-ln -sf %{_mandir}/man8/dnf4-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf4-offline-distrosync.8.gz
+ln -sf dnf4-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf4-offline-upgrade.8.gz
+ln -sf dnf4-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf4-offline-distrosync.8.gz
 %endif
 
 %if %{without dnf5_obsoletes_dnf}
 for file in %{buildroot}%{_mandir}/man8/dnf4[-.]*; do
     dir=$(dirname $file)
     filename=$(basename $file)
-    ln -sr $file $dir/${filename/dnf4/dnf}
+    ln -sf $filename $dir/${filename/dnf4/dnf}
 done
 %endif
 
@@ -544,30 +544,30 @@ rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
 
 %if %{with yumutils}
 mkdir -p %{buildroot}%{_bindir}
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoclosure
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repodiff
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repomanage
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoquery
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoclosure
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repodiff
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repomanage
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoquery
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
 %if %{with debug_plugin}
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 %endif
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-groups-manager
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-groups-manager
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 # These commands don't have a dedicated man page, so let's just point them
 # to the utils page which contains their descriptions.
-ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/find-repos-of-install.1.gz
-ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repoquery.1.gz
-ln -sf %{_mandir}/man1/%{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1.gz
+ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/find-repos-of-install.1.gz
+ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repoquery.1.gz
+ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1.gz
 %endif
 
 %check
