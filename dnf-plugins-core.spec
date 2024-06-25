@@ -231,7 +231,7 @@ repoquery, reposync, repotrack, repodiff, builddep, config-manager,%{?with_debug
 download and yum-groups-manager that use new implementations using DNF.
 %endif
 
-%if 0%{?rhel} == 0 && %{with python2}
+%if %{with python2}
 %package -n python2-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -250,7 +250,7 @@ Leaves Plugin for DNF, Python 2 version. List all installed packages
 not required by any other installed package.
 %endif
 
-%if 0%{?rhel} == 0 && %{with python3}
+%if %{with python3}
 %package -n python3-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -376,7 +376,7 @@ Pre transaction actions Plugin for DNF, Python 3 version. Plugin runs actions
 files.
 %endif
 
-%if 0%{?rhel} == 0 && %{with python2}
+%if %{with python2}
 %package -n python2-dnf-plugin-show-leaves
 Summary:        Leaves Plugin for DNF
 Requires:       python2-%{name} = %{version}-%{release}
@@ -397,7 +397,7 @@ packages that are no longer required by any other installed package
 after a transaction.
 %endif
 
-%if 0%{?rhel} == 0 && %{with python3}
+%if %{with python3}
 %package -n python3-dnf-plugin-show-leaves
 Summary:        Show-leaves Plugin for DNF
 Requires:       python3-%{name} = %{version}-%{release}
@@ -755,8 +755,6 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %exclude %{_mandir}/man1/yum-utils.*
 %endif
 
-%if 0%{?rhel} == 0
-
 %if %{with python2}
 %files -n python2-dnf-plugin-leaves
 %{python2_sitelib}/dnf-plugins/leaves.*
@@ -769,18 +767,6 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
 %{_mandir}/man8/dnf*-leaves.*
 %endif
-
-%else
-%exclude %{_mandir}/man8/dnf*-leaves.*
-%if %{with python2}
-%exclude %{python2_sitelib}/dnf-plugins/leaves.*
-%endif
-%if %{with python3}
-%exclude %{python3_sitelib}/dnf-plugins/leaves.*
-%exclude %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
-%endif
-%endif
-# endif 0%%{?rhel} == 0
 
 %if 0%{?rhel} == 0 && %{with python2}
 %files -n python2-dnf-plugin-local
@@ -839,8 +825,6 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{_mandir}/man8/dnf*-pre-transaction-actions.*
 %endif
 
-%if 0%{?rhel} == 0
-
 %if %{with python2}
 %files -n python2-dnf-plugin-show-leaves
 %{python2_sitelib}/dnf-plugins/show_leaves.*
@@ -853,18 +837,6 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
 %{_mandir}/man8/dnf*-show-leaves.*
 %endif
-
-%else
-%exclude %{_mandir}/man8/dnf*-show-leaves.*
-%if %{with python2}
-%exclude %{python2_sitelib}/dnf-plugins/show_leaves.*
-%endif
-%if %{with python3}
-%exclude %{python3_sitelib}/dnf-plugins/show_leaves.*
-%exclude %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
-%endif
-%endif
-# endif 0%%{?rhel} == 0
 
 %if %{with python2}
 %files -n python2-dnf-plugin-versionlock
