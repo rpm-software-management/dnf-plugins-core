@@ -189,7 +189,7 @@ class RepoSyncCommand(dnf.cli.Command):
 
     def metadata_target(self, repo):
         if self.opts.metadata_path:
-            return _pkgdir(self.opts.metadata_path, repo.id)
+            return _pkgdir(self.opts.metadata_path, repo.id if not self.opts.norepopath else '')
         else:
             return self.repo_target(repo)
 
