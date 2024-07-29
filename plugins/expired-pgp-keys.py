@@ -20,7 +20,7 @@ class ExpiredPGPKeys(dnf.Plugin):
         self.base = base
         self.cli = cli
 
-    def pre_transaction(self):
+    def resolved(self):
         if not self.base.conf.gpgcheck:
             return
 
