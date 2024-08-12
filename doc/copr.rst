@@ -132,3 +132,10 @@ Examples
 
 ``copr search tests``
     Search for Copr projects named ``tests``.
+
+------------
+Known issues
+------------
+
+Copr plugin does not respect `-4` and `-6` options of `dnf` command when enabling a Copr
+respository. Users are advised to configure a global address preference in /etc/gai.conf.
