@@ -22,6 +22,16 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.9.0 Release Notes
+===================
+
+- Enable leaves and show-leaves plugins for RHEL
+- expired-pgp-keys: New plugin for detecting expired PGP keys
+- reposync: Respect --norepopath with --metadata-path
+- doc: copr plugin does not respect IP family preference
+- expired-pgp-keys: Fix calling the hook at resolved time
+
+===================
 4.8.0 Release Notes
 ===================
 
