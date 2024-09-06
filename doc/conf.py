@@ -255,6 +255,7 @@ man_pages = [
     ('groups-manager', 'dnf4-groups-manager', u'DNF groups-manager Plugin', AUTHORS, 8),
     ('leaves', 'dnf4-leaves', u'DNF leaves Plugin', AUTHORS, 8),
     ('local', 'dnf4-local', u'DNF local Plugin', AUTHORS, 8),
+    ('manifest', 'dnf4-manifest', u'DNF manifest Plugin', AUTHORS, 8),
     ('modulesync', 'dnf4-modulesync', u'DNF modulesync Plugin', AUTHORS, 8),
     ('needs_restarting', 'dnf4-needs-restarting', u'DNF needs_restarting Plugin', AUTHORS, 8),
     ('repoclosure', 'dnf4-repoclosure', u'DNF repoclosure Plugin', AUTHORS, 8),

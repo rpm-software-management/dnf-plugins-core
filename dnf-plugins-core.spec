@@ -69,6 +69,7 @@ Provides:       dnf-command(debug-restore)
 Provides:       dnf-command(debuginfo-install)
 Provides:       dnf-command(download)
 Provides:       dnf-command(groups-manager)
+Provides:       dnf-command(manifest)
 Provides:       dnf-command(repoclosure)
 Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
@@ -88,6 +89,7 @@ Provides:       dnf-plugin-config-manager = %{version}-%{release}
 Provides:       dnf-plugin-debuginfo-install = %{version}-%{release}
 Provides:       dnf-plugin-download = %{version}-%{release}
 Provides:       dnf-plugin-generate_completion_cache = %{version}-%{release}
+Provides:       dnf-plugin-manifest = %{version}-%{release}
 Provides:       dnf-plugin-needs_restarting = %{version}-%{release}
 Provides:       dnf-plugin-groups-manager = %{version}-%{release}
 Provides:       dnf-plugin-repoclosure = %{version}-%{release}
@@ -105,7 +107,7 @@ Conflicts:      dnf-plugins-extras-common-data < %{dnf_plugins_extra}
 
 %description
 Core Plugins for DNF. This package enhances DNF with builddep, config-manager,
-copr, %{?with_debug_plugin:debug, }debuginfo-install, download, needs-restarting, groups-manager, repoclosure,
+copr, %{?with_debug_plugin:debug, }debuginfo-install, download, manifest, needs-restarting, groups-manager, repoclosure,
 repograph, repomanage, reposync, changelog and repodiff commands. Additionally
 provides generate_completion_cache passive plugin.
 
@@ -176,6 +178,7 @@ Requires:       python3-dbus
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
 Requires:       python3-dateutil
+Requires:       python3-libpkgmanifest
 Requires:       python3-systemd
 %if %{with debug_plugin}
 Provides:       python3-dnf-plugins-extras-debug = %{version}-%{release}
@@ -199,7 +202,7 @@ Conflicts:      python-%{name} < %{version}-%{release}
 
 %description -n python3-%{name}
 Core Plugins for DNF, Python 3 interface. This package enhances DNF with builddep,
-config-manager, copr, %{?with_debug_plugin:debug, }debuginfo-install, download, needs-restarting,
+config-manager, copr, %{?with_debug_plugin:debug, }debuginfo-install, download, manifest, needs-restarting,
 groups-manager, repoclosure, repograph, repomanage, reposync, changelog,
 repodiff, system-upgrade, offline-upgrade and offline-distrosync commands.
 Additionally provides generate_completion_cache passive plugin.
@@ -595,6 +598,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{_mandir}/man8/dnf*-expired-pgp-keys.*
 %{_mandir}/man8/dnf*-generate_completion_cache.*
 %{_mandir}/man8/dnf*-groups-manager.*
+%{_mandir}/man8/dnf*-manifest.*
 %{_mandir}/man8/dnf*-needs-restarting.*
 %{_mandir}/man8/dnf*-repoclosure.*
 %{_mandir}/man8/dnf*-repodiff.*
@@ -661,6 +665,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{python3_sitelib}/dnf-plugins/expired-pgp-keys.py
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
 %{python3_sitelib}/dnf-plugins/groups_manager.py
+%{python3_sitelib}/dnf-plugins/manifest.py
 %{python3_sitelib}/dnf-plugins/needs_restarting.py
 %{python3_sitelib}/dnf-plugins/repoclosure.py
 %{python3_sitelib}/dnf-plugins/repodiff.py
@@ -680,6 +685,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{python3_sitelib}/dnf-plugins/__pycache__/expired-pgp-keys.*
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
 %{python3_sitelib}/dnf-plugins/__pycache__/groups_manager.*
+%{python3_sitelib}/dnf-plugins/__pycache__/manifest.*
 %{python3_sitelib}/dnf-plugins/__pycache__/needs_restarting.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repoclosure.*
 %{python3_sitelib}/dnf-plugins/__pycache__/repodiff.*
