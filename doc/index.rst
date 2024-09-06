@@ -37,6 +37,7 @@ This documents core plugins of DNF:
    groups-manager
    leaves
    local
+   manifest
    migrate
    modulesync
    needs_restarting
