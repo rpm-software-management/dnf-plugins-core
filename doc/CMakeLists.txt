@@ -28,6 +28,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-generate_completion_cache.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-groups-manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-leaves.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-manifest.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-modulesync.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-needs-restarting.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-repoclosure.8
