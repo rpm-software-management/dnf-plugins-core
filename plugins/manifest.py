@@ -11,6 +11,7 @@ import hawkey
 
 
 DEFAULT_MANIFEST_FILENAME = 'packages.manifest.yaml'
+ALL_ARCHES = ['noarch', 'aarch64', 'i686', 'ppc64le', 's390x', 'x86_64']
 
 
 @dnf.plugin.register_command
@@ -30,6 +31,9 @@ class ManifestCommand(dnf.cli.Command):
         parser.add_argument('specs', nargs='*', help=_('package specs to be processed'))
         parser.add_argument('--file', help=_('manifest file path to use'))
         parser.add_argument("--source", action='store_true', help=_('include also source packages'))
+        parser.add_argument("--arch", '--archlist', dest='arches', default=[],
+                            action=OptionParser._SplitCallback, metavar='[arch]',
+                            help=_('include only packages of given architectures'))
 
     def configure(self):
         self.cmd = self.opts.subcommand[0]
