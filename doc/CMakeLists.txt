@@ -18,7 +18,8 @@ ADD_CUSTOM_TARGET (doc-man
 ADD_CUSTOM_TARGET (doc)
 ADD_DEPENDENCIES (doc doc-html doc-man)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-builddep.8
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-bootc.8
+    ${CMAKE_CURRENT_BINARY_DIR}/dnf4-builddep.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-changelog.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-config-manager.8
     ${CMAKE_CURRENT_BINARY_DIR}/dnf4-copr.8
