@@ -583,6 +583,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %endif
 
 %files
+%{_mandir}/man8/dnf*-bootc.*
 %{_mandir}/man8/dnf*-builddep.*
 %{_mandir}/man8/dnf*-changelog.*
 %{_mandir}/man8/dnf*-config-manager.*
@@ -620,6 +621,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
+%{python2_sitelib}/dnf-plugins/bootc.*
 %{python2_sitelib}/dnf-plugins/builddep.*
 %{python2_sitelib}/dnf-plugins/changelog.*
 %{python2_sitelib}/dnf-plugins/config_manager.*
@@ -649,6 +651,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.d
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/expired-pgp-keys.conf
+%{python3_sitelib}/dnf-plugins/bootc.py
 %{python3_sitelib}/dnf-plugins/builddep.py
 %{python3_sitelib}/dnf-plugins/changelog.py
 %{python3_sitelib}/dnf-plugins/config_manager.py
@@ -668,6 +671,7 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{python3_sitelib}/dnf-plugins/repomanage.py
 %{python3_sitelib}/dnf-plugins/reposync.py
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
+%{python3_sitelib}/dnf-plugins/__pycache__/bootc.*
 %{python3_sitelib}/dnf-plugins/__pycache__/builddep.*
 %{python3_sitelib}/dnf-plugins/__pycache__/changelog.*
 %{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*

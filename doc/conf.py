@@ -242,6 +242,7 @@ AUTHORS=[u'See AUTHORS in your Core DNF Plugins distribution']
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
+    ('bootc', 'dnf4-bootc', u'DNF bootc Plugin', AUTHORS, 8),
     ('builddep', 'dnf4-builddep', u'DNF builddep Plugin', AUTHORS, 8),
     ('changelog', 'dnf4-changelog', u'DNF changelog Plugin', AUTHORS, 8),
     ('config_manager', 'dnf4-config-manager', u'DNF config-manager Plugin', AUTHORS, 8),
