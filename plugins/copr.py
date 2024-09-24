@@ -487,6 +487,8 @@ Bugzilla. In case of problems, contact the owner of this repository.
                 chroot = ("opensuse-tumbleweed-{}".format(distarch))
             else:
                 chroot = ("opensuse-leap-{0}-{1}".format(dist[1], distarch))
+        elif "Amazon Linux" in dist[0]:
+            chroot = "amazonlinux-{}-{}".format(dist[1], distarch if distarch else "x86_64")
         else:
             chroot = ("epel-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
         return chroot
