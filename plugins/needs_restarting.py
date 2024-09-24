@@ -264,6 +264,8 @@ class NeedsRestartingCommand(dnf.cli.Command):
                                    "(exit code 1) or not (exit code 0)"))
         parser.add_argument('-s', '--services', action='store_true',
                             help=_("only report affected systemd services"))
+        parser.add_argument('--exclude-services', action='store_true',
+                            help=_("don't list stale processes that correspond to a systemd service"))
 
     def configure(self):
         demands = self.cli.demands
@@ -303,19 +305,32 @@ class NeedsRestartingCommand(dnf.cli.Command):
                 return None
 
         stale_pids = set()
+        stale_service_names = set()
         uid = os.geteuid() if self.opts.useronly else None
         for ofile in list_opened_files(uid):
             pkg = owning_pkg_fn(ofile.presumed_name)
+            pid = ofile.pid
             if pkg is None:
                 continue
-            if pkg.installtime > process_start(ofile.pid):
-                stale_pids.add(ofile.pid)
+            if pkg.installtime <= process_start(pid):
+                continue
+            if self.opts.services or self.opts.exclude_services:
+                service_name = get_service_dbus(pid)
+                if service_name is None:
+                    stale_pids.add(pid)
+                else:
+                    stale_service_names.add(service_name)
+                    if not self.opts.exclude_services:
+                        stale_pids.add(pid)
+            else:
+                # If neither --services nor --exclude-services is set, don't
+                # query D-Bus at all.
+                stale_pids.add(pid)
 
         if self.opts.services:
-            names = set([get_service_dbus(pid) for pid in sorted(stale_pids)])
-            for name in names:
-                if name is not None:
-                    print(name)
+            for stale_service_name in sorted(stale_service_names):
+                print(stale_service_name)
             return 0
+
         for pid in sorted(stale_pids):
             print_cmd(pid)
