@@ -72,6 +72,9 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``-s, --services``
     Only list the affected systemd services.
 
+``--exclude-services``
+    Don't list stale processes that correspond to a systemd service.
+
 -------------
 Configuration
 -------------
