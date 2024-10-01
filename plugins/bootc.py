@@ -211,5 +211,4 @@ class BootcCommand(dnf.cli.Command):
     def run(self):
         proc = subprocess.Popen(self.extargs, stdout=sys.stdout, stderr=sys.stderr)
         proc.wait()
-        if proc.returncode != 0:
-            raise dnf.cli.CliError
+        sys.exit(proc.returncode)
