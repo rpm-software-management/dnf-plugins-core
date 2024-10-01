@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 import dnf
 import logging
 import subprocess
+import sys
 
 _, P_ = dnf.i18n.translation("dnf-plugin-bootc")
 logger = logging.getLogger("dnf.plugin")
@@ -208,16 +209,7 @@ class BootcCommand(dnf.cli.Command):
                 raise dnf.cli.CliError
 
     def run(self):
-        # combine stdout and stderr; capture text output
-        proc = subprocess.Popen(
-            self.extargs, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
-        )
-
-        # stdout and stderr will be combined in stdout, err will be None here
-        (out, err) = proc.communicate()
-
+        proc = subprocess.Popen(self.extargs, stdout=sys.stdout, stderr=sys.stderr)
+        proc.wait()
         if proc.returncode != 0:
-            logger.critical(out)
             raise dnf.cli.CliError
-        else:
-            logger.info(out)
