@@ -170,9 +170,6 @@ def smap2opened_file(pid, line):
     slash = line.find('/')
     if slash < 0:
         return None
-    if line.find('00:') >= 0:
-        # not a regular file
-        return None
     fn = line[slash:].strip()
     suffix_index = fn.rfind(' (deleted)')
     if suffix_index < 0:
