@@ -206,36 +206,89 @@ class OpenedFile(object):
                 return match.group(1)
         return self.name
 
-
 class ProcessStart(object):
     def __init__(self):
-        self.boot_time = self.get_boot_time()
-        self.sc_clk_tck = self.get_sc_clk_tck()
+        self.kernel_boot_time = ProcessStart.get_kernel_boot_time()
+        self.boot_time = ProcessStart.get_boot_time(self.kernel_boot_time)
+        self.sc_clk_tck = ProcessStart.get_sc_clk_tck()
 
     @staticmethod
-    def get_boot_time():
+    def get_kernel_boot_time():
+        try:
+            with open('/proc/stat', 'r') as file:
+                for line in file:
+                    if line.startswith("btime "):
+                        key, value = line.split()
+                        return float(value)
+        except OSError as e:
+            logger.debug("Couldn't read /proc/stat: %s", e)
+        return 0
+
+    @staticmethod
+    def get_boot_time(kernel_boot_time):
         """
-        We have two sources from which to derive the boot time. These values vary
+        We have three sources from which to derive the boot time. These values vary
         depending on containerization, existence of a Real Time Clock, etc.
-        For our purposes we want the latest derived value.
+        - UnitsLoadStartTimestamp property on /org/freedesktop/systemd1
+             The start time of the service manager, according to systemd itself.
+             Seems to be more reliable than UserspaceTimestamp when the RTC is
+             in local time. Works unless the system was not booted with systemd,
+             such as in (most) containers.
         - st_mtime of /proc/1
-             Reflects the time the first process was run after booting
-             This works for all known cases except machines without
-             a RTC - they awake at the start of the epoch.
-        - /proc/uptime
-             Seconds field of /proc/uptime subtracted from the current time
-             Works for machines without RTC iff the current time is reasonably correct.
-             Does not work on containers which share their kernel with the
-             host - there the host kernel uptime is returned
+             Reflects the time the first process was run after booting. This
+             works for all known cases except machines without a RTC---they
+             awake at the start of the epoch.
+        - btime field of /proc/stat
+             Reflects the time when the kernel started. Works for machines
+             without RTC iff the current time is reasonably correct. Does not
+             work on containers which share their kernel with the host---there,
+             the host kernel uptime is returned.
         """
 
-        proc_1_boot_time = int(os.stat('/proc/1').st_mtime)
-        if os.path.isfile('/proc/uptime'):
-            with open('/proc/uptime', 'rb') as f:
-                uptime = f.readline().strip().split()[0].strip()
-                proc_uptime_boot_time = int(time.time() - float(uptime))
-                return max(proc_1_boot_time, proc_uptime_boot_time)
-        return proc_1_boot_time
+        units_load_start_timestamp = None
+        try:
+            # systemd timestamps are the preferred method to determine boot
+            # time. max(proc_1_boot_time, kernel_boot_time) does not allow us
+            # to disambiguate between an unreliable RTC (e.g. the RTC is in
+            # UTC+1 instead of UTC) and a container with a proc_1_boot_time >
+            # kernel_boot_time. So we use UnitsLoadStartTimestamp if it's
+            # available, else fall back to the other methods.
+            bus = dbus.SystemBus()
+            systemd1 = bus.get_object(
+                'org.freedesktop.systemd1',
+                '/org/freedesktop/systemd1'
+            )
+            props = dbus.Interface(
+                systemd1,
+                dbus.PROPERTIES_IFACE
+            )
+            units_load_start_timestamp = props.Get(
+                'org.freedesktop.systemd1.Manager',
+                'UnitsLoadStartTimestamp'
+            )
+            if units_load_start_timestamp != 0:
+                systemd_boot_time = units_load_start_timestamp / (1000 * 1000)
+                logger.debug("Got boot time from systemd: %s", systemd_boot_time)
+                return systemd_boot_time
+        except dbus.exceptions.DBusException as e:
+            logger.debug("D-Bus error getting boot time from systemd: %s", e)
+
+        logger.debug("Couldn't get boot time from systemd, checking st_mtime of /proc/1 and btime field of /proc/stat.")
+
+        try:
+            proc_1_boot_time = float(os.stat('/proc/1').st_mtime)
+        except OSError as e:
+            logger.debug("Couldn't stat /proc/1: %s", e)
+            proc_1_boot_time = 1
+        kernel_boot_time = kernel_boot_time
+
+        boot_time = max(proc_1_boot_time, kernel_boot_time)
+
+        logger.debug("st_mtime of /proc/1: %s", proc_1_boot_time)
+        logger.debug("btime field of /proc/stat: %s", kernel_boot_time)
+        logger.debug("Using %s as the system boot time.", boot_time)
+
+        return boot_time
 
     @staticmethod
     def get_sc_clk_tck():
@@ -244,10 +297,13 @@ class ProcessStart(object):
     def __call__(self, pid):
         stat_fn = '/proc/%d/stat' % pid
         with open(stat_fn) as stat_file:
-            stats = stat_file.read().strip().split()
-        ticks_after_boot = int(stats[21])
-        secs_after_boot = ticks_after_boot // self.sc_clk_tck
-        return self.boot_time + secs_after_boot
+            stats = stat_file.read().split()
+        ticks_after_kernel_boot = int(stats[21])
+        secs_after_kernel_boot = ticks_after_kernel_boot / self.sc_clk_tck
+
+        # The process's start time is always measured relative to the kernel
+        # start time, not either of the other methods we use to get "boot time".
+        return self.kernel_boot_time + secs_after_kernel_boot
 
 
 @dnf.plugin.register_command
