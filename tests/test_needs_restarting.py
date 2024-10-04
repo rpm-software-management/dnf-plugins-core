@@ -28,15 +28,14 @@ import tempfile
 
 DEL_FILE = '3dcf000000-3dcf032000 r-xp 00000000 08:02 140759                ' \
            '         /usr/lib64/libXfont.so.1.4.1;5408628d (deleted)'
-MM_FILE = '7fc4e1168000-7fc4e1169000 rw-s 1096dd000 00:05 7749' \
-          '                      /dev/dri/card0'
+HEAP_FILE = '556d60d52000-556d60e1c000 rw-p 00000000 00:00 0                          [heap]'
 SO_FILE = '30efe06000-30efe07000 r--p 00006000 08:02 139936' \
           '                         /usr/lib64/libSM.so.6.0.1'
 class NeedsRestartingTest(tests.support.TestCase):
     def test_smap2opened_file(self):
         func = needs_restarting.smap2opened_file
         self.assertIsNone(func(1, 'Shared_Dirty:          0 kB'))
-        self.assertIsNone(func(1, MM_FILE))
+        self.assertIsNone(func(1, HEAP_FILE))
 
         ofile = func(5, SO_FILE)
         self.assertFalse(ofile.deleted)
