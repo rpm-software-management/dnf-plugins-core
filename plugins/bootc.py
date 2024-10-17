@@ -24,7 +24,7 @@ class BootcCommand(dnf.cli.Command):
 
     _BOOTC_ALIASES = {"update": "upgrade", "erase": "remove"}
     _BOOTC_SUBCMDS = ["status"]
-    _BOOTC_SUBCMDS_PKGSPECS = ["install"]
+    _BOOTC_SUBCMDS_PKGSPECS = ["install", "remove"]
     _BOOTC_SUBCMDS_ALL = _BOOTC_SUBCMDS + _BOOTC_SUBCMDS_PKGSPECS
 
     _EXT_CMD = "rpm-ostree"
@@ -84,29 +84,43 @@ class BootcCommand(dnf.cli.Command):
             action="store_true",
             help=_("Allow package to replace files from other packages (install)"),
         )
+
+        # these options are for 'remove'
+        parser.add_argument(
+            "--install",
+            nargs="+",
+            metavar="PKG",
+            action="store",
+            help=_("Overlay additional package(s) (remove)"),
+        )
+        parser.add_argument(
+            "--all",
+            action="store_true",
+            help=_("Remove all overlayed additional packages (remove)"),
+        )
+
+        # valid under multiple subcommands
         parser.add_argument(
             "-r",
             "--reboot",
             action="store_true",
-            help=_("Initiate a reboot after operation is complete (install)"),
+            help=_("Initiate a reboot after operation is complete (install, remove)"),
         )
         parser.add_argument(
             "--allow-inactive",
             action="store_true",
-            help=_("Allow inactive package requests (install)"),
+            help=_("Allow inactive package requests (install, remove)"),
         )
         parser.add_argument(
             "--idempotent",
             action="store_true",
-            help=_("Do nothing if package already (un)installed (install)"),
+            help=_("Do nothing if package already (un)installed (install, remove)"),
         )
         parser.add_argument(
             "--unchanged-exit-77",
             action="store_true",
-            help=_("If no overlays were changed, exit 77 (install)"),
+            help=_("If no overlays were changed, exit 77 (install, remove)"),
         )
-
-        # valid under multiple subcommands
         parser.add_argument(
             "--peer",
             action="store_true",
@@ -131,9 +145,7 @@ class BootcCommand(dnf.cli.Command):
 
         # process subcommand arguments
         if cmd == "status":
-            if self.opts.quiet:
-                self.extargs.append("-q")
-            elif self.opts.verbose:
+            if self.opts.verbose:
                 self.extargs.append("-v")
             elif self.opts.json:
                 self.extargs.append("--json")
@@ -143,28 +155,48 @@ class BootcCommand(dnf.cli.Command):
                 self.extargs.append("-b")
             elif self.opts.pending_exit_77:
                 self.extargs.append("--pending-exit-77")
-            elif self.opts.peer:
-                self.extargs.append("--peer")
-            elif self.opts.installroot:
-                self.extargs.append("--sysroot=%s" % self.opts.installroot)
         elif cmd == "install":
+            if self.opts.cacheonly:
+                self.extargs.append("-C")
+            elif self.opts.downloadonly:
+                self.extargs.append("--download-only")
+            elif self.opts.uninstall:
+                for pname in self.opts.uninstall:
+                    self.extargs.append("--uninstall=%s" % pname)
+            elif self.opts.apply_live:
+                self.extargs.append("-A")
+            elif self.opts.force_replacefiles:
+                self.extargs.append("--force-replacefiles")
+        elif cmd == "remove":
+            if self.opts.install:
+                for pname in self.opts.install:
+                    self.extargs.append("--install=%s" % pname)
+            elif self.opts.all:
+                self.extargs.append("--all")
+
+        if cmd in ["status", "install", "remove"]:
             if self.opts.quiet:
                 self.extargs.append("-q")
             elif self.opts.installroot:
                 self.extargs.append("--sysroot=%s" % self.opts.installroot)
             elif self.opts.peer:
                 self.extargs.append("--peer")
-            elif self.opts.assumeyes:
+
+        if cmd in ["install", "remove"]:
+            if self.opts.assumeyes:
                 self.extargs.append("-y")
             elif self.opts.assumeno:
                 self.extargs.append("-n")
-            elif self.opts.cacheonly:
-                self.extargs.append("-C")
-            elif self.opts.downloadonly:
-                self.extargs.append("--download-only")
             elif self.opts.releasever:
-                self.extargs.append
                 self.extargs.append("--releasever=%s" % self.opts.releasever)
+            elif self.opts.allow_inactive:
+                self.extargs.append("--allow-inactive")
+            elif self.opts.idempotent:
+                self.extargs.append("--idempotent")
+            elif self.opts.unchanged_exit_77:
+                self.extargs.append("--unchanged-exit-77")
+            elif self.opts.reboot:
+                self.extargs.append("-r")
             elif len(self.opts.repos_ed) > 0:
                 enabled = set()
                 disabled = set()
@@ -182,21 +214,6 @@ class BootcCommand(dnf.cli.Command):
                 if len(list(disabled)) > 0:
                     for repo in list(disabled):
                         self.extargs.append("--disablerepo=%s" % repo)
-            elif self.opts.uninstall:
-                for pname in self.opts.uninstall:
-                    self.extargs.append("--uninstall=%s" % pname)
-            elif self.opts.apply_live:
-                self.extargs.append("-A")
-            elif self.opts.force_replacefiles:
-                self.extargs.append("--force-replacefiles")
-            elif self.opts.reboot:
-                self.extargs.append("-r")
-            elif self.opts.allow_inactive:
-                self.extargs.append("--allow-inactive")
-            elif self.opts.idempotent:
-                self.extargs.append("--idempotent")
-            elif self.opts.unchanged_exit_77:
-                self.extargs.append("--unchanged-exit-77")
 
         if cmd in self._BOOTC_SUBCMDS_PKGSPECS:
             if self.opts.pkgspec is not None and len(self.opts.pkgspec) > 0:

@@ -20,6 +20,9 @@ Arguments (bootc)
 ``bootc install [options] <pkg-spec>...``
     Install one or more packages.
 
+``bootc remove [options] <pkg-spec>...``
+    Remove one or more packages.
+
 -------
 Options
 -------
@@ -38,8 +41,14 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
 ``--pending-exit-77``
     If pending deployment available, exit 77 (valid on the status subcommand).
 
+``--install PKG...``
+    Overlay an additional package (valid on the remove subcommand).
+
 ``--uninstall PKG...``
     Remove overlayed additional package (valid on the install subcommand).
+
+``--all``
+    Remove all overlayed additional packages (valid on the remove subcommand).
 
 ``-A``, ``--apply-live``
     Apply changes to both pending deployment and running filesystem tree (valid on the install subcommand).
@@ -48,16 +57,16 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
     Allow package to replace files from other packages (valid on the install subcommand).
 
 ``-r``, ``--reboot``
-    Initiate a reboot after operation is complete (valid on the install subcommand).
+    Initiate a reboot after operation is complete (valid on the install and remove subcommands).
 
 ``--allow-inactive``
-    Allow inactive package requests (valid on the install subcommand).
+    Allow inactive package requests (valid on the install and remove subcommands).
 
 ``--idempotent``
-    Do nothing if package already (un)installed (valid on the install subcommand).
+    Do nothing if package already (un)installed (valid on the install and remove subcommands).
 
 ``--unchanged-exit-77``
-    If no overlays were changed, exit 77 (valid on the install subcommand).
+    If no overlays were changed, exit 77 (valid on the install and remove subcommands).
 
 ``--peer``
-    Force a peer-to-peer connection instead of using the system message bus (valid on the status and install subcommands).
+    Force a peer-to-peer connection instead of using the system message bus (valid on the status, install, and remove subcommands).
