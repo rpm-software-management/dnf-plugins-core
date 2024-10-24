@@ -13,6 +13,7 @@ import libpkgmanifest
 import rpm
 
 
+DEFAULT_INPUT_FILENAME = 'rpms.in.yaml'
 DEFAULT_MANIFEST_FILENAME = 'packages.manifest.yaml'
 MODULE_FILENAME = 'modules_dump.modulemd.yaml'
 MODULAR_DATA_SEPARATOR = '...'
@@ -26,53 +27,74 @@ class ManifestCommand(dnf.cli.Command):
     def __init__(self, cli):
         super(ManifestCommand, self).__init__(cli)
         self.cmd = None
-        self.file = None
         self.download_dir = None
         self.available_packages = None
         self.module_packages = []
 
-        # keep reference to the manifest so inner objects are not destroyed when going out of scope
-        self.parsed_manifest = None
+        self.input = None
+        self.manifest = None
+        self.input_file = None
+        self.manifest_file = None
+        self.from_system = False
 
     @staticmethod
     def set_argparser(parser):
         parser.add_argument("subcommand", nargs=1, choices=['new', 'download', 'install'])
         parser.add_argument('specs', nargs='*', help=_('package specs to be processed'))
-        parser.add_argument('--file', help=_('manifest file path to use'))
+        parser.add_argument('--input', help=_('input file path to use'))
+        parser.add_argument('--manifest', help=_('manifest file path to use'))
+        parser.add_argument('--from-system', action='store_true', help=_('generate manifest from packages on system'))
         parser.add_argument("--source", action='store_true', help=_('include also source packages'))
-        parser.add_argument("--url-only", action='store_true', help=_('use package URLs from manifest for downloading'))
 
     def configure(self):
         self.cmd = self.opts.subcommand[0]
 
-        repos_needed = not (self.cmd == 'download' and self.opts.url_only)
-
-        demands = self.cli.demands
-
-        if repos_needed:
-            demands.sack_activation = True
-            demands.available_repos = True
-
         self.base.conf.strict = True
 
-        if self.cmd == 'install':
-            demands.resolving = True
-
-        if self.opts.source:
-            self.base.repos.enable_source_repos()
-
-        if self.opts.file:
-            self.file = self.opts.file
+        if self.opts.input:
+            self.input_file = self.opts.input
         else:
-            self.file = DEFAULT_MANIFEST_FILENAME
+            self.input_file = DEFAULT_INPUT_FILENAME
+
+        if self.opts.manifest:
+            self.manifest_file = self.opts.manifest
+        else:
+            self.manifest_file = DEFAULT_MANIFEST_FILENAME
 
         if self.opts.destdir:
             self.download_dir = self.opts.destdir
         else:
-            self.download_dir, _ = os.path.splitext(os.path.join(dnf.i18n.ucd(os.getcwd()), self.file))
+            self.download_dir, _ = os.path.splitext(os.path.join(dnf.i18n.ucd(os.getcwd()), self.manifest_file))
 
-        if self.cmd in ['install', 'download']:
+        if self.opts.from_system or self.opts.specs:
+            self.from_system = True
+
+        if not os.path.isfile(self.input_file):
+            self.from_system = True
+            if self.opts.input:
+                raise dnf.exceptions.Error(_("Input file '%s' does not exist") % self.input_file)
+
+        if self.cmd == 'new':
+            if self.from_system:
+                if self.opts.source:
+                    self.base.repos.enable_source_repos()
+            else:
+                self._parse_input()
+        else:
             self.base.conf.destdir = self.download_dir
+            self._parse_manifest()
+
+        if not self.from_system:
+            self._setup_repositories()
+        
+        demands = self.cli.demands
+        
+        if self._repository_load_needed():
+            demands.sack_activation = True
+            demands.available_repos = True
+        
+        if self.cmd == 'install':
+            demands.resolving = True
 
     def run(self):
         match self.cmd:
@@ -100,7 +122,7 @@ class ManifestCommand(dnf.cli.Command):
         """
         Download all packages specified in the manifest file to disk.
         """
-        if self.opts.url_only:
+        if not self.cli.demands.available_repos:
             for path in self._manifest_to_pkg_urls():
                 tmp_path = dnf.util._urlopen_progress(path, self.base.conf, self.base.output.progress)
                 shutil.move(tmp_path, self.download_dir)
@@ -130,6 +152,8 @@ class ManifestCommand(dnf.cli.Command):
 
         if self.opts.specs:
             dnf_pkgs = self._get_packages_with_deps(specs)
+        elif self.input:
+            dnf_pkgs = self._get_packages_with_deps(self.input.packages)
         else:
             dnf_pkgs = self.base.sack.query().installed()
             self.available_packages = self.base.sack.query().available()
@@ -164,22 +188,50 @@ class ManifestCommand(dnf.cli.Command):
             manifest.packages.add(pkg)
 
         serializer = libpkgmanifest.Serializer()
-        serializer.serialize(manifest, self.file)
+        serializer.serialize_manifest(manifest, self.manifest_file)
 
         # append modular yaml data to the manifest file
         if modules_info:
-            with open(self.file, "a") as f:
+            with open(self.manifest_file, "a") as f:
                 f.write('\n' + MODULAR_DATA_SEPARATOR + '\n')
                 for module in modules_info.values():
                     f.write(module)
 
-    def _manifest_to_pkgs(self):
-        if not os.path.isfile(self.file):
-            raise dnf.exceptions.Error(_("Input manifest file '%s' does not exist") % self.file)
+    def _parse_input(self):
+        self.input = libpkgmanifest.Parser().parse_prototype_input(self.input_file)
 
-        manifest = libpkgmanifest.Parser().parse(self.file)
-        self.parsed_manifest = manifest
-        pkgs = manifest.packages.values()
+    def _parse_manifest(self):
+        if not os.path.isfile(self.manifest_file):
+            raise dnf.exceptions.Error(_("Manifest file '%s' does not exist") % self.manifest_file)
+
+        self.manifest = libpkgmanifest.Parser().parse_manifest(self.manifest_file)
+
+    def _setup_repositories(self):
+        if self.input:
+            repositories = self.input.repositories
+        else:
+            repositories = self.manifest.repositories
+
+        self.base.repos.clear()
+
+        for repository in repositories:
+            kwargs = dict()
+            if repository.metalink:
+                kwargs['metalink'] = repository.metalink
+            elif repository.mirrorlist:
+                kwargs['mirrorlist'] = repository.mirrorlist
+            else:
+                kwargs['baseurl'] = [repository.baseurl]
+            self.base.repos.add_new_repo(repository.id, self.base.conf, **kwargs)
+
+    def _repository_load_needed(self):
+        if self.cmd == 'download':
+            return not all(repository.baseurl for repository in self.manifest.repositories)
+        else:
+            return True
+
+    def _manifest_to_pkgs(self):
+        pkgs = self.manifest.packages.values()
         if self.cmd == 'install' or not self.opts.source:
             pkgs = [pkg for pkg in pkgs if pkg.arch != 'src']
         return pkgs
@@ -313,7 +365,7 @@ class ManifestCommand(dnf.cli.Command):
 
     def _dump_modular_data(self):
         module_found = False
-        with open(self.file, 'r') as infile:
+        with open(self.manifest_file, 'r') as infile:
             for line in infile:
                 if MODULAR_DATA_SEPARATOR in line:
                     module_found = True
