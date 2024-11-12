@@ -41,7 +41,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.9.0
+Version:        4.10.0
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -881,6 +881,15 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %endif
 
 %changelog
+* Tue Nov 12 2024 Evan Goode <mail@evangoo.de> - 4.10.0-1
+- CMakeLists.txt: Allow overriding PYTHON_INSTALL_DIR
+- Add Amazon Linux to copr chroots
+- needs-restarting: Add --exclude-services
+- needs-restarting: Add --exclude-services to man page
+- needs-restarting: Get boot time from systemd UnitsLoadStartTimestamp
+- needs-restarting: "Regular files" are often on 00:xx devices
+- needs-restarting tests: Can't discriminate block devices any more
+
 * Thu Aug 15 2024 Evan Goode <mail@evangoo.de> - 4.9.0-1
 - Enable leaves and show-leaves plugins for RHEL
 - expired-pgp-keys: New plugin for detecting expired PGP keys

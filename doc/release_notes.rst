@@ -22,6 +22,18 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.10.0 Release Notes
+===================
+
+- CMakeLists.txt: Allow overriding PYTHON_INSTALL_DIR
+- Add Amazon Linux to copr chroots
+- needs-restarting: Add --exclude-services
+- needs-restarting: Add --exclude-services to man page
+- needs-restarting: Get boot time from systemd UnitsLoadStartTimestamp
+- needs-restarting: "Regular files" are often on 00:xx devices
+- needs-restarting tests: Can't discriminate block devices any more
+
+===================
 4.9.0 Release Notes
 ===================
 
