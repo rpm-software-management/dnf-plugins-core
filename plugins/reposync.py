@@ -305,7 +305,15 @@ class RepoSyncCommand(dnf.cli.Command):
             query.filterm(arch='src')
         elif self.opts.arches:
             query.filterm(arch=self.opts.arches)
-        return query
+        # skip packages that would have been downloaded to the same location
+        pkglist = []
+        seen_paths = set()
+        for pkg in query:
+            download_path = self.pkg_download_path(pkg)
+            if download_path not in seen_paths:
+                pkglist.append(pkg)
+                seen_paths.add(download_path)
+        return pkglist
 
     def download_packages(self, pkglist):
         base = self.base
