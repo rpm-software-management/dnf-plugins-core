@@ -36,8 +36,12 @@ Description
 Note that in most cases a process should survive update of its binary and libraries it is using without requiring to be restarted for proper operation. There are however specific cases when this does not apply. Separately, processes often need to be restarted to reflect security updates.
 
 .. note::
-   Needs-restarting will try to guess the boot time using two different methods:
+   Needs-restarting will try to guess the boot time using three different methods:
 
+   ``UnitsLoadStartTimestamp``
+        D-Bus property on ``/org/freedesktop/systemd1``.
+        Works unless the system was not booted with systemd,
+        such as in (most) containers.
    ``st_mtime of /proc/1``
         Reflects the time the first process was run after booting.
         This works for all known cases except machines without
