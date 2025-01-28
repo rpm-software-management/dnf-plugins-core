@@ -32,6 +32,7 @@ import json
 
 from dnfpluginscore import _, logger
 import dnf
+import dnf.cli
 from dnf.pycomp import PY3
 from dnf.i18n import ucd
 import rpm
