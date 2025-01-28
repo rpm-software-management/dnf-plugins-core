@@ -21,6 +21,7 @@ from tests.support import command_run, mock
 
 import config_manager
 import dnf
+import dnf.cli
 import filecmp
 import os
 import shutil
