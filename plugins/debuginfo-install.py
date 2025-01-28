@@ -22,6 +22,7 @@
 from dnfpluginscore import _, logger
 
 import dnf
+import dnf.cli
 from dnf.package import Package
 
 class DebuginfoInstall(dnf.Plugin):
