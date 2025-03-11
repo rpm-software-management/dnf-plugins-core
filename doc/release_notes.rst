@@ -22,6 +22,17 @@ Core DNF Plugins Release Notes
 .. contents::
 
 ===================
+4.10.1 Release Notes
+===================
+
+- spec: toggle dnf5_obsoletes_dnf for RHEL 11
+- reposync: Avoid multiple downloads of duplicate packages
+- doc: needs-restarting uses UnitsLoadStartTimestamp boot time
+- debuginfo-install: Fix missing dnf.cli import
+- copr Fix missing dnf.cli import
+- tests: Fix missing dnf.cli imports
+
+===================
 4.10.0 Release Notes
 ===================
 

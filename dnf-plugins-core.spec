@@ -41,7 +41,7 @@
 %endif
 
 Name:           dnf-plugins-core
-Version:        4.10.0
+Version:        4.10.1
 Release:        1%{?dist}
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -881,6 +881,14 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %endif
 
 %changelog
+* Tue Mar 11 2025 Evan Goode <mail@evangoo.de> - 4.10.1-1
+- spec: toggle dnf5_obsoletes_dnf for RHEL 11
+- reposync: Avoid multiple downloads of duplicate packages
+- doc: needs-restarting uses UnitsLoadStartTimestamp boot time
+- debuginfo-install: Fix missing dnf.cli import
+- copr Fix missing dnf.cli import
+- tests: Fix missing dnf.cli imports
+
 * Tue Nov 12 2024 Evan Goode <mail@evangoo.de> - 4.10.0-1
 - CMakeLists.txt: Allow overriding PYTHON_INSTALL_DIR
 - Add Amazon Linux to copr chroots
