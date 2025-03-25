@@ -320,6 +320,18 @@ Obsoletes:      python-dnf-plugins-extras-migrate < %{dnf_plugins_extra}
 Migrate Plugin for DNF, Python 2 version. Migrates history, group and yumdb data from yum to dnf.
 %endif
 
+%if %{with python3}
+%package -n python3-dnf-plugin-multisig
+Summary:        Multisig Plugin for DNF
+Requires:       pqrpm
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-multisig = %{version}-%{release}
+
+%description -n python3-dnf-plugin-multisig
+Multisig Plugin for DNF, Python 3 version. The plugin verifies multiple RPMv6
+signatures on RPMv4 packages by using an external rpmkeys program.
+%endif
+
 %if %{with python2}
 %package -n python2-dnf-plugin-post-transaction-actions
 Summary:        Post transaction actions Plugin for DNF
@@ -793,6 +805,13 @@ ln -sf %{yum_utils_subpackage_name}.1.gz %{buildroot}%{_mandir}/man1/repotrack.1
 %{_mandir}/man8/dnf-migrate.*
 %else
 %exclude %{_mandir}/man8/dnf-migrate.*
+%endif
+
+%if %{with python3}
+%files -n python3-dnf-plugin-multisig
+%{python3_sitelib}/dnf-plugins/multisig.*
+%{python3_sitelib}/dnf-plugins/__pycache__/multisig.*
+%{_mandir}/man8/dnf*-multisig.*
 %endif
 
 %if %{with python2}
