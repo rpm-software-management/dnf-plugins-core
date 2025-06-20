@@ -493,7 +493,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
             chroot = ("epel-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
         return chroot
 
-    def _download_repo(self, project_name, repo_filename, chroot):
+    def _download_repo_file(self, project_name, chroot):
         api_path = "/coprs/{0}/repo/{1}/dnf.repo".format(project_name, chroot)
 
         try:
@@ -523,6 +523,11 @@ Bugzilla. In case of problems, contact the owner of this repository.
         except URLError as e:
             error_msg = _("Failed to connect to {0}: {1}").format(self.copr_url + api_path, e.reason.strerror)
             raise dnf.exceptions.Error(error_msg)
+
+        return response
+
+    def _download_repo(self, project_name, repo_filename, chroot):
+        response = self._download_repo_file(project_name, chroot)
 
         if os.path.exists(repo_filename):
             os.remove(repo_filename)
