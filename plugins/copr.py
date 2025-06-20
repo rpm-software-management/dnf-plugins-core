@@ -263,13 +263,12 @@ class CoprCommand(dnf.cli.Command):
             chroot = self.opts.arg[1]
             if len(self.opts.arg) > 2:
                 raise dnf.exceptions.Error(_('Too many arguments.'))
-            self.chroot_parts = chroot.split("-")
-            if len(self.chroot_parts) < 3:
+            chroot_parts = chroot.split("-")
+            if len(chroot_parts) < 3:
                 raise dnf.exceptions.Error(_('Bad format of optional chroot. The format is '
                                              'distribution-version-architecture.'))
         except IndexError:
             chroot = self._guess_chroot()
-            self.chroot_parts = chroot.split("-")
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "search":
@@ -312,7 +311,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
                                 copr_projectname])
             msg = "Do you really want to enable {0}?".format(project)
             self._ask_user(info, msg)
-            self._download_repo(project_name, repo_filename)
+            self._download_repo(project_name, repo_filename, chroot)
             logger.info(_("Repository successfully enabled."))
             self._runtime_deps_warning(copr_username, copr_projectname)
         elif subcommand == "disable":
@@ -494,10 +493,8 @@ Bugzilla. In case of problems, contact the owner of this repository.
             chroot = ("epel-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
         return chroot
 
-    def _download_repo(self, project_name, repo_filename):
-        short_chroot = '-'.join(self.chroot_parts[:-1])
-        arch = self.chroot_parts[-1]
-        api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
+    def _download_repo(self, project_name, repo_filename, chroot):
+        api_path = "/coprs/{0}/repo/{1}/dnf.repo".format(project_name, chroot)
 
         try:
             response = urlopen(self.copr_url + api_path)
@@ -513,7 +510,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
                 error_data_decoded = base64.b64decode(error_data).decode('utf-8')
                 error_data_decoded = json.loads(error_data_decoded)
                 error_msg += _("Repository '{0}' does not exist in project '{1}'.").format(
-                    '-'.join(self.chroot_parts), project_name)
+                    chroot, project_name)
                 if error_data_decoded.get("available chroots"):
                     error_msg += _("\nAvailable repositories: ") + ', '.join(
                         "'{}'".format(x) for x in error_data_decoded["available chroots"])
@@ -708,7 +705,7 @@ class PlaygroundCommand(CoprCommand):
                 f.close()
                 if (output2 and ("output" in output2)
                         and (output2["output"] == "ok")):
-                    self._download_repo(project_name, repo_filename)
+                    self._download_repo(project_name, repo_filename, chroot)
             except dnf.exceptions.Error:
                 # likely 404 and that repo does not exist
                 pass
