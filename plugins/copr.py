@@ -498,8 +498,6 @@ Bugzilla. In case of problems, contact the owner of this repository.
 
         try:
             response = urlopen(self.copr_url + api_path)
-            if os.path.exists(repo_filename):
-                os.remove(repo_filename)
         except HTTPError as e:
             if e.code != 404:
                 error_msg = _("Request to {0} failed: {1} - {2}").format(self.copr_url + api_path, e.code, str(e))
@@ -525,6 +523,9 @@ Bugzilla. In case of problems, contact the owner of this repository.
         except URLError as e:
             error_msg = _("Failed to connect to {0}: {1}").format(self.copr_url + api_path, e.reason.strerror)
             raise dnf.exceptions.Error(error_msg)
+
+        if os.path.exists(repo_filename):
+            os.remove(repo_filename)
 
         # Try to read the first line, and detect the repo_filename from that (override the repo_filename value).
         first_line = response.readline()
