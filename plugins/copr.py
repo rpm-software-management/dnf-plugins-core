@@ -268,7 +268,7 @@ class CoprCommand(dnf.cli.Command):
                 raise dnf.exceptions.Error(_('Bad format of optional chroot. The format is '
                                              'distribution-version-architecture.'))
         except IndexError:
-            chroot = self._guess_chroot()
+            chroot = None
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "search":
@@ -526,8 +526,10 @@ Bugzilla. In case of problems, contact the owner of this repository.
 
         return response
 
-    def _download_repo(self, project_name, repo_filename, chroot):
-        response = self._download_repo_file(project_name, chroot)
+    def _download_repo(self, project_name, repo_filename, chroot=None):
+        _chroot = chroot or self._guess_chroot()
+
+        response = self._download_repo_file(project_name, _chroot)
 
         if os.path.exists(repo_filename):
             os.remove(repo_filename)
