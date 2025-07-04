@@ -28,10 +28,6 @@ class MultiSig(dnf.Plugin):
         super(MultiSig, self).__init__(base, cli)
         # Path to the rpmkeys executable
         self.rpmkeys_executable = "/usr/lib/pqrpm/bin/rpmkeys"
-        # Use a dedicated key store inside the installroot. Native librpm
-        # would reject importing keys of an unknown schema.
-        self.rpmkeys_arguments = ("-D", "_keyring openpgp",
-                                  "-D", "_keyringpath %{_dbpath}/multisig/")
         # List of repositories whose keys we have tried importing so far
         # during a run of this plugin.
         self._repo_set_imported_gpg_keys = [];
@@ -73,7 +69,7 @@ class MultiSig(dnf.Plugin):
     def _verifyPackageUsingRpmkeys(self, package, installroot):
         # "--define=_pkgverify_level signature" enforces signature checking;
         # "--define=_pkgverify_flags 0x0" ensures that all signatures are checked.
-        args = (self.rpmkeys_executable, *self.rpmkeys_arguments,
+        args = (self.rpmkeys_executable,
                 '--checksig', '--root', installroot, '--verbose',
                 '--define=_pkgverify_level signature', '--define=_pkgverify_flags 0x0',
                 '-')
@@ -187,7 +183,7 @@ class MultiSig(dnf.Plugin):
         # XXX: rpmkeys expects lowercase
         # <https://github.com/rpm-software-management/rpm/issues/3721>
         logger.debug(_("Multisig: Checking a presence of key={}").format(fingerprint))
-        args = (self.rpmkeys_executable, *self.rpmkeys_arguments,
+        args = (self.rpmkeys_executable,
                 '--root', self.base.conf.installroot,
                 '--list', fingerprint.lower())
         p = subprocess.run(
@@ -213,7 +209,7 @@ class MultiSig(dnf.Plugin):
         it depends on rpmkeys behavior. Current rpmkeys implementation
         gracefully ignores (or updates?) existing keys.
         '''
-        args = (self.rpmkeys_executable, *self.rpmkeys_arguments,
+        args = (self.rpmkeys_executable,
                 '--root', self.base.conf.installroot,
                 '--import', '-')
         env = dict(os.environ)
