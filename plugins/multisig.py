@@ -350,7 +350,7 @@ class MultiSig(dnf.Plugin):
                     'package.\n'
                     'Check that the correct key URLs are configured for '
                     'this repository.') % repo.name
-            raise dnf.exceptions.InvalidInstalledGPGKeyError(_prov_key_data(msg))
+            raise dnf.exceptions.Error(_prov_key_data(msg))
 
         # Check if the newly installed keys helped
         result, errmsg = self._sig_check_pkg(po)
@@ -392,8 +392,6 @@ class MultiSig(dnf.Plugin):
                     self._get_key_for_package(po, fn)
                 except (dnf.exceptions.Error, ValueError) as e:
                     error_messages.append(str(e))
-                    if isinstance(e, dnf.exceptions.InvalidInstalledGPGKeyError):
-                        print_plugin_recommendation = True
 
             else:
                 # Fatal error
@@ -402,10 +400,5 @@ class MultiSig(dnf.Plugin):
         if error_messages:
             for msg in error_messages:
                 logger.critical(msg)
-            #if print_plugin_recommendation:
-            #    msg = '\n' + _("Try to add '--enableplugin=expired-pgp-keys' to resolve the problem. "
-            #                   "Note: This plugin might not be installed by default, as it is part of "
-            #                   "the 'dnf-plugins-core' package.") + '\n'
-            #    logger.info(msg)
             raise dnf.exceptions.Error(_("GPG check FAILED"))
 
