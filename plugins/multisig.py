@@ -134,10 +134,10 @@ class MultiSig(dnf.Plugin):
             check = repo.gpgcheck
             hasgpgkey = not not repo.gpgkey
 
+        localfn = os.path.basename(po.localPkg())
         if check:
             logger.debug(_("Multisig: verifying: {}").format(po.localPkg()))
             sigresult = self._checkSig(self.base.conf.installroot, po.localPkg())
-            localfn = os.path.basename(po.localPkg())
             if sigresult == 0:
                 result = 0
                 msg = _('All signatures for %s succefully verified') % localfn
@@ -167,7 +167,7 @@ class MultiSig(dnf.Plugin):
 
         else:
             result = 0
-            msg = _('Signature verification for %s disabled') % localfn
+            msg = _('Signature verification for %s is disabled') % localfn
 
         logger.debug(_("Multisig: verification result: {} (code={})").format(msg, result))
         return result, msg
