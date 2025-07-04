@@ -136,7 +136,7 @@ class MultiSig(dnf.Plugin):
             sigresult = self._checkSig(self.base.conf.installroot, po.localPkg())
             if sigresult == 0:
                 result = 0
-                msg = _('All signatures for %s succefully verified') % localfn
+                msg = _('All signatures for %s successfully verified') % localfn
 
             elif sigresult == 1:
                 if hasgpgkey:
