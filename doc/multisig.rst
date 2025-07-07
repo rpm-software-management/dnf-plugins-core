@@ -29,7 +29,7 @@ import, unless DNF was invoked with ``--assumeyes`` or ``--assumeno`` options.
 
 The key store can be inspected with ``/usr/lib/pqrpm/bin/rpmkeys -D --list``
 command. A key can be deleted from the key store with
-``/usr/lib/pqrpm/bin/rpmkeys -D --delete KEY_ID`` command. The ``KEY_ID`` is
+``/usr/lib/pqrpm/bin/rpmkeys -D --erase KEY_ID`` command. The ``KEY_ID`` is
 the first word in an output of the ``--list`` command.
 
 Users who do not wish to verify the extraordinary RPMv6 signatures should
