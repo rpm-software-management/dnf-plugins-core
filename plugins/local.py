@@ -26,6 +26,7 @@ from dnfpluginscore import _, logger
 
 import dnf
 import dnf.cli
+import dnf.repo
 import os
 import shutil
 import subprocess
@@ -62,6 +63,8 @@ class LocalConfParse(object):
                                              default="/var/lib/dnf/plugins/local")
         else:
             raise KeyError("Disabled")
+
+        main["exclude"] = self.get_value("main", "exclude", "")
 
         if crepo["enabled"]:
             crepo["cachedir"] = self.get_value("createrepo", "cachedir")
@@ -103,6 +106,7 @@ class Local(dnf.Plugin):
 
         local_repo = dnf.repo.Repo("_dnf_local", self.base.conf)
         local_repo.baseurl = "file://{}".format(self.main["repodir"])
+        local_repo.exclude = self.main["exclude"]
         local_repo.cost = 500
         local_repo.skip_if_unavailable = True
         self.base.repos.add(local_repo)
