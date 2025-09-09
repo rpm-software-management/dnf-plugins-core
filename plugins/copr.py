@@ -459,8 +459,10 @@ Bugzilla. In case of problems, contact the owner of this repository.
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
         dist = self.chroot_config
+        dist_detected = False
         if dist is None or (dist[0] is False) or (dist[1] is False):
             dist = linux_distribution()
+            dist_detected = True
         # Get distribution architecture
         distarch = self.base.conf.substitutions['basearch']
         if "Fedora" in dist[0]:
@@ -468,7 +470,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
                 chroot = ("fedora-rawhide-" + distarch)
             # workaround for enabling repos in Rawhide when VERSION in os-release
             # contains a name other than Rawhide
-            elif "rawhide" in os_release_attr("redhat_support_product_version"):
+            elif dist_detected and "rawhide" in os_release_attr("redhat_support_product_version"):
                 chroot = ("fedora-rawhide-" + distarch)
             else:
                 chroot = ("fedora-{0}-{1}".format(dist[1], distarch))
