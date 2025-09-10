@@ -448,8 +448,13 @@ class ManifestCommand(dnf.cli.Command):
     def _retrieve_pkg_checksum(self, pkg):
         if pkg._from_system:
             hdr = pkg.get_header()
-            method = self._rpm_checksum_type_to_manifest_conversion(hdr[rpm.RPMTAG_PAYLOADDIGESTALGO])
-            digest = hdr[rpm.RPMTAG_PAYLOADDIGEST][0]
+            if hasattr(rpm, 'RPMTAG_PAYLOADDIGESTALGO'):
+                # RPM < 6 compatibility
+                method = self._rpm_checksum_type_to_manifest_conversion(hdr[rpm.RPMTAG_PAYLOADDIGESTALGO])
+                digest = hdr[rpm.RPMTAG_PAYLOADDIGEST][0]
+            else:
+                method = self._rpm_checksum_type_to_manifest_conversion(hdr[rpm.RPMTAG_PAYLOADSHA256ALGO])
+                digest = hdr[rpm.RPMTAG_PAYLOADSHA256ALT][0]
         else:
             dnf_chksum_type, dnf_chksum_digest = pkg.chksum
             method = self._dnf_checksum_type_to_manifest_conversion(dnf_chksum_type)
