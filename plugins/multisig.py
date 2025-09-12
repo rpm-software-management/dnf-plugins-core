@@ -1,15 +1,25 @@
 from __future__ import print_function, absolute_import, unicode_literals
 import dnf
-import dnf.crypto
-import dnf.dnssec
 import dnf.exceptions
 from dnf.i18n import ucd
 import dnf.rpm.transaction
 import dnf.transaction
+import dnf.util
 from dnfpluginscore import _, logger
 import os
 import subprocess
 import sys
+
+class MultiSigKey(object):
+    def __init__(self, data, url):
+        self.id_ = None
+        self.fingerprint = None
+        self.timestamp = None
+        self.raw_key = data
+        self.url = url
+        self.userid = None
+        self.short_id = None
+        self.rpm_id = None
 
 class MultiSig(dnf.Plugin):
     """
@@ -168,33 +178,6 @@ class MultiSig(dnf.Plugin):
         logger.debug(_("Multisig: verification result: {} (code={})").format(msg, result))
         return result, msg
 
-    def keyInstalled(self, fingerprint):
-        '''
-        Return if the GPG key described by the given fingerprint is installed
-        in the multisig keyring.
-
-        Return values:
-            - True    key is installed
-            - False   otherwise
-        Trows: If rpmkeys program could not been executed.
-
-        No effort is made to handle duplicates.
-        '''
-        # XXX: rpmkeys expects lowercase
-        # <https://github.com/rpm-software-management/rpm/issues/3721>
-        logger.debug(_("Multisig: Checking a presence of key={}").format(fingerprint))
-        args = (self.rpmkeys_executable,
-                '--root', self.base.conf.installroot,
-                '--list', fingerprint.lower())
-        p = subprocess.run(
-            args=args,
-            executable=self.rpmkeys_executable,
-            cwd='/',
-            stdin=subprocess.DEVNULL,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL)
-        return p.returncode == 0
-
     def importKey(self, key):
         '''
         Import given Key object into the multisig keyring.
@@ -232,6 +215,28 @@ class MultiSig(dnf.Plugin):
             returncode, stdout, stderr))
         return returncode == 0
 
+    def retrieve(self, keyurl, repo=None):
+        """Retrieve a content of a key file specified by the URL using
+        repository's proxy configuration.
+
+        :param keyurl   URL of the key file
+        :param repo     repository object
+        :returns: list of MultiSigKey objects populated from the key file
+        """
+        if keyurl.startswith('http:'):
+            logger.warning(_("retrieving repo key for %s unencrypted from %s"), repo.id, keyurl)
+        with dnf.util._urlopen(keyurl, repo=repo) as handle:
+            # This is a place for parsing the key file and populating key ID etc.
+            keyinfos = [MultiSigKey(handle.read(), keyurl)]
+        return keyinfos
+
+    def log_key_import(self, keyinfo):
+        """Print and log details about keys to be imported.
+        """
+        msg = (_('Importing GPG keys from: %s') %
+               (keyinfo.url.replace("file://", "")))
+        logger.critical("%s", msg)
+
     def _get_key_for_package(self, po, askcb=None, fullaskcb=None):
         """Retrieve a key for a package. If needed, use the given
         callback to prompt whether the key should be imported.
@@ -264,53 +269,17 @@ class MultiSig(dnf.Plugin):
         user_cb_fail = False
         self._repo_set_imported_gpg_keys.append(repo.id)
         for keyurl in keyurls:
-            keys = dnf.crypto.retrieve(keyurl, repo)
+            keys = self.retrieve(keyurl, repo)
 
             for info in keys:
-                # Check if key is already installed
-                if self.keyInstalled(info.fingerprint):
-                    msg = _('GPG key at %s (0x%s) is already installed')
-                    logger.info(msg, keyurl, info.short_id)
-                    continue
-
-                # DNS Extension: create a key object, pass it to the verification class
-                # and print its result as an advice to the user.
-                if self.base.conf.gpgkey_dns_verification:
-                    dns_input_key = dnf.dnssec.KeyInfo.from_rpm_key_object(info.userid,
-                                                                           info.raw_key)
-                    dns_result = dnf.dnssec.DNSSECKeyVerification.verify(dns_input_key)
-                    logger.info(dnf.dnssec.nice_user_msg(dns_input_key, dns_result))
-
                 # Try installing/updating GPG key
                 info.url = keyurl
-                if self.base.conf.gpgkey_dns_verification:
-                    dnf.crypto.log_dns_key_import(info, dns_result)
-                else:
-                    dnf.crypto.log_key_import(info)
+                self.log_key_import(info)
                 rc = False
                 if self.base.conf.assumeno:
                     rc = False
                 elif self.base.conf.assumeyes:
-                    # DNS Extension: We assume, that the key is trusted in case it is valid,
-                    # its existence is explicitly denied or in case the domain is not signed
-                    # and therefore there is no way to know for sure (this is mainly for
-                    # backward compatibility)
-                    # FAQ:
-                    # * What is PROVEN_NONEXISTENCE?
-                    #    In DNSSEC, your domain does not need to be signed, but this state
-                    #    (not signed) has to be proven by the upper domain. e.g. when example.com.
-                    #    is not signed, com. servers have to sign the message, that example.com.
-                    #    does not have any signing key (KSK to be more precise).
-                    if self.base.conf.gpgkey_dns_verification:
-                        if dns_result in (dnf.dnssec.Validity.VALID,
-                                          dnf.dnssec.Validity.PROVEN_NONEXISTENCE):
-                            rc = True
-                            logger.info(dnf.dnssec.any_msg(_("The key has been approved.")))
-                        else:
-                            rc = False
-                            logger.info(dnf.dnssec.any_msg(_("The key has been rejected.")))
-                    else:
-                        rc = True
+                    rc = True
 
                 # grab the .sig/.asc for the keyurl, if it exists if it
                 # does check the signature on the key if it is signed by
@@ -318,11 +287,8 @@ class MultiSig(dnf.Plugin):
                 # rc = True else ask as normal.
 
                 elif fullaskcb:
-                    rc = fullaskcb({"po": po, "userid": info.userid,
-                                    "hexkeyid": info.short_id,
-                                    "keyurl": keyurl,
-                                    "fingerprint": info.fingerprint,
-                                    "timestamp": info.timestamp})
+                    rc = fullaskcb({"po": po,
+                                    "keyurl": keyurl})
                 elif askcb:
                     rc = askcb(po, info.userid, info.short_id)
 
@@ -331,8 +297,7 @@ class MultiSig(dnf.Plugin):
                     continue
 
                 # Import the key
-                # XXX: raw_key of second info erroneously contains first and
-                # second key. Probably a bug in key parser.
+                # XXX: raw_key contains all keys found in the key file.
                 #logger.debug(_("Multisig: Importing a key: {}").format(info.raw_key))
                 result = self.importKey(info)
                 if result == False:
