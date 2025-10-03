@@ -301,7 +301,7 @@ if sys.version_info[0] < 3:
     man_pages.append(('migrate', 'dnf-migrate', u'DNF migrate Plugin', AUTHORS, 8))
 
 if sys.version_info[0] == 3:
-    man_pages.append(('multisig', 'dnf4-multisig', u'DNF multisig Plugin', AUTHORS, 8))
+    man_pages.append(('multisig', 'dnf-multisig', u'DNF multisig Plugin', AUTHORS, 8))
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
