@@ -48,6 +48,10 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-migrate.8
 endif()
 
 if (${PYTHON_VERSION_MAJOR} STREQUAL "3")
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-multisig.8
+        DESTINATION share/man/man8)
+FILE(CREATE_LINK dnf-multisig.8 ${CMAKE_CURRENT_BINARY_DIR}/dnf4-multisig.8
+        SYMBOLIC)
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf4-multisig.8
         DESTINATION share/man/man8)
 endif()
