@@ -47,6 +47,9 @@ excludes a package that matches the version exactly.
 Note the versionlock plugin does not apply any excludes in non-transactional
 operations like `repoquery`, `list`, `info`, etc.
 
+Note that the versionlock plugin only applies to in-repository packages.
+Packages passed on the DNF command line as local files won't be affected.
+
 --------
 Synopsis
 --------
