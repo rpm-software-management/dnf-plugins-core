@@ -48,7 +48,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/dnf-plugins-core
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gettext
 # Documentation
 %if %{with python3}
@@ -491,8 +491,8 @@ pushd build-py2
   %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python2} \
     -DWITHOUT_DEBUG:str=0%{!?with_debug_plugin:1} \
     -DWITHOUT_LOCAL:str=0%{?rhel}
-  %make_build
-  make doc-man
+  %cmake_build
+  %cmake_build --target doc-man
 popd
 %endif
 %if %{with python3}
@@ -500,20 +500,20 @@ pushd build-py3
   %cmake ../ -DPYTHON_DESIRED:FILEPATH=%{__python3} \
     -DWITHOUT_DEBUG:str=0%{!?with_debug_plugin:1} \
     -DWITHOUT_LOCAL:str=0%{?rhel}
-  %make_build
-  make doc-man
+  %cmake_build
+  %cmake_build --target doc-man
 popd
 %endif
 
 %install
 %if %{with python2}
 pushd build-py2
-  %make_install
+  %cmake_install
 popd
 %endif
 %if %{with python3}
 pushd build-py3
-  %make_install
+  %cmake_install
 popd
 %endif
 
