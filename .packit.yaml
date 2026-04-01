@@ -1,7 +1,9 @@
 # See the documentation for more information:
-# https://packit.dev/docs/configuration/
+# https://packit.dev/docs/configuration
 
 specfile_path: dnf-plugins-core.spec
+version_suffix: "^{PACKIT_PROJECT_SNAPSHOTID}"
+update_release: false
 
 # name in upstream package repository or registry (e.g. in PyPI)
 upstream_package_name: dnf-plugins-core
