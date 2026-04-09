@@ -474,6 +474,8 @@ Bugzilla. In case of problems, contact the owner of this repository.
                 chroot = ("fedora-rawhide-" + distarch)
             else:
                 chroot = ("fedora-{0}-{1}".format(dist[1], distarch))
+        elif "CentOS Stream" in dist:
+            chroot = ("centos-stream-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
         elif "Mageia" in dist:
             # Get distribution architecture (Mageia does not use $basearch)
             distarch = rpm.expandMacro("%{distro_arch}")
