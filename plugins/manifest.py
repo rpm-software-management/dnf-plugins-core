@@ -54,7 +54,7 @@ class ManifestCommand(dnf.cli.Command):
         parser.add_argument('--use-system', action='store_true', help=_('use installed packages for resolving dependencies'))
         parser.add_argument("--source", action='store_true', help=_('include also source packages'))
         parser.add_argument("--archs", nargs='+', help=_('explicitly specify basearchs to use'))
-        parser.add_argument("--per-arch", action='store_true', help=_('separate packages by basearch into individual manifest files'))
+        parser.add_argument("--per-arch", action='store_true', help=_('separate packages by basearch into individual manifest files or download directories'))
 
     def configure(self):
         self.cmd = self.opts.subcommand[0]
@@ -157,8 +157,27 @@ class ManifestCommand(dnf.cli.Command):
         for arch in self.archs:
             specs = self._manifest_to_pkg_specs(arch)
             self._prepare_for_arch(arch)
-            pkgs = self._get_packages(specs)
-            self.base.download_packages(pkgs, self.base.output.progress)
+
+            if self.opts.per_arch:
+                specs_by_arch = {arch: [], "noarch": [], "src": []}
+                for spec in specs:
+                    nevra = hawkey.split_nevra(spec)
+                    if nevra.arch in ["noarch", "src"]:
+                        specs_by_arch[nevra.arch].append(spec)
+                    else:
+                        specs_by_arch[arch].append(spec)
+                for category, category_specs in specs_by_arch.items():
+                    if category_specs:
+                        category_dir = os.path.join(self.download_dir, category)
+                        os.makedirs(category_dir, exist_ok=True) 
+                        self.base.conf.destdir = category_dir
+                        self.base.repos.all().pkgdir = category_dir
+                        pkgs = self._get_packages(category_specs)
+                        self.base.download_packages(pkgs, self.base.output.progress)
+                self.base.conf.destdir = self.download_dir
+            else:
+                pkgs = self._get_packages(specs)
+                self.base.download_packages(pkgs, self.base.output.progress)
 
         self._dump_modular_data()
 
