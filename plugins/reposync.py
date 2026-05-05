@@ -25,6 +25,8 @@ import hawkey
 import os
 import shutil
 import types
+import argparse
+from datetime import date, datetime
 
 from dnfpluginscore import _, logger
 from dnf.cli.option_parser import OptionParser
@@ -35,6 +37,12 @@ import dnf.cli
 def _pkgdir(intermediate, target):
     cwd = dnf.i18n.ucd(os.getcwd())
     return os.path.realpath(os.path.join(cwd, intermediate, target))
+
+def _valid_date(s: str) -> datetime:
+    try:
+        return datetime.strptime(s, "%Y-%m-%d")
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"invalid date: {s!r}")
 
 
 class RPMPayloadLocation(dnf.repo.RPMPayload):
@@ -90,6 +98,8 @@ class RepoSyncCommand(dnf.cli.Command):
                                    "don't download"))
         parser.add_argument('--safe-write-path', default=None,
                             help=_("Filesystem path that is considered safe for writing. Defaults to download path."))
+        parser.add_argument('--min-buildtime', default=None, dest='min_buildtime', metavar='YYYY-MM-DD',
+                            type=_valid_date, help=_("download only packages with buildtime newer than YYYY-MM-DD"))
 
     def configure(self):
         demands = self.cli.demands
@@ -301,6 +311,10 @@ class RepoSyncCommand(dnf.cli.Command):
             reponame=repo.id)
         if self.opts.newest_only:
             query = self._get_latest(query)
+        if self.opts.min_buildtime:
+            # recent filter takes number of days
+            days_diff = (date.today() - self.opts.min_buildtime.date()).days
+            query = query._recent(days_diff)
         if self.opts.source:
             query.filterm(arch='src')
         elif self.opts.arches:
