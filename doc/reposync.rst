@@ -83,6 +83,9 @@ All general DNF options are accepted. Namely, the ``--repoid`` option can be use
 ``-u, --urls``
     Just print urls of what would be downloaded, don't download.
 
+``--min-buildtime <YYYY-MM-DD>``
+    Download only packages with buildtime newer than YYYY-MM-DD.
+    Note that this option may result in partially synchronized repositories and the missing packages can cause dependency issues.
 
 --------
 Examples
