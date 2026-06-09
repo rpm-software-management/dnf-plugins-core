@@ -34,6 +34,7 @@ import functools
 import os
 import re
 import stat
+import sys
 import time
 
 
@@ -163,7 +164,12 @@ def get_service_dbus(pid):
         'Id'
     )
     if name.endswith(".service"):
-        return name
+        # FragmentPath is the path to the unit file that defines the service
+        fragment_path = service_properties.Get(
+            "org.freedesktop.systemd1.Unit",
+            'FragmentPath'
+        )
+        return name, fragment_path
     return
 
 def smap2opened_file(pid, line):
@@ -358,7 +364,7 @@ class NeedsRestartingCommand(dnf.cli.Command):
                 return None
 
         stale_pids = set()
-        stale_service_names = set()
+        stale_services = {}
         uid = os.geteuid() if self.opts.useronly else None
         for ofile in list_opened_files(uid):
             pkg = owning_pkg_fn(ofile.presumed_name)
@@ -368,11 +374,12 @@ class NeedsRestartingCommand(dnf.cli.Command):
             if pkg.installtime <= process_start(pid):
                 continue
             if self.opts.services or self.opts.exclude_services:
-                service_name = get_service_dbus(pid)
-                if service_name is None:
+                result = get_service_dbus(pid)
+                if result is None:
                     stale_pids.add(pid)
                 else:
-                    stale_service_names.add(service_name)
+                    service_name, fragment_path = result
+                    stale_services[service_name] = fragment_path
                     if not self.opts.exclude_services:
                         stale_pids.add(pid)
             else:
@@ -381,8 +388,25 @@ class NeedsRestartingCommand(dnf.cli.Command):
                 stale_pids.add(pid)
 
         if self.opts.services:
-            for stale_service_name in sorted(stale_service_names):
-                print(stale_service_name)
+            installed_need_reboot_pkgs = set()
+            for pkg in self.base.sack.query().installed().filterm(
+                    provides=NEED_REBOOT):
+                installed_need_reboot_pkgs.add(pkg.name)
+            reboot_service_names = set()
+            for svc, fragment_path in stale_services.items():
+                if fragment_path:
+                    unit_pkg = owning_pkg_fn(fragment_path)
+                    if unit_pkg and \
+                            unit_pkg.name in installed_need_reboot_pkgs:
+                        reboot_service_names.add(svc)
+            for svc in sorted(set(stale_services) - reboot_service_names):
+                print(svc)
+            if reboot_service_names:
+                print(_('Warning: The following services should not be '
+                        'restarted but require a reboot:'),
+                      file=sys.stderr)
+                for name in sorted(reboot_service_names):
+                    print('  %s' % name, file=sys.stderr)
             return 0
 
         for pid in sorted(stale_pids):
