@@ -74,7 +74,9 @@ All general DNF options are accepted, see `Options` in :manpage:`dnf(8)` for det
     Only report whether a reboot is required (exit code 1) or not (exit code 0).
 
 ``-s, --services``
-    Only list the affected systemd services.
+    Only list the affected systemd services that can be safely restarted.
+    Services that should not be restarted (such as ``dbus-broker``) are
+    excluded and reported as a warning on stderr.
 
 ``--exclude-services``
     Don't list stale processes that correspond to a systemd service.
