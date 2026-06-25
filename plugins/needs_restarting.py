@@ -300,8 +300,15 @@ class ProcessStart(object):
     def __call__(self, pid):
         stat_fn = '/proc/%d/stat' % pid
         with open(stat_fn) as stat_file:
-            stats = stat_file.read().split()
-        ticks_after_kernel_boot = int(stats[21])
+            stats_line = stat_file.read();
+            # Second field is a parens enclosed name which might include spaces
+            name_end = stats_line.find(')')
+            if name_end < 0:
+                logger.warning("PID %s's stat line missing expected parenthesis ", pid)
+                return self.kernel_boot_time
+            stats_line = stats_line[name_end+1:]
+            stats = stats_line.split()
+        ticks_after_kernel_boot = int(stats[19])
         secs_after_kernel_boot = ticks_after_kernel_boot / self.sc_clk_tck
 
         # The process's start time is always measured relative to the kernel
