@@ -78,6 +78,13 @@ else:
     from ConfigParser import ConfigParser, NoOptionError, NoSectionError
     from urllib2 import urlopen, HTTPError, URLError
 
+
+class RepoNotFoundError(dnf.exceptions.Error):
+    def __init__(self, message, available_chroots=None):
+        super(RepoNotFoundError, self).__init__(message)
+        self.available_chroots = available_chroots
+
+
 @dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
     """ Copr plugin for DNF """
@@ -263,13 +270,12 @@ class CoprCommand(dnf.cli.Command):
             chroot = self.opts.arg[1]
             if len(self.opts.arg) > 2:
                 raise dnf.exceptions.Error(_('Too many arguments.'))
-            self.chroot_parts = chroot.split("-")
-            if len(self.chroot_parts) < 3:
+            chroot_parts = chroot.split("-")
+            if len(chroot_parts) < 3:
                 raise dnf.exceptions.Error(_('Bad format of optional chroot. The format is '
                                              'distribution-version-architecture.'))
         except IndexError:
-            chroot = self._guess_chroot()
-            self.chroot_parts = chroot.split("-")
+            chroot = None
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "search":
@@ -312,7 +318,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
                                 copr_projectname])
             msg = "Do you really want to enable {0}?".format(project)
             self._ask_user(info, msg)
-            self._download_repo(project_name, repo_filename)
+            self._download_repo(project_name, repo_filename, chroot)
             logger.info(_("Repository successfully enabled."))
             self._runtime_deps_warning(copr_username, copr_projectname)
         elif subcommand == "disable":
@@ -455,7 +461,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
             raise dnf.exceptions.Error(
                 _('This command has to be run under the root user.'))
 
-    def _guess_chroot(self):
+    def _guess_chroot(self, available_chroots=None):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
         dist = self.chroot_config
@@ -493,18 +499,27 @@ Bugzilla. In case of problems, contact the owner of this repository.
         elif "Amazon Linux" in dist[0]:
             chroot = "amazonlinux-{}-{}".format(dist[1], distarch if distarch else "x86_64")
         else:
-            chroot = ("epel-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
+            releasever = dist[1].split(".", 1)[0]
+            arch = distarch if distarch else "x86_64"
+
+            if available_chroots:
+                guesses = ['epel', 'rhel']
+                if "CentOS Stream" in dist:
+                    guesses.insert(1, 'centos-stream')
+                for guess in guesses:
+                    chroot = "{}-{}-{}".format(guess, releasever, arch)
+                    if chroot in available_chroots:
+                        return chroot
+                return None
+            else:
+                chroot = "epel-{}-{}".format(releasever, arch)
         return chroot
 
-    def _download_repo(self, project_name, repo_filename):
-        short_chroot = '-'.join(self.chroot_parts[:-1])
-        arch = self.chroot_parts[-1]
-        api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
+    def _download_repo_file(self, project_name, chroot):
+        api_path = "/coprs/{0}/repo/{1}/dnf.repo".format(project_name, chroot)
 
         try:
             response = urlopen(self.copr_url + api_path)
-            if os.path.exists(repo_filename):
-                os.remove(repo_filename)
         except HTTPError as e:
             if e.code != 404:
                 error_msg = _("Request to {0} failed: {1} - {2}").format(self.copr_url + api_path, e.code, str(e))
@@ -515,21 +530,42 @@ Bugzilla. In case of problems, contact the owner of this repository.
                 error_data_decoded = base64.b64decode(error_data).decode('utf-8')
                 error_data_decoded = json.loads(error_data_decoded)
                 error_msg += _("Repository '{0}' does not exist in project '{1}'.").format(
-                    '-'.join(self.chroot_parts), project_name)
-                if error_data_decoded.get("available chroots"):
+                    chroot, project_name)
+                available_chroots = error_data_decoded.get("available chroots")
+                if available_chroots:
                     error_msg += _("\nAvailable repositories: ") + ', '.join(
-                        "'{}'".format(x) for x in error_data_decoded["available chroots"])
+                        "'{}'".format(x) for x in available_chroots)
                     error_msg += _("\n\nIf you want to enable a non-default repository, use the following command:\n"
                                    "  'dnf copr enable {0} <repository>'\n"
                                    "But note that the installed repo file will likely need a manual "
                                    "modification.").format(project_name)
-                raise dnf.exceptions.Error(error_msg)
+                raise RepoNotFoundError(error_msg, available_chroots)
             else:
                 error_msg += _("Project {0} does not exist.").format(project_name)
-                raise dnf.exceptions.Error(error_msg)
+                raise RepoNotFoundError(error_msg)
         except URLError as e:
             error_msg = _("Failed to connect to {0}: {1}").format(self.copr_url + api_path, e.reason.strerror)
             raise dnf.exceptions.Error(error_msg)
+
+        return response
+
+    def _download_repo(self, project_name, repo_filename, chroot=None):
+        _chroot = chroot or self._guess_chroot()
+
+        try:
+            response = self._download_repo_file(project_name, _chroot)
+        except RepoNotFoundError as e:
+            # If a chroot was given or none are available we shouldn't guess again
+            if chroot or not e.available_chroots:
+                raise
+
+            new_guess = self._guess_chroot(e.available_chroots)
+            if not new_guess or new_guess == _chroot:
+                raise
+            response = self._download_repo_file(project_name, new_guess)
+
+        if os.path.exists(repo_filename):
+            os.remove(repo_filename)
 
         # Try to read the first line, and detect the repo_filename from that (override the repo_filename value).
         first_line = response.readline()
@@ -710,7 +746,7 @@ class PlaygroundCommand(CoprCommand):
                 f.close()
                 if (output2 and ("output" in output2)
                         and (output2["output"] == "ok")):
-                    self._download_repo(project_name, repo_filename)
+                    self._download_repo(project_name, repo_filename, chroot)
             except dnf.exceptions.Error:
                 # likely 404 and that repo does not exist
                 pass
