@@ -76,6 +76,11 @@ class LocalConfParse(object):
             else:
                 crepo["verbose"] = False
 
+        if conf.has_option("main", "metadata_expire"):
+            main["metadata_expire"] = conf.getint("main", "metadata_expire")
+        else:
+            main["metadata_expire"] = 0
+
         return main, crepo
 
 
@@ -104,6 +109,7 @@ class Local(dnf.Plugin):
         local_repo = dnf.repo.Repo("_dnf_local", self.base.conf)
         local_repo.baseurl = "file://{}".format(self.main["repodir"])
         local_repo.cost = 500
+        local_repo.metadata_expire = self.main["metadata_expire"]
         local_repo.skip_if_unavailable = True
         self.base.repos.add(local_repo)
 
