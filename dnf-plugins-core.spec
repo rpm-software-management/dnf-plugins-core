@@ -557,10 +557,10 @@ ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
-+%if %{with debug_plugin}
+%if %{with debug_plugin}
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
-+%endif
+%endif
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-groups-manager
 ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 # These commands don't have a dedicated man page, so let's just point them
