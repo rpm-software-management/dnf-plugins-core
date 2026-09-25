@@ -268,8 +268,7 @@ class CoprCommand(dnf.cli.Command):
                 raise dnf.exceptions.Error(_('Bad format of optional chroot. The format is '
                                              'distribution-version-architecture.'))
         except IndexError:
-            chroot = self._guess_chroot()
-            self.chroot_parts = chroot.split("-")
+            self.chroot_parts = None
 
         # commands without defined copr_username/copr_projectname
         if subcommand == "search":
@@ -290,6 +289,10 @@ class CoprCommand(dnf.cli.Command):
             copr_username = project[1]
             copr_projectname = project[2]
             project_name = copr_username + "/" + copr_projectname
+
+        if self.chroot_parts is None:
+            chroot = self._guess_chroot(copr_username, copr_projectname)
+            self.chroot_parts = chroot.split('-')
 
         repo_filename = "{0}/_copr:{1}:{2}:{3}.repo".format(
             self.base.conf.get_reposdir, self.copr_hostname,
@@ -455,7 +458,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
             raise dnf.exceptions.Error(
                 _('This command has to be run under the root user.'))
 
-    def _guess_chroot(self):
+    def _guess_chroot(self, copr_username=None, copr_projectname=None):
         """ Guess which chroot is equivalent to this machine """
         # FIXME Copr should generate non-specific arch repo
         dist = self.chroot_config
@@ -493,8 +496,45 @@ Bugzilla. In case of problems, contact the owner of this repository.
         elif "Amazon Linux" in dist[0]:
             chroot = "amazonlinux-{}-{}".format(dist[1], distarch if distarch else "x86_64")
         else:
-            chroot = ("epel-{}-{}".format(dist[1].split(".", 1)[0], distarch if distarch else "x86_64"))
+            releasever = dist[1].split(".", 1)[0]
+            arch = distarch if distarch else "x86_64"
+
+            if not (copr_username and copr_projectname):
+                return "epel-{}-{}".format(releasever, arch)
+
+            available_chroots = self._download_available_chroots(copr_username, copr_projectname)
+
+            guesses = ["epel", "rhel"]
+            if "CentOS Stream" in dist:
+                guesses.insert(1, "centos-stream")
+
+            for guess in guesses:
+                chroot = "{}-{}-{}".format(guess, releasever, arch)
+                if chroot in available_chroots:
+                    break
+            else:
+                error_msg = _("No compatible repositories found for {0}/{1}").format(copr_username,
+                                                                                     copr_projectname)
+                error_msg += _("\nAvailable repositories: ") + ', '.join(
+                    "'{}'".format(x) for x in available_chroots)
+                raise dnf.exceptions.Error(error_msg)
         return chroot
+
+    def _download_available_chroots(self, copr_username, copr_projectname):
+        api_path = "/api_3/project?ownername={0}&projectname={1}".format(copr_username,
+                                                                         copr_projectname)
+        try:
+            response = urlopen(self.copr_url + api_path)
+        except HTTPError as e:
+            if e.code != 404:
+                error_msg = _("Request to {0} failed: {1} - {2}").format(self.copr_url + api_path, e.code, str(e))
+            else:
+                error_msg = _("Project '{0}/{1}' does not exist.").format(copr_username,
+                                                                          copr_projectname)
+            raise dnf.exceptions.Error(error_msg)
+
+        data = self._get_data(response)
+        return data['chroot_repos'].keys()
 
     def _download_repo(self, project_name, repo_filename):
         short_chroot = '-'.join(self.chroot_parts[:-1])
