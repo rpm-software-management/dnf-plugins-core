@@ -73,10 +73,10 @@ NO = set([_('no'), _('n'), ''])
 
 if PY3:
     from configparser import ConfigParser, NoOptionError, NoSectionError
-    from urllib.request import urlopen, HTTPError, URLError
+    from urllib.request import HTTPError, URLError
 else:
     from ConfigParser import ConfigParser, NoOptionError, NoSectionError
-    from urllib2 import urlopen, HTTPError, URLError
+    from urllib2 import HTTPError, URLError
 
 @dnf.plugin.register_command
 class CoprCommand(dnf.cli.Command):
@@ -502,7 +502,7 @@ Bugzilla. In case of problems, contact the owner of this repository.
         api_path = "/coprs/{0}/repo/{1}/dnf.repo?arch={2}".format(project_name, short_chroot, arch)
 
         try:
-            response = urlopen(self.copr_url + api_path)
+            response = self.base.urlopen(self.copr_url + api_path)
             if os.path.exists(repo_filename):
                 os.remove(repo_filename)
         except HTTPError as e:
