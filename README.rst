@@ -14,7 +14,7 @@ RPM packages are available in official Fedora repositories::
 
    dnf install dnf-plugins-core
 
-Nigthly builds can be installed from `copr repository <https://copr.fedorainfracloud.org/coprs/rpmsoftwaremanagement/dnf-nightly/>`_.
+Nightly builds can be installed from `copr repository <https://copr.fedorainfracloud.org/coprs/rpmsoftwaremanagement/dnf-nightly/>`_.
 
 
 ======================
