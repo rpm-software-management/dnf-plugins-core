@@ -10,5 +10,37 @@ upstream_package_name: dnf-plugins-core
 # downstream (Fedora) RPM package name
 downstream_package_name: dnf-plugins-core
 
-# To disable default jobs set them as empty
-jobs: []
+# Build the package with the current specfile version (otherwise it uses last git tag).
+# This is needed because other packages can depend on the new version.
+actions:
+  get-current-version:
+    - rpmspec --srpm --query --queryformat "%{version}" dnf-plugins-core.spec
+
+jobs:
+  - job: copr_build
+    trigger: pull_request
+    targets:
+      - centos-stream+epel-next-9
+      - epel-10
+      - fedora-all
+    additional_repos:
+      - "copr://rpmsoftwaremanagement/dnf-nightly"
+  - job: tests
+    trigger: pull_request
+    identifier: "dnf-tests"
+    targets:
+      # EPELs fail now for unrelated reasons
+      - fedora-all
+    fmf_url: https://github.com/rpm-software-management/ci-dnf-stack.git
+    fmf_ref: enable-tmt-dnf-4-stack
+    tmt_plan: "^/plans/integration/behave-dnf$"
+    tf_extra_params:
+      environments:
+        - artifacts:
+            - type: repository-file
+              # We use the rawhide repo file for all fedora releases, the url doesn't change and it is not rawhide specific (it contains "fedora-$releasever-$basearch")
+              id: https://copr.fedorainfracloud.org/coprs/rpmsoftwaremanagement/dnf-nightly/repo/fedora-rawhide/rpmsoftwaremanagement-dnf-nightly-fedora-rawhide.repo
+  - job: propose_downstream
+    trigger: release
+    dist_git_branches:
+      - fedora-rawhide
