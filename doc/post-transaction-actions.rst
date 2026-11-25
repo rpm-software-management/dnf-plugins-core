@@ -34,8 +34,17 @@ Configuration
 The plugin configuration is in ``/etc/dnf/plugins/post-transaction-actions.conf``. All configuration
 options are in the ``[main]`` section.
 
+You can declare one of this variable with this syntax:
+
+.. code-block:: none
+
+  [main]
+  enabled = 1
+  actiondir = /etc/dnf/plugins/post-transaction-actions.d/
+
+
 ``enabled``
-    Whether the plugin is enabled. Default value is ``True``.
+    Whether the plugin is enabled. Default value is 1.
 
 ``actiondir``
     Path to the directory with action files. Action files must have the ".action" extension.
