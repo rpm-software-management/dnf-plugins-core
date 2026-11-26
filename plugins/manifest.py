@@ -266,7 +266,7 @@ class ManifestCommand(dnf.cli.Command):
                 pkg.module.stream = modular_pkg.getStream()
                 modules_info[modular_pkg.getId()] = modular_pkg.getYaml()
 
-            pkg.checksum.method, pkg.checksum.digest = self._retrieve_pkg_checksum(dnf_pkg)
+            self._set_pkg_checksum(pkg, dnf_pkg)
 
             if len(self.archs) == 1 or self.opts.per_arch:
                 manifest.packages.add(pkg)
@@ -464,36 +464,19 @@ class ManifestCommand(dnf.cli.Command):
                     for line in infile:
                         outfile.write(line)
 
-    def _retrieve_pkg_checksum(self, pkg):
-        if pkg._from_system:
-            hdr = pkg.get_header()
-            if hasattr(rpm, 'RPMTAG_PAYLOADDIGESTALGO'):
-                # RPM < 6 compatibility
-                method = self._rpm_checksum_type_to_manifest_conversion(hdr[rpm.RPMTAG_PAYLOADDIGESTALGO])
-                digest = hdr[rpm.RPMTAG_PAYLOADDIGEST][0]
-            else:
-                method = self._rpm_checksum_type_to_manifest_conversion(hdr[rpm.RPMTAG_PAYLOADSHA256ALGO])
-                digest = hdr[rpm.RPMTAG_PAYLOADSHA256ALT][0]
-        else:
-            dnf_chksum_type, dnf_chksum_digest = pkg.chksum
-            method = self._dnf_checksum_type_to_manifest_conversion(dnf_chksum_type)
-            digest = binascii.hexlify(dnf_chksum_digest).decode()
-        return method, digest
-
-    def _rpm_checksum_type_to_manifest_conversion(self, checksum_type):
-        match checksum_type:
-            case 1:
-                return libpkgmanifest.manifest.ChecksumMethod_MD5
-            case 2:
-                return libpkgmanifest.manifest.ChecksumMethod_SHA1
-            case 8:
-                return libpkgmanifest.manifest.ChecksumMethod_SHA256
-            case 9:
-                return libpkgmanifest.manifest.ChecksumMethod_SHA384
-            case 10:
-                return libpkgmanifest.manifest.ChecksumMethod_SHA512
-            case _:
-                raise dnf.exceptions.Error(_("Unknown RPM package checksum type: %s") % checksum_type)
+    def _set_pkg_checksum(self, pkg, dnf_pkg):
+        """
+        If package checksum is available, store it in the checksum field. For system packages, the checksum
+        might not be available, shore the header checksum in the hdr_checksum field instead.
+        """
+        if dnf_pkg.chksum:
+            method, digest = dnf_pkg.chksum
+            pkg.checksum.method = self._dnf_checksum_type_to_manifest_conversion(method)
+            pkg.checksum.digest = binascii.hexlify(digest).decode()
+        elif dnf_pkg._from_system and dnf_pkg.hdr_chksum:
+            method, digest = dnf_pkg.hdr_chksum
+            pkg.hdr_checksum.method = self._dnf_checksum_type_to_manifest_conversion(method)
+            pkg.hdr_checksum.digest = binascii.hexlify(digest).decode()
 
     def _dnf_checksum_type_to_manifest_conversion(self, checksum_type):
         match checksum_type:

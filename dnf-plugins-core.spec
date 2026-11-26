@@ -1,6 +1,7 @@
 %{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.24.0}
 %global dnf_plugins_extra 2.0.0
 %global hawkey_version 0.73.0
+%global libpkgmanifest_version 0.6.0
 %global yum_utils_subpackage_name dnf-utils
 %if 0%{?rhel} > 7
 %global yum_utils_subpackage_name yum-utils
@@ -189,7 +190,7 @@ Requires:       python3-dnf >= %{dnf_lowest_compatible}
 Requires:       python3-hawkey >= %{hawkey_version}
 Requires:       python3-dateutil
 %if %{with manifest_plugin}
-Requires:       python3-libpkgmanifest
+Requires:       python3-libpkgmanifest >= %{libpkgmanifest_version}
 %endif
 Requires:       python3-systemd
 %if %{with debug_plugin}
