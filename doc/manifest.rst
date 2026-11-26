@@ -34,7 +34,8 @@ Subcommands
     See options and examples for more details.
 
     Without specific input, the manifest is generated solely from
-    installed packages.
+    installed packages. In this case, package checksums may not be available which will make
+    checksum verification impossible for download and instalation.
 
 ``download``
     Download all packages specified in the manifest file to disk.
